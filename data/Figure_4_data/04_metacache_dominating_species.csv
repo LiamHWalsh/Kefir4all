@@ -1,0 +1,2644 @@
+sample_id,species,relative_abundance,data_source,kefir type,group
+A10_S10,Lactococcus cremoris,52.6771,Walsh et al 2023,ML,milk
+A11_S11,Lactococcus cremoris,45.3202,Walsh et al 2023,ML,milk
+A12_S12,Lactococcus cremoris,46.6199,Walsh et al 2023,ML,milk
+A6_S6,Lactococcus cremoris,40.0948,Walsh et al 2023,ML,milk
+A7_S7,Lactococcus cremoris,50.663,Walsh et al 2023,ML,milk
+A8_S8,Lactococcus cremoris,55.5275,Walsh et al 2023,ML,milk
+A9_S9,Lactococcus cremoris,55.2546,Walsh et al 2023,ML,milk
+B1_S13,Lactococcus cremoris,40.8987,Walsh et al 2023,ML,milk
+B10_S22,Lactococcus cremoris,53.0944,Walsh et al 2023,ML,milk
+B11_S23,Lactococcus cremoris,59.4919,Walsh et al 2023,ML,milk
+B12_S24,Lactococcus cremoris,46.5413,Walsh et al 2023,ML,milk
+B2_S14,Lactococcus lactis,24.415,Walsh et al 2023,ML,milk
+B3_S15,Lactococcus lactis,28.8149,Walsh et al 2023,ML,milk
+B4_S16,Lactococcus lactis,33.3876,Walsh et al 2023,ML,milk
+B5_S17,Lactococcus cremoris,29.7811,Walsh et al 2023,ML,milk
+B6_S18,Lactococcus lactis,37.4316,Walsh et al 2023,ML,milk
+B7_S19,Lactococcus cremoris,47.8292,Walsh et al 2023,ML,milk
+B8_S20,Lactococcus cremoris,25.9829,Walsh et al 2023,ML,milk
+B9_S21,Lactococcus cremoris,47.4686,Walsh et al 2023,ML,milk
+C1_S25,Lactococcus cremoris,42.3442,Walsh et al 2023,ML,milk
+C10_S34,Lactococcus cremoris,52.9572,Walsh et al 2023,ML,milk
+C11_S35,Lactococcus cremoris,56.8584,Walsh et al 2023,ML,milk
+C12_S36,Lactococcus cremoris,51.098,Walsh et al 2023,ML,milk
+C2_S26,Lactococcus lactis,26.436,Walsh et al 2023,ML,milk
+C3_S27,Lactococcus lactis,50.263,Walsh et al 2023,ML,milk
+C4_S28,Lactococcus lactis,41.3876,Walsh et al 2023,ML,milk
+C5_S29,Lactococcus lactis,44.3794,Walsh et al 2023,ML,milk
+C6_S30,Lactococcus cremoris,54.0511,Walsh et al 2023,ML,milk
+C7_S31,Lactococcus cremoris,43.8403,Walsh et al 2023,ML,milk
+C8_S32,Lactococcus cremoris,45.9661,Walsh et al 2023,ML,milk
+C9_S33,Lactococcus cremoris,37.7518,Walsh et al 2023,ML,milk
+D1_S37,Lactococcus cremoris,46.8088,Walsh et al 2023,ML,milk
+D10_S46,Lactococcus cremoris,57.903,Walsh et al 2023,ML,milk
+D11_S47,Lactococcus cremoris,57.431,Walsh et al 2023,ML,milk
+D12_S48,Lactococcus cremoris,56.9292,Walsh et al 2023,ML,milk
+D2_S38,Lactococcus cremoris,30.8558,Walsh et al 2023,ML,milk
+D3_S39,Lactococcus cremoris,51.9809,Walsh et al 2023,ML,milk
+D4_S40,Lactococcus cremoris,48.2466,Walsh et al 2023,ML,milk
+D5_S41,Lactococcus cremoris,44.0204,Walsh et al 2023,ML,milk
+D6_S42,Lactobacillus kefiranofaciens,36.6804,Walsh et al 2023,ML,milk
+D7_S43,Lactobacillus kefiranofaciens,19.8242,Walsh et al 2023,ML,milk
+D8_S44,Lactobacillus helveticus,39.3032,Walsh et al 2023,ML,milk
+D9_S45,Lactococcus lactis,28.3954,Walsh et al 2023,ML,milk
+E1_S49,Lactococcus cremoris,60.6486,Walsh et al 2023,ML,milk
+E10_S58,Lactococcus cremoris,24.7683,Walsh et al 2023,ML,milk
+E11_S59,Lactococcus cremoris,52.4177,Walsh et al 2023,ML,milk
+E12_S60,Lactococcus cremoris,44.9975,Walsh et al 2023,ML,milk
+E2_S50,Lactobacillus kefiranofaciens,26.7341,Walsh et al 2023,ML,milk
+E3_S51,Lactococcus cremoris,44.0783,Walsh et al 2023,ML,milk
+E4_S52,Lactococcus cremoris,49.8183,Walsh et al 2023,ML,milk
+E5_S53,Lactococcus cremoris,49.6167,Walsh et al 2023,ML,milk
+E6_S54,Lactobacillus kefiranofaciens,17.9086,Walsh et al 2023,ML,milk
+E7_S55,Lactococcus cremoris,52.3129,Walsh et al 2023,ML,milk
+E8_S56,Lactococcus cremoris,47.487,Walsh et al 2023,ML,milk
+E9_S57,Lactococcus cremoris,56.1463,Walsh et al 2023,ML,milk
+F1_S61,Lactococcus cremoris,56.9251,Walsh et al 2023,ML,milk
+F10_S70,Lactobacillus kefiranofaciens,36.036,Walsh et al 2023,ML,milk
+F11_S71,Lactococcus cremoris,49.4239,Walsh et al 2023,ML,milk
+F12_S72,Lactococcus cremoris,49.0907,Walsh et al 2023,ML,milk
+F2_S62,Lactobacillus kefiranofaciens,21.1449,Walsh et al 2023,ML,milk
+F3_S63,Lactococcus cremoris,49.1893,Walsh et al 2023,ML,milk
+F4_S64,Lactococcus cremoris,42.2816,Walsh et al 2023,ML,milk
+F5_S65,Lactococcus cremoris,47.4527,Walsh et al 2023,ML,milk
+F6_S66,Leuconostoc mesenteroides,62.7739,Walsh et al 2023,ML,milk
+F7_S67,Lactococcus cremoris,36.4774,Walsh et al 2023,ML,milk
+F8_S68,Lactococcus cremoris,23.2708,Walsh et al 2023,ML,milk
+F9_S69,Lactococcus cremoris,35.0186,Walsh et al 2023,ML,milk
+G1_S73,Lactococcus cremoris,52.0084,Walsh et al 2023,ML,milk
+G10_S82,Lactococcus cremoris,24.8046,Walsh et al 2023,ML,milk
+G11_S83,Lactococcus lactis,43.1916,Walsh et al 2023,ML,milk
+G12_S84,Lactococcus lactis,33.0767,Walsh et al 2023,ML,milk
+G2_S74,Lactococcus lactis,51.6901,Walsh et al 2023,ML,milk
+G3_S75,Lactococcus lactis,57.6113,Walsh et al 2023,ML,milk
+G4_S76,Lactococcus lactis,55.1813,Walsh et al 2023,ML,milk
+G5_S77,Lactococcus lactis,56.7975,Walsh et al 2023,ML,milk
+G6_S78,Lactococcus cremoris,39.7835,Walsh et al 2023,ML,milk
+G7_S79,Lactococcus lactis,31.3338,Walsh et al 2023,ML,milk
+G8_S80,Lactococcus lactis,30.5626,Walsh et al 2023,ML,milk
+G9_S81,Lactococcus lactis,42.2974,Walsh et al 2023,ML,milk
+H1_S85,Lactococcus lactis,48.197,Walsh et al 2023,ML,milk
+H10_S94,Lactobacillus helveticus,31.1483,Walsh et al 2023,ML,milk
+H11_S95,Lactococcus lactis,42.3644,Walsh et al 2023,ML,milk
+H12_S96,Lactococcus lactis,28.8151,Walsh et al 2023,ML,milk
+H2_S86,Lactococcus cremoris,6.95175,Walsh et al 2023,ML,milk
+H3_S55,Lactococcus lactis,47.7552,Walsh et al 2023,ML,milk
+H4_S88,Lactococcus lactis,36.9202,Walsh et al 2023,ML,milk
+H5_S89,Lactococcus lactis,51.2621,Walsh et al 2023,ML,milk
+H6_S90,Lactococcus cremoris,55.8293,Walsh et al 2023,ML,milk
+H7_S91,Lactococcus cremoris,58.195,Walsh et al 2023,ML,milk
+H8_S92,Lactococcus cremoris,59.3087,Walsh et al 2023,ML,milk
+H9_S93,Lactococcus cremoris,59.7498,Walsh et al 2023,ML,milk
+I1_S97,Lactococcus lactis,22.4942,Walsh et al 2023,ML,milk
+I10_S106,Lactococcus lactis,54.7961,Walsh et al 2023,ML,milk
+I11_S107,Lactococcus lactis,52.4675,Walsh et al 2023,ML,milk
+I12_S108,Lactococcus lactis,47.1906,Walsh et al 2023,ML,milk
+I2_S98,Lactobacillus helveticus,63.5033,Walsh et al 2023,ML,milk
+I3_S99,Lactococcus lactis,23.4083,Walsh et al 2023,ML,milk
+I4_S100,Lactobacillus helveticus,47.3301,Walsh et al 2023,ML,milk
+I5_S101,Lactobacillus helveticus,45.2533,Walsh et al 2023,ML,milk
+I6_S102,Lactobacillus helveticus,64.6016,Walsh et al 2023,ML,milk
+I7_S103,Lactococcus lactis,45.4964,Walsh et al 2023,ML,milk
+I8_S104,Lactobacillus helveticus,39.7451,Walsh et al 2023,ML,milk
+I9_S105,Lactobacillus helveticus,30.7349,Walsh et al 2023,ML,milk
+J1_S109,Lactococcus lactis,37.3705,Walsh et al 2023,ML,milk
+J10_S118,Lactococcus lactis,31.015,Walsh et al 2023,ML,milk
+J11_S119,Lactococcus lactis,46.1008,Walsh et al 2023,ML,milk
+J12_S120,Lactococcus lactis,51.7121,Walsh et al 2023,ML,milk
+J2_S110,Lactobacillus helveticus,70.7507,Walsh et al 2023,ML,milk
+J3_S111,Lactobacillus helveticus,41.6458,Walsh et al 2023,ML,milk
+J4_S112,Lactobacillus helveticus,52.5938,Walsh et al 2023,ML,milk
+J5_S113,Lactobacillus helveticus,35.6283,Walsh et al 2023,ML,milk
+J6_S114,Lactococcus lactis,53.9202,Walsh et al 2023,ML,milk
+J7_S115,Lactococcus lactis,57.3286,Walsh et al 2023,ML,milk
+J8_S116,Lactococcus lactis,47.0833,Walsh et al 2023,ML,milk
+J9_S117,Lactococcus lactis,55.7836,Walsh et al 2023,ML,milk
+k1_S121,Lactococcus lactis,53.4666,Walsh et al 2023,ML,milk
+k10_S5,Lactococcus lactis,39.7499,Walsh et al 2023,ML,milk
+k11_S6,Lactococcus lactis,52.5837,Walsh et al 2023,ML,milk
+k12_S7,Lactococcus lactis,54.0443,Walsh et al 2023,ML,milk
+k2_S122,Lactococcus lactis,54.7072,Walsh et al 2023,ML,milk
+k3_S123,Lactococcus lactis,56.6038,Walsh et al 2023,ML,milk
+k4_S124,Lactococcus lactis,45.5484,Walsh et al 2023,ML,milk
+k5_S125,Lactococcus lactis,49.2935,Walsh et al 2023,ML,milk
+k6_S1,Lactococcus cremoris,46.4549,Walsh et al 2023,ML,milk
+k7_S2,Lactococcus cremoris,53.0929,Walsh et al 2023,ML,milk
+k8_S3,Lactococcus cremoris,49.6375,Walsh et al 2023,ML,milk
+k9_S4,Lactococcus cremoris,45.5033,Walsh et al 2023,ML,milk
+L1_S8,Lactococcus lactis,52.4825,Walsh et al 2023,ML,milk
+L10_S17,Lactococcus lactis,54.6333,Walsh et al 2023,ML,milk
+L11_S18,Lactococcus lactis,56.496,Walsh et al 2023,ML,milk
+L12_S19,Lactococcus lactis,50.9156,Walsh et al 2023,ML,milk
+L2_S9,Lactococcus cremoris,19.5889,Walsh et al 2023,ML,milk
+L3_S10,Lactococcus cremoris,56.495,Walsh et al 2023,ML,milk
+L4_S11,Lactococcus cremoris,27.664,Walsh et al 2023,ML,milk
+L5_S12,Lactococcus cremoris,58.7546,Walsh et al 2023,ML,milk
+L6_S13,Lactobacillus helveticus,42.8881,Walsh et al 2023,ML,milk
+L7_S14,Lactobacillus helveticus,41.1168,Walsh et al 2023,ML,milk
+L8_S15,Lactobacillus helveticus,28.2449,Walsh et al 2023,ML,milk
+L9_S16,Lactobacillus helveticus,21.3224,Walsh et al 2023,ML,milk
+M1_S20,Lactococcus lactis,59.2806,Walsh et al 2023,ML,milk
+M10_S29,Lactococcus lactis,62.0115,Walsh et al 2023,ML,milk
+M11_S30,Lactococcus lactis,61.9545,Walsh et al 2023,ML,milk
+M12_S31,Lactococcus lactis,62.9386,Walsh et al 2023,ML,milk
+M2_S21,Lactococcus lactis,35.8773,Walsh et al 2023,ML,milk
+M3_S22,Lactococcus lactis,46.8745,Walsh et al 2023,ML,milk
+M4_S23,Lactobacillus helveticus,39.3392,Walsh et al 2023,ML,milk
+M5_S24,Lactobacillus helveticus,30.472,Walsh et al 2023,ML,milk
+M6_S25,Lactococcus lactis,59.059,Walsh et al 2023,ML,milk
+M7_S26,Lactococcus lactis,60.372,Walsh et al 2023,ML,milk
+M8_S27,Lactococcus lactis,59.2667,Walsh et al 2023,ML,milk
+M9_S28,Lactococcus lactis,59.446,Walsh et al 2023,ML,milk
+N1_S32,Lactococcus lactis,62.0834,Walsh et al 2023,ML,milk
+N10_S41,Lactobacillus helveticus,67.5851,Walsh et al 2023,ML,milk
+N11_S42,Lactobacillus helveticus,32.2007,Walsh et al 2023,ML,milk
+N12_S43,Lactobacillus helveticus,39.3831,Walsh et al 2023,ML,milk
+N2_S33,Lactobacillus kefiranofaciens,23.9575,Walsh et al 2023,ML,milk
+N3_S34,Lactococcus cremoris,51.0657,Walsh et al 2023,ML,milk
+N4_S35,Lactococcus cremoris,38.5388,Walsh et al 2023,ML,milk
+N5_S36,Lactococcus cremoris,49.8063,Walsh et al 2023,ML,milk
+N6_S37,Lactococcus cremoris,47.593,Walsh et al 2023,ML,milk
+N7_S38,Lactococcus lactis,31.7967,Walsh et al 2023,ML,milk
+N8_S39,Lactococcus lactis,55.5409,Walsh et al 2023,ML,milk
+N9_S40,Lactococcus lactis,53.0498,Walsh et al 2023,ML,milk
+O1_S44,Lactococcus lactis,39.3515,Walsh et al 2023,ML,milk
+O10_S53,Lactobacillus helveticus,28.6709,Walsh et al 2023,ML,milk
+O11_S54,Lactococcus lactis,31.7436,Walsh et al 2023,ML,milk
+O12_S55,Lactococcus lactis,7.33787,Walsh et al 2023,ML,milk
+O2_S45,Lactococcus cremoris,49.8891,Walsh et al 2023,ML,milk
+O3_S46,Lactobacillus helveticus,33.9349,Walsh et al 2023,ML,milk
+O4_S47,Lactococcus cremoris,30.6383,Walsh et al 2023,ML,milk
+O5_S48,Lactobacillus helveticus,42.9672,Walsh et al 2023,ML,milk
+O6_S49,Lactococcus cremoris,37.6574,Walsh et al 2023,ML,milk
+O7_S50,Lactococcus cremoris,30.0315,Walsh et al 2023,ML,milk
+O8_S51,Lactococcus cremoris,28.5361,Walsh et al 2023,ML,milk
+O9_S52,Lactococcus cremoris,24.2202,Walsh et al 2023,ML,milk
+P1_S56,Lactococcus lactis,22.2059,Walsh et al 2023,ML,milk
+P10_S65,Lactobacillus helveticus,51.679,Walsh et al 2023,ML,milk
+P11_S66,Lactobacillus helveticus,30.5157,Walsh et al 2023,ML,milk
+P12_S67,Lactococcus lactis,38.0747,Walsh et al 2023,ML,milk
+P2_S57,Lactococcus cremoris,48.9762,Walsh et al 2023,ML,milk
+P3_S58,Lactococcus cremoris,53.8437,Walsh et al 2023,ML,milk
+P4_S59,Lactococcus cremoris,43.4844,Walsh et al 2023,ML,milk
+P5_S60,Lactococcus cremoris,41.2923,Walsh et al 2023,ML,milk
+P6_S61,Lactococcus lactis,49.7542,Walsh et al 2023,ML,milk
+P7_S62,Lactococcus lactis,59.7434,Walsh et al 2023,ML,milk
+P8_S63,Lactococcus lactis,51.4323,Walsh et al 2023,ML,milk
+P9_S64,Lactococcus lactis,59.1936,Walsh et al 2023,ML,milk
+Q1_S68,Lactococcus lactis,23.3733,Walsh et al 2023,ML,milk
+Q10_S77,Lactobacillus kefiranofaciens,21.9117,Walsh et al 2023,ML,milk
+Q11_S78,Lactococcus cremoris,39.6656,Walsh et al 2023,ML,milk
+Q12_S79,Lactococcus cremoris,56.5911,Walsh et al 2023,ML,milk
+Q2_S69,Lactobacillus helveticus,34.1274,Walsh et al 2023,ML,milk
+Q3_S70,Lactococcus lactis,37.0348,Walsh et al 2023,ML,milk
+Q4_S71,Lactococcus lactis,31.6257,Walsh et al 2023,ML,milk
+Q5_S72,Lactococcus lactis,26.6867,Walsh et al 2023,ML,milk
+Q6_S73,Lactococcus lactis,59.7125,Walsh et al 2023,ML,milk
+Q7_S74,Lactococcus lactis,60.6337,Walsh et al 2023,ML,milk
+Q8_S75,Lactococcus lactis,59.6962,Walsh et al 2023,ML,milk
+Q9_S76,Lactococcus lactis,61.2031,Walsh et al 2023,ML,milk
+R1_S80,Lactococcus cremoris,30.9597,Walsh et al 2023,ML,milk
+R10_S89,Lactococcus cremoris,48.6105,Walsh et al 2023,ML,milk
+R11_S90,Lactococcus cremoris,47.856,Walsh et al 2023,ML,milk
+R12_S91,Lactococcus cremoris,42.1344,Walsh et al 2023,ML,milk
+R2_S81,Lactococcus cremoris,57.2172,Walsh et al 2023,ML,milk
+R3_S82,Lactococcus cremoris,55.5907,Walsh et al 2023,ML,milk
+R4_S83,Lactococcus cremoris,39.8719,Walsh et al 2023,ML,milk
+R5_S84,Lactococcus cremoris,47.5267,Walsh et al 2023,ML,milk
+R6_S85,Lactococcus lactis,54.837,Walsh et al 2023,ML,milk
+R7_S86,Lactococcus lactis,57.6749,Walsh et al 2023,ML,milk
+R8_S87,Lactococcus lactis,57.1949,Walsh et al 2023,ML,milk
+R9_S88,Lactococcus lactis,51.249,Walsh et al 2023,ML,milk
+S1_S92,Lactococcus cremoris,45.9913,Walsh et al 2023,ML,milk
+S10_S101,Lactobacillus helveticus,52.3072,Walsh et al 2023,ML,milk
+S11_S102,Lactococcus lactis,46.8763,Walsh et al 2023,ML,milk
+S12_S103,Lactococcus lactis,43.005,Walsh et al 2023,ML,milk
+S2_S93,Lactococcus lactis,46.237,Walsh et al 2023,ML,milk
+S3_S94,Lactococcus lactis,50.0912,Walsh et al 2023,ML,milk
+S4_S95,Lactococcus lactis,50.8132,Walsh et al 2023,ML,milk
+S5_S96,Lactococcus lactis,48.3428,Walsh et al 2023,ML,milk
+S6_S97,Lactococcus lactis,27.7421,Walsh et al 2023,ML,milk
+S7_S98,Lactococcus lactis,27.1831,Walsh et al 2023,ML,milk
+S8_S99,Lactococcus lactis,48.803,Walsh et al 2023,ML,milk
+S9_S100,Lactococcus lactis,44.2091,Walsh et al 2023,ML,milk
+T1_S104,Lactococcus lactis,50.4665,Walsh et al 2023,ML,milk
+T2_S105,Leuconostoc mesenteroides,24.214,Walsh et al 2023,ML,milk
+T3_S106,Leuconostoc mesenteroides,15.7971,Walsh et al 2023,ML,milk
+T4_S107,Lactobacillus kefiranofaciens,25.4705,Walsh et al 2023,ML,milk
+T5_S108,Lactobacillus kefiranofaciens,28.654,Walsh et al 2023,ML,milk
+TG_AP_T1_WL_0AE_S350,Gluconobacter oxydans,6.95043,This study,WL,water
+TG_AP_T1_WL_0AE_S350,Gluconobacter oxydans,6.95043,This study,WL,water
+TG_AP_T2_WG_0AN_S181,Lentilactobacillus hilgardii,20.5665,This study,WG,water
+TG_AP_T2_WG_0AN_S181,Lentilactobacillus hilgardii,20.5665,This study,WG,water
+TG_AP_T2_WG_0AN_S181,Lentilactobacillus hilgardii,20.5665,This study,WG,water
+TG_AP_T2_WG_0AN_S181,Lentilactobacillus hilgardii,20.5665,This study,WG,water
+TG_AP_T2_WG_0AN_S340,Lentilactobacillus hilgardii,19.5648,This study,WG,water
+TG_AP_T2_WG_0AN_S340,Lentilactobacillus hilgardii,19.5648,This study,WG,water
+TG_AP_T2_WL_0AE_S303,Gluconobacter oxydans,5.53291,This study,WL,water
+TG_AP_T2_WL_0AE_S303,Gluconobacter oxydans,5.53291,This study,WL,water
+TG_AP_T2_WL_0AN_S304,Zymomonas mobilis,0.41463,This study,WL,water
+TG_AP_T2_WL_0AN_S304,Zymomonas mobilis,0.41463,This study,WL,water
+TG_AP_WLC_S420,Escherichia coli,17.8427,This study,WL,water
+TG_AP_WLC_S420,Escherichia coli,17.8427,This study,WL,water
+TG_BR_T1_WL_0AE_S362,Zymomonas mobilis,5.63496,This study,WL,water
+TG_BR_T1_WL_0AE_S362,Zymomonas mobilis,5.63496,This study,WL,water
+TG_BR_T1_WL_0AN_S363,Zymomonas mobilis,2.1649,This study,WL,water
+TG_BR_T1_WL_0AN_S363,Zymomonas mobilis,2.1649,This study,WL,water
+TG_BR_T2_WL_0AE_S315,Zymomonas mobilis,6.04527,This study,WL,water
+TG_BR_T2_WL_0AE_S315,Zymomonas mobilis,6.04527,This study,WL,water
+TG_BR_T2_WL_0AN_S316,Zymomonas mobilis,0.51929,This study,WL,water
+TG_BR_T2_WL_0AN_S316,Zymomonas mobilis,0.51929,This study,WL,water
+TG_BR_WLC_S386,Lactococcus cremoris,14.4576,This study,WL,water
+TG_BR_WLC_S386,Lactococcus cremoris,14.4576,This study,WL,water
+TG_FG_T1_WL_0AE_S326,Lacticaseibacillus paracasei,7.0977,This study,WL,water
+TG_FG_T1_WL_0AE_S326,Lacticaseibacillus paracasei,7.0977,This study,WL,water
+TG_FG_T1_WL_0AN_S327,Lacticaseibacillus paracasei,2.59941,This study,WL,water
+TG_FG_T1_WL_0AN_S327,Lacticaseibacillus paracasei,2.59941,This study,WL,water
+TG_FG_T2_WL_0AE_S374,Lacticaseibacillus paracasei,7.24249,This study,WL,water
+TG_FG_T2_WL_0AE_S374,Lacticaseibacillus paracasei,7.24249,This study,WL,water
+TG_FG_T2_WL_0AN_S375,Lacticaseibacillus paracasei,7.93763,This study,WL,water
+TG_FG_T2_WL_0AN_S375,Lacticaseibacillus paracasei,7.93763,This study,WL,water
+TG_FG_WLC_S410,Lactococcus cremoris,11.6697,This study,WL,water
+TG_FG_WLC_S410,Lactococcus cremoris,11.6697,This study,WL,water
+TG_FL_T1_WL_0AE_S338,Lacticaseibacillus paracasei,10.7866,This study,WL,water
+TG_FL_T1_WL_0AE_S338,Lacticaseibacillus paracasei,10.7866,This study,WL,water
+TG_FL_T1_WL_0AN_S339,Lacticaseibacillus paracasei,2.44322,This study,WL,water
+TG_FL_T1_WL_0AN_S339,Lacticaseibacillus paracasei,2.44322,This study,WL,water
+TG_FL_T2_WG_0AN_S180,Lentilactobacillus hilgardii,28.2119,This study,WG,water
+TG_FL_T2_WG_0AN_S180,Lentilactobacillus hilgardii,28.2119,This study,WG,water
+TG_FL_T2_WG_0AN_S180,Lentilactobacillus hilgardii,28.2119,This study,WG,water
+TG_FL_T2_WG_0AN_S180,Lentilactobacillus hilgardii,28.2119,This study,WG,water
+TG_FL_T2_WG_0AN_S328,Lentilactobacillus hilgardii,27.1861,This study,WG,water
+TG_FL_T2_WG_0AN_S328,Lentilactobacillus hilgardii,27.1861,This study,WG,water
+TG_FL_T2_WL_0AE_S291,Lacticaseibacillus paracasei,13.602,This study,WL,water
+TG_FL_T2_WL_0AE_S291,Lacticaseibacillus paracasei,13.602,This study,WL,water
+TG_FL_T2_WL_0AN_S292,Lentilactobacillus hilgardii,1.08692,This study,WL,water
+TG_FL_T2_WL_0AN_S292,Lentilactobacillus hilgardii,1.08692,This study,WL,water
+TG_FL_T3_WG_0AN_S179,Lentilactobacillus hilgardii,24.0312,This study,WG,water
+TG_FL_T3_WG_0AN_S179,Lentilactobacillus hilgardii,24.0312,This study,WG,water
+TG_FL_T3_WG_0AN_S179,Lentilactobacillus hilgardii,24.0312,This study,WG,water
+TG_FL_T3_WG_0AN_S179,Lentilactobacillus hilgardii,24.0312,This study,WG,water
+TG_FL_WLC_S415,Pseudomonas mosselii,0.135362,This study,WL,water
+TG_FL_WLC_S415,Pseudomonas mosselii,0.135362,This study,WL,water
+TG_FU_MLC_S107,Acinetobacter sp. TTH0-4,1.76577,This study,ML,milk
+TG_FU_MLC_S107,Acinetobacter sp. TTH0-4,1.76577,This study,ML,milk
+TG_FU_MLC_S107,Acinetobacter sp. TTH0-4,1.76577,This study,ML,milk
+TG_FU_MLC_S107,Acinetobacter sp. TTH0-4,1.76577,This study,ML,milk
+TG_FU_MLC_S107,Acinetobacter sp. TTH0-4,1.76577,This study,ML,milk
+TG_FU_MLC_S107,Acinetobacter sp. TTH0-4,1.76577,This study,ML,milk
+TG_FU_MLC2_S155,Microbacterium foliorum,0.863919,This study,ML,milk
+TG_FU_MLC2_S155,Microbacterium foliorum,0.863919,This study,ML,milk
+TG_FU_MLC2_S155,Microbacterium foliorum,0.863919,This study,ML,milk
+TG_FU_MLC2_S155,Microbacterium foliorum,0.863919,This study,ML,milk
+TG_FU_MLC2_S155,Microbacterium foliorum,0.863919,This study,ML,milk
+TG_FU_MLC2_S155,Microbacterium foliorum,0.863919,This study,ML,milk
+TG_FU_T1_ML_0AE_S384,Pseudomonas fragi,9.80962,This study,ML,milk
+TG_FU_T1_ML_0AE_S384,Pseudomonas fragi,9.80962,This study,ML,milk
+TG_FU_T1_ML_0AN_S37,Pseudomonas fragi,12.7514,This study,ML,milk
+TG_FU_T1_ML_0AN_S37,Pseudomonas fragi,12.7514,This study,ML,milk
+TG_FU_T1_ML_0AN_S37,Pseudomonas fragi,12.7514,This study,ML,milk
+TG_FU_T1_ML_0AN_S37,Pseudomonas fragi,12.7514,This study,ML,milk
+TG_FU_T1_ML_0AN_S37,Pseudomonas fragi,12.7514,This study,ML,milk
+TG_FU_T1_ML_0AN_S37,Pseudomonas fragi,12.7514,This study,ML,milk
+TG_FU_T2_ML_0AE_S301,Lactococcus raffinolactis,27.4279,This study,ML,milk
+TG_FU_T2_ML_0AE_S301,Lactococcus raffinolactis,27.4279,This study,ML,milk
+TG_FU_T3_MG_0AN_S178,Lactobacillus kefiranofaciens,38.3025,This study,MG,milk
+TG_FU_T3_MG_0AN_S178,Lactobacillus kefiranofaciens,38.3025,This study,MG,milk
+TG_FU_T3_MG_0AN_S178,Lactobacillus kefiranofaciens,38.3025,This study,MG,milk
+TG_FU_T3_MG_0AN_S178,Lactobacillus kefiranofaciens,38.3025,This study,MG,milk
+TG_GO_MLC_S190,Microbacterium foliorum,0.844451,This study,ML,milk
+TG_GO_MLC_S190,Microbacterium foliorum,0.844451,This study,ML,milk
+TG_GO_MLC_S190,Microbacterium foliorum,0.844451,This study,ML,milk
+TG_GO_MLC_S190,Microbacterium foliorum,0.844451,This study,ML,milk
+TG_GO_MLC_S190,Microbacterium foliorum,0.844451,This study,ML,milk
+TG_GO_MLC_S190,Microbacterium foliorum,0.844451,This study,ML,milk
+TG_GO_MLC2_S143,Microbacterium foliorum,0.844822,This study,ML,milk
+TG_GO_MLC2_S143,Microbacterium foliorum,0.844822,This study,ML,milk
+TG_GO_MLC2_S143,Microbacterium foliorum,0.844822,This study,ML,milk
+TG_GO_MLC2_S143,Microbacterium foliorum,0.844822,This study,ML,milk
+TG_GO_MLC2_S143,Microbacterium foliorum,0.844822,This study,ML,milk
+TG_GO_MLC2_S143,Microbacterium foliorum,0.844822,This study,ML,milk
+TG_GO_T1_ML_0AE_S372,Bacillus cereus,11.0412,This study,ML,milk
+TG_GO_T1_ML_0AE_S372,Bacillus cereus,11.0412,This study,ML,milk
+TG_GO_T1_ML_0AN_S25,Bacillus wiedmannii,5.30446,This study,ML,milk
+TG_GO_T1_ML_0AN_S25,Bacillus wiedmannii,5.30446,This study,ML,milk
+TG_GO_T1_ML_0AN_S25,Bacillus wiedmannii,5.30446,This study,ML,milk
+TG_GO_T1_ML_0AN_S25,Bacillus wiedmannii,5.30446,This study,ML,milk
+TG_GO_T1_ML_0AN_S25,Bacillus wiedmannii,5.30446,This study,ML,milk
+TG_GO_T1_ML_0AN_S25,Bacillus wiedmannii,5.30446,This study,ML,milk
+TG_GO_T2_ML_0AE_S289,Lactobacillus kefiranofaciens,44.0468,This study,ML,milk
+TG_GO_T2_ML_0AE_S289,Lactobacillus kefiranofaciens,44.0468,This study,ML,milk
+TG_GO_T2_ML_0AN_S85,Bacillus wiedmannii,7.85431,This study,ML,milk
+TG_GO_T2_ML_0AN_S85,Bacillus wiedmannii,7.85431,This study,ML,milk
+TG_GO_T2_ML_0AN_S85,Bacillus wiedmannii,7.85431,This study,ML,milk
+TG_GO_T2_ML_0AN_S85,Bacillus wiedmannii,7.85431,This study,ML,milk
+TG_GO_T2_ML_0AN_S85,Bacillus wiedmannii,7.85431,This study,ML,milk
+TG_GO_T2_ML_0AN_S85,Bacillus wiedmannii,7.85431,This study,ML,milk
+TG_ID009_MG_T1_S325,Lactobacillus kefiranofaciens,43.9777,This study,MG,milk
+TG_ID009_MG_T1_S325,Lactobacillus kefiranofaciens,43.9777,This study,MG,milk
+TG_ID009_MG_T2_S382,Lactobacillus kefiranofaciens,48.2132,This study,MG,milk
+TG_ID009_MG_T2_S382,Lactobacillus kefiranofaciens,48.2132,This study,MG,milk
+TG_ID009_MG_T3_S152,Lactobacillus kefiranofaciens,40.2613,This study,MG,milk
+TG_ID009_MG_T3_S152,Lactobacillus kefiranofaciens,40.2613,This study,MG,milk
+TG_ID009_MG_T3_S152,Lactobacillus kefiranofaciens,40.2613,This study,MG,milk
+TG_ID009_MG_T3_S152,Lactobacillus kefiranofaciens,40.2613,This study,MG,milk
+TG_ID009_MG_T3_S152,Lactobacillus kefiranofaciens,40.2613,This study,MG,milk
+TG_ID009_MG_T3_S152,Lactobacillus kefiranofaciens,40.2613,This study,MG,milk
+TG_ID009_MG_T4_S54,Lactobacillus kefiranofaciens,46.5347,This study,MG,milk
+TG_ID009_MG_T4_S54,Lactobacillus kefiranofaciens,46.5347,This study,MG,milk
+TG_ID009_MG_T4_S54,Lactobacillus kefiranofaciens,46.5347,This study,MG,milk
+TG_ID009_MG_T4_S54,Lactobacillus kefiranofaciens,46.5347,This study,MG,milk
+TG_ID009_MG_T6_S16,Lactobacillus kefiranofaciens,50.7197,This study,MG,milk
+TG_ID009_MG_T6_S16,Lactobacillus kefiranofaciens,50.7197,This study,MG,milk
+TG_ID009_MG_T6_S16,Lactobacillus kefiranofaciens,50.7197,This study,MG,milk
+TG_ID009_MG_T6_S16,Lactobacillus kefiranofaciens,50.7197,This study,MG,milk
+TG_ID009_MG_T6_S16,Lactobacillus kefiranofaciens,50.7197,This study,MG,milk
+TG_ID009_MG_T6_S16,Lactobacillus kefiranofaciens,50.7197,This study,MG,milk
+TG_ID009_ML_T1_S139,Lactococcus cremoris,40.8394,This study,ML,milk
+TG_ID009_ML_T1_S139,Lactococcus cremoris,40.8394,This study,ML,milk
+TG_ID009_ML_T1_S139,Lactococcus cremoris,40.8394,This study,ML,milk
+TG_ID009_ML_T1_S139,Lactococcus cremoris,40.8394,This study,ML,milk
+TG_ID009_ML_T2_S296,Lactobacillus helveticus,18.7282,This study,ML,milk
+TG_ID009_ML_T2_S296,Lactobacillus helveticus,18.7282,This study,ML,milk
+TG_ID009_ML_T4_S55,Lactococcus cremoris,39.069,This study,ML,milk
+TG_ID009_ML_T4_S55,Lactococcus cremoris,39.069,This study,ML,milk
+TG_ID009_ML_T4_S55,Lactococcus cremoris,39.069,This study,ML,milk
+TG_ID009_ML_T4_S55,Lactococcus cremoris,39.069,This study,ML,milk
+TG_ID009_ML_T6_S28,Lentilactobacillus kefiri,24.5903,This study,ML,milk
+TG_ID009_ML_T6_S28,Lentilactobacillus kefiri,24.5903,This study,ML,milk
+TG_ID009_ML_T6_S28,Lentilactobacillus kefiri,24.5903,This study,ML,milk
+TG_ID009_ML_T6_S28,Lentilactobacillus kefiri,24.5903,This study,ML,milk
+TG_ID009_ML_T6_S28,Lentilactobacillus kefiri,24.5903,This study,ML,milk
+TG_ID009_ML_T6_S28,Lentilactobacillus kefiri,24.5903,This study,ML,milk
+TG_ID010_MG_T1_S337,Lactobacillus kefiranofaciens,34.314,This study,MG,milk
+TG_ID010_MG_T1_S337,Lactobacillus kefiranofaciens,34.314,This study,MG,milk
+TG_ID010_MG_T2_S299,Lactobacillus kefiranofaciens,40.4073,This study,MG,milk
+TG_ID010_MG_T2_S299,Lactobacillus kefiranofaciens,40.4073,This study,MG,milk
+TG_ID010_MG_T3_S164,Lactobacillus kefiranofaciens,32.5681,This study,MG,milk
+TG_ID010_MG_T3_S164,Lactobacillus kefiranofaciens,32.5681,This study,MG,milk
+TG_ID010_MG_T3_S164,Lactobacillus kefiranofaciens,32.5681,This study,MG,milk
+TG_ID010_MG_T3_S164,Lactobacillus kefiranofaciens,32.5681,This study,MG,milk
+TG_ID010_MG_T3_S164,Lactobacillus kefiranofaciens,32.5681,This study,MG,milk
+TG_ID010_MG_T3_S164,Lactobacillus kefiranofaciens,32.5681,This study,MG,milk
+TG_ID010_MG_T4_S61,Lactobacillus kefiranofaciens,47.9302,This study,MG,milk
+TG_ID010_MG_T4_S61,Lactobacillus kefiranofaciens,47.9302,This study,MG,milk
+TG_ID010_MG_T4_S61,Lactobacillus kefiranofaciens,47.9302,This study,MG,milk
+TG_ID010_MG_T4_S61,Lactobacillus kefiranofaciens,47.9302,This study,MG,milk
+TG_ID010_MG_T5_S176,Lactobacillus kefiranofaciens,51.9179,This study,MG,milk
+TG_ID010_MG_T5_S176,Lactobacillus kefiranofaciens,51.9179,This study,MG,milk
+TG_ID010_MG_T5_S176,Lactobacillus kefiranofaciens,51.9179,This study,MG,milk
+TG_ID010_MG_T5_S176,Lactobacillus kefiranofaciens,51.9179,This study,MG,milk
+TG_ID010_MG_T5_S176,Lactobacillus kefiranofaciens,51.9179,This study,MG,milk
+TG_ID010_MG_T5_S176,Lactobacillus kefiranofaciens,51.9179,This study,MG,milk
+TG_ID010_ML_T1_S379,Leuconostoc mesenteroides,18.0098,This study,ML,milk
+TG_ID010_ML_T1_S379,Leuconostoc mesenteroides,18.0098,This study,ML,milk
+TG_ID010_ML_T3_S108,Lactobacillus helveticus,37.1666,This study,ML,milk
+TG_ID010_ML_T3_S108,Lactobacillus helveticus,37.1666,This study,ML,milk
+TG_ID010_ML_T3_S108,Lactobacillus helveticus,37.1666,This study,ML,milk
+TG_ID010_ML_T3_S108,Lactobacillus helveticus,37.1666,This study,ML,milk
+TG_ID010_ML_T3_S108,Lactobacillus helveticus,37.1666,This study,ML,milk
+TG_ID010_ML_T3_S108,Lactobacillus helveticus,37.1666,This study,ML,milk
+TG_ID010_ML_T4_S80,Lactococcus cremoris,24.3626,This study,ML,milk
+TG_ID010_ML_T4_S80,Lactococcus cremoris,24.3626,This study,ML,milk
+TG_ID010_ML_T4_S80,Lactococcus cremoris,24.3626,This study,ML,milk
+TG_ID010_ML_T4_S80,Lactococcus cremoris,24.3626,This study,ML,milk
+TG_ID010_ML_T5_S120,Lactococcus cremoris,36.6257,This study,ML,milk
+TG_ID010_ML_T5_S120,Lactococcus cremoris,36.6257,This study,ML,milk
+TG_ID010_ML_T5_S120,Lactococcus cremoris,36.6257,This study,ML,milk
+TG_ID010_ML_T5_S120,Lactococcus cremoris,36.6257,This study,ML,milk
+TG_ID010_ML_T5_S120,Lactococcus cremoris,36.6257,This study,ML,milk
+TG_ID010_ML_T5_S120,Lactococcus cremoris,36.6257,This study,ML,milk
+TG_ID011_MG_T1_S349,Lactobacillus kefiranofaciens,36.4039,This study,MG,milk
+TG_ID011_MG_T1_S349,Lactobacillus kefiranofaciens,36.4039,This study,MG,milk
+TG_ID011_MG_T3_S101,Lactobacillus kefiranofaciens,53.1177,This study,MG,milk
+TG_ID011_MG_T3_S101,Lactobacillus kefiranofaciens,53.1177,This study,MG,milk
+TG_ID011_MG_T3_S101,Lactobacillus kefiranofaciens,53.1177,This study,MG,milk
+TG_ID011_MG_T3_S101,Lactobacillus kefiranofaciens,53.1177,This study,MG,milk
+TG_ID011_MG_T3_S101,Lactobacillus kefiranofaciens,53.1177,This study,MG,milk
+TG_ID011_MG_T3_S101,Lactobacillus kefiranofaciens,53.1177,This study,MG,milk
+TG_ID011_MG_T5_S110,Lactobacillus kefiranofaciens,49.9167,This study,MG,milk
+TG_ID011_MG_T5_S110,Lactobacillus kefiranofaciens,49.9167,This study,MG,milk
+TG_ID011_MG_T5_S110,Lactobacillus kefiranofaciens,49.9167,This study,MG,milk
+TG_ID011_MG_T5_S110,Lactobacillus kefiranofaciens,49.9167,This study,MG,milk
+TG_ID011_MG_T5_S110,Lactobacillus kefiranofaciens,49.9167,This study,MG,milk
+TG_ID011_MG_T5_S110,Lactobacillus kefiranofaciens,49.9167,This study,MG,milk
+TG_ID011_MG_T6_S40,Lactobacillus kefiranofaciens,54.8772,This study,MG,milk
+TG_ID011_MG_T6_S40,Lactobacillus kefiranofaciens,54.8772,This study,MG,milk
+TG_ID011_MG_T6_S40,Lactobacillus kefiranofaciens,54.8772,This study,MG,milk
+TG_ID011_MG_T6_S40,Lactobacillus kefiranofaciens,54.8772,This study,MG,milk
+TG_ID011_MG_T6_S40,Lactobacillus kefiranofaciens,54.8772,This study,MG,milk
+TG_ID011_MG_T6_S40,Lactobacillus kefiranofaciens,54.8772,This study,MG,milk
+TG_ID011_ML_T3_S113,Escherichia coli,29.8779,This study,ML,milk
+TG_ID011_ML_T3_S113,Escherichia coli,29.8779,This study,ML,milk
+TG_ID011_ML_T3_S113,Escherichia coli,29.8779,This study,ML,milk
+TG_ID011_ML_T3_S113,Escherichia coli,29.8779,This study,ML,milk
+TG_ID011_ML_T3_S113,Escherichia coli,29.8779,This study,ML,milk
+TG_ID011_ML_T3_S113,Escherichia coli,29.8779,This study,ML,milk
+TG_ID011_ML_T5_S122,Lactobacillus helveticus,39.2421,This study,ML,milk
+TG_ID011_ML_T5_S122,Lactobacillus helveticus,39.2421,This study,ML,milk
+TG_ID011_ML_T5_S122,Lactobacillus helveticus,39.2421,This study,ML,milk
+TG_ID011_ML_T5_S122,Lactobacillus helveticus,39.2421,This study,ML,milk
+TG_ID011_ML_T5_S122,Lactobacillus helveticus,39.2421,This study,ML,milk
+TG_ID011_ML_T5_S122,Lactobacillus helveticus,39.2421,This study,ML,milk
+TG_ID011_ML_T6_S52,Lactobacillus kefiranofaciens,20.1878,This study,ML,milk
+TG_ID011_ML_T6_S52,Lactobacillus kefiranofaciens,20.1878,This study,ML,milk
+TG_ID011_ML_T6_S52,Lactobacillus kefiranofaciens,20.1878,This study,ML,milk
+TG_ID011_ML_T6_S52,Lactobacillus kefiranofaciens,20.1878,This study,ML,milk
+TG_ID011_ML_T6_S52,Lactobacillus kefiranofaciens,20.1878,This study,ML,milk
+TG_ID011_ML_T6_S52,Lactobacillus kefiranofaciens,20.1878,This study,ML,milk
+TG_ID012_MG_T1_S361,Lactobacillus kefiranofaciens,47.5704,This study,MG,milk
+TG_ID012_MG_T1_S361,Lactobacillus kefiranofaciens,47.5704,This study,MG,milk
+TG_ID012_MG_T2_S311,Lactobacillus kefiranofaciens,48.3395,This study,MG,milk
+TG_ID012_MG_T2_S311,Lactobacillus kefiranofaciens,48.3395,This study,MG,milk
+TG_ID012_MG_T3_S189,Prevotella copri,25,This study,MG,milk
+TG_ID012_MG_T3_S189,Prevotella copri,25,This study,MG,milk
+TG_ID012_MG_T3_S189,Prevotella copri,25,This study,MG,milk
+TG_ID012_MG_T3_S189,Prevotella copri,25,This study,MG,milk
+TG_ID012_MG_T4_S74,Lactobacillus kefiranofaciens,51.5395,This study,MG,milk
+TG_ID012_MG_T4_S74,Lactobacillus kefiranofaciens,51.5395,This study,MG,milk
+TG_ID012_MG_T4_S74,Lactobacillus kefiranofaciens,51.5395,This study,MG,milk
+TG_ID012_MG_T4_S74,Lactobacillus kefiranofaciens,51.5395,This study,MG,milk
+TG_ID012_MG_T5_S125,Lactobacillus kefiranofaciens,52.3775,This study,MG,milk
+TG_ID012_MG_T5_S125,Lactobacillus kefiranofaciens,52.3775,This study,MG,milk
+TG_ID012_MG_T5_S125,Lactobacillus kefiranofaciens,52.3775,This study,MG,milk
+TG_ID012_MG_T5_S125,Lactobacillus kefiranofaciens,52.3775,This study,MG,milk
+TG_ID012_MG_T5_S125,Lactobacillus kefiranofaciens,52.3775,This study,MG,milk
+TG_ID012_MG_T5_S125,Lactobacillus kefiranofaciens,52.3775,This study,MG,milk
+TG_ID012_ML_T1_S367,Lactococcus lactis,23.2872,This study,ML,milk
+TG_ID012_ML_T1_S367,Lactococcus lactis,23.2872,This study,ML,milk
+TG_ID012_ML_T2_S308,Lactobacillus helveticus,11.8253,This study,ML,milk
+TG_ID012_ML_T2_S308,Lactobacillus helveticus,11.8253,This study,ML,milk
+TG_ID012_ML_T4_S140,Lactobacillus helveticus,25.2975,This study,ML,milk
+TG_ID012_ML_T4_S140,Lactobacillus helveticus,25.2975,This study,ML,milk
+TG_ID012_ML_T4_S140,Lactobacillus helveticus,25.2975,This study,ML,milk
+TG_ID012_ML_T4_S140,Lactobacillus helveticus,25.2975,This study,ML,milk
+TG_ID012_ML_T5_S141,Lactococcus lactis,56.0687,This study,ML,milk
+TG_ID012_ML_T5_S141,Lactococcus lactis,56.0687,This study,ML,milk
+TG_ID012_ML_T5_S141,Lactococcus lactis,56.0687,This study,ML,milk
+TG_ID012_ML_T5_S141,Lactococcus lactis,56.0687,This study,ML,milk
+TG_ID013_MG_T1_S373,Lactobacillus kefiranofaciens,46.8428,This study,MG,milk
+TG_ID013_MG_T1_S373,Lactobacillus kefiranofaciens,46.8428,This study,MG,milk
+TG_ID013_ML_T1_S150,Lactobacillus helveticus,35.7827,This study,ML,milk
+TG_ID013_ML_T1_S150,Lactobacillus helveticus,35.7827,This study,ML,milk
+TG_ID013_ML_T1_S150,Lactobacillus helveticus,35.7827,This study,ML,milk
+TG_ID013_ML_T1_S150,Lactobacillus helveticus,35.7827,This study,ML,milk
+TG_ID014_MG_T1_S1,Lactobacillus kefiranofaciens,41.934,This study,MG,milk
+TG_ID014_MG_T1_S1,Lactobacillus kefiranofaciens,41.934,This study,MG,milk
+TG_ID014_MG_T1_S1,Lactobacillus kefiranofaciens,41.934,This study,MG,milk
+TG_ID014_MG_T1_S1,Lactobacillus kefiranofaciens,41.934,This study,MG,milk
+TG_ID014_MG_T2_S6,Lactobacillus kefiranofaciens,45.8458,This study,MG,milk
+TG_ID014_MG_T2_S6,Lactobacillus kefiranofaciens,45.8458,This study,MG,milk
+TG_ID014_MG_T2_S6,Lactobacillus kefiranofaciens,45.8458,This study,MG,milk
+TG_ID014_MG_T2_S6,Lactobacillus kefiranofaciens,45.8458,This study,MG,milk
+TG_ID014_MG_T3_S62,Lactobacillus kefiranofaciens,45.0778,This study,MG,milk
+TG_ID014_MG_T3_S62,Lactobacillus kefiranofaciens,45.0778,This study,MG,milk
+TG_ID014_MG_T3_S62,Lactobacillus kefiranofaciens,45.0778,This study,MG,milk
+TG_ID014_MG_T3_S62,Lactobacillus kefiranofaciens,45.0778,This study,MG,milk
+TG_ID014_ML_T2_S4,Lactococcus raffinolactis,24.8068,This study,ML,milk
+TG_ID014_ML_T2_S4,Lactococcus raffinolactis,24.8068,This study,ML,milk
+TG_ID014_ML_T2_S4,Lactococcus raffinolactis,24.8068,This study,ML,milk
+TG_ID014_ML_T2_S4,Lactococcus raffinolactis,24.8068,This study,ML,milk
+TG_ID014_ML_T3_S81,Lactococcus cremoris,44.8251,This study,ML,milk
+TG_ID014_ML_T3_S81,Lactococcus cremoris,44.8251,This study,ML,milk
+TG_ID014_ML_T3_S81,Lactococcus cremoris,44.8251,This study,ML,milk
+TG_ID014_ML_T3_S81,Lactococcus cremoris,44.8251,This study,ML,milk
+TG_ID020_MG_T1_S106,Lactobacillus kefiranofaciens,31.3312,This study,MG,milk
+TG_ID020_MG_T1_S106,Lactobacillus kefiranofaciens,31.3312,This study,MG,milk
+TG_ID020_MG_T1_S106,Lactobacillus kefiranofaciens,31.3312,This study,MG,milk
+TG_ID020_MG_T1_S106,Lactobacillus kefiranofaciens,31.3312,This study,MG,milk
+TG_ID020_MG_T1_S106,Lactobacillus kefiranofaciens,31.3312,This study,MG,milk
+TG_ID020_MG_T1_S106,Lactobacillus kefiranofaciens,31.3312,This study,MG,milk
+TG_ID020_MG_T2_S323,Lactobacillus kefiranofaciens,49.4918,This study,MG,milk
+TG_ID020_MG_T2_S323,Lactobacillus kefiranofaciens,49.4918,This study,MG,milk
+TG_ID020_MG_T3_S118,Lactobacillus kefiranofaciens,49.406,This study,MG,milk
+TG_ID020_MG_T3_S118,Lactobacillus kefiranofaciens,49.406,This study,MG,milk
+TG_ID020_MG_T3_S118,Lactobacillus kefiranofaciens,49.406,This study,MG,milk
+TG_ID020_MG_T3_S118,Lactobacillus kefiranofaciens,49.406,This study,MG,milk
+TG_ID020_MG_T3_S118,Lactobacillus kefiranofaciens,49.406,This study,MG,milk
+TG_ID020_MG_T3_S118,Lactobacillus kefiranofaciens,49.406,This study,MG,milk
+TG_ID020_MG_T4_S75,Lactobacillus kefiranofaciens,45.6884,This study,MG,milk
+TG_ID020_MG_T4_S75,Lactobacillus kefiranofaciens,45.6884,This study,MG,milk
+TG_ID020_MG_T4_S75,Lactobacillus kefiranofaciens,45.6884,This study,MG,milk
+TG_ID020_MG_T4_S75,Lactobacillus kefiranofaciens,45.6884,This study,MG,milk
+TG_ID020_ML_T1_S142,Lentilactobacillus kefiri,3.94543,This study,ML,milk
+TG_ID020_ML_T1_S142,Lentilactobacillus kefiri,3.94543,This study,ML,milk
+TG_ID020_ML_T1_S142,Lentilactobacillus kefiri,3.94543,This study,ML,milk
+TG_ID020_ML_T1_S142,Lentilactobacillus kefiri,3.94543,This study,ML,milk
+TG_ID020_ML_T2_S300,Lactococcus cremoris,48.4452,This study,ML,milk
+TG_ID020_ML_T2_S300,Lactococcus cremoris,48.4452,This study,ML,milk
+TG_ID020_ML_T3_S143,Lactobacillus helveticus,16.4931,This study,ML,milk
+TG_ID020_ML_T3_S143,Lactobacillus helveticus,16.4931,This study,ML,milk
+TG_ID020_ML_T3_S143,Lactobacillus helveticus,16.4931,This study,ML,milk
+TG_ID020_ML_T3_S143,Lactobacillus helveticus,16.4931,This study,ML,milk
+TG_ID020_ML_T4_S144,Lactobacillus kefiranofaciens,5.05915,This study,ML,milk
+TG_ID020_ML_T4_S144,Lactobacillus kefiranofaciens,5.05915,This study,ML,milk
+TG_ID020_ML_T4_S144,Lactobacillus kefiranofaciens,5.05915,This study,ML,milk
+TG_ID020_ML_T4_S144,Lactobacillus kefiranofaciens,5.05915,This study,ML,milk
+TG_ID026_MG_T2_S3,Lactobacillus kefiranofaciens,35.4829,This study,MG,milk
+TG_ID026_MG_T2_S3,Lactobacillus kefiranofaciens,35.4829,This study,MG,milk
+TG_ID026_MG_T2_S3,Lactobacillus kefiranofaciens,35.4829,This study,MG,milk
+TG_ID026_MG_T2_S3,Lactobacillus kefiranofaciens,35.4829,This study,MG,milk
+TG_ID026_MG_T2_S3,Lactobacillus kefiranofaciens,35.4829,This study,MG,milk
+TG_ID026_MG_T2_S3,Lactobacillus kefiranofaciens,35.4829,This study,MG,milk
+TG_ID026_MG_T3_S130,Lentilactobacillus kefiri,45.6582,This study,MG,milk
+TG_ID026_MG_T3_S130,Lentilactobacillus kefiri,45.6582,This study,MG,milk
+TG_ID026_MG_T3_S130,Lentilactobacillus kefiri,45.6582,This study,MG,milk
+TG_ID026_MG_T3_S130,Lentilactobacillus kefiri,45.6582,This study,MG,milk
+TG_ID026_MG_T3_S130,Lentilactobacillus kefiri,45.6582,This study,MG,milk
+TG_ID026_MG_T3_S130,Lentilactobacillus kefiri,45.6582,This study,MG,milk
+TG_ID026_MG_T4_S76,Lactobacillus helveticus,23.7506,This study,MG,milk
+TG_ID026_MG_T4_S76,Lactobacillus helveticus,23.7506,This study,MG,milk
+TG_ID026_MG_T4_S76,Lactobacillus helveticus,23.7506,This study,MG,milk
+TG_ID026_MG_T4_S76,Lactobacillus helveticus,23.7506,This study,MG,milk
+TG_ID026_ML_T2_S157,Lentilactobacillus kefiri,4.33283,This study,ML,milk
+TG_ID026_ML_T2_S157,Lentilactobacillus kefiri,4.33283,This study,ML,milk
+TG_ID026_ML_T2_S157,Lentilactobacillus kefiri,4.33283,This study,ML,milk
+TG_ID026_ML_T2_S157,Lentilactobacillus kefiri,4.33283,This study,ML,milk
+TG_ID026_ML_T4_S151,Pseudomonas lundensis,7.25296,This study,ML,milk
+TG_ID026_ML_T4_S151,Pseudomonas lundensis,7.25296,This study,ML,milk
+TG_ID026_ML_T4_S151,Pseudomonas lundensis,7.25296,This study,ML,milk
+TG_ID026_ML_T4_S151,Pseudomonas lundensis,7.25296,This study,ML,milk
+TG_ID029_MG_T2_S15,Lactobacillus kefiranofaciens,31.6659,This study,MG,milk
+TG_ID029_MG_T2_S15,Lactobacillus kefiranofaciens,31.6659,This study,MG,milk
+TG_ID029_MG_T2_S15,Lactobacillus kefiranofaciens,31.6659,This study,MG,milk
+TG_ID029_MG_T2_S15,Lactobacillus kefiranofaciens,31.6659,This study,MG,milk
+TG_ID029_MG_T2_S67,Lactobacillus kefiranofaciens,30.8541,This study,MG,milk
+TG_ID029_MG_T2_S67,Lactobacillus kefiranofaciens,30.8541,This study,MG,milk
+TG_ID029_MG_T2_S67,Lactobacillus kefiranofaciens,30.8541,This study,MG,milk
+TG_ID029_MG_T2_S67,Lactobacillus kefiranofaciens,30.8541,This study,MG,milk
+TG_ID029_MG_T2_S67,Lactobacillus kefiranofaciens,30.8541,This study,MG,milk
+TG_ID029_MG_T2_S67,Lactobacillus kefiranofaciens,30.8541,This study,MG,milk
+TG_ID029_MG_T3_S142,Lactobacillus kefiranofaciens,24.249,This study,MG,milk
+TG_ID029_MG_T3_S142,Lactobacillus kefiranofaciens,24.249,This study,MG,milk
+TG_ID029_MG_T3_S142,Lactobacillus kefiranofaciens,24.249,This study,MG,milk
+TG_ID029_MG_T3_S142,Lactobacillus kefiranofaciens,24.249,This study,MG,milk
+TG_ID029_MG_T3_S142,Lactobacillus kefiranofaciens,24.249,This study,MG,milk
+TG_ID029_MG_T3_S142,Lactobacillus kefiranofaciens,24.249,This study,MG,milk
+TG_ID029_MG_T3_S77,Lactobacillus kefiranofaciens,25.413,This study,MG,milk
+TG_ID029_MG_T3_S77,Lactobacillus kefiranofaciens,25.413,This study,MG,milk
+TG_ID029_MG_T3_S77,Lactobacillus kefiranofaciens,25.413,This study,MG,milk
+TG_ID029_MG_T3_S77,Lactobacillus kefiranofaciens,25.413,This study,MG,milk
+TG_ID029_MG_T5_S154,Lactobacillus kefiranofaciens,32.4549,This study,MG,milk
+TG_ID029_MG_T5_S154,Lactobacillus kefiranofaciens,32.4549,This study,MG,milk
+TG_ID029_MG_T5_S154,Lactobacillus kefiranofaciens,32.4549,This study,MG,milk
+TG_ID029_MG_T5_S154,Lactobacillus kefiranofaciens,32.4549,This study,MG,milk
+TG_ID029_MG_T5_S154,Lactobacillus kefiranofaciens,32.4549,This study,MG,milk
+TG_ID029_MG_T5_S154,Lactobacillus kefiranofaciens,32.4549,This study,MG,milk
+TG_ID029_ML_T1_S145,Lactococcus lactis,4.51101,This study,ML,milk
+TG_ID029_ML_T1_S145,Lactococcus lactis,4.51101,This study,ML,milk
+TG_ID029_ML_T1_S145,Lactococcus lactis,4.51101,This study,ML,milk
+TG_ID029_ML_T1_S145,Lactococcus lactis,4.51101,This study,ML,milk
+TG_ID029_ML_T2_S16,Lactococcus lactis,62.4817,This study,ML,milk
+TG_ID029_ML_T2_S16,Lactococcus lactis,62.4817,This study,ML,milk
+TG_ID029_ML_T2_S16,Lactococcus lactis,62.4817,This study,ML,milk
+TG_ID029_ML_T2_S16,Lactococcus lactis,62.4817,This study,ML,milk
+TG_ID029_ML_T2_S79,Lactococcus lactis,62.687,This study,ML,milk
+TG_ID029_ML_T2_S79,Lactococcus lactis,62.687,This study,ML,milk
+TG_ID029_ML_T2_S79,Lactococcus lactis,62.687,This study,ML,milk
+TG_ID029_ML_T2_S79,Lactococcus lactis,62.687,This study,ML,milk
+TG_ID029_ML_T2_S79,Lactococcus lactis,62.687,This study,ML,milk
+TG_ID029_ML_T2_S79,Lactococcus lactis,62.687,This study,ML,milk
+TG_ID029_ML_T5_S147,Lactococcus lactis,57.1656,This study,ML,milk
+TG_ID029_ML_T5_S147,Lactococcus lactis,57.1656,This study,ML,milk
+TG_ID029_ML_T5_S147,Lactococcus lactis,57.1656,This study,ML,milk
+TG_ID029_ML_T5_S147,Lactococcus lactis,57.1656,This study,ML,milk
+TG_ID032_MG_T2_S335,Lactobacillus helveticus,61.0144,This study,MG,milk
+TG_ID032_MG_T2_S335,Lactobacillus helveticus,61.0144,This study,MG,milk
+TG_ID032_MG_T3_S166,Lactobacillus helveticus,40.7467,This study,MG,milk
+TG_ID032_MG_T3_S166,Lactobacillus helveticus,40.7467,This study,MG,milk
+TG_ID032_MG_T3_S166,Lactobacillus helveticus,40.7467,This study,MG,milk
+TG_ID032_MG_T3_S166,Lactobacillus helveticus,40.7467,This study,MG,milk
+TG_ID032_MG_T3_S166,Lactobacillus helveticus,40.7467,This study,MG,milk
+TG_ID032_MG_T3_S166,Lactobacillus helveticus,40.7467,This study,MG,milk
+TG_ID032_ML_T2_S324,Lactobacillus helveticus,71.0149,This study,ML,milk
+TG_ID032_ML_T2_S324,Lactobacillus helveticus,71.0149,This study,ML,milk
+TG_ID032_ML_T3_S152,Lactobacillus helveticus,40.54,This study,ML,milk
+TG_ID032_ML_T3_S152,Lactobacillus helveticus,40.54,This study,ML,milk
+TG_ID032_ML_T3_S152,Lactobacillus helveticus,40.54,This study,ML,milk
+TG_ID032_ML_T3_S152,Lactobacillus helveticus,40.54,This study,ML,milk
+TG_ID036_MG_T4_S9,Lactobacillus kefiranofaciens,43.528,This study,MG,milk
+TG_ID036_MG_T4_S9,Lactobacillus kefiranofaciens,43.528,This study,MG,milk
+TG_ID036_MG_T4_S9,Lactobacillus kefiranofaciens,43.528,This study,MG,milk
+TG_ID036_MG_T4_S9,Lactobacillus kefiranofaciens,43.528,This study,MG,milk
+TG_ID036_MG_T5_S137,Lactobacillus kefiranofaciens,45.9351,This study,MG,milk
+TG_ID036_MG_T5_S137,Lactobacillus kefiranofaciens,45.9351,This study,MG,milk
+TG_ID036_MG_T5_S137,Lactobacillus kefiranofaciens,45.9351,This study,MG,milk
+TG_ID036_MG_T5_S137,Lactobacillus kefiranofaciens,45.9351,This study,MG,milk
+TG_ID036_MG_T5_S137,Lactobacillus kefiranofaciens,45.9351,This study,MG,milk
+TG_ID036_MG_T5_S137,Lactobacillus kefiranofaciens,45.9351,This study,MG,milk
+TG_ID036_MG_T6_S91,Lactobacillus kefiranofaciens,40.8344,This study,MG,milk
+TG_ID036_MG_T6_S91,Lactobacillus kefiranofaciens,40.8344,This study,MG,milk
+TG_ID036_MG_T6_S91,Lactobacillus kefiranofaciens,40.8344,This study,MG,milk
+TG_ID036_MG_T6_S91,Lactobacillus kefiranofaciens,40.8344,This study,MG,milk
+TG_ID036_MG_T6_S91,Lactobacillus kefiranofaciens,40.8344,This study,MG,milk
+TG_ID036_MG_T6_S91,Lactobacillus kefiranofaciens,40.8344,This study,MG,milk
+TG_ID036_ML_T1_S153,Lactobacillus helveticus,14.5847,This study,ML,milk
+TG_ID036_ML_T1_S153,Lactobacillus helveticus,14.5847,This study,ML,milk
+TG_ID036_ML_T1_S153,Lactobacillus helveticus,14.5847,This study,ML,milk
+TG_ID036_ML_T1_S153,Lactobacillus helveticus,14.5847,This study,ML,milk
+TG_ID036_ML_T4_S10,Lactococcus lactis,13.118,This study,ML,milk
+TG_ID036_ML_T4_S10,Lactococcus lactis,13.118,This study,ML,milk
+TG_ID036_ML_T4_S10,Lactococcus lactis,13.118,This study,ML,milk
+TG_ID036_ML_T4_S10,Lactococcus lactis,13.118,This study,ML,milk
+TG_ID036_ML_T5_S149,Lactococcus lactis,32.1763,This study,ML,milk
+TG_ID036_ML_T5_S149,Lactococcus lactis,32.1763,This study,ML,milk
+TG_ID036_ML_T5_S149,Lactococcus lactis,32.1763,This study,ML,milk
+TG_ID036_ML_T5_S149,Lactococcus lactis,32.1763,This study,ML,milk
+TG_ID036_ML_T5_S149,Lactococcus lactis,32.1763,This study,ML,milk
+TG_ID036_ML_T5_S149,Lactococcus lactis,32.1763,This study,ML,milk
+TG_ID036_ML_T6_S8,Lactobacillus helveticus,43.7562,This study,ML,milk
+TG_ID036_ML_T6_S8,Lactobacillus helveticus,43.7562,This study,ML,milk
+TG_ID036_ML_T6_S8,Lactobacillus helveticus,43.7562,This study,ML,milk
+TG_ID036_ML_T6_S8,Lactobacillus helveticus,43.7562,This study,ML,milk
+TG_ID036_ML_T6_S8,Lactobacillus helveticus,43.7562,This study,ML,milk
+TG_ID036_ML_T6_S8,Lactobacillus helveticus,43.7562,This study,ML,milk
+TG_ID037_MG_T1_S56,Lactobacillus kefiranofaciens,36.8073,This study,MG,milk
+TG_ID037_MG_T1_S56,Lactobacillus kefiranofaciens,36.8073,This study,MG,milk
+TG_ID037_MG_T1_S56,Lactobacillus kefiranofaciens,36.8073,This study,MG,milk
+TG_ID037_MG_T1_S56,Lactobacillus kefiranofaciens,36.8073,This study,MG,milk
+TG_ID037_MG_T2_S161,Lactobacillus kefiranofaciens,44.9017,This study,MG,milk
+TG_ID037_MG_T2_S161,Lactobacillus kefiranofaciens,44.9017,This study,MG,milk
+TG_ID037_MG_T2_S161,Lactobacillus kefiranofaciens,44.9017,This study,MG,milk
+TG_ID037_MG_T2_S161,Lactobacillus kefiranofaciens,44.9017,This study,MG,milk
+TG_ID037_MG_T2_S161,Lactobacillus kefiranofaciens,44.9017,This study,MG,milk
+TG_ID037_MG_T2_S161,Lactobacillus kefiranofaciens,44.9017,This study,MG,milk
+TG_ID037_MG_T4_S29,Lactobacillus kefiranofaciens,34.409,This study,MG,milk
+TG_ID037_MG_T4_S29,Lactobacillus kefiranofaciens,34.409,This study,MG,milk
+TG_ID037_MG_T4_S29,Lactobacillus kefiranofaciens,34.409,This study,MG,milk
+TG_ID037_MG_T4_S29,Lactobacillus kefiranofaciens,34.409,This study,MG,milk
+TG_ID037_MG_T5_S45,Lactobacillus kefiranofaciens,39.9457,This study,MG,milk
+TG_ID037_MG_T5_S45,Lactobacillus kefiranofaciens,39.9457,This study,MG,milk
+TG_ID037_MG_T5_S45,Lactobacillus kefiranofaciens,39.9457,This study,MG,milk
+TG_ID037_MG_T5_S45,Lactobacillus kefiranofaciens,39.9457,This study,MG,milk
+TG_ID037_MG_T5_S45,Lactobacillus kefiranofaciens,39.9457,This study,MG,milk
+TG_ID037_MG_T5_S45,Lactobacillus kefiranofaciens,39.9457,This study,MG,milk
+TG_ID037_MG_T6_S69,Lactobacillus helveticus,32.196,This study,MG,milk
+TG_ID037_MG_T6_S69,Lactobacillus helveticus,32.196,This study,MG,milk
+TG_ID037_MG_T6_S69,Lactobacillus helveticus,32.196,This study,MG,milk
+TG_ID037_MG_T6_S69,Lactobacillus helveticus,32.196,This study,MG,milk
+TG_ID037_MG_T6_S69,Lactobacillus helveticus,32.196,This study,MG,milk
+TG_ID037_MG_T6_S69,Lactobacillus helveticus,32.196,This study,MG,milk
+TG_ID037_ML_T2_S173,Lactobacillus helveticus,25.0643,This study,ML,milk
+TG_ID037_ML_T2_S173,Lactobacillus helveticus,25.0643,This study,ML,milk
+TG_ID037_ML_T2_S173,Lactobacillus helveticus,25.0643,This study,ML,milk
+TG_ID037_ML_T2_S173,Lactobacillus helveticus,25.0643,This study,ML,milk
+TG_ID037_ML_T2_S173,Lactobacillus helveticus,25.0643,This study,ML,milk
+TG_ID037_ML_T2_S173,Lactobacillus helveticus,25.0643,This study,ML,milk
+TG_ID037_ML_T3_S185,Lactococcus lactis,47.0228,This study,ML,milk
+TG_ID037_ML_T3_S185,Lactococcus lactis,47.0228,This study,ML,milk
+TG_ID037_ML_T3_S185,Lactococcus lactis,47.0228,This study,ML,milk
+TG_ID037_ML_T3_S185,Lactococcus lactis,47.0228,This study,ML,milk
+TG_ID037_ML_T3_S185,Lactococcus lactis,47.0228,This study,ML,milk
+TG_ID037_ML_T3_S185,Lactococcus lactis,47.0228,This study,ML,milk
+TG_ID037_ML_T4_S30,Lactococcus lactis,50.3673,This study,ML,milk
+TG_ID037_ML_T4_S30,Lactococcus lactis,50.3673,This study,ML,milk
+TG_ID037_ML_T4_S30,Lactococcus lactis,50.3673,This study,ML,milk
+TG_ID037_ML_T4_S30,Lactococcus lactis,50.3673,This study,ML,milk
+TG_ID037_ML_T5_S57,Lactobacillus kefiranofaciens,35.2149,This study,ML,milk
+TG_ID037_ML_T5_S57,Lactobacillus kefiranofaciens,35.2149,This study,ML,milk
+TG_ID037_ML_T5_S57,Lactobacillus kefiranofaciens,35.2149,This study,ML,milk
+TG_ID037_ML_T5_S57,Lactobacillus kefiranofaciens,35.2149,This study,ML,milk
+TG_ID037_ML_T5_S57,Lactobacillus kefiranofaciens,35.2149,This study,ML,milk
+TG_ID037_ML_T5_S57,Lactobacillus kefiranofaciens,35.2149,This study,ML,milk
+TG_ID037_ML_T6_S81,Lactobacillus helveticus,28.041,This study,ML,milk
+TG_ID037_ML_T6_S81,Lactobacillus helveticus,28.041,This study,ML,milk
+TG_ID037_ML_T6_S81,Lactobacillus helveticus,28.041,This study,ML,milk
+TG_ID037_ML_T6_S81,Lactobacillus helveticus,28.041,This study,ML,milk
+TG_ID037_ML_T6_S81,Lactobacillus helveticus,28.041,This study,ML,milk
+TG_ID037_ML_T6_S81,Lactobacillus helveticus,28.041,This study,ML,milk
+TG_ID042_MG_T1_S102,Lactobacillus kefiranofaciens,38.9473,This study,MG,milk
+TG_ID042_MG_T1_S102,Lactobacillus kefiranofaciens,38.9473,This study,MG,milk
+TG_ID042_MG_T1_S102,Lactobacillus kefiranofaciens,38.9473,This study,MG,milk
+TG_ID042_MG_T1_S102,Lactobacillus kefiranofaciens,38.9473,This study,MG,milk
+TG_ID042_MG_T1_S102,Lactobacillus kefiranofaciens,38.9473,This study,MG,milk
+TG_ID042_MG_T1_S102,Lactobacillus kefiranofaciens,38.9473,This study,MG,milk
+TG_ID042_MG_T2_S126,Lentilactobacillus kefiri,23.5411,This study,MG,milk
+TG_ID042_MG_T2_S126,Lentilactobacillus kefiri,23.5411,This study,MG,milk
+TG_ID042_MG_T2_S126,Lentilactobacillus kefiri,23.5411,This study,MG,milk
+TG_ID042_MG_T2_S126,Lentilactobacillus kefiri,23.5411,This study,MG,milk
+TG_ID042_MG_T2_S126,Lentilactobacillus kefiri,23.5411,This study,MG,milk
+TG_ID042_MG_T2_S126,Lentilactobacillus kefiri,23.5411,This study,MG,milk
+TG_ID042_MG_T3_S347,Lentilactobacillus kefiri,21.9569,This study,MG,milk
+TG_ID042_MG_T3_S347,Lentilactobacillus kefiri,21.9569,This study,MG,milk
+TG_ID042_MG_T4_S170,Lentilactobacillus kefiri,16.0184,This study,MG,milk
+TG_ID042_MG_T4_S170,Lentilactobacillus kefiri,16.0184,This study,MG,milk
+TG_ID042_MG_T4_S170,Lentilactobacillus kefiri,16.0184,This study,MG,milk
+TG_ID042_MG_T4_S170,Lentilactobacillus kefiri,16.0184,This study,MG,milk
+TG_ID042_MG_T5_S165,Lactobacillus helveticus,22.7072,This study,MG,milk
+TG_ID042_MG_T5_S165,Lactobacillus helveticus,22.7072,This study,MG,milk
+TG_ID042_MG_T5_S165,Lactobacillus helveticus,22.7072,This study,MG,milk
+TG_ID042_MG_T5_S165,Lactobacillus helveticus,22.7072,This study,MG,milk
+TG_ID042_ML_T1_S114,Acinetobacter sp. TTH0-4,47.4742,This study,ML,milk
+TG_ID042_ML_T1_S114,Acinetobacter sp. TTH0-4,47.4742,This study,ML,milk
+TG_ID042_ML_T1_S114,Acinetobacter sp. TTH0-4,47.4742,This study,ML,milk
+TG_ID042_ML_T1_S114,Acinetobacter sp. TTH0-4,47.4742,This study,ML,milk
+TG_ID042_ML_T1_S114,Acinetobacter sp. TTH0-4,47.4742,This study,ML,milk
+TG_ID042_ML_T1_S114,Acinetobacter sp. TTH0-4,47.4742,This study,ML,milk
+TG_ID042_ML_T2_S312,Pantoea agglomerans,61.5765,This study,ML,milk
+TG_ID042_ML_T2_S312,Pantoea agglomerans,61.5765,This study,ML,milk
+TG_ID042_ML_T3_S138,Lactococcus lactis,24.9276,This study,ML,milk
+TG_ID042_ML_T3_S138,Lactococcus lactis,24.9276,This study,ML,milk
+TG_ID042_ML_T3_S138,Lactococcus lactis,24.9276,This study,ML,milk
+TG_ID042_ML_T3_S138,Lactococcus lactis,24.9276,This study,ML,milk
+TG_ID042_ML_T3_S138,Lactococcus lactis,24.9276,This study,ML,milk
+TG_ID042_ML_T3_S138,Lactococcus lactis,24.9276,This study,ML,milk
+TG_ID042_ML_T4_S176,Lactococcus lactis,8.77533,This study,ML,milk
+TG_ID042_ML_T4_S176,Lactococcus lactis,8.77533,This study,ML,milk
+TG_ID042_ML_T4_S176,Lactococcus lactis,8.77533,This study,ML,milk
+TG_ID042_ML_T4_S176,Lactococcus lactis,8.77533,This study,ML,milk
+TG_ID042_ML_T6_S172,Leuconostoc mesenteroides,28.456,This study,ML,milk
+TG_ID042_ML_T6_S172,Leuconostoc mesenteroides,28.456,This study,ML,milk
+TG_ID042_ML_T6_S172,Leuconostoc mesenteroides,28.456,This study,ML,milk
+TG_ID042_ML_T6_S172,Leuconostoc mesenteroides,28.456,This study,ML,milk
+TG_ID043_MG_T1_S150,Lactobacillus kefiranofaciens,32.6784,This study,MG,milk
+TG_ID043_MG_T1_S150,Lactobacillus kefiranofaciens,32.6784,This study,MG,milk
+TG_ID043_MG_T1_S150,Lactobacillus kefiranofaciens,32.6784,This study,MG,milk
+TG_ID043_MG_T1_S150,Lactobacillus kefiranofaciens,32.6784,This study,MG,milk
+TG_ID043_MG_T1_S150,Lactobacillus kefiranofaciens,32.6784,This study,MG,milk
+TG_ID043_MG_T1_S150,Lactobacillus kefiranofaciens,32.6784,This study,MG,milk
+TG_ID043_MG_T2_S174,Lactobacillus kefiranofaciens,39.64,This study,MG,milk
+TG_ID043_MG_T2_S174,Lactobacillus kefiranofaciens,39.64,This study,MG,milk
+TG_ID043_MG_T2_S174,Lactobacillus kefiranofaciens,39.64,This study,MG,milk
+TG_ID043_MG_T2_S174,Lactobacillus kefiranofaciens,39.64,This study,MG,milk
+TG_ID043_MG_T2_S174,Lactobacillus kefiranofaciens,39.64,This study,MG,milk
+TG_ID043_MG_T2_S174,Lactobacillus kefiranofaciens,39.64,This study,MG,milk
+TG_ID043_MG_T3_S169,Lactobacillus kefiranofaciens,43.9019,This study,MG,milk
+TG_ID043_MG_T3_S169,Lactobacillus kefiranofaciens,43.9019,This study,MG,milk
+TG_ID043_MG_T3_S169,Lactobacillus kefiranofaciens,43.9019,This study,MG,milk
+TG_ID043_MG_T3_S169,Lactobacillus kefiranofaciens,43.9019,This study,MG,milk
+TG_ID043_MG_T6_S168,Lactobacillus kefiranofaciens,35.4532,This study,MG,milk
+TG_ID043_MG_T6_S168,Lactobacillus kefiranofaciens,35.4532,This study,MG,milk
+TG_ID043_MG_T6_S168,Lactobacillus kefiranofaciens,35.4532,This study,MG,milk
+TG_ID043_MG_T6_S168,Lactobacillus kefiranofaciens,35.4532,This study,MG,milk
+TG_ID043_ML_T1_S162,Lentilactobacillus kefiri,4.32415,This study,ML,milk
+TG_ID043_ML_T1_S162,Lentilactobacillus kefiri,4.32415,This study,ML,milk
+TG_ID043_ML_T1_S162,Lentilactobacillus kefiri,4.32415,This study,ML,milk
+TG_ID043_ML_T1_S162,Lentilactobacillus kefiri,4.32415,This study,ML,milk
+TG_ID043_ML_T1_S162,Lentilactobacillus kefiri,4.32415,This study,ML,milk
+TG_ID043_ML_T1_S162,Lentilactobacillus kefiri,4.32415,This study,ML,milk
+TG_ID043_ML_T2_S186,Lactobacillus helveticus,18.8584,This study,ML,milk
+TG_ID043_ML_T2_S186,Lactobacillus helveticus,18.8584,This study,ML,milk
+TG_ID043_ML_T2_S186,Lactobacillus helveticus,18.8584,This study,ML,milk
+TG_ID043_ML_T2_S186,Lactobacillus helveticus,18.8584,This study,ML,milk
+TG_ID043_ML_T2_S186,Lactobacillus helveticus,18.8584,This study,ML,milk
+TG_ID043_ML_T2_S186,Lactobacillus helveticus,18.8584,This study,ML,milk
+TG_ID043_ML_T3_S175,Lactobacillus helveticus,35.249,This study,ML,milk
+TG_ID043_ML_T3_S175,Lactobacillus helveticus,35.249,This study,ML,milk
+TG_ID043_ML_T3_S175,Lactobacillus helveticus,35.249,This study,ML,milk
+TG_ID043_ML_T3_S175,Lactobacillus helveticus,35.249,This study,ML,milk
+TG_ID043_ML_T6_S174,Lactobacillus helveticus,9.61213,This study,ML,milk
+TG_ID043_ML_T6_S174,Lactobacillus helveticus,9.61213,This study,ML,milk
+TG_ID043_ML_T6_S174,Lactobacillus helveticus,9.61213,This study,ML,milk
+TG_ID043_ML_T6_S174,Lactobacillus helveticus,9.61213,This study,ML,milk
+TG_ID048_MG_T3_S88,Lactobacillus kefiranofaciens,33.8016,This study,MG,milk
+TG_ID048_MG_T3_S88,Lactobacillus kefiranofaciens,33.8016,This study,MG,milk
+TG_ID048_MG_T3_S88,Lactobacillus kefiranofaciens,33.8016,This study,MG,milk
+TG_ID048_MG_T3_S88,Lactobacillus kefiranofaciens,33.8016,This study,MG,milk
+TG_ID048_MG_T3_S88,Lactobacillus kefiranofaciens,33.8016,This study,MG,milk
+TG_ID048_MG_T3_S88,Lactobacillus kefiranofaciens,33.8016,This study,MG,milk
+TG_ID048_MG_T4_S13,Lactobacillus kefiranofaciens,33.5613,This study,MG,milk
+TG_ID048_MG_T4_S13,Lactobacillus kefiranofaciens,33.5613,This study,MG,milk
+TG_ID048_MG_T4_S13,Lactobacillus kefiranofaciens,33.5613,This study,MG,milk
+TG_ID048_MG_T4_S13,Lactobacillus kefiranofaciens,33.5613,This study,MG,milk
+TG_ID048_MG_T5_S19,Lactobacillus helveticus,32.3325,This study,MG,milk
+TG_ID048_MG_T5_S19,Lactobacillus helveticus,32.3325,This study,MG,milk
+TG_ID048_MG_T5_S19,Lactobacillus helveticus,32.3325,This study,MG,milk
+TG_ID048_MG_T5_S19,Lactobacillus helveticus,32.3325,This study,MG,milk
+TG_ID048_MG_T5_S19,Lactobacillus helveticus,32.3325,This study,MG,milk
+TG_ID048_MG_T5_S19,Lactobacillus helveticus,32.3325,This study,MG,milk
+TG_ID048_MG_T6_S43,Lactobacillus helveticus,30.7279,This study,MG,milk
+TG_ID048_MG_T6_S43,Lactobacillus helveticus,30.7279,This study,MG,milk
+TG_ID048_MG_T6_S43,Lactobacillus helveticus,30.7279,This study,MG,milk
+TG_ID048_MG_T6_S43,Lactobacillus helveticus,30.7279,This study,MG,milk
+TG_ID048_MG_T6_S43,Lactobacillus helveticus,30.7279,This study,MG,milk
+TG_ID048_MG_T6_S43,Lactobacillus helveticus,30.7279,This study,MG,milk
+TG_ID048_ML_T2_S148,Pseudomonas siliginis,33.9778,This study,ML,milk
+TG_ID048_ML_T2_S148,Pseudomonas siliginis,33.9778,This study,ML,milk
+TG_ID048_ML_T2_S148,Pseudomonas siliginis,33.9778,This study,ML,milk
+TG_ID048_ML_T2_S148,Pseudomonas siliginis,33.9778,This study,ML,milk
+TG_ID048_ML_T3_S5,Lactococcus lactis,33.5125,This study,ML,milk
+TG_ID048_ML_T3_S5,Lactococcus lactis,33.5125,This study,ML,milk
+TG_ID048_ML_T3_S5,Lactococcus lactis,33.5125,This study,ML,milk
+TG_ID048_ML_T3_S5,Lactococcus lactis,33.5125,This study,ML,milk
+TG_ID048_ML_T3_S5,Lactococcus lactis,33.5125,This study,ML,milk
+TG_ID048_ML_T3_S5,Lactococcus lactis,33.5125,This study,ML,milk
+TG_ID048_ML_T4_S14,Lactococcus lactis,57.9169,This study,ML,milk
+TG_ID048_ML_T4_S14,Lactococcus lactis,57.9169,This study,ML,milk
+TG_ID048_ML_T4_S14,Lactococcus lactis,57.9169,This study,ML,milk
+TG_ID048_ML_T4_S14,Lactococcus lactis,57.9169,This study,ML,milk
+TG_ID048_ML_T5_S31,Lactococcus lactis,36.5536,This study,ML,milk
+TG_ID048_ML_T5_S31,Lactococcus lactis,36.5536,This study,ML,milk
+TG_ID048_ML_T5_S31,Lactococcus lactis,36.5536,This study,ML,milk
+TG_ID048_ML_T5_S31,Lactococcus lactis,36.5536,This study,ML,milk
+TG_ID048_ML_T5_S31,Lactococcus lactis,36.5536,This study,ML,milk
+TG_ID048_ML_T5_S31,Lactococcus lactis,36.5536,This study,ML,milk
+TG_ID048_ML_T6_S55,Pseudomonas putida,7.23154,This study,ML,milk
+TG_ID048_ML_T6_S55,Pseudomonas putida,7.23154,This study,ML,milk
+TG_ID048_ML_T6_S55,Pseudomonas putida,7.23154,This study,ML,milk
+TG_ID048_ML_T6_S55,Pseudomonas putida,7.23154,This study,ML,milk
+TG_ID048_ML_T6_S55,Pseudomonas putida,7.23154,This study,ML,milk
+TG_ID048_ML_T6_S55,Pseudomonas putida,7.23154,This study,ML,milk
+TG_ID049_MG_T2_S302,Lactobacillus kefiranofaciens,43.4701,This study,MG,milk
+TG_ID049_MG_T2_S302,Lactobacillus kefiranofaciens,43.4701,This study,MG,milk
+TG_ID049_MG_T3_S103,Lactobacillus kefiranofaciens,53.3478,This study,MG,milk
+TG_ID049_MG_T3_S103,Lactobacillus kefiranofaciens,53.3478,This study,MG,milk
+TG_ID049_MG_T3_S103,Lactobacillus kefiranofaciens,53.3478,This study,MG,milk
+TG_ID049_MG_T3_S103,Lactobacillus kefiranofaciens,53.3478,This study,MG,milk
+TG_ID049_MG_T3_S103,Lactobacillus kefiranofaciens,53.3478,This study,MG,milk
+TG_ID049_MG_T3_S103,Lactobacillus kefiranofaciens,53.3478,This study,MG,milk
+TG_ID049_MG_T5_S127,Lactobacillus kefiranofaciens,50.7413,This study,MG,milk
+TG_ID049_MG_T5_S127,Lactobacillus kefiranofaciens,50.7413,This study,MG,milk
+TG_ID049_MG_T5_S127,Lactobacillus kefiranofaciens,50.7413,This study,MG,milk
+TG_ID049_MG_T5_S127,Lactobacillus kefiranofaciens,50.7413,This study,MG,milk
+TG_ID049_MG_T5_S127,Lactobacillus kefiranofaciens,50.7413,This study,MG,milk
+TG_ID049_MG_T5_S127,Lactobacillus kefiranofaciens,50.7413,This study,MG,milk
+TG_ID049_MG_T6_S134,Lactobacillus kefiranofaciens,49.5387,This study,MG,milk
+TG_ID049_MG_T6_S134,Lactobacillus kefiranofaciens,49.5387,This study,MG,milk
+TG_ID049_MG_T6_S134,Lactobacillus kefiranofaciens,49.5387,This study,MG,milk
+TG_ID049_MG_T6_S134,Lactobacillus kefiranofaciens,49.5387,This study,MG,milk
+TG_ID049_MG_T6_S134,Lactobacillus kefiranofaciens,49.5387,This study,MG,milk
+TG_ID049_MG_T6_S134,Lactobacillus kefiranofaciens,49.5387,This study,MG,milk
+TG_ID049_ML_T1_S104,Bacillus mycoides,37.3828,This study,ML,milk
+TG_ID049_ML_T1_S104,Bacillus mycoides,37.3828,This study,ML,milk
+TG_ID049_ML_T1_S104,Bacillus mycoides,37.3828,This study,ML,milk
+TG_ID049_ML_T1_S104,Bacillus mycoides,37.3828,This study,ML,milk
+TG_ID049_ML_T3_S115,Lactococcus raffinolactis,24.6216,This study,ML,milk
+TG_ID049_ML_T3_S115,Lactococcus raffinolactis,24.6216,This study,ML,milk
+TG_ID049_ML_T3_S115,Lactococcus raffinolactis,24.6216,This study,ML,milk
+TG_ID049_ML_T3_S115,Lactococcus raffinolactis,24.6216,This study,ML,milk
+TG_ID049_ML_T3_S115,Lactococcus raffinolactis,24.6216,This study,ML,milk
+TG_ID049_ML_T3_S115,Lactococcus raffinolactis,24.6216,This study,ML,milk
+TG_ID049_ML_T5_S139,Lactococcus lactis,39.2604,This study,ML,milk
+TG_ID049_ML_T5_S139,Lactococcus lactis,39.2604,This study,ML,milk
+TG_ID049_ML_T5_S139,Lactococcus lactis,39.2604,This study,ML,milk
+TG_ID049_ML_T5_S139,Lactococcus lactis,39.2604,This study,ML,milk
+TG_ID049_ML_T5_S139,Lactococcus lactis,39.2604,This study,ML,milk
+TG_ID049_ML_T5_S139,Lactococcus lactis,39.2604,This study,ML,milk
+TG_ID049_ML_T6_S33,Lactobacillus helveticus,5.8006,This study,ML,milk
+TG_ID049_ML_T6_S33,Lactobacillus helveticus,5.8006,This study,ML,milk
+TG_ID049_ML_T6_S33,Lactobacillus helveticus,5.8006,This study,ML,milk
+TG_ID049_ML_T6_S33,Lactobacillus helveticus,5.8006,This study,ML,milk
+TG_ID049_ML_T6_S33,Lactobacillus helveticus,5.8006,This study,ML,milk
+TG_ID049_ML_T6_S33,Lactobacillus helveticus,5.8006,This study,ML,milk
+TG_ID050_MG_T1_S180,Lactobacillus kefiranofaciens,39.2934,This study,MG,milk
+TG_ID050_MG_T1_S180,Lactobacillus kefiranofaciens,39.2934,This study,MG,milk
+TG_ID050_MG_T1_S180,Lactobacillus kefiranofaciens,39.2934,This study,MG,milk
+TG_ID050_MG_T1_S180,Lactobacillus kefiranofaciens,39.2934,This study,MG,milk
+TG_ID050_MG_T1_S180,Lactobacillus kefiranofaciens,39.2934,This study,MG,milk
+TG_ID050_MG_T1_S180,Lactobacillus kefiranofaciens,39.2934,This study,MG,milk
+TG_ID050_MG_T2_S192,Lactobacillus kefiranofaciens,35.0272,This study,MG,milk
+TG_ID050_MG_T2_S192,Lactobacillus kefiranofaciens,35.0272,This study,MG,milk
+TG_ID050_MG_T2_S192,Lactobacillus kefiranofaciens,35.0272,This study,MG,milk
+TG_ID050_MG_T2_S192,Lactobacillus kefiranofaciens,35.0272,This study,MG,milk
+TG_ID050_MG_T2_S192,Lactobacillus kefiranofaciens,35.0272,This study,MG,milk
+TG_ID050_MG_T2_S192,Lactobacillus kefiranofaciens,35.0272,This study,MG,milk
+TG_ID050_MG_T3_S385,Lactobacillus kefiranofaciens,30.5609,This study,MG,milk
+TG_ID050_MG_T3_S385,Lactobacillus kefiranofaciens,30.5609,This study,MG,milk
+TG_ID050_MG_T4_S83,Lactobacillus kefiranofaciens,28.0907,This study,MG,milk
+TG_ID050_MG_T4_S83,Lactobacillus kefiranofaciens,28.0907,This study,MG,milk
+TG_ID050_MG_T4_S83,Lactobacillus kefiranofaciens,28.0907,This study,MG,milk
+TG_ID050_MG_T4_S83,Lactobacillus kefiranofaciens,28.0907,This study,MG,milk
+TG_ID050_MG_T5_S390,Lactobacillus kefiranofaciens,32.4124,This study,MG,milk
+TG_ID050_MG_T5_S390,Lactobacillus kefiranofaciens,32.4124,This study,MG,milk
+TG_ID050_MG_T6_S395,Lactobacillus kefiranofaciens,36.3739,This study,MG,milk
+TG_ID050_MG_T6_S395,Lactobacillus kefiranofaciens,36.3739,This study,MG,milk
+TG_ID050_ML_T1_S132,Lentilactobacillus kefiri,5.70615,This study,ML,milk
+TG_ID050_ML_T1_S132,Lentilactobacillus kefiri,5.70615,This study,ML,milk
+TG_ID050_ML_T1_S132,Lentilactobacillus kefiri,5.70615,This study,ML,milk
+TG_ID050_ML_T1_S132,Lentilactobacillus kefiri,5.70615,This study,ML,milk
+TG_ID050_ML_T1_S132,Lentilactobacillus kefiri,5.70615,This study,ML,milk
+TG_ID050_ML_T1_S132,Lentilactobacillus kefiri,5.70615,This study,ML,milk
+TG_ID050_ML_T2_S144,Carnobacterium maltaromaticum,19.5891,This study,ML,milk
+TG_ID050_ML_T2_S144,Carnobacterium maltaromaticum,19.5891,This study,ML,milk
+TG_ID050_ML_T2_S144,Carnobacterium maltaromaticum,19.5891,This study,ML,milk
+TG_ID050_ML_T2_S144,Carnobacterium maltaromaticum,19.5891,This study,ML,milk
+TG_ID050_ML_T2_S144,Carnobacterium maltaromaticum,19.5891,This study,ML,milk
+TG_ID050_ML_T2_S144,Carnobacterium maltaromaticum,19.5891,This study,ML,milk
+TG_ID050_ML_T3_S156,Lactococcus cremoris,39.0639,This study,ML,milk
+TG_ID050_ML_T3_S156,Lactococcus cremoris,39.0639,This study,ML,milk
+TG_ID050_ML_T3_S156,Lactococcus cremoris,39.0639,This study,ML,milk
+TG_ID050_ML_T3_S156,Lactococcus cremoris,39.0639,This study,ML,milk
+TG_ID050_ML_T3_S156,Lactococcus cremoris,39.0639,This study,ML,milk
+TG_ID050_ML_T3_S156,Lactococcus cremoris,39.0639,This study,ML,milk
+TG_ID050_ML_T4_S82,Hafnia paralvei,51.1501,This study,ML,milk
+TG_ID050_ML_T4_S82,Hafnia paralvei,51.1501,This study,ML,milk
+TG_ID050_ML_T4_S82,Hafnia paralvei,51.1501,This study,ML,milk
+TG_ID050_ML_T4_S82,Hafnia paralvei,51.1501,This study,ML,milk
+TG_ID050_ML_T5_S168,Lactobacillus kefiranofaciens,25.745,This study,ML,milk
+TG_ID050_ML_T5_S168,Lactobacillus kefiranofaciens,25.745,This study,ML,milk
+TG_ID050_ML_T5_S168,Lactobacillus kefiranofaciens,25.745,This study,ML,milk
+TG_ID050_ML_T5_S168,Lactobacillus kefiranofaciens,25.745,This study,ML,milk
+TG_ID050_ML_T5_S168,Lactobacillus kefiranofaciens,25.745,This study,ML,milk
+TG_ID050_ML_T5_S168,Lactobacillus kefiranofaciens,25.745,This study,ML,milk
+TG_ID050_ML_T6_S179,Leuconostoc mesenteroides,13.9562,This study,ML,milk
+TG_ID050_ML_T6_S179,Leuconostoc mesenteroides,13.9562,This study,ML,milk
+TG_ID050_ML_T6_S179,Leuconostoc mesenteroides,13.9562,This study,ML,milk
+TG_ID050_ML_T6_S179,Leuconostoc mesenteroides,13.9562,This study,ML,milk
+TG_ID050_ML_T6_S179,Leuconostoc mesenteroides,13.9562,This study,ML,milk
+TG_ID050_ML_T6_S179,Leuconostoc mesenteroides,13.9562,This study,ML,milk
+TG_ID052_MG_T1_S290,Lactobacillus kefiranofaciens,28.8692,This study,MG,milk
+TG_ID052_MG_T1_S290,Lactobacillus kefiranofaciens,28.8692,This study,MG,milk
+TG_ID052_MG_T2_S314,Lactobacillus helveticus,36.2868,This study,MG,milk
+TG_ID052_MG_T2_S314,Lactobacillus helveticus,36.2868,This study,MG,milk
+TG_ID052_MG_T3_S64,Lactobacillus kefiranofaciens,32.4024,This study,MG,milk
+TG_ID052_MG_T3_S64,Lactobacillus kefiranofaciens,32.4024,This study,MG,milk
+TG_ID052_MG_T3_S64,Lactobacillus kefiranofaciens,32.4024,This study,MG,milk
+TG_ID052_MG_T3_S64,Lactobacillus kefiranofaciens,32.4024,This study,MG,milk
+TG_ID052_MG_T3_S64,Lactobacillus kefiranofaciens,32.4024,This study,MG,milk
+TG_ID052_MG_T3_S64,Lactobacillus kefiranofaciens,32.4024,This study,MG,milk
+TG_ID052_MG_T4_S78,Lactobacillus kefiranofaciens,37.9793,This study,MG,milk
+TG_ID052_MG_T4_S78,Lactobacillus kefiranofaciens,37.9793,This study,MG,milk
+TG_ID052_MG_T4_S78,Lactobacillus kefiranofaciens,37.9793,This study,MG,milk
+TG_ID052_MG_T4_S78,Lactobacillus kefiranofaciens,37.9793,This study,MG,milk
+TG_ID052_MG_T5_S154,Lactobacillus kefiranofaciens,37.2505,This study,MG,milk
+TG_ID052_MG_T5_S154,Lactobacillus kefiranofaciens,37.2505,This study,MG,milk
+TG_ID052_MG_T5_S154,Lactobacillus kefiranofaciens,37.2505,This study,MG,milk
+TG_ID052_MG_T5_S154,Lactobacillus kefiranofaciens,37.2505,This study,MG,milk
+TG_ID052_ML_T3_S76,Lactococcus cremoris,38.6806,This study,ML,milk
+TG_ID052_ML_T3_S76,Lactococcus cremoris,38.6806,This study,ML,milk
+TG_ID052_ML_T3_S76,Lactococcus cremoris,38.6806,This study,ML,milk
+TG_ID052_ML_T3_S76,Lactococcus cremoris,38.6806,This study,ML,milk
+TG_ID052_ML_T3_S76,Lactococcus cremoris,38.6806,This study,ML,milk
+TG_ID052_ML_T3_S76,Lactococcus cremoris,38.6806,This study,ML,milk
+TG_ID052_ML_T4_S156,Pseudomonas fragi,15.9979,This study,ML,milk
+TG_ID052_ML_T4_S156,Pseudomonas fragi,15.9979,This study,ML,milk
+TG_ID052_ML_T4_S156,Pseudomonas fragi,15.9979,This study,ML,milk
+TG_ID052_ML_T4_S156,Pseudomonas fragi,15.9979,This study,ML,milk
+TG_ID052_ML_T5_S155,Pseudomonas fragi,7.86562,This study,ML,milk
+TG_ID052_ML_T5_S155,Pseudomonas fragi,7.86562,This study,ML,milk
+TG_ID052_ML_T5_S155,Pseudomonas fragi,7.86562,This study,ML,milk
+TG_ID052_ML_T5_S155,Pseudomonas fragi,7.86562,This study,ML,milk
+TG_ID053_MG_T1_S359,Lactobacillus kefiranofaciens,26.8812,This study,MG,milk
+TG_ID053_MG_T1_S359,Lactobacillus kefiranofaciens,26.8812,This study,MG,milk
+TG_ID053_MG_T2_S371,Lactobacillus helveticus,66.641,This study,MG,milk
+TG_ID053_MG_T2_S371,Lactobacillus helveticus,66.641,This study,MG,milk
+TG_ID053_MG_T3_S89,Lactobacillus helveticus,46.6977,This study,MG,milk
+TG_ID053_MG_T3_S89,Lactobacillus helveticus,46.6977,This study,MG,milk
+TG_ID053_MG_T3_S89,Lactobacillus helveticus,46.6977,This study,MG,milk
+TG_ID053_MG_T3_S89,Lactobacillus helveticus,46.6977,This study,MG,milk
+TG_ID053_MG_T5_S90,Lactobacillus helveticus,59.4926,This study,MG,milk
+TG_ID053_MG_T5_S90,Lactobacillus helveticus,59.4926,This study,MG,milk
+TG_ID053_MG_T5_S90,Lactobacillus helveticus,59.4926,This study,MG,milk
+TG_ID053_MG_T5_S90,Lactobacillus helveticus,59.4926,This study,MG,milk
+TG_ID053_MG_T6_S91,Lactobacillus helveticus,38.6348,This study,MG,milk
+TG_ID053_MG_T6_S91,Lactobacillus helveticus,38.6348,This study,MG,milk
+TG_ID053_MG_T6_S91,Lactobacillus helveticus,38.6348,This study,MG,milk
+TG_ID053_MG_T6_S91,Lactobacillus helveticus,38.6348,This study,MG,milk
+TG_ID053_ML_T1_S336,Lactobacillus helveticus,2.21442,This study,ML,milk
+TG_ID053_ML_T1_S336,Lactobacillus helveticus,2.21442,This study,ML,milk
+TG_ID053_ML_T2_S348,Lactobacillus helveticus,35.8821,This study,ML,milk
+TG_ID053_ML_T2_S348,Lactobacillus helveticus,35.8821,This study,ML,milk
+TG_ID053_ML_T3_S113,Lactobacillus helveticus,58.286,This study,ML,milk
+TG_ID053_ML_T3_S113,Lactobacillus helveticus,58.286,This study,ML,milk
+TG_ID053_ML_T3_S113,Lactobacillus helveticus,58.286,This study,ML,milk
+TG_ID053_ML_T3_S113,Lactobacillus helveticus,58.286,This study,ML,milk
+TG_ID053_ML_T4_S116,Escherichia coli,32.8541,This study,ML,milk
+TG_ID053_ML_T4_S116,Escherichia coli,32.8541,This study,ML,milk
+TG_ID053_ML_T4_S116,Escherichia coli,32.8541,This study,ML,milk
+TG_ID053_ML_T4_S116,Escherichia coli,32.8541,This study,ML,milk
+TG_ID053_ML_T5_S114,Enterococcus faecalis,37.7828,This study,ML,milk
+TG_ID053_ML_T5_S114,Enterococcus faecalis,37.7828,This study,ML,milk
+TG_ID053_ML_T5_S114,Enterococcus faecalis,37.7828,This study,ML,milk
+TG_ID053_ML_T5_S114,Enterococcus faecalis,37.7828,This study,ML,milk
+TG_ID053_ML_T6_S115,Lactobacillus helveticus,50.6479,This study,ML,milk
+TG_ID053_ML_T6_S115,Lactobacillus helveticus,50.6479,This study,ML,milk
+TG_ID053_ML_T6_S115,Lactobacillus helveticus,50.6479,This study,ML,milk
+TG_ID053_ML_T6_S115,Lactobacillus helveticus,50.6479,This study,ML,milk
+TG_ID054_MG_T2_S151,Lactobacillus helveticus,30.9017,This study,MG,milk
+TG_ID054_MG_T2_S151,Lactobacillus helveticus,30.9017,This study,MG,milk
+TG_ID054_MG_T2_S151,Lactobacillus helveticus,30.9017,This study,MG,milk
+TG_ID054_MG_T2_S151,Lactobacillus helveticus,30.9017,This study,MG,milk
+TG_ID054_MG_T2_S151,Lactobacillus helveticus,30.9017,This study,MG,milk
+TG_ID054_MG_T2_S151,Lactobacillus helveticus,30.9017,This study,MG,milk
+TG_ID054_MG_T3_S383,Lactobacillus kefiranofaciens,48.8652,This study,MG,milk
+TG_ID054_MG_T3_S383,Lactobacillus kefiranofaciens,48.8652,This study,MG,milk
+TG_ID054_MG_T4_S57,Lactobacillus kefiranofaciens,44.7979,This study,MG,milk
+TG_ID054_MG_T4_S57,Lactobacillus kefiranofaciens,44.7979,This study,MG,milk
+TG_ID054_MG_T4_S57,Lactobacillus kefiranofaciens,44.7979,This study,MG,milk
+TG_ID054_MG_T4_S57,Lactobacillus kefiranofaciens,44.7979,This study,MG,milk
+TG_ID054_MG_T5_S93,Lactobacillus kefiranofaciens,40.6954,This study,MG,milk
+TG_ID054_MG_T5_S93,Lactobacillus kefiranofaciens,40.6954,This study,MG,milk
+TG_ID054_MG_T5_S93,Lactobacillus kefiranofaciens,40.6954,This study,MG,milk
+TG_ID054_MG_T5_S93,Lactobacillus kefiranofaciens,40.6954,This study,MG,milk
+TG_ID054_MG_T5_S93,Lactobacillus kefiranofaciens,40.6954,This study,MG,milk
+TG_ID054_MG_T5_S93,Lactobacillus kefiranofaciens,40.6954,This study,MG,milk
+TG_ID054_MG_T6_S22,Lactobacillus kefiranofaciens,45.4736,This study,MG,milk
+TG_ID054_MG_T6_S22,Lactobacillus kefiranofaciens,45.4736,This study,MG,milk
+TG_ID054_MG_T6_S22,Lactobacillus kefiranofaciens,45.4736,This study,MG,milk
+TG_ID054_MG_T6_S22,Lactobacillus kefiranofaciens,45.4736,This study,MG,milk
+TG_ID054_MG_T6_S22,Lactobacillus kefiranofaciens,45.4736,This study,MG,milk
+TG_ID054_MG_T6_S22,Lactobacillus kefiranofaciens,45.4736,This study,MG,milk
+TG_ID054_ML_T2_S163,Lactococcus cremoris,16.3673,This study,ML,milk
+TG_ID054_ML_T2_S163,Lactococcus cremoris,16.3673,This study,ML,milk
+TG_ID054_ML_T2_S163,Lactococcus cremoris,16.3673,This study,ML,milk
+TG_ID054_ML_T2_S163,Lactococcus cremoris,16.3673,This study,ML,milk
+TG_ID054_ML_T2_S163,Lactococcus cremoris,16.3673,This study,ML,milk
+TG_ID054_ML_T2_S163,Lactococcus cremoris,16.3673,This study,ML,milk
+TG_ID054_ML_T3_S360,Lactococcus cremoris,41.7201,This study,ML,milk
+TG_ID054_ML_T3_S360,Lactococcus cremoris,41.7201,This study,ML,milk
+TG_ID054_ML_T4_S58,Lactococcus cremoris,25.9429,This study,ML,milk
+TG_ID054_ML_T4_S58,Lactococcus cremoris,25.9429,This study,ML,milk
+TG_ID054_ML_T4_S58,Lactococcus cremoris,25.9429,This study,ML,milk
+TG_ID054_ML_T4_S58,Lactococcus cremoris,25.9429,This study,ML,milk
+TG_ID054_ML_T5_S10,Lactococcus cremoris,53.4688,This study,ML,milk
+TG_ID054_ML_T5_S10,Lactococcus cremoris,53.4688,This study,ML,milk
+TG_ID054_ML_T5_S10,Lactococcus cremoris,53.4688,This study,ML,milk
+TG_ID054_ML_T5_S10,Lactococcus cremoris,53.4688,This study,ML,milk
+TG_ID054_ML_T5_S10,Lactococcus cremoris,53.4688,This study,ML,milk
+TG_ID054_ML_T5_S10,Lactococcus cremoris,53.4688,This study,ML,milk
+TG_ID054_ML_T6_S34,Lactococcus cremoris,52.9203,This study,ML,milk
+TG_ID054_ML_T6_S34,Lactococcus cremoris,52.9203,This study,ML,milk
+TG_ID054_ML_T6_S34,Lactococcus cremoris,52.9203,This study,ML,milk
+TG_ID054_ML_T6_S34,Lactococcus cremoris,52.9203,This study,ML,milk
+TG_ID054_ML_T6_S34,Lactococcus cremoris,52.9203,This study,ML,milk
+TG_ID054_ML_T6_S34,Lactococcus cremoris,52.9203,This study,ML,milk
+TG_ID056_WG_T1_S11,Lentilactobacillus hilgardii,20.7776,This study,WG,water
+TG_ID056_WG_T1_S11,Lentilactobacillus hilgardii,20.7776,This study,WG,water
+TG_ID056_WG_T1_S11,Lentilactobacillus hilgardii,20.7776,This study,WG,water
+TG_ID056_WG_T1_S11,Lentilactobacillus hilgardii,20.7776,This study,WG,water
+TG_ID056_WG_T1_S11,Lentilactobacillus hilgardii,20.7776,This study,WG,water
+TG_ID056_WG_T1_S11,Lentilactobacillus hilgardii,20.7776,This study,WG,water
+TG_ID056_WG_T2_S35,Lentilactobacillus hilgardii,9.02979,This study,WG,water
+TG_ID056_WG_T2_S35,Lentilactobacillus hilgardii,9.02979,This study,WG,water
+TG_ID056_WG_T2_S35,Lentilactobacillus hilgardii,9.02979,This study,WG,water
+TG_ID056_WG_T2_S35,Lentilactobacillus hilgardii,9.02979,This study,WG,water
+TG_ID056_WG_T2_S35,Lentilactobacillus hilgardii,9.02979,This study,WG,water
+TG_ID056_WG_T2_S35,Lentilactobacillus hilgardii,9.02979,This study,WG,water
+TG_ID056_WG_T3_S59,Lentilactobacillus hilgardii,18.4029,This study,WG,water
+TG_ID056_WG_T3_S59,Lentilactobacillus hilgardii,18.4029,This study,WG,water
+TG_ID056_WG_T3_S59,Lentilactobacillus hilgardii,18.4029,This study,WG,water
+TG_ID056_WG_T3_S59,Lentilactobacillus hilgardii,18.4029,This study,WG,water
+TG_ID056_WG_T3_S59,Lentilactobacillus hilgardii,18.4029,This study,WG,water
+TG_ID056_WG_T3_S59,Lentilactobacillus hilgardii,18.4029,This study,WG,water
+TG_ID056_WG_T4_S33,Lentilactobacillus hilgardii,16.4652,This study,WG,water
+TG_ID056_WG_T4_S33,Lentilactobacillus hilgardii,16.4652,This study,WG,water
+TG_ID056_WG_T4_S33,Lentilactobacillus hilgardii,16.4652,This study,WG,water
+TG_ID056_WG_T4_S33,Lentilactobacillus hilgardii,16.4652,This study,WG,water
+TG_ID056_WG_T5_S83,Lacticaseibacillus paracasei,7.34851,This study,WG,water
+TG_ID056_WG_T5_S83,Lacticaseibacillus paracasei,7.34851,This study,WG,water
+TG_ID056_WG_T5_S83,Lacticaseibacillus paracasei,7.34851,This study,WG,water
+TG_ID056_WG_T5_S83,Lacticaseibacillus paracasei,7.34851,This study,WG,water
+TG_ID056_WG_T5_S83,Lacticaseibacillus paracasei,7.34851,This study,WG,water
+TG_ID056_WG_T5_S83,Lacticaseibacillus paracasei,7.34851,This study,WG,water
+TG_ID056_WG_T6_S12,Lacticaseibacillus paracasei,3.18626,This study,WG,water
+TG_ID056_WG_T6_S12,Lacticaseibacillus paracasei,3.18626,This study,WG,water
+TG_ID056_WG_T6_S12,Lacticaseibacillus paracasei,3.18626,This study,WG,water
+TG_ID056_WG_T6_S12,Lacticaseibacillus paracasei,3.18626,This study,WG,water
+TG_ID056_WG_T6_S12,Lacticaseibacillus paracasei,3.18626,This study,WG,water
+TG_ID056_WG_T6_S12,Lacticaseibacillus paracasei,3.18626,This study,WG,water
+TG_ID056_WL_T1_S23,Carnobacterium maltaromaticum,25.1421,This study,WL,water
+TG_ID056_WL_T1_S23,Carnobacterium maltaromaticum,25.1421,This study,WL,water
+TG_ID056_WL_T1_S23,Carnobacterium maltaromaticum,25.1421,This study,WL,water
+TG_ID056_WL_T1_S23,Carnobacterium maltaromaticum,25.1421,This study,WL,water
+TG_ID056_WL_T1_S23,Carnobacterium maltaromaticum,25.1421,This study,WL,water
+TG_ID056_WL_T1_S23,Carnobacterium maltaromaticum,25.1421,This study,WL,water
+TG_ID056_WL_T2_S47,Carnobacterium maltaromaticum,7.39776,This study,WL,water
+TG_ID056_WL_T2_S47,Carnobacterium maltaromaticum,7.39776,This study,WL,water
+TG_ID056_WL_T2_S47,Carnobacterium maltaromaticum,7.39776,This study,WL,water
+TG_ID056_WL_T2_S47,Carnobacterium maltaromaticum,7.39776,This study,WL,water
+TG_ID056_WL_T2_S47,Carnobacterium maltaromaticum,7.39776,This study,WL,water
+TG_ID056_WL_T2_S47,Carnobacterium maltaromaticum,7.39776,This study,WL,water
+TG_ID056_WL_T3_S71,Gluconobacter oxydans,9.55237,This study,WL,water
+TG_ID056_WL_T3_S71,Gluconobacter oxydans,9.55237,This study,WL,water
+TG_ID056_WL_T3_S71,Gluconobacter oxydans,9.55237,This study,WL,water
+TG_ID056_WL_T3_S71,Gluconobacter oxydans,9.55237,This study,WL,water
+TG_ID056_WL_T3_S71,Gluconobacter oxydans,9.55237,This study,WL,water
+TG_ID056_WL_T3_S71,Gluconobacter oxydans,9.55237,This study,WL,water
+TG_ID056_WL_T4_S34,Pseudomonas putida,16.8481,This study,WL,water
+TG_ID056_WL_T4_S34,Pseudomonas putida,16.8481,This study,WL,water
+TG_ID056_WL_T4_S34,Pseudomonas putida,16.8481,This study,WL,water
+TG_ID056_WL_T4_S34,Pseudomonas putida,16.8481,This study,WL,water
+TG_ID056_WL_T5_S95,Gluconobacter oxydans,1.95543,This study,WL,water
+TG_ID056_WL_T5_S95,Gluconobacter oxydans,1.95543,This study,WL,water
+TG_ID056_WL_T5_S95,Gluconobacter oxydans,1.95543,This study,WL,water
+TG_ID056_WL_T5_S95,Gluconobacter oxydans,1.95543,This study,WL,water
+TG_ID056_WL_T5_S95,Gluconobacter oxydans,1.95543,This study,WL,water
+TG_ID056_WL_T5_S95,Gluconobacter oxydans,1.95543,This study,WL,water
+TG_ID056_WL_T6_S24,Veillonella parvula,10.6218,This study,WL,water
+TG_ID056_WL_T6_S24,Veillonella parvula,10.6218,This study,WL,water
+TG_ID056_WL_T6_S24,Veillonella parvula,10.6218,This study,WL,water
+TG_ID056_WL_T6_S24,Veillonella parvula,10.6218,This study,WL,water
+TG_ID056_WL_T6_S24,Veillonella parvula,10.6218,This study,WL,water
+TG_ID056_WL_T6_S24,Veillonella parvula,10.6218,This study,WL,water
+TG_ID058_WG_T1_S2,Lentilactobacillus hilgardii,22.3347,This study,WG,water
+TG_ID058_WG_T1_S2,Lentilactobacillus hilgardii,22.3347,This study,WG,water
+TG_ID058_WG_T1_S2,Lentilactobacillus hilgardii,22.3347,This study,WG,water
+TG_ID058_WG_T1_S2,Lentilactobacillus hilgardii,22.3347,This study,WG,water
+TG_ID058_WG_T1_S352,Lentilactobacillus hilgardii,21.9119,This study,WG,water
+TG_ID058_WG_T1_S352,Lentilactobacillus hilgardii,21.9119,This study,WG,water
+TG_ID058_WG_T3_S36,Lentilactobacillus hilgardii,22.1192,This study,WG,water
+TG_ID058_WG_T3_S36,Lentilactobacillus hilgardii,22.1192,This study,WG,water
+TG_ID058_WG_T3_S36,Lentilactobacillus hilgardii,22.1192,This study,WG,water
+TG_ID058_WG_T3_S36,Lentilactobacillus hilgardii,22.1192,This study,WG,water
+TG_ID058_WG_T3_S36,Lentilactobacillus hilgardii,22.1192,This study,WG,water
+TG_ID058_WG_T3_S36,Lentilactobacillus hilgardii,22.1192,This study,WG,water
+TG_ID058_WG_T4_S35,Lentilactobacillus hilgardii,21.3567,This study,WG,water
+TG_ID058_WG_T4_S35,Lentilactobacillus hilgardii,21.3567,This study,WG,water
+TG_ID058_WG_T4_S35,Lentilactobacillus hilgardii,21.3567,This study,WG,water
+TG_ID058_WG_T4_S35,Lentilactobacillus hilgardii,21.3567,This study,WG,water
+TG_ID058_WG_T5_S60,Lentilactobacillus hilgardii,10.6997,This study,WG,water
+TG_ID058_WG_T5_S60,Lentilactobacillus hilgardii,10.6997,This study,WG,water
+TG_ID058_WG_T5_S60,Lentilactobacillus hilgardii,10.6997,This study,WG,water
+TG_ID058_WG_T5_S60,Lentilactobacillus hilgardii,10.6997,This study,WG,water
+TG_ID058_WG_T5_S60,Lentilactobacillus hilgardii,10.6997,This study,WG,water
+TG_ID058_WG_T5_S60,Lentilactobacillus hilgardii,10.6997,This study,WG,water
+TG_ID058_WG_T6_S84,Lentilactobacillus hilgardii,13.6761,This study,WG,water
+TG_ID058_WG_T6_S84,Lentilactobacillus hilgardii,13.6761,This study,WG,water
+TG_ID058_WG_T6_S84,Lentilactobacillus hilgardii,13.6761,This study,WG,water
+TG_ID058_WG_T6_S84,Lentilactobacillus hilgardii,13.6761,This study,WG,water
+TG_ID058_WG_T6_S84,Lentilactobacillus hilgardii,13.6761,This study,WG,water
+TG_ID058_WG_T6_S84,Lentilactobacillus hilgardii,13.6761,This study,WG,water
+TG_ID058_WL_T1_S376,Lacticaseibacillus paracasei,9.95575,This study,WL,water
+TG_ID058_WL_T1_S376,Lacticaseibacillus paracasei,9.95575,This study,WL,water
+TG_ID058_WL_T3_S48,Lentilactobacillus hilgardii,8.6538,This study,WL,water
+TG_ID058_WL_T3_S48,Lentilactobacillus hilgardii,8.6538,This study,WL,water
+TG_ID058_WL_T3_S48,Lentilactobacillus hilgardii,8.6538,This study,WL,water
+TG_ID058_WL_T3_S48,Lentilactobacillus hilgardii,8.6538,This study,WL,water
+TG_ID058_WL_T3_S48,Lentilactobacillus hilgardii,8.6538,This study,WL,water
+TG_ID058_WL_T3_S48,Lentilactobacillus hilgardii,8.6538,This study,WL,water
+TG_ID058_WL_T4_S36,Lentilactobacillus hilgardii,9.65039,This study,WL,water
+TG_ID058_WL_T4_S36,Lentilactobacillus hilgardii,9.65039,This study,WL,water
+TG_ID058_WL_T4_S36,Lentilactobacillus hilgardii,9.65039,This study,WL,water
+TG_ID058_WL_T4_S36,Lentilactobacillus hilgardii,9.65039,This study,WL,water
+TG_ID058_WL_T5_S72,Lentilactobacillus hilgardii,3.24028,This study,WL,water
+TG_ID058_WL_T5_S72,Lentilactobacillus hilgardii,3.24028,This study,WL,water
+TG_ID058_WL_T5_S72,Lentilactobacillus hilgardii,3.24028,This study,WL,water
+TG_ID058_WL_T5_S72,Lentilactobacillus hilgardii,3.24028,This study,WL,water
+TG_ID058_WL_T5_S72,Lentilactobacillus hilgardii,3.24028,This study,WL,water
+TG_ID058_WL_T5_S72,Lentilactobacillus hilgardii,3.24028,This study,WL,water
+TG_ID058_WL_T6_S96,Lentilactobacillus hilgardii,6.46578,This study,WL,water
+TG_ID058_WL_T6_S96,Lentilactobacillus hilgardii,6.46578,This study,WL,water
+TG_ID058_WL_T6_S96,Lentilactobacillus hilgardii,6.46578,This study,WL,water
+TG_ID058_WL_T6_S96,Lentilactobacillus hilgardii,6.46578,This study,WL,water
+TG_ID058_WL_T6_S96,Lentilactobacillus hilgardii,6.46578,This study,WL,water
+TG_ID058_WL_T6_S96,Lentilactobacillus hilgardii,6.46578,This study,WL,water
+TG_ID060_WG_T2_S175,Lentilactobacillus hilgardii,0.926294,This study,WG,water
+TG_ID060_WG_T2_S175,Lentilactobacillus hilgardii,0.926294,This study,WG,water
+TG_ID060_WG_T2_S175,Lentilactobacillus hilgardii,0.926294,This study,WG,water
+TG_ID060_WG_T2_S175,Lentilactobacillus hilgardii,0.926294,This study,WG,water
+TG_ID060_WG_T2_S175,Lentilactobacillus hilgardii,0.926294,This study,WG,water
+TG_ID060_WG_T2_S175,Lentilactobacillus hilgardii,0.926294,This study,WG,water
+TG_ID060_WG_T3_S97,Lentilactobacillus hilgardii,2.44683,This study,WG,water
+TG_ID060_WG_T3_S97,Lentilactobacillus hilgardii,2.44683,This study,WG,water
+TG_ID060_WG_T3_S97,Lentilactobacillus hilgardii,2.44683,This study,WG,water
+TG_ID060_WG_T3_S97,Lentilactobacillus hilgardii,2.44683,This study,WG,water
+TG_ID060_WG_T3_S97,Lentilactobacillus hilgardii,2.44683,This study,WG,water
+TG_ID060_WG_T3_S97,Lentilactobacillus hilgardii,2.44683,This study,WG,water
+TG_ID060_WG_T6_S121,Clostridium beijerinckii,3.7432,This study,WG,water
+TG_ID060_WG_T6_S121,Clostridium beijerinckii,3.7432,This study,WG,water
+TG_ID060_WG_T6_S121,Clostridium beijerinckii,3.7432,This study,WG,water
+TG_ID060_WG_T6_S121,Clostridium beijerinckii,3.7432,This study,WG,water
+TG_ID060_WG_T6_S121,Clostridium beijerinckii,3.7432,This study,WG,water
+TG_ID060_WG_T6_S121,Clostridium beijerinckii,3.7432,This study,WG,water
+TG_ID060_WL_T2_S187,Lelliottia amnigena,0.898656,This study,WL,water
+TG_ID060_WL_T2_S187,Lelliottia amnigena,0.898656,This study,WL,water
+TG_ID060_WL_T2_S187,Lelliottia amnigena,0.898656,This study,WL,water
+TG_ID060_WL_T2_S187,Lelliottia amnigena,0.898656,This study,WL,water
+TG_ID060_WL_T2_S187,Lelliottia amnigena,0.898656,This study,WL,water
+TG_ID060_WL_T2_S187,Lelliottia amnigena,0.898656,This study,WL,water
+TG_ID060_WL_T3_S109,Acinetobacter johnsonii,11.8801,This study,WL,water
+TG_ID060_WL_T3_S109,Acinetobacter johnsonii,11.8801,This study,WL,water
+TG_ID060_WL_T3_S109,Acinetobacter johnsonii,11.8801,This study,WL,water
+TG_ID060_WL_T3_S109,Acinetobacter johnsonii,11.8801,This study,WL,water
+TG_ID060_WL_T3_S109,Acinetobacter johnsonii,11.8801,This study,WL,water
+TG_ID060_WL_T3_S109,Acinetobacter johnsonii,11.8801,This study,WL,water
+TG_ID061_WG_T1_S364,Lentilactobacillus hilgardii,5.61176,This study,WG,water
+TG_ID061_WG_T1_S364,Lentilactobacillus hilgardii,5.61176,This study,WG,water
+TG_ID061_WG_T2_S355,Lacticaseibacillus paracasei,42.3551,This study,WG,water
+TG_ID061_WG_T2_S355,Lacticaseibacillus paracasei,42.3551,This study,WG,water
+TG_ID061_WG_T3_S104,Lacticaseibacillus paracasei,60.412,This study,WG,water
+TG_ID061_WG_T3_S104,Lacticaseibacillus paracasei,60.412,This study,WG,water
+TG_ID061_WG_T3_S104,Lacticaseibacillus paracasei,60.412,This study,WG,water
+TG_ID061_WG_T3_S104,Lacticaseibacillus paracasei,60.412,This study,WG,water
+TG_ID061_WG_T3_S104,Lacticaseibacillus paracasei,60.412,This study,WG,water
+TG_ID061_WG_T3_S104,Lacticaseibacillus paracasei,60.412,This study,WG,water
+TG_ID061_WG_T4_S37,Lacticaseibacillus paracasei,48.8014,This study,WG,water
+TG_ID061_WG_T4_S37,Lacticaseibacillus paracasei,48.8014,This study,WG,water
+TG_ID061_WG_T4_S37,Lacticaseibacillus paracasei,48.8014,This study,WG,water
+TG_ID061_WG_T4_S37,Lacticaseibacillus paracasei,48.8014,This study,WG,water
+TG_ID061_WG_T5_S133,Lacticaseibacillus paracasei,62.8117,This study,WG,water
+TG_ID061_WG_T5_S133,Lacticaseibacillus paracasei,62.8117,This study,WG,water
+TG_ID061_WG_T5_S133,Lacticaseibacillus paracasei,62.8117,This study,WG,water
+TG_ID061_WG_T5_S133,Lacticaseibacillus paracasei,62.8117,This study,WG,water
+TG_ID061_WG_T5_S133,Lacticaseibacillus paracasei,62.8117,This study,WG,water
+TG_ID061_WG_T5_S133,Lacticaseibacillus paracasei,62.8117,This study,WG,water
+TG_ID061_WG_T6_S157,Lacticaseibacillus paracasei,49.0623,This study,WG,water
+TG_ID061_WG_T6_S157,Lacticaseibacillus paracasei,49.0623,This study,WG,water
+TG_ID061_WG_T6_S157,Lacticaseibacillus paracasei,49.0623,This study,WG,water
+TG_ID061_WG_T6_S157,Lacticaseibacillus paracasei,49.0623,This study,WG,water
+TG_ID061_WG_T6_S157,Lacticaseibacillus paracasei,49.0623,This study,WG,water
+TG_ID061_WG_T6_S157,Lacticaseibacillus paracasei,49.0623,This study,WG,water
+TG_ID061_WL_T2_S309,Lacticaseibacillus paracasei,20.0324,This study,WL,water
+TG_ID061_WL_T2_S309,Lacticaseibacillus paracasei,20.0324,This study,WL,water
+TG_ID061_WL_T3_S116,Lacticaseibacillus paracasei,24.9284,This study,WL,water
+TG_ID061_WL_T3_S116,Lacticaseibacillus paracasei,24.9284,This study,WL,water
+TG_ID061_WL_T3_S116,Lacticaseibacillus paracasei,24.9284,This study,WL,water
+TG_ID061_WL_T3_S116,Lacticaseibacillus paracasei,24.9284,This study,WL,water
+TG_ID061_WL_T3_S116,Lacticaseibacillus paracasei,24.9284,This study,WL,water
+TG_ID061_WL_T3_S116,Lacticaseibacillus paracasei,24.9284,This study,WL,water
+TG_ID061_WL_T4_S38,Lacticaseibacillus paracasei,27.7156,This study,WL,water
+TG_ID061_WL_T4_S38,Lacticaseibacillus paracasei,27.7156,This study,WL,water
+TG_ID061_WL_T4_S38,Lacticaseibacillus paracasei,27.7156,This study,WL,water
+TG_ID061_WL_T4_S38,Lacticaseibacillus paracasei,27.7156,This study,WL,water
+TG_ID061_WL_T5_S145,Lacticaseibacillus paracasei,27.4543,This study,WL,water
+TG_ID061_WL_T5_S145,Lacticaseibacillus paracasei,27.4543,This study,WL,water
+TG_ID061_WL_T5_S145,Lacticaseibacillus paracasei,27.4543,This study,WL,water
+TG_ID061_WL_T5_S145,Lacticaseibacillus paracasei,27.4543,This study,WL,water
+TG_ID061_WL_T5_S145,Lacticaseibacillus paracasei,27.4543,This study,WL,water
+TG_ID061_WL_T5_S145,Lacticaseibacillus paracasei,27.4543,This study,WL,water
+TG_ID061_WL_T6_S169,Lacticaseibacillus paracasei,42.0785,This study,WL,water
+TG_ID061_WL_T6_S169,Lacticaseibacillus paracasei,42.0785,This study,WL,water
+TG_ID061_WL_T6_S169,Lacticaseibacillus paracasei,42.0785,This study,WL,water
+TG_ID061_WL_T6_S169,Lacticaseibacillus paracasei,42.0785,This study,WL,water
+TG_ID061_WL_T6_S169,Lacticaseibacillus paracasei,42.0785,This study,WL,water
+TG_ID061_WL_T6_S169,Lacticaseibacillus paracasei,42.0785,This study,WL,water
+TG_ID062_WG_T1_S128,Lentilactobacillus hilgardii,12.5899,This study,WG,water
+TG_ID062_WG_T1_S128,Lentilactobacillus hilgardii,12.5899,This study,WG,water
+TG_ID062_WG_T1_S128,Lentilactobacillus hilgardii,12.5899,This study,WG,water
+TG_ID062_WG_T1_S128,Lentilactobacillus hilgardii,12.5899,This study,WG,water
+TG_ID062_WG_T1_S128,Lentilactobacillus hilgardii,12.5899,This study,WG,water
+TG_ID062_WG_T1_S128,Lentilactobacillus hilgardii,12.5899,This study,WG,water
+TG_ID062_WG_T2_S320,Lentilactobacillus hilgardii,4.33928,This study,WG,water
+TG_ID062_WG_T2_S320,Lentilactobacillus hilgardii,4.33928,This study,WG,water
+TG_ID062_WG_T3_S181,Lentilactobacillus hilgardii,1.3616,This study,WG,water
+TG_ID062_WG_T3_S181,Lentilactobacillus hilgardii,1.3616,This study,WG,water
+TG_ID062_WG_T3_S181,Lentilactobacillus hilgardii,1.3616,This study,WG,water
+TG_ID062_WG_T3_S181,Lentilactobacillus hilgardii,1.3616,This study,WG,water
+TG_ID062_WG_T3_S181,Lentilactobacillus hilgardii,1.3616,This study,WG,water
+TG_ID062_WG_T3_S181,Lentilactobacillus hilgardii,1.3616,This study,WG,water
+TG_ID062_WL_T1_S140,Zymomonas mobilis,2.11304,This study,WL,water
+TG_ID062_WL_T1_S140,Zymomonas mobilis,2.11304,This study,WL,water
+TG_ID062_WL_T1_S140,Zymomonas mobilis,2.11304,This study,WL,water
+TG_ID062_WL_T1_S140,Zymomonas mobilis,2.11304,This study,WL,water
+TG_ID062_WL_T1_S140,Zymomonas mobilis,2.11304,This study,WL,water
+TG_ID062_WL_T1_S140,Zymomonas mobilis,2.11304,This study,WL,water
+TG_ID062_WL_T2_S321,Lacticaseibacillus paracasei,1.0945,This study,WL,water
+TG_ID062_WL_T2_S321,Lacticaseibacillus paracasei,1.0945,This study,WL,water
+TG_ID062_WL_T3_S98,Lacticaseibacillus paracasei,0.356839,This study,WL,water
+TG_ID062_WL_T3_S98,Lacticaseibacillus paracasei,0.356839,This study,WL,water
+TG_ID062_WL_T3_S98,Lacticaseibacillus paracasei,0.356839,This study,WL,water
+TG_ID062_WL_T3_S98,Lacticaseibacillus paracasei,0.356839,This study,WL,water
+TG_ID062_WL_T3_S98,Lacticaseibacillus paracasei,0.356839,This study,WL,water
+TG_ID062_WL_T3_S98,Lacticaseibacillus paracasei,0.356839,This study,WL,water
+TG_ID069_WG_T1_S105,Lacticaseibacillus paracasei,21.1539,This study,WG,water
+TG_ID069_WG_T1_S105,Lacticaseibacillus paracasei,21.1539,This study,WG,water
+TG_ID069_WG_T1_S105,Lacticaseibacillus paracasei,21.1539,This study,WG,water
+TG_ID069_WG_T1_S105,Lacticaseibacillus paracasei,21.1539,This study,WG,water
+TG_ID070_WG_T1_S188,Lentilactobacillus hilgardii,19.7792,This study,WG,water
+TG_ID070_WG_T1_S188,Lentilactobacillus hilgardii,19.7792,This study,WG,water
+TG_ID070_WG_T1_S188,Lentilactobacillus hilgardii,19.7792,This study,WG,water
+TG_ID070_WG_T1_S188,Lentilactobacillus hilgardii,19.7792,This study,WG,water
+TG_ID070_WG_T1_S188,Lentilactobacillus hilgardii,19.7792,This study,WG,water
+TG_ID070_WG_T1_S188,Lentilactobacillus hilgardii,19.7792,This study,WG,water
+TG_ID070_WG_T2_S332,Lentilactobacillus hilgardii,8.81751,This study,WG,water
+TG_ID070_WG_T2_S332,Lentilactobacillus hilgardii,8.81751,This study,WG,water
+TG_ID070_WG_T4_S63,Lentilactobacillus hilgardii,7.18099,This study,WG,water
+TG_ID070_WG_T4_S63,Lentilactobacillus hilgardii,7.18099,This study,WG,water
+TG_ID070_WG_T4_S63,Lentilactobacillus hilgardii,7.18099,This study,WG,water
+TG_ID070_WG_T4_S63,Lentilactobacillus hilgardii,7.18099,This study,WG,water
+TG_ID070_WG_T5_S32,Lentilactobacillus hilgardii,6.2144,This study,WG,water
+TG_ID070_WG_T5_S32,Lentilactobacillus hilgardii,6.2144,This study,WG,water
+TG_ID070_WG_T5_S32,Lentilactobacillus hilgardii,6.2144,This study,WG,water
+TG_ID070_WG_T5_S32,Lentilactobacillus hilgardii,6.2144,This study,WG,water
+TG_ID070_WG_T5_S32,Lentilactobacillus hilgardii,6.2144,This study,WG,water
+TG_ID070_WG_T5_S32,Lentilactobacillus hilgardii,6.2144,This study,WG,water
+TG_ID070_WL_T1_S105,Zymomonas mobilis,0.626913,This study,WL,water
+TG_ID070_WL_T1_S105,Zymomonas mobilis,0.626913,This study,WL,water
+TG_ID070_WL_T1_S105,Zymomonas mobilis,0.626913,This study,WL,water
+TG_ID070_WL_T1_S105,Zymomonas mobilis,0.626913,This study,WL,water
+TG_ID070_WL_T1_S105,Zymomonas mobilis,0.626913,This study,WL,water
+TG_ID070_WL_T1_S105,Zymomonas mobilis,0.626913,This study,WL,water
+TG_ID070_WL_T2_S20,Pseudomonas rhodesiae,8.5433,This study,WL,water
+TG_ID070_WL_T2_S20,Pseudomonas rhodesiae,8.5433,This study,WL,water
+TG_ID070_WL_T2_S20,Pseudomonas rhodesiae,8.5433,This study,WL,water
+TG_ID070_WL_T2_S20,Pseudomonas rhodesiae,8.5433,This study,WL,water
+TG_ID070_WL_T2_S20,Pseudomonas rhodesiae,8.5433,This study,WL,water
+TG_ID070_WL_T2_S20,Pseudomonas rhodesiae,8.5433,This study,WL,water
+TG_ID070_WL_T3_S333,Pseudomonas rhodesiae,4.47594,This study,WL,water
+TG_ID070_WL_T3_S333,Pseudomonas rhodesiae,4.47594,This study,WL,water
+TG_ID070_WL_T4_S64,Pseudomonas rhodesiae,3.74829,This study,WL,water
+TG_ID070_WL_T4_S64,Pseudomonas rhodesiae,3.74829,This study,WL,water
+TG_ID070_WL_T4_S64,Pseudomonas rhodesiae,3.74829,This study,WL,water
+TG_ID070_WL_T4_S64,Pseudomonas rhodesiae,3.74829,This study,WL,water
+TG_ID070_WL_T5_S44,Pseudomonas rhodesiae,2.51057,This study,WL,water
+TG_ID070_WL_T5_S44,Pseudomonas rhodesiae,2.51057,This study,WL,water
+TG_ID070_WL_T5_S44,Pseudomonas rhodesiae,2.51057,This study,WL,water
+TG_ID070_WL_T5_S44,Pseudomonas rhodesiae,2.51057,This study,WL,water
+TG_ID070_WL_T5_S44,Pseudomonas rhodesiae,2.51057,This study,WL,water
+TG_ID070_WL_T5_S44,Pseudomonas rhodesiae,2.51057,This study,WL,water
+TG_ID079_WG_T1_S53,Lentilactobacillus hilgardii,21.6796,This study,WG,water
+TG_ID079_WG_T1_S53,Lentilactobacillus hilgardii,21.6796,This study,WG,water
+TG_ID079_WG_T1_S53,Lentilactobacillus hilgardii,21.6796,This study,WG,water
+TG_ID079_WG_T1_S53,Lentilactobacillus hilgardii,21.6796,This study,WG,water
+TG_ID079_WG_T2_S128,Lacticaseibacillus paracasei,13.4212,This study,WG,water
+TG_ID079_WG_T2_S128,Lacticaseibacillus paracasei,13.4212,This study,WG,water
+TG_ID079_WG_T2_S128,Lacticaseibacillus paracasei,13.4212,This study,WG,water
+TG_ID079_WG_T2_S128,Lacticaseibacillus paracasei,13.4212,This study,WG,water
+TG_ID079_WL_T1_S59,Lacticaseibacillus paracasei,27.9604,This study,WL,water
+TG_ID079_WL_T1_S59,Lacticaseibacillus paracasei,27.9604,This study,WL,water
+TG_ID079_WL_T1_S59,Lacticaseibacillus paracasei,27.9604,This study,WL,water
+TG_ID079_WL_T1_S59,Lacticaseibacillus paracasei,27.9604,This study,WL,water
+TG_ID082_WG_T1_S330,Lacticaseibacillus paracasei,18.8498,This study,WG,water
+TG_ID082_WG_T1_S330,Lacticaseibacillus paracasei,18.8498,This study,WG,water
+TG_ID082_WG_T2_S344,Lacticaseibacillus paracasei,31.9627,This study,WG,water
+TG_ID082_WG_T2_S344,Lacticaseibacillus paracasei,31.9627,This study,WG,water
+TG_ID082_WG_T3_S129,Lacticaseibacillus paracasei,58.932,This study,WG,water
+TG_ID082_WG_T3_S129,Lacticaseibacillus paracasei,58.932,This study,WG,water
+TG_ID082_WG_T3_S129,Lacticaseibacillus paracasei,58.932,This study,WG,water
+TG_ID082_WG_T3_S129,Lacticaseibacillus paracasei,58.932,This study,WG,water
+TG_ID082_WG_T4_S130,Lacticaseibacillus paracasei,39.7201,This study,WG,water
+TG_ID082_WG_T4_S130,Lacticaseibacillus paracasei,39.7201,This study,WG,water
+TG_ID082_WG_T4_S130,Lacticaseibacillus paracasei,39.7201,This study,WG,water
+TG_ID082_WG_T4_S130,Lacticaseibacillus paracasei,39.7201,This study,WG,water
+TG_ID082_WG_T5_S131,Lacticaseibacillus paracasei,47.3121,This study,WG,water
+TG_ID082_WG_T5_S131,Lacticaseibacillus paracasei,47.3121,This study,WG,water
+TG_ID082_WG_T5_S131,Lacticaseibacillus paracasei,47.3121,This study,WG,water
+TG_ID082_WG_T5_S131,Lacticaseibacillus paracasei,47.3121,This study,WG,water
+TG_ID082_WL_T1_S305,Lacticaseibacillus paracasei,1.57571,This study,WL,water
+TG_ID082_WL_T1_S305,Lacticaseibacillus paracasei,1.57571,This study,WL,water
+TG_ID082_WL_T2_S345,Lacticaseibacillus paracasei,6.11618,This study,WL,water
+TG_ID082_WL_T2_S345,Lacticaseibacillus paracasei,6.11618,This study,WL,water
+TG_ID082_WL_T3_S400,Lacticaseibacillus paracasei,25.2692,This study,WL,water
+TG_ID082_WL_T3_S400,Lacticaseibacillus paracasei,25.2692,This study,WL,water
+TG_ID082_WL_T4_S84,Saccharomyces cerevisiae,4.75932,This study,WL,water
+TG_ID082_WL_T4_S84,Saccharomyces cerevisiae,4.75932,This study,WL,water
+TG_ID082_WL_T4_S84,Saccharomyces cerevisiae,4.75932,This study,WL,water
+TG_ID082_WL_T4_S84,Saccharomyces cerevisiae,4.75932,This study,WL,water
+TG_ID082_WL_T5_S405,Gluconobacter oxydans,9.41642,This study,WL,water
+TG_ID082_WL_T5_S405,Gluconobacter oxydans,9.41642,This study,WL,water
+TG_ID083_WG_T1_S3,Lacticaseibacillus paracasei,28.674,This study,WG,water
+TG_ID083_WG_T1_S3,Lacticaseibacillus paracasei,28.674,This study,WG,water
+TG_ID083_WG_T1_S3,Lacticaseibacillus paracasei,28.674,This study,WG,water
+TG_ID083_WG_T1_S3,Lacticaseibacillus paracasei,28.674,This study,WG,water
+TG_ID083_WG_T1_S342,Lacticaseibacillus paracasei,29.1933,This study,WG,water
+TG_ID083_WG_T1_S342,Lacticaseibacillus paracasei,29.1933,This study,WG,water
+TG_ID083_WG_T2_S357,Lentilactobacillus hilgardii,12.8999,This study,WG,water
+TG_ID083_WG_T2_S357,Lentilactobacillus hilgardii,12.8999,This study,WG,water
+TG_ID083_WG_T3_S170,Lentilactobacillus hilgardii,15.8603,This study,WG,water
+TG_ID083_WG_T3_S170,Lentilactobacillus hilgardii,15.8603,This study,WG,water
+TG_ID083_WG_T3_S170,Lentilactobacillus hilgardii,15.8603,This study,WG,water
+TG_ID083_WG_T3_S170,Lentilactobacillus hilgardii,15.8603,This study,WG,water
+TG_ID083_WG_T3_S170,Lentilactobacillus hilgardii,15.8603,This study,WG,water
+TG_ID083_WG_T3_S170,Lentilactobacillus hilgardii,15.8603,This study,WG,water
+TG_ID083_WG_T4_S39,Lentilactobacillus hilgardii,4.56125,This study,WG,water
+TG_ID083_WG_T4_S39,Lentilactobacillus hilgardii,4.56125,This study,WG,water
+TG_ID083_WG_T4_S39,Lentilactobacillus hilgardii,4.56125,This study,WG,water
+TG_ID083_WG_T4_S39,Lentilactobacillus hilgardii,4.56125,This study,WG,water
+TG_ID083_WG_T5_S17,Lacticaseibacillus paracasei,31.0579,This study,WG,water
+TG_ID083_WG_T5_S17,Lacticaseibacillus paracasei,31.0579,This study,WG,water
+TG_ID083_WG_T5_S17,Lacticaseibacillus paracasei,31.0579,This study,WG,water
+TG_ID083_WG_T5_S17,Lacticaseibacillus paracasei,31.0579,This study,WG,water
+TG_ID083_WG_T5_S17,Lacticaseibacillus paracasei,31.0579,This study,WG,water
+TG_ID083_WG_T5_S17,Lacticaseibacillus paracasei,31.0579,This study,WG,water
+TG_ID083_WL_T1_S317,Lacticaseibacillus paracasei,33.0449,This study,WL,water
+TG_ID083_WL_T1_S317,Lacticaseibacillus paracasei,33.0449,This study,WL,water
+TG_ID083_WL_T3_S182,Lacticaseibacillus paracasei,10.9083,This study,WL,water
+TG_ID083_WL_T3_S182,Lacticaseibacillus paracasei,10.9083,This study,WL,water
+TG_ID083_WL_T3_S182,Lacticaseibacillus paracasei,10.9083,This study,WL,water
+TG_ID083_WL_T3_S182,Lacticaseibacillus paracasei,10.9083,This study,WL,water
+TG_ID083_WL_T3_S182,Lacticaseibacillus paracasei,10.9083,This study,WL,water
+TG_ID083_WL_T3_S182,Lacticaseibacillus paracasei,10.9083,This study,WL,water
+TG_ID083_WL_T4_S40,Oenococcus oeni,8.96779,This study,WL,water
+TG_ID083_WL_T4_S40,Oenococcus oeni,8.96779,This study,WL,water
+TG_ID083_WL_T4_S40,Oenococcus oeni,8.96779,This study,WL,water
+TG_ID083_WL_T4_S40,Oenococcus oeni,8.96779,This study,WL,water
+TG_ID083_WL_T5_S29,Lacticaseibacillus paracasei,15.4232,This study,WL,water
+TG_ID083_WL_T5_S29,Lacticaseibacillus paracasei,15.4232,This study,WL,water
+TG_ID083_WL_T5_S29,Lacticaseibacillus paracasei,15.4232,This study,WL,water
+TG_ID083_WL_T5_S29,Lacticaseibacillus paracasei,15.4232,This study,WL,water
+TG_ID083_WL_T5_S29,Lacticaseibacillus paracasei,15.4232,This study,WL,water
+TG_ID083_WL_T5_S29,Lacticaseibacillus paracasei,15.4232,This study,WL,water
+TG_ID084_WG_T1_S354,Lentilactobacillus hilgardii,14.6067,This study,WG,water
+TG_ID084_WG_T1_S354,Lentilactobacillus hilgardii,14.6067,This study,WG,water
+TG_ID084_WG_T2_S381,Saccharomyces cerevisiae,5.1641,This study,WG,water
+TG_ID084_WG_T2_S381,Saccharomyces cerevisiae,5.1641,This study,WG,water
+TG_ID084_WG_T3_S146,Saccharomyces cerevisiae,4.93007,This study,WG,water
+TG_ID084_WG_T3_S146,Saccharomyces cerevisiae,4.93007,This study,WG,water
+TG_ID084_WG_T3_S146,Saccharomyces cerevisiae,4.93007,This study,WG,water
+TG_ID084_WG_T3_S146,Saccharomyces cerevisiae,4.93007,This study,WG,water
+TG_ID084_WG_T3_S146,Saccharomyces cerevisiae,4.93007,This study,WG,water
+TG_ID084_WG_T3_S146,Saccharomyces cerevisiae,4.93007,This study,WG,water
+TG_ID084_WG_T4_S132,Lactococcus lactis,3.80348,This study,WG,water
+TG_ID084_WG_T4_S132,Lactococcus lactis,3.80348,This study,WG,water
+TG_ID084_WG_T4_S132,Lactococcus lactis,3.80348,This study,WG,water
+TG_ID084_WG_T4_S132,Lactococcus lactis,3.80348,This study,WG,water
+TG_ID084_WG_T5_S41,Lactococcus lactis,6.18452,This study,WG,water
+TG_ID084_WG_T5_S41,Lactococcus lactis,6.18452,This study,WG,water
+TG_ID084_WG_T5_S41,Lactococcus lactis,6.18452,This study,WG,water
+TG_ID084_WG_T5_S41,Lactococcus lactis,6.18452,This study,WG,water
+TG_ID084_WG_T5_S41,Lactococcus lactis,6.18452,This study,WG,water
+TG_ID084_WG_T5_S41,Lactococcus lactis,6.18452,This study,WG,water
+TG_ID084_WG_T6_S133,Lactococcus lactis,7.30082,This study,WG,water
+TG_ID084_WG_T6_S133,Lactococcus lactis,7.30082,This study,WG,water
+TG_ID084_WG_T6_S133,Lactococcus lactis,7.30082,This study,WG,water
+TG_ID084_WG_T6_S133,Lactococcus lactis,7.30082,This study,WG,water
+TG_ID084_WL_T1_S329,Pichia kudriavzevii,0.853722,This study,WL,water
+TG_ID084_WL_T1_S329,Pichia kudriavzevii,0.853722,This study,WL,water
+TG_ID084_WL_T2_S369,Leclercia adecarboxylata,44.4866,This study,WL,water
+TG_ID084_WL_T2_S369,Leclercia adecarboxylata,44.4866,This study,WL,water
+TG_ID084_WL_T3_S158,Leclercia adecarboxylata,1.94456,This study,WL,water
+TG_ID084_WL_T3_S158,Leclercia adecarboxylata,1.94456,This study,WL,water
+TG_ID084_WL_T3_S158,Leclercia adecarboxylata,1.94456,This study,WL,water
+TG_ID084_WL_T3_S158,Leclercia adecarboxylata,1.94456,This study,WL,water
+TG_ID084_WL_T3_S158,Leclercia adecarboxylata,1.94456,This study,WL,water
+TG_ID084_WL_T3_S158,Leclercia adecarboxylata,1.94456,This study,WL,water
+TG_ID084_WL_T4_S149,Lactococcus lactis,35.2905,This study,WL,water
+TG_ID084_WL_T4_S149,Lactococcus lactis,35.2905,This study,WL,water
+TG_ID084_WL_T4_S149,Lactococcus lactis,35.2905,This study,WL,water
+TG_ID084_WL_T4_S149,Lactococcus lactis,35.2905,This study,WL,water
+TG_ID084_WL_T5_S53,Lacticaseibacillus paracasei,8.08473,This study,WL,water
+TG_ID084_WL_T5_S53,Lacticaseibacillus paracasei,8.08473,This study,WL,water
+TG_ID084_WL_T5_S53,Lacticaseibacillus paracasei,8.08473,This study,WL,water
+TG_ID084_WL_T5_S53,Lacticaseibacillus paracasei,8.08473,This study,WL,water
+TG_ID084_WL_T5_S53,Lacticaseibacillus paracasei,8.08473,This study,WL,water
+TG_ID084_WL_T5_S53,Lacticaseibacillus paracasei,8.08473,This study,WL,water
+TG_ID085_WG_T1_S366,Lacticaseibacillus paracasei,25.4765,This study,WG,water
+TG_ID085_WG_T1_S366,Lacticaseibacillus paracasei,25.4765,This study,WG,water
+TG_ID085_WG_T2_S123,Lentilactobacillus hilgardii,15.0992,This study,WG,water
+TG_ID085_WG_T2_S123,Lentilactobacillus hilgardii,15.0992,This study,WG,water
+TG_ID085_WG_T2_S123,Lentilactobacillus hilgardii,15.0992,This study,WG,water
+TG_ID085_WG_T2_S123,Lentilactobacillus hilgardii,15.0992,This study,WG,water
+TG_ID085_WG_T2_S123,Lentilactobacillus hilgardii,15.0992,This study,WG,water
+TG_ID085_WG_T2_S123,Lentilactobacillus hilgardii,15.0992,This study,WG,water
+TG_ID085_WG_T3_S99,Lacticaseibacillus paracasei,6.70974,This study,WG,water
+TG_ID085_WG_T3_S99,Lacticaseibacillus paracasei,6.70974,This study,WG,water
+TG_ID085_WG_T3_S99,Lacticaseibacillus paracasei,6.70974,This study,WG,water
+TG_ID085_WG_T3_S99,Lacticaseibacillus paracasei,6.70974,This study,WG,water
+TG_ID085_WG_T3_S99,Lacticaseibacillus paracasei,6.70974,This study,WG,water
+TG_ID085_WG_T3_S99,Lacticaseibacillus paracasei,6.70974,This study,WG,water
+TG_ID085_WG_T4_S41,Lacticaseibacillus paracasei,7.32882,This study,WG,water
+TG_ID085_WG_T4_S41,Lacticaseibacillus paracasei,7.32882,This study,WG,water
+TG_ID085_WG_T4_S41,Lacticaseibacillus paracasei,7.32882,This study,WG,water
+TG_ID085_WG_T4_S41,Lacticaseibacillus paracasei,7.32882,This study,WG,water
+TG_ID085_WG_T5_S65,Lacticaseibacillus paracasei,8.08143,This study,WG,water
+TG_ID085_WG_T5_S65,Lacticaseibacillus paracasei,8.08143,This study,WG,water
+TG_ID085_WG_T5_S65,Lacticaseibacillus paracasei,8.08143,This study,WG,water
+TG_ID085_WG_T5_S65,Lacticaseibacillus paracasei,8.08143,This study,WG,water
+TG_ID085_WG_T5_S65,Lacticaseibacillus paracasei,8.08143,This study,WG,water
+TG_ID085_WG_T5_S65,Lacticaseibacillus paracasei,8.08143,This study,WG,water
+TG_ID085_WL_T1_S341,Lacticaseibacillus paracasei,32.1188,This study,WL,water
+TG_ID085_WL_T1_S341,Lacticaseibacillus paracasei,32.1188,This study,WL,water
+TG_ID085_WL_T2_S298,Lacticaseibacillus paracasei,2.85174,This study,WL,water
+TG_ID085_WL_T2_S298,Lacticaseibacillus paracasei,2.85174,This study,WL,water
+TG_ID085_WL_T3_S111,Lacticaseibacillus paracasei,4.07235,This study,WL,water
+TG_ID085_WL_T3_S111,Lacticaseibacillus paracasei,4.07235,This study,WL,water
+TG_ID085_WL_T3_S111,Lacticaseibacillus paracasei,4.07235,This study,WL,water
+TG_ID085_WL_T3_S111,Lacticaseibacillus paracasei,4.07235,This study,WL,water
+TG_ID085_WL_T3_S111,Lacticaseibacillus paracasei,4.07235,This study,WL,water
+TG_ID085_WL_T3_S111,Lacticaseibacillus paracasei,4.07235,This study,WL,water
+TG_ID085_WL_T4_S42,Lacticaseibacillus paracasei,8.54297,This study,WL,water
+TG_ID085_WL_T4_S42,Lacticaseibacillus paracasei,8.54297,This study,WL,water
+TG_ID085_WL_T4_S42,Lacticaseibacillus paracasei,8.54297,This study,WL,water
+TG_ID085_WL_T4_S42,Lacticaseibacillus paracasei,8.54297,This study,WL,water
+TG_ID085_WL_T5_S77,Lacticaseibacillus paracasei,13.4903,This study,WL,water
+TG_ID085_WL_T5_S77,Lacticaseibacillus paracasei,13.4903,This study,WL,water
+TG_ID085_WL_T5_S77,Lacticaseibacillus paracasei,13.4903,This study,WL,water
+TG_ID085_WL_T5_S77,Lacticaseibacillus paracasei,13.4903,This study,WL,water
+TG_ID085_WL_T5_S77,Lacticaseibacillus paracasei,13.4903,This study,WL,water
+TG_ID085_WL_T5_S77,Lacticaseibacillus paracasei,13.4903,This study,WL,water
+TG_ID086_WG_T1_S378,Lentilactobacillus hilgardii,8.88515,This study,WG,water
+TG_ID086_WG_T1_S378,Lentilactobacillus hilgardii,8.88515,This study,WG,water
+TG_ID086_WG_T2_S356,Klebsiella grimontii,6.02873,This study,WG,water
+TG_ID086_WG_T2_S356,Klebsiella grimontii,6.02873,This study,WG,water
+TG_ID086_WG_T3_S135,Lentilactobacillus hilgardii,4.9855,This study,WG,water
+TG_ID086_WG_T3_S135,Lentilactobacillus hilgardii,4.9855,This study,WG,water
+TG_ID086_WG_T3_S135,Lentilactobacillus hilgardii,4.9855,This study,WG,water
+TG_ID086_WG_T3_S135,Lentilactobacillus hilgardii,4.9855,This study,WG,water
+TG_ID086_WG_T3_S135,Lentilactobacillus hilgardii,4.9855,This study,WG,water
+TG_ID086_WG_T3_S135,Lentilactobacillus hilgardii,4.9855,This study,WG,water
+TG_ID086_WG_T4_S43,Acinetobacter ursingii,3.94585,This study,WG,water
+TG_ID086_WG_T4_S43,Acinetobacter ursingii,3.94585,This study,WG,water
+TG_ID086_WG_T4_S43,Acinetobacter ursingii,3.94585,This study,WG,water
+TG_ID086_WG_T4_S43,Acinetobacter ursingii,3.94585,This study,WG,water
+TG_ID086_WG_T5_S89,Agrobacterium tumefaciens,7.13078,This study,WG,water
+TG_ID086_WG_T5_S89,Agrobacterium tumefaciens,7.13078,This study,WG,water
+TG_ID086_WG_T5_S89,Agrobacterium tumefaciens,7.13078,This study,WG,water
+TG_ID086_WG_T5_S89,Agrobacterium tumefaciens,7.13078,This study,WG,water
+TG_ID086_WG_T5_S89,Agrobacterium tumefaciens,7.13078,This study,WG,water
+TG_ID086_WG_T5_S89,Agrobacterium tumefaciens,7.13078,This study,WG,water
+TG_ID086_WL_T1_S353,Acinetobacter johnsonii,8.19414,This study,WL,water
+TG_ID086_WL_T1_S353,Acinetobacter johnsonii,8.19414,This study,WL,water
+TG_ID086_WL_T2_S310,Klebsiella grimontii,17.759,This study,WL,water
+TG_ID086_WL_T2_S310,Klebsiella grimontii,17.759,This study,WL,water
+TG_ID086_WL_T3_S147,Comamonas testosteroni,20.3188,This study,WL,water
+TG_ID086_WL_T3_S147,Comamonas testosteroni,20.3188,This study,WL,water
+TG_ID086_WL_T3_S147,Comamonas testosteroni,20.3188,This study,WL,water
+TG_ID086_WL_T3_S147,Comamonas testosteroni,20.3188,This study,WL,water
+TG_ID086_WL_T3_S147,Comamonas testosteroni,20.3188,This study,WL,water
+TG_ID086_WL_T3_S147,Comamonas testosteroni,20.3188,This study,WL,water
+TG_ID086_WL_T4_S44,Acinetobacter ursingii,19.1242,This study,WL,water
+TG_ID086_WL_T4_S44,Acinetobacter ursingii,19.1242,This study,WL,water
+TG_ID086_WL_T4_S44,Acinetobacter ursingii,19.1242,This study,WL,water
+TG_ID086_WL_T4_S44,Acinetobacter ursingii,19.1242,This study,WL,water
+TG_ID086_WL_T5_S6,Agrobacterium tumefaciens,17.6767,This study,WL,water
+TG_ID086_WL_T5_S6,Agrobacterium tumefaciens,17.6767,This study,WL,water
+TG_ID086_WL_T5_S6,Agrobacterium tumefaciens,17.6767,This study,WL,water
+TG_ID086_WL_T5_S6,Agrobacterium tumefaciens,17.6767,This study,WL,water
+TG_ID086_WL_T5_S6,Agrobacterium tumefaciens,17.6767,This study,WL,water
+TG_ID086_WL_T5_S6,Agrobacterium tumefaciens,17.6767,This study,WL,water
+TG_ID087_WG_T1_S295,Lacticaseibacillus paracasei,31.5177,This study,WG,water
+TG_ID087_WG_T1_S295,Lacticaseibacillus paracasei,31.5177,This study,WG,water
+TG_ID087_WG_T2_S334,Lentilactobacillus hilgardii,21.076,This study,WG,water
+TG_ID087_WG_T2_S334,Lentilactobacillus hilgardii,21.076,This study,WG,water
+TG_ID087_WG_T3_S159,Lentilactobacillus hilgardii,22.244,This study,WG,water
+TG_ID087_WG_T3_S159,Lentilactobacillus hilgardii,22.244,This study,WG,water
+TG_ID087_WG_T3_S159,Lentilactobacillus hilgardii,22.244,This study,WG,water
+TG_ID087_WG_T3_S159,Lentilactobacillus hilgardii,22.244,This study,WG,water
+TG_ID087_WG_T3_S159,Lentilactobacillus hilgardii,22.244,This study,WG,water
+TG_ID087_WG_T3_S159,Lentilactobacillus hilgardii,22.244,This study,WG,water
+TG_ID087_WG_T4_S45,Lentilactobacillus hilgardii,19.193,This study,WG,water
+TG_ID087_WG_T4_S45,Lentilactobacillus hilgardii,19.193,This study,WG,water
+TG_ID087_WG_T4_S45,Lentilactobacillus hilgardii,19.193,This study,WG,water
+TG_ID087_WG_T4_S45,Lentilactobacillus hilgardii,19.193,This study,WG,water
+TG_ID087_WG_T5_S18,Lentilactobacillus hilgardii,24.0155,This study,WG,water
+TG_ID087_WG_T5_S18,Lentilactobacillus hilgardii,24.0155,This study,WG,water
+TG_ID087_WG_T5_S18,Lentilactobacillus hilgardii,24.0155,This study,WG,water
+TG_ID087_WG_T5_S18,Lentilactobacillus hilgardii,24.0155,This study,WG,water
+TG_ID087_WG_T5_S18,Lentilactobacillus hilgardii,24.0155,This study,WG,water
+TG_ID087_WG_T5_S18,Lentilactobacillus hilgardii,24.0155,This study,WG,water
+TG_ID087_WL_T1_S365,Lacticaseibacillus paracasei,65.1096,This study,WL,water
+TG_ID087_WL_T1_S365,Lacticaseibacillus paracasei,65.1096,This study,WL,water
+TG_ID087_WL_T2_S322,Leuconostoc citreum,12.1539,This study,WL,water
+TG_ID087_WL_T2_S322,Leuconostoc citreum,12.1539,This study,WL,water
+TG_ID087_WL_T3_S171,Lentilactobacillus hilgardii,4.34437,This study,WL,water
+TG_ID087_WL_T3_S171,Lentilactobacillus hilgardii,4.34437,This study,WL,water
+TG_ID087_WL_T3_S171,Lentilactobacillus hilgardii,4.34437,This study,WL,water
+TG_ID087_WL_T3_S171,Lentilactobacillus hilgardii,4.34437,This study,WL,water
+TG_ID087_WL_T3_S171,Lentilactobacillus hilgardii,4.34437,This study,WL,water
+TG_ID087_WL_T3_S171,Lentilactobacillus hilgardii,4.34437,This study,WL,water
+TG_ID087_WL_T4_S46,Gluconobacter oxydans,2.85197,This study,WL,water
+TG_ID087_WL_T4_S46,Gluconobacter oxydans,2.85197,This study,WL,water
+TG_ID087_WL_T4_S46,Gluconobacter oxydans,2.85197,This study,WL,water
+TG_ID087_WL_T4_S46,Gluconobacter oxydans,2.85197,This study,WL,water
+TG_ID087_WL_T5_S30,Lentilactobacillus hilgardii,5.34526,This study,WL,water
+TG_ID087_WL_T5_S30,Lentilactobacillus hilgardii,5.34526,This study,WL,water
+TG_ID087_WL_T5_S30,Lentilactobacillus hilgardii,5.34526,This study,WL,water
+TG_ID087_WL_T5_S30,Lentilactobacillus hilgardii,5.34526,This study,WL,water
+TG_ID087_WL_T5_S30,Lentilactobacillus hilgardii,5.34526,This study,WL,water
+TG_ID087_WL_T5_S30,Lentilactobacillus hilgardii,5.34526,This study,WL,water
+TG_ID088_WG_T1_S307,Lacticaseibacillus paracasei,35.372,This study,WG,water
+TG_ID088_WG_T1_S307,Lacticaseibacillus paracasei,35.372,This study,WG,water
+TG_ID088_WG_T2_S368,Lacticaseibacillus paracasei,32.7172,This study,WG,water
+TG_ID088_WG_T2_S368,Lacticaseibacillus paracasei,32.7172,This study,WG,water
+TG_ID088_WG_T3_S183,Lacticaseibacillus paracasei,21.0222,This study,WG,water
+TG_ID088_WG_T3_S183,Lacticaseibacillus paracasei,21.0222,This study,WG,water
+TG_ID088_WG_T3_S183,Lacticaseibacillus paracasei,21.0222,This study,WG,water
+TG_ID088_WG_T3_S183,Lacticaseibacillus paracasei,21.0222,This study,WG,water
+TG_ID088_WG_T3_S183,Lacticaseibacillus paracasei,21.0222,This study,WG,water
+TG_ID088_WG_T3_S183,Lacticaseibacillus paracasei,21.0222,This study,WG,water
+TG_ID088_WG_T4_S47,Lacticaseibacillus paracasei,9.3223,This study,WG,water
+TG_ID088_WG_T4_S47,Lacticaseibacillus paracasei,9.3223,This study,WG,water
+TG_ID088_WG_T4_S47,Lacticaseibacillus paracasei,9.3223,This study,WG,water
+TG_ID088_WG_T4_S47,Lacticaseibacillus paracasei,9.3223,This study,WG,water
+TG_ID088_WG_T5_S42,Lentilactobacillus hilgardii,23.7256,This study,WG,water
+TG_ID088_WG_T5_S42,Lentilactobacillus hilgardii,23.7256,This study,WG,water
+TG_ID088_WG_T5_S42,Lentilactobacillus hilgardii,23.7256,This study,WG,water
+TG_ID088_WG_T5_S42,Lentilactobacillus hilgardii,23.7256,This study,WG,water
+TG_ID088_WG_T5_S42,Lentilactobacillus hilgardii,23.7256,This study,WG,water
+TG_ID088_WG_T5_S42,Lentilactobacillus hilgardii,23.7256,This study,WG,water
+TG_ID088_WL_T1_S377,Lacticaseibacillus paracasei,35.7938,This study,WL,water
+TG_ID088_WL_T1_S377,Lacticaseibacillus paracasei,35.7938,This study,WL,water
+TG_ID088_WL_T2_S346,Leuconostoc gelidum,33.5719,This study,WL,water
+TG_ID088_WL_T2_S346,Leuconostoc gelidum,33.5719,This study,WL,water
+TG_ID088_WL_T3_S100,Leuconostoc gelidum,21.9324,This study,WL,water
+TG_ID088_WL_T3_S100,Leuconostoc gelidum,21.9324,This study,WL,water
+TG_ID088_WL_T3_S100,Leuconostoc gelidum,21.9324,This study,WL,water
+TG_ID088_WL_T3_S100,Leuconostoc gelidum,21.9324,This study,WL,water
+TG_ID088_WL_T3_S100,Leuconostoc gelidum,21.9324,This study,WL,water
+TG_ID088_WL_T3_S100,Leuconostoc gelidum,21.9324,This study,WL,water
+TG_ID088_WL_T4_S48,Lentilactobacillus hilgardii,0.424508,This study,WL,water
+TG_ID088_WL_T4_S48,Lentilactobacillus hilgardii,0.424508,This study,WL,water
+TG_ID088_WL_T4_S48,Lentilactobacillus hilgardii,0.424508,This study,WL,water
+TG_ID088_WL_T4_S48,Lentilactobacillus hilgardii,0.424508,This study,WL,water
+TG_ID088_WL_T5_S54,Lacticaseibacillus paracasei,0.897142,This study,WL,water
+TG_ID088_WL_T5_S54,Lacticaseibacillus paracasei,0.897142,This study,WL,water
+TG_ID088_WL_T5_S54,Lacticaseibacillus paracasei,0.897142,This study,WL,water
+TG_ID088_WL_T5_S54,Lacticaseibacillus paracasei,0.897142,This study,WL,water
+TG_ID088_WL_T5_S54,Lacticaseibacillus paracasei,0.897142,This study,WL,water
+TG_ID088_WL_T5_S54,Lacticaseibacillus paracasei,0.897142,This study,WL,water
+TG_ID089_WG_T1_S319,Lacticaseibacillus paracasei,4.39736,This study,WG,water
+TG_ID089_WG_T1_S319,Lacticaseibacillus paracasei,4.39736,This study,WG,water
+TG_ID089_WG_T2_S380,Lacticaseibacillus paracasei,41.1582,This study,WG,water
+TG_ID089_WG_T2_S380,Lacticaseibacillus paracasei,41.1582,This study,WG,water
+TG_ID089_WG_T3_S112,Lacticaseibacillus paracasei,50.8344,This study,WG,water
+TG_ID089_WG_T3_S112,Lacticaseibacillus paracasei,50.8344,This study,WG,water
+TG_ID089_WG_T3_S112,Lacticaseibacillus paracasei,50.8344,This study,WG,water
+TG_ID089_WG_T3_S112,Lacticaseibacillus paracasei,50.8344,This study,WG,water
+TG_ID089_WG_T3_S112,Lacticaseibacillus paracasei,50.8344,This study,WG,water
+TG_ID089_WG_T3_S112,Lacticaseibacillus paracasei,50.8344,This study,WG,water
+TG_ID089_WG_T4_S49,Lacticaseibacillus paracasei,48.5091,This study,WG,water
+TG_ID089_WG_T4_S49,Lacticaseibacillus paracasei,48.5091,This study,WG,water
+TG_ID089_WG_T4_S49,Lacticaseibacillus paracasei,48.5091,This study,WG,water
+TG_ID089_WG_T4_S49,Lacticaseibacillus paracasei,48.5091,This study,WG,water
+TG_ID089_WG_T5_S66,Lacticaseibacillus paracasei,40.8478,This study,WG,water
+TG_ID089_WG_T5_S66,Lacticaseibacillus paracasei,40.8478,This study,WG,water
+TG_ID089_WG_T5_S66,Lacticaseibacillus paracasei,40.8478,This study,WG,water
+TG_ID089_WG_T5_S66,Lacticaseibacillus paracasei,40.8478,This study,WG,water
+TG_ID089_WG_T5_S66,Lacticaseibacillus paracasei,40.8478,This study,WG,water
+TG_ID089_WG_T5_S66,Lacticaseibacillus paracasei,40.8478,This study,WG,water
+TG_ID089_WL_T1_S294,Acinetobacter johnsonii,14.5526,This study,WL,water
+TG_ID089_WL_T1_S294,Acinetobacter johnsonii,14.5526,This study,WL,water
+TG_ID089_WL_T2_S358,Lacticaseibacillus paracasei,32.8157,This study,WL,water
+TG_ID089_WL_T2_S358,Lacticaseibacillus paracasei,32.8157,This study,WL,water
+TG_ID089_WL_T3_S124,Lacticaseibacillus paracasei,38.5527,This study,WL,water
+TG_ID089_WL_T3_S124,Lacticaseibacillus paracasei,38.5527,This study,WL,water
+TG_ID089_WL_T3_S124,Lacticaseibacillus paracasei,38.5527,This study,WL,water
+TG_ID089_WL_T3_S124,Lacticaseibacillus paracasei,38.5527,This study,WL,water
+TG_ID089_WL_T3_S124,Lacticaseibacillus paracasei,38.5527,This study,WL,water
+TG_ID089_WL_T3_S124,Lacticaseibacillus paracasei,38.5527,This study,WL,water
+TG_ID089_WL_T4_S50,Lacticaseibacillus paracasei,33.6914,This study,WL,water
+TG_ID089_WL_T4_S50,Lacticaseibacillus paracasei,33.6914,This study,WL,water
+TG_ID089_WL_T4_S50,Lacticaseibacillus paracasei,33.6914,This study,WL,water
+TG_ID089_WL_T4_S50,Lacticaseibacillus paracasei,33.6914,This study,WL,water
+TG_ID089_WL_T5_S78,Lacticaseibacillus paracasei,25.0193,This study,WL,water
+TG_ID089_WL_T5_S78,Lacticaseibacillus paracasei,25.0193,This study,WL,water
+TG_ID089_WL_T5_S78,Lacticaseibacillus paracasei,25.0193,This study,WL,water
+TG_ID089_WL_T5_S78,Lacticaseibacillus paracasei,25.0193,This study,WL,water
+TG_ID089_WL_T5_S78,Lacticaseibacillus paracasei,25.0193,This study,WL,water
+TG_ID089_WL_T5_S78,Lacticaseibacillus paracasei,25.0193,This study,WL,water
+TG_ID090_WG_T1_S331,Lentilactobacillus hilgardii,14.3111,This study,WG,water
+TG_ID090_WG_T1_S331,Lentilactobacillus hilgardii,14.3111,This study,WG,water
+TG_ID090_WG_T2_S297,Lacticaseibacillus paracasei,46.7547,This study,WG,water
+TG_ID090_WG_T2_S297,Lacticaseibacillus paracasei,46.7547,This study,WG,water
+TG_ID090_WG_T3_S136,Lacticaseibacillus paracasei,56.2137,This study,WG,water
+TG_ID090_WG_T3_S136,Lacticaseibacillus paracasei,56.2137,This study,WG,water
+TG_ID090_WG_T3_S136,Lacticaseibacillus paracasei,56.2137,This study,WG,water
+TG_ID090_WG_T3_S136,Lacticaseibacillus paracasei,56.2137,This study,WG,water
+TG_ID090_WG_T3_S136,Lacticaseibacillus paracasei,56.2137,This study,WG,water
+TG_ID090_WG_T3_S136,Lacticaseibacillus paracasei,56.2137,This study,WG,water
+TG_ID090_WG_T4_S51,Lacticaseibacillus paracasei,49.8011,This study,WG,water
+TG_ID090_WG_T4_S51,Lacticaseibacillus paracasei,49.8011,This study,WG,water
+TG_ID090_WG_T4_S51,Lacticaseibacillus paracasei,49.8011,This study,WG,water
+TG_ID090_WG_T4_S51,Lacticaseibacillus paracasei,49.8011,This study,WG,water
+TG_ID090_WG_T5_S90,Lacticaseibacillus paracasei,39.4205,This study,WG,water
+TG_ID090_WG_T5_S90,Lacticaseibacillus paracasei,39.4205,This study,WG,water
+TG_ID090_WG_T5_S90,Lacticaseibacillus paracasei,39.4205,This study,WG,water
+TG_ID090_WG_T5_S90,Lacticaseibacillus paracasei,39.4205,This study,WG,water
+TG_ID090_WG_T5_S90,Lacticaseibacillus paracasei,39.4205,This study,WG,water
+TG_ID090_WG_T5_S90,Lacticaseibacillus paracasei,39.4205,This study,WG,water
+TG_ID090_WL_T1_S306,Acinetobacter johnsonii,56.4375,This study,WL,water
+TG_ID090_WL_T1_S306,Acinetobacter johnsonii,56.4375,This study,WL,water
+TG_ID090_WL_T2_S370,Leuconostoc pseudomesenteroides,39.021,This study,WL,water
+TG_ID090_WL_T2_S370,Leuconostoc pseudomesenteroides,39.021,This study,WL,water
+TG_ID090_WL_T3_S148,Lacticaseibacillus paracasei,48.4593,This study,WL,water
+TG_ID090_WL_T3_S148,Lacticaseibacillus paracasei,48.4593,This study,WL,water
+TG_ID090_WL_T3_S148,Lacticaseibacillus paracasei,48.4593,This study,WL,water
+TG_ID090_WL_T3_S148,Lacticaseibacillus paracasei,48.4593,This study,WL,water
+TG_ID090_WL_T3_S148,Lacticaseibacillus paracasei,48.4593,This study,WL,water
+TG_ID090_WL_T3_S148,Lacticaseibacillus paracasei,48.4593,This study,WL,water
+TG_ID090_WL_T5_S7,Lacticaseibacillus paracasei,24.5839,This study,WL,water
+TG_ID090_WL_T5_S7,Lacticaseibacillus paracasei,24.5839,This study,WL,water
+TG_ID090_WL_T5_S7,Lacticaseibacillus paracasei,24.5839,This study,WL,water
+TG_ID090_WL_T5_S7,Lacticaseibacillus paracasei,24.5839,This study,WL,water
+TG_ID090_WL_T5_S7,Lacticaseibacillus paracasei,24.5839,This study,WL,water
+TG_ID090_WL_T5_S7,Lacticaseibacillus paracasei,24.5839,This study,WL,water
+TG_ID092_WG_T1_S343,Lentilactobacillus hilgardii,6.80965,This study,WG,water
+TG_ID092_WG_T1_S343,Lentilactobacillus hilgardii,6.80965,This study,WG,water
+TG_ID092_WG_T2_S160,Lacticaseibacillus paracasei,39.4825,This study,WG,water
+TG_ID092_WG_T2_S160,Lacticaseibacillus paracasei,39.4825,This study,WG,water
+TG_ID092_WG_T2_S160,Lacticaseibacillus paracasei,39.4825,This study,WG,water
+TG_ID092_WG_T2_S160,Lacticaseibacillus paracasei,39.4825,This study,WG,water
+TG_ID092_WG_T2_S160,Lacticaseibacillus paracasei,39.4825,This study,WG,water
+TG_ID092_WG_T2_S160,Lacticaseibacillus paracasei,39.4825,This study,WG,water
+TG_ID092_WG_T3_S58,Lacticaseibacillus paracasei,60.4309,This study,WG,water
+TG_ID092_WG_T3_S58,Lacticaseibacillus paracasei,60.4309,This study,WG,water
+TG_ID092_WG_T3_S58,Lacticaseibacillus paracasei,60.4309,This study,WG,water
+TG_ID092_WG_T3_S58,Lacticaseibacillus paracasei,60.4309,This study,WG,water
+TG_ID092_WG_T3_S58,Lacticaseibacillus paracasei,60.4309,This study,WG,water
+TG_ID092_WG_T3_S58,Lacticaseibacillus paracasei,60.4309,This study,WG,water
+TG_ID092_WG_T4_S17,Lentilactobacillus hilgardii,15.3294,This study,WG,water
+TG_ID092_WG_T4_S17,Lentilactobacillus hilgardii,15.3294,This study,WG,water
+TG_ID092_WG_T4_S17,Lentilactobacillus hilgardii,15.3294,This study,WG,water
+TG_ID092_WG_T4_S17,Lentilactobacillus hilgardii,15.3294,This study,WG,water
+TG_ID092_WG_T5_S82,Lacticaseibacillus paracasei,33.486,This study,WG,water
+TG_ID092_WG_T5_S82,Lacticaseibacillus paracasei,33.486,This study,WG,water
+TG_ID092_WG_T5_S82,Lacticaseibacillus paracasei,33.486,This study,WG,water
+TG_ID092_WG_T5_S82,Lacticaseibacillus paracasei,33.486,This study,WG,water
+TG_ID092_WG_T5_S82,Lacticaseibacillus paracasei,33.486,This study,WG,water
+TG_ID092_WG_T5_S82,Lacticaseibacillus paracasei,33.486,This study,WG,water
+TG_ID092_WG_T6_S80,Lentilactobacillus hilgardii,27.4834,This study,WG,water
+TG_ID092_WG_T6_S80,Lentilactobacillus hilgardii,27.4834,This study,WG,water
+TG_ID092_WG_T6_S80,Lentilactobacillus hilgardii,27.4834,This study,WG,water
+TG_ID092_WG_T6_S80,Lentilactobacillus hilgardii,27.4834,This study,WG,water
+TG_ID092_WG_T6_S80,Lentilactobacillus hilgardii,27.4834,This study,WG,water
+TG_ID092_WG_T6_S80,Lentilactobacillus hilgardii,27.4834,This study,WG,water
+TG_ID092_WL_T1_S318,Acinetobacter johnsonii,16.219,This study,WL,water
+TG_ID092_WL_T1_S318,Acinetobacter johnsonii,16.219,This study,WL,water
+TG_ID092_WL_T2_S172,Lacticaseibacillus paracasei,39.4553,This study,WL,water
+TG_ID092_WL_T2_S172,Lacticaseibacillus paracasei,39.4553,This study,WL,water
+TG_ID092_WL_T2_S172,Lacticaseibacillus paracasei,39.4553,This study,WL,water
+TG_ID092_WL_T2_S172,Lacticaseibacillus paracasei,39.4553,This study,WL,water
+TG_ID092_WL_T2_S172,Lacticaseibacillus paracasei,39.4553,This study,WL,water
+TG_ID092_WL_T2_S172,Lacticaseibacillus paracasei,39.4553,This study,WL,water
+TG_ID092_WL_T3_S70,Lacticaseibacillus paracasei,46.0206,This study,WL,water
+TG_ID092_WL_T3_S70,Lacticaseibacillus paracasei,46.0206,This study,WL,water
+TG_ID092_WL_T3_S70,Lacticaseibacillus paracasei,46.0206,This study,WL,water
+TG_ID092_WL_T3_S70,Lacticaseibacillus paracasei,46.0206,This study,WL,water
+TG_ID092_WL_T3_S70,Lacticaseibacillus paracasei,46.0206,This study,WL,water
+TG_ID092_WL_T3_S70,Lacticaseibacillus paracasei,46.0206,This study,WL,water
+TG_ID092_WL_T4_S23,Lentilactobacillus hilgardii,2.84916,This study,WL,water
+TG_ID092_WL_T4_S23,Lentilactobacillus hilgardii,2.84916,This study,WL,water
+TG_ID092_WL_T4_S23,Lentilactobacillus hilgardii,2.84916,This study,WL,water
+TG_ID092_WL_T4_S23,Lentilactobacillus hilgardii,2.84916,This study,WL,water
+TG_ID092_WL_T5_S94,Lacticaseibacillus paracasei,28.2993,This study,WL,water
+TG_ID092_WL_T5_S94,Lacticaseibacillus paracasei,28.2993,This study,WL,water
+TG_ID092_WL_T5_S94,Lacticaseibacillus paracasei,28.2993,This study,WL,water
+TG_ID092_WL_T5_S94,Lacticaseibacillus paracasei,28.2993,This study,WL,water
+TG_ID092_WL_T5_S94,Lacticaseibacillus paracasei,28.2993,This study,WL,water
+TG_ID092_WL_T5_S94,Lacticaseibacillus paracasei,28.2993,This study,WL,water
+TG_ID092_WL_T6_S21,Acetobacter pasteurianus,0.948509,This study,WL,water
+TG_ID092_WL_T6_S21,Acetobacter pasteurianus,0.948509,This study,WL,water
+TG_ID092_WL_T6_S21,Acetobacter pasteurianus,0.948509,This study,WL,water
+TG_ID092_WL_T6_S21,Acetobacter pasteurianus,0.948509,This study,WL,water
+TG_ID092_WL_T6_S21,Acetobacter pasteurianus,0.948509,This study,WL,water
+TG_ID092_WL_T6_S21,Acetobacter pasteurianus,0.948509,This study,WL,water
+TG_ID093_WG_T1_S163,Lentilactobacillus hilgardii,28.1455,This study,WG,water
+TG_ID093_WG_T1_S163,Lentilactobacillus hilgardii,28.1455,This study,WG,water
+TG_ID093_WG_T1_S163,Lentilactobacillus hilgardii,28.1455,This study,WG,water
+TG_ID093_WG_T1_S163,Lentilactobacillus hilgardii,28.1455,This study,WG,water
+TG_ID093_WG_T2_S164,Lentilactobacillus hilgardii,23.9398,This study,WG,water
+TG_ID093_WG_T2_S164,Lentilactobacillus hilgardii,23.9398,This study,WG,water
+TG_ID093_WG_T2_S164,Lentilactobacillus hilgardii,23.9398,This study,WG,water
+TG_ID093_WG_T2_S164,Lentilactobacillus hilgardii,23.9398,This study,WG,water
+TG_ID093_WG_T3_S65,Lentilactobacillus hilgardii,27.2714,This study,WG,water
+TG_ID093_WG_T3_S65,Lentilactobacillus hilgardii,27.2714,This study,WG,water
+TG_ID093_WG_T3_S65,Lentilactobacillus hilgardii,27.2714,This study,WG,water
+TG_ID093_WG_T3_S65,Lentilactobacillus hilgardii,27.2714,This study,WG,water
+TG_ID093_WL_T1_S171,Lacticaseibacillus paracasei,14.7499,This study,WL,water
+TG_ID093_WL_T1_S171,Lacticaseibacillus paracasei,14.7499,This study,WL,water
+TG_ID093_WL_T1_S171,Lacticaseibacillus paracasei,14.7499,This study,WL,water
+TG_ID093_WL_T1_S171,Lacticaseibacillus paracasei,14.7499,This study,WL,water
+TG_ID093_WL_T2_S5,Lacticaseibacillus paracasei,6.23686,This study,WL,water
+TG_ID093_WL_T2_S5,Lacticaseibacillus paracasei,6.23686,This study,WL,water
+TG_ID093_WL_T2_S5,Lacticaseibacillus paracasei,6.23686,This study,WL,water
+TG_ID093_WL_T2_S5,Lacticaseibacillus paracasei,6.23686,This study,WL,water
+TG_ID093_WL_T3_S66,Lentilactobacillus hilgardii,5.14432,This study,WL,water
+TG_ID093_WL_T3_S66,Lentilactobacillus hilgardii,5.14432,This study,WL,water
+TG_ID093_WL_T3_S66,Lentilactobacillus hilgardii,5.14432,This study,WL,water
+TG_ID093_WL_T3_S66,Lentilactobacillus hilgardii,5.14432,This study,WL,water
+TG_ID096_WG_T1_S56,Lacticaseibacillus paracasei,3.03506,This study,WG,water
+TG_ID096_WG_T1_S56,Lacticaseibacillus paracasei,3.03506,This study,WG,water
+TG_ID096_WG_T1_S56,Lacticaseibacillus paracasei,3.03506,This study,WG,water
+TG_ID096_WG_T1_S56,Lacticaseibacillus paracasei,3.03506,This study,WG,water
+TG_ID096_WG_T1_S56,Lacticaseibacillus paracasei,3.03506,This study,WG,water
+TG_ID096_WG_T1_S56,Lacticaseibacillus paracasei,3.03506,This study,WG,water
+TG_ID096_WL_T1_S117,Pseudomonas veronii,2.55892,This study,WL,water
+TG_ID096_WL_T1_S117,Pseudomonas veronii,2.55892,This study,WL,water
+TG_ID096_WL_T1_S117,Pseudomonas veronii,2.55892,This study,WL,water
+TG_ID096_WL_T1_S117,Pseudomonas veronii,2.55892,This study,WL,water
+TG_ID096_WL_T1_S117,Pseudomonas veronii,2.55892,This study,WL,water
+TG_ID096_WL_T1_S117,Pseudomonas veronii,2.55892,This study,WL,water
+TG_ID096_WL_T2_S46,Lacticaseibacillus paracasei,52.7798,This study,WL,water
+TG_ID096_WL_T2_S46,Lacticaseibacillus paracasei,52.7798,This study,WL,water
+TG_ID096_WL_T2_S46,Lacticaseibacillus paracasei,52.7798,This study,WL,water
+TG_ID096_WL_T2_S46,Lacticaseibacillus paracasei,52.7798,This study,WL,water
+TG_ID096_WL_T2_S46,Lacticaseibacillus paracasei,52.7798,This study,WL,water
+TG_ID096_WL_T2_S46,Lacticaseibacillus paracasei,52.7798,This study,WL,water
+TG_ID096_WL_T5_S92,Gluconobacter oxydans,1.74754,This study,WL,water
+TG_ID096_WL_T5_S92,Gluconobacter oxydans,1.74754,This study,WL,water
+TG_ID096_WL_T5_S92,Gluconobacter oxydans,1.74754,This study,WL,water
+TG_ID096_WL_T5_S92,Gluconobacter oxydans,1.74754,This study,WL,water
+TG_ID096_WL_T5_S92,Gluconobacter oxydans,1.74754,This study,WL,water
+TG_ID096_WL_T5_S92,Gluconobacter oxydans,1.74754,This study,WL,water
+TG_ID097_WG_T1_S129,Lentilactobacillus hilgardii,20.3174,This study,WG,water
+TG_ID097_WG_T1_S129,Lentilactobacillus hilgardii,20.3174,This study,WG,water
+TG_ID097_WG_T1_S129,Lentilactobacillus hilgardii,20.3174,This study,WG,water
+TG_ID097_WG_T1_S129,Lentilactobacillus hilgardii,20.3174,This study,WG,water
+TG_ID097_WG_T1_S129,Lentilactobacillus hilgardii,20.3174,This study,WG,water
+TG_ID097_WG_T1_S129,Lentilactobacillus hilgardii,20.3174,This study,WG,water
+TG_ID097_WG_T2_S184,Lentilactobacillus hilgardii,24.0845,This study,WG,water
+TG_ID097_WG_T2_S184,Lentilactobacillus hilgardii,24.0845,This study,WG,water
+TG_ID097_WG_T2_S184,Lentilactobacillus hilgardii,24.0845,This study,WG,water
+TG_ID097_WG_T2_S184,Lentilactobacillus hilgardii,24.0845,This study,WG,water
+TG_ID097_WG_T2_S184,Lentilactobacillus hilgardii,24.0845,This study,WG,water
+TG_ID097_WG_T2_S184,Lentilactobacillus hilgardii,24.0845,This study,WG,water
+TG_ID097_WG_T3_S165,Lentilactobacillus hilgardii,24.4432,This study,WG,water
+TG_ID097_WG_T3_S165,Lentilactobacillus hilgardii,24.4432,This study,WG,water
+TG_ID097_WG_T3_S165,Lentilactobacillus hilgardii,24.4432,This study,WG,water
+TG_ID097_WG_T3_S165,Lentilactobacillus hilgardii,24.4432,This study,WG,water
+TG_ID097_WG_T3_S165,Lentilactobacillus hilgardii,24.4432,This study,WG,water
+TG_ID097_WG_T3_S165,Lentilactobacillus hilgardii,24.4432,This study,WG,water
+TG_ID097_WG_T4_S31,Lentilactobacillus hilgardii,18.7072,This study,WG,water
+TG_ID097_WG_T4_S31,Lentilactobacillus hilgardii,18.7072,This study,WG,water
+TG_ID097_WG_T4_S31,Lentilactobacillus hilgardii,18.7072,This study,WG,water
+TG_ID097_WG_T4_S31,Lentilactobacillus hilgardii,18.7072,This study,WG,water
+TG_ID097_WG_T5_S68,Lentilactobacillus hilgardii,6.66667,This study,WG,water
+TG_ID097_WG_T5_S68,Lentilactobacillus hilgardii,6.66667,This study,WG,water
+TG_ID097_WG_T5_S68,Lentilactobacillus hilgardii,6.66667,This study,WG,water
+TG_ID097_WG_T5_S68,Lentilactobacillus hilgardii,6.66667,This study,WG,water
+TG_ID097_WG_T5_S68,Lentilactobacillus hilgardii,6.66667,This study,WG,water
+TG_ID097_WG_T5_S68,Lentilactobacillus hilgardii,6.66667,This study,WG,water
+TG_ID097_WL_T1_S141,Pseudomonas putida,23.4123,This study,WL,water
+TG_ID097_WL_T1_S141,Pseudomonas putida,23.4123,This study,WL,water
+TG_ID097_WL_T1_S141,Pseudomonas putida,23.4123,This study,WL,water
+TG_ID097_WL_T1_S141,Pseudomonas putida,23.4123,This study,WL,water
+TG_ID097_WL_T1_S141,Pseudomonas putida,23.4123,This study,WL,water
+TG_ID097_WL_T1_S141,Pseudomonas putida,23.4123,This study,WL,water
+TG_ID097_WL_T2_S153,Lacticaseibacillus paracasei,16.3933,This study,WL,water
+TG_ID097_WL_T2_S153,Lacticaseibacillus paracasei,16.3933,This study,WL,water
+TG_ID097_WL_T2_S153,Lacticaseibacillus paracasei,16.3933,This study,WL,water
+TG_ID097_WL_T2_S153,Lacticaseibacillus paracasei,16.3933,This study,WL,water
+TG_ID097_WL_T2_S153,Lacticaseibacillus paracasei,16.3933,This study,WL,water
+TG_ID097_WL_T2_S153,Lacticaseibacillus paracasei,16.3933,This study,WL,water
+TG_ID097_WL_T3_S177,Lacticaseibacillus paracasei,23.5297,This study,WL,water
+TG_ID097_WL_T3_S177,Lacticaseibacillus paracasei,23.5297,This study,WL,water
+TG_ID097_WL_T3_S177,Lacticaseibacillus paracasei,23.5297,This study,WL,water
+TG_ID097_WL_T3_S177,Lacticaseibacillus paracasei,23.5297,This study,WL,water
+TG_ID097_WL_T3_S177,Lacticaseibacillus paracasei,23.5297,This study,WL,water
+TG_ID097_WL_T3_S177,Lacticaseibacillus paracasei,23.5297,This study,WL,water
+TG_ID097_WL_T4_S32,Lacticaseibacillus paracasei,9.5258,This study,WL,water
+TG_ID097_WL_T4_S32,Lacticaseibacillus paracasei,9.5258,This study,WL,water
+TG_ID097_WL_T4_S32,Lacticaseibacillus paracasei,9.5258,This study,WL,water
+TG_ID097_WL_T4_S32,Lacticaseibacillus paracasei,9.5258,This study,WL,water
+TG_ID097_WL_T5_S9,Gluconobacter oxydans,3.89511,This study,WL,water
+TG_ID097_WL_T5_S9,Gluconobacter oxydans,3.89511,This study,WL,water
+TG_ID097_WL_T5_S9,Gluconobacter oxydans,3.89511,This study,WL,water
+TG_ID097_WL_T5_S9,Gluconobacter oxydans,3.89511,This study,WL,water
+TG_ID097_WL_T5_S9,Gluconobacter oxydans,3.89511,This study,WL,water
+TG_ID097_WL_T5_S9,Gluconobacter oxydans,3.89511,This study,WL,water
+TG_ID103_WG_T1_S67,Lentilactobacillus hilgardii,29.6722,This study,WG,water
+TG_ID103_WG_T1_S67,Lentilactobacillus hilgardii,29.6722,This study,WG,water
+TG_ID103_WG_T1_S67,Lentilactobacillus hilgardii,29.6722,This study,WG,water
+TG_ID103_WG_T1_S67,Lentilactobacillus hilgardii,29.6722,This study,WG,water
+TG_ID103_WG_T2_S134,Lentilactobacillus hilgardii,23.915,This study,WG,water
+TG_ID103_WG_T2_S134,Lentilactobacillus hilgardii,23.915,This study,WG,water
+TG_ID103_WG_T2_S134,Lentilactobacillus hilgardii,23.915,This study,WG,water
+TG_ID103_WG_T2_S134,Lentilactobacillus hilgardii,23.915,This study,WG,water
+TG_ID103_WG_T3_S69,Lentilactobacillus hilgardii,27.4243,This study,WG,water
+TG_ID103_WG_T3_S69,Lentilactobacillus hilgardii,27.4243,This study,WG,water
+TG_ID103_WG_T3_S69,Lentilactobacillus hilgardii,27.4243,This study,WG,water
+TG_ID103_WG_T3_S69,Lentilactobacillus hilgardii,27.4243,This study,WG,water
+TG_ID103_WG_T4_S79,Lentilactobacillus hilgardii,27.9235,This study,WG,water
+TG_ID103_WG_T4_S79,Lentilactobacillus hilgardii,27.9235,This study,WG,water
+TG_ID103_WG_T4_S79,Lentilactobacillus hilgardii,27.9235,This study,WG,water
+TG_ID103_WG_T4_S79,Lentilactobacillus hilgardii,27.9235,This study,WG,water
+TG_ID103_WG_T5_S18,Lentilactobacillus hilgardii,32.6333,This study,WG,water
+TG_ID103_WG_T5_S18,Lentilactobacillus hilgardii,32.6333,This study,WG,water
+TG_ID103_WG_T5_S18,Lentilactobacillus hilgardii,32.6333,This study,WG,water
+TG_ID103_WG_T5_S18,Lentilactobacillus hilgardii,32.6333,This study,WG,water
+TG_ID103_WL_T1_S68,Pseudomonas veronii,2.64596,This study,WL,water
+TG_ID103_WL_T1_S68,Pseudomonas veronii,2.64596,This study,WL,water
+TG_ID103_WL_T1_S68,Pseudomonas veronii,2.64596,This study,WL,water
+TG_ID103_WL_T1_S68,Pseudomonas veronii,2.64596,This study,WL,water
+TG_ID103_WL_T2_S85,Lentilactobacillus hilgardii,4.38354,This study,WL,water
+TG_ID103_WL_T2_S85,Lentilactobacillus hilgardii,4.38354,This study,WL,water
+TG_ID103_WL_T2_S85,Lentilactobacillus hilgardii,4.38354,This study,WL,water
+TG_ID103_WL_T2_S85,Lentilactobacillus hilgardii,4.38354,This study,WL,water
+TG_ID103_WL_T3_S70,Gluconobacter oxydans,8.7871,This study,WL,water
+TG_ID103_WL_T3_S70,Gluconobacter oxydans,8.7871,This study,WL,water
+TG_ID103_WL_T3_S70,Gluconobacter oxydans,8.7871,This study,WL,water
+TG_ID103_WL_T3_S70,Gluconobacter oxydans,8.7871,This study,WL,water
+TG_ID103_WL_T4_S158,Leuconostoc pseudomesenteroides,27.1186,This study,WL,water
+TG_ID103_WL_T4_S158,Leuconostoc pseudomesenteroides,27.1186,This study,WL,water
+TG_ID103_WL_T4_S158,Leuconostoc pseudomesenteroides,27.1186,This study,WL,water
+TG_ID103_WL_T4_S158,Leuconostoc pseudomesenteroides,27.1186,This study,WL,water
+TG_ID103_WL_T5_S24,Lentilactobacillus hilgardii,8.01091,This study,WL,water
+TG_ID103_WL_T5_S24,Lentilactobacillus hilgardii,8.01091,This study,WL,water
+TG_ID103_WL_T5_S24,Lentilactobacillus hilgardii,8.01091,This study,WL,water
+TG_ID103_WL_T5_S24,Lentilactobacillus hilgardii,8.01091,This study,WL,water
+TG_ID107_WG_T1_S135,Lacticaseibacillus paracasei,34.0921,This study,WG,water
+TG_ID107_WG_T1_S135,Lacticaseibacillus paracasei,34.0921,This study,WG,water
+TG_ID107_WG_T1_S135,Lacticaseibacillus paracasei,34.0921,This study,WG,water
+TG_ID107_WG_T1_S135,Lacticaseibacillus paracasei,34.0921,This study,WG,water
+TG_ID107_WG_T2_S136,Lacticaseibacillus paracasei,49.603,This study,WG,water
+TG_ID107_WG_T2_S136,Lacticaseibacillus paracasei,49.603,This study,WG,water
+TG_ID107_WG_T2_S136,Lacticaseibacillus paracasei,49.603,This study,WG,water
+TG_ID107_WG_T2_S136,Lacticaseibacillus paracasei,49.603,This study,WG,water
+TG_ID107_WG_T3_S137,Lacticaseibacillus paracasei,38.5185,This study,WG,water
+TG_ID107_WG_T3_S137,Lacticaseibacillus paracasei,38.5185,This study,WG,water
+TG_ID107_WG_T3_S137,Lacticaseibacillus paracasei,38.5185,This study,WG,water
+TG_ID107_WG_T3_S137,Lacticaseibacillus paracasei,38.5185,This study,WG,water
+TG_ID107_WG_T4_S106,Zymomonas mobilis,19.615,This study,WG,water
+TG_ID107_WG_T4_S106,Zymomonas mobilis,19.615,This study,WG,water
+TG_ID107_WG_T4_S106,Zymomonas mobilis,19.615,This study,WG,water
+TG_ID107_WG_T4_S106,Zymomonas mobilis,19.615,This study,WG,water
+TG_ID107_WG_T5_S107,Zymomonas mobilis,16.871,This study,WG,water
+TG_ID107_WG_T5_S107,Zymomonas mobilis,16.871,This study,WG,water
+TG_ID107_WG_T5_S107,Zymomonas mobilis,16.871,This study,WG,water
+TG_ID107_WG_T5_S107,Zymomonas mobilis,16.871,This study,WG,water
+TG_ID107_WG_T6_S108,Lacticaseibacillus paracasei,25.3621,This study,WG,water
+TG_ID107_WG_T6_S108,Lacticaseibacillus paracasei,25.3621,This study,WG,water
+TG_ID107_WG_T6_S108,Lacticaseibacillus paracasei,25.3621,This study,WG,water
+TG_ID107_WG_T6_S108,Lacticaseibacillus paracasei,25.3621,This study,WG,water
+TG_ID107_WL_T1_S86,Lacticaseibacillus paracasei,18.5987,This study,WL,water
+TG_ID107_WL_T1_S86,Lacticaseibacillus paracasei,18.5987,This study,WL,water
+TG_ID107_WL_T1_S86,Lacticaseibacillus paracasei,18.5987,This study,WL,water
+TG_ID107_WL_T1_S86,Lacticaseibacillus paracasei,18.5987,This study,WL,water
+TG_ID107_WL_T2_S87,Lacticaseibacillus paracasei,36.2786,This study,WL,water
+TG_ID107_WL_T2_S87,Lacticaseibacillus paracasei,36.2786,This study,WL,water
+TG_ID107_WL_T2_S87,Lacticaseibacillus paracasei,36.2786,This study,WL,water
+TG_ID107_WL_T2_S87,Lacticaseibacillus paracasei,36.2786,This study,WL,water
+TG_ID107_WL_T3_S88,Lacticaseibacillus paracasei,16.2015,This study,WL,water
+TG_ID107_WL_T3_S88,Lacticaseibacillus paracasei,16.2015,This study,WL,water
+TG_ID107_WL_T3_S88,Lacticaseibacillus paracasei,16.2015,This study,WL,water
+TG_ID107_WL_T3_S88,Lacticaseibacillus paracasei,16.2015,This study,WL,water
+TG_ID107_WL_T4_S110,Zymomonas mobilis,5.69889,This study,WL,water
+TG_ID107_WL_T4_S110,Zymomonas mobilis,5.69889,This study,WL,water
+TG_ID107_WL_T4_S110,Zymomonas mobilis,5.69889,This study,WL,water
+TG_ID107_WL_T4_S110,Zymomonas mobilis,5.69889,This study,WL,water
+TG_ID107_WL_T5_S111,Zymomonas mobilis,3.36493,This study,WL,water
+TG_ID107_WL_T5_S111,Zymomonas mobilis,3.36493,This study,WL,water
+TG_ID107_WL_T5_S111,Zymomonas mobilis,3.36493,This study,WL,water
+TG_ID107_WL_T5_S111,Zymomonas mobilis,3.36493,This study,WL,water
+TG_ID107_WL_T6_S112,Lacticaseibacillus paracasei,13.2579,This study,WL,water
+TG_ID107_WL_T6_S112,Lacticaseibacillus paracasei,13.2579,This study,WL,water
+TG_ID107_WL_T6_S112,Lacticaseibacillus paracasei,13.2579,This study,WL,water
+TG_ID107_WL_T6_S112,Lacticaseibacillus paracasei,13.2579,This study,WL,water
+TG_ID110_WG_T1_S166,Lentilactobacillus hilgardii,11.1742,This study,WG,water
+TG_ID110_WG_T1_S166,Lentilactobacillus hilgardii,11.1742,This study,WG,water
+TG_ID110_WG_T1_S166,Lentilactobacillus hilgardii,11.1742,This study,WG,water
+TG_ID110_WG_T1_S166,Lentilactobacillus hilgardii,11.1742,This study,WG,water
+TG_ID110_WG_T2_S167,Zymomonas mobilis,19.9066,This study,WG,water
+TG_ID110_WG_T2_S167,Zymomonas mobilis,19.9066,This study,WG,water
+TG_ID110_WG_T2_S167,Zymomonas mobilis,19.9066,This study,WG,water
+TG_ID110_WG_T2_S167,Zymomonas mobilis,19.9066,This study,WG,water
+TG_ID110_WG_T3_S20,Lentilactobacillus hilgardii,12.8767,This study,WG,water
+TG_ID110_WG_T3_S20,Lentilactobacillus hilgardii,12.8767,This study,WG,water
+TG_ID110_WG_T3_S20,Lentilactobacillus hilgardii,12.8767,This study,WG,water
+TG_ID110_WG_T3_S20,Lentilactobacillus hilgardii,12.8767,This study,WG,water
+TG_ID110_WG_T4_S21,Lentilactobacillus hilgardii,14.812,This study,WG,water
+TG_ID110_WG_T4_S21,Lentilactobacillus hilgardii,14.812,This study,WG,water
+TG_ID110_WG_T4_S21,Lentilactobacillus hilgardii,14.812,This study,WG,water
+TG_ID110_WG_T4_S21,Lentilactobacillus hilgardii,14.812,This study,WG,water
+TG_ID110_WG_T5_S22,Lentilactobacillus hilgardii,13.2951,This study,WG,water
+TG_ID110_WG_T5_S22,Lentilactobacillus hilgardii,13.2951,This study,WG,water
+TG_ID110_WG_T5_S22,Lentilactobacillus hilgardii,13.2951,This study,WG,water
+TG_ID110_WG_T5_S22,Lentilactobacillus hilgardii,13.2951,This study,WG,water
+TG_ID110_WG_T6_S92,Lentilactobacillus hilgardii,22.1077,This study,WG,water
+TG_ID110_WG_T6_S92,Lentilactobacillus hilgardii,22.1077,This study,WG,water
+TG_ID110_WG_T6_S92,Lentilactobacillus hilgardii,22.1077,This study,WG,water
+TG_ID110_WG_T6_S92,Lentilactobacillus hilgardii,22.1077,This study,WG,water
+TG_ID110_WL_T1_S173,Lacticaseibacillus paracasei,9.8961,This study,WL,water
+TG_ID110_WL_T1_S173,Lacticaseibacillus paracasei,9.8961,This study,WL,water
+TG_ID110_WL_T1_S173,Lacticaseibacillus paracasei,9.8961,This study,WL,water
+TG_ID110_WL_T1_S173,Lacticaseibacillus paracasei,9.8961,This study,WL,water
+TG_ID110_WL_T2_S177,Zymomonas mobilis,8.76914,This study,WL,water
+TG_ID110_WL_T2_S177,Zymomonas mobilis,8.76914,This study,WL,water
+TG_ID110_WL_T2_S177,Zymomonas mobilis,8.76914,This study,WL,water
+TG_ID110_WL_T2_S177,Zymomonas mobilis,8.76914,This study,WL,water
+TG_ID110_WL_T3_S26,Lacticaseibacillus paracasei,1.73465,This study,WL,water
+TG_ID110_WL_T3_S26,Lacticaseibacillus paracasei,1.73465,This study,WL,water
+TG_ID110_WL_T3_S26,Lacticaseibacillus paracasei,1.73465,This study,WL,water
+TG_ID110_WL_T3_S26,Lacticaseibacillus paracasei,1.73465,This study,WL,water
+TG_ID110_WL_T4_S27,Lentilactobacillus hilgardii,0.635706,This study,WL,water
+TG_ID110_WL_T4_S27,Lentilactobacillus hilgardii,0.635706,This study,WL,water
+TG_ID110_WL_T4_S27,Lentilactobacillus hilgardii,0.635706,This study,WL,water
+TG_ID110_WL_T4_S27,Lentilactobacillus hilgardii,0.635706,This study,WL,water
+TG_ID110_WL_T5_S28,Lacticaseibacillus paracasei,1.78965,This study,WL,water
+TG_ID110_WL_T5_S28,Lacticaseibacillus paracasei,1.78965,This study,WL,water
+TG_ID110_WL_T5_S28,Lacticaseibacillus paracasei,1.78965,This study,WL,water
+TG_ID110_WL_T5_S28,Lacticaseibacillus paracasei,1.78965,This study,WL,water
+TG_ID110_WL_T6_S117,Lacticaseibacillus paracasei,6.78293,This study,WL,water
+TG_ID110_WL_T6_S117,Lacticaseibacillus paracasei,6.78293,This study,WL,water
+TG_ID110_WL_T6_S117,Lacticaseibacillus paracasei,6.78293,This study,WL,water
+TG_ID110_WL_T6_S117,Lacticaseibacillus paracasei,6.78293,This study,WL,water
+TG_ID113_WG_T1_S60,Lentilactobacillus hilgardii,19.0625,This study,WG,water
+TG_ID113_WG_T1_S60,Lentilactobacillus hilgardii,19.0625,This study,WG,water
+TG_ID113_WG_T1_S60,Lentilactobacillus hilgardii,19.0625,This study,WG,water
+TG_ID113_WG_T1_S60,Lentilactobacillus hilgardii,19.0625,This study,WG,water
+TG_ID113_WG_T3_S71,Lentilactobacillus hilgardii,20.1947,This study,WG,water
+TG_ID113_WG_T3_S71,Lentilactobacillus hilgardii,20.1947,This study,WG,water
+TG_ID113_WG_T3_S71,Lentilactobacillus hilgardii,20.1947,This study,WG,water
+TG_ID113_WG_T3_S71,Lentilactobacillus hilgardii,20.1947,This study,WG,water
+TG_ID113_WG_T4_S99,Lentilactobacillus hilgardii,17.4088,This study,WG,water
+TG_ID113_WG_T4_S99,Lentilactobacillus hilgardii,17.4088,This study,WG,water
+TG_ID113_WG_T4_S99,Lentilactobacillus hilgardii,17.4088,This study,WG,water
+TG_ID113_WG_T4_S99,Lentilactobacillus hilgardii,17.4088,This study,WG,water
+TG_ID113_WG_T5_S19,Lentilactobacillus hilgardii,17.7527,This study,WG,water
+TG_ID113_WG_T5_S19,Lentilactobacillus hilgardii,17.7527,This study,WG,water
+TG_ID113_WG_T5_S19,Lentilactobacillus hilgardii,17.7527,This study,WG,water
+TG_ID113_WG_T5_S19,Lentilactobacillus hilgardii,17.7527,This study,WG,water
+TG_ID113_WG_T6_S100,Lentilactobacillus hilgardii,17.1183,This study,WG,water
+TG_ID113_WG_T6_S100,Lentilactobacillus hilgardii,17.1183,This study,WG,water
+TG_ID113_WG_T6_S100,Lentilactobacillus hilgardii,17.1183,This study,WG,water
+TG_ID113_WG_T6_S100,Lentilactobacillus hilgardii,17.1183,This study,WG,water
+TG_ID113_WL_T3_S73,Lentilactobacillus hilgardii,3.48586,This study,WL,water
+TG_ID113_WL_T3_S73,Lentilactobacillus hilgardii,3.48586,This study,WL,water
+TG_ID113_WL_T3_S73,Lentilactobacillus hilgardii,3.48586,This study,WL,water
+TG_ID113_WL_T3_S73,Lentilactobacillus hilgardii,3.48586,This study,WL,water
+TG_ID113_WL_T5_S25,Lentilactobacillus hilgardii,8.85368,This study,WL,water
+TG_ID113_WL_T5_S25,Lentilactobacillus hilgardii,8.85368,This study,WL,water
+TG_ID113_WL_T5_S25,Lentilactobacillus hilgardii,8.85368,This study,WL,water
+TG_ID113_WL_T5_S25,Lentilactobacillus hilgardii,8.85368,This study,WL,water
+TG_ID113_WL_T6_S118,Lentilactobacillus hilgardii,3.09201,This study,WL,water
+TG_ID113_WL_T6_S118,Lentilactobacillus hilgardii,3.09201,This study,WL,water
+TG_ID113_WL_T6_S118,Lentilactobacillus hilgardii,3.09201,This study,WL,water
+TG_ID113_WL_T6_S118,Lentilactobacillus hilgardii,3.09201,This study,WL,water
+TG_ID115_MG_T1_S93,Klebsiella grimontii,32.5492,This study,MG,milk
+TG_ID115_MG_T1_S93,Klebsiella grimontii,32.5492,This study,MG,milk
+TG_ID115_MG_T1_S93,Klebsiella grimontii,32.5492,This study,MG,milk
+TG_ID115_MG_T1_S93,Klebsiella grimontii,32.5492,This study,MG,milk
+TG_ID115_MG_T2_S94,Klebsiella grimontii,36.9031,This study,MG,milk
+TG_ID115_MG_T2_S94,Klebsiella grimontii,36.9031,This study,MG,milk
+TG_ID115_MG_T2_S94,Klebsiella grimontii,36.9031,This study,MG,milk
+TG_ID115_MG_T2_S94,Klebsiella grimontii,36.9031,This study,MG,milk
+TG_ID115_MG_T3_S95,Klebsiella grimontii,27.4385,This study,MG,milk
+TG_ID115_MG_T3_S95,Klebsiella grimontii,27.4385,This study,MG,milk
+TG_ID115_MG_T3_S95,Klebsiella grimontii,27.4385,This study,MG,milk
+TG_ID115_MG_T3_S95,Klebsiella grimontii,27.4385,This study,MG,milk
+TG_ID115_MG_T4_S96,Pseudomonas putida,0.374532,This study,MG,milk
+TG_ID115_MG_T4_S96,Pseudomonas putida,0.374532,This study,MG,milk
+TG_ID115_MG_T4_S96,Pseudomonas putida,0.374532,This study,MG,milk
+TG_ID115_MG_T4_S96,Pseudomonas putida,0.374532,This study,MG,milk
+TG_ID115_MG_T4_S96,Stutzerimonas stutzeri,0.374532,This study,MG,milk
+TG_ID115_MG_T4_S96,Stutzerimonas stutzeri,0.374532,This study,MG,milk
+TG_ID115_MG_T4_S96,Stutzerimonas stutzeri,0.374532,This study,MG,milk
+TG_ID115_MG_T4_S96,Stutzerimonas stutzeri,0.374532,This study,MG,milk
+TG_ID115_MG_T4_S96,Klebsiella oxytoca,0.374532,This study,MG,milk
+TG_ID115_MG_T4_S96,Klebsiella oxytoca,0.374532,This study,MG,milk
+TG_ID115_MG_T4_S96,Klebsiella oxytoca,0.374532,This study,MG,milk
+TG_ID115_MG_T4_S96,Klebsiella oxytoca,0.374532,This study,MG,milk
+TG_ID115_MG_T4_S96,Streptococcus thermophilus,0.374532,This study,MG,milk
+TG_ID115_MG_T4_S96,Streptococcus thermophilus,0.374532,This study,MG,milk
+TG_ID115_MG_T4_S96,Streptococcus thermophilus,0.374532,This study,MG,milk
+TG_ID115_MG_T4_S96,Streptococcus thermophilus,0.374532,This study,MG,milk
+TG_ID115_MG_T4_S96,Agrobacterium tumefaciens,0.374532,This study,MG,milk
+TG_ID115_MG_T4_S96,Agrobacterium tumefaciens,0.374532,This study,MG,milk
+TG_ID115_MG_T4_S96,Agrobacterium tumefaciens,0.374532,This study,MG,milk
+TG_ID115_MG_T4_S96,Agrobacterium tumefaciens,0.374532,This study,MG,milk
+TG_ID115_MG_T4_S96,Escherichia fergusonii,0.374532,This study,MG,milk
+TG_ID115_MG_T4_S96,Escherichia fergusonii,0.374532,This study,MG,milk
+TG_ID115_MG_T4_S96,Escherichia fergusonii,0.374532,This study,MG,milk
+TG_ID115_MG_T4_S96,Escherichia fergusonii,0.374532,This study,MG,milk
+TG_ID115_MG_T4_S96,Anaerostipes caccae,0.374532,This study,MG,milk
+TG_ID115_MG_T4_S96,Anaerostipes caccae,0.374532,This study,MG,milk
+TG_ID115_MG_T4_S96,Anaerostipes caccae,0.374532,This study,MG,milk
+TG_ID115_MG_T4_S96,Anaerostipes caccae,0.374532,This study,MG,milk
+TG_ID115_MG_T4_S96,Klebsiella michiganensis,0.374532,This study,MG,milk
+TG_ID115_MG_T4_S96,Klebsiella michiganensis,0.374532,This study,MG,milk
+TG_ID115_MG_T4_S96,Klebsiella michiganensis,0.374532,This study,MG,milk
+TG_ID115_MG_T4_S96,Klebsiella michiganensis,0.374532,This study,MG,milk
+TG_ID115_MG_T4_S96,Agrobacterium fabrum,0.374532,This study,MG,milk
+TG_ID115_MG_T4_S96,Agrobacterium fabrum,0.374532,This study,MG,milk
+TG_ID115_MG_T4_S96,Agrobacterium fabrum,0.374532,This study,MG,milk
+TG_ID115_MG_T4_S96,Agrobacterium fabrum,0.374532,This study,MG,milk
+TG_ID115_MG_T4_S96,Mycobacterium tuberculosis,0.374532,This study,MG,milk
+TG_ID115_MG_T4_S96,Mycobacterium tuberculosis,0.374532,This study,MG,milk
+TG_ID115_MG_T4_S96,Mycobacterium tuberculosis,0.374532,This study,MG,milk
+TG_ID115_MG_T4_S96,Mycobacterium tuberculosis,0.374532,This study,MG,milk
+TG_ID115_MG_T4_S96,Lactococcus lactis,0.374532,This study,MG,milk
+TG_ID115_MG_T4_S96,Lactococcus lactis,0.374532,This study,MG,milk
+TG_ID115_MG_T4_S96,Lactococcus lactis,0.374532,This study,MG,milk
+TG_ID115_MG_T4_S96,Lactococcus lactis,0.374532,This study,MG,milk
+TG_ID115_MG_T4_S96,Lactobacillus helveticus,0.374532,This study,MG,milk
+TG_ID115_MG_T4_S96,Lactobacillus helveticus,0.374532,This study,MG,milk
+TG_ID115_MG_T4_S96,Lactobacillus helveticus,0.374532,This study,MG,milk
+TG_ID115_MG_T4_S96,Lactobacillus helveticus,0.374532,This study,MG,milk
+TG_ID115_MG_T4_S96,Cutibacterium acnes,0.374532,This study,MG,milk
+TG_ID115_MG_T4_S96,Cutibacterium acnes,0.374532,This study,MG,milk
+TG_ID115_MG_T4_S96,Cutibacterium acnes,0.374532,This study,MG,milk
+TG_ID115_MG_T4_S96,Cutibacterium acnes,0.374532,This study,MG,milk
+TG_ID115_MG_T4_S96,Bradyrhizobium elkanii,0.374532,This study,MG,milk
+TG_ID115_MG_T4_S96,Bradyrhizobium elkanii,0.374532,This study,MG,milk
+TG_ID115_MG_T4_S96,Bradyrhizobium elkanii,0.374532,This study,MG,milk
+TG_ID115_MG_T4_S96,Bradyrhizobium elkanii,0.374532,This study,MG,milk
+TG_ID115_MG_T4_S96,Corynebacterium tuberculostearicum,0.374532,This study,MG,milk
+TG_ID115_MG_T4_S96,Corynebacterium tuberculostearicum,0.374532,This study,MG,milk
+TG_ID115_MG_T4_S96,Corynebacterium tuberculostearicum,0.374532,This study,MG,milk
+TG_ID115_MG_T4_S96,Corynebacterium tuberculostearicum,0.374532,This study,MG,milk
+TG_ID115_MG_T6_S98,Clostridium beijerinckii,14.645,This study,MG,milk
+TG_ID115_MG_T6_S98,Clostridium beijerinckii,14.645,This study,MG,milk
+TG_ID115_MG_T6_S98,Clostridium beijerinckii,14.645,This study,MG,milk
+TG_ID115_MG_T6_S98,Clostridium beijerinckii,14.645,This study,MG,milk
+TG_ID115_ML_T1_S122,Klebsiella grimontii,47.4974,This study,ML,milk
+TG_ID115_ML_T1_S122,Klebsiella grimontii,47.4974,This study,ML,milk
+TG_ID115_ML_T1_S122,Klebsiella grimontii,47.4974,This study,ML,milk
+TG_ID115_ML_T1_S122,Klebsiella grimontii,47.4974,This study,ML,milk
+TG_ID115_ML_T2_S123,Klebsiella grimontii,44.803,This study,ML,milk
+TG_ID115_ML_T2_S123,Klebsiella grimontii,44.803,This study,ML,milk
+TG_ID115_ML_T2_S123,Klebsiella grimontii,44.803,This study,ML,milk
+TG_ID115_ML_T2_S123,Klebsiella grimontii,44.803,This study,ML,milk
+TG_ID115_ML_T3_S124,Klebsiella grimontii,47.0181,This study,ML,milk
+TG_ID115_ML_T3_S124,Klebsiella grimontii,47.0181,This study,ML,milk
+TG_ID115_ML_T3_S124,Klebsiella grimontii,47.0181,This study,ML,milk
+TG_ID115_ML_T3_S124,Klebsiella grimontii,47.0181,This study,ML,milk
+TG_ID115_ML_T4_S125,Pseudomonas putida,10.0968,This study,ML,milk
+TG_ID115_ML_T4_S125,Pseudomonas putida,10.0968,This study,ML,milk
+TG_ID115_ML_T4_S125,Pseudomonas putida,10.0968,This study,ML,milk
+TG_ID115_ML_T4_S125,Pseudomonas putida,10.0968,This study,ML,milk
+TG_ID115_ML_T5_S126,Leuconostoc mesenteroides,21.0112,This study,ML,milk
+TG_ID115_ML_T5_S126,Leuconostoc mesenteroides,21.0112,This study,ML,milk
+TG_ID115_ML_T5_S126,Leuconostoc mesenteroides,21.0112,This study,ML,milk
+TG_ID115_ML_T5_S126,Leuconostoc mesenteroides,21.0112,This study,ML,milk
+TG_ID115_ML_T6_S127,Leuconostoc mesenteroides,24.2368,This study,ML,milk
+TG_ID115_ML_T6_S127,Leuconostoc mesenteroides,24.2368,This study,ML,milk
+TG_ID115_ML_T6_S127,Leuconostoc mesenteroides,24.2368,This study,ML,milk
+TG_ID115_ML_T6_S127,Leuconostoc mesenteroides,24.2368,This study,ML,milk
+TG_ID124_MG_T2_S7,Lactobacillus kefiranofaciens,13.3321,This study,MG,milk
+TG_ID124_MG_T2_S7,Lactobacillus kefiranofaciens,13.3321,This study,MG,milk
+TG_ID124_MG_T2_S7,Lactobacillus kefiranofaciens,13.3321,This study,MG,milk
+TG_ID124_MG_T2_S7,Lactobacillus kefiranofaciens,13.3321,This study,MG,milk
+TG_ID124_MG_T5_S138,Lactobacillus kefiranofaciens,37.868,This study,MG,milk
+TG_ID124_MG_T5_S138,Lactobacillus kefiranofaciens,37.868,This study,MG,milk
+TG_ID124_MG_T5_S138,Lactobacillus kefiranofaciens,37.868,This study,MG,milk
+TG_ID124_MG_T5_S138,Lactobacillus kefiranofaciens,37.868,This study,MG,milk
+TG_ID124_MG_T6_S101,Lactobacillus kefiranofaciens,43.3163,This study,MG,milk
+TG_ID124_MG_T6_S101,Lactobacillus kefiranofaciens,43.3163,This study,MG,milk
+TG_ID124_MG_T6_S101,Lactobacillus kefiranofaciens,43.3163,This study,MG,milk
+TG_ID124_MG_T6_S101,Lactobacillus kefiranofaciens,43.3163,This study,MG,milk
+TG_ID124_ML_T1_S8,Lactococcus cremoris,52.7366,This study,ML,milk
+TG_ID124_ML_T1_S8,Lactococcus cremoris,52.7366,This study,ML,milk
+TG_ID124_ML_T1_S8,Lactococcus cremoris,52.7366,This study,ML,milk
+TG_ID124_ML_T1_S8,Lactococcus cremoris,52.7366,This study,ML,milk
+TG_ID124_ML_T2_S159,Lactobacillus kefiranofaciens,11.4499,This study,ML,milk
+TG_ID124_ML_T2_S159,Lactobacillus kefiranofaciens,11.4499,This study,ML,milk
+TG_ID124_ML_T2_S159,Lactobacillus kefiranofaciens,11.4499,This study,ML,milk
+TG_ID124_ML_T2_S159,Lactobacillus kefiranofaciens,11.4499,This study,ML,milk
+TG_ID124_ML_T3_S160,Lactobacillus kefiranofaciens,17.3185,This study,ML,milk
+TG_ID124_ML_T3_S160,Lactobacillus kefiranofaciens,17.3185,This study,ML,milk
+TG_ID124_ML_T3_S160,Lactobacillus kefiranofaciens,17.3185,This study,ML,milk
+TG_ID124_ML_T3_S160,Lactobacillus kefiranofaciens,17.3185,This study,ML,milk
+TG_ID124_ML_T5_S161,Lactobacillus kefiranofaciens,29.0385,This study,ML,milk
+TG_ID124_ML_T5_S161,Lactobacillus kefiranofaciens,29.0385,This study,ML,milk
+TG_ID124_ML_T5_S161,Lactobacillus kefiranofaciens,29.0385,This study,ML,milk
+TG_ID124_ML_T5_S161,Lactobacillus kefiranofaciens,29.0385,This study,ML,milk
+TG_ID124_ML_T6_S119,Hafnia paralvei,18.2379,This study,ML,milk
+TG_ID124_ML_T6_S119,Hafnia paralvei,18.2379,This study,ML,milk
+TG_ID124_ML_T6_S119,Hafnia paralvei,18.2379,This study,ML,milk
+TG_ID124_ML_T6_S119,Hafnia paralvei,18.2379,This study,ML,milk
+TG_ID125_MG_T1_S178,Lactobacillus kefiranofaciens,24.5485,This study,MG,milk
+TG_ID125_MG_T1_S178,Lactobacillus kefiranofaciens,24.5485,This study,MG,milk
+TG_ID125_MG_T1_S178,Lactobacillus kefiranofaciens,24.5485,This study,MG,milk
+TG_ID125_MG_T1_S178,Lactobacillus kefiranofaciens,24.5485,This study,MG,milk
+TG_ID125_MG_T1_S178,Lactobacillus kefiranofaciens,24.5485,This study,MG,milk
+TG_ID125_MG_T1_S178,Lactobacillus kefiranofaciens,24.5485,This study,MG,milk
+TG_ID125_MG_T4_S11,Lentilactobacillus kefiri,30.2658,This study,MG,milk
+TG_ID125_MG_T4_S11,Lentilactobacillus kefiri,30.2658,This study,MG,milk
+TG_ID125_MG_T4_S11,Lentilactobacillus kefiri,30.2658,This study,MG,milk
+TG_ID125_MG_T4_S11,Lentilactobacillus kefiri,30.2658,This study,MG,milk
+TG_ID125_MG_T5_S102,Lactobacillus kefiranofaciens,36.9918,This study,MG,milk
+TG_ID125_MG_T5_S102,Lactobacillus kefiranofaciens,36.9918,This study,MG,milk
+TG_ID125_MG_T5_S102,Lactobacillus kefiranofaciens,36.9918,This study,MG,milk
+TG_ID125_MG_T5_S102,Lactobacillus kefiranofaciens,36.9918,This study,MG,milk
+TG_ID125_MG_T6_S103,Lactobacillus kefiranofaciens,24.9254,This study,MG,milk
+TG_ID125_MG_T6_S103,Lactobacillus kefiranofaciens,24.9254,This study,MG,milk
+TG_ID125_MG_T6_S103,Lactobacillus kefiranofaciens,24.9254,This study,MG,milk
+TG_ID125_MG_T6_S103,Lactobacillus kefiranofaciens,24.9254,This study,MG,milk
+TG_ID125_ML_T1_S162,Klebsiella grimontii,15.1821,This study,ML,milk
+TG_ID125_ML_T1_S162,Klebsiella grimontii,15.1821,This study,ML,milk
+TG_ID125_ML_T1_S162,Klebsiella grimontii,15.1821,This study,ML,milk
+TG_ID125_ML_T1_S162,Klebsiella grimontii,15.1821,This study,ML,milk
+TG_ID125_ML_T4_S12,Lactococcus lactis,56.055,This study,ML,milk
+TG_ID125_ML_T4_S12,Lactococcus lactis,56.055,This study,ML,milk
+TG_ID125_ML_T4_S12,Lactococcus lactis,56.055,This study,ML,milk
+TG_ID125_ML_T4_S12,Lactococcus lactis,56.055,This study,ML,milk
+TG_ID125_ML_T5_S120,Lactobacillus helveticus,26.2873,This study,ML,milk
+TG_ID125_ML_T5_S120,Lactobacillus helveticus,26.2873,This study,ML,milk
+TG_ID125_ML_T5_S120,Lactobacillus helveticus,26.2873,This study,ML,milk
+TG_ID125_ML_T5_S120,Lactobacillus helveticus,26.2873,This study,ML,milk
+TG_LO_MLC_S119,Leuconostoc mesenteroides,15.2646,This study,ML,milk
+TG_LO_MLC_S119,Leuconostoc mesenteroides,15.2646,This study,ML,milk
+TG_LO_MLC_S119,Leuconostoc mesenteroides,15.2646,This study,ML,milk
+TG_LO_MLC_S119,Leuconostoc mesenteroides,15.2646,This study,ML,milk
+TG_LO_MLC_S119,Leuconostoc mesenteroides,15.2646,This study,ML,milk
+TG_LO_T1_ML_0AE_S1,Acinetobacter sp. TTH0-4,31.1578,This study,ML,milk
+TG_LO_T1_ML_0AE_S1,Acinetobacter sp. TTH0-4,31.1578,This study,ML,milk
+TG_LO_T1_ML_0AE_S1,Acinetobacter sp. TTH0-4,31.1578,This study,ML,milk
+TG_LO_T1_ML_0AE_S1,Acinetobacter sp. TTH0-4,31.1578,This study,ML,milk
+TG_LO_T1_ML_0AE_S1,Acinetobacter sp. TTH0-4,31.1578,This study,ML,milk
+TG_LO_T1_ML_0AE_S1,Acinetobacter sp. TTH0-4,31.1578,This study,ML,milk
+TG_LO_T1_ML_0AN_S49,Acinetobacter sp. TTH0-4,39.6814,This study,ML,milk
+TG_LO_T1_ML_0AN_S49,Acinetobacter sp. TTH0-4,39.6814,This study,ML,milk
+TG_LO_T1_ML_0AN_S49,Acinetobacter sp. TTH0-4,39.6814,This study,ML,milk
+TG_LO_T1_ML_0AN_S49,Acinetobacter sp. TTH0-4,39.6814,This study,ML,milk
+TG_LO_T1_ML_0AN_S49,Acinetobacter sp. TTH0-4,39.6814,This study,ML,milk
+TG_LO_T1_ML_0AN_S49,Acinetobacter sp. TTH0-4,39.6814,This study,ML,milk
+TG_SK_MLC_S131,Pseudomonas lundensis,1.88493,This study,ML,milk
+TG_SK_MLC_S131,Pseudomonas lundensis,1.88493,This study,ML,milk
+TG_SK_MLC_S131,Pseudomonas lundensis,1.88493,This study,ML,milk
+TG_SK_MLC_S131,Pseudomonas lundensis,1.88493,This study,ML,milk
+TG_SK_MLC_S131,Pseudomonas lundensis,1.88493,This study,ML,milk
+TG_SK_MLC2_S191,Pseudomonas lundensis,1.55834,This study,ML,milk
+TG_SK_MLC2_S191,Pseudomonas lundensis,1.55834,This study,ML,milk
+TG_SK_MLC2_S191,Pseudomonas lundensis,1.55834,This study,ML,milk
+TG_SK_MLC2_S191,Pseudomonas lundensis,1.55834,This study,ML,milk
+TG_SK_MLC2_S191,Pseudomonas lundensis,1.55834,This study,ML,milk
+TG_SK_MLC2_S191,Pseudomonas lundensis,1.55834,This study,ML,milk
+TG_SK_T1_ML_0AE_S13,Macrococcus caseolyticus,62.77,This study,ML,milk
+TG_SK_T1_ML_0AE_S13,Macrococcus caseolyticus,62.77,This study,ML,milk
+TG_SK_T1_ML_0AE_S13,Macrococcus caseolyticus,62.77,This study,ML,milk
+TG_SK_T1_ML_0AE_S13,Macrococcus caseolyticus,62.77,This study,ML,milk
+TG_SK_T1_ML_0AE_S13,Macrococcus caseolyticus,62.77,This study,ML,milk
+TG_SK_T1_ML_0AE_S13,Macrococcus caseolyticus,62.77,This study,ML,milk
+TG_SK_T1_ML_0AN_S61,Macrococcus caseolyticus,47.0149,This study,ML,milk
+TG_SK_T1_ML_0AN_S61,Macrococcus caseolyticus,47.0149,This study,ML,milk
+TG_SK_T1_ML_0AN_S61,Macrococcus caseolyticus,47.0149,This study,ML,milk
+TG_SK_T1_ML_0AN_S61,Macrococcus caseolyticus,47.0149,This study,ML,milk
+TG_SK_T1_ML_0AN_S61,Macrococcus caseolyticus,47.0149,This study,ML,milk
+TG_SK_T1_ML_0AN_S61,Macrococcus caseolyticus,47.0149,This study,ML,milk
+TG_SK_T2_ML_0AE_S73,Streptococcus parauberis,27.9698,This study,ML,milk
+TG_SK_T2_ML_0AE_S73,Streptococcus parauberis,27.9698,This study,ML,milk
+TG_SK_T2_ML_0AE_S73,Streptococcus parauberis,27.9698,This study,ML,milk
+TG_SK_T2_ML_0AE_S73,Streptococcus parauberis,27.9698,This study,ML,milk
+TG_SK_T2_ML_0AE_S73,Streptococcus parauberis,27.9698,This study,ML,milk
+TG_SK_T2_ML_0AE_S73,Streptococcus parauberis,27.9698,This study,ML,milk
+TG_SK_T2_ML_0AN_S2,Lactococcus lactis,58.7852,This study,ML,milk
+TG_SK_T2_ML_0AN_S2,Lactococcus lactis,58.7852,This study,ML,milk
+TG_SK_T2_ML_0AN_S2,Lactococcus lactis,58.7852,This study,ML,milk
+TG_SK_T2_ML_0AN_S2,Lactococcus lactis,58.7852,This study,ML,milk
+TG_SK_T2_ML_0AN_S2,Lactococcus lactis,58.7852,This study,ML,milk
+TG_SK_T2_ML_0AN_S2,Lactococcus lactis,58.7852,This study,ML,milk
+U_2_10_S59,Lactococcus cremoris,51.9986,NA,NA,milk
+U_2_11_S60,Lactococcus lactis,56.7013,NA,NA,milk
+U_2_12_S61,Lactococcus lactis,38.6274,NA,NA,milk
+U_2_7_S56,Lactococcus cremoris,28.5374,NA,NA,milk
+U_2_8_S57,Lactococcus cremoris,49.6488,NA,NA,milk
+U_2_9_S58,Lactococcus cremoris,52.5306,NA,NA,milk
+V1_S62,Lactococcus lactis,52.6745,Walsh et al 2023,ML,milk
+V10_S71,Lactococcus lactis,54.4119,Walsh et al 2023,ML,milk
+V11_S72,Lactobacillus kefiranofaciens,23.8117,Walsh et al 2023,ML,milk
+V12_S73,Lactococcus lactis,47.4533,Walsh et al 2023,ML,milk
+V2_S63,Lactococcus lactis,55.5703,Walsh et al 2023,ML,milk
+V3_S64,Acinetobacter sp. TTH0-4,19.6179,Walsh et al 2023,ML,milk
+V4_S65,Acinetobacter sp. TTH0-4,31.154,Walsh et al 2023,ML,milk
+V5_S66,Lactococcus lactis,57.4321,Walsh et al 2023,ML,milk
+V6_S67,Lactococcus lactis,52.9331,Walsh et al 2023,ML,milk
+V7_S68,Lactococcus lactis,31.5792,Walsh et al 2023,ML,milk
+V8_S69,Lactococcus lactis,44.2523,Walsh et al 2023,ML,milk
+V9_S70,Lactococcus lactis,50.3799,Walsh et al 2023,ML,milk
+W1_S74,Lactococcus lactis,56.0179,Walsh et al 2023,ML,milk
+W10_S83,Lactococcus lactis,57.9978,Walsh et al 2023,ML,milk
+W2_S75,Lactococcus lactis,53.485,Walsh et al 2023,ML,milk
+W3_S76,Lactococcus lactis,34.6423,Walsh et al 2023,ML,milk
+W4_S77,Lactococcus lactis,49.3807,Walsh et al 2023,ML,milk
+W5_S78,Lactococcus lactis,57.4057,Walsh et al 2023,ML,milk
+W6_S79,Lactococcus lactis,57.9714,Walsh et al 2023,ML,milk
+W7_S80,Lactococcus lactis,56.5143,Walsh et al 2023,ML,milk
+W8_S81,Lactococcus lactis,31.8234,Walsh et al 2023,ML,milk
+W9_S82,Lactococcus lactis,56.3286,Walsh et al 2023,ML,milk
+WK001_1_L_08h_01F1_S25,Leuconostoc pseudomesenteroides,26.3962,Mortensen et al 2023,WL,water
+WK001_1_L_48h_01F2_S26,Leuconostoc pseudomesenteroides,18.3653,Mortensen et al 2023,WL,water
+WK001_2_G_48h_01C4_S1,Lacticaseibacillus paracasei,10.9198,Mortensen et al 2023,WG,water
+WK001_2_L_08h_01F3_S27,Leuconostoc pseudomesenteroides,18.967,Mortensen et al 2023,WL,water
+WK001_2_L_48h_01F4_S28,Leuconostoc pseudomesenteroides,20.6919,Mortensen et al 2023,WL,water
+WK001T_1_G_00h_05I5_S129,Lentilactobacillus hilgardii,15.5701,Mortensen et al 2023,WG,water
+WK001T_1_L_00h_05D3_S82,Lacticaseibacillus paracasei,29.1406,Mortensen et al 2023,WL,water
+WK001T_1_L_02h_05D7_S86,Lacticaseibacillus paracasei,22.6853,Mortensen et al 2023,WL,water
+WK001T_1_L_04h_05E2_S90,Lacticaseibacillus paracasei,30.8712,Mortensen et al 2023,WL,water
+WK001T_1_L_08h_05E6_S94,Lacticaseibacillus paracasei,22.8667,Mortensen et al 2023,WL,water
+WK001T_1_L_16h_05F1_S98,Lacticaseibacillus paracasei,14.7527,Mortensen et al 2023,WL,water
+WK001T_1_L_48h_05F9_S106,Lacticaseibacillus paracasei,9.50157,Mortensen et al 2023,WL,water
+WK001T_2_G_00h_05I6_S130,Lentilactobacillus hilgardii,14.6379,Mortensen et al 2023,WG,water
+WK001T_2_L_00h_05D4_S83,Lacticaseibacillus paracasei,27.9586,Mortensen et al 2023,WL,water
+WK001T_2_L_02h_05D8_S87,Lacticaseibacillus paracasei,22.9977,Mortensen et al 2023,WL,water
+WK001T_2_L_04h_05E3_S91,Lacticaseibacillus paracasei,29.1767,Mortensen et al 2023,WL,water
+WK001T_2_L_08h_05E7_S95,Lacticaseibacillus paracasei,21.8164,Mortensen et al 2023,WL,water
+WK001T_2_L_16h_05F2_S99,Leuconostoc pseudomesenteroides,14.7039,Mortensen et al 2023,WL,water
+WK001T_2_L_48h_05G1_S107,Lacticaseibacillus paracasei,9.12599,Mortensen et al 2023,WL,water
+WK002_1_L_08h_01F5_S29,Leuconostoc pseudomesenteroides,3.5329,Mortensen et al 2023,WL,water
+WK002_1_L_48h_01F6_S30,Gluconobacter oxydans,4.87481,Mortensen et al 2023,WL,water
+WK002_2_G_48h_01C5_S1,Zymomonas mobilis,6.45539,Mortensen et al 2023,WG,water
+WK002_2_G_48h_01C5_S133,Zymomonas mobilis,6.44597,Mortensen et al 2023,WG,water
+WK002_2_G_48h_01C5_S2,Zymomonas mobilis,6.4538,Mortensen et al 2023,WG,water
+WK002_2_L_08h_01F7_S31,Zymomonas mobilis,3.16109,Mortensen et al 2023,WL,water
+WK002_2_L_48h_01F8_S32,Zymomonas mobilis,5.88429,Mortensen et al 2023,WL,water
+WK003_1_L_08h_01F9_S33,Leuconostoc pseudomesenteroides,14.8318,Mortensen et al 2023,WL,water
+WK003_1_L_48h_01G1_S34,Leuconostoc pseudomesenteroides,19.8906,Mortensen et al 2023,WL,water
+WK003_2_G_48h_01C6_S3,Saccharomyces cerevisiae,2.07341,Mortensen et al 2023,WG,water
+WK003_2_L_08h_01G2_S35,Leuconostoc pseudomesenteroides,8.57246,Mortensen et al 2023,WL,water
+WK003_2_L_48h_01G3_S36,Leuconostoc pseudomesenteroides,8.2322,Mortensen et al 2023,WL,water
+WK004_1_L_08h_01G4_S37,Lacticaseibacillus paracasei,13.8887,Mortensen et al 2023,WL,water
+WK004_1_L_48h_01G5_S38,Lacticaseibacillus paracasei,9.28392,Mortensen et al 2023,WL,water
+WK004_2_G_48h_01C7_S4,Lacticaseibacillus paracasei,6.99465,Mortensen et al 2023,WG,water
+WK004_2_L_08h_01G6_S39,Lacticaseibacillus paracasei,8.7816,Mortensen et al 2023,WL,water
+WK004_2_L_48h_01G7_S40,Lacticaseibacillus paracasei,6.7522,Mortensen et al 2023,WL,water
+WK005_1_L_08h_01G8_S41,Lacticaseibacillus paracasei,32.1877,Mortensen et al 2023,WL,water
+WK005_1_L_48h_01G9_S42,Lacticaseibacillus paracasei,25.2548,Mortensen et al 2023,WL,water
+WK005_2_G_48h_01C8_S5,Lacticaseibacillus paracasei,18.2442,Mortensen et al 2023,WG,water
+WK005_2_L_08h_01H1_S43,Lacticaseibacillus paracasei,31.8746,Mortensen et al 2023,WL,water
+WK005_2_L_48h_01H2_S44,Lacticaseibacillus paracasei,21.4052,Mortensen et al 2023,WL,water
+WK006_1_L_08h_01H3_S45,Lacticaseibacillus paracasei,13.4119,Mortensen et al 2023,WL,water
+WK006_1_L_48h_01H4_S46,Lacticaseibacillus paracasei,14.7585,Mortensen et al 2023,WL,water
+WK006_2_G_48h_01C9_S6,Lacticaseibacillus paracasei,9.39653,Mortensen et al 2023,WG,water
+WK006_2_L_08h_01H5_S47,Lacticaseibacillus paracasei,11.6202,Mortensen et al 2023,WL,water
+WK006_2_L_48h_01H6_S48,Lacticaseibacillus paracasei,12.4882,Mortensen et al 2023,WL,water
+WK007_1_L_08h_01H7_S49,Lacticaseibacillus paracasei,12.348,Mortensen et al 2023,WL,water
+WK007_1_L_48h_01H8_S50,Lacticaseibacillus paracasei,8.86536,Mortensen et al 2023,WL,water
+WK007_2_G_48h_01D1_S7,Lacticaseibacillus paracasei,10.2748,Mortensen et al 2023,WG,water
+WK007_2_L_08h_01H9_S51,Lacticaseibacillus paracasei,8.10516,Mortensen et al 2023,WL,water
+WK007_2_L_48h_01I1_S52,Lacticaseibacillus paracasei,6.76763,Mortensen et al 2023,WL,water
+WK008_1_L_08h_01I2_S53,Paenibacillus polymyxa,29.6486,Mortensen et al 2023,WL,water
+WK008_1_L_48h_01I3_S54,Paenibacillus polymyxa,18.1964,Mortensen et al 2023,WL,water
+WK008_2_G_48h_01D2_S8,Paenibacillus polymyxa,32.6529,Mortensen et al 2023,WG,water
+WK008_2_L_08h_01I4_S55,Paenibacillus polymyxa,27.77,Mortensen et al 2023,WL,water
+WK008_2_L_48h_01I5_S56,Paenibacillus polymyxa,6.52238,Mortensen et al 2023,WL,water
+WK009_1_L_08h_01I6_S57,Leuconostoc mesenteroides,26.919,Mortensen et al 2023,WL,water
+WK009_1_L_48h_01I7_S58,Leuconostoc mesenteroides,30.8932,Mortensen et al 2023,WL,water
+WK009_2_G_48h_01D3_S9,Leuconostoc mesenteroides,14.6467,Mortensen et al 2023,WG,water
+WK009_2_L_08h_01I8_S59,Leuconostoc mesenteroides,34.1715,Mortensen et al 2023,WL,water
+WK009_2_L_48h_01I9_S60,Leuconostoc mesenteroides,31.4791,Mortensen et al 2023,WL,water
+WK010_1_L_08h_02A1_S61,Zymomonas mobilis,20.7953,Mortensen et al 2023,WL,water
+WK010_1_L_48h_02A2_S62,Zymomonas mobilis,14.6134,Mortensen et al 2023,WL,water
+WK010_2_G_48h_01D4_S10,Zymomonas mobilis,16.2441,Mortensen et al 2023,WG,water
+WK010_2_L_08h_02A3_S63,Zymomonas mobilis,20.2976,Mortensen et al 2023,WL,water
+WK010_2_L_48h_02A4_S64,Zymomonas mobilis,14.0353,Mortensen et al 2023,WL,water
+WK011_1_L_08h_02A5_S65,Lacticaseibacillus paracasei,18.0895,Mortensen et al 2023,WL,water
+WK011_1_L_48h_02A6_S66,Leuconostoc mesenteroides,17.3313,Mortensen et al 2023,WL,water
+WK011_2_G_48h_01D5_S11,Lacticaseibacillus paracasei,20.3655,Mortensen et al 2023,WG,water
+WK011_2_L_08h_02A7_S67,Lacticaseibacillus paracasei,9.41016,Mortensen et al 2023,WL,water
+WK011_2_L_48h_02A8_S68,Leuconostoc mesenteroides,19.5256,Mortensen et al 2023,WL,water
+WK012_1_L_08h_02A9_S69,Zymomonas mobilis,12.006,Mortensen et al 2023,WL,water
+WK012_1_L_48h_02B1_S70,Zymomonas mobilis,15.9911,Mortensen et al 2023,WL,water
+WK012_2_G_48h_01D6_S12,Zymomonas mobilis,12.2244,Mortensen et al 2023,WG,water
+WK012_2_L_08h_02B2_S71,Zymomonas mobilis,15.776,Mortensen et al 2023,WL,water
+WK012_2_L_48h_02B3_S72,Zymomonas mobilis,10.6134,Mortensen et al 2023,WL,water
+WK013_1_L_08h_02B4_S73,Zymomonas mobilis,28.1358,Mortensen et al 2023,WL,water
+WK013_1_L_48h_02B5_S74,Zymomonas mobilis,30.7379,Mortensen et al 2023,WL,water
+WK013_2_G_48h_01D7_S13,Zymomonas mobilis,19.1175,Mortensen et al 2023,WG,water
+WK013_2_L_08h_02B6_S75,Zymomonas mobilis,34.7266,Mortensen et al 2023,WL,water
+WK013_2_L_48h_02B7_S76,Zymomonas mobilis,28.6787,Mortensen et al 2023,WL,water
+WK014_1_L_08h_02B8_S77,Zymomonas mobilis,22.0712,Mortensen et al 2023,WL,water
+WK014_1_L_48h_02B9_S78,Zymomonas mobilis,21.7675,Mortensen et al 2023,WL,water
+WK014_2_G_48h_01D8_S14,Zymomonas mobilis,21.519,Mortensen et al 2023,WG,water
+WK014_2_L_08h_02C1_S79,Zymomonas mobilis,30.9384,Mortensen et al 2023,WL,water
+WK014_2_L_48h_02C2_S80,Zymomonas mobilis,16.183,Mortensen et al 2023,WL,water
+WK015_1_L_08h_02C3_S81,Lacticaseibacillus paracasei,21.3708,Mortensen et al 2023,WL,water
+WK015_1_L_48h_02C4_S82,Lacticaseibacillus paracasei,15.5743,Mortensen et al 2023,WL,water
+WK015_2_G_48h_01D9_S15,Lacticaseibacillus paracasei,20.222,Mortensen et al 2023,WG,water
+WK015_2_L_08h_02C5_S83,Lacticaseibacillus paracasei,24.2974,Mortensen et al 2023,WL,water
+WK015_2_L_48h_02C6_S84,Lacticaseibacillus paracasei,19.8754,Mortensen et al 2023,WL,water
+WK016_1_L_08h_02C7_S85,Lacticaseibacillus paracasei,15.8699,Mortensen et al 2023,WL,water
+WK016_1_L_48h_02C8_S86,Lacticaseibacillus paracasei,9.2741,Mortensen et al 2023,WL,water
+WK016_2_G_48h_01E1_S16,Lacticaseibacillus paracasei,12.0967,Mortensen et al 2023,WG,water
+WK016_2_L_08h_02C9_S87,Lacticaseibacillus paracasei,17.1871,Mortensen et al 2023,WL,water
+WK016_2_L_48h_02D1_S88,Lacticaseibacillus paracasei,13.7037,Mortensen et al 2023,WL,water
+WK017_1_L_08h_02D2_S89,Zymomonas mobilis,8.85645,Mortensen et al 2023,WL,water
+WK017_1_L_48h_02D3_S90,Zymomonas mobilis,4.70701,Mortensen et al 2023,WL,water
+WK017_2_G_48h_01E2_S17,Zymomonas mobilis,2.17232,Mortensen et al 2023,WG,water
+WK017_2_L_08h_02D4_S91,Leuconostoc pseudomesenteroides,17.6677,Mortensen et al 2023,WL,water
+WK017_2_L_48h_02D5_S92,Leuconostoc pseudomesenteroides,9.60139,Mortensen et al 2023,WL,water
+WK018_1_L_08h_02D6_S93,Leuconostoc pseudomesenteroides,18.2601,Mortensen et al 2023,WL,water
+WK018_1_L_48h_02D7_S94,Leuconostoc pseudomesenteroides,14.9981,Mortensen et al 2023,WL,water
+WK018_2_G_48h_01E3_S18,Leuconostoc pseudomesenteroides,4.79427,Mortensen et al 2023,WG,water
+WK018_2_L_08h_02D8_S95,Leuconostoc pseudomesenteroides,20.1868,Mortensen et al 2023,WL,water
+WK018_2_L_48h_02D9_S96,Leuconostoc pseudomesenteroides,14.0672,Mortensen et al 2023,WL,water
+WK018T_1_G_00h_05I7_S131,Lentilactobacillus hilgardii,3.37982,Mortensen et al 2023,WG,water
+WK018T_1_L_00h_05D5_S84,Lacticaseibacillus paracasei,1.13887,Mortensen et al 2023,WL,water
+WK018T_1_L_02h_05D9_S88,Lacticaseibacillus paracasei,1.81834,Mortensen et al 2023,WL,water
+WK018T_1_L_04h_05E4_S92,Lacticaseibacillus paracasei,2.68664,Mortensen et al 2023,WL,water
+WK018T_1_L_08h_05E8_S96,Lacticaseibacillus paracasei,3.15288,Mortensen et al 2023,WL,water
+WK018T_1_L_16h_05F3_S100,Lacticaseibacillus paracasei,4.68812,Mortensen et al 2023,WL,water
+WK018T_1_L_48h_05G2_S108,Lacticaseibacillus paracasei,3.1047,Mortensen et al 2023,WL,water
+WK018T_2_G_00h_05I8_S132,Lentilactobacillus hilgardii,4.16657,Mortensen et al 2023,WG,water
+WK018T_2_L_00h_05D6_S85,Lacticaseibacillus paracasei,1.42307,Mortensen et al 2023,WL,water
+WK018T_2_L_02h_05E1_S89,Lacticaseibacillus paracasei,2.04493,Mortensen et al 2023,WL,water
+WK018T_2_L_04h_05E5_S93,Lacticaseibacillus paracasei,2.53096,Mortensen et al 2023,WL,water
+WK018T_2_L_08h_05E9_S97,Lacticaseibacillus paracasei,2.80921,Mortensen et al 2023,WL,water
+WK018T_2_L_16h_05F4_S101,Lacticaseibacillus paracasei,4.37663,Mortensen et al 2023,WL,water
+WK018T_2_L_48h_05G3_S109,Lacticaseibacillus paracasei,2.731,Mortensen et al 2023,WL,water
+WK019_1_L_08h_02E1_S97,Zymomonas mobilis,14.5525,Mortensen et al 2023,WL,water
+WK019_1_L_48h_02E2_S98,Zymomonas mobilis,8.88183,Mortensen et al 2023,WL,water
+WK019_2_G_48h_01E4_S19,Leuconostoc pseudomesenteroides,2.82787,Mortensen et al 2023,WG,water
+WK019_2_L_08h_02E3_S99,Leuconostoc pseudomesenteroides,15.7001,Mortensen et al 2023,WL,water
+WK019_2_L_48h_02E4_S100,Leuconostoc pseudomesenteroides,8.09197,Mortensen et al 2023,WL,water
+WK020_1_L_08h_02E5_S101,Zymomonas mobilis,12.7521,Mortensen et al 2023,WL,water
+WK020_1_L_48h_02E6_S102,Zymomonas mobilis,9.97585,Mortensen et al 2023,WL,water
+WK020_2_G_48h_01E5_S20,Zymomonas mobilis,11.9552,Mortensen et al 2023,WG,water
+WK020_2_L_08h_02E7_S103,Zymomonas mobilis,10.2104,Mortensen et al 2023,WL,water
+WK020_2_L_48h_02E8_S104,Zymomonas mobilis,9.20637,Mortensen et al 2023,WL,water
+WK021_1_L_08h_02E9_S105,Leuconostoc mesenteroides,54.7452,Mortensen et al 2023,WL,water
+WK021_1_L_48h_02F1_S106,Leuconostoc mesenteroides,38.6627,Mortensen et al 2023,WL,water
+WK021_2_G_48h_01E6_S21,Leuconostoc mesenteroides,16.2151,Mortensen et al 2023,WG,water
+WK021_2_L_08h_02F2_S107,Leuconostoc mesenteroides,39.7861,Mortensen et al 2023,WL,water
+WK021_2_L_48h_02F3_S108,Leuconostoc mesenteroides,32.4117,Mortensen et al 2023,WL,water
+WK022_1_L_08h_02F7_S112,Lacticaseibacillus paracasei,6.6013,Mortensen et al 2023,WL,water
+WK022_1_L_48h_02F8_S113,Lacticaseibacillus paracasei,6.95443,Mortensen et al 2023,WL,water
+WK022_2_G_48h_01E7_S22,Lacticaseibacillus paracasei,15.1401,Mortensen et al 2023,WG,water
+WK022_2_L_08h_02F9_S114,Lacticaseibacillus paracasei,5.52201,Mortensen et al 2023,WL,water
+WK022_2_L_48h_02G1_S115,Lacticaseibacillus paracasei,8.02545,Mortensen et al 2023,WL,water
+WK023_1_L_08h_02G2_S116,Leuconostoc pseudomesenteroides,14.2507,Mortensen et al 2023,WL,water
+WK023_1_L_48h_02G3_S117,Leuconostoc pseudomesenteroides,21.0268,Mortensen et al 2023,WL,water
+WK023_2_G_48h_01E8_S23,Lactiplantibacillus plantarum,1.16286,Mortensen et al 2023,WG,water
+WK023_2_L_08h_02G4_S118,Leuconostoc pseudomesenteroides,4.72189,Mortensen et al 2023,WL,water
+WK023_2_L_48h_02G5_S119,Leuconostoc pseudomesenteroides,11.3013,Mortensen et al 2023,WL,water
+WK024_1_L_08h_02G6_S120,Lacticaseibacillus paracasei,23.583,Mortensen et al 2023,WL,water
+WK024_1_L_48h_02G7_S121,Lacticaseibacillus paracasei,29.8999,Mortensen et al 2023,WL,water
+WK024_2_G_48h_01E9_S24,Lacticaseibacillus paracasei,17.2113,Mortensen et al 2023,WG,water
+WK024_2_L_08h_02G8_S122,Lacticaseibacillus paracasei,22.1725,Mortensen et al 2023,WL,water
+WK024_2_L_48h_02G9_S123,Lacticaseibacillus paracasei,21.9899,Mortensen et al 2023,WL,water
+WK025_1_L_08h_02H4_S5,Zymomonas mobilis,9.84568,Mortensen et al 2023,WL,water
+WK025_1_L_48h_02H5_S6,Zymomonas mobilis,12.1227,Mortensen et al 2023,WL,water
+WK025_2_G_48h_04A1_S101,Zymomonas mobilis,13.4506,Mortensen et al 2023,WG,water
+WK025_2_L_08h_02H6_S7,Zymomonas mobilis,17.0271,Mortensen et al 2023,WL,water
+WK025_2_L_48h_02H7_S8,Zymomonas mobilis,15.3995,Mortensen et al 2023,WL,water
+WK026_1_L_08h_02H8_S9,Zymomonas mobilis,8.46378,Mortensen et al 2023,WL,water
+WK026_1_L_48h_02H9_S10,Zymomonas mobilis,11.8403,Mortensen et al 2023,WL,water
+WK026_2_G_48h_04A2_S102,Zymomonas mobilis,17.0525,Mortensen et al 2023,WG,water
+WK026_2_L_08h_02I1_S11,Zymomonas mobilis,18.8562,Mortensen et al 2023,WL,water
+WK026_2_L_48h_02I2_S12,Zymomonas mobilis,18.5209,Mortensen et al 2023,WL,water
+WK027_1_L_08h_02I3_S13,Lentilactobacillus hilgardii,6.24886,Mortensen et al 2023,WL,water
+WK027_1_L_48h_02I4_S14,Lentilactobacillus hilgardii,2.00576,Mortensen et al 2023,WL,water
+WK027_2_G_48h_04A3_S103,Lentilactobacillus hilgardii,11.8546,Mortensen et al 2023,WG,water
+WK027_2_L_08h_02I5_S15,Leuconostoc mesenteroides,4.25339,Mortensen et al 2023,WL,water
+WK027_2_L_48h_02I6_S16,Leuconostoc mesenteroides,1.68928,Mortensen et al 2023,WL,water
+WK028_1_L_08h_02I7_S17,Leuconostoc citreum,4.55941,Mortensen et al 2023,WL,water
+WK028_1_L_48h_02I8_S18,Leuconostoc citreum,31.685,Mortensen et al 2023,WL,water
+WK028_2_G_48h_04A4_S104,Leuconostoc citreum,3.34795,Mortensen et al 2023,WG,water
+WK028_2_L_08h_02I9_S19,Leuconostoc citreum,2.63558,Mortensen et al 2023,WL,water
+WK028_2_L_48h_03A1_S20,Leuconostoc citreum,31.6917,Mortensen et al 2023,WL,water
+WK029_1_L_08h_03A2_S21,Lacticaseibacillus paracasei,7.27237,Mortensen et al 2023,WL,water
+WK029_1_L_48h_03A3_S22,Lacticaseibacillus paracasei,21.8816,Mortensen et al 2023,WL,water
+WK029_2_G_48h_04A5_S105,Lacticaseibacillus paracasei,24.4076,Mortensen et al 2023,WG,water
+WK029_2_L_08h_03A4_S23,Lacticaseibacillus paracasei,7.95635,Mortensen et al 2023,WL,water
+WK029_2_L_48h_03A5_S24,Lacticaseibacillus paracasei,19.4872,Mortensen et al 2023,WL,water
+WK030_1_L_08h_03A6_S25,Propionibacterium freudenreichii,2.90133,Mortensen et al 2023,WL,water
+WK030_1_L_48h_03A7_S26,Lacticaseibacillus paracasei,4.33706,Mortensen et al 2023,WL,water
+WK030_2_G_48h_04A6_S106,Propionibacterium freudenreichii,9.12389,Mortensen et al 2023,WG,water
+WK030_2_L_08h_03A8_S27,Lacticaseibacillus paracasei,2.82517,Mortensen et al 2023,WL,water
+WK030_2_L_48h_03A9_S28,Lacticaseibacillus paracasei,4.28701,Mortensen et al 2023,WL,water
+WK031_1_L_08h_03B1_S29,Lacticaseibacillus paracasei,10.8444,Mortensen et al 2023,WL,water
+WK031_1_L_48h_03B2_S30,Lacticaseibacillus paracasei,15.6981,Mortensen et al 2023,WL,water
+WK031_2_G_48h_04A7_S107,Lacticaseibacillus paracasei,16.8349,Mortensen et al 2023,WG,water
+WK031_2_L_08h_03B3_S31,Lacticaseibacillus paracasei,22.8025,Mortensen et al 2023,WL,water
+WK031_2_L_48h_03B4_S32,Lacticaseibacillus paracasei,13.7793,Mortensen et al 2023,WL,water
+WK032_1_L_08h_03B5_S33,Lacticaseibacillus paracasei,27.0859,Mortensen et al 2023,WL,water
+WK032_1_L_48h_03B6_S34,Lacticaseibacillus paracasei,27.2165,Mortensen et al 2023,WL,water
+WK032_2_G_48h_04A8_S108,Lacticaseibacillus paracasei,19.2418,Mortensen et al 2023,WG,water
+WK032_2_L_08h_03B7_S35,Lacticaseibacillus paracasei,31.5355,Mortensen et al 2023,WL,water
+WK032_2_L_48h_03B8_S36,Lacticaseibacillus paracasei,21.3782,Mortensen et al 2023,WL,water
+WK033_1_L_08h_03B9_S37,Lacticaseibacillus paracasei,10.0561,Mortensen et al 2023,WL,water
+WK033_1_L_48h_03C1_S38,Lacticaseibacillus paracasei,6.21308,Mortensen et al 2023,WL,water
+WK033_2_G_48h_04A9_S109,Lacticaseibacillus paracasei,5.53984,Mortensen et al 2023,WG,water
+WK033_2_L_08h_03C2_S39,Lacticaseibacillus paracasei,11.343,Mortensen et al 2023,WL,water
+WK033_2_L_48h_03C3_S40,Lacticaseibacillus paracasei,6.86133,Mortensen et al 2023,WL,water
+WK034_1_L_08h_03C4_S41,Lacticaseibacillus paracasei,13.7139,Mortensen et al 2023,WL,water
+WK034_1_L_48h_03C5_S42,Leuconostoc pseudomesenteroides,10.5005,Mortensen et al 2023,WL,water
+WK034_2_G_48h_04B1_S110,Lacticaseibacillus paracasei,8.66263,Mortensen et al 2023,WG,water
+WK034_2_L_08h_03C6_S43,Leuconostoc pseudomesenteroides,14.601,Mortensen et al 2023,WL,water
+WK034_2_L_48h_03C7_S44,Leuconostoc pseudomesenteroides,17.2747,Mortensen et al 2023,WL,water
+WK035_1_L_08h_03C8_S45,Saccharomyces cerevisiae,3.76283,Mortensen et al 2023,WL,water
+WK035_1_L_48h_03C9_S46,Gluconobacter oxydans,7.69706,Mortensen et al 2023,WL,water
+WK035_2_G_48h_04B2_S111,Saccharomyces cerevisiae,4.16202,Mortensen et al 2023,WG,water
+WK035_2_L_08h_03D1_S47,Gluconobacter oxydans,7.25937,Mortensen et al 2023,WL,water
+WK035_2_L_48h_03D2_S48,Saccharomyces cerevisiae,4.01446,Mortensen et al 2023,WL,water
+WK036_1_L_08h_03D3_S49,Lacticaseibacillus paracasei,12.0432,Mortensen et al 2023,WL,water
+WK036_1_L_48h_03D4_S50,Lacticaseibacillus paracasei,13.7507,Mortensen et al 2023,WL,water
+WK036_2_G_48h_04B3_S112,Lacticaseibacillus paracasei,11.2815,Mortensen et al 2023,WG,water
+WK036_2_L_08h_03D5_S51,Lacticaseibacillus paracasei,9.31126,Mortensen et al 2023,WL,water
+WK036_2_L_48h_03D6_S52,Lacticaseibacillus paracasei,8.9655,Mortensen et al 2023,WL,water
+WK037_1_L_08h_03D7_S53,Lacticaseibacillus paracasei,15.8766,Mortensen et al 2023,WL,water
+WK037_1_L_48h_03D8_S54,Lacticaseibacillus paracasei,12.1917,Mortensen et al 2023,WL,water
+WK037_2_G_48h_04B4_S113,Lacticaseibacillus paracasei,11.7103,Mortensen et al 2023,WG,water
+WK037_2_L_08h_03D9_S55,Lacticaseibacillus paracasei,11.7872,Mortensen et al 2023,WL,water
+WK037_2_L_48h_03E1_S56,Lacticaseibacillus paracasei,11.7619,Mortensen et al 2023,WL,water
+WK038_1_L_08h_03E2_S57,Saccharomyces cerevisiae,4.96563,Mortensen et al 2023,WL,water
+WK038_1_L_48h_03E3_S58,Gluconobacter oxydans,6.61704,Mortensen et al 2023,WL,water
+WK038_2_G_48h_04B5_S114,Saccharomyces cerevisiae,5.40191,Mortensen et al 2023,WG,water
+WK038_2_L_08h_03E4_S59,Saccharomyces cerevisiae,4.63533,Mortensen et al 2023,WL,water
+WK038_2_L_48h_03E5_S60,Gluconobacter oxydans,8.99023,Mortensen et al 2023,WL,water
+WK039_1_L_08h_03E6_S61,Saccharomyces cerevisiae,0.723403,Mortensen et al 2023,WL,water
+WK039_1_L_48h_03E7_S62,Komagataeibacter saccharivorans,1.49313,Mortensen et al 2023,WL,water
+WK039_2_G_48h_04B6_S115,Saccharomyces cerevisiae,2.12088,Mortensen et al 2023,WG,water
+WK039_2_L_08h_03E8_S63,Saccharomyces cerevisiae,1.18644,Mortensen et al 2023,WL,water
+WK039_2_L_48h_03E9_S64,Gluconobacter oxydans,0.96744,Mortensen et al 2023,WL,water
+WK040_1_L_08h_03F1_S65,Gluconobacter oxydans,1.54484,Mortensen et al 2023,WL,water
+WK040_1_L_48h_03F2_S66,Gluconobacter oxydans,1.64125,Mortensen et al 2023,WL,water
+WK040_2_G_48h_04B7_S116,Brettanomyces bruxellensis,0.439881,Mortensen et al 2023,WG,water
+WK040_2_L_08h_03F3_S67,Gluconobacter oxydans,0.974646,Mortensen et al 2023,WL,water
+WK040_2_L_48h_03F4_S68,Gluconobacter oxydans,0.882912,Mortensen et al 2023,WL,water
+WK041_1_L_08h_03F5_S69,Lacticaseibacillus paracasei,10.8049,Mortensen et al 2023,WL,water
+WK041_1_L_48h_03F6_S70,Lacticaseibacillus paracasei,8.25315,Mortensen et al 2023,WL,water
+WK041_2_G_48h_04B8_S117,Lacticaseibacillus paracasei,4.71377,Mortensen et al 2023,WG,water
+WK041_2_L_08h_03F7_S71,Lacticaseibacillus paracasei,10.7643,Mortensen et al 2023,WL,water
+WK041_2_L_48h_03F8_S72,Lacticaseibacillus paracasei,4.84267,Mortensen et al 2023,WL,water
+WK042_1_L_08h_03F9_S73,Zymomonas mobilis,22.0866,Mortensen et al 2023,WL,water
+WK042_1_L_48h_03G1_S74,Zymomonas mobilis,14.26,Mortensen et al 2023,WL,water
+WK042_2_G_48h_04B9_S118,Zymomonas mobilis,11.1442,Mortensen et al 2023,WG,water
+WK042_2_L_08h_03G2_S75,Zymomonas mobilis,21.1976,Mortensen et al 2023,WL,water
+WK042_2_L_48h_03G3_S76,Zymomonas mobilis,13.6426,Mortensen et al 2023,WL,water
+WK043_1_L_08h_03G4_S77,Lacticaseibacillus paracasei,6.39838,Mortensen et al 2023,WL,water
+WK043_1_L_48h_03G5_S78,Lacticaseibacillus paracasei,7.11853,Mortensen et al 2023,WL,water
+WK043_2_G_48h_04C1_S119,Zymomonas mobilis,15.0087,Mortensen et al 2023,WG,water
+WK043_2_L_08h_03G6_S79,Zymomonas mobilis,4.40554,Mortensen et al 2023,WL,water
+WK043_2_L_48h_03G7_S80,Zymomonas mobilis,7.62365,Mortensen et al 2023,WL,water
+WK044_1_L_08h_03G8_S81,Saccharomyces cerevisiae,1.17616,Mortensen et al 2023,WL,water
+WK044_1_L_48h_03G9_S82,Saccharomyces cerevisiae,1.01332,Mortensen et al 2023,WL,water
+WK044_2_G_48h_04C2_S120,Saccharomyces cerevisiae,1.51323,Mortensen et al 2023,WG,water
+WK044_2_L_08h_03H1_S83,Saccharomyces cerevisiae,0.808896,Mortensen et al 2023,WL,water
+WK044_2_L_48h_03H2_S84,Saccharomyces cerevisiae,0.675652,Mortensen et al 2023,WL,water
+WK045_1_L_08h_03H3_S85,Leuconostoc pseudomesenteroides,15.3607,Mortensen et al 2023,WL,water
+WK045_1_L_48h_03H4_S86,Leuconostoc pseudomesenteroides,12.2668,Mortensen et al 2023,WL,water
+WK045_2_G_48h_04C3_S121,Oenococcus oeni,3.05322,Mortensen et al 2023,WG,water
+WK045_2_L_08h_03H5_S87,Leuconostoc pseudomesenteroides,9.00913,Mortensen et al 2023,WL,water
+WK045_2_L_48h_03H6_S88,Leuconostoc pseudomesenteroides,11.2223,Mortensen et al 2023,WL,water
+WK046_1_L_08h_03H7_S89,Oenococcus oeni,24.9744,Mortensen et al 2023,WL,water
+WK046_1_L_48h_03H8_S90,Oenococcus oeni,35.2288,Mortensen et al 2023,WL,water
+WK046_2_G_48h_04C4_S122,Oenococcus oeni,37.0948,Mortensen et al 2023,WG,water
+WK046_2_L_08h_03H9_S91,Oenococcus oeni,39.7905,Mortensen et al 2023,WL,water
+WK046_2_L_48h_03I1_S92,Oenococcus oeni,45.1797,Mortensen et al 2023,WL,water
+WK047_1_L_08h_03I2_S93,Oenococcus oeni,25.2394,Mortensen et al 2023,WL,water
+WK047_1_L_48h_03I3_S94,Oenococcus oeni,27.2717,Mortensen et al 2023,WL,water
+WK047_2_G_48h_04C5_S123,Oenococcus oeni,10.4959,Mortensen et al 2023,WG,water
+WK047_2_L_08h_03I4_S95,Oenococcus oeni,19.1298,Mortensen et al 2023,WL,water
+WK047_2_L_48h_03I5_S96,Oenococcus oeni,24.7241,Mortensen et al 2023,WL,water
+WK048_1_L_08h_03I6_S97,Leuconostoc pseudomesenteroides,13.3919,Mortensen et al 2023,WL,water
+WK048_1_L_48h_03I7_S98,Leuconostoc pseudomesenteroides,8.40626,Mortensen et al 2023,WL,water
+WK048_2_G_48h_04C6_S124,Lentilactobacillus hilgardii,7.09338,Mortensen et al 2023,WG,water
+WK048_2_L_08h_03I8_S99,Leuconostoc pseudomesenteroides,18.5566,Mortensen et al 2023,WL,water
+WK048_2_L_48h_03I9_S100,Leuconostoc pseudomesenteroides,8.34189,Mortensen et al 2023,WL,water
+WK049_1_L_08h_05A6_S58,Gluconobacter oxydans,11.0573,Mortensen et al 2023,WL,water
+WK049_1_L_48h_05A7_S59,Gluconobacter oxydans,25.8089,Mortensen et al 2023,WL,water
+WK049_2_G_48h_05H8_S123,Gluconobacter oxydans,7.7838,Mortensen et al 2023,WG,water
+WK049_2_L_08h_05A8_S60,Gluconobacter oxydans,2.80685,Mortensen et al 2023,WL,water
+WK049_2_L_48h_05A9_S61,Gluconobacter oxydans,25.2698,Mortensen et al 2023,WL,water
+WK050_1_L_08h_04C7_S125,Lacticaseibacillus paracasei,7.34984,Mortensen et al 2023,WL,water
+WK050_1_L_48h_04C8_S126,Lacticaseibacillus paracasei,5.62727,Mortensen et al 2023,WL,water
+WK050_2_G_48h_04D2_S129,Lacticaseibacillus paracasei,8.7668,Mortensen et al 2023,WG,water
+WK050_2_L_08h_04C9_S127,Lacticaseibacillus paracasei,8.13228,Mortensen et al 2023,WL,water
+WK050_2_L_48h_04D1_S128,Lacticaseibacillus paracasei,4.76306,Mortensen et al 2023,WL,water
+WK051_1_L_08h_04D4_S2,Leuconostoc pseudomesenteroides,22.9136,Mortensen et al 2023,WL,water
+WK051_1_L_48h_04D5_S3,Leuconostoc pseudomesenteroides,25.139,Mortensen et al 2023,WL,water
+WK051_2_G_48h_04D3_S1,Leuconostoc pseudomesenteroides,6.94861,Mortensen et al 2023,WG,water
+WK051_2_L_08h_04D6_S4,Leuconostoc pseudomesenteroides,21.969,Mortensen et al 2023,WL,water
+WK051_2_L_48h_04D7_S5,Leuconostoc pseudomesenteroides,20.2116,Mortensen et al 2023,WL,water
+WK052_1_L_08h_04D8_S6,Saccharomyces cerevisiae,2.66199,Mortensen et al 2023,WL,water
+WK052_1_L_48h_04D9_S7,Saccharomyces cerevisiae,1.68335,Mortensen et al 2023,WL,water
+WK052_2_G_48h_05G4_S110,Saccharomyces cerevisiae,4.17269,Mortensen et al 2023,WG,water
+WK052_2_L_08h_04E1_S8,Saccharomyces cerevisiae,3.29963,Mortensen et al 2023,WL,water
+WK052_2_L_48h_04E2_S9,Saccharomyces cerevisiae,1.71768,Mortensen et al 2023,WL,water
+WK053_1_L_08h_04E3_S10,Leuconostoc pseudomesenteroides,10.2716,Mortensen et al 2023,WL,water
+WK053_1_L_48h_04E4_S11,Leuconostoc pseudomesenteroides,13.0288,Mortensen et al 2023,WL,water
+WK053_2_G_48h_05G5_S111,Lacticaseibacillus paracasei,10.7422,Mortensen et al 2023,WG,water
+WK053_2_L_08h_04E5_S12,Leuconostoc pseudomesenteroides,14.9834,Mortensen et al 2023,WL,water
+WK053_2_L_48h_04E6_S13,Leuconostoc pseudomesenteroides,14.7765,Mortensen et al 2023,WL,water
+WK054_1_L_08h_04E7_S14,Leuconostoc mesenteroides,28.1582,Mortensen et al 2023,WL,water
+WK054_1_L_48h_04E8_S15,Leuconostoc mesenteroides,17.2916,Mortensen et al 2023,WL,water
+WK054_2_G_48h_05G6_S112,Zymomonas mobilis,18.2289,Mortensen et al 2023,WG,water
+WK054_2_L_08h_04E9_S16,Leuconostoc mesenteroides,23.4261,Mortensen et al 2023,WL,water
+WK054_2_L_48h_04F1_S17,Leuconostoc mesenteroides,13.7425,Mortensen et al 2023,WL,water
+WK055_1_L_08h_04F2_S18,Lacticaseibacillus paracasei,3.93754,Mortensen et al 2023,WL,water
+WK055_1_L_48h_04F3_S19,Lacticaseibacillus paracasei,1.41567,Mortensen et al 2023,WL,water
+WK055_2_G_48h_05G7_S113,Lacticaseibacillus paracasei,8.67254,Mortensen et al 2023,WG,water
+WK055_2_L_08h_04F4_S20,Lacticaseibacillus paracasei,4.69482,Mortensen et al 2023,WL,water
+WK055_2_L_48h_04F5_S21,Lacticaseibacillus paracasei,2.35553,Mortensen et al 2023,WL,water
+WK056_1_L_08h_04F6_S22,Lacticaseibacillus paracasei,4.47454,Mortensen et al 2023,WL,water
+WK056_1_L_48h_04F7_S23,Lacticaseibacillus paracasei,1.37269,Mortensen et al 2023,WL,water
+WK056_2_G_48h_05G8_S114,Lacticaseibacillus paracasei,17.9777,Mortensen et al 2023,WG,water
+WK056_2_L_08h_04F8_S24,Lacticaseibacillus paracasei,6.31479,Mortensen et al 2023,WL,water
+WK056_2_L_48h_04F9_S25,Lacticaseibacillus paracasei,2.13808,Mortensen et al 2023,WL,water
+WK057_1_L_08h_04G1_S26,Schleiferilactobacillus harbinensis,0.782502,Mortensen et al 2023,WL,water
+WK057_1_L_48h_04G2_S27,Gluconobacter oxydans,2.40127,Mortensen et al 2023,WL,water
+WK057_2_G_48h_05G9_S115,Lacticaseibacillus paracasei,2.78389,Mortensen et al 2023,WG,water
+WK057_2_L_08h_04G3_S28,Lacticaseibacillus paracasei,1.28141,Mortensen et al 2023,WL,water
+WK057_2_L_48h_04G4_S29,Lacticaseibacillus paracasei,3.63344,Mortensen et al 2023,WL,water
+WK058_1_L_08h_04G5_S30,Saccharomyces cerevisiae,3.81041,Mortensen et al 2023,WL,water
+WK058_1_L_48h_04G6_S31,Gluconobacter oxydans,1.48489,Mortensen et al 2023,WL,water
+WK058_2_G_48h_05H1_S116,Zymomonas mobilis,14.2615,Mortensen et al 2023,WG,water
+WK058_2_L_08h_04G7_S32,Saccharomyces cerevisiae,3.11203,Mortensen et al 2023,WL,water
+WK058_2_L_48h_04G8_S33,Leuconostoc pseudomesenteroides,4.96654,Mortensen et al 2023,WL,water
+WK059_1_L_08h_04G9_S34,Lacticaseibacillus paracasei,9.18772,Mortensen et al 2023,WL,water
+WK059_1_L_48h_04H1_S35,Lacticaseibacillus paracasei,6.79962,Mortensen et al 2023,WL,water
+WK059_2_G_48h_05H2_S117,Lacticaseibacillus paracasei,12.6927,Mortensen et al 2023,WG,water
+WK059_2_L_08h_04H2_S36,Lacticaseibacillus paracasei,13.5512,Mortensen et al 2023,WL,water
+WK059_2_L_48h_04H3_S37,Lacticaseibacillus paracasei,13.02,Mortensen et al 2023,WL,water
+WK060_1_L_08h_04H4_S38,Gluconobacter oxydans,6.11037,Mortensen et al 2023,WL,water
+WK060_1_L_48h_04H5_S39,Lentilactobacillus hilgardii,6.75226,Mortensen et al 2023,WL,water
+WK060_2_G_48h_05H3_S118,Lacticaseibacillus paracasei,12.6302,Mortensen et al 2023,WG,water
+WK060_2_L_08h_04H6_S40,Lacticaseibacillus paracasei,7.1495,Mortensen et al 2023,WL,water
+WK060_2_L_48h_04H7_S41,Lacticaseibacillus paracasei,6.40174,Mortensen et al 2023,WL,water
+WK061_1_L_08h_04H8_S42,Lactiplantibacillus plantarum,0.283077,Mortensen et al 2023,WL,water
+WK061_1_L_48h_04H9_S43,Lactiplantibacillus plantarum,1.43977,Mortensen et al 2023,WL,water
+WK061_2_G_48h_05H4_S119,Lactiplantibacillus plantarum,1.45903,Mortensen et al 2023,WG,water
+WK061_2_L_08h_04I1_S44,Lactiplantibacillus plantarum,0.815137,Mortensen et al 2023,WL,water
+WK061_2_L_48h_04I2_S45,Lactiplantibacillus plantarum,1.49971,Mortensen et al 2023,WL,water
+WK062_1_L_08h_04I3_S46,Lacticaseibacillus paracasei,6.56274,Mortensen et al 2023,WL,water
+WK062_1_L_48h_04I4_S47,Lacticaseibacillus paracasei,4.83268,Mortensen et al 2023,WL,water
+WK062_2_G_48h_05H5_S120,Lacticaseibacillus paracasei,6.46597,Mortensen et al 2023,WG,water
+WK062_2_L_08h_04I5_S48,Lactiplantibacillus plantarum,1.43367,Mortensen et al 2023,WL,water
+WK062_2_L_48h_04I6_S49,Gluconobacter oxydans,2.07799,Mortensen et al 2023,WL,water
+WK063_1_L_08h_04I7_S50,Lacticaseibacillus paracasei,11.1014,Mortensen et al 2023,WL,water
+WK063_1_L_48h_04I8_S51,Lacticaseibacillus paracasei,7.50059,Mortensen et al 2023,WL,water
+WK063_2_G_48h_05H6_S121,Lacticaseibacillus paracasei,6.04304,Mortensen et al 2023,WG,water
+WK063_2_L_08h_04I9_S52,Lacticaseibacillus paracasei,15.5083,Mortensen et al 2023,WL,water
+WK063_2_L_48h_05A1_S53,Lacticaseibacillus paracasei,7.31699,Mortensen et al 2023,WL,water
+WK064_1_L_08h_05A2_S54,Lacticaseibacillus paracasei,2.85977,Mortensen et al 2023,WL,water
+WK064_1_L_48h_05A3_S55,Lacticaseibacillus paracasei,2.04677,Mortensen et al 2023,WL,water
+WK064_2_G_48h_05H7_S122,Lacticaseibacillus paracasei,5.01657,Mortensen et al 2023,WG,water
+WK064_2_L_08h_05A4_S56,Lacticaseibacillus paracasei,4.46564,Mortensen et al 2023,WL,water
+WK064_2_L_48h_05A5_S57,Lacticaseibacillus paracasei,2.83381,Mortensen et al 2023,WL,water
+WK065_1_L_08h_05B1_S62,Lactiplantibacillus plantarum,0.896224,Mortensen et al 2023,WL,water
+WK065_1_L_48h_05B2_S63,Lactiplantibacillus plantarum,1.17875,Mortensen et al 2023,WL,water
+WK065_2_G_48h_05H9_S124,Lactiplantibacillus plantarum,2.14219,Mortensen et al 2023,WG,water
+WK065_2_L_08h_05B3_S64,Lactiplantibacillus plantarum,1.05806,Mortensen et al 2023,WL,water
+WK065_2_L_48h_05B4_S65,Lactiplantibacillus plantarum,1.1094,Mortensen et al 2023,WL,water
+WK066_1_L_08h_05B5_S66,Saccharomyces cerevisiae,1.01438,Mortensen et al 2023,WL,water
+WK066_1_L_48h_05B6_S67,Clostridium saccharoperbutylacetonicum,1.1486,Mortensen et al 2023,WL,water
+WK066_2_G_48h_05I1_S125,Clostridium saccharoperbutylacetonicum,11.7861,Mortensen et al 2023,WG,water
+WK066_2_L_08h_05B7_S68,Saccharomyces cerevisiae,1.41872,Mortensen et al 2023,WL,water
+WK066_2_L_48h_05B8_S69,Saccharomyces cerevisiae,1.26866,Mortensen et al 2023,WL,water
+WK067_1_L_08h_05B9_S70,Leuconostoc mesenteroides,34.187,Mortensen et al 2023,WL,water
+WK067_1_L_48h_05C1_S71,Leuconostoc mesenteroides,31.3776,Mortensen et al 2023,WL,water
+WK067_2_G_48h_05I2_S126,Leuconostoc mesenteroides,28.57,Mortensen et al 2023,WG,water
+WK067_2_L_08h_05C2_S72,Leuconostoc mesenteroides,35.7993,Mortensen et al 2023,WL,water
+WK067_2_L_48h_05C3_S73,Leuconostoc mesenteroides,23.5962,Mortensen et al 2023,WL,water
+WK068_1_L_08h_05C4_S74,Saccharomyces cerevisiae,4.1589,Mortensen et al 2023,WL,water
+WK068_1_L_48h_05C5_S75,Gluconobacter oxydans,8.70408,Mortensen et al 2023,WL,water
+WK068_2_G_48h_05I3_S127,Saccharomyces cerevisiae,3.74375,Mortensen et al 2023,WG,water
+WK068_2_L_08h_05C6_S76,Saccharomyces cerevisiae,4.00714,Mortensen et al 2023,WL,water
+WK068_2_L_48h_05C7_S77,Gluconobacter oxydans,11.8149,Mortensen et al 2023,WL,water
+WK069_1_L_08h_05C8_S78,Clostridium beijerinckii,3.76471,Mortensen et al 2023,WL,water
+WK069_1_L_48h_05C9_S79,Clostridium beijerinckii,8.64971,Mortensen et al 2023,WL,water
+WK069_2_G_48h_05I4_S128,Saccharomyces cerevisiae,1.95224,Mortensen et al 2023,WG,water
+WK069_2_L_08h_05D1_S80,Saccharomyces cerevisiae,3.64795,Mortensen et al 2023,WL,water
+WK069_2_L_48h_05D2_S81,Gluconobacter oxydans,3.92519,Mortensen et al 2023,WL,water
