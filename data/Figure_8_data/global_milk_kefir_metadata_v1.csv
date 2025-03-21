@@ -1,0 +1,266 @@
+Sample,kefir type,Stage,Timepoint,country,data_source,merge_column
+A10,ML,T1,8x1,C,Walsh et al 2023,A10_S10
+A11,ML,T2,8x2,C,Walsh et al 2023,A11_S11
+A12,ML,T1,24x1,C,Walsh et al 2023,A12_S12
+A6,ML,T1,8x1,CHN,Walsh et al 2023,A6_S6
+A7,ML,T2,8x2,CHN,Walsh et al 2023,A7_S7
+A8,ML,T1,24x1,CHN,Walsh et al 2023,A8_S8
+A9,ML,T2,24x2,CHN,Walsh et al 2023,A9_S9
+B1,ML,T2,24x2,C,Walsh et al 2023,B1_S13
+B10,ML,T1,8x1,B,Walsh et al 2023,B10_S22
+B11,ML,T2,8x2,B,Walsh et al 2023,B11_S23
+B12,ML,T1,24x1,B,Walsh et al 2023,B12_S24
+B2,ML,T1,8x1,Bel,Walsh et al 2023,B2_S14
+B3,ML,T2,8x2,Bel,Walsh et al 2023,B3_S15
+B4,ML,T1,24x1,Bel,Walsh et al 2023,B4_S16
+B5,ML,T2,24x2,Bel,Walsh et al 2023,B5_S17
+B6,ML,T1,8x1,GRK-A,Walsh et al 2023,B6_S18
+B7,ML,T2,8x2,GRK-A,Walsh et al 2023,B7_S19
+B8,ML,T1,24x1,GRK-A,Walsh et al 2023,B8_S20
+B9,ML,T2,24x2,GRK-A,Walsh et al 2023,B9_S21
+C1,ML,T2,24x2,B,Walsh et al 2023,C1_S25
+C10,ML,T1,8x1,UK,Walsh et al 2023,C10_S34
+C11,ML,T2,8x2,UK,Walsh et al 2023,C11_S35
+C12,ML,T1,24x1,UK,Walsh et al 2023,C12_S36
+C2,ML,T1,8x1,ALA,Walsh et al 2023,C2_S26
+C3,ML,T2,8x2,ALA,Walsh et al 2023,C3_S27
+C4,ML,T1,24x1,ALA,Walsh et al 2023,C4_S28
+C5,ML,T2,24x2,ALA,Walsh et al 2023,C5_S29
+C6,ML,T1,8x1,ITA,Walsh et al 2023,C6_S30
+C7,ML,T2,8x2,ITA,Walsh et al 2023,C7_S31
+C8,ML,T1,24x1,ITA,Walsh et al 2023,C8_S32
+C9,ML,T2,24x2,ITA,Walsh et al 2023,C9_S33
+D1,ML,T2,24x2,UK,Walsh et al 2023,D1_S37
+D10,ML,T1,8x1,TUN,Walsh et al 2023,D10_S46
+D11,ML,T2,8x2,TUN,Walsh et al 2023,D11_S47
+D12,ML,T1,24x1,TUN,Walsh et al 2023,D12_S48
+D2,ML,T1,8x1,ISR,Walsh et al 2023,D2_S38
+D3,ML,T2,8x2,ISR,Walsh et al 2023,D3_S39
+D4,ML,T1,24x1,ISR,Walsh et al 2023,D4_S40
+D5,ML,T2,24x2,ISR,Walsh et al 2023,D5_S41
+D6,ML,T1,8x1,DEN,Walsh et al 2023,D6_S42
+D7,ML,T2,8x2,DEN,Walsh et al 2023,D7_S43
+D8,ML,T1,24x1,DEN,Walsh et al 2023,D8_S44
+D9,ML,T2,24x2,DEN,Walsh et al 2023,D9_S45
+E1,ML,T2,24x2,TUN,Walsh et al 2023,E1_S49
+E10,ML,T1,8x1,JO,Walsh et al 2023,E10_S58
+E11,ML,T2,8x2,JO,Walsh et al 2023,E11_S59
+E12,ML,T1,24x1,JO,Walsh et al 2023,E12_S60
+E2,ML,T1,8x1,LIS,Walsh et al 2023,E2_S50
+E3,ML,T2,8x2,LIS,Walsh et al 2023,E3_S51
+E4,ML,T1,24x1,LIS,Walsh et al 2023,E4_S52
+E5,ML,T2,24x2,LIS,Walsh et al 2023,E5_S53
+E6,ML,T1,8x1,X,Walsh et al 2023,E6_S54
+E7,ML,T2,8x2,X,Walsh et al 2023,E7_S55
+E8,ML,T1,24x1,X,Walsh et al 2023,E8_S56
+E9,ML,T2,24x2,X,Walsh et al 2023,E9_S57
+F1,ML,T2,24x2,JO,Walsh et al 2023,F1_S61
+F10,ML,T1,8x1,GIN,Walsh et al 2023,F10_S70
+F11,ML,T2,8x2,GIN,Walsh et al 2023,F11_S71
+F12,ML,T1,24x1,GIN,Walsh et al 2023,F12_S72
+F2,ML,T1,8x1,EGT,Walsh et al 2023,F2_S62
+F3,ML,T2,8x2,EGT,Walsh et al 2023,F3_S63
+F4,ML,T1,24x1,EGT,Walsh et al 2023,F4_S64
+F5,ML,T2,24x2,EGT,Walsh et al 2023,F5_S65
+F6,ML,T1,8x1,COC,Walsh et al 2023,F6_S66
+F7,ML,T2,8x2,COC,Walsh et al 2023,F7_S67
+F8,ML,T1,24x1,COC,Walsh et al 2023,F8_S68
+F9,ML,T2,24x2,COC,Walsh et al 2023,F9_S69
+G1,ML,T2,24x2,GIN,Walsh et al 2023,G1_S73
+G10,ML,T1,8x1,A,Walsh et al 2023,G10_S82
+G11,ML,T2,8x2,A,Walsh et al 2023,G11_S83
+G12,ML,T1,24x1,A,Walsh et al 2023,G12_S84
+G2,ML,T1,8x1,CAN,Walsh et al 2023,G2_S74
+G3,ML,T2,8x2,CAN,Walsh et al 2023,G3_S75
+G4,ML,T1,24x1,CAN,Walsh et al 2023,G4_S76
+G5,ML,T2,24x2,CAN,Walsh et al 2023,G5_S77
+G6,ML,T1,8x1,POR,Walsh et al 2023,G6_S78
+G7,ML,T2,8x2,POR,Walsh et al 2023,G7_S79
+G8,ML,T1,24x1,POR,Walsh et al 2023,G8_S80
+G9,ML,T2,24x2,POR,Walsh et al 2023,G9_S81
+H1,ML,T2,24x2,A,Walsh et al 2023,H1_S85
+H10,ML,T1,8x1,L 2.2,Walsh et al 2023,H10_S94
+H11,ML,T2,8x2,L 2.2,Walsh et al 2023,H11_S95
+H12,ML,T1,24x1,L 2.2,Walsh et al 2023,H12_S96
+H2,ML,T1,8x1,GRK-B,Walsh et al 2023,H2_S86
+H3,ML,T2,8x2,GRK-B,Walsh et al 2023,H3_S55
+H4,ML,T1,24x1,GRK-B,Walsh et al 2023,H4_S88
+H5,ML,T2,24x2,GRK-B,Walsh et al 2023,H5_S89
+H6,ML,T1,8x1,IRL-E,Walsh et al 2023,H6_S90
+H7,ML,T2,8x2,IRL-E,Walsh et al 2023,H7_S91
+H8,ML,T1,24x1,IRL-E,Walsh et al 2023,H8_S92
+H9,ML,T2,24x2,IRL-E,Walsh et al 2023,H9_S93
+I1,ML,T2,24x2,L 2.2,Walsh et al 2023,I1_S97
+I10,ML,T1,8x1,E.M,Walsh et al 2023,I10_S106
+I11,ML,T2,8x2,E.M,Walsh et al 2023,I11_S107
+I12,ML,T1,24x1,E.M,Walsh et al 2023,I12_S108
+I2,ML,T1,8x1,M 0.2,Walsh et al 2023,I2_S98
+I3,ML,T2,8x2,M 0.2,Walsh et al 2023,I3_S99
+I4,ML,T1,24x1,M 0.2,Walsh et al 2023,I4_S100
+I5,ML,T2,24x2,M 0.2,Walsh et al 2023,I5_S101
+I6,ML,T1,8x1,NZ,Walsh et al 2023,I6_S102
+I7,ML,T2,8x2,NZ,Walsh et al 2023,I7_S103
+I8,ML,T1,24x1,NZ,Walsh et al 2023,I8_S104
+I9,ML,T2,24x2,NZ,Walsh et al 2023,I9_S105
+J1,ML,T2,24x2,E.M,Walsh et al 2023,J1_S109
+J10,ML,T1,8x1,D,Walsh et al 2023,J10_S118
+J11,ML,T2,8x2,D,Walsh et al 2023,J11_S119
+J12,ML,T1,24x1,D,Walsh et al 2023,J12_S120
+J2,ML,T1,8x1,T 3.2,Walsh et al 2023,J2_S110
+J3,ML,T2,8x2,T 3.2,Walsh et al 2023,J3_S111
+J4,ML,T1,24x1,T 3.2,Walsh et al 2023,J4_S112
+J5,ML,T2,24x2,T 3.2,Walsh et al 2023,J5_S113
+J6,ML,T1,8x1,Wel,Walsh et al 2023,J6_S114
+J7,ML,T2,8x2,Wel,Walsh et al 2023,J7_S115
+J8,ML,T1,24x1,Wel,Walsh et al 2023,J8_S116
+J9,ML,T2,24x2,Wel,Walsh et al 2023,J9_S117
+k1,ML,T2,24x2,D,Walsh et al 2023,k1_S121
+k10,ML,T1,8x1,H,Walsh et al 2023,k10_S5
+k11,ML,T2,8x2,H,Walsh et al 2023,k11_S6
+k12,ML,T1,24x1,H,Walsh et al 2023,k12_S7
+k2,ML,T1,8x1,Sing,Walsh et al 2023,k2_S122
+k3,ML,T2,8x2,Sing,Walsh et al 2023,k3_S123
+k4,ML,T1,24x1,Sing,Walsh et al 2023,k4_S124
+k5,ML,T2,24x2,Sing,Walsh et al 2023,k5_S125
+k6,ML,T1,8x1,US,Walsh et al 2023,k6_S1
+k7,ML,T2,8x2,US,Walsh et al 2023,k7_S2
+k8,ML,T1,24x1,US,Walsh et al 2023,k8_S3
+k9,ML,T2,24x2,US,Walsh et al 2023,k9_S4
+L1,ML,T2,24x2,H,Walsh et al 2023,L1_S8
+L10,ML,T1,8x1,I,Walsh et al 2023,L10_S17
+L11,ML,T2,8x2,I,Walsh et al 2023,L11_S18
+L12,ML,T1,24x1,I,Walsh et al 2023,L12_S19
+L2,ML,T1,8x1,Meg,Walsh et al 2023,L2_S9
+L3,ML,T2,8x2,Meg,Walsh et al 2023,L3_S10
+L4,ML,T1,24x1,Meg,Walsh et al 2023,L4_S11
+L5,ML,T2,24x2,Meg,Walsh et al 2023,L5_S12
+L6,ML,T1,8x1,L 2.1,Walsh et al 2023,L6_S13
+L7,ML,T2,8x2,L 2.1,Walsh et al 2023,L7_S14
+L8,ML,T1,24x1,L 2.1,Walsh et al 2023,L8_S15
+L9,ML,T2,24x2,L 2.1,Walsh et al 2023,L9_S16
+M1,ML,T2,24x2,I,Walsh et al 2023,M1_S20
+M10,ML,T1,8x1,Aus-B,Walsh et al 2023,M10_S29
+M11,ML,T2,8x2,Aus-B,Walsh et al 2023,M11_S30
+M12,ML,T1,24x1,Aus-B,Walsh et al 2023,M12_S31
+M2,ML,T1,8x1,T 3.3,Walsh et al 2023,M2_S21
+M3,ML,T2,8x2,T 3.3,Walsh et al 2023,M3_S22
+M4,ML,T1,24x1,T 3.3,Walsh et al 2023,M4_S23
+M5,ML,T2,24x2,T 3.3,Walsh et al 2023,M5_S24
+M6,ML,T1,8x1,In-B,Walsh et al 2023,M6_S25
+M7,ML,T2,8x2,In-B,Walsh et al 2023,M7_S26
+M8,ML,T1,24x1,In-B,Walsh et al 2023,M8_S27
+M9,ML,T2,24x2,In-B,Walsh et al 2023,M9_S28
+N1,ML,T2,24x2,Aus-B,Walsh et al 2023,N1_S32
+N10,ML,T1,8x1,In-A,Walsh et al 2023,N10_S41
+N11,ML,T2,8x2,In-A,Walsh et al 2023,N11_S42
+N12,ML,T1,24x1,In-A,Walsh et al 2023,N12_S43
+N2,ML,T1,8x1,Bala,Walsh et al 2023,N2_S33
+N3,ML,T2,8x2,Bala,Walsh et al 2023,N3_S34
+N4,ML,T1,24x1,Bala,Walsh et al 2023,N4_S35
+N5,ML,T2,24x2,Bala,Walsh et al 2023,N5_S36
+N6,ML,T1,8x1,G,Walsh et al 2023,N6_S37
+N7,ML,T2,8x2,G,Walsh et al 2023,N7_S38
+N8,ML,T1,24x1,G,Walsh et al 2023,N8_S39
+N9,ML,T2,24x2,G,Walsh et al 2023,N9_S40
+O1,ML,T2,24x2,In-A,Walsh et al 2023,O1_S44
+O10,ML,T1,8x1,T 3.1,Walsh et al 2023,O10_S53
+O11,ML,T2,8x2,T 3.1,Walsh et al 2023,O11_S54
+O12,ML,T1,24x1,T 3.1,Walsh et al 2023,O12_S55
+O2,ML,T1,8x1,FR-A,Walsh et al 2023,O2_S45
+O3,ML,T2,8x2,FR-A,Walsh et al 2023,O3_S46
+O4,ML,T1,24x1,FR-A,Walsh et al 2023,O4_S47
+O5,ML,T2,24x2,FR-A,Walsh et al 2023,O5_S48
+O6,ML,T1,8x1,Rus,Walsh et al 2023,O6_S49
+O7,ML,T2,8x2,Rus,Walsh et al 2023,O7_S50
+O8,ML,T1,24x1,Rus,Walsh et al 2023,O8_S51
+O9,ML,T2,24x2,Rus,Walsh et al 2023,O9_S52
+P1,ML,T2,24x2,T 3.1,Walsh et al 2023,P1_S56
+P10,ML,T1,8x1,L.B,Walsh et al 2023,P10_S65
+P11,ML,T2,8x2,L.B,Walsh et al 2023,P11_S66
+P12,ML,T1,24x1,L.B,Walsh et al 2023,P12_S67
+P2,ML,T1,8x1,Ger,Walsh et al 2023,P2_S57
+P3,ML,T2,8x2,Ger,Walsh et al 2023,P3_S58
+P4,ML,T1,24x1,Ger,Walsh et al 2023,P4_S59
+P5,ML,T2,24x2,Ger,Walsh et al 2023,P5_S60
+P6,ML,T1,8x1,Cro,Walsh et al 2023,P6_S61
+P7,ML,T2,8x2,Cro,Walsh et al 2023,P7_S62
+P8,ML,T1,24x1,Cro,Walsh et al 2023,P8_S63
+P9,ML,T2,24x2,Cro,Walsh et al 2023,P9_S64
+Q1,ML,T2,24x2,L.B,Walsh et al 2023,Q1_S68
+Q10,ML,T1,8x1,Chris,Walsh et al 2023,Q10_S77
+Q11,ML,T2,8x2,Chris,Walsh et al 2023,Q11_S78
+Q12,ML,T1,24x1,Chris,Walsh et al 2023,Q12_S79
+Q2,ML,T1,8x1,M 2.1,Walsh et al 2023,Q2_S69
+Q3,ML,T2,8x2,M 2.1,Walsh et al 2023,Q3_S70
+Q4,ML,T1,24x1,M 2.1,Walsh et al 2023,Q4_S71
+Q5,ML,T2,24x2,M 2.1,Walsh et al 2023,Q5_S72
+Q6,ML,T1,8x1,Aus-A,Walsh et al 2023,Q6_S73
+Q7,ML,T2,8x2,Aus-A,Walsh et al 2023,Q7_S74
+Q8,ML,T1,24x1,Aus-A,Walsh et al 2023,Q8_S75
+Q9,ML,T2,24x2,Aus-A,Walsh et al 2023,Q9_S76
+R1,ML,T2,24x2,Chris,Walsh et al 2023,R1_S80
+R10,ML,T1,8x1,Swe,Walsh et al 2023,R10_S89
+R11,ML,T2,8x2,Swe,Walsh et al 2023,R11_S90
+R12,ML,T1,24x1,Swe,Walsh et al 2023,R12_S91
+R2,ML,T1,8x1,Eng,Walsh et al 2023,R2_S81
+R3,ML,T2,8x2,Eng,Walsh et al 2023,R3_S82
+R4,ML,T1,24x1,Eng,Walsh et al 2023,R4_S83
+R5,ML,T2,24x2,Eng,Walsh et al 2023,R5_S84
+R6,ML,T1,8x1,Esp,Walsh et al 2023,R6_S85
+R7,ML,T2,8x2,Esp,Walsh et al 2023,R7_S86
+R8,ML,T1,24x1,Esp,Walsh et al 2023,R8_S87
+R9,ML,T2,24x2,Esp,Walsh et al 2023,R9_S88
+S1,ML,T2,24x2,Swe,Walsh et al 2023,S1_S92
+S10,ML,T1,8x1,SA,Walsh et al 2023,S10_S101
+S11,ML,T2,8x2,SA,Walsh et al 2023,S11_S102
+S12,ML,T1,24x1,SA,Walsh et al 2023,S12_S103
+S2,ML,T1,8x1,F,Walsh et al 2023,S2_S93
+S3,ML,T2,8x2,F,Walsh et al 2023,S3_S94
+S4,ML,T1,24x1,F,Walsh et al 2023,S4_S95
+S5,ML,T2,24x2,F,Walsh et al 2023,S5_S96
+S6,ML,T1,8x1,Fr-B,Walsh et al 2023,S6_S97
+S7,ML,T2,8x2,Fr-B,Walsh et al 2023,S7_S98
+S8,ML,T1,24x1,Fr-B,Walsh et al 2023,S8_S99
+S9,ML,T2,24x2,Fr-B,Walsh et al 2023,S9_S100
+T1,ML,T2,24x2,SA,Walsh et al 2023,T1_S104
+T2,ML,T1,8x1,IRL-X,Walsh et al 2023,T2_S105
+T3,ML,T2,8x2,IRL-X,Walsh et al 2023,T3_S106
+T4,ML,T1,24x1,IRL-X,Walsh et al 2023,T4_S107
+T5,ML,T2,24x2,IRL-X,Walsh et al 2023,T5_S108
+U-2-10,ML,T2,24x2,Grk-C,Walsh et al 2023,U-2-10_S59
+U-2-11,ML,T1,8x1,Ger-B,Walsh et al 2023,U-2-11_S60
+U-2-12,ML,T2,8x2,Ger-B,Walsh et al 2023,U-2-12_S61
+U-2-7,ML,T1,8x1,Grk-C,Walsh et al 2023,U-2-7_S56
+U-2-8,ML,T2,8x2,Grk-C,Walsh et al 2023,U-2-8_S57
+U-2-9,ML,T1,24x1,Grk-C,Walsh et al 2023,U-2-9_S58
+V1,ML,T1,24x1,Ger-B,Walsh et al 2023,V1_S62
+V10,ML,T2,24x2,Ger-D,Walsh et al 2023,V10_S71
+V11,ML,T1,8x1,Ger-E,Walsh et al 2023,V11_S72
+V12,ML,T2,8x2,Ger-E,Walsh et al 2023,V12_S73
+V2,ML,T2,24x2,Ger-B,Walsh et al 2023,V2_S63
+V3,ML,T1,8x1,Ger-C,Walsh et al 2023,V3_S64
+V4,ML,T2,8x2,Ger-C,Walsh et al 2023,V4_S65
+V5,ML,T1,24x1,Ger-C,Walsh et al 2023,V5_S66
+V6,ML,T2,24x2,Ger-C,Walsh et al 2023,V6_S67
+V7,ML,T1,8x1,Ger-D,Walsh et al 2023,V7_S68
+V8,ML,T2,8x2,Ger-D,Walsh et al 2023,V8_S69
+V9,ML,T1,24x1,Ger-D,Walsh et al 2023,V9_S70
+W1,ML,T1,24x1,Ger-E,Walsh et al 2023,W1_S74
+W10,ML,T2,24x2,IRL-Y,Walsh et al 2023,W10_S83
+W2,ML,T2,24x2,Ger-E,Walsh et al 2023,W2_S75
+W3,ML,T1,8x1,Ger-F,Walsh et al 2023,W3_S76
+W4,ML,T2,8x2,Ger-F,Walsh et al 2023,W4_S77
+W5,ML,T1,24x1,Ger-F,Walsh et al 2023,W5_S78
+W6,ML,T2,24x2,Ger-F,Walsh et al 2023,W6_S79
+W7,ML,T1,8x1,IRL-Y,Walsh et al 2023,W7_S80
+W8,ML,T2,8x2,IRL-Y,Walsh et al 2023,W8_S81
+W9,ML,T1,24x1,IRL-Y,Walsh et al 2023,W9_S82
+T11,Medium control,T0,0,M 24.07.20,Walsh et al 2023,T11_S114
+T12,Medium control,T0,0,M 13.10,Walsh et al 2023,T12_S115
+U1,Medium control,T0,0,M 28.06,Walsh et al 2023,U1_S116
+U2,Medium control,T0,0,M 12.07,Walsh et al 2023,U2_S117
+U3,Medium control,T0,0,M 27.06.20,Walsh et al 2023,U3_S118
+U4,Medium control,T0,0,M 11.10.20,Walsh et al 2023,U4_S119
+U5,Medium control,T0,0,M 25.03.20,Walsh et al 2023,U5_S120
+U6,Medium control,T0,0,M 26.03.20,Walsh et al 2023,U6_S121
+Y4,Medium control,T0,0,M 18.11.20,Walsh et al 2023,Y4_S89
