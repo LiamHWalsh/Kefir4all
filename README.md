@@ -8,7 +8,7 @@ This repository contains a collection of R scripts and R notebooks used for data
 
 The repository is divided into two main sections:  
 
-- **`scripts/`** – Contains the R code used for data analysis, including data wrangling, modeling, and visualization.  
-- **`data/`** – Stores the datasets analyzed in the scripts.  
+- **`data/`** – Stores the datasets analyzed in the scripts.
+- - **`scripts/`** – Contains the R code used for data analysis, including data wrangling, modeling, and visualization.  
 
 Feel free to explore 🚀  
