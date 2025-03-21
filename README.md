@@ -1,2 +1,14 @@
-# Kefir4all
-This repositories contains a collection of R script and R notebook used to compute, tidy, wrangle, model and visualize data for the following article: Liam. H Walsh et al: Adaptations and community changes in milk and water kefir microbiomes in response to environmental parameters as revealed by the Kefir4All Citizen Science Project
+# Kefir4All  
+
+This repository contains a collection of R scripts and R notebooks used for data processing, modeling, and visualization in support of the following article:  
+
+**Liam H. Walsh et al.**: *Adaptations and community changes in milk and water kefir microbiomes in response to environmental parameters as revealed by the Kefir4All Citizen Science Project.*  
+
+## Repository Structure  
+
+The repository is divided into two main sections:  
+
+- **`scripts/`** – Contains the R code used for data analysis, including data wrangling, modeling, and visualization.  
+- **`data/`** – Stores the datasets analyzed in the scripts.  
+
+Feel free to explore 🚀  
