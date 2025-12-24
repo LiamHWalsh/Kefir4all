@@ -1,0 +1,32 @@
+#####################################################################################################################################################################################################
+# dram command on viral verify predicted plasmid contig
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/03_MAG_classification
+#emacs 03_dram_metaplasmidspades.sh
+###########################
+
+#!/bin/sh
+#SBATCH --error 03_err_dram_metaplasmidspades
+#SBATCH --output 03_out_dram_metaplasmidspades
+#SBATCH --job-name 03_dram_metaplasmidspades
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=20
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+
+module load dram/1.2
+source activate DRAM
+
+DRAM.py annotate -i '/data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/plasmid/viralverify/total_plasmid_mags/*.fasta' -o /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_dram/metaplasmidspad\
+es/ --threads $SLURM_CPUS_PER_TASK --min_contig_size 1000
+
+
+module unload dram/1.2
+conda deactivate
+
+
+rm -r /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_dram/metaplasmidspades/
+ https://www.frontiersin.org/articles/10.3389/fmicb.2019.00707/full
+https://www.frontiersin.org/articles/10.3389/fmicb.2023.1130446/full

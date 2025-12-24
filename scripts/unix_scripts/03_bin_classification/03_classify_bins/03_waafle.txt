@@ -1,0 +1,36 @@
+#####################################################################################################################################################################################################
+# Determine the taxonomy of each MAG assembled in phase 1 of the kefir4all study with the Classify_bins module
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/03_MAG_classification
+emacs 03_waffle_global_unmerged.sh 
+###########################
+
+#!/bin/sh
+#SBATCH --error 03err_waffle_global_unmerged
+#SBATCH --output 03out_waffle_global_unmerged
+#SBATCH --job-name 03_waffle_global_unmerged
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=30
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+
+rm -r /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_waffle/
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_waffle/
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_waffle/global_unmerged/
+
+
+for i in $(find /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metawrap/02_metawrap_unmerged/finished_global_bins/ -type f -name "*.fa")
+do
+
+new_name=$(echo "$i" | awk -F/ '{print $NF}' | sed 's/.fa//g')
+echo "$new_name"
+module load waafle/1.0
+waafle_search "$i" /data/databases/waffle/waafledb --out /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_waffle/global_unmerged/"$new_name" --threads $SLURM_CPUS_PER_TASK --blastn /data/databases/waffle/waafledb/
+module unload waafle/1.0
+done 
+
+
+
+/data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_waffle/global_unmerged/'

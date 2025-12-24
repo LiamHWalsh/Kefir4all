@@ -1,0 +1,56 @@
+#####################################################################################################################################################################################################
+# Set up representative MAGs
+#####################################################################################################################################################################################################
+
+############################
+
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metawrap/euk_bins
+
+upload Q:\H2020 Master\Citizen Science Project\Results\03_mag_classification\busco\representative_mags.csv to /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metawrap/euk_bins
+
+
+dos2unix /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metawrap/euk_bins/representative_mags.csv
+
+while read line 
+do
+name=$(echo "$line" | cut -d , -f 1)
+echo "$name"
+done < /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metawrap/euk_bins/representative_mags.csv
+#####################################################################################################################################################################################################
+# Determine the quaility of each MAG assembled in phase 1 of the kefir4all study with the Busco module
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/03_MAG_classification
+#emacs 03_busco_bins_representative_bins.sh 
+############################
+#!/bin/sh
+#SBATCH --error 03_errBUSCO_representative_bins
+#SBATCH --output 03_outBUSCO_representative_bins
+#SBATCH --job-name 03_BUSCO_representative_bins
+#SBATCH -p Priority,Background
+#SBATCH -N 1
+#SBATCH --cpus-per-task=40
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie,samuel.mortensen@teagasc.ie
+
+
+
+
+#mkdir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_busco/
+
+#mkdir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_busco2/02_metawrap_unmerged/
+
+#cd /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_busco2/02_representative_bins/
+
+
+
+
+
+module load busco/5.1.2
+
+busco -i /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metawrap/02_metawrap_unmerged/initial_global_bins/ -o initial_global_bins -m genome --auto-lineage --cpu $SLURM_CPUS_PER_TASK
+
+module unload busco/5.1.2
+
+
+

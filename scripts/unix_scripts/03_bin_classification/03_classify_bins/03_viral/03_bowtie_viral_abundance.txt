@@ -1,0 +1,206 @@
+#################################################################################################################################################
+Bowtie build for reference viral db 
+#################################################################################################################################################
+
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/03_MAG_classification
+emacs 03_bowtie_viral_db.sh
+###########################
+
+
+#!/bin/sh
+#SBATCH --error 03err_bowtie_db_viral
+#SBATCH --output 03out_bowtie_db_viral
+#SBATCH --job-name 03_bowtie_db_viral
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=20
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+
+module load bowtie2/2.3.4
+module load anaconda3.6.b/4.6
+#make a bowtie database
+
+
+bowtie2-build /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/viral/viralverify/total_viral_mags/03_viral_cd_hit_Water.kefir/03_viral_cd_hit_Water.kefir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/viral/viralverify/total_viral_mags/03_viral_cd_hit_Water.kefir/03_viral_cd_hit_Water.kefir_bowtie_db -\
+-threads $SLURM_CPUS_PER_TASK
+
+bowtie2-build /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/viral/viralverify/total_viral_mags/03_viral_cd_hit_Milk.kefir/03_viral_cd_hit_Milk.kefir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/viral/viralverify/total_viral_mags/03_viral_cd_hit_Milk.kefir/03_viral_cd_hit_Milk.kefir_bowtie_db --t\
+hreads $SLURM_CPUS_PER_TASK
+
+
+module unload anaconda3.6.b/4.6
+module unload bowtie2/2.3.4
+
+
+
+
+#################################################################################################################################################
+Bowtie alignment for water kefir metagenomes to the reference water plasmid db
+#################################################################################################################################################
+
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/03_MAG_classification
+emacs 03_bowtie_viral_water.kefir.sh
+###########################
+
+
+#!/bin/sh
+#SBATCH --error 03err_bowtie_viral_water.kefir
+#SBATCH --output 03out_bowtie_viral_water.kefir
+#SBATCH --job-name 03_bowtie_viral_water.kefir
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=30
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/viral/alignment_files_Water.kefir
+
+
+
+
+for sample in $(find /data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files -maxdepth 1 -type f \( -name "*.fastq.gz" -and -name "*WK*" -or -name "*WL*" -or -name "*WG*" \) | sed 's/_host_removed_R..fastq.gz//g' | sort -u)
+do
+
+outputfile=$(echo "$sample" | awk -F / '{print $NF'} )
+
+module load bowtie2/2.3.4
+module load anaconda3.6.b/4.6 
+
+bowtie2 -p $SLURM_CPUS_PER_TASK -x /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/viral/viralverify/total_viral_mags/03_viral_cd_hit_Water.kefir/03_viral_cd_hit_Water.kefir_bowtie_db --no-unal -1 "$sample"_host_removed_R1.fastq.gz -2 "$sample"_host_removed_R2.fastq.gz -S \
+/data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/viral/alignment_files_Water.kefir/"$outputfile"_mapped_and_unmapped.sam  --very-sensitive  --very-sensitive-local 
+
+
+
+
+module unload anaconda3.6.b/4.6 
+module unload bowtie2/2.3.4
+
+done 
+
+
+
+
+#################################################################################################################################################
+Bowtie alignment for milk kefir metagenomes to the reference milk plasmid db
+#################################################################################################################################################
+
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/03_MAG_classification
+emacs 03_bowtie_viral_milk.kefir.sh
+###########################
+
+
+#!/bin/sh
+#SBATCH --error 03err_bowtie_viral_milk.kefir
+#SBATCH --output 03out_bowtie_viral_milk.kefir
+#SBATCH --job-name 03_bowtie_viral_milk.kefir
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=30
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/viral/alignment_files_Milk.kefir
+
+for sample in $(find /data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files -maxdepth 1 -type f \( -name "*.fastq.gz" -and -not -name "*WK*" -and -not -name "*WL*" -and -not -name "*WG*" \) | sed 's/_host_removed_R..fastq.gz//g' | sort -u)
+do
+
+outputfile=$(echo "$sample" | awk -F / '{print $NF'} )
+
+module load bowtie2/2.3.4
+module load anaconda3.6.b/4.6 
+module load python3.6/4.6
+
+bowtie2 -p $SLURM_CPUS_PER_TASK -x /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/viral/viralverify/total_viral_mags/03_viral_cd_hit_Milk.kefir/03_viral_cd_hit_Milk.kefir_bowtie_db --no-unal -1 "$sample"_host_removed_R1.fastq.gz -2 "$sample"_host_removed_R2.fastq.gz -S \
+/data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/viral/alignment_files_Milk.kefir/"$outputfile"_mapped_and_unmapped.sam  --very-sensitive  --very-sensitive-local 
+
+
+module unload anaconda3.6.b/4.6 
+module unload bowtie2/2.3.4
+module unload python3.6/4.6
+
+done 
+
+
+
+#################################################################################################################################################
+convert sam to bam + bam_counts
+#################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/03_MAG_classification
+emacs 03_samtools_viruses.sh
+#####################
+#!/bin/sh
+#SBATCH --error err_samtoolsviral
+#SBATCH --output out_samtoolsviral
+#SBATCH --job-name samtoolsviral
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=5
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+
+
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/viral/alignment_bamfiles
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/viral/alignment_bamfiles/bamtocov
+for sample in $( find /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/viral/ -type f -name "*.sam" | sort -u )
+do
+module load samtools/1.10
+outputfile=$(echo "$sample" | awk -F / '{print $NF'} | sed 's/.sam//g')
+
+
+
+samtools view -@ $SLURM_CPUS_PER_TASK -S -b "$sample" > /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/viral/alignment_bamfiles/"$outputfile"_mapped_and_unmapped.bam
+
+
+samtools sort /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/viral/alignment_bamfiles/"$outputfile"_mapped_and_unmapped.bam -o /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/viral/alignment_bamfiles/"$outputfile"_mapped_and_unmapped.sorted.bam
+
+
+samtools depth -a /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/viral/alignment_bamfiles/"$outputfile"_mapped_and_unmapped.sorted.bam | awk '{c++; if($3>0) total+=1}END{print (total/c)*100}' > /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/viral/alignment_bamfiles/"$outputfile".depth
+
+samtools index /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/viral/alignment_bamfiles/"$outputfile"_mapped_and_unmapped.sorted.bam
+
+
+module unload samtools/1.10
+
+
+module load python3.7/i3
+source activate /home/liam.walsh/.conda/envs/bamtocov
+
+bamtocov /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/viral/alignment_bamfiles/"$outputfile"_mapped_and_unmapped.sorted.bam > /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/viral/alignment_bamfiles/"$outputfile".bed
+
+
+bamtocounts /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/viral/alignment_bamfiles/"$outputfile".bed /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/viral/alignment_bamfiles/"$outputfile"_mapped_and_unmapped.sorted.bam > /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/viral/alignment_bamfiles/"$outputfile".count
+
+
+
+conda deactivate
+
+module unload python3.7/i3
+module unload anaconda3.6.b/4.6 
+
+
+
+done 
+
+
+
+module load anaconda3.6.b/4.6 
+module load python3.7/i3
+source activate /home/liam.walsh/.conda/envs/bamtocov
+
+# BamCountsRefs
+#A program to build a count table from multiple BAM files (having the same reference sequence).
+
+
+bamcountrefs /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/viral/alignment_bamfiles/*_mapped_and_unmapped.sorted.bam -n --norm-len --multiqc --threads $SLURM_CPUS_PER_TASK
+
+conda deactivate
+
+module unload python3.7/i3
+module unload anaconda3.6.b/4.6 
+

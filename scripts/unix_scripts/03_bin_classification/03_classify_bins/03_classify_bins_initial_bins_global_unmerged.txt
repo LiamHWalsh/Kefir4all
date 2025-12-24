@@ -1,0 +1,41 @@
+#####################################################################################################################################################################################################
+# Determine the taxonomy of each MAG assembled in phase 1 of the kefir4all study with the Classify_bins module
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/03_MAG_classification
+#emacs 03_classify_initial_bins_global_unmerged.sh 
+###########################
+#!/bin/sh
+#SBATCH --error 03err_classify_bins_initial_bins_global_unmerged
+#SBATCH --output 03out_classify_bins_initial_bins_global_unmerged
+#SBATCH --job-name 03classify_bins_unmerge
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=40
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+
+
+rm -r /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_taxonomic/initial_bins_global_unmerged
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_taxonomic/initial_bins_global_unmerged_v2
+
+module load metawrap/1.3.1 
+module load blast/2.8.1   
+
+
+
+metawrap classify_bins -b /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metawrap/02_metawrap_unmerged/initial_global_bins -o /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_taxonomic/initial_bins_global_unmerged_v2/ -t $SLURM_CPUS_PER_TASK
+
+
+module unload metawrap/1.3.1 
+module unload blast/2.8.1  
+#done
+
+
+
+
+
+
+
+
+

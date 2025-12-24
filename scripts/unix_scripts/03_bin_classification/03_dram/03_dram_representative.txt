@@ -1,0 +1,150 @@
+for i in $(find /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metawrap/representative_MAGs/ -type f -name "*.fa") 
+do 
+   base=${i##*/} ;\
+  name=${base%.fa} ;\
+
+for j in $( ;\
+find /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_dram/ ;\
+-name "*$j")
+
+
+done
+
+
+find /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_dram/ -name "*$j")
+
+
+
+upload /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metawrap/representative_MAGs/checkm_representatives_for_roary.csv to /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metawrap/representative_MAGs/checkm_representatives_for_roary.csv
+upload Q:\H2020 Master\Citizen Science Project\Results\03_mag_classification\gtdbtk_representatives_for_roary.csv to /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metawrap/representative_MAGs/gtdbtk_representatives_for_roary.csv
+
+
+dos2unix /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metawrap/representative_MAGs/gtdbtk_representatives_for_roary.csv
+
+dos2unix /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metawrap/representative_MAGs/checkm_representatives_for_roary.csv
+
+#####################################################################################################################################################################################################
+# dram command on merged intial bins from the global dataset 
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/03_MAG_classification
+#emacs 03_dram_representative.sh
+###########################
+#!/bin/sh
+#SBATCH --error 03_err_dram_representative
+#SBATCH --output 03_out_dram_representative
+#SBATCH --job-name 03_dram_representative
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=40   
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+
+module load dram/1.2
+source activate DRAM
+
+
+DRAM.py annotate \
+ -i '/data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metawrap/representative_MAGs/*.fa'\
+ -o /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_dram/dram_representative\
+ --gtdb_taxonomy /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metawrap/representative_MAGs/gtdbtk_representatives_for_roary.csv\ 
+ --checkm_quality /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metawrap/representative_MAGs/checkm_representatives_for_roary.csv\
+ --threads $SLURM_CPUS_PER_TASK
+
+
+DRAM.py distill \
+ -i /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_dram/dram_representative/annotations.tsv\ 
+ -o /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_dram/dram_representative/dram_distill\
+ --trna_path /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_dram/dram_representative/trnas.tsv\
+ --rrna_path /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_dram/dram_representative/rrnas.tsv\
+ --threads $SLURM_CPUS_PER_TASK
+
+
+module unload dram/1.2
+conda deactivate
+
+
+
+
+
+#####################################################################################################################################################################################################
+# dram distill on seperated files
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/03_MAG_classification
+#emacs 03_dram_representative_distill.sh
+###########################
+#!/bin/sh
+#SBATCH --error 03_err_dram_representative_distill
+#SBATCH --output 03_out_dram_representative_distill
+#SBATCH --job-name 03_dram_representative_distill
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=40   
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_dram/dram_representative/working_dir/dram_distill/
+
+for i in $(find /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metawrap/representative_MAGs/ -name "*.fa" -type f | awk -F / '{print $(NF)'} | sed 's/.fa//g' )
+do
+
+
+module load dram/1.2
+source activate DRAM
+
+
+DRAM.py distill \
+ -i /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_dram/dram_representative/working_dir/"$i"/annotations.tsv\ 
+ -o /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_dram/dram_representative/working_dir/dram_distill/"$i"\
+ --trna_path /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_dram/dram_representative/working_dir/"$i"/trnas.tsv\
+ --rrna_path /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_dram/dram_representative/working_dir/"$i"/rrnas.tsv\
+ --threads $SLURM_CPUS_PER_TASK
+
+module unload dram/1.2
+conda deactivate
+
+done
+
+
+
+
+#####################################################################################################################################################################################################
+# dram distill on seperated files
+#####################################################################################################################################################################################################
+
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_dram/dram_representative/working_dir/dram_distill/distill_metabolism_output
+
+
+for i in $(find /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_dram/dram_representative/working_dir/dram_distill/ -type f -name "metabolism_summary.xlsx")
+
+
+do new_name=$(echo $i | awk -F / '{print $(NF-1)'})
+
+ cp "$i" /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_dram/dram_representative/working_dir/dram_distill/distill_metabolism_output/"$new_name"_metabolism_summary.xlsx
+
+done 
+
+
+
+#####################################################################################################################################################################################################
+# dram raw annotations
+#####################################################################################################################################################################################################
+
+
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_dram/dram_representative/working_dir/dram_raw_annotations/
+
+
+for i in $(find /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_dram/dram_representative/working_dir/ -type f -name "annotations.tsv")
+
+
+do new_name=$(echo $i | awk -F / '{print $(NF-1)'})
+
+ cp "$i" /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_dram/dram_representative/working_dir/dram_raw_annotations/"$new_name"_annotations.tsv
+
+done 
+
+
+

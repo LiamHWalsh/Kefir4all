@@ -1,0 +1,70 @@
+#####################################################################################################################################################################################################
+#folder set up 
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification
+
+###########################
+
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_metachip
+
+# upload Q:\H2020 Master\Citizen Science Project\Results\03_mag_classification\gtdbtk_representatives_input_metachip.txt to /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_metachip
+
+dos2unix /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_metachip/gtdbtk_representatives_input_metachip.txt
+
+...::: MetaCHIP v1.10.13 :::...
+
+    Core modules:
+       PI            ->  Prepare input files
+       BP            ->  Run Best-match and Phylogenetic approaches
+
+    Supplementary modules:
+       filter_HGT    ->  Get HGTs been found at no less than n taxonomic ranks
+       update_hmms   ->  Update hmm profiles used for inferring SCG tree
+       get_SCG_tree  ->  Get SCG protein tree
+       rename_seqs   ->  Rename sequences in a file
+
+    # for command specific help info
+    MetaCHIP PI -h
+    MetaCHIP BP -h
+
+
+
+#####################################################################################################################################################################################################
+#folder set up 
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification
+emacs 03_metachip.sh
+###########################
+
+
+
+
+#!/bin/sh
+#SBATCH --error 03_err_metachip
+#SBATCH --output 03_out_metachip
+#SBATCH --job-name 03_metachip
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=20
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+rm -r /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_metachip/PI
+
+module load metachip/1.10.13 
+
+module load python3.7/i3
+
+
+#MetaCHIP PI -p total -i /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metawrap/representative_MAGs -x fa -o /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_metachip/PI -r pcofg
+
+
+#MetaCHIP PI -p total -i /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metawrap/representative_MAGs -t $SLURM_CPUS_PER_TASK -taxon /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_metachip/gtdbtk_representatives_input_metachip.tsv -x fa -o /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_metachip/PI -r g
+
+module unload metachip/1.10.13 
+module unload python3.7/i3
+
+
+
+

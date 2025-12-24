@@ -1,0 +1,62 @@
+ ######################################################################################################################################################################################################################################
+ #################################################################################################### Crispr analysis for representative_MAGs ##############################################################################################################
+ ######################################################################################################################################################################################################################################
+
+
+
+#####################################################################################################################################################################################################
+# identify_crispr.folder.py command on representative_MAGs
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/03_MAG_classification
+emacs 03_crispr_representative_MAGs.sh
+###########################
+#!/bin/sh
+#SBATCH --error 03_err_crispr_representative_MAGs
+#SBATCH --output 03_out_crispr_representative_MAGs
+#SBATCH --job-name 03_crispr_representative_MAGs
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=4  
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+module load iphop/1.3.2
+source activate iphop_env
+
+	
+python /install/software/restart/py3/virala/envs/iphop_env/lib/python3.8/site-packages/iphop/utils/CRISPR/identify_crispr.folder.py -i /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metawrap/representative_MAGs/ -o /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_iphop/03_iphop_representative_MAGs_crispr
+
+
+
+conda deactivate
+module unload iphop/1.3.2
+
+
+
+#####################################################################################################################################################################################################
+# identify_crispr.folder.py command on representative_MAGs
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/03_MAG_classification
+emacs 03_crispr_representative_MAGs_minced.sh
+###########################
+#!/bin/sh
+#SBATCH --error 03_err_crispr_representative_MAGs_minced
+#SBATCH --output 03_out_crispr_representative_MAGs_minced
+#SBATCH --job-name 03_crispr_representative_MAGs_minced
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=4  
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+mkdir  /data/Food/analysis/R6564_NGS/kefir4all/03_minced/
+module load minced/0.4.2
+
+for i in $(find /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metawrap/representative_MAGs/ -type f -name "*.fa" ) 
+do 
+id=$( echo $i | awk -F / '{ print $NF '} )
+minced "$i" /data/Food/analysis/R6564_NGS/kefir4all/03_minced/"$id".crisprs 
+
+done
+
+module load minced/0.4.2

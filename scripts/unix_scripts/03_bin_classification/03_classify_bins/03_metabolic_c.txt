@@ -1,0 +1,190 @@
+#!/bin/sh
+#SBATCH --error 03_err_metabolic_c_rep
+#SBATCH --output 03_out_metabolic_c_rep
+#SBATCH --job-name 03_metabolic_c_rep
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=4
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+
+
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/03_metabolic_c/
+
+gunzip /data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files/*.fastq.gz
+
+
+
+
+for i in $(find /data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files/ -type f -nam\
+e "*.fastq" | sed 's/_R..fastq//g' | sort -u)
+do
+
+echo "$i"_R1.fastq,"$i"_R2.fastq >> /data/Food/analysis/R6564_NGS/kefir4all/03_metabolic\
+_c/metagenomic_read.txt
+
+done
+
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/03_metabolic_c/MAGs
+for j in $(find /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metawrap/represen\
+tative_MAGs -type f -name "*.fa")
+
+do
+
+sample_id=$(echo $j | awk -F / '{print $NF}' | sed 's/.fa/.fasta/g')
+
+cp "$j" /data/Food/analysis/R6564_NGS/kefir4all/03_metabolic_c/MAGs/"$sample_id"
+
+done
+module load metabolic/3.0
+
+METABOLIC-C.pl -t $SLURM_CPUS_PER_TASK -m-cutoff 0.75 -m /data/Food/analysis/R6564_NGS/kefir4all/03_metabolic_c/ -in-gn /data/Food/analysis/R6564_NGS/kefir4all/03_metabolic_c/MA\
+Gs/ -kofam-db full -p "meta" -r /data/Food/analysis/R6564_NGS/kefir4all/03_metabolic_c/\
+metagenomic_read.txt -o /data/Food/analysis/R6564_NGS/kefir4all/03_metabolic_c/METABOLIC\
+_out
+module unload metabolic/3.0
+
+
+
+module laod python3.7/i3
+
+
+find /home/liam.walsh/.local/lib/python3.7/site-packages/ -type f ! -atime 4| xargs ls -lrt
+
+
+ module load python3.7/i3
+pip install smetana  
+
+ module load python3.7/i3
+
+
+
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_carveme/output
+
+dos2unix /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_carveme/per_grain_gtdbtk_representatives.txt
+
+
+
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_carveme/prokka_output
+
+for i in $(cut -f 39 /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_carveme/per_grain_gtdbtk_representatives.txt | sort -u | sed 's/ /_/g' )
+do
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_carveme/prokka_output/"$i"
+done
+
+
+
+
+
+#####################################################################################################################################################################################################
+#prokka_per_grain_gtdbtk_representatives
+#####################################################################################################################################################################################################
+
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/03_MAG_classification
+emacs 03prokka_per_grain_gtdbtk_representatives.sh
+
+###########################
+
+
+
+
+#!/bin/sh
+#SBATCH --error err_prokka_per_grain_gtdbtk_representatives
+#SBATCH --output out_prokka_per_grain_gtdbtk_representatives
+#SBATCH --job-name prokka_per_grain_gtdbtk_representatives
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=10
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+
+
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_carveme/prokka_output
+while read LINE 
+do
+
+id=$(echo "$LINE" | cut -f 44)
+ name=$(echo "$LINE" | cut -f 1 )
+ species_name=$(echo "$LINE" | cut -f 3 | sed 's/ /_/g' )
+base_name=$(echo "$LINE" | cut -f 3 | sed "s/ .*//")
+linker=$(echo "$LINE" | cut -f 39 | sed 's/ /_/g')
+
+   # echo "$id" #>> id.txt
+    echo "$base_name" #>> names.txt
+
+
+
+module load prokka/1.14
+prokka --kingdom Bacteria --outdir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_carveme/prokka_output/"$linker"/"$name" --force --prefix "$name" --genus "$base_name" --species "$species_name" --locustag "$name" /data/Food/analysis/R6564_NGS/kefir4all/03_metabolic_c/MAGs/"$name".fasta --cpus $SLURM_CPUS_PER_TASK
+
+module unload prokka/1.14
+
+done < /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_carveme/per_grain_gtdbtk_representatives.txt
+
+
+
+#####################################################################################################################################################################################################
+#roary for high quailty MAGs
+#####################################################################################################################################################################################################
+
+cd /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_carveme/output/
+emacs 03_carveme_per_grain_gtdbtk_representatives.sh
+
+###########################
+#!/bin/sh
+#SBATCH --error err_carveme_per_grain_gtdbtk_representatives
+#SBATCH --output out_carveme_per_grain_gtdbtk_representatives
+#SBATCH --job-name carveme_per_grain_gtdbtk_representatives
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=10
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+
+for j in $(find /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_carveme/prokka_output/ -type d -maxdepth 1 )
+
+do
+
+
+
+linker=$(echo "$j" | awk -F/ '{ print $NF }' )
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_carveme/output/"$linker"/
+
+
+
+for i in $(find "$j" -name "*.faa")
+
+do
+
+sample_id=$(echo "$i" | awk -F/ '{ print $NF }' | sed 's/.faa//g')
+
+
+module load carveme/1.2.2 
+
+module load diamond/2.0.12  
+
+
+carve "$i" --output /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_carveme/output/"$linker"/"$sample_id"_model.xml
+
+module unload carveme/1.2.2 
+
+module unload diamond/2.0.12  
+
+done
+
+done
+
+
+
+
+

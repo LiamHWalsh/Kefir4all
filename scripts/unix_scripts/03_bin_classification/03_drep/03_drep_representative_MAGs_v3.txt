@@ -1,0 +1,56 @@
+
+
+#####################################################################################################################################################################################################
+# data set up
+#####################################################################################################################################################################################################
+
+
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_drep_v3/
+
+
+# Upload Q:/H2020 Master/Citizen Science Project/Results/03_mag_classification/drep/drep_gtdbtk_representatives.csv (checkm data) here generated in the initial bin classification r script
+#dos2unix /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_drep_v3/drep_gtdbtk_representatives.csv
+
+
+#####################################################################################################################################################################################################
+# drep command on kefir4all for species level insights
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/03_MAG_classification
+#emacs 03_drep_v3_dereplicate_representative_metawrap_mags.sh
+###########################
+#!/bin/sh
+#SBATCH --error 03_err_drep_v3_dereplicate_representative_metawrap_mags
+#SBATCH --output 03_out_drep_v3_dereplicate_representative_metawrap_mags
+#SBATCH --job-name 03_drep_v3_dereplicate_representative_metawrap_mags
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=40
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+
+module load python3.6/4.6
+module load drep/3.2.0
+module load fastani/1.32
+module load mash/2.1
+#module load checkm/1.0.18
+module load mummer/4.5
+module load prodigal/2.6.3
+#checkm data setRoot /home/liam.walsh/.local/bin/checkm
+
+
+
+dRep dereplicate /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_drep_v3/dereplicate_outputs -g /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metawrap/representative_MAGs/*.fa -p $SLURM_CPUS_PER_TASK --genomeInfo \
+/data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_drep_v3/drep_gtdbtk_representatives.csv
+
+
+module unload drep/3.2.0
+module unload fastani/1.32
+module unload mash/2.1
+#module unload checkm/1.0.18
+module unload mummer/4.5
+module unload prodigal/2.6.3
+module unload python3.6/4.6
+
+

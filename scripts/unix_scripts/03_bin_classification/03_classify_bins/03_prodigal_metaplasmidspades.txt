@@ -1,0 +1,39 @@
+#####################################################################################################################################################################################################
+# prodigal command on merged plasmid assemblies
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/03_MAG_classification
+#emacs 03_prodigal_metaplasmidspades
+###########################
+
+#!/bin/sh
+#SBATCH --error 03_err_prodigal_metaplasmidspades
+#SBATCH --output 03_out_prodigal_metaplasmidspades
+#SBATCH --job-name 03_prodigal_metaplasmidspades
+#SBATCH -p Background
+#SBATCH -N 1
+#SBATCH --cpus-per-task=4
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie 
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/plasmid
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/plasmid/03_prodigal
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/plasmid/03_prodigal/genes
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/plasmid/03_prodigal/proteins
+
+module load prodigal/2.6.3
+
+
+for sample in $(find /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metaplasmidspades/ -type f -name "*scaffolds.fasta" -maxdepth 2)
+do
+new_name=$(echo $sample | awk -F / '{print $(NF-1)'})
+
+prodigal -i "$sample" -o /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/plasmid/03_prodigal/genes/"$new_name"_my.genes -a /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/plasmid/03_prodigal/proteins/"$new_name"_my.proteins.faa -p meta
+done
+module unload prodigal/2.6.3
+
+
+
+HmmerSearch uses a profile hidden Markov model as a query to search a sequence database to find sequences similar to the family from which the profile HMM was built.
+
+Profile HMMs can be created using HmmerBuild.

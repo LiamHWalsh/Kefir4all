@@ -1,0 +1,201 @@
+
+#####################################################################################################################################################################################################
+#folder set up 
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification
+
+###########################
+
+cd /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification
+
+ mkdir 03_MGKit
+
+
+cd /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_MGKit
+
+upload Q:\H2020 Master\Citizen Science Project\Results\03_mag_classification\gtdbtk_representatives_path.csv to /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_MGKit
+
+dos2unix /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_MGKit/gtdbtk_representatives_path.csv
+
+
+
+#####################################################################################################################################################################################################
+#Make a directory of all represnetative MAGs command
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification
+emacs 03_move_representative_MAGs.sh
+###########################
+
+
+#!/bin/sh
+#SBATCH --error 03_err_move_representative_MAGs
+#SBATCH --output 03_out_move_representative_MAGs
+#SBATCH --job-name 03_move_representative_MAGs
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=4
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metawrap/representative_MAGs
+
+while read line 
+do
+
+new_name=$(echo $line | awk -F/ {'print $NF}' )
+
+
+cp $line.gz /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metawrap/representative_MAGs/"$new_name".gz
+
+
+done < /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_MGKit/gtdbtk_representatives_path.csv
+
+gunzip /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metawrap/representative_MAGs/*.fa.gz
+
+
+#####################################################################################################################################################################################################
+folder and db setup                                                                                 #Gene Prediction
+#####################################################################################################################################################################################################
+
+###########################
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_MGKit/
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_MGKit/gene_prediction
+
+cd /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_MGKit/gene_prediction
+
+wget ftp://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/complete/uniprot_sprot.fasta.gz
+gunzip uniprot_sprot.fasta.gz
+
+
+
+module load blast/2.8.1
+
+makeblastdb -dbtype prot -in uniprot_sprot.fasta
+module unload blast/2.8.1
+
+#####################################################################################################################################################################################################
+blastx command                                                                                       #Gene Prediction
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification
+emacs 03_blastx_MGKit_gene_prediction.sh
+###########################
+
+#!/bin/sh
+#SBATCH --error 03_err_blastx_MGKit_gene_prediction
+#SBATCH --output 03_out_blastx_MGKit_gene_prediction
+#SBATCH --job-name 03_blastx_MGKit_gene_prediction
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=20
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_MGKit/gene_prediction/blastn/
+
+for i in $(find /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metawrap/representative_MAGs/ -name "*.fa")
+do
+new_name=$(echo "$i" | awk -F/ {'print $NF'} | sed 's/.fa//') 
+
+module load blast/2.8.1
+
+blastx -query "$i" -db /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_MGKit/gene_prediction/uniprot_sprot.fasta -out /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_MGKit/gene_prediction/blastn/"$new_name".uniprot.tab -outfmt 6
+
+module unload blast/2.8.1
+
+done
+
+#####################################################################################################################################################################################################
+                                                                                      #bowtie command
+#####################################################################################################################################################################################################
+
+cd /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification
+emacs 03_MGKit_bowtie.sh 
+###########################
+#!/bin/sh
+#SBATCH --error 03_err_MGKit_bowtie
+#SBATCH --output 03_out_MGKit_bowtie
+#SBATCH --job-name 03_MGKit_bowtie
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=40
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_MGKit/bowtie_alignments/
+
+
+while read line 
+do
+
+new_name=$(echo $line | awk -F/ '{print $NF}' )
+
+
+
+module load bowtie2/2.3.4
+module load anaconda3.6.b/4.6
+
+bowtie2-build /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metawrap/representative_MAGs/"$new_name" assembly.fa --threads $SLURM_CPUS_PER_TASK 
+
+
+
+if [ "$(echo $line | awk -F/ '{print $(NF-2)'})" = "02_metawrap_merged" ]
+
+
+then
+
+
+
+sample_id=$(echo $line | awk -F/ {'print $NF}' | sed 's/_metawrap_bin_reassembly.*//g' )
+
+
+module load samtools/1.9
+
+bowtie2 --local -x assembly.fa -1 /data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files/merged/"$sample_id"_merged_R1.fastq.gz -2 /data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files/merged/"$sample_id"_merged_R2.fastq.gz --very-sensitive-local --threads $SLURM_CPUS_PER_TASK --rg-id $sample_id --rg PL:454 --rg PU:454 --rg SM:$sample_id | samtools view -Sb > /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_MGKit/bowtie_alignments/$new_name.bam
+
+module unload samtools/1.9
+
+else
+
+sample_id=$(echo $line | awk -F/ {'print $NF'} | sed 's/_metawrap_bin_reassembly.*//g' | sed 's/.K_//' )
+
+module load samtools/1.9
+
+bowtie2 --local -x assembly.fa -1 /data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files/"$sample_id"_host_removed_R1.fastq.gz -2 /data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files/"$sample_id"_host_removed_R2.fastq.gz --very-sensitive-local --threads $SLURM_CPUS_PER_TASK --rg-id $sample_id --rg PL:454 --rg PU:454 --rg SM:$sample_id | samtools view -Sb > /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_MGKit/bowtie_alignments/$new_name.bam
+
+module unload samtools/1.9
+
+fi
+
+module unload bowtie2/2.3.4
+module unload anaconda3.6.b/4.6
+
+done < /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_MGKit/gtdbtk_representatives_path.csv
+
+
+
+
+
+
+
+
+line=$( echo /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metawrap/02_metawrap_unmerged/finished_global_bins/MK_E7_S55_metawrap_bin_reassembly_reassembled_bins_bin.3.strict.fa )
+
+
+ls /data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files/merged/WK069
+
+
+
+
+
+
+
+
+
+
+module load mgkit/0.5.6 
+
+
+

@@ -1,0 +1,214 @@
+
+#####################################################################################################################################################################################################
+# checkm drep command on kefir4all for species level insights
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/03_MAG_classification
+#emacs 03_checkm.sh
+###########################
+
+
+#!/bin/sh
+#SBATCH --error 03_err_checkm
+#SBATCH --output 03_out_checkm
+#SBATCH --job-name 03_checkm
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=23   
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+#find /data/Food/analysis/R6564_NGS/kefir4all/04_short_read_profiling/04instrain/04_representative_db/04representative_genus_ids/ -type f -name '*fna' > drep_dereplicate_list.txt
+
+#find /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metawrap/02_total_MAGS -type f -name '*fa' >> drep_dereplicate_list.txt
+
+#mkdir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_checkm
+
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_instrain
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_instrain/instrain_representative_genomes
+#mkdir /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_instrain/instrain_representative_genomes/03_checkm
+while read line  
+do
+
+sample_name=$(echo $line | awk -F / '{print $NF}' | sed 's/.fna\|.fa//g')
+
+
+echo cp "$line" /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_instrain/instrain_representative_genomes/"$sample_name".fa #-t $SLURM_CPUS_PER_TASK	
+
+
+done < /data/Food/analysis/R6564_NGS/kefir4all/scripts/03_MAG_classification/drep_dereplicate_list.txt
+
+
+
+module load checkm2/0.1.3 
+checkm2 predict --input /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_instrain/instrain_representative_genomes -x .fa --threads $SLURM_CPUS_PER_TASK --output-directory /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_instrain/instrain_representative_genomes/03_checkm
+module unload checkm2/0.1.3 
+
+
+#####################################################################################################################################################################################################
+# drep command on kefir4all for species level insights
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/03_MAG_classification
+#emacs 03_drep.sh
+###########################
+#!/bin/sh
+#SBATCH --error err_drep
+#SBATCH --output out_drep
+#SBATCH --job-name 03_drep
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=10  
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+module load python3.7/i3  
+module load drep/3.2.0   
+module load fastani/1.32
+module load mash/2.1 
+module load checkm/1.0.18 
+module load mummer/4.5
+module load prodigal/2.6.3 
+
+#mkdir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_drep
+
+#mkdir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_drep/dereplicate
+#mkdir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_drep/clustered_representative_genomes
+
+
+find /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_instrain/instrain_representative_genomes/ -type f -name "*.fa" > genomes.txt
+dRep dereplicate /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_drep/dereplicate --ignoreGenomeQuality -g genomes.txt -p $SLURM_CPUS_PER_TASK 
+
+#dRep compare /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_drep/clustered_representative_genomes g $(cat drep_dereplicate_list.txt) -p $SLURM_CPUS_PER_TASK #--S_algorithm gANI
+
+module unload drep/3.2.0
+module unload fastani/1.32
+module unload mash/2.1 
+module unload checkm/1.0.18 
+module unload mummer/4.5   
+module unload prodigal/2.6.3
+module unload python3.7/i3
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+while read line  
+do
+module load checkm/1.0.18 
+sample_name=$(echo $line | awk -F / '{print $NF}' | sed 's/.fna\|.fa//g')
+
+echo "$line" > t.txt
+if grep ".fa" t.txt
+ then
+checkm lineage_wf -x fa "$line" /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_checkm/"$sample_name"_checkm -t $SLURM_CPUS_PER_TASK	
+
+else
+checkm lineage_wf -x fna "$line" /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_checkm/"$sample_name"_checkm -t $SLURM_CPUS_PER_TASK		
+
+fi
+
+
+module unload checkm/1.0.18  
+
+done < /data/Food/analysis/R6564_NGS/kefir4all/scripts/03_MAG_classification/drep_dereplicate_list.txt
+/data/Food/analysis/R6564_NGS/kefir4all/04_short_read_profiling/04instrain/04_representative_db/04representative_genus_ids/2022-11-23_18-05-19/files/GCF_003967275.1_ASM396727v1_genomic.fna
+
+checkm lineage_wf -x fna /data/Food/analysis/R6564_NGS/kefir4all/04_short_read_profiling/04instrain/04_representative_db/04representative_genus_ids/2022-11-23_18-05-19/files/GCA_001746755.1_ASM174675v1_genomic.fna /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_checkm/GCA_001746755.1_ASM174675v1_genomic_checkm -t 23
+#####################################################################################################################################################################################################
+# drep command on kefir4all for species level insights
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/03_MAG_classification
+#emacs 03_drep.sh
+###########################
+
+#!/bin/sh
+#SBATCH --error err_drep
+#SBATCH --output out_drep
+#SBATCH --job-name 03_drep
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=23   
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+for item in $(find /data/Food/analysis/R6564_NGS/kefir4all/04_short_read_profiling/04instrain/04_representative_db/04representative_genus_ids/ -type f -name '*fna.gz')
+do
+gunzip "$item"
+done
+
+
+find /data/Food/analysis/R6564_NGS/kefir4all/04_short_read_profiling/04instrain/04_representative_db/04representative_genus_ids/ -type f -name '*fna' > drep_dereplicate_list.txt
+
+find /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metawrap/02_total_MAGS -type f -name '*fa' >> drep_dereplicate_list.txt
+
+
+module load python3.7/i3  
+module load drep/3.2.0   
+module load fastani/1.32
+module load mash/2.1 
+module load checkm/1.0.18 
+module load mummer/4.5
+module load prodigal/2.6.3 
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_drep
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_drep/dereplicate
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_drep/clustered_representative_genomes
+
+find -maxdepth 1 -type f -name '*fa' | cut -c 3- | paste -sd " " > genome_paths.txt
+
+module load checkm/1.0.18  
+checkm lineage_wf -x fa "$i"/*/files checkm_complete_referneces/"$i"_checkm -t $SLURM_C1PUS_PER_TASK	
+module unload checkm/1.0.18  
+dRep dereplicate /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_drep/dereplicate -g $(cat drep_dereplicate_list.txt) -p $SLURM_CPUS_PER_TASK 
+
+dRep compare /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_drep/clustered_representative_genomes g $(cat drep_dereplicate_list.txt) -p $SLURM_CPUS_PER_TASK #--S_algorithm gANI
+
+module unload drep/3.2.0   
+module unload fastani/1.32
+module unload mash/2.1 
+module unload checkm/1.0.18 
+module unload mummer/4.5   
+module unload prodigal/2.6.3
+module unload python3.7/i3
+
+
+
+
+
+
+
+
+
+
+       

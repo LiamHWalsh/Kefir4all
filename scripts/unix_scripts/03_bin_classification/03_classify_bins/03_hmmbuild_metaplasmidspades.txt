@@ -1,0 +1,85 @@
+#####################################################################################################################################################################################################
+# prodigal command on merged plasmid assemblies
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/03_MAG_classification
+#emacs 03_prodigal_metaplasmidspades
+###########################
+
+#!/bin/sh
+#SBATCH --error 03_err_prodigal_metaplasmidspades
+#SBATCH --output 03_out_prodigal_metaplasmidspades
+#SBATCH --job-name 03_prodigal_metaplasmidspades
+#SBATCH -p Background
+
+#####################################################################################################################################################################################################
+# hmmbuild command on downloaded pfam plasmid replication full protein family alignments 
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/plasmid/
+
+###########################
+
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/plasmid/pfam_hmm_data_base
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/plasmid/raw_protein_familes
+
+wget blob:https://www.ebi.ac.uk/41f4e3bb-7a7c-400d-bf74-e8fd5137da52
+blob:https://www.ebi.ac.uk/b7955e4b-2d96-4353-9730-b0022859d733
+
+
+
+
+#####################################################################################################################################################################################################
+# hmmbuild command on downloaded pfam plasmid replication full protein family alignments 
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/03_MAG_classification
+emacs 03_hmmbuild_metaplasmidspades.sh
+###########################
+
+
+#!/bin/sh
+#SBATCH --error 03_err_hmmbuild_metaplasmidspades
+#SBATCH --output 03_out_hmmbuild_metaplasmidspades
+#SBATCH --job-name 03_hmmbuild_metaplasmidspades
+#SBATCH -p Background
+#SBATCH -N 1
+#SBATCH --cpus-per-task=4
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie 
+
+
+module load hmmer/3.2.1 
+
+
+for sample in $(find /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/plasmid/raw_protein_familes -type f -name "*.txt" -maxdepth 1)
+do
+
+new_name=$(echo "$sample" | awk -F / '{print $NF}' | sed 's/.txt//g')
+
+hmmbuild "$new_name".hmm "$sample"
+
+done
+module unload  hmmer/3.2.1
+
+ 
+
+HmmerSearch uses a profile hidden Markov model as a query to search a sequence database to find sequences similar to the family from which the profile HMM was built.
+
+Profile HMMs can be created using HmmerBuild.
+
+
+wget https://www.ebi.ac.uk:443/interpro/api/protein/UniProt/entry/InterPro/IPR000525/
+
+
+
+module load hmmer/3.2.1 
+
+
+
+hmmbuild test.hmm Initiator_Rep_protein_Rep_3_IPR000525_PF01051.fa
+
+
+
+module unload hmmer/3.2.1 
+
+
+

@@ -1,0 +1,30 @@
+#####################################################################################################################################################################################################
+# dram command on merged intial bins from the global dataset 
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/03_MAG_classification
+#emacs 03_dram_bins_global_unmerged.sh
+###########################
+#!/bin/sh
+#SBATCH --error 03_err_dram_bins_global_unmerged
+#SBATCH --output 03_out_dram_bins_global_unmerged
+#SBATCH --job-name 03_dram_bins_global_unmerged
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=40   
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+#rm -r /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_dram/
+#mkdir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_dram/
+#rm -r /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_dram/dram_mag_annotation/
+
+module load dram/1.2
+source activate DRAM
+
+DRAM.py annotate -i '/data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metawrap/02_metawrap_unmerged/finished_global_bins/*.fa' -o /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_dram/dram_mag_annotation_global_unmerged --gtdb_taxonomy /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_gtdbtk/gtdbtk_bins_global_unmerged/align/classify/gtdbtk.bac120.summary.tsv --checkm_quality /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_checkm/global_bins/02_metawrap_unmerged/quality_report.tsv --threads $SLURM_CPUS_PER_TASK
+
+#DRAM.py distill -i "$i"_"$b"_dram_mag_annotation/annotations.tsv -o "$i"_"$b"_mag_distill --trna_path "$i"_"$b"_dram_mag_annotation/trnas.tsv --rrna_path "$i"_"$b"_dram_mag_annotation/rrnas.tsv
+
+module unload dram/1.2
+conda deactivate
+
+

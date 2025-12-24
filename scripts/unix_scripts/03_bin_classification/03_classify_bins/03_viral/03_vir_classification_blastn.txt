@@ -1,0 +1,311 @@
+
+
+#####################################################################################################################################################################################################
+# move viral verify predicted plasmid contigs to a seperate folder 
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/03_MAG_classification
+
+###########################
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/viral/viralverify/total_plasmid_mags/
+for sample in $(find /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/plasmid/viralverify/ -type f -name "*metaplasmidspades_plasmid.fasta")
+
+do
+new_name=$(echo $sample | awk -F / '{print $NF'} )
+
+cp "$sample" /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/plasmid/viralverify/total_plasmid_mags/"$new_name"
+done
+
+
+#####################################################################################################################################################################################################
+# Database set up 
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/03_MAG_classification
+
+###########################
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_taxonomic/viralverify_metavirspades/blast/
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_taxonomic/viralverify_metavirspades/blast/db
+
+cd /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_taxonomic/viralverify_metavirspades/blast/db
+wget https://ftp.ncbi.nlm.nih.gov/refseq/release/viral/viral.1.1.genomic.fna.gz
+gunzip viral.1.1.genomic.fna.gz
+
+makeblastdb -in viral.1.1.genomic.fna -dbtype nucl -parse_seqids -out viral_db
+
+#wget https://ftp.ncbi.nlm.nih.gov/blast/db/nt_viruses.16.tar.gz
+
+#tar -xvf nt_viruses.16.tar.gz
+
+viral.1.1.genomic.fna  viral.1.1.genomic.fna.nhr  viral.1.1.genomic.fna.nin  viral.1.1.genomic.fna.nsq
+
+#####################################################################################################################################################################################################
+# Determine the taxonomy of each viral verify predicted plasmid contig
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/03_MAG_classification
+#emacs 03_blastn_viralverify_metaviralspades.sh
+###########################
+#!/bin/sh
+#SBATCH --error 03err_blastn_viralverify_metaviralspades
+#SBATCH --output 03out_blastn_bins_viralverify_metaviralspades
+#SBATCH --job-name 03blastn_bins_viralverify_metaviralspades
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=20
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_taxonomic/viralverify_metavirspades/blast/viral/
+
+for sample in $(find /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/viral/viralverify/total_viral_mags/checkv/ -type f -name "combined.fna")
+
+do 
+
+new_name=$(echo $sample | awk -F / '{print $(NF-1)'} | sed 's/_metaviralspades_viralverify_checkv//g' )
+
+module load blast/2.8.1  
+
+blastn -query $sample -evalue 0.00001 -db /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_taxonomic/viralverify_metavirspades/blast/db/viral_db -task blastn -num_threads $SLURM_CPUS_PER_TASK -outfmt 6 -perc_identity 60 -out /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_taxonomic/viralverify_metavirspades/blast/viral/"$new_name"_viral.reference
+
+module unload blast/2.8.1  
+
+done
+
+cd /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_taxonomic/viralverify_metavirspades/blast/viral/
+
+lcd Q:/"H2020 Master"/"Citizen Science Project"/Results/03_mag_classification/meta_viralspades/blastn
+
+#####################################################################################################################################################################################################
+# MAFFT
+#####################################################################################################################################################################################################
+#https://bioinformaticsworkbook.org/phylogenetics/FastTree.html#gsc.tab=0
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/03_MAG_classification
+#emacs 03_mafft_viralverify_metavirspades.sh
+###########################
+#!/bin/sh
+#SBATCH --error 03err_mafft_viralverify_metavirspades
+#SBATCH --output 03out_mafft_bins_viralverify_metavirpades
+#SBATCH --job-name 03mafft_bins_viralverify_metavirspades
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=30
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_taxonomic/viralverify_metavirspades/
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_taxonomic/viralverify_metavirspades/FastTree
+
+find /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/viral/viralverify/total_viral_mags/checkv/ -type f -path "*MK*" -name "combined.fna" -exec cat {} + > /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_taxonomic/viralverify_metavirspades/FastTree/mk_input.fasta
+
+
+find /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/viral/viralverify/total_viral_mags/checkv/ -type f -path "*WK*" -name "combined.fna" -exec cat {} + > /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_taxonomic/viralverify_metavirspades/FastTree/wk_input.fasta
+
+
+
+
+
+module load mafft/7.475
+
+mafft  --thread $SLURM_CPUS_PER_TASK --auto /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_taxonomic/viralverify_metavirspades/FastTree/wk_input.fasta > /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_taxonomic/viralverify_metavirspades/FastTree/mk_input_aln.fasta
+
+
+mafft  --thread $SLURM_CPUS_PER_TASK --auto /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_taxonomic/viralverify_metavirspades/FastTree/mk_input.fasta > /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_taxonomic/viralverify_metavirspades/FastTree/wk_input_aln.fasta
+
+
+
+module unload mafft/7.475
+
+
+
+#####################################################################################################################################################################################################
+# fast_tree
+#####################################################################################################################################################################################################
+#https://bioinformaticsworkbook.org/phylogenetics/FastTree.html#gsc.tab=0
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/03_MAG_classification
+#emacs 03_fast_tree_viralverify_metaviralspades.sh
+###########################
+#!/bin/sh
+#SBATCH --error 03err_fast_tree_viralverify_metaviralspades
+#SBATCH --output 03out_fast_tree_viralverify_metaviralspades
+#SBATCH --job-name 03fast_bins_viralverify_metaviralspades
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=5
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+
+
+
+module load fasttree/2.1.10
+
+
+
+FastTree -nt -gtr -gamma /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_taxonomic/viralverify_metavirspades/FastTree/mk_input_aln.fasta > /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_taxonomic/viralverify_metavirspades/FastTree/mk_input.tre
+
+FastTree -nt -gtr -gamma /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_taxonomic/viralverify_metavirspades/FastTree/wk_input_aln.fasta > /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_taxonomic/viralverify_metavirspades/FastTree/wk_input.tre
+
+module unload fasttree/2.1.10
+
+
+
+
+
+cat /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/viral/viralverify/total_viral_mags/checkv/*/*combined.fna > /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_taxonomic/viralverify_metaplasmidspades/FastTree/mk_input.fasta
+
+
+#####################################################################################################################################################################################################
+# get sample_ids for node names for mk
+#
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/viral/viralverify/total_viral_mags/checkv
+###########################
+
+
+
+ for i in $(find /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/viral/viralverify/total_viral_mags/checkv/ -type f \( -name "combined.fna" -and -ipath "*MK*" \))
+  do   
+grep ">" "$i" > test.txt
+
+sample_id=$(echo "$i" | awk -F / '{print $NF}' | sed 's/.fasta//g') 
+
+sed 's/$/,'"${sample_id}"'/' test.txt > "$sample_id".txt
+
+done 
+
+cat *.txt > node_names_mk.txt
+
+ 
+rm  *_virus.txt
+
+
+#####################################################################################################################################################################################################
+# get sample_ids for node names for mk
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/plasmid/viralverify/total_plasmid_mags/
+###########################
+
+
+
+ for i in $(find /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/viral/viralverify/total_viral_mags/ -type f \( -name "*.fasta" -and -name "*WK*" \))
+  do   
+grep ">" "$i" > test.txt
+
+sample_id=$(echo "$i" | awk -F / '{print $NF}' | sed 's/.fasta//g') 
+
+sed 's/$/,'"${sample_id}"'/' test.txt > "$sample_id".txt
+
+done 
+
+cat *_virus.txt > node_names_wk.txt
+
+ 
+
+
+rm  *_virus.txt
+
+
+
+
+
+#####################################################################################################################################################################################################
+# cd -hit on extracted sequences 
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/03_MAG_classification
+##emacs 03viral_cd_hit.sh
+#https://ctskennerton.github.io/crass/Tutorial.html - good tutorial
+###########################
+
+#!/bin/sh
+#SBATCH --error err_03viral_cd_hit
+#SBATCH --output out_03viral_cd_hit
+#SBATCH --job-name 03viral_cd_hit
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=20
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/viral/viralverify/total_viral_mags/03_viral_cd_hit
+
+module load cdhit/4.7 
+
+
+for i in $(find /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_taxonomic/viralverify_metavirspades/FastTree/ -type f -name "**_input.fasta")
+do 
+
+echo $i > test_v.txt
+if [ "$( grep mk test_v.txt | wc -l)" = "1" ]
+
+then
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/viral/viralverify/total_viral_mags/03_viral_cd_hit_Milk.kefir/
+
+cd-hit-est -i "$i" -o /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/viral/viralverify/total_viral_mags/03_viral_cd_hit_Milk.kefir/03_viral_cd_hit_Milk.kefir -c 0.95 -aS 0.85 -n 5 -d 0 -M 0 -T $SLURM_CPUS_PER_TASK
+
+
+else
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/viral/viralverify/total_viral_mags/03_viral_cd_hit_Water.kefir/
+cd-hit-est -i "$i" -o /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/viral/viralverify/total_viral_mags/03_viral_cd_hit_Water.kefir/03_viral_cd_hit_Water.kefir -c 0.95 -aS 0.85 -n 5 -d 0 -M 0 -T $SLURM_CPUS_PER_TASK
+
+fi
+
+done 
+
+
+module unload cdhit/4.7 
+
+
+#####################################################################################################################################################################################################
+# cd -hit on cluster sequences from previous command with representative sequences
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/03_MAG_classification
+##emacs 03viral_cd_hit_reps.sh
+#http://www.bioinformatics.org/cd-hit/cd-hit-user-guide.pdf - good tutorial
+###########################
+
+#!/bin/sh
+#SBATCH --error err_03viral_cd_hit_reps
+#SBATCH --output out_03viral_cd_hit_reps
+#SBATCH --job-name 03viral_cd_hit_reps
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=20
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/viral/viralverify/total_viral_mags/rep_db
+
+
+find /data/Food/analysis/R6564_NGS/viyal.soni/00_download/gen_bank_refseq -name ".fna.gz" -exec cat {} + > /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/viral/viralverify/total_viral_mags/rep_db/rep_db.fna
+
+
+ cat /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/viral/viralverify/total_viral_mags/03_viral_cd_hit_Water.kefir/03_viral_cd_hit_Water.kefir \
+ /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/viral/viralverify/total_viral_mags/rep_db/rep_db.fna \
+ /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/viral/viralverify/total_viral_mags/03_viral_cd_hit_Milk.kefir/03_viral_cd_hit_Milk.kefir > /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/viral/viralverify/total_viral_mags/collective_viral_reps.fa
+
+
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/viral/viralverify/total_viral_mags/03_viral_cd_hit_reps/
+
+module load cdhit/4.7 
+
+
+
+
+cd-hit-est -i /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/viral/viralverify/total_viral_mags/collective_viral_reps.fa -o /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/viral/viralverify/total_viral_mags/03_viral_cd_hit_reps/03_viral_cd_hit_reps -c 0.95 -aS 0.85 -n 5 -d 0 -M 0 -T $SLURM_CPUS_PER_TASK
+
+
+
+
+module unload cdhit/4.7 
+
+
+
+
+

@@ -1,0 +1,63 @@
+
+
+#####################################################################################################################################################################################################
+# move viral verify predicted plasmid contigs to a seperate folder 
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/03_MAG_classification
+
+###########################
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/viral/viralverify/total_viral_mags/
+for sample in $(find /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/viral/viralverify/ -type f -name "*metaviralspades_virus.fasta")
+
+do
+new_name=$(echo $sample | awk -F / '{print $NF'} )
+
+cp "$sample" /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/viral/viralverify/total_viral_mags/"$new_name"
+done
+
+
+#####################################################################################################################################################################################################
+# checkv command for viral Assemblies acquired using metavirspades
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/03_MAG_classification/
+#emacs 03_checkv_viralverify_metaviralspades.sh
+###########################
+
+#!/bin/sh
+#SBATCH --error 03_err_checkv_viralverify_metaviralspades
+#SBATCH --output 03_out_checkv_viralverify_metaviralspades
+#SBATCH --job-name 03_checkv_viralverify_metaviralspades
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=20
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+rm -r /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/viral/viralverify/total_viral_mags/checkv
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/viral/viralverify/total_viral_mags/checkv
+
+for base_name in $(find /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/viral/viralverify/total_viral_mags/ -type f -name "*.fasta" -maxdepth 1)
+do
+
+
+new_name=$(echo $base_name | awk -F / '{print $NF'} | sed 's/_virus.fasta//g' )
+
+
+module load prodigal/2.6.3
+module load python3.7/i3
+module load checkv/1.0.1
+module load diamond/2.0.12  
+module load blast/2.8.1                    
+
+#name=$(echo "$base_name" | awk -F / '{print $NF'} | sed 's/_metaviralspades_virus.fasta//g')
+
+checkv end_to_end "$base_name" /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/viral/viralverify/total_viral_mags/checkv/"$new_name"_viralverify_checkv -t $SLURM_CPUS_PER_TASK -d /data/Food/analysis/R6564_NGS/liam.walsh/virsorter/metawrap/checkv-db-v1.0 
+
+module unload prodigal/2.6.3
+module unload python3.7/i3
+module unload checkv/1.0.1
+module unload diamond/2.0.12 
+module unload blast/2.8.1
+done
+

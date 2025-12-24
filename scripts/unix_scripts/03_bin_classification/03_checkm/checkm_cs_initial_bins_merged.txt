@@ -1,0 +1,60 @@
+#####################################################################################################################################################################################################
+# move merged intial bins from the global dataset into one folder
+#####################################################################################################################################################################################################
+
+###########################
+
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metawrap/02_metawrap_merged/initial_cs_bins
+
+
+for name in $(find /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metawrap/02_metawrap_merged/ -type d \( -name "*metawrap_bins" -and -name "*_TG_*" \) )
+do
+
+for bin in $(find "$name" -type f \( -name "*.fa" -and -name "*bin*" -not -name "*unbinned*" \) )
+do
+new_name=$( echo $bin | sed -r 's/\/data\/Food\/analysis\/R6564_NGS\/kefir4all\/02_assembly\/02_metawrap\/02_metawrap_merged\///g' | sed 's/\//_/g')
+
+cp "$bin" /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metawrap/02_metawrap_merged/initial_cs_bins/"$new_name"
+done
+done 
+
+#####################################################################################################################################################################################################
+# checkm command on merged intial bins from the cs dataset 
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/03_MAG_classification
+#emacs 03_checkm_initial_cs_bins_merged.sh
+
+###########################
+
+#!/bin/sh
+#SBATCH --error 03_err_checkm_initial_cs_bins_merged
+#SBATCH --output 03_out_checkm_initial_cs_bins_merged
+#SBATCH --job-name 03_checkm_initial_cs_bins_merged
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=40   
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_checkm/initial_cs_bins/
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_checkm/initial_cs_bins/02_metawrap_merged/
+
+module load checkm2/0.1.3 
+
+checkm2 predict --input /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metawrap/02_metawrap_merged/initial_cs_bins/ -x .fa --threads $SLURM_CPUS_PER_TASK --output-directory /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_checkm/initial_cs_bins/02_metawrap_merged/
+
+module unload checkm2/0.1.3 
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,211 @@
+#####################################################################################################################################################################################################
+# FASTANI on euk representative_MAGs compared to a refernece genome
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/03_MAG_classification
+emacs 03_fastani_euk_representative_MAGs.sh
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/fastani_euk
+
+
+upload Q:\H2020 Master\Citizen Science Project\Results\03_mag_classification\HQ_eukaryotic_MAGs.csv to /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/fastani_euk
+
+dos2unix /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/fastani_euk/HQ_eukaryotic_MAGs.csv
+# 
+###########################
+
+#!/bin/sh
+#SBATCH --error 03_err_fastani_euk_representative_MAGs
+#SBATCH --output 03_out_fastani_euk_representative_MAGs
+#SBATCH --job-name 03_fastani_euk_representative_MAGs
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=10
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+
+
+#mkdir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/fastani_euk/refernce_genome
+#cd /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/fastani_euk/refernce_genome
+#wget https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/146/045/GCA_000146045.2_R64/GCA_000146045.2_R64_genomic.fna.gz
+
+
+
+input_dir=/data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metawrap/
+out_dir=/data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/fastani_euk/output/Saccharomyces_cerevisiae/reference_genome
+mkdir -p $out_dir
+ref_db=/data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/fastani_euk/refernce_genome/GCA_000146045.2_R64_genomic.fna.g\
+z
+
+
+while read -r line
+
+do
+
+base_name=$(echo $line | cut -d ',' -f 1 | sed 's/.txt//g' | awk -F / '{ print $NF '} ) #| sed 's|^\./||')
+
+
+sample=$(find $input_dir -type f -name "$base_name.fa.gz")
+
+
+
+module load fastani/1.32
+
+
+fastANI -q "${sample}" -r "$ref_db" -o "${out_dir}${base_name}" -t "$SLURM_CPUS_PER_TASK"
+
+
+ module unload fastani/1.32
+
+
+
+done < /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/fastani_euk/HQ_eukaryotic_MAGs.csv
+
+
+
+
+
+
+find . -type f -name "*WK*" -maxdepth 1 -exec mv {} "$out_dir" \;
+
+
+
+
+
+#####################################################################################################################################################################################################
+# move euk representative_MAGs to one folder
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/03_MAG_classification
+emacs 03_fastani_euk_representative_MAGs_pairwise.sh
+
+
+sed '1d' /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/fastani_euk/HQ_eukaryotic_MAGs.csv > /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/fastani_euk/HQ_eukaryotic_MAGs_v2.csv
+
+###########################
+
+
+
+#!/bin/sh
+#SBATCH --error 03_err_fastani_euk_representative_MAGs_pairwise
+#SBATCH --output 03_out_fastani_euk_representative_MAGs_pairwise
+#SBATCH --job-name 03_fastani_euk_representative_MAGs_pairwise
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=4
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+
+input_dir=/data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metawrap/
+
+while read -r line; do
+    base_name=$(echo "$line" | cut -d ',' -f 1 | sed 's/.txt//g' | awk -F / '{print $NF}')
+    echo "Initiating for loop for $base_name"
+    
+    find "$input_dir" -type f -name "$base_name.fa.gz" -exec cp {} /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metawrap/euk_bins/ \;
+done < /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/fastani_euk/HQ_eukaryotic_MAGs_v2.csv
+
+
+
+
+find $input_dir -type f -name "$base_name.fa.gz" | -exec xp {} /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metawrap/euk_bins/ \;
+
+
+done < /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/fastani_euk/HQ_eukaryotic_MAGs_v2.csv
+
+
+
+
+
+
+#####################################################################################################################################################################################################
+# pairwise comparision of all euk representative_MAGs compared to a refernece genome
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/03_MAG_classification
+rm emacs 03_fastani_euk_representative_MAGs_pairwise.sh
+emacs 03_fastani_euk_representative_MAGs_pairwise.sh
+
+
+###########################
+
+
+
+
+
+
+
+
+
+#!/bin/sh
+#SBATCH --error 03_err_fastani_euk_representative_MAGs_pairwise
+#SBATCH --output 03_out_fastani_euk_representative_MAGs_pairwise
+#SBATCH --job-name 03_fastani_euk_representative_MAGs_pairwise
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=10
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+
+find /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metawrap/euk_bins/ -type f -name "*.fa.gz" > temp.csv
+
+input_dir=/data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metawrap/
+out_dir="/data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/fastani_euk/output/Saccharomyces_cerevisiae/pairwise_comparisions/"
+
+mkdir -p "$out_dir"
+
+
+cut -d ',' -f 1 /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/fastani_euk/HQ_eukaryotic_MAGs.csv | sed 's/.txt//g' | sed '1d' | awk -F / '{ print $NF }' > /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/fastani_euk/temp.csv
+
+
+for line in $(find /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metawrap/euk_bins/ -type f -name "*.fa.gz")
+
+
+do
+
+
+base_name=$(echo $line | sed 's/.fa.gz//g' | awk -F / '{ print $NF '} ) 
+echo initating for  loop for $base_name
+
+
+grep -v "^${base_name}$" temp.csv > temp_tmp.csv
+
+mv temp_tmp.csv temp.csv
+
+
+
+
+
+
+while read -r t
+
+do
+
+echo initating secondary for  loop for t within temp.csv
+
+
+
+
+sample_compare_base=$(echo $t | sed 's/.fa.gz//g' | awk -F / '{ print $NF '}  )
+
+
+
+module load fastani/1.32  
+
+
+echo initating fastani comparision 
+fastANI -q "${line}" -r "${t}" -o "${out_dir}${base_name}_vs_${sample_compare_base}" -t "${SLURM_CPUS_PER_TASK}"
+
+
+ module unload fastani/1.32
+
+
+done < temp.csv
+
+done
+
+
+
+
+
+

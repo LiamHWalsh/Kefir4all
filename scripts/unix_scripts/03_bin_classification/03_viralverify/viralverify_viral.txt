@@ -1,0 +1,77 @@
+#####################################################################################################################################################################################################
+# viral verify set up 
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/03_MAG_classification
+
+###########################
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metaviralspades/total_mags/
+
+
+
+for sample in $(find /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metaviralspades/ -type f -name "*scaffolds.fasta" -maxdepth 2)
+do
+new_name=$(echo $sample | awk -F / '{print $(NF-1)'})
+
+cp "$sample" /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metaviralspades/total_mags/"$new_name".fasta
+done
+
+
+for sample in $(find /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metaviralspades/test -type f -name "*scaffolds.fasta" -maxdepth 2)
+do
+new_name=$(echo $sample | awk -F / '{print $(NF-1)'})
+
+cp "$sample" /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metaviralspades/total_mags/"$new_name".fasta
+done
+
+
+#####################################################################################################################################################################################################
+# viral verify command on merged plasmid assemblies
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/03_MAG_classification
+#emacs 03_viralverify_metaviralspades.sh
+###########################
+
+#!/bin/sh
+#SBATCH --error 03_err_viralverify_metaviralspades
+#SBATCH --output 03_out_viralverify_metaviralspades
+#SBATCH --job-name 03_viralverify_metaviralspades
+#SBATCH -p Background
+#SBATCH -N 1
+#SBATCH --cpus-per-task=25
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie 
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/viral/viralverify/
+
+
+module load viralverify/1.1
+
+
+for sample in $(find /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metaviralspades/total_mags/ -type f -name "*.fasta")
+do
+new_name=$(echo $sample | awk -F / '{print $NF'})
+
+viralverify -f "$sample" -o /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/viral/viralverify/"$new_name" --hmm /data/databases/Pfam-A.hmm.h3m -t $SLURM_CPUS_PER_TASK
+
+done
+
+module unload viralverify/1.1
+
+
+#####################################################################################################################################################################################################
+# Merge total viral verify outputs together. 
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/03_MAG_classification
+
+###########################
+
+
+
+find /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/viral/viralverify/ -type f -name "*metaviralspades_result_table.csv" -exec cat {} + > /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/viral/viralverify/total_viralverify_results.csv
+
+
+
+
+
+
