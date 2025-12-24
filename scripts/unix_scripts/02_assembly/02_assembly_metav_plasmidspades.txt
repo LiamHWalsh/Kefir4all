@@ -1,0 +1,35 @@
+
+#####################################################################################################################################################################################################
+# plasmid and viral Assembly command
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/02_assembly
+#emacs 02_assembly_metav_plasmidspades.sh
+###########################
+#!/bin/sh
+#SBATCH --error 02err_metav_plasmidspades
+#SBATCH --output 02out_metav_plasmidspades
+#SBATCH --job-name 02assembly_metav_plasmidspades
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=25
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metaviralspades
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metaplasmidspades
+for base_name in $(find /data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files/merged/ -type f -name "*.fastq.gz" | cut -d/ -f10 | sed 's/_R..fastq.gz//g' | sort -u)
+
+
+do
+module load spades/3.15.3
+module load metawrap/1.3.1
+
+metaviralspades.py -1 /data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files/merged/"$base_name"_R1.fastq.gz -2 /data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files/merged/"$base_name"_R2.fastq.gz\ -t $SLURM_CPUS_PER_TASK --careful -o /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metaviralspades/"$base_name"_metaviralspades
+
+
+metaplasmidspades.py -1 /data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files/merged/"$base_name"_R1.fastq.gz -2 /data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files/merged/"$base_name"_R2.fastq.gz\ -t $SLURM_CPUS_PER_TASK --careful -o /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metaplasmidspades/"$base_name"_metaplasmidspades
+
+module unload spades/3.15.3
+
+module unload  
+done
