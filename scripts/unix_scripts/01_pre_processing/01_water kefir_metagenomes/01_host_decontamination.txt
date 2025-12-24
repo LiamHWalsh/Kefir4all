@@ -1,0 +1,119 @@
+#####################################################################################################################################################################################################
+#Downloading reference genomes for host decontamination
+#####################################################################################################################################################################################################
+/data/Food/analysis/R6564_NGS/kefir4all/scripts
+#emacs 01_bowtie_genome_download.sh 
+###########################
+
+#!/bin/sh
+#SBATCH --error err_2020_step2
+#SBATCH --output out_2020_step2
+#SBATCH --job-name bowtie_download_genomes
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=3
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+
+#mkdir /data/Food/analysis/R6564_NGS/kefir4all/01qc/01reference_genomes
+
+cd /data/Food/analysis/R6564_NGS/kefir4all/01qc/01reference_genomes
+#https://support.illumina.com/sequencing/sequencing_software/igenome.html website for 
+
+http://igenomes.illumina.com.s3-website-us-east-1.amazonaws.com/Bos_taurus/NCBI/UMD_3.1.1/Bos_taurus_NCBI_UMD_3.1.1.tar.gz
+wget http://igenomes.illumina.com.s3-website-us-east-1.amazonaws.com/Bos_taurus/NCBI/UMD_3.1.1/Bos_taurus_NCBI_UMD_3.1.1.tar.gz
+tar -xvzf Bos_taurus_NCBI_UMD_3.1.1.tar.gz
+wget http://igenomes.illumina.com.s3-website-us-east-1.amazonaws.com/PhiX/Illumina/RTA/PhiX_Illumina_RTA.tar.gz
+tar -xvzf PhiX_Illumina_RTA.tar.gz
+wget http://igenomes.illumina.com.s3-website-us-east-1.amazonaws.com/Homo_sapiens/NCBI/GRCh38/Homo_sapiens_NCBI_GRCh38.tar.gz
+tar -xvzf Homo_sapiens_NCBI_GRCh38.tar.gz
+
+
+#####################################################################################################################################################################################################
+#Build a bowtie database from reference genomes for host decontamination
+#####################################################################################################################################################################################################
+/data/Food/analysis/R6564_NGS/kefir4all/scripts
+#emacs 01_bowtie_genome_index.sh 
+#https://www.metagenomics.wiki/tools/short-read/remove-host-sequences - good tutorial
+###########################
+#!/bin/sh
+#SBATCH --error err_2020_step2
+#SBATCH --output out_2020_step2
+#SBATCH --job-name bowtie_index_genomes
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=30
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+#indexing reference genome
+
+cd /data/Food/analysis/R6564_NGS/kefir4all/01qc/01reference_genomes
+#mkdir /data/Food/analysis/R6564_NGS/kefir4all/01qc/01bowtie_database/
+
+module load bowtie2/2.3.4
+module load anaconda3.6.b/4.6
+
+cat PhiX/Illumina/RTA/Sequence/BowtieIndex/genome.fa Bos_taurus/NCBI/UMD_3.1.1/Sequence/WholeGenomeFasta/genome.fa Homo_sapiens/NCBI/GRCh38/Sequence/WholeGenomeFasta/genome.fa > milk_kefir_reference.fa
+
+cat PhiX/Illumina/RTA/Sequence/BowtieIndex/genome.fa Homo_sapiens/NCBI/GRCh38/Sequence/WholeGenomeFasta/genome.fa > water_kefir_reference.fa
+
+bowtie2-build milk_kefir_reference.fa /data/Food/analysis/R6564_NGS/kefir4all/01qc/01bowtie_database/milk_kefir_index --large-index --threads $SLURM_CPUS_PER_TASK 
+
+#bowtie2-build water_kefir_reference.fa /data/Food/analysis/R6564_NGS/kefir4all/01qc/01bowtie_database/water_kefir_index --threads $SLURM_CPUS_PER_TASK
+
+module unload anaconda3.6.b/4.6
+module unload bowtie2/2.3.4
+
+
+
+#####################################################################################################################################################################################################
+#Bowtie command on global_wk_metagenomes
+#####################################################################################################################################################################################################
+/data/Food/analysis/R6564_NGS/kefir4all/scripts
+#emacs 01_bowtie_sWK.sh 
+#https://www.metagenomics.wiki/tools/short-read/remove-host-sequences - good tutorial
+###########################
+
+
+#!/bin/sh
+#SBATCH --error err_2020_step2
+#SBATCH --output out_2020_step2
+#SBATCH --job-name bowtie_kefir4all_sWK
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=35
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+module load bowtie2/2.3.4
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/01bowtie/
+
+#find /data/Food/analysis/R6564_NGS/kefir4all/01qc/01trimmed_data -type f -name "*.fq.gz"
+
+for filename in $(find /data/Food/primary/R6564_NGS/kefir4all/cmprod1.cibio.unitn.it/TEAGASC_1022/ -type f  \( -name "*_WG_*" -and -name "*.fastq.gz" -or -name "*_WL_*" -and -name "*.fastq.gz" \)\
+ | rev | cut -c 17- | rev | sort -u)
+  do
+id=$(echo "$filename" | cut -d/ -f4-)
+
+bowtie2 --local -x /data/Food/analysis/R6564_NGS/kefir4all/01qc/01bowtie_database/water_kefir_index -1 "$filename"_R1_001_val_1.fq.gz -2 "$filename"_R2_001_val_2.fq.gz -S /data/Food/analysis/R6564_NGS/kefir4all/01bowtie/"$id"_mapped_and_unmapped.sam
+
+done
+
+module unload bowtie2/2.3.4
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

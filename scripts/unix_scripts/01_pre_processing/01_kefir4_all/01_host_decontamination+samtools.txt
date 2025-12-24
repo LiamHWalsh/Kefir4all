@@ -1,0 +1,237 @@
+#####################################################################################################################################################################################################
+# Host decontamination command on kefir4_all_data-mk -Trento
+#####################################################################################################################################################################################################
+#cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/01_preprocessing/
+#emacs 01host_decontamination_kefir4all_MK.sh
+###########################
+#!/bin/sh
+#SBATCH --error 01err_host_decontamination_kefir4all_MK
+#SBATCH --output 01out_host_decontamination_kefir4all_MK
+#SBATCH --job-name 01host_decontamination_kefir4all_MK
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=25
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+
+#mkdir /data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files
+
+for filename in $(find /data/Food/primary/R6564_NGS/kefir4all/cmprod1.cibio.unitn.it/TEAGASC_1022/ -type f  \( -name "*MG*" -and -name "*.fastq.gz" -or -name "*ML*" -and -name "*.fastq.gz" \)\
+ | rev | cut -c 17- | rev | sort -u )
+do
+id=$(echo "$filename" | cut -d/ -f10-)
+
+module load bowtie2/2.3.4
+
+bowtie2 --local -x /data/Food/analysis/R6564_NGS/kefir4all/01qc/01bowtie_database/milk_kefir_index -1 /data/Food/analysis/R6564_NGS/kefir4all/01qc/01trimmed_data/"$id"_R1_001_val_1.fq.gz -2 /data/Food/analysis/R6564_NGS/kefir4all/01qc/01trimmed_data/"$id"_R2_001_val_2.fq.gz -S /data/Food/analysis/R6564_NGS/kefir4all/01qc/01bowtie/"$id"_mapped_and_unmapped.sam --threads $SLURM_CPUS_PER_TASK 
+
+module unload bowtie2/2.3.4
+
+
+###########################################################################################################################################################
+#Samtools
+###########################################################################################################################################################
+
+
+module load samtools/1.9
+
+
+
+ samtools view -@ $SLURM_CPUS_PER_TASK -b /data/Food/analysis/R6564_NGS/kefir4all/01qc/01bowtie/"$id"_mapped_and_unmapped.sam -o /data/Food/analysis/R6564_NGS/kefir4all/01qc/01samtools/"$id"_mapped_and_unmapped.bam
+samtools view -@ $SLURM_CPUS_PER_TASK -b -f 12 -F 256 /data/Food/analysis/R6564_NGS/kefir4all/01qc/01samtools/"$id"_mapped_and_unmapped.bam > /data/Food/analysis/R6564_NGS/kefir4all/01qc/01samtools/"$id"_bothReads_Unmapped.bam
+samtools sort -n -m 5G -@ $SLURM_CPUS_PER_TASK /data/Food/analysis/R6564_NGS/kefir4all/01qc/01samtools/"$id"_bothReads_Unmapped.bam -o /data/Food/analysis/R6564_NGS/kefir4all/01qc/01samtools/"$id"_bothReads_Unmapped_sorted.bam
+samtools fastq -@ $SLURM_CPUS_PER_TASK /data/Food/analysis/R6564_NGS/kefir4all/01qc/01samtools/"$id"_bothReads_Unmapped_sorted.bam \
+    -1 /data/Food/analysis/R6564_NGS/kefir4all/01qc/01samtools/"$id"_host_removed_R1.fastq.gz \
+    -2 /data/Food/analysis/R6564_NGS/kefir4all/01qc/01samtools/"$id"_host_removed_R2.fastq.gz \
+    -0 /dev/null -s /dev/null -n
+module unload samtools/1.9
+
+done
+
+###########################################################################################################################################################
+#Sbatch command
+###########################################################################################################################################################
+
+#sbatch --dependency=afterok:963508 01host_decontamination_kefir4all_MK.sh 
+
+
+#####################################################################################################################################################################################################
+                                                                  # Host decontamination command on kefir4_all_data-wk -Trento
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/01_preprocessing/
+#emacs 01host_decontamination_kefir4all_WK.sh
+###########################
+#!/bin/sh
+#SBATCH --error 01err_host_decontamination_kefir4all_WK
+#SBATCH --output 01out_host_decontamination_kefir4all_WK
+#SBATCH --job-name 01host_decontamination_kefir4all_WK
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=25
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+
+#mkdir /data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files
+
+for filename in $(find /data/Food/primary/R6564_NGS/kefir4all/cmprod1.cibio.unitn.it/TEAGASC_1022/ -type f  \( -name "*WG*" -and -name "*.fastq.gz" -or -name "*WL*" -and -name "*.fastq.gz" \)\
+ | rev | cut -c 17- | rev | sort -u )
+do
+id=$(echo "$filename" | cut -d/ -f10-)
+
+module load bowtie2/2.3.4
+
+bowtie2 --local -x /data/Food/analysis/R6564_NGS/kefir4all/01qc/01bowtie_database/water_kefir_index -1 /data/Food/analysis/R6564_NGS/kefir4all/01qc/01trimmed_data/"$id"_R1_001_val_1.fq.gz -2 /data/Food/analysis/R6564_NGS/kefir4all/01qc/01trimmed_data/"$id"_R2_001_val_2.fq.gz -S /data/Food/analysis/R6564_NGS/kefir4all/01qc/01bowtie/"$id"_mapped_and_unmapped.sam --threads $SLURM_CPUS_PER_TASK 
+
+module unload bowtie2/2.3.4
+
+
+###########################################################################################################################################################
+#Samtools
+###########################################################################################################################################################
+
+
+module load samtools/1.9
+
+
+samtools view -@ $SLURM_CPUS_PER_TASK -b /data/Food/analysis/R6564_NGS/kefir4all/01qc/01bowtie/"$id"_mapped_and_unmapped.sam -o /data/Food/analysis/R6564_NGS/kefir4all/01qc/01samtools/"$id"_mapped_and_unmapped.bam
+samtools view -@ $SLURM_CPUS_PER_TASK -b -f 12 -F 256 /data/Food/analysis/R6564_NGS/kefir4all/01qc/01samtools/"$id"_mapped_and_unmapped.bam > /data/Food/analysis/R6564_NGS/kefir4all/01qc/01samtools/"$id"_bothReads_Unmapped.bam
+samtools sort -n -m 5G -@ $SLURM_CPUS_PER_TASK /data/Food/analysis/R6564_NGS/kefir4all/01qc/01samtools/"$id"_bothReads_Unmapped.bam -o /data/Food/analysis/R6564_NGS/kefir4all/01qc/01samtools/"$id"_bothReads_Unmapped_sorted.bam
+samtools fastq -@ $SLURM_CPUS_PER_TASK /data/Food/analysis/R6564_NGS/kefir4all/01qc/01samtools/"$id"_bothReads_Unmapped_sorted.bam \
+    -1 /data/Food/analysis/R6564_NGS/kefir4all/01qc/01samtools/"$id"_host_removed_R1.fastq.gz \
+    -2 /data/Food/analysis/R6564_NGS/kefir4all/01qc/01samtools/"$id"_host_removed_R2.fastq.gz \
+    -0 /dev/null -s /dev/null -n
+module unload samtools/1.9
+
+done
+
+###########################################################################################################################################################
+#Sbatch command
+###########################################################################################################################################################
+
+#sbatch --dependency=afterok:975640 01host_decontamination_kefir4all_WK.sh 
+
+
+
+
+
+
+###########################################################################################################################################################
+# Merge multi lanes using cat
+###########################################################################################################################################################
+/data/Food/analysis/R6564_NGS/kefir4all/scripts/01_preprocessing
+#emacs 01merge_fq_kefir4all.sh 
+###########################
+#!/bin/sh
+#SBATCH --error err_01merge_fq_kefir4all
+#SBATCH --output out_01merge_fq_kefir4all
+#SBATCH --job-name 01merge_fq_kefir4all
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=5
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+#mkdir /data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files/
+
+for base_name in $(find /data/Food/primary/R6564_NGS/kefir4all/cmprod1.cibio.unitn.it/TEAGASC_1022/ -type f -name "*.fastq.gz"\
+ | cut -d/ -f10 | rev | cut -c 22- | rev | sort -u )
+do
+
+cat $(find /data/Food/analysis/R6564_NGS/kefir4all/01qc/01samtools/ -type f  \( -name "$base_name*" -and -name "*_R1*" -and -name "*.fastq.gz" \) | sort -u) > /data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files/"$base_name"_host_removed_R1.fastq.gz
+
+cat $(find /data/Food/analysis/R6564_NGS/kefir4all/01qc/01samtools/ -type f  \( -name "$base_name*" -and -name "*_R2*" -and -name "*.fastq.gz" \) | sort -u) > /data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files/"$base_name"_host_removed_R2.fastq.gz
+
+done
+
+sbatch --dependency=afterok:976168 01merge_fq_kefir4all.sh
+
+
+
+####################################################################################################################################################################################################
+# Host decontamination command on kefir4_all_data-mk -Trento
+#####################################################################################################################################################################################################
+#cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/01_preprocessing/
+#emacs 01host_decontamination_kefir4all_rest.sh
+###########################
+#!/bin/sh
+#SBATCH --error 01err_host_decontamination_kefir4all_rest
+#SBATCH --output 01out_host_decontamination_kefir4all_rest
+#SBATCH --job-name 01host_decontamination_kefir4all_rest
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=25
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+
+#mkdir /data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files
+
+for filename in $(find /data/Food/primary/R6564_NGS/kefir4all/cmprod1.cibio.unitn.it/TEAGASC_1022 -type f \( -not -name "*MG*" -and -not -name "*ML*" -and -not -name "*WG*" -and -not -name "*WL*" -and -name "*.fastq.gz" \)  | rev | cut -c 17- | rev | sort -u)
+do
+id=$(echo "$filename" | cut -d/ -f10-)
+
+module load bowtie2/2.3.4
+
+bowtie2 --local -x /data/Food/analysis/R6564_NGS/kefir4all/01qc/01bowtie_database/milk_kefir_index -1 /data/Food/analysis/R6564_NGS/kefir4all/01qc/01trimmed_data/"$id"_R1_001_val_1.fq.gz -2 /data/Food/analysis/R6564_NGS/kefir4all/01qc/01trimmed_data/"$id"_R2_001_val_2.fq.gz -S /data/Food/analysis/R6564_NGS/kefir4all/01qc/01bowtie/"$id"_mapped_and_unmapped.sam --threads $SLURM_CPUS_PER_TASK 
+
+module unload bowtie2/2.3.4
+
+
+###########################################################################################################################################################
+#Samtools
+###########################################################################################################################################################
+
+
+module load samtools/1.9
+
+
+
+ samtools view -@ $SLURM_CPUS_PER_TASK -b /data/Food/analysis/R6564_NGS/kefir4all/01qc/01bowtie/"$id"_mapped_and_unmapped.sam -o /data/Food/analysis/R6564_NGS/kefir4all/01qc/01samtools/"$id"_mapped_and_unmapped.bam
+samtools view -@ $SLURM_CPUS_PER_TASK -b -f 12 -F 256 /data/Food/analysis/R6564_NGS/kefir4all/01qc/01samtools/"$id"_mapped_and_unmapped.bam > /data/Food/analysis/R6564_NGS/kefir4all/01qc/01samtools/"$id"_bothReads_Unmapped.bam
+samtools sort -n -m 5G -@ $SLURM_CPUS_PER_TASK /data/Food/analysis/R6564_NGS/kefir4all/01qc/01samtools/"$id"_bothReads_Unmapped.bam -o /data/Food/analysis/R6564_NGS/kefir4all/01qc/01samtools/"$id"_bothReads_Unmapped_sorted.bam
+samtools fastq -@ $SLURM_CPUS_PER_TASK /data/Food/analysis/R6564_NGS/kefir4all/01qc/01samtools/"$id"_bothReads_Unmapped_sorted.bam \
+    -1 /data/Food/analysis/R6564_NGS/kefir4all/01qc/01samtools/"$id"_host_removed_R1.fastq.gz \
+    -2 /data/Food/analysis/R6564_NGS/kefir4all/01qc/01samtools/"$id"_host_removed_R2.fastq.gz \
+    -0 /dev/null -s /dev/null -n
+module unload samtools/1.9
+
+done
+
+
+
+
+###########################################################################################################################################################
+# Merge multi lanes using cat - rest
+###########################################################################################################################################################
+cd/data/Food/analysis/R6564_NGS/kefir4all/scripts/01_preprocessing
+#emacs 01merge_fq_kefir4all_rest.sh 
+###########################
+#!/bin/sh
+#SBATCH --error err_01merge_fq_kefir4all_rest
+#SBATCH --output out_01merge_fq_kefir4all_rest
+#SBATCH --job-name 01merge_fq_kefir4all_rest
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=5
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+#mkdir /data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files/
+
+for base_name in $(find /data/Food/primary/R6564_NGS/kefir4all/cmprod1.cibio.unitn.it/TEAGASC_1022 -type f \( -not -name "*MG*" -and -not -name "*ML*" -and -not -name "*WG*" -and -not -name "*WL*" -and -name "*.fastq.gz" \) | cut -d/ -f10 | rev | cut -c 22- | rev | sort -u)
+do
+
+
+for base_name in $(find /data/Food/primary/R6564_NGS/kefir4all/cmprod1.cibio.unitn.it/TEAGASC_1022/ -type f -name "*.fastq.gz"\
+ | cut -d/ -f10 | rev | cut -c 22- | rev | sort -u )
+do
+
+cat $(find /data/Food/analysis/R6564_NGS/kefir4all/01qc/01samtools/ -type f  \( -name "$base_name*" -and -name "*_R1*" -and -name "*.fastq.gz" \) | sort -u) > /data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files/"$base_name"_host_removed_R1.fastq.gz
+
+cat $(find /data/Food/analysis/R6564_NGS/kefir4all/01qc/01samtools/ -type f  \( -name "$base_name*" -and -name "*_R2*" -and -name "*.fastq.gz" \) | sort -u) > /data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files/"$base_name"_host_removed_R2.fastq.gz
+
+done
+
+sbatch --dependency=afterok:977178 01merge_fq_kefir4all_rest.sh 
