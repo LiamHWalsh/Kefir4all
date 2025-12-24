@@ -1,0 +1,267 @@
+###########################################################################################################################################
+#Panphlan3 kefir4all
+###########################################################################################################################################
+
+# folder setup
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_panphlan
+
+cd /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_panphlan
+
+import Q:\H2020 Master\Citizen Science Project\Results\06_strain_profiling\marker_names.xlsx to /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_panphlan
+
+dos2unix marker_names.csv
+
+awk -F, '{ print $2 }' marker_names.csv | sed '1d' | sort -u 
+
+
+###########################################################################################################################################
+
+
+
+
+#Download pangenome
+
+
+#cd /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_panphlan/reference_pangenome
+
+
+#!/bin/sh
+#SBATCH --error err_panphlan_download_pangenome_kefir4all
+#SBATCH --output out_panphlan_download_pangenome_kefir4all
+#SBATCH --job-name panphlan_download_pangenome_kefir4all
+#SBATCH -p Background
+#SBATCH -N 1
+#SBATCH --cpus-per-task=2
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_panphlan/reference_pangenome
+
+module load panphlan/3.0 
+
+for i in $(awk -F, '{ print $2 }' marker_names.csv | sed '1d' | sort -u)
+do
+
+panphlan_download_pangenome.py -i "$i" -o /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_panphlan/reference_pangenome
+done
+
+module unload panphlan/3.0 
+
+###########################################################################################################################################
+#PanPhlAn mapping
+#Acetobacter_fabarum
+###########################################################################################################################################
+#!/bin/sh
+#SBATCH --error err_2020_step2
+#SBATCH --output out_2020_step2
+#SBATCH --job-name panphlan
+#SBATCH -p Background
+#SBATCH -N 1
+#SBATCH --cpus-per-task=2
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+module load panphlan/3.0 
+for sample in $(cat /data/Food/analysis/R6564_NGS/liam.walsh/kaiju/names.txt)
+do
+    #zcat /data/Food/primary/R6564_NGS/Liam/kefir_data/trimmed_data/bam_files/fastq_files_merged/"$sample"_R1.fastq /data/Food/primary/R6564_NGS/Liam/kefir_data/trimmed_data/bam_files/fastq_files_merged/"$sample"_R2.fastq > "$sample"_combined.fastq
+    panphlan_map.py -p  Acetobacter_fabarum/Acetobacter_fabarum_pangenome.tsv --indexes Acetobacter_fabarum/Acetobacter_fabarum -i "$sample"_combined.fastq -o Mapresults/"$sample"_panphlan_Acetobacter_fabarum.csv --nproc 24
+done
+
+module unload panphlan/3.0 
+
+###########################################################################################################################################
+#PanPhlAn mapping
+#Acetobacter_orientalis
+###########################################################################################################################################
+#!/bin/sh
+#SBATCH --error err_2020_step2
+#SBATCH --output out_2020_step2
+#SBATCH --job-name panphlan
+#SBATCH -p Background
+#SBATCH -N 1
+#SBATCH --cpus-per-task=12
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+module load panphlan/3.0 
+for sample in $(cat /data/Food/analysis/R6564_NGS/liam.walsh/kaiju/names.txt)
+do
+    #zcat /data/Food/primary/R6564_NGS/Liam/kefir_data/trimmed_data/bam_files/fastq_files_merged/"$sample"_R1.fastq /data/Food/primary/R6564_NGS/Liam/kefir_data/trimmed_data/bam_files/fastq_files_merged/"$sample"_R2.fastq > "$sample"_combined.fastq
+    panphlan_map.py -p Acetobacter_orientalis/Acetobacter_orientalis_pangenome.tsv --indexes Acetobacter_orientalis/Acetobacter_orientalis -i /data/Food/primary/R6564_NGS/Liam/kefir_data/trimmed_data/bam_files/fastq_files_merged/interleaved_fastq_files/"$sample"_interleaved.fastq -o Mapresults/"$sample"_panphlan_Acetobacter_orientalis.csv --nproc 24
+done
+
+module unload panphlan/3.0 
+###########################################################################################################################################
+#PanPhlAn mapping
+#Acetobacter_guillouiae
+###########################################################################################################################################
+#!/bin/sh
+#SBATCH --error err_2020_step2
+#SBATCH --output out_2020_step2
+#SBATCH --job-name panphlan_guillouiae
+#SBATCH -p Background
+#SBATCH -N 1
+#SBATCH --cpus-per-task=12
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+mkdir Mapresults_Acinetobacter_guillouiae
+module load panphlan/3.0 
+for sample in $(cat /data/Food/analysis/R6564_NGS/liam.walsh/kaiju/names.txt)
+do
+    #zcat /data/Food/primary/R6564_NGS/Liam/kefir_data/trimmed_data/bam_files/fastq_files_merged/"$sample"_R1.fastq /data/Food/primary/R6564_NGS/Liam/kefir_data/trimmed_data/bam_files/fastq_files_merged/"$sample"_R2.fastq > "$sample"_combined.fastq
+    panphlan_map.py -p Acinetobacter_guillouiae/Acinetobacter_guillouiae_pangenome.tsv --indexes Acinetobacter_guillouiae/Acinetobacter_guillouiae -i /data/Food/primary/R6564_NGS/Liam/kefir_data/trimmed_data/bam_files/fastq_files_merged/interleaved_fastq_files/"$sample"_interleaved.fastq -o Mapresults_Acinetobacter_guillouiae/"$sample"_panphlan_Acinetobacter_guillouiae.csv --nproc 24
+done
+
+module unload panphlan/3.0 
+
+###########################################################################################################################################
+#PanPhlAn mapping
+#Look for all mapping -takes to long
+###########################################################################################################################################
+
+
+#!/bin/sh
+#SBATCH --error err_2020_step2
+#SBATCH --output out_2020_step2
+#SBATCH --job-name panphlan_total
+#SBATCH -p Background
+#SBATCH -N 1
+#SBATCH --cpus-per-task=12
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+module load panphlan/3.0 
+for sample in $(cat /data/Food/analysis/R6564_NGS/liam.walsh/kaiju/names.txt)
+do
+for j in $(ls /data/Food/analysis/R6564_NGS/liam.walsh/panphlan/references/*.bz2)
+#for j in $(grep 's__' /data/Food/analysis/R6564_NGS/liam.walsh/strainphlan/clades.txt | cut -d: -f4- |  cut -d: -f 1 | sed 's/s__//')
+do
+#mkdir Mapresults_"$j"
+
+    #zcat /data/Food/primary/R6564_NGS/Liam/kefir_data/trimmed_data/bam_files/fastq_files_merged/"$sample"_R1.fastq /data/Food/primary/R6564_NGS/Liam/kefir_data/trimmed_data/bam_files/fastq_files_merged/"$sample"_R2.fastq > "$sample"_combined.fastq
+    panphlan_map.py -p "$j"/"$j"_pangenome.tsv --indexes "$j"/"$j" -i /data/Food/primary/R6564_NGS/Liam/kefir_data/trimmed_data/bam_files/fastq_files_merged/interleaved_fastq_files/"$sample"_interleaved.fastq -o Mapresults_"$j"/"$sample"_panphlan_"$j".csv --nproc 24
+done
+done
+
+module unload panphlan/3.0 
+
+###########################################################################################################################################
+#PanPhlAn profiling one species specific command
+###########################################################################################################################################
+#!/bin/sh
+#SBATCH --error err_2020_step1
+#SBATCH --output out_2020_step1
+#SBATCH --job-name panphlan_aceto1
+#SBATCH -p Background
+#SBATCH -N 1
+#SBATCH --cpus-per-task=12
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+module load panphlan/3.0
+panphlan_profiling.py -i Mapresults_Lactococcus_lactis/ -p Lactococcus_lactis/Lactococcus_lactis_pangenome.tsv --o_matrix references/Lacto\
+coccus_lactis_gene_presence_absence_annot.tsv --func_annot Lactococcus_lactis/panphlan_Lactococcus_lactis_annot.tsv -f 3 --verb\
+ose
+module unload panphlan/3.0
+
+
+
+###########################################################################################################################################
+#PanPhlAn profiling loop
+###########################################################################################################################################
+#!/bin/sh
+#SBATCH --error err_2020_step2
+#SBATCH --output out_2020_step2
+#SBATCH --job-name panphlan_command
+#SBATCH -p Background
+#SBATCH -N 1
+#SBATCH --cpus-per-task=5
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+module load panphlan/3.0 
+
+#for j in $(grep 's__' /data/Food/analysis/R6564_NGS/liam.walsh/strainphlan/clades.txt | cut -d: -f4- |  cut -d: -f 1 | sed 's/s__//' | sed '1d')
+#for j in $(ls *annot.tsv | rev | cut -c 33- | rev)
+do
+
+
+panphlan_profiling.py  -i Mapresults_"$j"/\
+                     -p "$j"/"$j"_pangenome.tsv \
+                     --o_matrix "$j"_gene_presence_absence_annot_GO.tsv \
+                     #--func_annot "$j"/panphlan_"$j"_annot.tsv -f 3 --verbose
+
+
+
+panphlan_profiling.py  -i Mapresults_"$j"/\
+                     -p "$j"/"$j"_pangenome.tsv \
+                     --o_matrix "$j"_gene_presence_absence_annot_EC.tsv \
+                     --func_annot "$j"/panphlan_"$j"_annot.tsv -f 7 --verbose
+
+done
+
+
+module unload panphlan/3.0 
+#sed '1d' # remove the line containing Lactococcus Lactis the only one left to run
+#sed '5d;8d;15d' # removes lines with Lactobacillus_helveticus, Lactobacillus_kefiranofaciens and Streptococcus_thermophilus
+
+###########################################################################################################################################
+Cluster jobs were interrupted so I had to figure out where they stopped
+###########################################################################################################################################
+
+
+# Copying the file name text file to the current directory
+cp /data/Food/analysis/R6564_NGS/liam.walsh/kaiju/names.txt .
+
+#Removing the last file generated before the job was stopped
+#finding the last file
+#rm -d */G6_S78_merge_host_*
+
+# Deleteing all lines before the last file file
+awk 'f;/G5_S77_merge_host/{f=1}' names.txt > names_updated.txt
+# reran the PanPhlAn profiling command with the updated file names_updated.txt
+
+
+
+###########################################################################################################################################
+Panphlan John leech
+###########################################################################################################################################
+/data/Food/analysis/R6564_NGS/liam.walsh/panphlan/kefir_panphlan
+############
+
+#!/bin/sh
+#SBATCH --error err_2020_step2
+#SBATCH --output out_2020_step2
+#SBATCH --job-name panphlan_total
+#SBATCH -p Background
+#SBATCH -N 1
+#SBATCH --cpus-per-task=26
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+module load panphlan/3.0
+for sample in $(cat names_FF_SI.txt)
+do
+for j in $(ls /data/Food/analysis/R6564_NGS/liam.walsh/panphlan/kefir_panphlan/references/*annot.tsv | cut -d\
+\
+/ -f10 |rev | cut -c 33- | rev)
+do
+mkdir FF_M/Mapresults_"$j"
+
+cat /data/Food/share/FF_SI/qcd_food_samples/"$sample"_1_qcd.fastq /data/Food/share/FF_SI/qcd_food_samples/"$s\
+\
+ample"_2_qcd.fastq > "$sample"_combined.fastq
+panphlan_map.py -p "$j"/"$j"_pangenome.tsv --indexes "$j"/"$j" -i "$sample"_combined.fastq -o FF_M/Mapresults\
+\
+_"$j"/"$sample"_panphlan_"$j".csv --nproc 24
+done
+rm "$sample"_combined.fastq
+done
+
+module unload panphlan/3.0
+
+
+

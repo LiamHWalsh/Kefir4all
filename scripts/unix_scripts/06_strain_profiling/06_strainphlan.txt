@@ -1,0 +1,254 @@
+#####################################################################################################################################################################################################
+# strainphlan 4 command on total data, global_mk_metagenomes, global_wk_metagenomes and kefir4all
+#####################################################################################################################################################################################################
+#good tutorial - https://muellan.github.io/metacache/refseq.html
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/samuel_m_scripts/
+#emacs 06strainphlan.sh 
+###########################
+
+#mkdir /data/Food/analysis/R6564_NGS/kefir4all/04_short_read_profiling/04metaphlan/04_metaphlan_db
+
+#cp /data/databases/MetaPhlan4/* /data/Food/analysis/R6564_NGS/kefir4all/04_short_read_profiling/04metaphlan/
+
+#!/bin/sh
+#SBATCH --error 06err_strainphlan
+#SBATCH --output 06out_strainphlan
+#SBATCH --job-name 06_strainphlan
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=60
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie#,samuel.mortensen@teagasc.ie
+#####################################################################################################################################################################################################
+# Folder creation and module load 
+#####################################################################################################################################################################################################
+#mkdir /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_strainphlan_v2
+
+mkdir -p /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_strainphlan_v2/sams
+mkdir -p /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_strainphlan_v2/bowtie2
+mkdir -p /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_strainphlan_v2/profiles
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_strainphlan_v2/consensus_markers
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_strainphlan_v2/output
+
+mkdir /data/analysis/R6564_NGS/kefir4all/01qc/01fastq_files/interleaved/
+module load biobakery_workflows/030621
+source activate biobakery2
+
+module load humann3/3.6
+
+
+
+
+#####################################################################################################################################################################################################
+# for loop command 
+#####################################################################################################################################################################################################
+for sample in $( find /data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files -maxdepth 1 -type f -name "*.fastq.gz" | cut -d/ -f9- | sed 's/_host_removed_R..fastq.gz//g' | sort -u) 
+  do
+
+
+#####################################################################################################################################################################################################
+# Interleaved command supplied to metaphlan
+#####################################################################################################################################################################################################
+#module load bbmap/38.22
+ #reformat.sh in=/data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files/"$sample"_host_removed_R1.fastq.gz in2=/data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files/"$sample"_host_removed_R2.fastq.gz out=/data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files/interleaved/"$sample"_interleaved.fastq.gz
+ #module unload bbmap/38.22
+
+#gunzip /data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files/interleaved/"$sample"_interleaved.fastq.gz
+#####################################################################################################################################################################################################
+# metaphlan command 
+#####################################################################################################################################################################################################
+#metaphlan /data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files/interleaved/"$sample"_interleaved.fastq --input_type fastq -s /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_strainphlan/sams/"$sample".sam.bz2 --bowtie2db /data/Food/analysis/R6564_NGS/kefir4all/04_short_read_profiling/04metaphlan/04_metaphlan_db  -x /data/Food/analysis/R6564_NGS/kefir4all/04_short_read_profiling/04metaphlan/04_metaphlan_db/mpa_vJan21_CHOCOPhlAnSGB_202103 --bowtie2out /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_strainphlan/bowtie2/"$sample".bowtie2.bz2 -o /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_strainphlan/profiles/"$sample"_profile.tsv --nproc $SLURM_CPUS_PER_TASK --add_viruses 
+
+#metaphlan /data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files/interleaved/"$sample"_interleaved.fastq\
+ --input_type fastq -s /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_strainphlan_v2/sams/"$sample".sam.bz2\
+ --bowtie2db /data/databases/MetaPhlan4 --bowtie2out /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_strainphlan_v2/bowtie2/"$sample".bowtie2.bz2 -o /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_strainphlan_v2/profiles/"$sample"_profile.tsv --nproc $SLURM_CPUS_PER_TASK --add_viruses 
+
+done
+
+#data/databases/MetaPhlan4
+#####################################################################################################################################################################################################
+# Produce the consensus-marker files which are the input for StrainPhlAn:
+#####################################################################################################################################################################################################
+ 
+sample2markers.py -i /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_strainphlan_v2/sams/*.sam.bz2 -o /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_strainphlan_v2/consensus_markers -n $SLURM_CPUS_PER_TASK
+
+
+module unload humann3/3.6
+module unload biobakery_workflows/030621
+conda deactivate
+
+
+
+
+#####################################################################################################################################################################################################
+#  Extract the markers from MetaPhlAn database + strainphlan command accurate
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/06_strain_profiling
+#emacs 06strainphlan_markers.sh 
+###########################
+#!/bin/sh
+#SBATCH --error 06err_strainphlan_markers
+#SBATCH --output 06out_strainphlan_markers
+#SBATCH --job-name 06_strainphlan_markers
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=40
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie#,samuel.mortensen@teagasc.ie
+
+
+
+
+module load biobakery_workflows/030621
+source activate biobakery2
+module load humann3/3.6
+
+
+
+strainphlan -s /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_strainphlan_v2/consensus_markers/*.pkl -d /data/databases/MetaPhlan4/mpa_vJan21_CHOCOPhlAnSGB_202103.pkl --print_clades_only -o . --nproc $SLURM_CPUS_PER_TASK > clades.txt
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_strainphlan_v2/clade_markers
+
+for i in $(grep 't__' / clades.txt | cut -d: -f4- |  cut -d: -f 2 | sort -u)
+do
+
+ extract_markers.py -c "$i" -d /data/databases/MetaPhlan4/mpa_vJan21_CHOCOPhlAnSGB_202103.pkl -o /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_strainphlan_v2/clade_markers/
+
+strainphlan -s /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_strainphlan_v2/consensus_markers/*.pkl -m /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_strainphlan_v2/clade_markers/"$i".fna -o /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_strainphlan_v2/output/ -c "$i" -d /data/databases/MetaPhlan4/mpa_vJan21_CHOCOPhlAnSGB_202103.pkl --mutation_rates --phylophlan_mode accurate --nproc $SLURM_CPUS_PER_TASK
+     
+
+done
+
+module unload humann3/3.6
+module unload biobakery_workflows/030621
+conda deactivate
+
+
+module load  python3.7/i3 
+~/tree_pairwisedists.py -n RAxML_bestTree.t__SGB10398.StrainPhlAn4.tre t__SGB10398_nGD.tsv
+ /home/liam.walsh/tree_pairwisedists.py:
+
+#####################################################################################################################################################################################################
+#  Extract the markers from MetaPhlAn database + strainphlan command sensitive
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/06_strain_profiling
+#emacs 06strainphlan_markers_sensitive.sh 
+###########################
+#!/bin/sh
+#SBATCH --error 06err_strainphlan_markers_sensitive
+#SBATCH --output 06out_strainphlan_markers_sensitive
+#SBATCH --job-name 06_strainphlan_markers_sensitive
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=40
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie#,samuel.mortensen@teagasc.ie
+
+
+#mkdir /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_strainphlan_v2/output_sensitive
+
+module load biobakery_workflows/030621
+source activate biobakery2
+module load humann3/3.6
+
+module load phylophlan/3.0.2
+
+
+
+#strainphlan -s /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_strainphlan_v2/consensus_markers/*.pkl -d /data/databases/MetaPhlan4/mpa_vJan21_CHOCOPhlAnSGB_202103.pkl --print_clades_only -o . --nproc $SLURM_CPUS_PER_TASK > clades.txt
+
+#mkdir /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_strainphlan_v2/clade_markers
+
+for i in $(grep 't__' clades.txt | cut -d: -f4- |  cut -d: -f 1 | sort -u)
+do
+
+ #extract_markers.py -c "$i" -d /data/databases/MetaPhlan4/mpa_vJan21_CHOCOPhlAnSGB_202103.pkl -o /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_strainphlan_v2/clade_markers/
+
+strainphlan -s /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_strainphlan_v2/consensus_markers/*.pkl \
+            -m /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_strainphlan_v2/clade_markers/"$i".fna \
+            -o /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_strainphlan_v2/output_sensitive/ \
+            -c "$i" \
+            -d /data/databases/MetaPhlan4/mpa_vJan21_CHOCOPhlAnSGB_202103.pkl \
+             --mutation_rates \
+             --marker_in_n_samples 1 \
+             --sample_with_n_markers 10
+             --phylophlan_mode accurate \
+             --nproc $SLURM_CPUS_PER_TASK
+     
+
+done
+
+module unload humann3/3.6
+module unload biobakery_workflows/030621
+conda deactivate
+
+
+
+
+#####################################################################################################################################################################################################
+# Extraction of pairwise phylogenetic distances
+#####################################################################################################################################################################################################
+
+
+
+ wget https://raw.githubusercontent.com/SegataLab/pyphlan/master/pyphlan.py
+ wget https://raw.githubusercontent.com/SegataLab/pyphlan/master/tree_pairwisedists.py
+wget https://raw.githubusercontent.com/SegataLab/pyphlan/120731409df4738319fe875dff4a9e3cce53108a/utils.py
+#pip uninstall utils
+
+
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_strainphlan_v2/output/phylogenetic_distances
+
+for i in $(find /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_strainphlan_v2/output -type f -name "*RAxML_bestTree.*")
+do
+base_name=$(echo "$i" | awk -F/ {'print $NF}' | sed -E -e 's/RAxML_bestTree.|.StrainPhlAn4.tre//g')
+
+module load  python3.7/i3 
+python ~/tree_pairwisedists.py -n "$i" /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_strainphlan_v2/output/phylogenetic_distances/"$base_name".tsv
+
+module unload  python3.7/i3 
+done
+
+
+
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_strainphlan_v2/output_sensitive/phylogenetic_distances
+
+for i in $(find /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_strainphlan_v2/output_sensitive/ -type f -name "*RAxML_bestTree.*")
+do
+base_name=$(echo "$i" | awk -F/ {'print $NF}' | sed -E -e 's/RAxML_bestTree.|.StrainPhlAn4.tre//g')
+
+module load  python3.7/i3 
+python ~/tree_pairwisedists.py -n "$i" /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_strainphlan_v2/output_sensitive/phylogenetic_distances/"$base_name".tsv
+
+module unload  python3.7/i3 
+done
+
+
+
+
+find /data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files/merged/ -maxdepth 1 -type f \( -name "*_TG_*" -and -name "*.fastq.gz" \) | awk -F/ '{print $NF}' | sed 's/_R..fastq.gz//g' | sort -u | tail -n 110
+
+find /data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files/merged/ -maxdepth 1 -type f \( -name "*_TG_*" -and -name "*.fastq.gz" \) | awk -F/ '{print $NF}' | sed 's/_R..fastq.gz//g' | sort -u | tail -n 110 | head -n 55
+
+find /data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files/merged/ -maxdepth 1 -type f \( -name "*_TG_*" -and -name "*.fastq.gz" \) | awk -F/ '{print $NF}' | sed 's/_R..fastq.gz//g' | sort -u | tail -n 110 | tail -n 55
+
+
+
+sbatch --dependency=afterok:976168 01merge_fq_kefir4all.sh
+
+  sbatch --dependency=afterok:1052324 06strainphlan_markers.sh
+
+
+
+
+
+161
+
+
+
+
+
+

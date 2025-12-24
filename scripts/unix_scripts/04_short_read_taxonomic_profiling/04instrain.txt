@@ -1,0 +1,339 @@
+
+
+
+
+
+
+/data/Food/analysis/R6564_NGS/kefir4all/04_short_read_profiling/04instrain/genome_updater/genome_updater.sh 
+module unload python3.7/i3 
+
+
+
+
+#####################################################################################################################################################################################################
+                                                              # representative genus level database for the kefir4_all_ study
+#####################################################################################################################################################################################################
+
+
+#####################################################################################################################################################################################################
+# install /genome_updater
+#####################################################################################################################################################################################################
+mkdir 04instrain
+
+git clone --recurse-submodules https://github.com/pirovc/genome_updater.git
+
+#####################################################################################################################################################################################################
+# import and modify relevant datasets
+#####################################################################################################################################################################################################
+
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/04_short_read_profiling/04instrain/04_representative_db
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/04_short_read_profiling/04instrain/04_representative_db/04representative_genus_ids
+
+upload Q:\H2020 Master\Citizen Science Project\Results\04_short_read_profiling\04_kaiju\04_genus_ids\04_kaiju_nr_genus_ids.csv to /data/Food/analysis/R6564_NGS/kefir4all/04_short_read_profiling/04instrain/04_representative_db/04representative_genus_ids/
+
+#note: Q:\H2020 Master\Citizen Science Project\Results\04_short_read_profiling\04_kaiju\04_genus_ids\04_kaiju_nr_genus_ids.csv was produced in r using the script 04_kaiju_genus_ids in  Q:\H2020 Master\Citizen Science Project\R scripts\evolutionary\04 short read taxonomic profiling
+
+
+dos2unix 04_kaiju_nr_genus_ids.csv
+
+
+
+
+#####################################################################################################################################################################################################
+# import and modify relevant datasets
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/04_taxonomic_profiling/
+emacs 04_instrain_genus_db_download_v2.sh
+###########################
+#!/bin/sh
+#SBATCH --error 04err_instrain_genus_db_download_v2
+#SBATCH --output 04out_instrain_genus_db_download_v2
+#SBATCH --job-name 04_instrain_genus_db_download_v2
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=20
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+
+#rm -r /data/Food/analysis/R6564_NGS/kefir4all/04_short_read_profiling/04instrain/04_representative_db/
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/04_short_read_profiling/04instrain/04_representative_db/
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/04_short_read_profiling/04instrain/04_representative_db/genbank/
+module load python3.7/i3 
+
+while read LINE 
+ do
+id=$(echo "$LINE" | cut -d "," -f 2)
+    name=$(echo "$LINE" | cut -d "," -f 3 )
+    echo "$id" >> id.txt
+    echo "$name" >> names.txt
+
+
+/data/Food/analysis/R6564_NGS/kefir4all/04_short_read_profiling/04instrain/genome_updater/genome_updater.sh -T "$id" -d "genbank" -c "representative genome" -f "genomic.fna.gz" -o /data/Food/analysis/R6564_NGS/kefir4all/04_short_read_profiling/04instrain/04_representative_db/genbank/"$name" -t $SLURM_CPUS_PER_TASK -m  -p
+
+
+done < /data/Food/analysis/R6564_NGS/kefir4all/scripts/04_taxonomic_profiling/04_kaiju_nr_genus_ids.csv
+
+module unload python3.7/i3 
+
+
+#################################################################################################################################################
+## checking if the download(above) went okay 
+#################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/04_taxonomic_profiling/
+emacs 04_instrain_genus_db_download_fixmode.sh
+###########################
+#!/bin/sh
+#SBATCH --error 04err_instrain_genus_db_download_fixmode
+#SBATCH --output 04out_instrain_genus_db_download_fixmode
+#SBATCH --job-name 04_instrain_genus_db_download_fixmode
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=20
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+while read LINE
+ do
+id=$(echo "$LINE" | cut -d "," -f 2)
+name=$(echo "$LINE" | cut -d "," -f 3 )
+    #echo "$id" >> id.txt
+    #echo "$name" >> names.txt
+
+
+ echo "STARTED check for $name"
+
+if [ "$(find /data/Food/analysis/R6564_NGS/kefir4all/04_short_read_profiling/04instrain/04_representative_db/genbank/"$name"/ -name "*.fna.gz" | wc -l)" = "0" ]
+then
+    echo "Empty directory"
+
+rm -r /data/Food/analysis/R6564_NGS/kefir4all/04_short_read_profiling/04instrain/04_representative_db/genbank/"$name"/
+module load python3.7/i3 
+/data/Food/analysis/R6564_NGS/kefir4all/04_short_read_profiling/04instrain/genome_updater/genome_updater.sh -R 10 -T "$id" -d "genbank" -c "representative genome" -f "genomic.fna.gz" -o /data/Food/analysis/R6564_NGS/kefir4all/04_short_read_profiling/04instrain/04_representative_db/genbank/"$name" -t $SLURM_CPUS_PER_TASK -m  -p
+module unload python3.7/i3 
+else
+    echo "Not empty"
+fi
+
+done < /data/Food/analysis/R6564_NGS/kefir4all/scripts/04_taxonomic_profiling/04_kaiju_nr_genus_ids.csv
+
+
+
+#################################################################################################################################################
+## checkm on high quaility MAGs
+#################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/03_MAG_classification/
+emacs 03_checkm_instrain_MAGS.sh
+###########################
+
+#!/bin/sh
+#SBATCH --error 03_err_checkm
+#SBATCH --output 03_out_checkm
+#SBATCH --job-name 03_checkm
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=23   
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+
+module load checkm2/0.1.3 
+checkm2 predict --input /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metawrap/02_total_MAGS/ -x .fa --threads $SLURM_CPUS_PER_TASK --output-directory /data/Food/analysis/R6564_NGS/kefir4all/04_short_read_profiling/04instrain/04_representative_db/02_high_quaility_MAGs/03_checkm
+module unload checkm2/0.1.3 
+
+#Modify the output to suit drep
+
+
+# download /data/Food/analysis/R6564_NGS/kefir4all/04_short_read_profiling/04instrain/04_representative_db/02_high_quaility_MAGs/03_checkm/quality_report.tsv 
+to Q:\H2020 Master\Citizen Science Project\Results\03_mag_classification
+open in excel 
+modify colnames by changing 
+
+Name to genome
+Completeness to completeness
+Contamination to contamination
+convert to csv through excel
+ reupload to /data/Food/analysis/R6564_NGS/kefir4all/04_short_read_profiling/04instrain/04_representative_db/02_high_quaility_MAGs/03_checkm/
+dos2unix /data/Food/analysis/R6564_NGS/kefir4all/04_short_read_profiling/04instrain/04_representative_db/02_high_quaility_MAGs/03_checkm/checkm2_total_MAGs.csv
+
+#sed -i -e 's/Contamination/contamination/' /data/Food/analysis/R6564_NGS/kefir4all/04_short_read_profiling/04instrain/04_representative_db/02_high_quaility_MAGs/03_checkm/quality_report.csv
+
+#awk -F "," '{print "$0".fna}' /data/Food/analysis/R6564_NGS/kefir4all/04_short_read_profiling/04instrain/04_representative_db/02_high_quaility_MAGs/03_checkm/checkm2_total_MAGs.csv
+
+
+#################################################################################################################################################
+## drep high quaility MAGs
+#################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/03_MAG_classification/
+emacs 03_drep_instrain_strain_species.sh
+###########################
+
+#!/bin/sh
+#SBATCH --error err_drep_instrain_species
+#SBATCH --output out_drep_instrain_species
+#SBATCH --job-name 03_drep_instrain_species
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=25
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+cd /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metawrap/02_total_MAGS/
+module load python3.7/i3  
+module load drep/3.2.0   
+module load fastani/1.32
+module load mash/2.1 
+module load checkm/1.0.18 
+module load mummer/4.5
+module load prodigal/2.6.3 
+
+#mkdir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_drep
+#rm -r /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_drep/dereplicate
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_drep/dereplicate
+#mkdir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_drep/clustered_representative_genomes
+
+
+dRep dereplicate /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_drep/03_dereplicate/03_dereplicate_species -g /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metawrap/02_total_MAGS/*.fa  --genomeInfo /data/Food/analysis/R6564_NGS/kefir4all/04_short_read_profiling/04instrain/04_representative_db/02_high_quaility_MAGs/03_checkm/checkm2_total_MAGs.csv --clusterAlg greedy -ms 10000 -pa 0.9 -sa 0.95 -nc 0.30 -cm larger -p $SLURM_CPUS_PER_TASK 
+
+
+
+#dRep compare /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_drep/clustered_representative_genomes -g $(cat drep_dereplicate_list.txt) -p $SLURM_CPUS_PER_TASK #--S_algorithm gANI
+
+module unload drep/3.2.0
+module unload fastani/1.32
+module unload mash/2.1 
+module unload checkm/1.0.18 
+module unload mummer/4.5   
+module unload prodigal/2.6.3
+module unload python3.7/i3
+
+/data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_drep/03_dereplicate/03_dereplicate_species
+
+#####################################################################################################################################################################################################
+# merge instrain representatives into a single fasta file
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/04_taxonomic_profiling/
+emacs 04_instrain_representatives_fa_species.sh
+###########################
+
+#!/bin/sh
+#SBATCH --error 04err_instrain_representatives_fa_species
+#SBATCH --output 04out_instrain_representatives_fa_species
+#SBATCH --job-name 04_instrain_representatives_fa_species
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=5
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+#rm -r /data/Food/analysis/R6564_NGS/kefir4all/04_short_read_profiling/04instrain/04_representative_db/04_instrain_bowtie_db/
+#mkdir /data/Food/analysis/R6564_NGS/kefir4all/04_short_read_profiling/04instrain/04_representative_db/04_instrain_bowtie_db/
+
+cat /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_drep/dereplicate/dereplicated_genomes/03_dereplicate_species/*.fa >> /data/Food/analysis/R6564_NGS/kefir4all/04_short_read_profiling/04instrain/04_representative_db/04_instrain_bowtie_db/instrain_genus_db_species.fa
+
+for filename in $(find /data/Food/analysis/R6564_NGS/kefir4all/04_short_read_profiling/04instrain/04_representative_db/genbank/ -type f -name "*.fna.gz" | sed 's/.fna.gz//g')
+do
+
+gunzip "$filename".fna.gz
+cat "$filename".fna >> /data/Food/analysis/R6564_NGS/kefir4all/04_short_read_profiling/04instrain/04_representative_db/04_instrain_bowtie_db/instrain_genus_db_species.fa
+gzip "$filename".fna
+done
+
+
+
+#####################################################################################################################################################################################################
+# make a bowtie db from above 
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/04_taxonomic_profiling/
+emacs 04_instrain_bowtie_species.sh
+###########################
+
+#!/bin/sh
+#SBATCH --error 04err_instrain_bowtie_species
+#SBATCH --output 04out_instrain_bowtie_species
+#SBATCH --job-name 04_instrain_bowtie_species
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=35
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+module load bowtie2/2.3.4
+module load anaconda3.6.b/4.6 
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/04_short_read_profiling/04instrain/04_representative_db/04_instrain_bowtie_db_species/04bowtie_output/
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/04_short_read_profiling/04instrain/04_representative_db/04_instrain_bowtie_db_species/04bowtie_output/04bowtie_output_species
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/04_short_read_profiling/04instrain/04instrain_species_output
+bowtie2-build /data/Food/analysis/R6564_NGS/kefir4all/04_short_read_profiling/04instrain/04_representative_db/04_instrain_bowtie_db/instrain_genus_db_species.fa /data/Food/analysis/R6564_NGS/kefir4all/04_short_read_profiling/04instrain/04_representative_db/04_instrain_bowtie_db/instrain_genus_db_bowtie_species_index -f fa --threads $SLURM_CPUS_PER_TASK --large-index
+
+module unload anaconda3.6.b/4.6 
+module unload bowtie2/2.3.4
+
+module load bowtie2/2.3.4
+module load anaconda3.6.b/4.6
+module load samtools/1.10
+
+
+for i in $(find /data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files -maxdepth 1 -type f \( -name "*.fastq.gz" \) | awk -F / '{print $NF'} | sed 's/_host_removed_R..fastq.gz//g' | sort -u)
+do    
+
+    bowtie2 -p $SLURM_CPUS_PER_TASK -x /data/Food/analysis/R6564_NGS/kefir4all/04_short_read_profiling/04instrain/04_representative_db/04_instrain_bowtie_db/instrain_genus_db_bowtie_species_index -1 /data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files/"$i"_host_removed_R1.fastq.gz -2 /data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files/"$i"_host_removed_R2.fastq.gz > /data/Food/analysis/R6564_NGS/kefir4all/04_short_read_profiling/04instrain/04_representative_db/04_instrain_bowtie_db/04bowtie_output/04bowtie_output_species/"$i".sam
+      
+    samtools view /data/Food/analysis/R6564_NGS/kefir4all/04_short_read_profiling/04instrain/04_representative_db/04_instrain_bowtie_db/04bowtie_output/04bowtie_output_species/"$i".sam -b -o /data/Food/analysis/R6564_NGS/kefir4all/04_short_read_profiling/04instrain/04instrain_species_output/"$i".bam -@ $SLURM_CPUS_PER_TASK 
+	
+
+done
+
+
+
+module unload anaconda3.6.b/4.6 
+module unload bowtie2/2.3.4
+module unload samtools/1.10
+
+
+
+#####################################################################################################################################################################################################
+# run instrain profile
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/04_taxonomic_profiling/
+emacs 04_instrain_profile_species.sh
+###########################
+
+#!/bin/sh
+#SBATCH --error 04err_instrain_profile_species
+#SBATCH --output 04out_instrain_profile_species
+#SBATCH --job-name 04_instrain_profile_species
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=35
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+#sbatch --dependency=afterok:963508 01host_decontamination_kefir4all_MK.sh 
+
+module load drep/3.2.0
+parse_stb.py --reverse -f /data/Food/analysis/R6564_NGS/kefir4all/04_short_read_profiling/04instrain/04_representative_db/04_instrain_bowtie_db/instrain_genus_db_species.fa -o ./all.genomes.stb
+module unload drep/3.2.0
+
+
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/04_short_read_profiling/04instrain/04instrain_strain_output/04_instrain_profile
+for i in $(find /data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files -maxdepth 1 -type f \( -name "*.fastq.gz" \) | awk -F / '{print $NF'} | sed 's/_host_removed_R..fastq.gz//g' | sort -u)
+do    
+
+
+
+   inStrain profile /data/Food/analysis/R6564_NGS/kefir4all/04_short_read_profiling/04instrain/04instrain_species_output/"$i".bam /data/Food/analysis/R6564_NGS/kefir4all/04_short_read_profiling/04instrain/04_representative_db/04_instrain_bowtie_db/instrain_genus_db_species.fa -o /data/Food/analysis/R6564_NGS/kefir4all/04_short_read_profiling/04instrain/04instrain_strain_output/04_instrain_profile/"$i"_instrain_profile -p $SLURM_CPUS_PER_TASK -s ./all.genomes.stb --min_read_ani 0.92 --min_genome_coverage 0.1
+ 
+done
+
+
+
+cd /data/Food/analysis/R6564_NGS/kefir4all/04_short_read_profiling/04instrain/
+
+/data/Food/analysis/R6564_NGS/kefir4all/04_short_read_profiling/04instrain/
+
+
+

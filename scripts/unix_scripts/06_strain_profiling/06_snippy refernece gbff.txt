@@ -1,0 +1,158 @@
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_snippy/06_snippy_gbff
+
+upload Q:\H2020 Master\Citizen Science Project\Results\06_strain_profiling\06_snippy\genbank_genomes_gbff to /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_snippy/06_snippy_gbff
+
+dos2unix /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_snippy/06_snippy_gbff/genbank_genomes_gbff.csv
+
+
+
+
+#####################################################################################################################################################################################################
+# snippy refernece gbff_download
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/06_strain_profiling/
+emacs 06_snippy_download_gbff.sh
+###########################
+
+
+#!/bin/sh
+#SBATCH --error 06_err_snippy_download_gbff
+#SBATCH --output 06_snippy_download_gbff
+#SBATCH --job-name 06_snippy_download_gbff
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=2
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+
+while read LINE
+ do
+id=$(echo "$LINE" | cut -d "," -f 1)
+link=$(echo "$LINE" | cut -d "," -f 2)
+name=$(grep "$id" /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_snippy/marker_names_v2.csv | cut -d "," -f 1)
+
+ cd /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_snippy/06_snippy_reference_genome/"$name"
+ wget "$link"
+
+done < /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_snippy/06_snippy_gbff/genbank_genomes_gbff.csv
+
+
+
+
+
+
+for name in $( find /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_snippy/06_snippy_reference_genome/ -type f -name "*gbff.gz" )
+do
+
+
+file=$( echo $name | awk -F / '{print $NF'} )
+
+directory=$( echo $name | awk -F"/" '{$NF=""}1' | sed 's/ /\//g' )
+
+cd "$directory"
+
+gunzip "$file" 
+
+done
+
+#####################################################################################################################################################################################################
+# snippy
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/06_strain_profiling/
+
+emacs 06_snippy_gbff.sh
+###########################
+
+
+#!/bin/sh
+#SBATCH --error 06_err_snippy_gbff
+#SBATCH --output 06_out_snippy_gbff
+#SBATCH --job-name 06_snippy_gbff
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=40
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+
+
+for name in $( find /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_snippy/06_snippy_reference_genome/ -type f -name "*gbff" )
+do
+
+
+
+
+output_name=$( echo $name | sed 's/\/data\/Food\/analysis\/R6564_NGS\/kefir4all\/06_strain_profiling\/06_snippy\/06_snippy_reference_genome//g' | awk -F "/" '{print $2}' )
+
+
+for item in $(find /data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files -maxdepth 1 -type f -name "*.fastq.gz" | cut -d/ -f9- | sed 's/_host_removed_R..fastq.gz//g' | sort -u )
+do
+
+
+
+module load snippy/4.3.6
+
+snippy --cpus $SLURM_CPUS_PER_TASK --outdir /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_snippy/06_snippy_gbff/output/"$output_name"/$item --ref "$name" --R1 /data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files/"$item"_host_removed_R1.fastq.gz --R2 /data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files/"$item"_host_removed_R2.fastq.gz 
+
+
+module unload snippy/4.3.6
+
+done
+
+
+done 
+
+
+
+
+
+#####################################################################################################################################################################################################
+# snippy
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/06_strain_profiling/
+
+emacs 06_snippy_gbff.sh
+###########################
+
+
+
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_snippy/output_representative_MAGs/snps_output/
+
+
+for i in $(find /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_snippy/output_representative_MAGs -type f -name "*snps.csv")
+do
+
+
+sample_name=$( echo "$i" | sed 's/\/data\/Food\/analysis\/R6564_NGS\/kefir4all\/06_strain_profiling\/06_snippy\/output_representative_MAGs//g' | awk -F "/" '{print $2}' )
+species_name=$( echo "$i" | sed 's/\/data\/Food\/analysis\/R6564_NGS\/kefir4all\/06_strain_profiling\/06_snippy\/output_representative_MAGs//g' | awk -F "/" '{print $3}' )
+
+cp "$i" /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling\/06_snippy\/output_representative_MAGs/snps_output/"$species_name"_"$sample_name"_snps.csv
+done
+
+
+
+
+
+login as: liam.walsh
+liam.walsh@hcux400.teagasc.net's password:
+Remote working directory is /home/liam.walsh
+psftp> cd  /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_snippy/
+Remote directory is now /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_snippy
+psftp> ls
+Listing directory /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_snippy
+drwxrws---    5 liam.walsh R6564_NGS        4 May 21 15:57 .
+drwxrws---    6 liam.walsh R6564_NGS        8 Jan 31 15:13 ..
+drwxrws---    4 liam.walsh R6564_NGS        2 May 20 15:53 06_snippy_gbff
+drwxrws---   87 liam.walsh R6564_NGS       85 Nov 28 18:39 06_snippy_reference_genome
+-rwxrwx---    1 liam.walsh R6564_NGS     2544 Nov 21  2023 marker_names_v2.csv
+drwxrws---   49 liam.walsh R6564_NGS       47 May 21 15:57 output_representative_MAGs
+psftp> cd  output_representative_MAGs
+Remote directory is now /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_snippy/output_representative_MAGs
+
+
+
+
+

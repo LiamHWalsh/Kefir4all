@@ -1,0 +1,128 @@
+#####################################################################################################################################################################################################
+# metaphlan install command
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/04_taxonomic_profiling
+#emacs 04metaphlan_make.sh 
+###########################
+#!/bin/sh
+#SBATCH --error 04err_metaphlan_make
+#SBATCH --output 04out_metaphlan_make
+#SBATCH --job-name 04metaphlan_make
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=20
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+#mkdir /data/Food/analysis/R6564_NGS/kefir4all/04_short_read_profiling/04metaphlan
+
+#mkdir /data/Food/analysis/R6564_NGS/kefir4all/04_short_read_profiling//04metaphlan/04metaphlan_database
+
+
+
+
+module load biobakery_workflows/030621
+source activate biobakery2
+metaphlan --install --bowtie2db /data/Food/analysis/R6564_NGS/kefir4all/04_short_read_profiling//04metaphlan/04metaphlan_database
+
+
+module load biobakery_workflows/030621
+source activate biobakery2
+
+
+
+
+
+#####################################################################################################################################################################################################
+# metaphlan command on total data, global_mk_metagenomes, global_wk_metagenomes and kefir4all
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/04_taxonomic_profiling
+#emacs 04metaphlan.sh 
+###########################
+#!/bin/sh
+#SBATCH --error 04err_metaphlan
+#SBATCH --output 04out_metaphlan
+#SBATCH --job-name 04metaphlan
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=10
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+rm -r /data/Food/analysis/R6564_NGS/kefir4all/04_short_read_profiling/04metaphlan/
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/04_short_read_profiling/04metaphlan/
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/04_short_read_profiling/04metaphlan/interleaved
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/04_short_read_profiling/04metaphlan/04metaphlan_results
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/04_short_read_profiling/04metaphlan/04_bowtie
+
+for item in $(find /data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files -maxdepth 1 -type f -name "*.fastq.gz" | cut -d/ -f9- | sed 's/_host_removed_R..fastq.gz//g' | sort -u)
+  do
+
+
+  module load bbmap/38.22
+    reformat.sh in=/data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files/"$item"_host_removed_R1.fastq.gz in2=/data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files/"$item"_host_removed_R2.fastq.gz out=/data/Food/analysis/R6564_NGS/kefir4all/04_short_read_profiling/04metaphlan/interleaved/"$item"_interleaved.fastq.gz
+    module unload bbmap/38.22
+
+module load humann3/3.6
+
+
+/install/software/restart/py3/humann_3.5/bin/metaphlan /data/Food/analysis/R6564_NGS/kefir4all/04_short_read_profiling/04metaphlan/interleaved/"$item"_interleaved.fastq.gz --output_file /data/Food/analysis/R6564_NGS/kefir4all/04_short_read_profiling/04met\
+aphlan_results/"$item"_metaphlan.txt --input_type fastq --nproc $SLURM_CPUS_PER_\
+TASK --add_viruses --unclassified_estimation --bowtie2db /data/databases/MetaPhlan4 --index mpa_vJan21_CHOCOPhlAnSGB_202103 --bowtie2out /data/Food/analysis/R6564_NGS/kefir4all/04_short_read_profiling/04metaphlan/04_bowtie/"$item".bowtie2out.txt
+
+module unload humann3/3.6
+done
+
+cd /data/Food/analysis/R6564_NGS/kefir4all/04_short_read_profiling/04metaphlan/04metaphlan_results
+module load humann3/3.6
+merge_metaphlan_tables.py *metaphlan.txt > merged_abundance_table.txt
+module unload humann3/3.6
+
+
+
+
+
+
+/data/Food/analysis/R6564_NGS/kefir4all/04_short_read_profiling/04metaphlan/interleaved/]
+
+module load humann3/3.6
+/install/software/restart/py3/humann_3.5/bin/metaphlan /data/Food/analysis/R6564_NGS/kefir4all/04_short_read_profiling/04metaphlan/interleaved/A10_S10_interleaved.fastq.gz --output_file /data/Food/analysis/R6564_NGS/kefir4all/04_short_read_profiling/04met\
+aphlan_results/A10_S10_metaphlan.txt --input_type fastq --nproc $SLURM_CPUS_PER_\
+TASK --add_viruses --unclassified_estimation --bowtie2db /data/databases/MetaPhlan4 --index mpa_vJan21_CHOCOPhlAnSGB_202103 #--bowtie2out /data/Food/analysis/R6564_NGS/kefir4all/04_short_read_profiling/04metaphlan/04_bowtie/
+
+
+
+
+
+#####################################################################################################################################################################################################
+# metaphlan command on total data, global_mk_metagenomes, global_wk_metagenomes and kefir4all
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/05_functional_profiling
+#emacs 05humann.sh 
+###########################
+#!/bin/sh
+#SBATCH --error 05err_humann
+#SBATCH --output 05out_humann
+#SBATCH --job-name 05humann
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=20
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/05_functional_profiling/05humann/
+for item in $( find /data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files -maxdepth 1 -type f -name "*.fastq.gz" | cut -d/ -f9- | sed 's/_host_removed_R..fastq.gz//g' | sort -u) 
+  do
+
+  module load bbmap/38.22
+    reformat.sh in=/data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files/"$item"_host_removed_R1.fastq.gz in2=/data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files/"$item"_host_removed_R2.fastq.gz out=/data/Food/analysis/R6564_NGS/kefir4all/05_functional_profiling/05humann/"$item"_interleaved.fastq.gz
+    module unload bbmap/38.22
+
+module load biobakery_workflows/030621
+source activate biobakery2
+humann -i /data/Food/analysis/R6564_NGS/kefir4all/05_functional_profiling/05humann/"$item"_interleaved.fastq.gz -o "$item"_results
+
+module unload biobakery_workflows/030621
+conda deactivate
+done
