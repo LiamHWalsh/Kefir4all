@@ -368,7 +368,7 @@ for (species in  levels(as.factor(instrain$classification))){
     #   theme_void() +
     #   ggtitle("Cluster Co-Occurrence Network") +
     #   scale_edge_width(range = c(0.5, 2)) +  # Adjust the edge width range
-    #   theme(legend.position = "right")
+    #   theme(legend.position = "top")
     # 
     
     # #country
@@ -924,7 +924,7 @@ plot <-
        y = "Number of strains detected")+
   
   facet_wrap(~category.y+classification,scales = "free_y")+
-  theme(legend.position = "right",#axis.text.x = element_blank(),  # remove x-axis text
+  theme(legend.position = "top",#axis.text.x = element_blank(),  # remove x-axis text
         #axis.text.y = element_blank(), # remove y-axis text
         axis.ticks = element_blank(),  # remove axis ticks
         axis.text.y = element_text(size=15),

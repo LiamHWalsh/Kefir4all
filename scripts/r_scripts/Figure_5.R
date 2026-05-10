@@ -201,7 +201,7 @@ for (i in centroid$data_source){
 # labs(x=paste("PCoA1 - ", round(percent_explained[1]), "%", sep=""), y=paste("PCoA2 - ", round(percent_explained[2]), "%", sep=""), title="") +
 #   coord_equal() +
 #   theme_bw()+
-#   theme(legend.position = "right",#c(.85,.2),#axis.text.x = element_blank(),  # remove x-axis text
+#   theme(legend.position = "top",#c(.85,.2),#axis.text.x = element_blank(),  # remove x-axis text
 #     #axis.text.y = element_blank(), # remove y-axis text
 #     axis.ticks = element_blank(),  # remove axis ticks
 #     axis.text = element_blank(),
@@ -492,7 +492,7 @@ ggplot(pcoa_v1,aes(PC1, y=PC2,colour=species))+
 labs(x=paste("PCoA1 - ", round(percent_explained[1]), "%", sep=""), y=paste("PCoA2 - ", round(percent_explained[2]), "%", sep=""), title="") +
   coord_equal() +
   theme_bw()+
-  theme(legend.position = "right",#c(.85,.2),#axis.text.x = element_blank(),  # remove x-axis text
+  theme(legend.position = "top",#c(.85,.2),#axis.text.x = element_blank(),  # remove x-axis text
         #axis.text.y = element_blank(), # remove y-axis text
         axis.ticks = element_blank(),  # remove axis ticks
         axis.text = element_blank(),
@@ -751,7 +751,7 @@ for (type in names(beta_diversity)){
   labs(x=paste("PCoA1 - ", round(percent_explained[1]), "%", sep=""), y=paste("PCoA2 - ", round(percent_explained[2]), "%", sep=""), title="") +
     coord_equal() +
     theme_bw()+
-    theme(legend.position = "right",#axis.text.x = element_blank(),  # remove x-axis text
+    theme(legend.position = "top",#axis.text.x = element_blank(),  # remove x-axis text
       #axis.text.y = element_blank(), # remove y-axis text
       axis.ticks = element_blank(),  # remove axis ticks
       axis.text = element_blank(),

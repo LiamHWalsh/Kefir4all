@@ -698,7 +698,7 @@ persistance <-
   facet_wrap(~`kefir type`,dir="v",scales="free")+
   theme_bw() +
   theme(#plot.title = element_textbox(hjust = 0.5, margin = margin(t = 5, b = 5),size = 55), #element_text(color="red", size=14, face="bold",hjust = 0.5),
-    legend.position = "bottom",
+    legend.position = "top",
     legend.direction = "horizontal",
     legend.box = "horizontal",
     axis.text.x = element_text(size=17.5),

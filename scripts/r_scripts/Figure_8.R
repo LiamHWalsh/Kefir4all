@@ -126,7 +126,7 @@ p <- ggplot(plot_df,
        fill = "Cluster") +
   theme_bw(base_size = 11) +
   theme(
-    legend.position = "right",
+    legend.position = "top",
     axis.ticks = element_blank(),
     axis.text.y = element_text(size = 9),
     axis.text.x = element_text(size = 8, hjust = 0.5),

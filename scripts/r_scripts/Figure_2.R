@@ -292,7 +292,7 @@ species_profile[[type]] %>% rownames_to_column("sample") %>% pivot_longer(!sampl
     theme_void() +
     theme( legend.title = element_text(face="bold",size=25),
            legend.text = element_text(face="italic",size=18),
-           legend.position="right",
+           legend.position = "top",
            legend.key.size = unit(2, 'cm'))
   
   

@@ -1,136 +1,136 @@
 species	n_pairs	n_ge99	pct_ge99
-Acetobacter papayae	30	30	100.00
-Acetobacter syzygii	15252	15252	100.00
-Brochothrix thermosphacta	30	30	100.00
-Caulobacter sp002742645	30	30	100.00
-Chryseobacterium mucoviscidosis	12	12	100.00
-Agrobacterium sp900013535	30	30	100.00
-Acinetobacter oleivorans	6	6	100.00
-Zymomonas mobilis	9506	9506	100.00
-d__Bacteria;p__Actinobacteriota;c__Actinomycetia;o__Actinomycetales;f__Bifidobacteriaceae;g__Bifidobacterium;s__	20	20	100.00
-d__Bacteria;p__Bacteroidota;c__Bacteroidia;o__Flavobacteriales;f__Flavobacteriaceae;g__Flavobacterium;s__	4	4	100.00
-d__Bacteria;p__Firmicutes;c__Bacilli;o__Bacillales;f__Sporolactobacillaceae;g__Sporolactobacillus;s__	992	992	100.00
-d__Bacteria;p__Firmicutes;c__Bacilli;o__Lactobacillales;f__Lactobacillaceae;g__Lentilactobacillus;s__	192	192	100.00
-Comamonas testosteroni_B	30	30	100.00
-Enterococcus faecalis	110	110	100.00
-Flavobacterium frigidarium	30	30	100.00
-Clostridium_B tyrobutyricum	12	12	100.00
-Comamonas acidovorans	12	12	100.00
-Bifidobacterium psychraerophilum	380	380	100.00
-Bifidobacterium aquikefiri	6006	6006	100.00
-Brevundimonas mediterranea	30	30	100.00
-Komagataeibacter hansenii	1332	1332	100.00
-Klebsiella_A grimontii	342	342	100.00
-Hafnia paralvei	90	90	100.00
-Lentilactobacillus hilgardii	49952	49952	100.00
-Lentilactobacillus kefiri	36864	36864	100.00
-Lentilactobacillus parakefiri	6	6	100.00
-Leuconostoc citreum	240	240	100.00
-Leuconostoc gelidum	12	12	100.00
-Macrococcus_B caseolyticus	56	56	100.00
-Massilibacillus massiliensis	12	12	100.00
-Liquorilactobacillus nagelii	56	56	100.00
-Methylobacterium aquaticum	20	20	100.00
-Liquorilactobacillus satsumensis	41412	41412	100.00
-Lactococcus raffinolactis	930	930	100.00
-Lactobacillus kefiranofaciens	21609	21609	100.00
-Lactobacillus helveticus	5767	5767	100.00
-Oenococcus oeni	306	306	100.00
-Microbacterium sp000411455	12	12	100.00
-Microbacterium hominis	56	56	100.00
-Streptococcus parauberis	132	132	100.00
-Pseudomonas_E sp001320045	12	12	100.00
-Pseudomonas_E sp003852405	12	12	100.00
-Pseudomonas_E rhodesiae	56	56	100.00
-Sphingomonas sp002292295	12	12	100.00
-d__Bacteria;p__Firmicutes;c__Bacilli;o__Lactobacillales;f__Lactobacillaceae;g__Lactobacillus;s__	700	700	100.00
-d__Bacteria;p__Proteobacteria;c__Alphaproteobacteria;o__Caulobacterales;f__Caulobacteraceae;g__Caulobacter;s__	12	12	100.00
-d__Bacteria;p__Firmicutes_A;c__Clostridia;o__Clostridiales;f__Clostridiaceae;g__Clostridium;s__	90	90	100.00
-d__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Enterobacterales;f__Enterobacteriaceae;g__Superficieibacter;s__	6	6	100.00
-d__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Pseudomonadales;f__Moraxellaceae;g__Perlucidibaca;s__	12	12	100.00
-d__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Pseudomonadales;f__Moraxellaceae;g__Alkanindiges;s__	12	12	100.00
-d__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Pseudomonadales;f__Moraxellaceae;g__Acinetobacter;s__	3	3	100.00
-d__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Enterobacterales;f__Aeromonadaceae;g__;s__	20	20	100.00
-d__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Burkholderiales;f__Burkholderiaceae;g__Pelomonas;s__	12	12	100.00
-d__Bacteria;p__Proteobacteria;c__Alphaproteobacteria;o__Sphingomonadales;f__Sphingomonadaceae;g__Sphingomonas;s__	46	46	100.00
-d__Bacteria;p__Proteobacteria;c__Alphaproteobacteria;o__Rhizobiales;f__Rhizobiaceae;g__Rhizobium_A;s__	4	4	100.00
-Pseudescherichia vulneris	12	12	100.00
-Streptococcus thermophilus	12	12	100.00
-Sphingobium sp003609795	30	30	100.00
-Schleiferilactobacillus perolens	812	812	100.00
-Sphingomonas aurantiaca	12	12	100.00
-Acetobacter fabarum	7744	7656	98.86
-d__Bacteria;p__Firmicutes;c__Bacilli;o__Lactobacillales;f__Lactobacillaceae;g__Liquorilactobacillus;s__	1811	1770	97.74
-Carnobacterium maltaromaticum	110	101	91.82
-d__Bacteria;p__Proteobacteria;c__Alphaproteobacteria;o__Acetobacterales;f__Acetobacteraceae;g__Acetobacter;s__	918	830	90.41
-Acetobacter malorum	9702	8762	90.31
-Liquorilactobacillus mali_A	64	56	87.50
-Leuconostoc mesenteroides	4290	3488	81.31
-Pseudomonas_E fragi_B	168	132	78.57
-Rahnella aquatilis_B	72	56	77.78
-Acetobacter orientalis	812	612	75.37
-d__Bacteria;p__Proteobacteria;c__Alphaproteobacteria;o__Rhizobiales;f__Rhizobiaceae;g__Allorhizobium;s__	16	12	75.00
-d__Bacteria;p__Proteobacteria;c__Alphaproteobacteria;o__Acetobacterales;f__Acetobacteraceae;g__Komagataeibacter;s__	132	92	69.70
-d__Bacteria;p__Proteobacteria;c__Alphaproteobacteria;o__Acetobacterales;f__Acetobacteraceae;g__Gluconobacter;s__	7056	4900	69.44
-d__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Pseudomonadales;f__Pseudomonadaceae;g__Pseudomonas_E;s__	40	26	65.00
-Acinetobacter ursingii	90	58	64.44
-d__Bacteria;p__Firmicutes;c__Bacilli;o__Lactobacillales;f__Lactobacillaceae;g__Lacticaseibacillus;s__	203	123	60.59
-Pseudomonas_E lundensis	20	12	60.00
-Escherichia coli_D	20	12	60.00
-d__Bacteria;p__Actinobacteriota;c__Actinomycetia;o__Actinomycetales;f__Microbacteriaceae;g__Pseudoclavibacter_A;s__	380	218	57.37
-Pseudomonas_E veronii	56	32	57.14
-Acetobacter indonesiensis	56	32	57.14
-Lacticaseibacillus paracasei	41209	23505	57.04
-Gluconobacter albidus	506	270	53.36
-Thermus parvatiensis	182	94	51.65
-Raoultella terrigena	72	36	50.00
-Acinetobacter albensis	30	14	46.67
-Citrobacter freundii	90	42	46.67
-Pantoea agglomerans	66	30	45.45
-Lelliottia amnigena	110	50	45.45
-Pantoea vagans	66	30	45.45
-Pseudomonas_E helleri	132	59	44.70
-Liquorilactobacillus ghanensis	6561	2916	44.44
-Clostridium beijerinckii	156	68	43.59
-d__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Burkholderiales;f__Burkholderiaceae;g__Aquabacterium;s__	100	42	42.00
-Pseudomonas_E putida	182	70	38.46
-Lactococcus piscium_C	225	86	38.22
-Acetobacter persici	600	228	38.00
-Lactococcus raffinolactis_A	6	2	33.33
-Aeromonas encheleia	6	2	33.33
-Acidovorax_D sp001633105	6	2	33.33
-Aeromonas rivipollensis	6	2	33.33
-Acidovorax_D sp005405905	6	2	33.33
-Acinetobacter guillouiae	12	4	33.33
-Paenibacillus sp001955855	12	4	33.33
-d__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Burkholderiales;f__Burkholderiaceae;g__Hydrogenophaga;s__	12	4	33.33
-d__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Enterobacterales;f__Alteromonadaceae;g__Pararheinheimera;s__	6	2	33.33
-Serratia liquefaciens	12	4	33.33
-Pseudomonas_E peli	6	2	33.33
-Leclercia adecarboxylata	12	4	33.33
-Lactococcus lactis	10191	3232	31.71
-d__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Burkholderiales;f__Burkholderiaceae;g__Acidovorax_D;s__	58	18	31.03
-Pseudomonas_E proteolytica_A	8	2	25.00
-Bacillus_A wiedmannii	48	12	25.00
-Pseudomonas_E brenneri_B	8	2	25.00
-Gluconobacter cerinus	2162	530	24.51
-Pseudomonas_E sp002966775	99	22	22.22
-Agrobacterium pusense	30	6	20.00
-Escherichia flexneri	10	2	20.00
-Lactococcus lactis_E	6579	1273	19.35
-Gluconobacter oxydans_B	2646	374	14.13
-d__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Enterobacterales;f__Enterobacteriaceae;g__Kluyvera;s__	64	8	12.50
-d__Bacteria;p__Firmicutes;c__Bacilli;o__Lactobacillales;f__Streptococcaceae;g__Lactococcus;s__	17	2	11.76
-d__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Enterobacterales;f__Enterobacteriaceae;g__Rahnella;s__	18	2	11.11
-Leuconostoc pseudomesenteroides_A	180	20	11.11
-Acinetobacter johnsonii	182	20	10.99
-d__Bacteria;p__Firmicutes;c__Bacilli;o__Paenibacillales;f__Paenibacillaceae;g__Paenibacillus;s__	56	6	10.71
-Bacillus_A mycoides	96	8	8.33
-Pseudomonas_E fragi	28	2	7.14
-Leuconostoc pseudomesenteroides	60	4	6.67
-Pseudomonas_E lactis	33	2	6.06
-Bacillus_A cereus_U	12	0	0.00
-Kluyvera cryocrescens	8	0	0.00
-Aquabacterium commune	10	0	0.00
-Allorhizobium sp002796995	4	0	0.00
-Pseudomonas_E fluorescens_BA	4	0	0.00
+Acetobacter papayae	30	30	100
+Acetobacter syzygii	15252	15252	100
+Acinetobacter oleivorans	6	6	100
+Agrobacterium sp900013535	30	30	100
+Bifidobacterium aquikefiri	6006	6006	100
+Bifidobacterium psychraerophilum	380	380	100
+Brevundimonas mediterranea	30	30	100
+Brochothrix thermosphacta	30	30	100
+Caulobacter sp002742645	30	30	100
+Chryseobacterium mucoviscidosis	12	12	100
+Clostridium_B tyrobutyricum	12	12	100
+Comamonas acidovorans	12	12	100
+Comamonas testosteroni_B	30	30	100
+Enterococcus faecalis	110	110	100
+Flavobacterium frigidarium	30	30	100
+Hafnia paralvei	90	90	100
+Klebsiella_A grimontii	342	342	100
+Komagataeibacter hansenii	1332	1332	100
+Lactobacillus helveticus	5767	5767	100
+Lactobacillus kefiranofaciens	21609	21609	100
+Lactococcus raffinolactis	930	930	100
+Lentilactobacillus hilgardii	49952	49952	100
+Lentilactobacillus kefiri	36864	36864	100
+Lentilactobacillus parakefiri	6	6	100
+Leuconostoc citreum	240	240	100
+Leuconostoc gelidum	12	12	100
+Liquorilactobacillus nagelii	56	56	100
+Liquorilactobacillus satsumensis	41412	41412	100
+Macrococcus_B caseolyticus	56	56	100
+Massilibacillus massiliensis	12	12	100
+Methylobacterium aquaticum	20	20	100
+Microbacterium hominis	56	56	100
+Microbacterium sp000411455	12	12	100
+Oenococcus oeni	306	306	100
+Pseudescherichia vulneris	12	12	100
+Pseudomonas_E rhodesiae	56	56	100
+Pseudomonas_E sp001320045	12	12	100
+Pseudomonas_E sp003852405	12	12	100
+Schleiferilactobacillus perolens	812	812	100
+Sphingobium sp003609795	30	30	100
+Sphingomonas aurantiaca	12	12	100
+Sphingomonas sp002292295	12	12	100
+Streptococcus parauberis	132	132	100
+Streptococcus thermophilus	12	12	100
+Zymomonas mobilis	9506	9506	100
+d__Bacteria;p__Actinobacteriota;c__Actinomycetia;o__Actinomycetales;f__Bifidobacteriaceae;g__Bifidobacterium;s__	20	20	100
+d__Bacteria;p__Bacteroidota;c__Bacteroidia;o__Flavobacteriales;f__Flavobacteriaceae;g__Flavobacterium;s__	4	4	100
+d__Bacteria;p__Firmicutes;c__Bacilli;o__Bacillales;f__Sporolactobacillaceae;g__Sporolactobacillus;s__	992	992	100
+d__Bacteria;p__Firmicutes;c__Bacilli;o__Lactobacillales;f__Lactobacillaceae;g__Lactobacillus;s__	700	700	100
+d__Bacteria;p__Firmicutes;c__Bacilli;o__Lactobacillales;f__Lactobacillaceae;g__Lentilactobacillus;s__	192	192	100
+d__Bacteria;p__Firmicutes_A;c__Clostridia;o__Clostridiales;f__Clostridiaceae;g__Clostridium;s__	90	90	100
+d__Bacteria;p__Proteobacteria;c__Alphaproteobacteria;o__Caulobacterales;f__Caulobacteraceae;g__Caulobacter;s__	12	12	100
+d__Bacteria;p__Proteobacteria;c__Alphaproteobacteria;o__Rhizobiales;f__Rhizobiaceae;g__Rhizobium_A;s__	4	4	100
+d__Bacteria;p__Proteobacteria;c__Alphaproteobacteria;o__Sphingomonadales;f__Sphingomonadaceae;g__Sphingomonas;s__	46	46	100
+d__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Burkholderiales;f__Burkholderiaceae;g__Pelomonas;s__	12	12	100
+d__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Enterobacterales;f__Aeromonadaceae;g__;s__	20	20	100
+d__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Enterobacterales;f__Enterobacteriaceae;g__Superficieibacter;s__	6	6	100
+d__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Pseudomonadales;f__Moraxellaceae;g__Acinetobacter;s__	3	3	100
+d__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Pseudomonadales;f__Moraxellaceae;g__Alkanindiges;s__	12	12	100
+d__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Pseudomonadales;f__Moraxellaceae;g__Perlucidibaca;s__	12	12	100
+Acetobacter fabarum	7744	7656	98.86363636363636
+d__Bacteria;p__Firmicutes;c__Bacilli;o__Lactobacillales;f__Lactobacillaceae;g__Liquorilactobacillus;s__	1811	1770	97.736057426836
+Carnobacterium maltaromaticum	110	101	91.81818181818181
+d__Bacteria;p__Proteobacteria;c__Alphaproteobacteria;o__Acetobacterales;f__Acetobacteraceae;g__Acetobacter;s__	918	830	90.41394335511983
+Acetobacter malorum	9702	8762	90.31127602556174
+Liquorilactobacillus mali_A	64	56	87.5
+Leuconostoc mesenteroides	4290	3488	81.3053613053613
+Pseudomonas_E fragi_B	168	132	78.57142857142857
+Rahnella aquatilis_B	72	56	77.77777777777777
+Acetobacter orientalis	812	612	75.36945812807882
+d__Bacteria;p__Proteobacteria;c__Alphaproteobacteria;o__Rhizobiales;f__Rhizobiaceae;g__Allorhizobium;s__	16	12	75
+d__Bacteria;p__Proteobacteria;c__Alphaproteobacteria;o__Acetobacterales;f__Acetobacteraceae;g__Komagataeibacter;s__	132	92	69.6969696969697
+d__Bacteria;p__Proteobacteria;c__Alphaproteobacteria;o__Acetobacterales;f__Acetobacteraceae;g__Gluconobacter;s__	7056	4900	69.44444444444444
+d__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Pseudomonadales;f__Pseudomonadaceae;g__Pseudomonas_E;s__	40	26	65
+Acinetobacter ursingii	90	58	64.44444444444444
+d__Bacteria;p__Firmicutes;c__Bacilli;o__Lactobacillales;f__Lactobacillaceae;g__Lacticaseibacillus;s__	203	123	60.59113300492611
+Escherichia coli_D	20	12	60
+Pseudomonas_E lundensis	20	12	60
+d__Bacteria;p__Actinobacteriota;c__Actinomycetia;o__Actinomycetales;f__Microbacteriaceae;g__Pseudoclavibacter_A;s__	380	218	57.36842105263158
+Acetobacter indonesiensis	56	32	57.142857142857146
+Pseudomonas_E veronii	56	32	57.142857142857146
+Lacticaseibacillus paracasei	41209	23505	57.03851100487758
+Gluconobacter albidus	506	270	53.359683794466406
+Thermus parvatiensis	182	94	51.64835164835165
+Raoultella terrigena	72	36	50
+Acinetobacter albensis	30	14	46.666666666666664
+Citrobacter freundii	90	42	46.666666666666664
+Lelliottia amnigena	110	50	45.45454545454545
+Pantoea agglomerans	66	30	45.45454545454545
+Pantoea vagans	66	30	45.45454545454545
+Pseudomonas_E helleri	132	59	44.696969696969695
+Liquorilactobacillus ghanensis	6561	2916	44.44444444444444
+Clostridium beijerinckii	156	68	43.58974358974359
+d__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Burkholderiales;f__Burkholderiaceae;g__Aquabacterium;s__	100	42	42
+Pseudomonas_E putida	182	70	38.46153846153846
+Lactococcus piscium_C	225	86	38.22222222222222
+Acetobacter persici	600	228	38
+Acidovorax_D sp001633105	6	2	33.333333333333336
+Acidovorax_D sp005405905	6	2	33.333333333333336
+Acinetobacter guillouiae	12	4	33.333333333333336
+Aeromonas encheleia	6	2	33.333333333333336
+Aeromonas rivipollensis	6	2	33.333333333333336
+Lactococcus raffinolactis_A	6	2	33.333333333333336
+Leclercia adecarboxylata	12	4	33.333333333333336
+Paenibacillus sp001955855	12	4	33.333333333333336
+Pseudomonas_E peli	6	2	33.333333333333336
+Serratia liquefaciens	12	4	33.333333333333336
+d__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Burkholderiales;f__Burkholderiaceae;g__Hydrogenophaga;s__	12	4	33.333333333333336
+d__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Enterobacterales;f__Alteromonadaceae;g__Pararheinheimera;s__	6	2	33.333333333333336
+Lactococcus lactis	10191	3232	31.714257678343635
+d__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Burkholderiales;f__Burkholderiaceae;g__Acidovorax_D;s__	58	18	31.03448275862069
+Bacillus_A wiedmannii	48	12	25
+Pseudomonas_E brenneri_B	8	2	25
+Pseudomonas_E proteolytica_A	8	2	25
+Gluconobacter cerinus	2162	530	24.514338575393154
+Pseudomonas_E sp002966775	99	22	22.22222222222222
+Agrobacterium pusense	30	6	20
+Escherichia flexneri	10	2	20
+Lactococcus lactis_E	6579	1273	19.349445204438364
+Gluconobacter oxydans_B	2646	374	14.134542705971278
+d__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Enterobacterales;f__Enterobacteriaceae;g__Kluyvera;s__	64	8	12.5
+d__Bacteria;p__Firmicutes;c__Bacilli;o__Lactobacillales;f__Streptococcaceae;g__Lactococcus;s__	17	2	11.764705882352942
+Leuconostoc pseudomesenteroides_A	180	20	11.11111111111111
+d__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Enterobacterales;f__Enterobacteriaceae;g__Rahnella;s__	18	2	11.11111111111111
+Acinetobacter johnsonii	182	20	10.989010989010989
+d__Bacteria;p__Firmicutes;c__Bacilli;o__Paenibacillales;f__Paenibacillaceae;g__Paenibacillus;s__	56	6	10.714285714285714
+Bacillus_A mycoides	96	8	8.333333333333334
+Pseudomonas_E fragi	28	2	7.142857142857143
+Leuconostoc pseudomesenteroides	60	4	6.666666666666667
+Pseudomonas_E lactis	33	2	6.0606060606060606
+Allorhizobium sp002796995	4	0	0
+Aquabacterium commune	10	0	0
+Bacillus_A cereus_U	12	0	0
+Kluyvera cryocrescens	8	0	0
+Pseudomonas_E fluorescens_BA	4	0	0
