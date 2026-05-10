@@ -1,12 +1,14 @@
 # Supplementary_Fig_5.R ---------------------------------------------------
 # Per-species proportion of within-species MAG pairs reaching >= 99% ANI,
-# computed from the dRep ANI table on within-primary-cluster pairs in the
-# Kefir4All cohort.
+# matching the legacy Extended Data Figure 3 style: stacked horizontal
+# bars showing the percentage of "highly related" (>=99% ANI) versus
+# "less related" pairwise comparisons within each species, faceted by
+# kefir type, with labels for both segments.
 #
-# Inputs:
-#   data/ndb.csv.gz                (dRep pairwise ANI)
-#   data/Cdb.csv                    (dRep cluster assignments)
-#   data/mag_metadata_v3.csv.gz    (MAG -> species, source)
+# Inputs (all in flat data/):
+#   ndb.csv.gz                      (dRep pairwise ANI)
+#   Cdb.csv                         (dRep cluster assignments)
+#   mag_metadata_v3.csv.gz          (MAG -> species, source, kefir type)
 #
 # Outputs:
 #   figures/Supplementary_Fig_5.png
@@ -17,6 +19,7 @@ suppressPackageStartupMessages({
   library(readr)
   library(dplyr)
   library(stringr)
+  library(tidyr)
   library(ggplot2)
 })
 
@@ -29,15 +32,14 @@ get_script_dir <- function() {
   getwd()
 }
 repo_root <- normalizePath(file.path(get_script_dir(), "..", ".."))
-ndb_path  <- file.path(repo_root, "data", "ndb.csv.gz")
-cdb_path  <- file.path(repo_root, "data",  "Cdb.csv")
-md_path   <- file.path(repo_root, "data", "mag_metadata_v3.csv.gz")
+data_dir  <- file.path(repo_root, "data")
 out_dir   <- file.path(repo_root, "figures")
 dir.create(out_dir, showWarnings = FALSE, recursive = TRUE)
 
-ndb <- read_csv(ndb_path, show_col_types = FALSE)
-cdb <- read_csv(cdb_path, show_col_types = FALSE)
-md  <- read_csv(md_path,  show_col_types = FALSE, guess_max = 50000)
+ndb <- read_csv(file.path(data_dir, "ndb.csv.gz"), show_col_types = FALSE)
+cdb <- read_csv(file.path(data_dir, "Cdb.csv"),    show_col_types = FALSE)
+md  <- read_csv(file.path(data_dir, "mag_metadata_v3.csv.gz"),
+                show_col_types = FALSE, guess_max = 50000)
 
 strip_fa <- function(x) sub("\\.fa$", "", as.character(x))
 ndb <- ndb %>% mutate(q = strip_fa(querry), r = strip_fa(reference))
@@ -45,57 +47,100 @@ cdb <- cdb %>% mutate(g = strip_fa(genome))
 md  <- md  %>% mutate(g = strip_fa(user_genome))
 
 g2pc <- setNames(cdb$primary_cluster, cdb$g)
-g2sp <- setNames(md$classification, md$g)
-this_study <- if ("data_source" %in% names(md)) {
-  md$g[md$data_source == "This study"]
-} else md$g
+g2sp <- setNames(md$classification,    md$g)
+g2kt <- setNames(md$`kefir type`,      md$g)
+this_study <- if ("data_source" %in% names(md)) md$g[md$data_source == "This study"] else md$g
 
 within <- ndb %>%
-  mutate(q_pc = g2pc[q], r_pc = g2pc[r], q_sp = g2sp[q]) %>%
-  filter(!is.na(q_pc), q_pc == r_pc, q != r) %>%
-  filter(q %in% this_study, r %in% this_study)
+  mutate(q_pc = g2pc[q], r_pc = g2pc[r],
+         q_sp = g2sp[q], q_kt = g2kt[q]) %>%
+  filter(!is.na(q_pc), q_pc == r_pc, q != r,
+         q %in% this_study, r %in% this_study)
+
+within <- within %>% mutate(type = case_when(
+  q_kt %in% c("ML", "MG") ~ "Milk kefir",
+  q_kt %in% c("WL", "WG") ~ "Water kefir",
+  TRUE ~ NA_character_
+)) %>% filter(!is.na(type))
 
 species_short <- function(s) {
   m <- regmatches(s, regexpr("s__[^;]+$", s))
   ifelse(length(m), trimws(sub("^s__", "", m)), s)
 }
-within <- within %>%
-  mutate(species = vapply(q_sp, species_short, character(1)))
+within <- within %>% mutate(species = vapply(q_sp, species_short, character(1)))
 
 agg <- within %>%
-  group_by(species) %>%
+  group_by(type, species) %>%
   summarise(
-    n_pairs = n(),
-    n_ge99  = sum(ani >= 0.99),
-    pct_ge99 = 100 * n_ge99 / n_pairs,
-    .groups = "drop"
+    n_pairs   = n(),
+    n_ge99    = sum(ani >= 0.99),
+    pct_ge99  = 100 * n_ge99 / n_pairs,
+    .groups   = "drop"
   ) %>%
   filter(n_pairs >= 3) %>%
-  arrange(desc(pct_ge99))
+  arrange(type, desc(pct_ge99))
 
 write_tsv(agg, file.path(out_dir, "Supplementary_Fig_5_data.tsv"))
 
-top <- agg %>% slice_head(n = 30) %>% arrange(pct_ge99) %>%
-  mutate(species = factor(species, levels = species))
+stacked <- bind_rows(
+  agg %>% mutate(strain_type = "% highly related strains (>=99% ANI)",
+                 frequency   = pct_ge99),
+  agg %>% mutate(strain_type = "% less related strains (<99% ANI)",
+                 frequency   = 100 - pct_ge99)
+)
 
-p <- ggplot(top, aes(x = pct_ge99, y = species)) +
-  geom_col(fill = "#4C9F70", colour = "white", width = 0.85) +
-  geom_text(aes(label = paste0("n=", n_pairs)),
-            hjust = -0.05, size = 2.5) +
-  coord_cartesian(xlim = c(0, 105)) +
-  labs(
-    title = "Supplementary Fig. 5. Per-species proportion of within-species MAG pairs reaching >=99% ANI.",
-    x = "Pairwise comparisons within species >= 99% ANI (%)",
-    y = NULL
-  ) +
-  theme_minimal(base_size = 10) +
+# Order species within each kefir type by descending pct_ge99
+species_order <- agg %>% group_by(type) %>%
+  arrange(type, desc(pct_ge99)) %>%
+  mutate(rank = row_number()) %>%
+  ungroup() %>% select(type, species, rank)
+
+stacked <- stacked %>% left_join(species_order, by = c("type", "species")) %>%
+  mutate(species = factor(species, levels = unique(species[order(type, rank)])))
+
+p <- ggplot(stacked,
+            aes(x = species, y = frequency,
+                fill = factor(strain_type,
+                              levels = c("% highly related strains (>=99% ANI)",
+                                         "% less related strains (<99% ANI)")))) +
+  geom_col(colour = "white", width = 0.85) +
+  geom_text(aes(label = round(frequency, 1)),
+            position = position_stack(vjust = 0.5),
+            size = 3, fontface = "bold", colour = "black", show.legend = FALSE) +
+  facet_wrap(~ type, scales = "free_y") +
+  scale_fill_manual(values = c(
+    "% highly related strains (>=99% ANI)" = "#4C9F70",
+    "% less related strains (<99% ANI)"    = "#D9D9D9"
+  )) +
+  labs(title = "",
+       x = NULL,
+       y = "Pairwise comparisons (%)",
+       fill = "Strain comparisons") +
+  coord_flip() +
+  theme_bw(base_size = 11) +
   theme(
-    plot.title = element_text(size = 10, hjust = 0),
-    panel.grid.major.y = element_blank()
-  )
+    legend.position = "top",
+    axis.ticks = element_blank(),
+    axis.text.x = element_text(size = 9),
+    axis.text.y = element_text(size = 9, face = "italic"),
+    axis.title = element_text(size = 10),
+    panel.background = element_blank(),
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+    plot.background = element_blank(),
+    legend.text = element_text(size = 9),
+    legend.title = element_text(size = 10),
+    strip.background = element_rect(colour = "black", fill = "white"),
+    strip.text = element_text(size = 10)
+  ) +
+  guides(fill = guide_legend(nrow = 1))
+
+n_sp <- max(table(agg$type))
+fig_w <- 12
+fig_h <- max(7, 0.32 * n_sp + 2)
 
 ggsave(file.path(out_dir, "Supplementary_Fig_5.png"), p,
-       width = 8, height = 9, dpi = 200, bg = "white")
+       width = fig_w, height = fig_h, dpi = 220, bg = "white")
 ggsave(file.path(out_dir, "Supplementary_Fig_5.pdf"), p,
-       width = 8, height = 9, bg = "white")
-message("Wrote Supplementary_Fig_5 to ", out_dir)
+       width = fig_w, height = fig_h, bg = "white")
+message("Wrote Supplementary_Fig_5.{png,pdf} + Supplementary_Fig_5_data.tsv to ", out_dir)

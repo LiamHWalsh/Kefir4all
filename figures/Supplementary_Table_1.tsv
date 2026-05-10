@@ -1,13 +1,13 @@
 Supplementary Table 1. Per-species secondary-cluster counts from dRep ANI-based clustering of recovered MAGs. Counts represent the number of dRep secondary clusters (≥98% ANI) within each species-level primary cluster (≥95% ANI). Where a species was distributed across more than one species-level bin, the bins are listed separately.
-Kefir type	Species	Species-level bin(s)	Secondary clusters	Notes
-Milk kefir	Lactobacillus helveticus	1	1	Single-cluster
-Milk kefir	Lactobacillus kefiranofaciens	1	1	Single-cluster
-Milk kefir	Lentilactobacillus kefiri	1	1	Single-cluster
+Kefir type	Species	Species-level bin(s)	Secondary clusters
+Milk kefir	Lactobacillus helveticus	1	1
+Milk kefir	Lactobacillus kefiranofaciens	1	1
+Milk kefir	Lentilactobacillus kefiri	1	1
 Milk kefir	Acetobacter orientalis	1	2
 Milk kefir	Acetobacter fabarum	1	4
 Milk kefir	Lactococcus lactis	1	5
 Milk kefir	Lactococcus cremoris	1	5
-Milk kefir	Lactococcus raffinolactis	2 (bin A; bin B)	1; 2	Two species-level bins; counts shown per bin
+Milk kefir	Lactococcus raffinolactis	2 (bin A; bin B)	1; 2
 Water kefir	Komagataeibacter hansenii	1	2
 Water kefir	Acetobacter indonesiensis	1	3
 Water kefir	Bifidobacterium aquikefiri	1	3
@@ -16,8 +16,8 @@ Water kefir	Gluconobacter albidus	1	5
 Water kefir	Lacticaseibacillus paracasei	1	5
 Water kefir	Acetobacter syzygii	1	6
 Water kefir	Liquorilactobacillus ghanensis	1	6
-Water kefir	Acetobacter malorum	1	7	Acetic acid bacterium; high cluster count interpreted cautiously
+Water kefir	Acetobacter malorum	1	7
 Water kefir	Acinetobacter johnsonii	1	7
-Water kefir	Acetobacter persici	1	9	Acetic acid bacterium; high cluster count interpreted cautiously
-Water kefir	Gluconobacter cerinus	1	13	Acetic acid bacterium; high cluster count interpreted cautiously
-Water kefir	Gluconobacter oxydans	1	18	Acetic acid bacterium; high cluster count interpreted cautiously
+Water kefir	Acetobacter persici	1	9
+Water kefir	Gluconobacter cerinus	1	13
+Water kefir	Gluconobacter oxydans	1	18
