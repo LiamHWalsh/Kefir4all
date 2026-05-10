@@ -8,7 +8,6 @@ The repository contains:
 
 - **R scripts** (`scripts/r_scripts/`) used to generate every original main-text figure of the manuscript.
 - **Unix pipeline scripts** (`scripts/unix_scripts/`) documenting the upstream metagenomics workflow (Trim Galore, decontamination, MetaCache / MetaPhlAn, SUPER-FOCUS, dRep, inStrain, StrainPhlAn 4, etc.).
-- **Python scripts** (`scripts/python_scripts/`) added during the revision: regenerate revised-manuscript Figure 8 and Supplementary Figs. 5, 8, 9 directly from the source data, with no cropping of any pre-existing image.
 - **Numerical source data** (`data/`) that the figure scripts read from. Folder names match the original figure numbering used during initial submission; see `scripts/README.md` for a mapping between original-submission numbering and revised-manuscript numbering.
 - **Rendered current-revision figures** (`figures/`) plus per-figure source-data TSVs.
 
@@ -24,18 +23,6 @@ source("scripts/r_scripts/Figure_3.R")
 ```
 
 R scripts are intended to be run interactively. Each script is self-contained and reads files directly from `data/`.
-
-### Python figures (revision-era)
-
-```bash
-# Python ≥ 3.9, pandas, numpy, matplotlib
-python scripts/python_scripts/render_figure_8.py
-python scripts/python_scripts/render_supplementary_fig_5.py
-python scripts/python_scripts/render_supplementary_fig_8.py
-python scripts/python_scripts/render_supplementary_fig_9.py
-```
-
-Each script writes a PNG, a PDF, and a tab-separated source-data table into `figures/`.
 
 ## Figure-numbering map (original submission to revised manuscript)
 
@@ -53,10 +40,10 @@ Each script writes a PNG, a PDF, and a tab-separated source-data table into `fig
 | Figure 7 | Figure 7 | `scripts/r_scripts/Figure_7.R` |
 | Figure 8 (original) | Supplementary Fig. 6 | `scripts/r_scripts/Supplementary_Fig_6.R` |
 | Figure 9 (original) | Supplementary Fig. 7 | `scripts/r_scripts/Supplementary_Fig_7.R` |
-| Figure 10 (original, combined dRep + inStrain panels) | Figure 8 (inStrain only) | `scripts/r_scripts/Figure_8.R` (R) or `scripts/python_scripts/render_figure_8.py` (Python) |
-| n/a | Supplementary Fig. 5 | `scripts/r_scripts/Supplementary_Fig_5.R` (R) or `scripts/python_scripts/render_supplementary_fig_5.py` (Python) |
-| n/a | Supplementary Fig. 8 | `scripts/r_scripts/Supplementary_Fig_8.R` (R) or `scripts/python_scripts/render_supplementary_fig_8.py` (Python) |
-| n/a | Supplementary Fig. 9 (dRep half of original Fig 10) | `scripts/r_scripts/Supplementary_Fig_9.R` (R) or `scripts/python_scripts/render_supplementary_fig_9.py` (Python) |
+| Figure 10 (original, combined dRep + inStrain panels) | Figure 8 (inStrain only) | `scripts/r_scripts/Figure_8.R` |
+| n/a | Supplementary Fig. 5 | `scripts/r_scripts/Supplementary_Fig_5.R` |
+| n/a | Supplementary Fig. 8 | `scripts/r_scripts/Supplementary_Fig_8.R` |
+| n/a | Supplementary Fig. 9 (dRep half of original Fig 10) | `scripts/r_scripts/Supplementary_Fig_9.R` |
 | n/a | Supplementary Table 1 | per-species secondary-cluster counts in `figures/Supplementary_Table_1.tsv` |
 
 ## Data
