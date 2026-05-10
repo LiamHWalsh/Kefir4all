@@ -2,8 +2,8 @@
 across the Kefir4All study, by species and timepoint.
 
 Inputs:
-  data/Figure_8_data/Cdb.csv
-  data/Figure_10_data/mag_metadata_v3.csv.gz
+  data/Cdb.csv
+  data/mag_metadata_v3.csv.gz
 
 Outputs:
   figures/Supplementary_Fig_9.png
@@ -23,8 +23,8 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
 ROOT = Path(__file__).resolve().parents[2]
-CDB  = ROOT / "data" / "Figure_8_data" / "Cdb.csv"
-MD   = ROOT / "data" / "Figure_10_data" / "mag_metadata_v3.csv.gz"
+CDB  = ROOT / "data" /  "Cdb.csv"
+MD   = ROOT / "data" /  "mag_metadata_v3.csv.gz"
 OUT  = ROOT / "figures"; OUT.mkdir(exist_ok=True)
 
 cdb = pd.read_csv(CDB)

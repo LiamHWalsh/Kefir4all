@@ -6,7 +6,7 @@
 # inStrain-defined within-species cluster.
 #
 # Inputs:
-#   data/Figure_8_data/instrain_genome_species_primary_data_v4.csv
+#   data/instrain_genome_species_primary_data_v4.csv
 #
 # Outputs:
 #   figures/Figure_8.png
@@ -28,7 +28,7 @@ suppressPackageStartupMessages({
 })
 
 repo_root <- normalizePath(file.path(dirname(sys.frame(1)$ofile %||% "."), "..", ".."))
-data_path <- file.path(repo_root, "data", "Figure_8_data",
+data_path <- file.path(repo_root, "data",
                       "instrain_genome_species_primary_data_v4.csv")
 out_dir   <- file.path(repo_root, "figures")
 dir.create(out_dir, showWarnings = FALSE, recursive = TRUE)

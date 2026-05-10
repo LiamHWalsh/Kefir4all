@@ -4,7 +4,7 @@ kefir prevalent species. No cropping; built directly from the inStrain
 genome-level summary used in the strain analysis.
 
 Inputs:
-  data/Figure_8_data/instrain_genome_species_primary_data_v4.csv
+  data/instrain_genome_species_primary_data_v4.csv
 
 Outputs:
   figures/Figure_8.png
@@ -24,7 +24,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
 ROOT = Path(__file__).resolve().parents[2]
-SRC  = ROOT / "data" / "Figure_8_data" / "instrain_genome_species_primary_data_v4.csv"
+SRC  = ROOT / "data" /  "instrain_genome_species_primary_data_v4.csv"
 OUT  = ROOT / "figures"
 OUT.mkdir(exist_ok=True)
 

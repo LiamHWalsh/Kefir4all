@@ -5,8 +5,8 @@
 # secondary cluster.
 #
 # Inputs:
-#   data/Figure_8_data/Cdb.csv                  (dRep cluster assignments)
-#   data/Figure_10_data/mag_metadata_v3.csv.gz  (MAG -> species, sample)
+#   data/Cdb.csv                  (dRep cluster assignments)
+#   data/mag_metadata_v3.csv.gz  (MAG -> species, sample)
 #
 # Outputs:
 #   figures/Supplementary_Fig_9.png
@@ -21,8 +21,8 @@ suppressPackageStartupMessages({
 })
 
 repo_root <- normalizePath(file.path(dirname(sys.frame(1)$ofile %||% "."), "..", ".."))
-cdb_path  <- file.path(repo_root, "data", "Figure_8_data",  "Cdb.csv")
-md_path   <- file.path(repo_root, "data", "Figure_10_data", "mag_metadata_v3.csv.gz")
+cdb_path  <- file.path(repo_root, "data",  "Cdb.csv")
+md_path   <- file.path(repo_root, "data", "mag_metadata_v3.csv.gz")
 out_dir   <- file.path(repo_root, "figures")
 dir.create(out_dir, showWarnings = FALSE, recursive = TRUE)
 

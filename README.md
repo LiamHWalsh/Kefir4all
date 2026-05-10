@@ -23,7 +23,7 @@ source("scripts/r_scripts/Figure_3.R")
 # ... etc
 ```
 
-R scripts are intended to be run interactively. Each script is self-contained and reads from `data/Figure_<N>_data/`.
+R scripts are intended to be run interactively. Each script is self-contained and reads files directly from `data/`.
 
 ### Python figures (revision-era)
 
@@ -38,6 +38,10 @@ python scripts/python_scripts/render_supplementary_fig_9.py
 Each script writes a PNG, a PDF, and a tab-separated source-data table into `figures/`.
 
 ## Figure-numbering map (original submission to revised manuscript)
+
+> **Original-submission numbering is retained throughout this repository** (in script filenames such as `Figure_2.R` and in the legacy `*_legacy` scripts) so that the publicly archived original-submission manuscript on ResearchGate remains traceable to the code that produced its figures. The mapping table below is the authoritative bridge between the two numbering systems.
+
+
 
 | Original submission | Revised manuscript | Script(s) |
 |---|---|---|
@@ -59,7 +63,7 @@ Each script writes a PNG, a PDF, and a tab-separated source-data table into `fig
 
 Raw sequencing reads are deposited at the European Nucleotide Archive under project accession **PRJEB77409**.
 
-The `data/` folder in this repository contains the numerical source data for every figure in the manuscript and supplementary materials. Folder layout follows the original-submission figure numbers; per the table above, several of these folders feed both the legacy R figure and a revision-era Python figure.
+The `data/` folder in this repository contains the numerical source data for every figure in the manuscript and supplementary materials. The directory is flat and de-duplicated: each file is named descriptively and is loaded directly by name from the figure scripts in `scripts/`.
 
 ## Data protection
 

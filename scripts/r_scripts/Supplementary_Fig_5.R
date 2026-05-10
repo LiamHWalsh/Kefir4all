@@ -4,9 +4,9 @@
 # Kefir4All cohort.
 #
 # Inputs:
-#   data/Figure_10_data/ndb.csv.gz                (dRep pairwise ANI)
-#   data/Figure_8_data/Cdb.csv                    (dRep cluster assignments)
-#   data/Figure_10_data/mag_metadata_v3.csv.gz    (MAG -> species, source)
+#   data/ndb.csv.gz                (dRep pairwise ANI)
+#   data/Cdb.csv                    (dRep cluster assignments)
+#   data/mag_metadata_v3.csv.gz    (MAG -> species, source)
 #
 # Outputs:
 #   figures/Supplementary_Fig_5.png
@@ -21,9 +21,9 @@ suppressPackageStartupMessages({
 })
 
 repo_root <- normalizePath(file.path(dirname(sys.frame(1)$ofile %||% "."), "..", ".."))
-ndb_path  <- file.path(repo_root, "data", "Figure_10_data", "ndb.csv.gz")
-cdb_path  <- file.path(repo_root, "data", "Figure_8_data",  "Cdb.csv")
-md_path   <- file.path(repo_root, "data", "Figure_10_data", "mag_metadata_v3.csv.gz")
+ndb_path  <- file.path(repo_root, "data", "ndb.csv.gz")
+cdb_path  <- file.path(repo_root, "data",  "Cdb.csv")
+md_path   <- file.path(repo_root, "data", "mag_metadata_v3.csv.gz")
 out_dir   <- file.path(repo_root, "figures")
 dir.create(out_dir, showWarnings = FALSE, recursive = TRUE)
 

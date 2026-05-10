@@ -2,9 +2,9 @@
 proportion of within-species MAG pairs reaching ≥99% ANI.
 
 Inputs:
-  data/Figure_10_data/ndb.csv.gz       (dRep ANI table)
-  data/Figure_8_data/Cdb.csv           (dRep cluster assignments)
-  data/Figure_10_data/mag_metadata_v3.csv.gz
+  data/ndb.csv.gz       (dRep ANI table)
+  data/Cdb.csv           (dRep cluster assignments)
+  data/mag_metadata_v3.csv.gz
 
 Outputs:
   figures/Supplementary_Fig_5.png
@@ -23,9 +23,9 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
 ROOT = Path(__file__).resolve().parents[2]
-NDB  = ROOT / "data" / "Figure_10_data" / "ndb.csv.gz"
-CDB  = ROOT / "data" / "Figure_8_data" / "Cdb.csv"
-MD   = ROOT / "data" / "Figure_10_data" / "mag_metadata_v3.csv.gz"
+NDB  = ROOT / "data" /  "ndb.csv.gz"
+CDB  = ROOT / "data" /  "Cdb.csv"
+MD   = ROOT / "data" /  "mag_metadata_v3.csv.gz"
 OUT  = ROOT / "figures"; OUT.mkdir(exist_ok=True)
 
 with gzip.open(NDB) as f: ndb = pd.read_csv(f)

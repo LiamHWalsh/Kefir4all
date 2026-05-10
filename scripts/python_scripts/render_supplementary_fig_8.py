@@ -2,7 +2,7 @@
 SNV count and nucleotide diversity) across prevalent kefir species.
 
 Inputs:
-  data/Figure_8_data/instrain_genome_species_primary_data_v4.csv
+  data/instrain_genome_species_primary_data_v4.csv
 
 Outputs:
   figures/Supplementary_Fig_8.png
@@ -20,7 +20,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
 ROOT = Path(__file__).resolve().parents[2]
-SRC  = ROOT / "data" / "Figure_8_data" / "instrain_genome_species_primary_data_v4.csv"
+SRC  = ROOT / "data" /  "instrain_genome_species_primary_data_v4.csv"
 OUT  = ROOT / "figures"; OUT.mkdir(exist_ok=True)
 
 df = pd.read_csv(SRC, low_memory=False)
