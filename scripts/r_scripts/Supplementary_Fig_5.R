@@ -20,7 +20,15 @@ suppressPackageStartupMessages({
   library(ggplot2)
 })
 
-repo_root <- normalizePath(file.path(dirname(sys.frame(1)$ofile %||% "."), "..", ".."))
+get_script_dir <- function() {
+  args <- commandArgs(trailingOnly = FALSE)
+  file_arg <- "--file="
+  m <- grep(file_arg, args)
+  if (length(m) > 0) return(dirname(normalizePath(sub(file_arg, "", args[m]))))
+  for (fr in sys.frames()) if (!is.null(fr$ofile)) return(dirname(normalizePath(fr$ofile)))
+  getwd()
+}
+repo_root <- normalizePath(file.path(get_script_dir(), "..", ".."))
 ndb_path  <- file.path(repo_root, "data", "ndb.csv.gz")
 cdb_path  <- file.path(repo_root, "data",  "Cdb.csv")
 md_path   <- file.path(repo_root, "data", "mag_metadata_v3.csv.gz")

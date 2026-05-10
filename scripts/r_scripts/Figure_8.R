@@ -1,105 +1,155 @@
 # Figure_8.R --------------------------------------------------------------
 # Revised-manuscript Figure 8.
 #
-# Single-panel inStrain temporal small-multiples: per prevalent species, a
-# stacked bar at each Stage (T0..T6, mapped to wk0..wk21) coloured by
-# inStrain-defined within-species cluster.
+# inStrain temporal alluvial: per prevalent species, the count of
+# inStrain-defined within-species cluster detections at each Stage (T0..T6,
+# mapped to wk0..wk21), with alluvial flows connecting clusters across
+# successive timepoints.
 #
-# Inputs:
-#   data/instrain_genome_species_primary_data_v4.csv
+# This corresponds to panel B of the legacy Figure 10 (combined dRep +
+# inStrain), now used as the single-panel revised Figure 8. The dRep
+# equivalent is rendered separately by Supplementary_Fig_9.R.
+#
+# Inputs (all in flat data/):
+#   instrain_genome_species_primary_data_v4.csv
+#   kefir4all_sample_metadata_v2.csv
+#   milk_taxonomic_profile_prevalence.csv
+#   water_taxonomic_profile_prevalence.csv
 #
 # Outputs:
 #   figures/Figure_8.png
 #   figures/Figure_8.pdf
 #   figures/Figure_8_data.tsv
-#
-# Filters mirror the Methods: per-genome breadth >= 0.35 and breadth /
-# breadth_expected >= 0.75, restricted to Stage T0..T6 and the Kefir4All
-# (this study) data source.
 
 suppressPackageStartupMessages({
   library(readr)
   library(dplyr)
-  library(tidyr)
   library(stringr)
+  library(tidyr)
   library(ggplot2)
-  library(forcats)
-  library(scales)
+  library(ggalluvial)
 })
 
-repo_root <- normalizePath(file.path(dirname(sys.frame(1)$ofile %||% "."), "..", ".."))
-data_path <- file.path(repo_root, "data",
-                      "instrain_genome_species_primary_data_v4.csv")
+get_script_dir <- function() {
+  args <- commandArgs(trailingOnly = FALSE)
+  file_arg <- "--file="
+  m <- grep(file_arg, args)
+  if (length(m) > 0) return(dirname(normalizePath(sub(file_arg, "", args[m]))))
+  for (fr in sys.frames()) if (!is.null(fr$ofile)) return(dirname(normalizePath(fr$ofile)))
+  getwd()
+}
+repo_root <- normalizePath(file.path(get_script_dir(), "..", ".."))
+data_dir  <- file.path(repo_root, "data")
 out_dir   <- file.path(repo_root, "figures")
 dir.create(out_dir, showWarnings = FALSE, recursive = TRUE)
 
-df <- read_csv(data_path, show_col_types = FALSE) %>%
-  filter(!is.na(breadth), !is.na(breadth_expected), !is.na(Stage)) %>%
-  filter(breadth >= 0.35, (breadth / breadth_expected) >= 0.75) %>%
-  filter(str_detect(as.character(Stage), "^T[0-9]$"))
+instrain <- read_csv(file.path(data_dir, "instrain_genome_species_primary_data_v4.csv"),
+                     show_col_types = FALSE)
+kefir4all_md <- read_csv(file.path(data_dir, "kefir4all_sample_metadata_v2.csv"),
+                         show_col_types = FALSE)
+kefir4all_md$merge_column <- gsub("_host_removed_R..fastq.gz", "",
+                                  kefir4all_md$merge_column)
+kefir4all_md <- kefir4all_md[!duplicated(kefir4all_md$merge_column), ]
 
-if ("data_source.x" %in% names(df)) {
-  df <- df %>% filter(`data_source.x` == "This study")
-}
+milk_prev  <- read_csv(file.path(data_dir, "milk_taxonomic_profile_prevalence.csv"),
+                       show_col_types = FALSE)
+water_prev <- read_csv(file.path(data_dir, "water_taxonomic_profile_prevalence.csv"),
+                       show_col_types = FALSE)
+total_prev <- bind_rows(
+  milk_prev  %>% mutate(kefir_type = "milk"),
+  water_prev %>% mutate(kefir_type = "water")
+)
 
-df <- df %>%
-  mutate(kg = case_when(
-    str_detect(genome, "_M[GL]_") ~ "Milk kefir",
-    str_detect(genome, "_W[GL]_") ~ "Water kefir",
-    TRUE ~ NA_character_
-  )) %>%
-  filter(!is.na(kg))
+# Normalise a few historical species labels to current taxonomy
+sp_col <- names(total_prev)[5]
+recode_sp <- c(
+  "Lactobacillus_ghanensis"             = "Liquorilactobacillus ghanensis",
+  "Lactobacillus_satsumensis"           = "Liquorilactobacillus satsumensis",
+  "Lactococcus_lactis subcluster 1"     = "Lactococcus lactis",
+  "Lactococcus_lactis subcluster 2"     = "Lactococcus cremoris",
+  "Pseudomonas_fragi_subspecies 1"      = "Pseudomonas fragi",
+  "Zymomonas_mobilis_subcluster 1"      = "Zymomonas mobilis",
+  "Lactobacillus_perolens"              = "Schleiferilactobacillus perolens"
+)
+total_prev[[sp_col]] <- ifelse(total_prev[[sp_col]] %in% names(recode_sp),
+                               recode_sp[total_prev[[sp_col]]],
+                               total_prev[[sp_col]])
+total_prev[[sp_col]] <- gsub("_", " ", total_prev[[sp_col]])
 
-stage_levels <- c("T0", "T1", "T2", "T3", "T4", "T5", "T6")
-stage_labels <- c("T0", "wk01", "wk05", "wk09", "wk13", "wk17", "wk21")
+milk_species  <- total_prev[[sp_col]][total_prev$kefir_type == "milk"]
+water_species <- total_prev[[sp_col]][total_prev$kefir_type == "water"]
 
-# Prevalent species (>= 10 detections within their kefir type)
-prev_sp <- df %>%
-  count(kg, classification) %>%
-  filter(n >= 10) %>%
-  arrange(kg, desc(n))
+# Filter inStrain to high-confidence detections in the Kefir4All cohort.
+# popANI_reference > 0.98 is the threshold used in the original Figure 10.R.
+instrain_cs <- instrain %>%
+  filter(popANI_reference > 0.98,
+         sample_id %in% kefir4all_md$merge_column)
 
-df_plot <- df %>%
-  filter(classification %in% prev_sp$classification) %>%
-  mutate(
-    Stage = factor(Stage, levels = stage_levels, labels = stage_labels),
-    species_label = paste0(classification, "  (", tolower(sub(" kefir", "", kg)), " kefir)"),
-    species_label = factor(species_label,
-                           levels = unique(species_label[order(kg, classification)]))
-  )
+# Restrict to species that are prevalent in the relevant kefir type.
+instrain_prevelant_cs_clust <- bind_rows(
+  instrain_cs %>%
+    filter(`category.y` == "Milk.kefir",
+           classification %in% milk_species),
+  instrain_cs %>%
+    filter(`category.y` == "Water.kefir",
+           classification %in% water_species)
+)
 
-p <- ggplot(df_plot, aes(x = Stage, fill = factor(cluster))) +
-  geom_bar(position = "stack", width = 0.9, colour = "white", linewidth = 0.15) +
-  facet_wrap(~ species_label, scales = "free_y", ncol = 4) +
-  scale_fill_manual(values = unname(grDevices::hcl.colors(20, "Set 3")), guide = "none") +
-  labs(
-    title = "Figure 8. inStrain-defined within-species cluster detections across the Kefir4All study, by species and timepoint.",
-    x = NULL, y = "metagenomes"
-  ) +
-  theme_minimal(base_size = 9) +
+# Extract the cluster index (e.g. "Lla.lactis_5" -> "5") and map T-stages to
+# study weeks for axis labels.
+instrain_prevelant_cs_clust <- instrain_prevelant_cs_clust %>%
+  mutate(clusters = gsub(".*_", "", cluster),
+         Stage = recode(Stage,
+                        T1 = "wk01", T2 = "wk05", T3 = "wk09",
+                        T4 = "wk13", T5 = "wk17", T6 = "wk21",
+                        T0 = "T0"),
+         Stage = factor(Stage,
+                        levels = c("T0", "wk01", "wk05", "wk09",
+                                   "wk13", "wk17", "wk21")))
+
+# Build the count table for the alluvial plot.
+plot_df <- as.data.frame(xtabs(~ Stage + clusters + classification + category.y,
+                               data = instrain_prevelant_cs_clust)) %>%
+  filter(Freq != 0) %>%
+  mutate(category.y = gsub("\\.", " ", as.character(category.y)),
+         clusters = factor(clusters, levels = as.character(1:20)))
+
+p <- ggplot(plot_df,
+            aes(x = Stage, stratum = clusters, alluvium = clusters,
+                y = Freq, fill = clusters)) +
+  geom_flow(stat = "alluvium", lode.guidance = "frontback", colour = "darkgray") +
+  geom_stratum() +
+  facet_wrap(~ category.y + classification, scales = "free_y") +
+  labs(title = "",
+       x = "Timeframe",
+       y = "Number of strains detected",
+       fill = "Cluster") +
+  theme_bw(base_size = 11) +
   theme(
-    plot.title = element_text(size = 10, hjust = 0),
-    strip.text = element_text(size = 7),
-    axis.text.x = element_text(angle = 45, hjust = 1, size = 6),
-    axis.text.y = element_text(size = 6),
-    panel.grid.minor = element_blank()
-  )
+    legend.position = "right",
+    axis.ticks = element_blank(),
+    axis.text.y = element_text(size = 9),
+    axis.text.x = element_text(size = 8, hjust = 0.5),
+    axis.title = element_text(size = 10),
+    panel.background = element_blank(),
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+    plot.background = element_blank(),
+    legend.text = element_text(size = 9),
+    legend.title = element_text(size = 10),
+    strip.background = element_rect(colour = "black", fill = "white"),
+    strip.text = element_text(size = 8, face = "italic")
+  ) +
+  guides(fill = guide_legend(nrow = 1, byrow = TRUE))
 
-n_panels <- length(unique(df_plot$species_label))
-fig_w <- 12
-fig_h <- max(6, 2.0 * ceiling(n_panels / 4))
+n_panels <- nrow(unique(plot_df[, c("category.y", "classification")]))
+fig_w <- 14
+fig_h <- max(7, 2.0 * ceiling(n_panels / 4))
 
 ggsave(file.path(out_dir, "Figure_8.png"), p,
-       width = fig_w, height = fig_h, dpi = 220, bg = "white")
+       width = fig_w, height = fig_h, dpi = 300, bg = "white")
 ggsave(file.path(out_dir, "Figure_8.pdf"), p,
        width = fig_w, height = fig_h, bg = "white")
 
-df_plot %>%
-  transmute(species = classification,
-            kefir_type = kg,
-            stage = as.character(Stage),
-            cluster = cluster,
-            sample_id = sample_id) %>%
-  write_tsv(file.path(out_dir, "Figure_8_data.tsv"))
-
-message("Wrote Figure_8.png + .pdf + Figure_8_data.tsv to ", out_dir)
+write_tsv(plot_df, file.path(out_dir, "Figure_8_data.tsv"))
+message("Wrote Figure_8.{png,pdf} + Figure_8_data.tsv to ", out_dir)

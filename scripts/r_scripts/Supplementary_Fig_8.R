@@ -23,7 +23,15 @@ suppressPackageStartupMessages({
   library(patchwork)
 })
 
-repo_root <- normalizePath(file.path(dirname(sys.frame(1)$ofile %||% "."), "..", ".."))
+get_script_dir <- function() {
+  args <- commandArgs(trailingOnly = FALSE)
+  file_arg <- "--file="
+  m <- grep(file_arg, args)
+  if (length(m) > 0) return(dirname(normalizePath(sub(file_arg, "", args[m]))))
+  for (fr in sys.frames()) if (!is.null(fr$ofile)) return(dirname(normalizePath(fr$ofile)))
+  getwd()
+}
+repo_root <- normalizePath(file.path(get_script_dir(), "..", ".."))
 data_path <- file.path(repo_root, "data",
                       "instrain_genome_species_primary_data_v4.csv")
 out_dir   <- file.path(repo_root, "figures")
