@@ -1,0 +1,50 @@
+cff-version: 1.2.0
+message: "If you use this code or data, please cite the associated paper."
+title: "Kefir4all: code and source data for the Kefir4All Citizen Science metagenomics study"
+authors:
+  - family-names: Walsh
+    given-names: Liam H.
+    orcid: https://orcid.org/0009-0002-9054-1910
+  - family-names: Breselge
+    given-names: Samuel
+    orcid: https://orcid.org/0000-0003-1738-7902
+  - family-names: Prado Martin
+    given-names: José Guilherme
+    orcid: https://orcid.org/0000-0002-6629-6452
+  - family-names: Coakley
+    given-names: Mairéad
+  - family-names: Crispie
+    given-names: Fiona
+  - family-names: Skibinska
+    given-names: Iwona
+    orcid: https://orcid.org/0009-0003-0933-4138
+  - family-names: Kilcawley
+    given-names: Kieran N.
+    orcid: https://orcid.org/0000-0003-4048-8883
+  - family-names: Cotter
+    given-names: Paul D.
+    orcid: https://orcid.org/0000-0002-5465-9068
+repository-code: "https://github.com/LiamHWalsh/Kefir4all"
+license: MIT
+preferred-citation:
+  type: article
+  title: "Adaptations and community changes in milk and water kefir microbiomes in response to environmental parameters as revealed by the Kefir4All Citizen Science Project"
+  authors:
+    - family-names: Walsh
+      given-names: Liam H.
+    - family-names: Breselge
+      given-names: Samuel
+    - family-names: Prado Martin
+      given-names: José Guilherme
+    - family-names: Coakley
+      given-names: Mairéad
+    - family-names: Crispie
+      given-names: Fiona
+    - family-names: Skibinska
+      given-names: Iwona
+    - family-names: Kilcawley
+      given-names: Kieran N.
+    - family-names: Cotter
+      given-names: Paul D.
+  year: 2026
+  notes: "Manuscript under peer review. Update this entry once the DOI is assigned."

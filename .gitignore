@@ -1,0 +1,31 @@
+# Editor / OS scratch
+.DS_Store
+*~
+*.swp
+.idea/
+.vscode/
+
+# Python build / cache
+__pycache__/
+*.pyc
+.venv/
+.env
+
+# R working files
+.Rhistory
+.RData
+.Ruserdata
+*.Rproj.user/
+
+# Renderer scratch
+.ipynb_checkpoints/
+
+# Author working files (do not publish to public repo)
+*citizen*scientist*metadata*.csv
+Citizen Scientist metadata*.csv
+
+# Manuscript drafts (kept private; submission-controlled)
+*manuscript_tracked_changes*.docx
+*supplementary_information*.docx
+*rebuttal*.docx
+*cover_letter*.docx
