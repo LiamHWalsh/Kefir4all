@@ -47,12 +47,13 @@ Each script writes a PNG, a PDF, and a tab-separated source-data table into `fig
 | Figure 5 | Figure 5 | `scripts/r_scripts/Figure_5.R` |
 | Figure 6 | Figure 6 | `scripts/r_scripts/Figure_6.R` |
 | Figure 7 | Figure 7 | `scripts/r_scripts/Figure_7.R` |
-| Figure 8 | Supplementary Fig. 6 | `scripts/r_scripts/Figure_8_legacy.R` |
-| Figure 9 | Supplementary Fig. 7 | `scripts/r_scripts/Figure_9_legacy.R` |
-| Figure 10 (combined dRep + inStrain panels) | Figure 8 (inStrain only) and Supplementary Fig. 9 (dRep) | `scripts/r_scripts/Figure_10_legacy.R` (legacy combined version), `scripts/python_scripts/render_figure_8.py` (new single-panel inStrain) and `scripts/python_scripts/render_supplementary_fig_9.py` (new dRep temporal panel) |
-| n/a | Supplementary Fig. 5 | `scripts/python_scripts/render_supplementary_fig_5.py` |
-| n/a | Supplementary Fig. 8 | `scripts/python_scripts/render_supplementary_fig_8.py` |
-| n/a | Supplementary Table 1 | computed inline by `render_supplementary_fig_8.py` (per-species cluster counts in `figures/Supplementary_Table_1.tsv`) |
+| Figure 8 (original) | Supplementary Fig. 6 | `scripts/r_scripts/Supplementary_Fig_6.R` |
+| Figure 9 (original) | Supplementary Fig. 7 | `scripts/r_scripts/Supplementary_Fig_7.R` |
+| Figure 10 (original, combined dRep + inStrain panels) | Figure 8 (inStrain only) | `scripts/r_scripts/Figure_8.R` (R) or `scripts/python_scripts/render_figure_8.py` (Python) |
+| n/a | Supplementary Fig. 5 | `scripts/r_scripts/Supplementary_Fig_5.R` (R) or `scripts/python_scripts/render_supplementary_fig_5.py` (Python) |
+| n/a | Supplementary Fig. 8 | `scripts/r_scripts/Supplementary_Fig_8.R` (R) or `scripts/python_scripts/render_supplementary_fig_8.py` (Python) |
+| n/a | Supplementary Fig. 9 (dRep half of original Fig 10) | `scripts/r_scripts/Supplementary_Fig_9.R` (R) or `scripts/python_scripts/render_supplementary_fig_9.py` (Python) |
+| n/a | Supplementary Table 1 | per-species secondary-cluster counts in `figures/Supplementary_Table_1.tsv` |
 
 ## Data
 
@@ -63,6 +64,10 @@ The `data/` folder in this repository contains the numerical source data for eve
 ## Data protection
 
 This repository contains **no individual citizen-scientist identifiers, no household-level metadata that could be re-identifying, and no participant raw response files**. Aggregated, anonymised metadata used as figure inputs (e.g. `kefir4all_sample_metadata_v2.csv`) is included where it appears as a column input to figure code; participant-identifying CSVs are explicitly excluded by `.gitignore`.
+
+## Reproducibility
+
+For exact reproduction of every figure (R version, Python version, package install, env-locking, container, Zenodo archival), see [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md).
 
 ## Citation
 
