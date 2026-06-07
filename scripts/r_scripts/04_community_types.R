@@ -662,7 +662,7 @@ pcoa_v2 %>%
 
 
 library(ggpubr)
-jpeg(filename='file.path(FIGURES_DIR, 'Figure_5.jpeg')', width = 7864, height=5200,res =300,pointsize = 15) #, width=2000, height=1950)
+jpeg(filename=file.path(FIGURES_DIR, 'Figure_5.jpeg'), width = 7864, height=5200,res =300,pointsize = 15) #, width=2000, height=1950)
 
 
 ggarrange(p_total_v2,
@@ -690,16 +690,16 @@ ggarrange(p_total_v2,
  )
  
  
-  pdf("file.path(FIGURES_DIR, "Figure5_model.pdf")")#, width = fig_width, height = fig_height)
+  pdf(file.path(FIGURES_DIR, "Figure5_model.pdf"))#, width = fig_width, height = fig_height)
   print(combined_plot)
   dev.off()
 
- svg("file.path(FIGURES_DIR, "Figure5_model.svg")", width = fig_width, height = fig_height)
+ svg(file.path(FIGURES_DIR, "Figure5_model.svg"), width = fig_width, height = fig_height)
  print(combined_plot)
  dev.off()
  
  
- CairoPNG("file.path(FIGURES_DIR, "Figure5_model.png")", width = fig_width * dpi_res, height = fig_height * dpi_res, res = dpi_res)
+ CairoPNG(file.path(FIGURES_DIR, "Figure5_model.png"), width = fig_width * dpi_res, height = fig_height * dpi_res, res = dpi_res)
  print(combined_plot)
  dev.off()
  
@@ -812,7 +812,7 @@ for (type in names(beta_diversity)){
 
 library(ggpubr)
 
-jpeg(filename='file.path(FIGURES_DIR, 'Figure_5_v2.jpeg')', width = 7864, height=5200,res =300,pointsize = 15) #, width=2000, height=1950)
+jpeg(filename=file.path(FIGURES_DIR, 'Figure_5_v2.jpeg'), width = 7864, height=5200,res =300,pointsize = 15) #, width=2000, height=1950)
 
 
 ggarrange(p_total,

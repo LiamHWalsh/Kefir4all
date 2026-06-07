@@ -364,8 +364,7 @@ my.files_summary$`Sample ID` <- as.factor(my.files_summary$site )
 library(car )
 levene <- leveneTest(shannon ~ `Sample ID`, data = my.files_summary)
 
-if(levene$`Pr(>F)`[1]  <0.05){
-  
+if(!is.na(levene$`Pr(>F)`[1]) && levene$`Pr(>F)`[1] < 0.05){
   print(paste("for ",file,"leveneTest is less than 0.05, data does not have equal variance."))
 }
 
@@ -764,7 +763,7 @@ persistance <-
 library(ggpubr)
 
 
-jpeg(filename='file.path(FIGURES_DIR, 'Figure_4.jpeg')', width = 7864, height=5200,res =300,pointsize = 15) #, width=2000, height=1950)
+jpeg(filename=file.path(FIGURES_DIR, 'Figure_4.jpeg'), width = 7864, height=5200,res =300,pointsize = 15) #, width=2000, height=1950)
 
 
  ggarrange(

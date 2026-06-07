@@ -3229,7 +3229,7 @@ cor_plot_data$r <- as.numeric(cor_plot_data$r)
    
    library(ggpubr)
    
-   jpeg("file.path(FIGURES_DIR, "Figure_9.jpeg")", width = 7864, height=5200,res =300,pointsize = 15)
+   jpeg(file.path(FIGURES_DIR, "Figure_9.jpeg"), width = 7864, height=5200,res =300,pointsize = 15)
    #
    #
    ggarrange(p_alpha,ggarrange( pcoa_data_total[["Milk.kefir"]][["conditions"]],
