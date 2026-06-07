@@ -1,10 +1,11 @@
-﻿
+
 # ==============================================================================
 # PATH CONFIGURATION — portable relative paths via the here package
 # Run install.packages("here") if not installed.
 # For files listed in data/private/README.md, provide your own copies.
 # ==============================================================================
-if (!requireNamespace("here", quietly = TRUE)) install.packages("here")
+if (!requireNamespace("here",   quietly = TRUE)) install.packages("here")
+if (!requireNamespace("pacman", quietly = TRUE)) install.packages("pacman")
 library(here)
 DATA_DIR    <- here::here("data")                         # public data files
 PRIVATE_DIR <- here::here("data", "private")              # private/sensitive files
