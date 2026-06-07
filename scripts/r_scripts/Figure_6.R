@@ -1,9 +1,29 @@
+﻿
+# ==============================================================================
+# PATH CONFIGURATION — portable relative paths via the here package
+# Run install.packages("here") if not installed.
+# For files listed in data/private/README.md, provide your own copies.
+# ==============================================================================
+if (!requireNamespace("here", quietly = TRUE)) install.packages("here")
+library(here)
+DATA_DIR    <- here::here("data")                         # public data files
+PRIVATE_DIR <- here::here("data", "private")              # private/sensitive files
+FIGURES_DIR <- here::here("output", "figures")
+dir.create(FIGURES_DIR, recursive = TRUE, showWarnings = FALSE)
+
+# Private metadata — not distributed with repo (participant identifiers)
+CS_METADATA_PRIVATE <- file.path(PRIVATE_DIR, "Citizen Scientist metadata_v8.csv")
+if (!file.exists(CS_METADATA_PRIVATE)) {
+  warning("Private metadata not found: ", CS_METADATA_PRIVATE,
+          "\nSee data/private/README.md. Some figures requiring this file will not render.")
+}
+# ==============================================================================
 
 ########################################################################################################################
 #Libraries used
 ########################################################################################################################
 
-.libPaths("E:/STORE N GO/R/R-4.0.2/win-library/4.0")
+# .libPaths() removed — use default R library or renv
 pacman::p_load(readxl,readr,reshape2,dplyr, gplots,Heatplus,vegan,RColorBrewer,tidyr,gtools,stringr,tidyverse,ComplexHeatmap,magick,viridis)
 pacman::p_load(readxl,devtools,taxize,rotl,ape,treeio,ggtree,DECIPHER,ggdendro,ggplot2,tidyr,optmatch,rentrez,plyr,dplyr,RColorBrewer,stringr,scales)
 library(vegan)
@@ -14,8 +34,8 @@ library(grid)
 ########################################################################################################################
 #Import metacache data
 ########################################################################################################################
-metacache <- read_csv("Q:/H2020 Master/Citizen Science Project/Results/04_short_read_profiling/04_Metacache/04_metacache_total_species_profile.csv")
-metacache_strain <-  read_csv("Q:/H2020 Master/Citizen Science Project/Results/04_short_read_profiling/04_Metacache/04_metacache_total_strain_profile.csv")
+metacache <- read_csv(file.path(DATA_DIR, "04_metacache_total_species_profile.csv"))
+metacache_strain <-  read_csv(file.path(DATA_DIR, "04_metacache_total_strain_profile.csv"))
 
 metacache$sample_id <- gsub("-","_",metacache$sample_id)
 metacache <- metacache[-c(which(metacache$sample_id=="TG_EC_S72")),]
@@ -25,16 +45,16 @@ metacache <- metacache[-c(which(metacache$sample_id=="TG_EC_S72")),]
 #Import metadata
 ########################################################################################################################
 
-global_mk_metadata <- read_csv("Q:/H2020 Master/Citizen Science Project/Citizen science metadata/sample_metadata/global_milk_kefir_metadata_v1.csv")
-global_wk_metadata <- read_csv("Q:/H2020 Master/Citizen Science Project/Citizen science metadata/sample_metadata/global_water_kefir_metadata_v1.csv")
-Citizen_Scientist_metadata_v8 <- read_csv("Q:/H2020 Master/Citizen Science Project/Citizen science metadata/Citizen Scientist metadata_v8.csv")
+global_mk_metadata <- read_csv(file.path(DATA_DIR, "global_milk_kefir_metadata_v1.csv"))
+global_wk_metadata <- read_csv(file.path(DATA_DIR, "global_water_kefir_metadata_v1.csv"))
+Citizen_Scientist_metadata_v8 <- read_csv(CS_METADATA_PRIVATE)
 
 Citizen_Scientist_metadata_v8$ID[which(nchar(Citizen_Scientist_metadata_v8$ID)==3)] <- gsub("ID","ID00",Citizen_Scientist_metadata_v8$ID[which(nchar(Citizen_Scientist_metadata_v8$ID)==3)] )
 Citizen_Scientist_metadata_v8$ID[which(nchar(Citizen_Scientist_metadata_v8$ID)==4)] <- gsub("ID","ID0",Citizen_Scientist_metadata_v8$ID[which(nchar(Citizen_Scientist_metadata_v8$ID)==4)] )
 
 
 
-kefir4all_metadata <- read_csv("Q:/H2020 Master/Citizen Science Project/Citizen science metadata/sample_metadata/kefir4all_sample_metadata_v2.csv")
+kefir4all_metadata <- read_csv(file.path(DATA_DIR, "kefir4all_sample_metadata_v2.csv"))
 kefir4all_metadata$merge_column <-  gsub("_host_removed_R..fastq.gz","",kefir4all_metadata$merge_column)
 ########################################################################################################################
 # Merge metadata into one
@@ -49,10 +69,10 @@ total_metadata <- rbind(dplyr::select(kefir4all_metadata, data_source, merge_col
 #Import prevalence data 
 ########################################################################################################################
 metacache_prevalence<-c()
-metacache_prevalence[["Milk.kefir"]] <- read_csv("Q:/H2020 Master/Citizen Science Project/Results/04_short_read_profiling/04_Metacache/prevalence/milk_metacache_prevalence.csv")
+metacache_prevalence[["Milk.kefir"]] <- read_csv(file.path(DATA_DIR, "milk_metacache_prevalence.csv"))
 
 
-metacache_prevalence[["Water.kefir"]] <- read_csv("Q:/H2020 Master/Citizen Science Project/Results/04_short_read_profiling/04_Metacache/prevalence/water_metacache_prevalence.csv")
+metacache_prevalence[["Water.kefir"]] <- read_csv(file.path(DATA_DIR, "water_metacache_prevalence.csv"))
 
 
 ########################################################################################################################
@@ -222,7 +242,7 @@ my.files_summary$conditions <-  "Household conditions"
 
 my.files_summary$conditions[which(my.files_summary$data_source %in% c("Walsh et al 2023","Mortensen et al 2023" ))] <- "Laboratory controlled"
 
-setwd("Q:/H2020 Master/Citizen Science Project/Plots/Evolution")
+setwd("FIGURES_DIR  # output directory — was Q:/plots/Evolution")
 
 #jpeg(filename='Alpha diversity_kefir_type.jpeg', width = 35*700, height=30*700,res=1700,pointsize = 15) #, width=2000, height=1950)
 ########################################################################################################################
@@ -732,7 +752,7 @@ persistance <-
 library(ggpubr)
 
 
-jpeg(filename='Q:/H2020 Master/Citizen Science Project/plots/Evolution/manuscript figures/Figure4.jpeg', width = 7864, height=5200,res =300,pointsize = 15) #, width=2000, height=1950)
+jpeg(filename='file.path(FIGURES_DIR, 'Figure_4.jpeg')', width = 7864, height=5200,res =300,pointsize = 15) #, width=2000, height=1950)
 
 
  ggarrange(

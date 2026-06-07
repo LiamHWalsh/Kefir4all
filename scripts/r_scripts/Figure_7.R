@@ -1,3 +1,23 @@
+﻿
+# ==============================================================================
+# PATH CONFIGURATION — portable relative paths via the here package
+# Run install.packages("here") if not installed.
+# For files listed in data/private/README.md, provide your own copies.
+# ==============================================================================
+if (!requireNamespace("here", quietly = TRUE)) install.packages("here")
+library(here)
+DATA_DIR    <- here::here("data")                         # public data files
+PRIVATE_DIR <- here::here("data", "private")              # private/sensitive files
+FIGURES_DIR <- here::here("output", "figures")
+dir.create(FIGURES_DIR, recursive = TRUE, showWarnings = FALSE)
+
+# Private metadata — not distributed with repo (participant identifiers)
+CS_METADATA_PRIVATE <- file.path(PRIVATE_DIR, "Citizen Scientist metadata_v8.csv")
+if (!file.exists(CS_METADATA_PRIVATE)) {
+  warning("Private metadata not found: ", CS_METADATA_PRIVATE,
+          "\nSee data/private/README.md. Some figures requiring this file will not render.")
+}
+# ==============================================================================
 
 
 
@@ -7,7 +27,7 @@
 ###############################################################################################################
 #look into the genetic distance between clusters
 ###############################################################################################################
-.libPaths("E:/STORE N GO/R/R-4.0.2/win-library/4.0")
+# .libPaths() removed — use default R library or renv
 
 pacman::p_load(rlang,tibble,ape,colorspace,concaveman,ggnewscale,readxl,hrbrthemes,Biostrings,ggtree,flextable,devtools,R4RNA,taxize,rotl,ape,treeio,DECIPHER,ggdendro,ggplot2,tidyr,RSQLite,optmatch,rentrez,dplyr,seqinr,RColorBrewer,ggtext)
 pacman::p_load(readxl,readr,reshape2,dplyr, gplots,Heatplus,vegan,RColorBrewer,tidyr,gtools,stringr,tidyverse,ComplexHeatmap,magick,viridis)
@@ -24,14 +44,14 @@ library(ggplot2)
 
 
 instrain =read_csv(
-  "Q:/H2020 Master/Citizen Science Project/Results/06_strain_profiling/06_instrain/combined_outputs/instrain_genome_species_primary_data_V4.csv"
+  file.path(DATA_DIR, "instrain_genome_species_primary_data_v4.csv")
 )
 
 
 
 library(readr)
 
-all_genomes_strain_v2 <- read_delim("Q:/H2020 Master/Citizen Science Project/Results/06_strain_profiling/06_instrain/all.genomes_strain_v2.stb", 
+all_genomes_strain_v2 <- read_delim(file.path(DATA_DIR, "all.genomes_strain_v2.stb"), 
                                     delim = "\t", escape_double = FALSE, 
                                     col_names = FALSE, trim_ws = TRUE)
 
@@ -54,19 +74,19 @@ t2 <- c()
 #Import sample metadata
 ########################################################################################################################
 
-global_mk_metadata <- read_csv("Q:/H2020 Master/Citizen Science Project/Citizen science metadata/sample_metadata/global_milk_kefir_metadata_v1.csv")
-global_wk_metadata <- read_csv("Q:/H2020 Master/Citizen Science Project/Citizen science metadata/sample_metadata/global_water_kefir_metadata_v1.csv")
+global_mk_metadata <- read_csv(file.path(DATA_DIR, "global_milk_kefir_metadata_v1.csv"))
+global_wk_metadata <- read_csv(file.path(DATA_DIR, "global_water_kefir_metadata_v1.csv"))
 global_mk_metadata$Stage <- NA
 global_wk_metadata$Stage <- NA
 
-Citizen_Scientist_metadata_v8 <- read_csv("Q:/H2020 Master/Citizen Science Project/Citizen science metadata/Citizen Scientist metadata_v8.csv")
+Citizen_Scientist_metadata_v8 <- read_csv(CS_METADATA_PRIVATE)
 
 Citizen_Scientist_metadata_v8$ID[which(nchar(Citizen_Scientist_metadata_v8$ID)==3)] <- gsub("ID","ID00",Citizen_Scientist_metadata_v8$ID[which(nchar(Citizen_Scientist_metadata_v8$ID)==3)] )
 Citizen_Scientist_metadata_v8$ID[which(nchar(Citizen_Scientist_metadata_v8$ID)==4)] <- gsub("ID","ID0",Citizen_Scientist_metadata_v8$ID[which(nchar(Citizen_Scientist_metadata_v8$ID)==4)] )
 
 
 
-kefir4all_metadata <- read_csv("Q:/H2020 Master/Citizen Science Project/Citizen science metadata/sample_metadata/kefir4all_sample_metadata_v2.csv")
+kefir4all_metadata <- read_csv(file.path(DATA_DIR, "kefir4all_sample_metadata_v2.csv"))
 kefir4all_metadata$merge_column <-  gsub("_host_removed_R..fastq.gz","",kefir4all_metadata$merge_column)
 kefir4all_metadata <- kefir4all_metadata[-c(which(duplicated(kefir4all_metadata$merge_column))),]
 ########################################################################################################################
@@ -88,9 +108,9 @@ total_metadata $category[which(total_metadata $`kefir type` %in% c("ML","MG"))] 
 # MImport prevalence metadata
 ########################################################################################################################
 
-milk_taxonomic_profile_prevalence <- read_csv("Q:/H2020 Master/Citizen Science Project/Results/04_short_read_profiling/04_metaphlan/prevalence/milk_taxonomic_profile_prevalence.csv")
+milk_taxonomic_profile_prevalence <- read_csv("file.path(DATA_DIR, "milk_taxonomic_profile_prevalence.csv")")
 
-water_taxonomic_profile_prevalence <- read_csv("Q:/H2020 Master/Citizen Science Project/Results/04_short_read_profiling/04_metaphlan/prevalence/water_taxonomic_profile_prevalence.csv")
+water_taxonomic_profile_prevalence <- read_csv("file.path(DATA_DIR, "water_taxonomic_profile_prevalence.csv")")
 
 
 total_prevalence <- rbind(milk_taxonomic_profile_prevalence,water_taxonomic_profile_prevalence)
@@ -171,9 +191,9 @@ species="Lactococcus cremoris"
 
 
 
-milk_taxonomic_profile_prevalence <- read_csv("Q:/H2020 Master/Citizen Science Project/Results/04_short_read_profiling/04_metaphlan/prevalence/milk_taxonomic_profile_prevalence.csv")
+milk_taxonomic_profile_prevalence <- read_csv("file.path(DATA_DIR, "milk_taxonomic_profile_prevalence.csv")")
 
-water_taxonomic_profile_prevalence <- read_csv("Q:/H2020 Master/Citizen Science Project/Results/04_short_read_profiling/04_metaphlan/prevalence/water_taxonomic_profile_prevalence.csv")
+water_taxonomic_profile_prevalence <- read_csv("file.path(DATA_DIR, "water_taxonomic_profile_prevalence.csv")")
 
 
 total_prevalence <- rbind(milk_taxonomic_profile_prevalence,water_taxonomic_profile_prevalence)
@@ -441,7 +461,7 @@ for (species in  levels(as.factor(instrain$classification))){
 #       )
 #     
 #     
-#     jpeg(filename='Q:/H2020 Master/Citizen Science Project/plots/CS_metagenomics/cooccurnce_network_milk.kefir.jpeg', width = 7864, height=5200,res =300,pointsize = 15) #, width=2000, height=1950)
+#     jpeg(filename='file.path(FIGURES_DIR, 'cooccurrence_network_milk_kefir.jpeg')', width = 7864, height=5200,res =300,pointsize = 15) #, width=2000, height=1950)
 #     
 #     
 # plot(p1)
@@ -653,7 +673,7 @@ tidyr::gather(key = "type", value = "count", n_total_detections, n_multi_detecti
 
 library(ggpubr)
 
-jpeg(filename='Q:/H2020 Master/Citizen Science Project/Manuscripts/CS_Metagenomics/Figures -CS_Metagenomics/v2/Figure 9_model.jpeg', width = 7864, height=5200,res =300,pointsize = 15) #, width=2000, height=1950)
+jpeg(filename='file.path(FIGURES_DIR, 'Figure_9_model.jpeg')', width = 7864, height=5200,res =300,pointsize = 15) #, width=2000, height=1950)
 
 
 ggarrange(a, b,ncol=1,nrow=2,labels=c("A.","B."),font.label = list(size = 30),heights = c(.4,1), common.legend = FALSE)
@@ -737,7 +757,7 @@ graphics.off()
     
     
     
-    jpeg(filename='Q:/H2020 Master/Citizen Science Project/plots/CS_metagenomics/cooccurnce_network_milk.kefir.jpeg', width = 7864, height=5200,res =300,pointsize = 15) #, width=2000, height=1950)
+    jpeg(filename='file.path(FIGURES_DIR, 'cooccurrence_network_milk_kefir.jpeg')', width = 7864, height=5200,res =300,pointsize = 15) #, width=2000, height=1950)
     
     
     plot(p1)
@@ -960,7 +980,7 @@ plot <-
 
 
 
-jpeg(filename='Q:/H2020 Master/Citizen Science Project/Manuscripts/CS_Metagenomics/Figures -CS_Metagenomics/instrain_strain_clusters_cs_v3.jpeg', width = 7864, height=5200,res =300,pointsize = 15) #, width=2000, height=1950)
+jpeg(filename='file.path(FIGURES_DIR, 'Figure_7_instrain.jpeg')', width = 7864, height=5200,res =300,pointsize = 15) #, width=2000, height=1950)
 
 
 plot(plot)

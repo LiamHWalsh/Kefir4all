@@ -1,3 +1,23 @@
+﻿
+# ==============================================================================
+# PATH CONFIGURATION — portable relative paths via the here package
+# Run install.packages("here") if not installed.
+# For files listed in data/private/README.md, provide your own copies.
+# ==============================================================================
+if (!requireNamespace("here", quietly = TRUE)) install.packages("here")
+library(here)
+DATA_DIR    <- here::here("data")                         # public data files
+PRIVATE_DIR <- here::here("data", "private")              # private/sensitive files
+FIGURES_DIR <- here::here("output", "figures")
+dir.create(FIGURES_DIR, recursive = TRUE, showWarnings = FALSE)
+
+# Private metadata — not distributed with repo (participant identifiers)
+CS_METADATA_PRIVATE <- file.path(PRIVATE_DIR, "Citizen Scientist metadata_v8.csv")
+if (!file.exists(CS_METADATA_PRIVATE)) {
+  warning("Private metadata not found: ", CS_METADATA_PRIVATE,
+          "\nSee data/private/README.md. Some figures requiring this file will not render.")
+}
+# ==============================================================================
 ########################################################################################################################
 #Research objectives in this script
 #Describe the compositional profile of the CS dataset only
@@ -13,7 +33,7 @@
 ########################################################################################################################
 
 
-.libPaths("E:/STORE N GO/R/R-4.0.2/win-library/4.0")
+# .libPaths() removed — use default R library or renv
 pacman::p_load(readxl,tidyr,readr,devtools,taxize,rotl,ape,treeio,ggtree,DECIPHER,ggdendro,ggplot2,tidyr,optmatch,rentrez,plyr,dplyr,RColorBrewer,taxizedb )
 
 
@@ -21,7 +41,7 @@ pacman::p_load(readxl,tidyr,readr,devtools,taxize,rotl,ape,treeio,ggtree,DECIPHE
 #Libraries used
 ########################################################################################################################
 
-.libPaths("E:/STORE N GO/R/R-4.0.2/win-library/4.0")
+# .libPaths() removed — use default R library or renv
 pacman::p_load(readxl,readr,reshape2,dplyr, gplots,Heatplus,vegan,RColorBrewer,tidyr,gtools,stringr,tidyverse,ComplexHeatmap,magick,viridis)
 pacman::p_load(readxl,devtools,taxize,rotl,ape,treeio,ggtree,DECIPHER,ggdendro,ggplot2,tidyr,optmatch,rentrez,plyr,dplyr,RColorBrewer,stringr,scales)
 library(vegan)
@@ -32,8 +52,8 @@ library(grid)
 ########################################################################################################################
 #Import metacache data
 ########################################################################################################################
-metacache <- read_csv("Q:/H2020 Master/Citizen Science Project/Results/04_short_read_profiling/04_Metacache/04_metacache_total_species_profile_v2.csv")
-metacache_strain <-  read_csv("Q:/H2020 Master/Citizen Science Project/Results/04_short_read_profiling/04_Metacache/04_metacache_total_strain_profile_v2.csv")
+metacache <- read_csv(file.path(DATA_DIR, "04_metacache_total_species_profile_v2.csv"))
+metacache_strain <-  read_csv(file.path(DATA_DIR, "04_metacache_total_strain_profile_v2.csv"))
 
 metacache$sample_id <- gsub("-","_",metacache$sample_id)
 
@@ -74,15 +94,15 @@ metacache$sample_id <- gsub(".*/","",metacache$sample_id)
 # kefir4all_metadata[which(kefir4all_metadata$Stage=="T0"),]$`kefir type`[grep("WG",kefir4all_metadata[which(kefir4all_metadata$Stage=="T0"),"merge_column"])] <- "WG"
 # kefir4all_metadata$data_source <- "This study"
 # 
-# write.csv(kefir4all_metadata, "Q:/H2020 Master/Citizen Science Project/Citizen science metadata/sample_metadata/kefir4all_sample_metadata_v2.csv", quote = FALSE,row.names = FALSE)
+# write.csv(kefir4all_metadata, file.path(DATA_DIR, "kefir4all_sample_metadata_v2.csv"), quote = FALSE,row.names = FALSE)
 #note manual fix samll errors like extraction control
 ########################################################################################################################
 #Import metadata
 ########################################################################################################################
 
-global_mk_metadata <- read_csv("Q:/H2020 Master/Citizen Science Project/Citizen science metadata/sample_metadata/global_milk_kefir_metadata_v1.csv")
-global_wk_metadata <- read_csv("Q:/H2020 Master/Citizen Science Project/Citizen science metadata/sample_metadata/global_water_kefir_metadata_v1.csv")
-Citizen_Scientist_metadata_v8 <- read_csv("Q:/H2020 Master/Citizen Science Project/Citizen science metadata/Citizen Scientist metadata_v8.csv")
+global_mk_metadata <- read_csv(file.path(DATA_DIR, "global_milk_kefir_metadata_v1.csv"))
+global_wk_metadata <- read_csv(file.path(DATA_DIR, "global_water_kefir_metadata_v1.csv"))
+Citizen_Scientist_metadata_v8 <- read_csv(CS_METADATA_PRIVATE)
 
 Citizen_Scientist_metadata_v8$ID[which(nchar(Citizen_Scientist_metadata_v8$ID)==3)] <- gsub("ID","ID00",Citizen_Scientist_metadata_v8$ID[which(nchar(Citizen_Scientist_metadata_v8$ID)==3)] )
 Citizen_Scientist_metadata_v8$ID[which(nchar(Citizen_Scientist_metadata_v8$ID)==4)] <- gsub("ID","ID0",Citizen_Scientist_metadata_v8$ID[which(nchar(Citizen_Scientist_metadata_v8$ID)==4)] )
@@ -90,7 +110,7 @@ Citizen_Scientist_metadata_v8$ID[which(nchar(Citizen_Scientist_metadata_v8$ID)==
 ########################################################################################################################
 #Import and modify survey_responses 
 ########################################################################################################################
-setwd("Q:/H2020 Master/Citizen Science Project/Results/00/")
+setwd(file.path(PRIVATE_DIR))  # survey response xlsx from private dir — see data/private/README.md
 temp = list.files(pattern=".xlsx", recursive = FALSE)
 myfiles = lapply(temp,read_excel)
 names(myfiles) <- gsub("file_names_survey_responses_|.xlsx","",temp)
@@ -98,7 +118,7 @@ names(myfiles) <- gsub("file_names_survey_responses_|.xlsx","",temp)
 
 
 
-kefir4all_metadata <- read_csv("Q:/H2020 Master/Citizen Science Project/Citizen science metadata/sample_metadata/kefir4all_sample_metadata_v2.csv")
+kefir4all_metadata <- read_csv(file.path(DATA_DIR, "kefir4all_sample_metadata_v2.csv"))
 
 #kefir4all_metadata$`kefir type`[grep("MLC|WLC",kefir4all_metadata$merge_column)] <- "Liquid control"
 kefir4all_metadata$merge_column <-  gsub("_host_removed_R..fastq.gz","",kefir4all_metadata$merge_column)
@@ -1050,7 +1070,7 @@ library(ggpubr)
 # 
 
 
-jpeg(filename='Q:/H2020 Master/Citizen Science Project/Manuscripts/CS_Metagenomics/Figures -CS_Metagenomics/v2/Figure 2_v4.jpeg', width = 7864, height=5200,res =300,pointsize = 15) #, width=2000, height=1950)
+jpeg(filename=file.path(FIGURES_DIR, 'Figure_2.jpeg'), width = 7864, height=5200,res =300,pointsize = 15) #, width=2000, height=1950)
 
 
 ggarrange( bubble_plot,
