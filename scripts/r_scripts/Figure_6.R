@@ -242,7 +242,7 @@ my.files_summary$conditions <-  "Household conditions"
 
 my.files_summary$conditions[which(my.files_summary$data_source %in% c("Walsh et al 2023","Mortensen et al 2023" ))] <- "Laboratory controlled"
 
-setwd("FIGURES_DIR  # output directory — was Q:/plots/Evolution")
+setwd(FIGURES_DIR)  # output directory
 
 #jpeg(filename='Alpha diversity_kefir_type.jpeg', width = 35*700, height=30*700,res=1700,pointsize = 15) #, width=2000, height=1950)
 ########################################################################################################################

@@ -90,21 +90,11 @@ total_metadata $category[which(total_metadata $`kefir type` %in% c("ML","MG"))] 
 
 
 # 
-setwd(file.path(DATA_DIR, "metabolomics"))  # main metabolomics xlsx — see data/private/README.md
-# 
-# 
-# 
-# temp <- c()
-temp = list.files(pattern="*.xlsx", recursive = FALSE, full.names = TRUE)
-
-
-
-
-myfiles = lapply(temp,read_excel)
-
-
-
-names( myfiles) <- c("Milk.kefir","Water.kefir")
+# Main metabolomics data (volatile compound profiles)
+myfiles <- list(
+  `Milk.kefir`  = read_excel(file.path(DATA_DIR, "Final results table all milk kefirs 0913-001.xlsx")),
+  `Water.kefir` = read_excel(file.path(DATA_DIR, "Final results table all water kefirs 0913-002.xlsx"))
+)
 
 
 colnames(myfiles[["Water.kefir"]])[which(colnames(myfiles[["Water.kefir"]])=="Name")] <- "Compound"
@@ -427,7 +417,7 @@ my.files_summary[[i]] <- merge(my.files_summary[[i]], metadata_metabolomics[[i]]
 
 
 my.files_summary[[i]]$shannon <- as.numeric( my.files_summary[[i]]$shannon)
-#setwd("FIGURES_DIR  # output directory — was Q:/plots/Evolution")
+#setwd(FIGURES_DIR)  # output directory
 
 #jpeg(filename='Alpha diversity_kefir_type.jpeg', width = 35*700, height=30*700,res=1700,pointsize = 15) #, width=2000, height=1950)
 
@@ -997,21 +987,12 @@ metabolites_plot_data$timeframe[which(metabolites_plot_data$Stage %in% c("T4", "
   #############################################################################################################################
   
   # 
-  setwd(file.path(DATA_DIR, "metabolomics", "other_datasets"))
-  # 
-  # 
-  # 
-  # temp <- c()
-  temp = list.files(pattern="*.xlsx", recursive = TRUE, full.names = TRUE)
-  
-  
-  
-  
-  metabolic_data = lapply(temp,read_excel)
-  
-  
-  #"Kefir4all.Milk.kefir","Kefir4all.Water.kefir",
-  names(   metabolic_data) <- c("Gethins.Milk.kefir","Walsh.Milk.kefir","Breselge.Water.kefir")
+  # Published metabolomics comparator datasets
+  metabolic_data <- list(
+    `Gethins.Milk.kefir`    = read_excel(file.path(DATA_DIR, "metabolomics", "other_datasets", "mk_Gethins_et_al.xlsx")),
+    `Walsh.Milk.kefir`      = read_excel(file.path(DATA_DIR, "metabolomics", "other_datasets", "mk_walsh_et_al.xlsx")),
+    `Breselge.Water.kefir`  = read_excel(file.path(DATA_DIR, "metabolomics", "other_datasets", "wk_Breselge_et_al.xlsx"))
+  )
   
   
 metabolic_data[["Breselge.Water.kefir"]]$Sample <- gsub("-","_",metabolic_data[["Breselge.Water.kefir"]]$Sample )
@@ -1269,7 +1250,7 @@ which(is.na(metadata_metabolomics_datasets[["Breselge.Water.kefir"]]$merge_colum
    
    
    my.files_summary[[i]]$shannon <- as.numeric( my.files_summary[[i]]$shannon)
-   #setwd("FIGURES_DIR  # output directory — was Q:/plots/Evolution")
+   #setwd(FIGURES_DIR)  # output directory
    
    #jpeg(filename='Alpha diversity_kefir_type.jpeg', width = 35*700, height=30*700,res=1700,pointsize = 15) #, width=2000, height=1950)
    

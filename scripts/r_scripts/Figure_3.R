@@ -60,10 +60,11 @@ Citizen_Scientist_metadata_v8$ID[which(nchar(Citizen_Scientist_metadata_v8$ID)==
 ########################################################################################################################
 #Import and modify survey_responses 
 ########################################################################################################################
-setwd(file.path(PRIVATE_DIR))  # survey response xlsx from private dir — see data/private/README.md
-temp = list.files(pattern=".xlsx", recursive = FALSE)
-myfiles = lapply(temp,read_excel)
-names(myfiles) <- gsub("file_names_survey_responses_|.xlsx","",temp)
+# Survey response xlsx files — already in data/ (non-identifying aggregate responses)
+myfiles <- list(
+  mk = read_excel(file.path(DATA_DIR, "file_names_survey_responses_mk.xlsx")),
+  wk = read_excel(file.path(DATA_DIR, "file_names_survey_responses_wk.xlsx"))
+)
 
 
 kefir4all_metadata <- read_csv(file.path(DATA_DIR, "kefir4all_sample_metadata_v2.csv"))
