@@ -688,7 +688,10 @@ pacman::p_load(readxl,rlang,ggplot2,jpeg,patchwork,png,grid,ggimage,dplyr,tidyr,
 
 #devtools::install_github("tntp/surveymonkey")
 
-library(surveymonkey)
+# surveymonkey requires a SurveyMonkey OAuth token (not distributable).
+# Install with: devtools::install_github("tntp/surveymonkey")
+# Sections below that call surveymonkey functions will be skipped if not available.
+if (requireNamespace("surveymonkey", quietly=TRUE)) library(surveymonkey)
 # Import the options command into your r_profile using the below command
 #usethis::edit_r_profile()
 #options(sm_oauth_token = "vOcHPmfepVilX6cUC5JVr4axcPfCv4UxPKhWEd-rbegkTh58EF2I.SvzlZYBpNnQliGeObex30.GNzFQP8lUb.UVzWMjHVeli4G-pgueVnnuhu66IEzB5ovNjlYmP1YU")

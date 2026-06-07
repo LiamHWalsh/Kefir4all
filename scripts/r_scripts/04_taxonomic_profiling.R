@@ -421,6 +421,7 @@ total_compositional_data$kefirdataset[which(total_compositional_data$`kefir type
 
 
 #which(is.na(total_compositional_data$kefirdataset))
+if (!requireNamespace("ggh4x", quietly=TRUE)) install.packages("ggh4x")
 library(ggh4x)
 
 p_heatmap <- c()
