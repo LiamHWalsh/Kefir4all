@@ -15,8 +15,12 @@ dir.create(FIGURES_DIR, recursive = TRUE, showWarnings = FALSE)
 # Private metadata — not distributed with repo (participant identifiers)
 CS_METADATA_PRIVATE <- file.path(PRIVATE_DIR, "Citizen Scientist metadata_v8.csv")
 if (!file.exists(CS_METADATA_PRIVATE)) {
-  warning("Private metadata not found: ", CS_METADATA_PRIVATE,
-          "\nSee data/private/README.md. Some figures requiring this file will not render.")
+  stop(
+    "This script requires the private citizen-scientist metadata file which is not\n",
+    "distributed with the public repository (contains participant identifiers).\n",
+    "Missing: ", CS_METADATA_PRIVATE, "\n",
+    "See data/private/README.md for details."
+  )
 }
 # ==============================================================================
 #############################################################################################################################################################################################################################################
