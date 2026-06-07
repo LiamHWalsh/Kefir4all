@@ -701,14 +701,18 @@ getOption("sm_oauth_token")
 
 
 library(readr)
-survey_mk <- read_delim(file.path(PRIVATE_DIR, "fermentation_survey_mk_edited_dated.txt"), 
-                        delim = "\t", escape_double = FALSE, 
-                        trim_ws = TRUE)
-
-
-survey_wk <- read_delim(file.path(PRIVATE_DIR, "fermentation_survey_wk_edited_dated.txt"), 
-                        delim = "\t", escape_double = FALSE, 
-                        trim_ws = TRUE)
+SURVEY_MK <- file.path(PRIVATE_DIR, "fermentation_survey_mk_edited_dated.txt")
+SURVEY_WK <- file.path(PRIVATE_DIR, "fermentation_survey_wk_edited_dated.txt")
+if (!file.exists(SURVEY_MK) || !file.exists(SURVEY_WK)) {
+  stop(
+    "This script requires private fermentation survey files not distributed with the repo.\n",
+    "Missing: ", SURVEY_MK, "\n",
+    "Missing: ", SURVEY_WK, "\n",
+    "See data/private/README.md for details."
+  )
+}
+survey_mk <- read_delim(SURVEY_MK, delim = "\t", escape_double = FALSE, trim_ws = TRUE)
+survey_wk <- read_delim(SURVEY_WK, delim = "\t", escape_double = FALSE, trim_ws = TRUE)
 
 
 

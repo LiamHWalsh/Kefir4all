@@ -1102,10 +1102,12 @@ graphics.off()
            #scale_x_discrete(limits=species_data_long$Stage))
 
 
-species_data %>% 
-  ggplot(aes(x=type,y=relative_abundance,fill=type))+
-  geom_boxplot()+
-  facet_wrap(~clade_name)
+if (exists("species_data")) {
+  species_data %>%
+    ggplot(aes(x=type,y=relative_abundance,fill=type))+
+    geom_boxplot()+
+    facet_wrap(~clade_name)
+}
 
 
 

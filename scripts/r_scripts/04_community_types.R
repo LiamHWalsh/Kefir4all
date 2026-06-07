@@ -390,9 +390,11 @@ for (i in c("Mortensen et al - Water kefir", "This study - Milk kefir",       "T
       subset_metadata <-
         data.bray_metadata[which(data.bray_metadata$data_source_specific%in% c(i, j)),]
       
-      t <- 
-        anosim(subset_data1, group =subset_metadata$data_source_specific)
-      
+      t <- tryCatch(
+        anosim(subset_data1, group = subset_metadata$data_source_specific),
+        error = function(e) { message("anosim skipped (", i, " vs ", j, "): ", e$message); NULL }
+      )
+      if (!is.null(t))
       aov_tab <- rbind(aov_tab,data.frame(id=as.character(paste(i, "vs",j,sep=" ")),
                                           p_value=as.numeric(t$signif),
                                           R2=as.numeric(t$statistic)))

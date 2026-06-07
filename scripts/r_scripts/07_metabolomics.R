@@ -2780,11 +2780,11 @@ all=TRUE)
    
    
    
-   ggbetweenstats(
+if (exists("preprocessing_summary")) ggbetweenstats(
      data =  preprocessing_summary[[i]][which(preprocessing_summary[[i]]$n_of_reads >=r1 &
-                                                
+
                                                 preprocessing_summary[[i]]$n_of_reads<=r2),],
-     
+
      x =study_accession,
      y = n_of_reads,
      fill=merge_column,
