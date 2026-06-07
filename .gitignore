@@ -24,8 +24,35 @@ __pycache__/
 *citizen*scientist*metadata*.csv
 Citizen Scientist metadata*.csv
 
+# Private data subfolder (participant identifiers — never commit)
+data/private/
+
 # Manuscript drafts (kept private; submission-controlled)
 *manuscript_tracked_changes*.docx
 *supplementary_information*.docx
 *rebuttal*.docx
 *cover_letter*.docx
+
+# Large local working folders (not in repo)
+temp_001/
+temp_002/
+temp_003/
+resubmission/
+revision_tracking/
+manuscripts/
+protocols/
+supplementary/
+
+# Archives
+*.zip
+
+# Local PDF artefacts
+46912_*
+fileCUsers*.pdf
+~$*.pdf
+*.pdf.txt
+
+# Session-generated analysis notes (not version-controlled)
+ALIGNMENT_SUMMARY.md
+FIGURE_STRUCTURE_CORRECTED.md
+TRACKED_CHANGES_FIXES_NEEDED.md
