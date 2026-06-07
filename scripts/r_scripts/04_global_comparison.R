@@ -850,47 +850,43 @@ graphics.off()
 
 
 #aes(, order = order)
+tryCatch(
 ggplot(my.files_summary_cs, aes(x=fct_reorder2(category_confirmed, -as.numeric(shannon),`kefir type.x`), y=as.numeric(shannon),fill=category_confirmed)) +
   geom_boxplot() +
-  #facet_wrap(~ medium)+
-  #labs(title= 'Alpha diversity of timepoints') +
   geom_point()+
   theme_bw()+
   xlab("Time points")+
   ylab("Alpha diversity values (Shannon)")+
   labs(fill = "Timepoint")+
-  #guides(colour = guide_legend(override.aes = list(size=25)))+
-  #ylim(0,250)+
   theme(plot.title = element_text(hjust = 0.5,size=35,face="bold"),
         legend.title = element_text( size=25, face="bold"),
         axis.text.x = element_text(angle = 45, hjust = 1, size = 15),
         axis.text.y = element_text(hjust = 1, size = 10),
         axis.title.x = element_text( size=15, face="bold",hjust = 0.5,vjust = -1),
         axis.title.y = element_text( size=15, face="bold",hjust = 0.5, vjust = 2),
-        legend.position = "none")
+        legend.position = "none"),
+error = function(e) message("Skipped category_confirmed plot: ", e$message))
 #
 
 
+tryCatch(
 my.files_summary_cs %>%
   mutate(meanViz = mean(as.numeric(shannon), na.rm = TRUE)) %>%
   ggplot(aes(x=fct_reorder2(category_confirmed, as.numeric(meanViz),as.factor(`kefir type.x`)), y=as.numeric(shannon),fill=category_confirmed)) +
   geom_boxplot() +
-  #facet_wrap(~ medium)+
-  #labs(title= 'Alpha diversity of timepoints') +
   geom_point()+
   theme_bw()+
   xlab("Time points")+
   ylab("Alpha diversity values (Shannon)")+
   labs(fill = "Timepoint")+
-  #guides(colour = guide_legend(override.aes = list(size=25)))+
-  #ylim(0,250)+
   theme(plot.title = element_text(hjust = 0.5,size=35,face="bold"),
         legend.title = element_text( size=25, face="bold"),
         axis.text.x = element_text(angle = 45, hjust = 1, size = 15),
         axis.text.y = element_text(hjust = 1, size = 10),
         axis.title.x = element_text( size=15, face="bold",hjust = 0.5,vjust = -1),
         axis.title.y = element_text( size=15, face="bold",hjust = 0.5, vjust = 2),
-        legend.position = "none")
+        legend.position = "none"),
+error = function(e) message("Skipped category_confirmed plot v2: ", e$message))
 
 
 
