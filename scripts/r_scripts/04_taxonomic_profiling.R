@@ -266,15 +266,14 @@ metadata[[type]] <- data.frame(species=as.character(pa[[type]]$data$label),
 
 
 for (taxa in names(taxize_class[[type]])){
-  metadata[[type]]$genus[which(metadata[[type]]$species==taxa)] <- 
-    
-    taxize_class[[type]][[taxa]]$name[which(taxize_class[[type]][[taxa]]$rank=="genus")]
-  
-  metadata[[type]]$order[which(metadata[[type]]$species==taxa)] <- 
-    
-    taxize_class[[type]][[taxa]]$name[which(taxize_class[[type]][[taxa]]$rank=="order")]
-  
-  
+  tc <- taxize_class[[type]][[taxa]]
+  if (!is.data.frame(tc)) next   # skip taxa where taxize returned non-tabular data
+
+  metadata[[type]]$genus[which(metadata[[type]]$species==taxa)] <-
+    tc$name[which(tc$rank=="genus")]
+
+  metadata[[type]]$order[which(metadata[[type]]$species==taxa)] <-
+    tc$name[which(tc$rank=="order")]
 }
 
 metadata[[type]] <- 
@@ -337,6 +336,7 @@ print(paste(type, "has", length(levels(as.factor( species_profile[[type]]$clade_
 #write.csv(species_prevalence[["milk"]],"Q:/H2020 Master/Citizen Science Project/Results/04_short_read_profiling/04_Metacache/milk_metacache_prevalence.csv" )
 #write.csv(species_prevalence[["water"]],"Q:/H2020 Master/Citizen Science Project/Results/04_short_read_profiling/04_Metacache/water_metacache_prevalence.csv" )
 
+if (!requireNamespace("heatmaply", quietly=TRUE)) install.packages("heatmaply")
 library(heatmaply)
 
 #ggheatmap(

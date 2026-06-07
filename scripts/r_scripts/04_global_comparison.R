@@ -230,6 +230,10 @@ my.files_summary<- cbind(shannon = my.files_summary_shannon, richness = my.files
 
 
 my.files_summary<- as.data.frame(my.files_summary)
+# cbind() coerces numeric columns to character when mixed with character columns — restore types
+my.files_summary$shannon <- as.numeric(my.files_summary$shannon)
+my.files_summary$richness <- as.numeric(my.files_summary$richness)
+my.files_summary$pielou   <- as.numeric(my.files_summary$pielou)
 my.files_summary <- merge(my.files_summary,total_metadata,by.x="site",by.y="merge_column",all.x=TRUE)
 
 
@@ -279,8 +283,11 @@ my.files_summary$merge <- paste(gsub("ML","Milk Liquid",
                                           my.files_summary$conditions)
 
 
+if (!requireNamespace("ggstatsplot", quietly=TRUE)) install.packages("ggstatsplot")
+library(ggstatsplot)
+
 pb <-
-  
+
   ggbetweenstats(data=my.files_summary %>%
          filter(`kefir type` %in% c("ML","WL")), x=merge, y=shannon, 
          grouping.var     = merge,

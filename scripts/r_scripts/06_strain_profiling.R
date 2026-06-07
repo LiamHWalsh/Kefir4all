@@ -113,9 +113,9 @@ total_metadata $category[which(total_metadata $`kefir type` %in% c("ML","MG"))] 
 # MImport prevalence metadata
 ########################################################################################################################
 
-milk_taxonomic_profile_prevalence <- read_csv("file.path(DATA_DIR, "milk_taxonomic_profile_prevalence.csv")")
+milk_taxonomic_profile_prevalence <- read_csv(file.path(DATA_DIR, "milk_taxonomic_profile_prevalence.csv"))
 
-water_taxonomic_profile_prevalence <- read_csv("file.path(DATA_DIR, "water_taxonomic_profile_prevalence.csv")")
+water_taxonomic_profile_prevalence <- read_csv(file.path(DATA_DIR, "water_taxonomic_profile_prevalence.csv"))
 
 
 total_prevalence <- rbind(milk_taxonomic_profile_prevalence,water_taxonomic_profile_prevalence)
@@ -196,9 +196,9 @@ species="Lactococcus cremoris"
 
 
 
-milk_taxonomic_profile_prevalence <- read_csv("file.path(DATA_DIR, "milk_taxonomic_profile_prevalence.csv")")
+milk_taxonomic_profile_prevalence <- read_csv(file.path(DATA_DIR, "milk_taxonomic_profile_prevalence.csv"))
 
-water_taxonomic_profile_prevalence <- read_csv("file.path(DATA_DIR, "water_taxonomic_profile_prevalence.csv")")
+water_taxonomic_profile_prevalence <- read_csv(file.path(DATA_DIR, "water_taxonomic_profile_prevalence.csv"))
 
 
 total_prevalence <- rbind(milk_taxonomic_profile_prevalence,water_taxonomic_profile_prevalence)

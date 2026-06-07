@@ -43,6 +43,7 @@ pacman::p_load(readxl,devtools,taxize,rotl,ape,treeio,ggtree,DECIPHER,ggdendro,g
 library(vegan)
 library(ggplot2)
 library(grid)
+if (!requireNamespace("ggstatsplot", quietly=TRUE)) install.packages("ggstatsplot")
 library(ggstatsplot)
 
 
@@ -861,6 +862,7 @@ gower_dist[["Water_kefir"]] <- gower_wk
 
 mean_gower_change<-c() 
 
+if (!requireNamespace("ggstatsplot", quietly=TRUE)) install.packages("ggstatsplot")
 library(ggstatsplot)
 
 for (type in names(gower_dist)){

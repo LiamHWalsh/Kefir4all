@@ -332,12 +332,13 @@ t <-
   adonis2(data.bray~data.bray_metadata[,"data_source_specific"])
 
 
+if (!requireNamespace("pairwiseAdonis", quietly=TRUE)) devtools::install_github("pmartinezarbizu/pairwiseAdonis/pairwiseAdonis", upgrade="never")
 library(pairwiseAdonis)
 #default is 999 permutations
 res<-pairwiseAdonis::pairwise.adonis(data.bray,data.bray_metadata$data_source_specific)
 
 
-res<-pairwiseAdonis::pairwise.adonis(data.bray~data.bray_metadata[,"data_source_specific"])
+res<-pairwiseAdonis::pairwise.adonis(data.bray, data.bray_metadata[,"data_source_specific"])
 
 
 
