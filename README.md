@@ -13,22 +13,29 @@ The repository contains:
 
 ## Reproducibility quick start
 
-### R figures (original-submission numbering)
+### R figures
+
+Run any figure script directly from the repo root — each is self-contained:
 
 ```r
-# from the repo root
-source("scripts/r_scripts/Figure_2.R")
-source("scripts/r_scripts/Figure_3.R")
-# ... etc
-```
+# Main-text figures
+Rscript scripts/r_scripts/Figure_2.R
+Rscript scripts/r_scripts/Figure_3.R
+Rscript scripts/r_scripts/Figure_4.R
+Rscript scripts/r_scripts/Figure_5.R
+Rscript scripts/r_scripts/Figure_6.R
 
-R scripts are intended to be run interactively. Each script is self-contained and reads files directly from `data/`.
+# Supplementary analyses (each script produces its own output)
+Rscript scripts/r_scripts/04_supp_taxonomic_profiling.R
+Rscript scripts/r_scripts/04_supp_community_stability.R
+Rscript scripts/r_scripts/04_supp_community_types.R
+Rscript scripts/r_scripts/06_supp_strain_profiling.R
+Rscript scripts/r_scripts/07_supp_metabolomics.R
+```
 
 ## Figure-numbering map (original submission to revised manuscript)
 
-> **Original-submission numbering is retained throughout this repository** (in script filenames such as `Figure_2.R` and in the legacy `*_legacy` scripts) so that the publicly archived original-submission manuscript on ResearchGate remains traceable to the code that produced its figures. The mapping table below is the authoritative bridge between the two numbering systems.
-
-
+> **Original-submission numbering is retained in `researchgate_legacy/`** so that the publicly archived original-submission manuscript on ResearchGate remains traceable to the code that produced its figures. The mapping table below is the authoritative bridge between the two numbering systems.
 
 | Original submission | Revised manuscript | Script(s) |
 |---|---|---|
@@ -37,13 +44,13 @@ R scripts are intended to be run interactively. Each script is self-contained an
 | Figure 4 | Figure 4 | `scripts/r_scripts/Figure_4.R` |
 | Figure 5 | Figure 5 | `scripts/r_scripts/Figure_5.R` |
 | Figure 6 | Figure 6 | `scripts/r_scripts/Figure_6.R` |
-| Figure 7 | Figure 7 | `scripts/r_scripts/Figure_7.R` |
-| Figure 8 (original) | Supplementary Fig. 6 | `scripts/r_scripts/Supplementary_Fig_6.R` |
-| Figure 9 (original) | Supplementary Fig. 7 | `scripts/r_scripts/Supplementary_Fig_7.R` |
-| Figure 10 (original, combined dRep + inStrain panels) | Figure 8 (inStrain only) | `scripts/r_scripts/Figure_8.R` |
-| n/a | Supplementary Fig. 5 | `scripts/r_scripts/Supplementary_Fig_5.R` |
-| n/a | Supplementary Fig. 8 | `scripts/r_scripts/Supplementary_Fig_8.R` |
-| n/a | Supplementary Fig. 9 (dRep half of original Fig 10) | `scripts/r_scripts/Supplementary_Fig_9.R` |
+| Figure 7 (original strain overview) | moved to Supplementary Result S6 | `scripts/r_scripts/researchgate_legacy/Figure_7.R` |
+| Figure 8 (original inStrain alluvial) | moved to Supplementary Result S6 | `scripts/r_scripts/researchgate_legacy/Figure_8.R` |
+| Supplementary Fig. 5 (ANI pairwise) | Supplementary Fig. 5 | `scripts/r_scripts/04_supp_taxonomic_profiling.R` |
+| Supplementary Fig. 6 (community stability) | Supplementary Fig. 6 | `scripts/r_scripts/04_supp_community_stability.R` |
+| Supplementary Fig. 7 (metabolomics) | Supplementary Fig. 7 | `scripts/r_scripts/07_supp_metabolomics.R` |
+| Supplementary Fig. 8 (community types) | Supplementary Fig. 8 | `scripts/r_scripts/04_supp_community_types.R` |
+| Supplementary Fig. 9 (dRep strain profiling) | Supplementary Fig. 9 | `scripts/r_scripts/06_supp_strain_profiling.R` |
 | n/a | Supplementary Table 1 | per-species secondary-cluster counts in `figures/Supplementary_Table_1.tsv` |
 
 ## Data
