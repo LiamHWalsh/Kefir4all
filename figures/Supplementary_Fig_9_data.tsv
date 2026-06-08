@@ -19,15 +19,15 @@ wk17	1	Clostridium beijerinckii	Milk kefir	2
 wk21	1	Clostridium beijerinckii	Milk kefir	2
 wk05	2	Clostridium beijerinckii	Milk kefir	4
 wk09	2	Clostridium beijerinckii	Milk kefir	2
+wk01	1	d__Bacteria;p__Firmicutes;c__Bacilli;o__Lactobacillales;f__Lactobacillaceae;g__Lactobacillus;s__	Milk kefir	2
+wk05	1	d__Bacteria;p__Firmicutes;c__Bacilli;o__Lactobacillales;f__Lactobacillaceae;g__Lactobacillus;s__	Milk kefir	4
+wk09	1	d__Bacteria;p__Firmicutes;c__Bacilli;o__Lactobacillales;f__Lactobacillaceae;g__Lactobacillus;s__	Milk kefir	2
+wk13	1	d__Bacteria;p__Firmicutes;c__Bacilli;o__Lactobacillales;f__Lactobacillaceae;g__Lactobacillus;s__	Milk kefir	2
 wk05	0	d__Bacteria;p__Firmicutes_A;c__Clostridia;o__Clostridiales;f__Clostridiaceae;g__Clostridium;s__	Milk kefir	2
 wk01	1	d__Bacteria;p__Firmicutes_A;c__Clostridia;o__Clostridiales;f__Clostridiaceae;g__Clostridium;s__	Milk kefir	2
 wk05	1	d__Bacteria;p__Firmicutes_A;c__Clostridia;o__Clostridiales;f__Clostridiaceae;g__Clostridium;s__	Milk kefir	4
 wk09	1	d__Bacteria;p__Firmicutes_A;c__Clostridia;o__Clostridiales;f__Clostridiaceae;g__Clostridium;s__	Milk kefir	4
 wk13	1	d__Bacteria;p__Firmicutes_A;c__Clostridia;o__Clostridiales;f__Clostridiaceae;g__Clostridium;s__	Milk kefir	2
-wk01	1	d__Bacteria;p__Firmicutes;c__Bacilli;o__Lactobacillales;f__Lactobacillaceae;g__Lactobacillus;s__	Milk kefir	2
-wk05	1	d__Bacteria;p__Firmicutes;c__Bacilli;o__Lactobacillales;f__Lactobacillaceae;g__Lactobacillus;s__	Milk kefir	4
-wk09	1	d__Bacteria;p__Firmicutes;c__Bacilli;o__Lactobacillales;f__Lactobacillaceae;g__Lactobacillus;s__	Milk kefir	2
-wk13	1	d__Bacteria;p__Firmicutes;c__Bacilli;o__Lactobacillales;f__Lactobacillaceae;g__Lactobacillus;s__	Milk kefir	2
 wk05	1	Enterococcus faecalis	Milk kefir	4
 wk09	1	Enterococcus faecalis	Milk kefir	4
 wk13	1	Enterococcus faecalis	Milk kefir	2
