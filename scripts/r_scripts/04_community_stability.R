@@ -717,13 +717,14 @@ survey_wk <- read_delim(SURVEY_WK, delim = "\t", escape_double = FALSE, trim_ws 
 
 
 
+survey_mk$previous_weightofgrains <- iconv(survey_mk$previous_weightofgrains, to = "UTF-8", sub = "")
 survey_mk$previous_weightofgrains<- gsub("g.*|G.*", "",survey_mk$previous_weightofgrains)
 
 
 
 survey_mk$previous_weightofgrains<- as.numeric(gsub("[^0-9.-]", "",survey_mk$previous_weightofgrains))
 
-
+survey_wk$previous_weightofgrains <- iconv(survey_wk$previous_weightofgrains, to = "UTF-8", sub = "")
 survey_wk$previous_weightofgrains<- as.numeric(gsub("[^0-9.-]", "",survey_wk$previous_weightofgrains))
 
 survey_wk$previous_weightofgrains[
@@ -762,6 +763,7 @@ survey_mk<-
 
 
 
+pacman::p_load(StatMatch)
 library(StatMatch)
 gower_mk<-
   gower.dist(
@@ -1061,12 +1063,13 @@ ggplot(my.files_beta[["Milk.kefir"]] ,aes(x=x.axis, y=y.axis,fill=as.numeric(dis
 
 
 
-dist_mi <- 1/dist_m # one over, as qgraph takes similarity matrices as input
-
-rownames(as.data.frame(dist_mi))
-
-library(qgraph)
-qgraph(dist_mi, layout='spring', vsize=3)
+if (exists("dist_m")) {
+  dist_mi <- 1/dist_m # one over, as qgraph takes similarity matrices as input
+  rownames(as.data.frame(dist_mi))
+  pacman::p_load(qgraph)
+  library(qgraph)
+  qgraph(dist_mi, layout='spring', vsize=3)
+}
      
 #n1_species <-which(maxab_species < 0.1)
 
@@ -1092,7 +1095,7 @@ clust <- agnes(species_data[["Milk.kefir"]], method = "ward")
 murders_dist <- dist(species_data[["Milk.kefir"]], method="euclidean")  
 fit <- hclust(murders_dist, method="ward.D") 
 
-plot(fit, family="Arial")
+plot(fit)
 rect.hclust(fit, k=4, border="cadetblue")
 
 library(ggdendro)
@@ -1105,9 +1108,9 @@ ggtree(as.hclust(clust))
 
 pltree(clust, cex = 0.6, hang = -1, main = "Dendrogram") 
 
-gap_stat <- clusGap(species_data[["Milk.kefir"]], FUN = hcut, nstart = 25, K.max = 10, B = 50)
-
+pacman::p_load(factoextra)
 library(factoextra)
+gap_stat <- clusGap(species_data[["Milk.kefir"]], FUN = hcut, nstart = 25, K.max = 10, B = 50)
 fviz_gap_stat(gap_stat)
 
 
