@@ -23,15 +23,9 @@ suppressPackageStartupMessages({
   library(ggplot2)
 })
 
-get_script_dir <- function() {
-  args <- commandArgs(trailingOnly = FALSE)
-  file_arg <- "--file="
-  m <- grep(file_arg, args)
-  if (length(m) > 0) return(dirname(normalizePath(sub(file_arg, "", args[m]))))
-  for (fr in sys.frames()) if (!is.null(fr$ofile)) return(dirname(normalizePath(fr$ofile)))
-  getwd()
-}
-repo_root <- normalizePath(file.path(get_script_dir(), "..", ".."))
+if (!requireNamespace("here", quietly = TRUE)) install.packages("here")
+library(here)
+repo_root <- here::here()
 data_dir  <- file.path(repo_root, "data")
 out_dir   <- file.path(repo_root, "figures")
 dir.create(out_dir, showWarnings = FALSE, recursive = TRUE)
