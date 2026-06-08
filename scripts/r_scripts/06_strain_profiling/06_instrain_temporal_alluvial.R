@@ -1,5 +1,6 @@
-# Figure_8.R --------------------------------------------------------------
-# Revised-manuscript Figure 8.
+# 06_instrain_temporal_alluvial.R -----------------------------------------
+# Pipeline step 6 — Strain profiling
+# Results sections: 3.7 (Figure 8, revised manuscript)
 #
 # inStrain temporal alluvial: per prevalent species, the count of
 # inStrain-defined within-species cluster detections at each Stage (T0..T6,
@@ -8,7 +9,7 @@
 #
 # This corresponds to panel B of the legacy Figure 10 (combined dRep +
 # inStrain), now used as the single-panel revised Figure 8. The dRep
-# equivalent is rendered separately by Supplementary_Fig_9.R.
+# equivalent is in 06_strain_profiling/06_supp_strain_profiling.R.
 #
 # Inputs (all in flat data/):
 #   instrain_genome_species_primary_data_v4.csv
@@ -21,6 +22,9 @@
 #   figures/Figure_8.pdf
 #   figures/Figure_8_data.tsv
 
+if (!requireNamespace("here", quietly = TRUE)) install.packages("here")
+library(here)
+
 suppressPackageStartupMessages({
   library(readr)
   library(dplyr)
@@ -30,17 +34,8 @@ suppressPackageStartupMessages({
   library(ggalluvial)
 })
 
-get_script_dir <- function() {
-  args <- commandArgs(trailingOnly = FALSE)
-  file_arg <- "--file="
-  m <- grep(file_arg, args)
-  if (length(m) > 0) return(dirname(normalizePath(sub(file_arg, "", args[m]))))
-  for (fr in sys.frames()) if (!is.null(fr$ofile)) return(dirname(normalizePath(fr$ofile)))
-  getwd()
-}
-repo_root <- normalizePath(file.path(get_script_dir(), "..", ".."))
-data_dir  <- file.path(repo_root, "data")
-out_dir   <- file.path(repo_root, "figures")
+data_dir <- here::here("data")
+out_dir  <- here::here("figures")
 dir.create(out_dir, showWarnings = FALSE, recursive = TRUE)
 
 instrain <- read_csv(file.path(data_dir, "instrain_genome_species_primary_data_v4.csv"),
