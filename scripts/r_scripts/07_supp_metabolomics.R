@@ -7,7 +7,30 @@
 ###############################################################################################################
 #look into the genetic distance between clusters
 ###############################################################################################################
-.libPaths("E:/STORE N GO/R/R-4.0.2/win-library/4.0")
+if (!requireNamespace("pacman", quietly = TRUE)) install.packages("pacman")
+
+# ==============================================================================
+# PATH CONFIGURATION — portable relative paths via the here package
+# ==============================================================================
+if (!requireNamespace("here", quietly = TRUE)) install.packages("here")
+library(here)
+DATA_DIR    <- here::here("data")
+PRIVATE_DIR <- here::here("data", "private")
+FIGURES_DIR <- here::here("output", "figures")
+dir.create(FIGURES_DIR, recursive = TRUE, showWarnings = FALSE)
+
+CS_METADATA_PRIVATE <- file.path(PRIVATE_DIR, "Citizen Scientist metadata_v8.csv")
+if (!file.exists(CS_METADATA_PRIVATE)) {
+  stop(
+    "This script requires the private citizen-scientist metadata file which is not\n",
+    "distributed with the public repository (contains participant identifiers).\n",
+    "Missing: ", CS_METADATA_PRIVATE, "\n",
+    "See data/private/README.md for details."
+  )
+}
+# ==============================================================================
+
+# .libPaths("E:/STORE N GO/R/R-4.0.2/win-library/4.0")  # removed — local machine path
 
 pacman::p_load(rlang,tibble,ape,colorspace,concaveman,ggnewscale,readxl,hrbrthemes,Biostrings,ggtree,flextable,devtools,R4RNA,taxize,rotl,ape,treeio,DECIPHER,ggdendro,ggplot2,tidyr,RSQLite,optmatch,rentrez,dplyr,seqinr,RColorBrewer,ggtext)
 pacman::p_load(readxl,readr,reshape2,dplyr, gplots,Heatplus,vegan,RColorBrewer,tidyr,gtools,stringr,tidyverse,ComplexHeatmap,magick,viridis)
@@ -24,14 +47,14 @@ library(ggplot2)
 
 
 instrain =read_csv(
-  "Q:/H2020 Master/Citizen Science Project/Results/06_strain_profiling/06_instrain/combined_outputs/instrain_genome_species_primary_data_V4.csv"
+  file.path(DATA_DIR, "instrain_genome_species_primary_data_v4.csv")
 )
 
 
 
 library(readr)
 
-all_genomes_strain_v2 <- read_delim("Q:/H2020 Master/Citizen Science Project/Results/06_strain_profiling/06_instrain/all.genomes_strain_v2.stb", 
+all_genomes_strain_v2 <- read_delim(file.path(DATA_DIR, "all.genomes_strain_v2.stb"), 
                                     delim = "\t", escape_double = FALSE, 
                                     col_names = FALSE, trim_ws = TRUE)
 
@@ -54,19 +77,19 @@ t2 <- c()
 #Import sample metadata
 ########################################################################################################################
 
-global_mk_metadata <- read_csv("Q:/H2020 Master/Citizen Science Project/Citizen science metadata/sample_metadata/global_milk_kefir_metadata_v1.csv")
-global_wk_metadata <- read_csv("Q:/H2020 Master/Citizen Science Project/Citizen science metadata/sample_metadata/global_water_kefir_metadata_v1.csv")
+global_mk_metadata <- read_csv(file.path(DATA_DIR, "global_milk_kefir_metadata_v1.csv"))
+global_wk_metadata <- read_csv(file.path(DATA_DIR, "global_water_kefir_metadata_v1.csv"))
 global_mk_metadata$Stage <- NA
 global_wk_metadata$Stage <- NA
 
-Citizen_Scientist_metadata_v8 <- read_csv("Q:/H2020 Master/Citizen Science Project/Citizen science metadata/Citizen Scientist metadata_v8.csv")
+Citizen_Scientist_metadata_v8 <- read_csv(CS_METADATA_PRIVATE)
 
 Citizen_Scientist_metadata_v8$ID[which(nchar(Citizen_Scientist_metadata_v8$ID)==3)] <- gsub("ID","ID00",Citizen_Scientist_metadata_v8$ID[which(nchar(Citizen_Scientist_metadata_v8$ID)==3)] )
 Citizen_Scientist_metadata_v8$ID[which(nchar(Citizen_Scientist_metadata_v8$ID)==4)] <- gsub("ID","ID0",Citizen_Scientist_metadata_v8$ID[which(nchar(Citizen_Scientist_metadata_v8$ID)==4)] )
 
 
 
-kefir4all_metadata <- read_csv("Q:/H2020 Master/Citizen Science Project/Citizen science metadata/sample_metadata/kefir4all_sample_metadata_v2.csv")
+kefir4all_metadata <- read_csv(file.path(DATA_DIR, "kefir4all_sample_metadata_v2.csv"))
 kefir4all_metadata$merge_column <-  gsub("_host_removed_R..fastq.gz","",kefir4all_metadata$merge_column)
 kefir4all_metadata <- kefir4all_metadata[-c(which(duplicated(kefir4all_metadata$merge_column))),]
 ########################################################################################################################
@@ -88,9 +111,9 @@ total_metadata $category[which(total_metadata $`kefir type` %in% c("ML","MG"))] 
 # MImport prevalence metadata
 ########################################################################################################################
 
-milk_taxonomic_profile_prevalence <- read_csv("Q:/H2020 Master/Citizen Science Project/Results/04_short_read_profiling/04_metaphlan/prevalence/milk_taxonomic_profile_prevalence.csv")
+milk_taxonomic_profile_prevalence <- read_csv(file.path(DATA_DIR, "milk_taxonomic_profile_prevalence.csv"))
 
-water_taxonomic_profile_prevalence <- read_csv("Q:/H2020 Master/Citizen Science Project/Results/04_short_read_profiling/04_metaphlan/prevalence/water_taxonomic_profile_prevalence.csv")
+water_taxonomic_profile_prevalence <- read_csv(file.path(DATA_DIR, "water_taxonomic_profile_prevalence.csv"))
 
 
 total_prevalence <- rbind(milk_taxonomic_profile_prevalence,water_taxonomic_profile_prevalence)
@@ -171,9 +194,9 @@ species="Lactococcus cremoris"
 
 
 
-milk_taxonomic_profile_prevalence <- read_csv("Q:/H2020 Master/Citizen Science Project/Results/04_short_read_profiling/04_metaphlan/prevalence/milk_taxonomic_profile_prevalence.csv")
+milk_taxonomic_profile_prevalence <- read_csv(file.path(DATA_DIR, "milk_taxonomic_profile_prevalence.csv"))
 
-water_taxonomic_profile_prevalence <- read_csv("Q:/H2020 Master/Citizen Science Project/Results/04_short_read_profiling/04_metaphlan/prevalence/water_taxonomic_profile_prevalence.csv")
+water_taxonomic_profile_prevalence <- read_csv(file.path(DATA_DIR, "water_taxonomic_profile_prevalence.csv"))
 
 
 total_prevalence <- rbind(milk_taxonomic_profile_prevalence,water_taxonomic_profile_prevalence)
@@ -653,151 +676,152 @@ tidyr::gather(key = "type", value = "count", n_total_detections, n_multi_detecti
 
 library(ggpubr)
 
-jpeg(filename='Q:/H2020 Master/Citizen Science Project/Manuscripts/CS_Metagenomics/Figures -CS_Metagenomics/v2/Figure 11.jpeg', width = 7864, height=5200,res =300,pointsize = 15) #, width=2000, height=1950)
+jpeg(filename=file.path(FIGURES_DIR, 'Figure_11.jpeg'), width = 7864, height=5200,res =300,pointsize = 15) #, width=2000, height=1950)
 
 
 ggarrange(a, b,ncol=1,nrow=2,labels=c("A.","B."),font.label = list(size = 30),heights = c(.4,1), common.legend = FALSE)
 graphics.off()
-
-
-
-
-
-    
-    total_prevalence
-    
-    length(names( table(t1$sample_id)))
-    
-    length(names( table(t1$sample_id)))
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    # #country
-    # cooccurrence_matrix <- 
-    #   dplyr::select(t1,sample_id, classification, cluster) %>% 
-    #   mutate(present = 1) %>%
-    #   pivot_wider(names_from = sample_id, values_from = present, values_fill = 0) %>%
-    #   select(-classification) %>%
-    #   column_to_rownames("cluster")
-    # 
-    # 
-    
-    country
-    cooccurrence_matrix <-
-      dplyr::select(t1,sample_id, classification, cluster) %>%
-      mutate(present = 1) %>%
-      pivot_wider(names_from = cluster, values_from = present, values_fill = 0) %>%
-      select(-classification) %>%
-      column_to_rownames("sample_id")
-
-    
-    
-    
-    
-    
-    cooccurrence <- crossprod(as.matrix(cooccurrence_matrix))
-    
-    # Set the diagonal to 0 (no self-co-occurrence)
-    diag(cooccurrence) <- 0
-    
-    # Create a graph object from the co-occurrence matrix
-    graph <- graph_from_adjacency_matrix(cooccurrence, mode = "undirected", weighted = TRUE)
-    
-    # Convert igraph object to tidygraph
-    tidy_graph <- as_tbl_graph(graph)
-    
-    # Step 2: Plot the Co-occurrence Network
-    set.seed(42)  # For reproducibility of the layout
-    p1=  ggraph(tidy_graph, layout = 'fr') + 
-      geom_edge_link(aes(edge_width = weight), edge_colour = "lightblue", alpha = 0.7) +
-      geom_node_point(size = 6, colour = "steelblue") +
-      geom_node_text(aes(label = name), repel = TRUE, size = 4, colour = "black") +
-      scale_edge_width(range = c(0.2, 2)) +  # Adjust edge thickness
-      theme_void() +
-      labs(title = "Co-occurrence Network of Lactococcus cremoris Strains") +
-      theme(
-        plot.title = element_text(hjust = 0.5, size = 16, face = "bold"),
-        legend.position = "none"
-      )
-    
-    
-    
-    jpeg(filename='Q:/H2020 Master/Citizen Science Project/plots/CS_metagenomics/cooccurnce_network_milk.kefir.jpeg', width = 7864, height=5200,res =300,pointsize = 15) #, width=2000, height=1950)
-    
-    
-    plot(p1)
-    graphics.off()
-    
-    
-    library(igraph)
-    
-    # Calculate the co-occurrence matrix
-    cooccurrence <- crossprod(as.matrix(cooccurrence_matrix))
-    
-    
-    
-    # Create a graph object
-    graph <- graph.adjacency(cooccurrence, mode = "undirected", diag = FALSE)
-    
-    # Plot the network
-    plot(graph, vertex.label = V(graph)$name, vertex.size = 10, edge.width = E(graph)$weight)
-    
-    
-    
- 
-    # 
-    # t2 <- 
-    # 
-    # t1[which(t1$sample_id %in% kefir4all_metadata$merge_column),]
-    # 
-    # #
-    # if(nrow(t2)==0){
-    #   
-    #   print(paste("Did not identify ",species, " in any cs ", type," metagenomes",sep=""))
-    #   next
-    # }
-    # 
-    
-    
-    #dplyr::select( t2, sample_id,genome, Stage.y,Stage.x)
-    
-    
-    
-    if(nrow(t1)==0){next }else{
-      
-      t2 <- data.frame( table(t1$cluster))
-      
-      
-      clus_breakdown <- 
-        rbind(clus_breakdown, data.frame(species=species,
-                                         type=type, 
-                                         clust=t2$Var1, 
-                                         Freq=t2$Freq
-        ))
-    }
-  }
-  
-}
+# 
+# 
+# 
+# 
+# 
+#     
+#     total_prevalence
+#     
+#     length(names( table(t1$sample_id)))
+#     
+#     length(names( table(t1$sample_id)))
+#     
+#     
+#     
+#     
+#     
+#     
+#     
+#     
+#     
+#     
+#     
+#     
+#     
+#     
+#     
+#     
+#     
+#     
+#     # #country
+#     # cooccurrence_matrix <- 
+#     #   dplyr::select(t1,sample_id, classification, cluster) %>% 
+#     #   mutate(present = 1) %>%
+#     #   pivot_wider(names_from = sample_id, values_from = present, values_fill = 0) %>%
+#     #   select(-classification) %>%
+#     #   column_to_rownames("cluster")
+#     # 
+#     # 
+#     
+#     country
+#     cooccurrence_matrix <-
+#       dplyr::select(t1,sample_id, classification, cluster) %>%
+#       mutate(present = 1) %>%
+#       pivot_wider(names_from = cluster, values_from = present, values_fill = 0) %>%
+#       select(-classification) %>%
+#       column_to_rownames("sample_id")
+# 
+#     
+#     
+#     
+#     
+#     
+#     cooccurrence <- crossprod(as.matrix(cooccurrence_matrix))
+#     
+#     # Set the diagonal to 0 (no self-co-occurrence)
+#     diag(cooccurrence) <- 0
+#     
+#     # Create a graph object from the co-occurrence matrix
+#     graph <- graph_from_adjacency_matrix(cooccurrence, mode = "undirected", weighted = TRUE)
+#     
+#     # Convert igraph object to tidygraph
+#     tidy_graph <- as_tbl_graph(graph)
+#     
+#     # Step 2: Plot the Co-occurrence Network
+#     set.seed(42)  # For reproducibility of the layout
+#     p1=  ggraph(tidy_graph, layout = 'fr') + 
+#       geom_edge_link(aes(edge_width = weight), edge_colour = "lightblue", alpha = 0.7) +
+#       geom_node_point(size = 6, colour = "steelblue") +
+#       geom_node_text(aes(label = name), repel = TRUE, size = 4, colour = "black") +
+#       scale_edge_width(range = c(0.2, 2)) +  # Adjust edge thickness
+#       theme_void() +
+#       labs(title = "Co-occurrence Network of Lactococcus cremoris Strains") +
+#       theme(
+#         plot.title = element_text(hjust = 0.5, size = 16, face = "bold"),
+#         legend.position = "none"
+#       )
+#     
+#     
+#     
+#     jpeg(filename='Q:/H2020 Master/Citizen Science Project/plots/CS_metagenomics/cooccurnce_network_milk.kefir.jpeg', width = 7864, height=5200,res =300,pointsize = 15) #, width=2000, height=1950)
+#     
+#     
+#     plot(p1)
+#     graphics.off()
+#     
+#     
+#     library(igraph)
+#     
+#     # Calculate the co-occurrence matrix
+#     cooccurrence <- crossprod(as.matrix(cooccurrence_matrix))
+#     
+#     
+#     
+#     # Create a graph object
+#     graph <- graph.adjacency(cooccurrence, mode = "undirected", diag = FALSE)
+#     
+#     # Plot the network
+#     plot(graph, vertex.label = V(graph)$name, vertex.size = 10, edge.width = E(graph)$weight)
+#     
+#     
+#     
+#  
+#     # 
+#     # t2 <- 
+#     # 
+#     # t1[which(t1$sample_id %in% kefir4all_metadata$merge_column),]
+#     # 
+#     # #
+#     # if(nrow(t2)==0){
+#     #   
+#     #   print(paste("Did not identify ",species, " in any cs ", type," metagenomes",sep=""))
+#     #   next
+#     # }
+#     # 
+#     
+#     
+#     #dplyr::select( t2, sample_id,genome, Stage.y,Stage.x)
+#     
+#     
+#     
+#     if(nrow(t1)==0){next }else{
+#       
+#       t2 <- data.frame( table(t1$cluster))
+#       
+#       
+#       clus_breakdown <- 
+#         rbind(clus_breakdown, data.frame(species=species,
+#                                          type=type, 
+#                                          clust=t2$Var1, 
+#                                          Freq=t2$Freq
+#         ))
+#     }
+#   }
+#   
+# }
 
 
 library(upstartr)
 
-clus_breakdown_prevalent <- 
+if (is.data.frame(clus_breakdown) && nrow(clus_breakdown) > 0) {
+clus_breakdown_prevalent <-
   rbind(
     clus_breakdown[which(clus_breakdown$type=="Milk.kefir" &
                            clus_breakdown$species %in% total_prevalence$...5[which(total_prevalence$kefir_type=="milk")]),],
@@ -842,6 +866,7 @@ clus_breakdown_prevalent %>%
         strip.text = element_text(size=15.5))+
   guides(fill = guide_legend(nrow = 2))+
   coord_flip()
+} # end clus_breakdown guard
 
 
 
@@ -960,7 +985,7 @@ plot <-
 
 
 
-jpeg(filename='Q:/H2020 Master/Citizen Science Project/Manuscripts/CS_Metagenomics/Figures -CS_Metagenomics/instrain_strain_clusters_cs_v3.jpeg', width = 7864, height=5200,res =300,pointsize = 15) #, width=2000, height=1950)
+jpeg(filename=file.path(FIGURES_DIR, 'instrain_strain_clusters_cs_v3.jpeg'), width = 7864, height=5200,res =300,pointsize = 15) #, width=2000, height=1950)
 
 
 plot(plot)

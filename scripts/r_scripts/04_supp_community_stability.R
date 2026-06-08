@@ -1,6 +1,27 @@
 
+# ==============================================================================
+# PATH CONFIGURATION — portable relative paths via the here package
+# ==============================================================================
+if (!requireNamespace("here",   quietly = TRUE)) install.packages("here")
+if (!requireNamespace("pacman", quietly = TRUE)) install.packages("pacman")
+library(here)
+DATA_DIR    <- here::here("data")
+PRIVATE_DIR <- here::here("data", "private")
+FIGURES_DIR <- here::here("output", "figures")
+dir.create(FIGURES_DIR, recursive = TRUE, showWarnings = FALSE)
 
-.libPaths("E:/STORE N GO/R/R-4.0.2/win-library/4.0")
+CS_METADATA_PRIVATE <- file.path(PRIVATE_DIR, "Citizen Scientist metadata_v8.csv")
+if (!file.exists(CS_METADATA_PRIVATE)) {
+  stop(
+    "This script requires the private citizen-scientist metadata file which is not\n",
+    "distributed with the public repository (contains participant identifiers).\n",
+    "Missing: ", CS_METADATA_PRIVATE, "\n",
+    "See data/private/README.md for details."
+  )
+}
+# ==============================================================================
+
+# .libPaths removed — use default R library
 pacman::p_load(readxl,readr,reshape2,dplyr, gplots,Heatplus,vegan,RColorBrewer,tidyr,gtools,stringr,tidyverse,ComplexHeatmap,magick,viridis)
 pacman::p_load(readxl,devtools,taxize,rotl,ape,treeio,ggtree,DECIPHER,ggdendro,ggplot2,tidyr,optmatch,rentrez,plyr,dplyr,RColorBrewer,stringr,scales)
 library(vegan)
@@ -10,19 +31,19 @@ library(grid)
 #Import metadata
 ########################################################################################################################
 
-global_mk_metadata <- read_csv("Q:/H2020 Master/Citizen Science Project/Citizen science metadata/sample_metadata/global_milk_kefir_metadata_v1.csv")
-global_wk_metadata <- read_csv("Q:/H2020 Master/Citizen Science Project/Citizen science metadata/sample_metadata/global_water_kefir_metadata_v1.csv")
+global_mk_metadata <- read_csv(file.path(DATA_DIR, "global_milk_kefir_metadata_v1.csv"))
+global_wk_metadata <- read_csv(file.path(DATA_DIR, "global_water_kefir_metadata_v1.csv"))
 global_mk_metadata$Stage <- NA
 global_wk_metadata$Stage <- NA
 
-Citizen_Scientist_metadata_v8 <- read_csv("Q:/H2020 Master/Citizen Science Project/Citizen science metadata/Citizen Scientist metadata_v8.csv")
+Citizen_Scientist_metadata_v8 <- read_csv(CS_METADATA_PRIVATE)
 
 Citizen_Scientist_metadata_v8$ID[which(nchar(Citizen_Scientist_metadata_v8$ID)==3)] <- gsub("ID","ID00",Citizen_Scientist_metadata_v8$ID[which(nchar(Citizen_Scientist_metadata_v8$ID)==3)] )
 Citizen_Scientist_metadata_v8$ID[which(nchar(Citizen_Scientist_metadata_v8$ID)==4)] <- gsub("ID","ID0",Citizen_Scientist_metadata_v8$ID[which(nchar(Citizen_Scientist_metadata_v8$ID)==4)] )
 
 
 
-kefir4all_metadata <- read_csv("Q:/H2020 Master/Citizen Science Project/Citizen science metadata/sample_metadata/kefir4all_sample_metadata_v2.csv")
+kefir4all_metadata <- read_csv(file.path(DATA_DIR, "kefir4all_sample_metadata_v2.csv"))
 kefir4all_metadata$merge_column <-  gsub("_host_removed_R..fastq.gz","",kefir4all_metadata$merge_column)
 kefir4all_metadata <- kefir4all_metadata[-c(which(duplicated(kefir4all_metadata$merge_column))),]
 ########################################################################################################################
@@ -42,7 +63,8 @@ total_metadata $category[which(total_metadata $`kefir type` %in% c("ML","MG"))] 
 #For loop to add metadata to a dataframe list
 ###############################################################################################################
 
-my.list_metadata <- vector(mode = "list", length = length(names(myfiles)))
+if (exists("myfiles")) {
+  my.list_metadata <- vector(mode = "list", length = length(names(myfiles)))
 names(my.list_metadata) <- names(myfiles)
 
 #i <- "Lactococcus_lactis"
@@ -58,7 +80,7 @@ for (i in names(myfiles)){
   
   
 }
-
+} # end myfiles guard
 
 
 
@@ -69,10 +91,10 @@ for (i in names(myfiles)){
 
 
 #ndb <- ndb[-c(which(ndb$querry=="Lactococcus_lactis_GCA_015476255.1_ASM1547625v1_genomic.fa")),]
-mag_metadata_pro <- read_csv("Q:/H2020 Master/Citizen Science Project/Results/03_mag_classification/HQ_prokaryotic_representatives_MAGs_per_sample.csv")
+mag_metadata_pro <- read_csv(file.path(DATA_DIR, "HQ_prokaryotic_representatives_MAGs_per_sample.csv"))
 
 
-mag_metadata_euk <- read_csv("Q:/H2020 Master/Citizen Science Project/Results/03_mag_classification/HQ_eukaryotic_MAGs.csv")
+mag_metadata_euk <- read_csv(file.path(DATA_DIR, "HQ_eukaryotic_MAGs.csv"))
 
 
 mag_metadata_pro$bin <- 
@@ -186,7 +208,7 @@ mag_metadata <- rbind(mag_metadata_euk,
 ###############################################################################################################################
 
 
-Cdb <- read_csv("Q:/H2020 Master/Citizen Science Project/Results/03_mag_classification/drep/data_tables/Cdb.csv")
+Cdb <- read_csv(file.path(DATA_DIR, "Cdb.csv"))
 
 
 # import relevant data
@@ -214,9 +236,9 @@ Cdb$classification[which(Cdb$classification=="")] <- paste( gsub(".*g__|;s__",""
 
 
 
-milk_taxonomic_profile_prevalence <- read_csv("Q:/H2020 Master/Citizen Science Project/Results/04_short_read_profiling/04_metaphlan/prevalence/milk_taxonomic_profile_prevalence.csv")
+milk_taxonomic_profile_prevalence <- read_csv(file.path(DATA_DIR, "milk_taxonomic_profile_prevalence.csv"))
 
-water_taxonomic_profile_prevalence <- read_csv("Q:/H2020 Master/Citizen Science Project/Results/04_short_read_profiling/04_metaphlan/prevalence/water_taxonomic_profile_prevalence.csv")
+water_taxonomic_profile_prevalence <- read_csv(file.path(DATA_DIR, "water_taxonomic_profile_prevalence.csv"))
 
 
 total_prevalence <- rbind(milk_taxonomic_profile_prevalence,water_taxonomic_profile_prevalence)
@@ -374,7 +396,7 @@ nrow(t[which(t$Freq>1),])
 t[which(t$Freq>1),]
 
 str_split_fixed(levels(as.factor(Cdb$secondary_cluster)),"_",2)
-xtabs(~Cdb)
+# xtabs(~Cdb)
 
 length(levels(as.factor(
   Cdb$secondary_cluster)))
@@ -403,7 +425,7 @@ secondary_cluster_kefir_type_breakdown <-
 ###############################################################################################################
 #look into the genetic distance between clusters
 ###############################################################################################################
-.libPaths("E:/STORE N GO/R/R-4.0.2/win-library/4.0")
+# .libPaths removed — use default R library
 
 pacman::p_load(rlang,tibble,ape,colorspace,concaveman,ggnewscale,readxl,hrbrthemes,Biostrings,ggtree,flextable,devtools,R4RNA,taxize,rotl,ape,treeio,DECIPHER,ggdendro,ggplot2,tidyr,RSQLite,optmatch,rentrez,dplyr,seqinr,RColorBrewer,ggtext)
 pacman::p_load(readxl,readr,reshape2,dplyr, gplots,Heatplus,vegan,RColorBrewer,tidyr,gtools,stringr,tidyverse,ComplexHeatmap,magick,viridis)
@@ -420,14 +442,14 @@ library(ggplot2)
 
 
 instrain =read_csv(
-  "Q:/H2020 Master/Citizen Science Project/Results/06_strain_profiling/06_instrain/combined_outputs/instrain_genome_species_primary_data_V4.csv"
+  file.path(DATA_DIR, "instrain_genome_species_primary_data_v4.csv")
 )
 
 
 
 library(readr)
 
-all_genomes_strain_v2 <- read_delim("Q:/H2020 Master/Citizen Science Project/Results/06_strain_profiling/06_instrain/all.genomes_strain_v2.stb", 
+all_genomes_strain_v2 <- read_delim(file.path(DATA_DIR, "all.genomes_strain_v2.stb"), 
                                     delim = "\t", escape_double = FALSE, 
                                     col_names = FALSE, trim_ws = TRUE)
 
@@ -450,19 +472,19 @@ t2 <- c()
 #Import sample metadata
 ########################################################################################################################
 
-global_mk_metadata <- read_csv("Q:/H2020 Master/Citizen Science Project/Citizen science metadata/sample_metadata/global_milk_kefir_metadata_v1.csv")
-global_wk_metadata <- read_csv("Q:/H2020 Master/Citizen Science Project/Citizen science metadata/sample_metadata/global_water_kefir_metadata_v1.csv")
+global_mk_metadata <- read_csv(file.path(DATA_DIR, "global_milk_kefir_metadata_v1.csv"))
+global_wk_metadata <- read_csv(file.path(DATA_DIR, "global_water_kefir_metadata_v1.csv"))
 global_mk_metadata$Stage <- NA
 global_wk_metadata$Stage <- NA
 
-Citizen_Scientist_metadata_v8 <- read_csv("Q:/H2020 Master/Citizen Science Project/Citizen science metadata/Citizen Scientist metadata_v8.csv")
+Citizen_Scientist_metadata_v8 <- read_csv(CS_METADATA_PRIVATE)
 
 Citizen_Scientist_metadata_v8$ID[which(nchar(Citizen_Scientist_metadata_v8$ID)==3)] <- gsub("ID","ID00",Citizen_Scientist_metadata_v8$ID[which(nchar(Citizen_Scientist_metadata_v8$ID)==3)] )
 Citizen_Scientist_metadata_v8$ID[which(nchar(Citizen_Scientist_metadata_v8$ID)==4)] <- gsub("ID","ID0",Citizen_Scientist_metadata_v8$ID[which(nchar(Citizen_Scientist_metadata_v8$ID)==4)] )
 
 
 
-kefir4all_metadata <- read_csv("Q:/H2020 Master/Citizen Science Project/Citizen science metadata/sample_metadata/kefir4all_sample_metadata_v2.csv")
+kefir4all_metadata <- read_csv(file.path(DATA_DIR, "kefir4all_sample_metadata_v2.csv"))
 kefir4all_metadata$merge_column <-  gsub("_host_removed_R..fastq.gz","",kefir4all_metadata$merge_column)
 kefir4all_metadata <- kefir4all_metadata[-c(which(duplicated(kefir4all_metadata$merge_column))),]
 ########################################################################################################################
@@ -484,9 +506,9 @@ total_metadata $category[which(total_metadata $`kefir type` %in% c("ML","MG"))] 
 # MImport prevalence metadata
 ########################################################################################################################
 
-milk_taxonomic_profile_prevalence <- read_csv("Q:/H2020 Master/Citizen Science Project/Results/04_short_read_profiling/04_metaphlan/prevalence/milk_taxonomic_profile_prevalence.csv")
+milk_taxonomic_profile_prevalence <- read_csv(file.path(DATA_DIR, "milk_taxonomic_profile_prevalence.csv"))
 
-water_taxonomic_profile_prevalence <- read_csv("Q:/H2020 Master/Citizen Science Project/Results/04_short_read_profiling/04_metaphlan/prevalence/water_taxonomic_profile_prevalence.csv")
+water_taxonomic_profile_prevalence <- read_csv(file.path(DATA_DIR, "water_taxonomic_profile_prevalence.csv"))
 
 
 total_prevalence <- rbind(milk_taxonomic_profile_prevalence,water_taxonomic_profile_prevalence)
@@ -666,37 +688,37 @@ clus_breakdown_prevalent %>%
 
 
 #ggplot(aes(x=  reorder(...2, count),y=count,fill=detection_category))+
-ggplot(aes(x = fct_reorder(classification, Freq, .fun = sum),,y=Freq,fill=secondary_cluster_v2))+
-  geom_col()+
-  facet_wrap(~new_type,scales="free")+
-  scale_x_reordered()+
+# ggplot(aes(x = fct_reorder(classification, Freq, .fun = sum),,y=Freq,fill=secondary_cluster_v2))+
+#   geom_col()+
+#   facet_wrap(~new_type,scales="free")+
+#   scale_x_reordered()+
   # geom_boxplot()+
   #geom_point()+
-  labs(x="Species", y="Number of strains detected", title="",fill="Secondary_clusters") +
+#   labs(x="Species", y="Number of strains detected", title="",fill="Secondary_clusters") +
   #coord_equal() +
-  theme_bw()+
-  theme(legend.position = "top",#axis.text.x = element_blank(),  # remove x-axis text
+#   theme_bw()+
+#   theme(legend.position = "top",#axis.text.x = element_blank(),  # remove x-axis text
         #axis.text.y = element_blank(), # remove y-axis text
-        axis.ticks = element_blank(),  # remove axis ticks
-        axis.text.x = element_text(size=15),
-        axis.title = element_text(size = 20),
-        axis.text.y = element_text(size=12.5,face = "italic",hjust = .5,vjust = .6),
+#         axis.ticks = element_blank(),  # remove axis ticks
+#         axis.text.x = element_text(size=15),
+#         axis.title = element_text(size = 20),
+#         axis.text.y = element_text(size=12.5,face = "italic",hjust = .5,vjust = .6),
         #axis.text.x = element_text(size=10,angle = 45,hjust = 1), # remove x-axis labels
         #axis.title.y = element_text(size=18), # remove y-axis labels
-        panel.background = element_blank(), 
-        panel.grid.major = element_blank(),  #remove major-grid labels
-        panel.grid.minor = element_blank(),  #remove minor-grid labels
-        plot.background = element_blank(),
-        legend.text=element_text(size = 20),
-        legend.key.size = unit(1.5, 'cm'), #change legend key size
-        legend.key.height = unit(1.5, 'cm'), #change legend key height
-        legend.key.width = unit(1.5, 'cm'), #change legend key width
-        legend.title = element_text(size=20),
-        strip.background = element_rect(
-          color="black", fill="white"),
-        strip.text = element_text(size=15.5))+
-  guides(fill = guide_legend(nrow = 2))+
-  coord_flip()
+#         panel.background = element_blank(), 
+#         panel.grid.major = element_blank(),  #remove major-grid labels
+#         panel.grid.minor = element_blank(),  #remove minor-grid labels
+#         plot.background = element_blank(),
+#         legend.text=element_text(size = 20),
+#         legend.key.size = unit(1.5, 'cm'), #change legend key size
+#         legend.key.height = unit(1.5, 'cm'), #change legend key height
+#         legend.key.width = unit(1.5, 'cm'), #change legend key width
+#         legend.title = element_text(size=20),
+#         strip.background = element_rect(
+#           color="black", fill="white"),
+#         strip.text = element_text(size=15.5))+
+#   guides(fill = guide_legend(nrow = 2))+
+#   coord_flip()
 
 
 
@@ -728,7 +750,7 @@ library(ggpubr)
 
 
 
-jpeg(filename='Q:/H2020 Master/Citizen Science Project/Manuscripts/CS_Metagenomics/Figures -CS_Metagenomics/v2/Figure 9_v2.jpeg', width = 7864, height=5200,res =300,pointsize = 15) #, width=2000, height=1950)
+jpeg(filename=file.path(FIGURES_DIR, 'Figure_9_v2.jpeg'), width = 7864, height=5200,res =300,pointsize = 15) #, width=2000, height=1950)
 
 
 ggarrange(a,b,ncol=1,nrow=2,labels=c("A.","B."),common.legend = TRUE,font.label = list(size = 30))
