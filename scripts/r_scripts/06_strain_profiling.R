@@ -689,11 +689,11 @@ graphics.off()
 
 
     
-    total_prevalence
+#     total_prevalence
     
-    length(names( table(t1$sample_id)))
+#     length(names( table(t1$sample_id)))
     
-    length(names( table(t1$sample_id)))
+#     length(names( table(t1$sample_id)))
     
     
     
@@ -723,64 +723,64 @@ graphics.off()
     # 
     
     # country  # removed stale debug expression
-    cooccurrence_matrix <-
-      dplyr::select(t1,sample_id, classification, cluster) %>%
-      mutate(present = 1) %>%
-      pivot_wider(names_from = cluster, values_from = present, values_fill = 0) %>%
-      select(-classification) %>%
-      column_to_rownames("sample_id")
+#     cooccurrence_matrix <-
+#       dplyr::select(t1,sample_id, classification, cluster) %>%
+#       mutate(present = 1) %>%
+#       pivot_wider(names_from = cluster, values_from = present, values_fill = 0) %>%
+#       select(-classification) %>%
+#       column_to_rownames("sample_id")
 
     
     
     
     
     
-    cooccurrence <- crossprod(as.matrix(cooccurrence_matrix))
+#     cooccurrence <- crossprod(as.matrix(cooccurrence_matrix))
     
     # Set the diagonal to 0 (no self-co-occurrence)
-    diag(cooccurrence) <- 0
+#     diag(cooccurrence) <- 0
     
     # Create a graph object from the co-occurrence matrix
-    graph <- graph_from_adjacency_matrix(cooccurrence, mode = "undirected", weighted = TRUE)
+#     graph <- graph_from_adjacency_matrix(cooccurrence, mode = "undirected", weighted = TRUE)
     
     # Convert igraph object to tidygraph
-    tidy_graph <- as_tbl_graph(graph)
+#     tidy_graph <- as_tbl_graph(graph)
     
     # Step 2: Plot the Co-occurrence Network
-    set.seed(42)  # For reproducibility of the layout
-    p1=  ggraph(tidy_graph, layout = 'fr') + 
-      geom_edge_link(aes(edge_width = weight), edge_colour = "lightblue", alpha = 0.7) +
-      geom_node_point(size = 6, colour = "steelblue") +
-      geom_node_text(aes(label = name), repel = TRUE, size = 4, colour = "black") +
-      scale_edge_width(range = c(0.2, 2)) +  # Adjust edge thickness
-      theme_void() +
-      labs(title = "Co-occurrence Network of Lactococcus cremoris Strains") +
-      theme(
-        plot.title = element_text(hjust = 0.5, size = 16, face = "bold"),
-        legend.position = "none"
-      )
+#     set.seed(42)  # For reproducibility of the layout
+#     p1=  ggraph(tidy_graph, layout = 'fr') + 
+#       geom_edge_link(aes(edge_width = weight), edge_colour = "lightblue", alpha = 0.7) +
+#       geom_node_point(size = 6, colour = "steelblue") +
+#       geom_node_text(aes(label = name), repel = TRUE, size = 4, colour = "black") +
+#       scale_edge_width(range = c(0.2, 2)) +  # Adjust edge thickness
+#       theme_void() +
+#       labs(title = "Co-occurrence Network of Lactococcus cremoris Strains") +
+#       theme(
+#         plot.title = element_text(hjust = 0.5, size = 16, face = "bold"),
+#         legend.position = "none"
+#       )
     
     
     
-    jpeg(filename=file.path(FIGURES_DIR, 'cooccurrence_network_milk_kefir.jpeg'), width = 7864, height=5200,res =300,pointsize = 15) #, width=2000, height=1950)
+#     jpeg(filename=file.path(FIGURES_DIR, 'cooccurrence_network_milk_kefir.jpeg'), width = 7864, height=5200,res =300,pointsize = 15) #, width=2000, height=1950)
     
     
-    plot(p1)
-    graphics.off()
+#     plot(p1)
+#     graphics.off()
     
     
-    library(igraph)
+#     library(igraph)
     
     # Calculate the co-occurrence matrix
-    cooccurrence <- crossprod(as.matrix(cooccurrence_matrix))
+#     cooccurrence <- crossprod(as.matrix(cooccurrence_matrix))
     
     
     
     # Create a graph object
-    graph <- graph.adjacency(cooccurrence, mode = "undirected", diag = FALSE)
+#     graph <- graph.adjacency(cooccurrence, mode = "undirected", diag = FALSE)
     
     # Plot the network
-    plot(graph, vertex.label = V(graph)$name, vertex.size = 10, edge.width = E(graph)$weight)
+#     plot(graph, vertex.label = V(graph)$name, vertex.size = 10, edge.width = E(graph)$weight)
     
     
     
@@ -803,38 +803,40 @@ graphics.off()
     
     
     
-    if(nrow(t1)==0){next }else{
+#     if(nrow(t1)==0){next }else{
       
-      t2 <- data.frame( table(t1$cluster))
+#       t2 <- data.frame( table(t1$cluster))
       
       
-      clus_breakdown <- 
-        rbind(clus_breakdown, data.frame(species=species,
-                                         type=type, 
-                                         clust=t2$Var1, 
-                                         Freq=t2$Freq
-        ))
-    }
-  }
+#       clus_breakdown <- 
+#         rbind(clus_breakdown, data.frame(species=species,
+#                                          type=type, 
+#                                          clust=t2$Var1, 
+#                                          Freq=t2$Freq
+#         ))
+#     }
+#   }
   
-}
+# }
 
 
+pacman::p_load(upstartr)
 library(upstartr)
 
-clus_breakdown_prevalent <- 
+if (is.data.frame(clus_breakdown) && nrow(clus_breakdown) > 0) {
+clus_breakdown_prevalent <-
   rbind(
     clus_breakdown[which(clus_breakdown$type=="Milk.kefir" &
                            clus_breakdown$species %in% total_prevalence$...5[which(total_prevalence$kefir_type=="milk")]),],
     clus_breakdown[which(clus_breakdown$type=="Water.kefir" &
-                           clus_breakdown$species %in% total_prevalence$...5[which(total_prevalence$kefir_type=="water")]),]) 
+                           clus_breakdown$species %in% total_prevalence$...5[which(total_prevalence$kefir_type=="water")]),])
 
 
 
-clus_breakdown_prevalent %>% 
-  mutate(clust=gsub(".*_","",clust)) %>% 
-  
-  
+clus_breakdown_prevalent %>%
+  mutate(clust=gsub(".*_","",clust)) %>%
+
+
   #ggplot(aes(x=  reorder(...2, count),y=count,fill=detection_category))+
   ggplot( aes(x = fct_reorder(species, Freq, .fun = sum),y=Freq,fill=clust))+
   geom_col()+
@@ -853,7 +855,7 @@ clus_breakdown_prevalent %>%
         axis.text.y = element_text(size=12.5,face = "italic",hjust = .5,vjust = .6),
         #axis.text.x = element_text(size=10,angle = 45,hjust = 1), # remove x-axis labels
         #axis.title.y = element_text(size=18), # remove y-axis labels
-        panel.background = element_blank(), 
+        panel.background = element_blank(),
         panel.grid.major = element_blank(),  #remove major-grid labels
         panel.grid.minor = element_blank(),  #remove minor-grid labels
         plot.background = element_blank(),
@@ -867,6 +869,7 @@ clus_breakdown_prevalent %>%
         strip.text = element_text(size=15.5))+
   guides(fill = guide_legend(nrow = 2))+
   coord_flip()
+} # end clus_breakdown guard
 
 
 

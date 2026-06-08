@@ -851,7 +851,7 @@ graphics.off()
 
 #aes(, order = order)
 tryCatch(
-ggplot(my.files_summary_cs, aes(x=fct_reorder2(category_confirmed, -as.numeric(shannon),`kefir type.x`), y=as.numeric(shannon),fill=category_confirmed)) +
+ggplot(my.files_summary_cs, aes(x=fct_reorder2(category_confirmed, -as.numeric(shannon),`kefir type`), y=as.numeric(shannon),fill=category_confirmed)) +
   geom_boxplot() +
   geom_point()+
   theme_bw()+
@@ -872,7 +872,7 @@ error = function(e) message("Skipped category_confirmed plot: ", e$message))
 tryCatch(
 my.files_summary_cs %>%
   mutate(meanViz = mean(as.numeric(shannon), na.rm = TRUE)) %>%
-  ggplot(aes(x=fct_reorder2(category_confirmed, as.numeric(meanViz),as.factor(`kefir type.x`)), y=as.numeric(shannon),fill=category_confirmed)) +
+  ggplot(aes(x=fct_reorder2(category_confirmed, as.numeric(meanViz),as.factor(`kefir type`)), y=as.numeric(shannon),fill=category_confirmed)) +
   geom_boxplot() +
   geom_point()+
   theme_bw()+
@@ -892,23 +892,19 @@ error = function(e) message("Skipped category_confirmed plot v2: ", e$message))
 
 
 
-my.files_summary_cs %>%
-  mutate(meanViz = mean(as.numeric(shannon), na.rm = TRUE)) %>%
-  arrange(desc(meanViz)) %>% 
-  group_by(`kefir type.x`) %>% 
-  
-  
-  
-  ########################################################################################################################
+# (incomplete pipe chain removed — dangling %>% fed into ggplot below)
+
+
+########################################################################################################################
 #Alpha diversity across fermentation categories and timepoints
 ########################################################################################################################
 
 
-#View(table(dplyr::select(my.files_summary_cs[-c(which(my.files_summary_cs$`kefir type.x`=="Media control")),], Stage, category_type)))
+#View(table(dplyr::select(my.files_summary_cs[-c(which(my.files_summary_cs$`kefir type`=="Media control")),], Stage, category_type)))
 
 
 
-ggplot(my.files_summary_cs[-c(which(my.files_summary_cs$`kefir type.x`=="Media control")),], aes(x=Stage, y=as.numeric(shannon),fill=Stage)) +
+ggplot(my.files_summary_cs[-c(which(my.files_summary_cs$`kefir type`=="Media control")),], aes(x=Stage, y=as.numeric(shannon),fill=Stage)) +
   geom_boxplot() +
   facet_wrap(~ category_type)+
   #labs(title= 'Alpha diversity of timepoints') +

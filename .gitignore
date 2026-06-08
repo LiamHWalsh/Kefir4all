@@ -56,3 +56,7 @@ fileCUsers*.pdf
 ALIGNMENT_SUMMARY.md
 FIGURE_STRUCTURE_CORRECTED.md
 TRACKED_CHANGES_FIXES_NEEDED.md
+
+# R script output (generated files — not version-controlled)
+output/
+Rplots.pdf
