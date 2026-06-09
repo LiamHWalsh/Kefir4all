@@ -35,8 +35,8 @@ suppressPackageStartupMessages({
 })
 
 data_dir <- here::here("data")
-out_dir  <- here::here("figures")
-dir.create(out_dir, showWarnings = FALSE, recursive = TRUE)
+OUT_DIR  <- here::here("output", "06_strain_profiling")
+dir.create(OUT_DIR, showWarnings = FALSE, recursive = TRUE)
 
 instrain <- read_csv(file.path(data_dir, "instrain_genome_species_primary_data_v4.csv"),
                      show_col_types = FALSE)
@@ -141,10 +141,10 @@ n_panels <- nrow(unique(plot_df[, c("category.y", "classification")]))
 fig_w <- 14
 fig_h <- max(7, 2.0 * ceiling(n_panels / 4))
 
-ggsave(file.path(out_dir, "Figure_8.png"), p,
+ggsave(file.path(OUT_DIR, "Figure_8.png"), p,
        width = fig_w, height = fig_h, dpi = 300, bg = "white")
-ggsave(file.path(out_dir, "Figure_8.pdf"), p,
+ggsave(file.path(OUT_DIR, "Figure_8.pdf"), p,
        width = fig_w, height = fig_h, bg = "white")
 
-write_tsv(plot_df, file.path(out_dir, "Figure_8_data.tsv"))
-message("Wrote Figure_8.{png,pdf} + Figure_8_data.tsv to ", out_dir)
+write_tsv(plot_df, file.path(OUT_DIR, "Figure_8_data.tsv"))
+message("Wrote Figure_8.{png,pdf} + Figure_8_data.tsv to ", OUT_DIR)

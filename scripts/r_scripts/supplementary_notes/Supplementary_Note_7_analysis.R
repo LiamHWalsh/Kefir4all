@@ -10,7 +10,7 @@
 #   instrain_genome_species_primary_data_v4.csv
 #
 # Output:
-#   figures/Supplementary_Note_7_data.tsv
+#   figures/supplementary_notes/Supplementary_Note_7_data.tsv
 
 suppressPackageStartupMessages({
   library(readr)
@@ -21,8 +21,8 @@ if (!requireNamespace("here", quietly = TRUE)) install.packages("here")
 library(here)
 repo_root <- here::here()
 data_dir  <- file.path(repo_root, "data")
-out_dir   <- file.path(repo_root, "figures")
-dir.create(out_dir, showWarnings = FALSE, recursive = TRUE)
+OUT_DIR   <- file.path(repo_root, "output", "supplementary_notes")
+dir.create(OUT_DIR, showWarnings = FALSE, recursive = TRUE)
 
 instrain <- read_csv(file.path(data_dir, "instrain_genome_species_primary_data_v4.csv"),
                      show_col_types = FALSE)
@@ -66,6 +66,6 @@ summ <- instrain_p %>%
   ) %>%
   arrange(kefir_type, desc(median_snv))
 
-write_tsv(summ, file.path(out_dir, "Supplementary_Note_7_data.tsv"))
+write_tsv(summ, file.path(OUT_DIR, "Supplementary_Note_7_data.tsv"))
 message("Wrote Supplementary_Note_7_data.tsv with ", nrow(summ),
         " species-level rows (>=10 detections per kefir type).")

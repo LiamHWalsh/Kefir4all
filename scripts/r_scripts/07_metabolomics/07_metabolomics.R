@@ -9,8 +9,8 @@ if (!requireNamespace("pacman", quietly = TRUE)) install.packages("pacman")
 library(here)
 DATA_DIR    <- here::here("data")                         # public data files
 PRIVATE_DIR <- here::here("data", "private")              # private/sensitive files
-FIGURES_DIR <- here::here("output", "figures")
-dir.create(FIGURES_DIR, recursive = TRUE, showWarnings = FALSE)
+OUT_DIR <- here::here("output", "07_metabolomics")
+dir.create(OUT_DIR, recursive = TRUE, showWarnings = FALSE)
 
 # Private metadata — not distributed with repo (participant identifiers)
 CS_METADATA_PRIVATE <- file.path(PRIVATE_DIR, "Citizen Scientist metadata_v8.csv")
@@ -422,7 +422,7 @@ my.files_summary[[i]] <- merge(my.files_summary[[i]], metadata_metabolomics[[i]]
 
 
 my.files_summary[[i]]$shannon <- as.numeric( my.files_summary[[i]]$shannon)
-#setwd(FIGURES_DIR)  # output directory
+#setwd(OUT_DIR)  # output directory
 
 #jpeg(filename='Alpha diversity_kefir_type.jpeg', width = 35*700, height=30*700,res=1700,pointsize = 15) #, width=2000, height=1950)
 
@@ -1255,7 +1255,7 @@ which(is.na(metadata_metabolomics_datasets[["Breselge.Water.kefir"]]$merge_colum
    
    
    my.files_summary[[i]]$shannon <- as.numeric( my.files_summary[[i]]$shannon)
-   #setwd(FIGURES_DIR)  # output directory
+   #setwd(OUT_DIR)  # output directory
    
    #jpeg(filename='Alpha diversity_kefir_type.jpeg', width = 35*700, height=30*700,res=1700,pointsize = 15) #, width=2000, height=1950)
    
@@ -3229,7 +3229,7 @@ cor_plot_data$r <- as.numeric(cor_plot_data$r)
    
    library(ggpubr)
    
-   jpeg(file.path(FIGURES_DIR, "Figure_9.jpeg"), width = 7864, height=5200,res =300,pointsize = 15)
+   jpeg(file.path(OUT_DIR, "Figure_9.jpeg"), width = 7864, height=5200,res =300,pointsize = 15)
    #
    #
    ggarrange(p_alpha,ggarrange( pcoa_data_total[["Milk.kefir"]][["conditions"]],

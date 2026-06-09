@@ -4,8 +4,8 @@ if (!requireNamespace("pacman", quietly = TRUE)) install.packages("pacman")
 library(here)
 DATA_DIR    <- here::here("data")
 PRIVATE_DIR <- here::here("data", "private")
-FIGURES_DIR <- here::here("figures")
-dir.create(FIGURES_DIR, recursive = TRUE, showWarnings = FALSE)
+OUT_DIR <- here::here("output", "05_functional_profiling")
+dir.create(OUT_DIR, recursive = TRUE, showWarnings = FALSE)
 CS_METADATA_PRIVATE <- file.path(PRIVATE_DIR, "Citizen Scientist metadata_v8.csv")
 if (!file.exists(CS_METADATA_PRIVATE)) {
   stop("Private metadata not found: ", CS_METADATA_PRIVATE,
