@@ -24,8 +24,8 @@ library(here)
 pacman::p_load(readr, dplyr, tidyr, ggplot2, stringr, tidytext)
 
 DATA_DIR    <- here::here("data")
-FIGURES_DIR <- here::here("figures")
-dir.create(FIGURES_DIR, recursive = TRUE, showWarnings = FALSE)
+OUT_DIR <- here::here("output", "03_mag_classification")
+dir.create(OUT_DIR, recursive = TRUE, showWarnings = FALSE)
 
 # Private metadata -- not committed to repo
 CS_METADATA_PRIVATE <- file.path(here::here("data", "private"),
@@ -181,7 +181,7 @@ p <- mag_prevalent_breakdown %>%
   ) +
   coord_flip()
 
-ggsave(file.path(FIGURES_DIR, "Figure_S6_drep_cluster_breakdown.png"),
+ggsave(file.path(OUT_DIR, "Figure_S6_drep_cluster_breakdown.png"),
        plot = p, width = 16, height = 12, dpi = 300)
 
 # -------------------------------------------------------------------------
