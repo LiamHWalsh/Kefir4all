@@ -11,9 +11,9 @@
 #   mag_metadata_v3.csv.gz          (MAG -> species, source, kefir type)
 #
 # Outputs:
-#   figures/Supplementary_Fig_5.png
-#   figures/Supplementary_Fig_5.pdf
-#   figures/Supplementary_Fig_5_data.tsv
+#   figures/04_taxonomic_profiling/Supplementary_Fig_5.png
+#   figures/04_taxonomic_profiling/Supplementary_Fig_5.pdf
+#   figures/04_taxonomic_profiling/Supplementary_Fig_5_data.tsv
 
 suppressPackageStartupMessages({
   library(readr)
@@ -27,8 +27,8 @@ if (!requireNamespace("here", quietly = TRUE)) install.packages("here")
 library(here)
 repo_root <- here::here()
 data_dir  <- file.path(repo_root, "data")
-out_dir   <- file.path(repo_root, "figures")
-dir.create(out_dir, showWarnings = FALSE, recursive = TRUE)
+OUT_DIR   <- file.path(repo_root, "output", "04_taxonomic_profiling")
+dir.create(OUT_DIR, showWarnings = FALSE, recursive = TRUE)
 
 ndb <- read_csv(file.path(data_dir, "ndb.csv.gz"), show_col_types = FALSE)
 cdb <- read_csv(file.path(data_dir, "Cdb.csv"),    show_col_types = FALSE)
@@ -74,7 +74,7 @@ agg <- within %>%
   filter(n_pairs >= 3) %>%
   arrange(type, desc(pct_ge99))
 
-write_tsv(agg, file.path(out_dir, "Supplementary_Fig_5_data.tsv"))
+write_tsv(agg, file.path(OUT_DIR, "Supplementary_Fig_5_data.tsv"))
 
 stacked <- bind_rows(
   agg %>% mutate(strain_type = "% highly related strains (>=99% ANI)",
@@ -133,8 +133,8 @@ n_sp <- max(table(agg$type))
 fig_w <- 12
 fig_h <- max(7, 0.32 * n_sp + 2)
 
-ggsave(file.path(out_dir, "Supplementary_Fig_5.png"), p,
+ggsave(file.path(OUT_DIR, "Supplementary_Fig_5.png"), p,
        width = fig_w, height = fig_h, dpi = 220, bg = "white")
-ggsave(file.path(out_dir, "Supplementary_Fig_5.pdf"), p,
+ggsave(file.path(OUT_DIR, "Supplementary_Fig_5.pdf"), p,
        width = fig_w, height = fig_h, bg = "white")
-message("Wrote Supplementary_Fig_5.{png,pdf} + Supplementary_Fig_5_data.tsv to ", out_dir)
+message("Wrote Supplementary_Fig_5.{png,pdf} + Supplementary_Fig_5_data.tsv to ", OUT_DIR)

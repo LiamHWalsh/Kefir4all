@@ -9,8 +9,8 @@ if (!requireNamespace("pacman", quietly = TRUE)) install.packages("pacman")
 library(here)
 DATA_DIR    <- here::here("data")                         # public data files
 PRIVATE_DIR <- here::here("data", "private")              # private/sensitive files
-FIGURES_DIR <- here::here("output", "figures")
-dir.create(FIGURES_DIR, recursive = TRUE, showWarnings = FALSE)
+OUT_DIR <- here::here("output", "04_taxonomic_profiling")
+dir.create(OUT_DIR, recursive = TRUE, showWarnings = FALSE)
 
 # Private metadata — not distributed with repo (participant identifiers)
 CS_METADATA_PRIVATE <- file.path(PRIVATE_DIR, "Citizen Scientist metadata_v8.csv")
@@ -251,7 +251,7 @@ my.files_summary$conditions <-  "Household conditions"
 
 my.files_summary$conditions[which(my.files_summary$data_source %in% c("Walsh et al 2023","Mortensen et al 2023" ))] <- "Laboratory controlled"
 
-setwd(FIGURES_DIR)  # output directory
+setwd(OUT_DIR)  # output directory
 
 #jpeg(filename='Alpha diversity_kefir_type.jpeg', width = 35*700, height=30*700,res=1700,pointsize = 15) #, width=2000, height=1950)
 ########################################################################################################################
@@ -763,7 +763,7 @@ persistance <-
 library(ggpubr)
 
 
-jpeg(filename=file.path(FIGURES_DIR, 'Figure_4.jpeg'), width = 7864, height=5200,res =300,pointsize = 15) #, width=2000, height=1950)
+jpeg(filename=file.path(OUT_DIR, 'Figure_4.jpeg'), width = 7864, height=5200,res =300,pointsize = 15) #, width=2000, height=1950)
 
 
  ggarrange(

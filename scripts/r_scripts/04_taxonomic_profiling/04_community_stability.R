@@ -9,8 +9,8 @@ if (!requireNamespace("pacman", quietly = TRUE)) install.packages("pacman")
 library(here)
 DATA_DIR    <- here::here("data")                         # public data files
 PRIVATE_DIR <- here::here("data", "private")              # private/sensitive files
-FIGURES_DIR <- here::here("output", "figures")
-dir.create(FIGURES_DIR, recursive = TRUE, showWarnings = FALSE)
+OUT_DIR <- here::here("output", "04_taxonomic_profiling")
+dir.create(OUT_DIR, recursive = TRUE, showWarnings = FALSE)
 
 # Private metadata — not distributed with repo (participant identifiers)
 CS_METADATA_PRIVATE <- file.path(PRIVATE_DIR, "Citizen Scientist metadata_v8.csv")
@@ -588,7 +588,7 @@ library(ggpubr)
 
 
 
-jpeg(filename=file.path(FIGURES_DIR, 'Figure_3.jpeg'), width = 7864, height=5200,res =300,pointsize = 15) #, width=2000, height=1950)
+jpeg(filename=file.path(OUT_DIR, 'Figure_3.jpeg'), width = 7864, height=5200,res =300,pointsize = 15) #, width=2000, height=1950)
 
  ggarrange(
  ggarrange( bray_distance[[1]],
@@ -921,7 +921,7 @@ for (type in names(gower_dist)){
 
 library(ggpubr)
 
-jpeg(filename=file.path(FIGURES_DIR, 'Supplementary_Figure_2.jpeg'), width = 7864, height=5200,res =300,pointsize = 15) #, width=2000, height=1950)
+jpeg(filename=file.path(OUT_DIR, 'Supplementary_Figure_2.jpeg'), width = 7864, height=5200,res =300,pointsize = 15) #, width=2000, height=1950)
 
 ggarrange(
   
