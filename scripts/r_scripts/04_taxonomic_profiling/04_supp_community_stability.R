@@ -7,8 +7,8 @@ if (!requireNamespace("pacman", quietly = TRUE)) install.packages("pacman")
 library(here)
 DATA_DIR    <- here::here("data")
 PRIVATE_DIR <- here::here("data", "private")
-FIGURES_DIR <- here::here("output", "figures")
-dir.create(FIGURES_DIR, recursive = TRUE, showWarnings = FALSE)
+OUT_DIR <- here::here("output", "04_taxonomic_profiling")
+dir.create(OUT_DIR, recursive = TRUE, showWarnings = FALSE)
 
 CS_METADATA_PRIVATE <- file.path(PRIVATE_DIR, "Citizen Scientist metadata_v8.csv")
 if (!file.exists(CS_METADATA_PRIVATE)) {
@@ -750,7 +750,7 @@ library(ggpubr)
 
 
 
-jpeg(filename=file.path(FIGURES_DIR, 'Figure_9_v2.jpeg'), width = 7864, height=5200,res =300,pointsize = 15) #, width=2000, height=1950)
+jpeg(filename=file.path(OUT_DIR, 'Figure_9_v2.jpeg'), width = 7864, height=5200,res =300,pointsize = 15) #, width=2000, height=1950)
 
 
 ggarrange(a,b,ncol=1,nrow=2,labels=c("A.","B."),common.legend = TRUE,font.label = list(size = 30))

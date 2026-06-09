@@ -10,9 +10,9 @@
 #   data/instrain_genome_species_primary_data_v4.csv
 #
 # Outputs:
-#   figures/Supplementary_Fig_8.png
-#   figures/Supplementary_Fig_8.pdf
-#   figures/Supplementary_Fig_8_data.tsv
+#   figures/04_taxonomic_profiling/Supplementary_Fig_8.png
+#   figures/04_taxonomic_profiling/Supplementary_Fig_8.pdf
+#   figures/04_taxonomic_profiling/Supplementary_Fig_8_data.tsv
 
 suppressPackageStartupMessages({
   library(readr)
@@ -28,8 +28,8 @@ library(here)
 repo_root <- here::here()
 data_path <- file.path(repo_root, "data",
                       "instrain_genome_species_primary_data_v4.csv")
-out_dir   <- file.path(repo_root, "figures")
-dir.create(out_dir, showWarnings = FALSE, recursive = TRUE)
+OUT_DIR   <- file.path(repo_root, "output", "04_taxonomic_profiling")
+dir.create(OUT_DIR, showWarnings = FALSE, recursive = TRUE)
 
 df <- read_csv(data_path, show_col_types = FALSE) %>%
   filter(!is.na(breadth), !is.na(breadth_expected),
@@ -96,9 +96,9 @@ pp <- (p_a | p_b) / (p_c | p_d) +
   plot_annotation(title = "Supplementary Fig. 8. Within-sample polymorphism (per-genome SNV sites and nucleotide diversity) across prevalent kefir species, indexed by inStrain.",
                   theme = theme(plot.title = element_text(size = 10)))
 
-ggsave(file.path(out_dir, "Supplementary_Fig_8.png"), pp,
+ggsave(file.path(OUT_DIR, "Supplementary_Fig_8.png"), pp,
        width = 11, height = 10, dpi = 200, bg = "white")
-ggsave(file.path(out_dir, "Supplementary_Fig_8.pdf"), pp,
+ggsave(file.path(OUT_DIR, "Supplementary_Fig_8.pdf"), pp,
        width = 11, height = 10, bg = "white")
 
 # Per-species summary
@@ -110,5 +110,5 @@ summ <- df %>%
             median_snv = median(SNV_count),
             median_nucl_div = median(nucl_diversity),
             .groups = "drop")
-write_tsv(summ, file.path(out_dir, "Supplementary_Fig_8_data.tsv"))
-message("Wrote Supplementary_Fig_8 to ", out_dir)
+write_tsv(summ, file.path(OUT_DIR, "Supplementary_Fig_8_data.tsv"))
+message("Wrote Supplementary_Fig_8 to ", OUT_DIR)
