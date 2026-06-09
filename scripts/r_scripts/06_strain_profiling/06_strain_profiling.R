@@ -9,8 +9,8 @@ if (!requireNamespace("pacman", quietly = TRUE)) install.packages("pacman")
 library(here)
 DATA_DIR    <- here::here("data")                         # public data files
 PRIVATE_DIR <- here::here("data", "private")              # private/sensitive files
-FIGURES_DIR <- here::here("output", "figures")
-dir.create(FIGURES_DIR, recursive = TRUE, showWarnings = FALSE)
+OUT_DIR <- here::here("output", "06_strain_profiling")
+dir.create(OUT_DIR, recursive = TRUE, showWarnings = FALSE)
 
 # Private metadata — not distributed with repo (participant identifiers)
 CS_METADATA_PRIVATE <- file.path(PRIVATE_DIR, "Citizen Scientist metadata_v8.csv")
@@ -466,7 +466,7 @@ for (species in  levels(as.factor(instrain$classification))){
 #       )
 #     
 #     
-#     jpeg(filename=file.path(FIGURES_DIR, 'cooccurrence_network_milk_kefir.jpeg'), width = 7864, height=5200,res =300,pointsize = 15) #, width=2000, height=1950)
+#     jpeg(filename=file.path(OUT_DIR, 'cooccurrence_network_milk_kefir.jpeg'), width = 7864, height=5200,res =300,pointsize = 15) #, width=2000, height=1950)
 #     
 #     
 # plot(p1)
@@ -678,7 +678,7 @@ tidyr::gather(key = "type", value = "count", n_total_detections, n_multi_detecti
 
 library(ggpubr)
 
-jpeg(filename=file.path(FIGURES_DIR, 'Figure_9_model.jpeg'), width = 7864, height=5200,res =300,pointsize = 15) #, width=2000, height=1950)
+jpeg(filename=file.path(OUT_DIR, 'Figure_9_model.jpeg'), width = 7864, height=5200,res =300,pointsize = 15) #, width=2000, height=1950)
 
 
 ggarrange(a, b,ncol=1,nrow=2,labels=c("A.","B."),font.label = list(size = 30),heights = c(.4,1), common.legend = FALSE)
@@ -762,7 +762,7 @@ graphics.off()
     
     
     
-#     jpeg(filename=file.path(FIGURES_DIR, 'cooccurrence_network_milk_kefir.jpeg'), width = 7864, height=5200,res =300,pointsize = 15) #, width=2000, height=1950)
+#     jpeg(filename=file.path(OUT_DIR, 'cooccurrence_network_milk_kefir.jpeg'), width = 7864, height=5200,res =300,pointsize = 15) #, width=2000, height=1950)
     
     
 #     plot(p1)
@@ -988,7 +988,7 @@ plot <-
 
 
 
-jpeg(filename=file.path(FIGURES_DIR, 'Figure_7_instrain.jpeg'), width = 7864, height=5200,res =300,pointsize = 15) #, width=2000, height=1950)
+jpeg(filename=file.path(OUT_DIR, 'Figure_7_instrain.jpeg'), width = 7864, height=5200,res =300,pointsize = 15) #, width=2000, height=1950)
 
 
 plot(plot)

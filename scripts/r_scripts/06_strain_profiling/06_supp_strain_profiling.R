@@ -13,9 +13,9 @@
 #   mag_metadata_v3.csv.gz          (MAG -> species, sample, kefir type)
 #
 # Outputs:
-#   figures/Supplementary_Fig_9.png
-#   figures/Supplementary_Fig_9.pdf
-#   figures/Supplementary_Fig_9_data.tsv
+#   figures/06_strain_profiling/Supplementary_Fig_9.png
+#   figures/06_strain_profiling/Supplementary_Fig_9.pdf
+#   figures/06_strain_profiling/Supplementary_Fig_9_data.tsv
 
 suppressPackageStartupMessages({
   library(readr)
@@ -30,8 +30,8 @@ if (!requireNamespace("here", quietly = TRUE)) install.packages("here")
 library(here)
 repo_root <- here::here()
 data_dir  <- file.path(repo_root, "data")
-out_dir   <- file.path(repo_root, "figures")
-dir.create(out_dir, showWarnings = FALSE, recursive = TRUE)
+OUT_DIR   <- file.path(repo_root, "output", "06_strain_profiling")
+dir.create(OUT_DIR, showWarnings = FALSE, recursive = TRUE)
 
 cdb <- read_csv(file.path(data_dir, "Cdb.csv"), show_col_types = FALSE)
 md  <- read_csv(file.path(data_dir, "mag_metadata_v3.csv.gz"),
@@ -112,10 +112,10 @@ n_panels <- nrow(unique(plot_df[, c("category.y", "species")]))
 fig_w <- 14
 fig_h <- max(7, 2.0 * ceiling(n_panels / 4))
 
-ggsave(file.path(out_dir, "Supplementary_Fig_9.png"), p,
+ggsave(file.path(OUT_DIR, "Supplementary_Fig_9.png"), p,
        width = fig_w, height = fig_h, dpi = 300, bg = "white")
-ggsave(file.path(out_dir, "Supplementary_Fig_9.pdf"), p,
+ggsave(file.path(OUT_DIR, "Supplementary_Fig_9.pdf"), p,
        width = fig_w, height = fig_h, bg = "white")
 
-write_tsv(plot_df, file.path(out_dir, "Supplementary_Fig_9_data.tsv"))
-message("Wrote Supplementary_Fig_9.{png,pdf} + Supplementary_Fig_9_data.tsv to ", out_dir)
+write_tsv(plot_df, file.path(OUT_DIR, "Supplementary_Fig_9_data.tsv"))
+message("Wrote Supplementary_Fig_9.{png,pdf} + Supplementary_Fig_9_data.tsv to ", OUT_DIR)

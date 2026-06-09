@@ -12,7 +12,7 @@
 #   instrain_genome_species_primary_data_v4.csv
 #
 # Output:
-#   figures/Supplementary_Note_6_data.tsv
+#   figures/supplementary_notes/Supplementary_Note_6_data.tsv
 
 suppressPackageStartupMessages({
   library(readr)
@@ -23,8 +23,8 @@ if (!requireNamespace("here", quietly = TRUE)) install.packages("here")
 library(here)
 repo_root <- here::here()
 data_dir  <- file.path(repo_root, "data")
-out_dir   <- file.path(repo_root, "figures")
-dir.create(out_dir, showWarnings = FALSE, recursive = TRUE)
+OUT_DIR   <- file.path(repo_root, "output", "supplementary_notes")
+dir.create(OUT_DIR, showWarnings = FALSE, recursive = TRUE)
 
 instrain <- read_csv(file.path(data_dir, "instrain_genome_species_primary_data_v4.csv"),
                      show_col_types = FALSE)
@@ -59,6 +59,6 @@ results <- lapply(species_list, function(sp) {
 results_df <- bind_rows(results) %>%
   filter(n_co_detected >= 5)   # robustness: matches the >=5 threshold used in the Note
 
-write_tsv(results_df, file.path(out_dir, "Supplementary_Note_6_data.tsv"))
+write_tsv(results_df, file.path(OUT_DIR, "Supplementary_Note_6_data.tsv"))
 message("Wrote Supplementary_Note_6_data.tsv with ", nrow(results_df),
         " species-pair co-detection rows (>=5 metagenomes).")
