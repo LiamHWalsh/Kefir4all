@@ -1,0 +1,3 @@
+# Large binaries are regenerated/downloaded, never committed:
+*.deb
+R-library*.tar.gz
