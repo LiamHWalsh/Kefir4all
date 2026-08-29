@@ -13,7 +13,21 @@ The repository contains:
 
 ## Reproducibility quick start
 
-### R figures
+### 🐳 Docker — no installation (recommended)
+
+The entire R environment is pre-built into a container. No R, no packages,
+no compilation:
+
+```bash
+docker pull ghcr.io/liamhwalsh/kefir4all:4.4.2
+docker run --rm -p 8787:8787 -e PASSWORD=kefir4all ghcr.io/liamhwalsh/kefir4all:4.4.2
+# Open http://localhost:8787 → login: rstudio / kefir4all
+```
+
+That's it. RStudio opens and every script runs immediately. Full guide:
+[`docker/README.md`](docker/README.md)
+
+### R figures (bare-metal install)
 
 Run any figure script directly from the repo root — each is self-contained:
 
@@ -65,7 +79,7 @@ This repository contains **no individual citizen-scientist identifiers, no house
 
 ## Reproducibility
 
-For exact reproduction of every figure (R version, Python version, package install, env-locking, container, Zenodo archival), see [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md).
+For exact reproduction of every figure (R version, Python version, package install, env-locking, Zenodo archival), see [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md).
 
 ## Citation
 
