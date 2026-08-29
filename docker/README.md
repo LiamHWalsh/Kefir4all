@@ -1,75 +1,155 @@
-# Kefir4All reproducible container — build & usage guide
+# Run Kefir4All analyses — zero installation
 
-This directory contains everything needed to reproduce the **exact R
-environment** used to run the Kefir4All scripts — baked into a single
-Docker image so that nobody ever has to install or compile packages.
+Skip the 2-hour package install. The container has R 4.4.2, RStudio Server,
+and all **553 packages** pre-installed and version-locked. You just pull,
+run, and open a browser tab.
 
 ---
 
-## 1. What is inside the image
+## Quick start (30 seconds)
 
-| Component | Version | Source |
+```bash
+# 1. Pull the image from GitHub Container Registry
+docker pull ghcr.io/liamhwalsh/kefir4all:4.4.2
+
+# 2. Run it
+docker run --rm -p 8787:8787 -e PASSWORD=kefir4all ghcr.io/liamhwalsh/kefir4all:4.4.2
+```
+
+Open **http://localhost:8787** in your browser and log in:
+- **Username:** `rstudio`
+- **Password:** whatever you set with `PASSWORD=` (above: `kefir4all`)
+
+That's it. RStudio opens and the repo scripts are fully executable — no
+`install.packages()`, no compilation, no dependency hunting.
+
+---
+
+## What is inside the container
+
+| Component | Version | Notes |
 |---|---|---|
-| OS | Ubuntu 24.04 (noble) | `ubuntu:24.04` base |
-| R | **4.4.2** (2024-10-31) | Posit prebuilt `.deb` (`/opt/R/4.4.2`) |
-| RStudio Server | 2024.12.1+563 | Posit `.deb` |
-| R packages | **550** (manifest: `package-manifest.txt`) | Tarball of the validated library |
-| CRAN snapshot | 2025-06-15 (pinned in `Rprofile.site`) | Posit Package Manager binaries |
-| Bioconductor | 3.20 (ggtree 3.14.0, phyloseq, ComplexHeatmap, DECIPHER, DESeq2, …) | Bioc release for R 4.4 |
+| R | 4.4.2 (2024-10-31) | Installed at `/opt/R/4.4.2` |
+| RStudio Server | 2024.12.1+563 | Web IDE; no local install needed |
+| CRAN packages | 2025-06-15 snapshot | 500+ packages, all pre-built binaries |
+| Bioconductor | 3.20 | phyloseq, DESeq2, ggtree, ComplexHeatmap, DECIPHER, edgeR, ALDEx2, … |
+| Key figure packages | pre-installed | ggplot2, ggpubr, ggstatsplot, ggalluvial, ggmsa, ggtreeExtra, vegan, caret, … |
 
-Image size ≈ **7.5 GB** (uncompressed), typical for a Bioconductor-scale stack.
-The library is **byte-identical** to the one validated on the build machine:
-no compilation happens for the user, ever.
+Full package list: [`package-manifest.txt`](package-manifest.txt)
+Exact R session: [`sessionInfo.txt`](sessionInfo.txt)
 
 ---
 
-## 2. How the environment was built (and why)
+## Running the analysis scripts
 
-1. **R 4.4.2 from a prebuilt Posit binary** (`cdn.posit.co/r/ubuntu-2404/pkgs/r-4.4.2_1_amd64.deb`)
-   installed at `/opt/R/4.4.2` — avoids the distro R (4.3.x) entirely.
-2. **CRAN packages from a pinned Posit Package Manager snapshot**
-   (`…/cran/__linux__/noble/2025-06-15`) — prebuilt Linux binaries, so installs
-   are fast *and* version-coherent. That date was chosen deliberately: its
-   `ggplot2` (3.5.2) satisfies **both** `ggtree` (needs `check_linewidth`,
-   `is_ggplot`) **and** `ggalluvial`-based scripts (need pre-4.0 internals).
-   Mixing "current CRAN" with Bioc 3.20 breaks this pairing.
-3. **Bioconductor 3.20 packages** via `BiocManager` (R 4.4 → Bioc 3.20 release).
-4. **Version-sensitive pins** discovered the hard way:
-   - `Deriv 4.1.3` — current CRAN `Deriv` (4.2.x) uses the R-4.5-only
-     `R_ClosureFormals` C++ API and **will not compile on R 4.4**. Install
-     `Deriv 4.1.3` *before* anything that pulls it (`car` → `doBy`/`msm` →
-     `rstatix` → `ggpubr`/`ggstatsplot` → …).
-   - `ggplot2 3.5.2`, `ggfun 0.1.8`, `ggforce 0.4.2`, `ggalluvial 0.12.5`,
-     `ggnewscale 0.5.1` — the mutually-compatible set (§8 if you rebuild).
-   - `libuv1-dev`, `libwebp-dev`, `libproj-dev`, `cargo` — system deps that
-     only surface when source fallbacks trigger.
-5. **Validated by execution**: 8 scripts run end-to-end; the remaining 13 stop
-   by design (§6).
+### Option A — inside RStudio (recommended)
 
-### Pitfalls hit during the build (do not re-learn these)
+Open the **Terminal** tab in RStudio and run any script:
 
-| Symptom | Root cause | Fix |
-|---|---|---|
-| `contrib.url … repos not set` | Scripts call `install.packages()` inline; `Rscript` has no default repo | `Rprofile.site` sets pinned repos (already in image) |
-| `R_ClosureFormals … Error 1` | `Deriv` ≥ 4.1.6 needs R 4.5 API | Pin `Deriv 4.1.3` |
-| `uv.h: No such file` | `fs` needs libuv | `apt install libuv1-dev` |
-| `is_ggplot not exported` | ggplot2 too old (3.5.1) | ggplot2 ≥ 3.5.2 |
-| `check_linewidth not found` | ggplot2 4.0.x removed it | ggplot2 ≤ 3.5.2 (hence the 2025-06-15 snapshot) |
-| `object 'gg_par' not found` | ggalluvial/ggnewscale built for ggplot2 4.x | Keep them on the same snapshot |
-| `cc1plus terminated` (OOM) | Heavy source compiles on small VMs | Use PPM binaries; `-j1` for TMB/glmmTMB |
-| RStudio: `Path to R not specified` | R not at a standard path | `rsession-which-r=/opt/R/4.4.2/bin/R` in `/etc/rstudio/rserver.conf` |
-| `library/4.4/…` nested after untar | Tar entries are `./4.4/<pkg>` | Extract with `--strip-components=2` |
-| `useradd rstudio` fails in build | RStudio deb already creates that user | Idempotent user creation in Dockerfile |
+```bash
+Rscript scripts/r_scripts/04_taxonomic_profiling/04_taxonomic_profiling.R
+Rscript scripts/r_scripts/05_functional_profiling/05_resistome.R
+# … any script from REPRODUCIBILITY.md
+```
+
+Or use the **Files** pane → navigate to `scripts/r_scripts/` →
+double-click a `.R` file → click **Source** to run it.
+
+### Option B — one-liner from the host
+
+Mount the repo into the container and run scripts directly:
+
+```bash
+docker run --rm \
+  -v $(pwd):/home/rstudio/kefir4all \
+  -w /home/rstudio/kefir4all \
+  kefir4all:4.4.2 \
+  Rscript scripts/r_scripts/04_taxonomic_profiling/04_taxonomic_profiling.R
+```
+
+### Option C — run everything at once
+
+```bash
+docker run --rm \
+  -v $(pwd):/home/rstudio/kefir4all \
+  -w /home/rstudio/kefir4all \
+  kefir4all:4.4.2 \
+  bash -c 'for s in $(find scripts/r_scripts -name "*.R" | sort); do Rscript "$s" || echo "FAILED: $s"; done'
+```
 
 ---
 
-## 3. Build artefacts
+## Mounting your own data
 
-| File | Role |
+The container's home directory is `/home/rstudio`. To work with local files:
+
+```bash
+docker run --rm -p 8787:8787 \
+  -e PASSWORD=kefir4all \
+  -v /path/to/your/data:/home/rstudio/mydata \
+  ghcr.io/liamhwalsh/kefir4all:4.4.2
+```
+
+Your data appears at `~/mydata` inside RStudio.
+
+---
+
+## Troubleshooting
+
+| Symptom | Fix |
 |---|---|
-| `Dockerfile` | The full image recipe (this directory) |
-| `start.sh` | Entrypoint: sets the RStudio password from `$PASSWORD`, runs `rserver` in the foreground |
-| `package-manifest.txt` | `package version` list of all 551 packages baked in |
-| `sessionInfo.txt` | Full `sessionInfo()` of the validated build machine |
-| *(not committed)* `R-library.tar.gz` | 848 MB gzip of the library — regenerate, don't store (§4) |
-| *(not committed)* `r442.deb`, `rstudio.deb` | Re-downloadable installers (URLs in §4) |
+| `contrib.url … repos not set` | Repos already pinned in the image; this shouldn't happen |
+| Package not found | The 553 packages cover every script. Report the missing package name |
+| Port 8787 already in use | Use a different port: `-p 8788:8787` |
+| Permission denied writing output | Mounted volumes inherit your host UID; use `-u $(id -u):$(id -g)` |
+| RStudio login fails | Check the `PASSWORD=` value you set at `docker run` |
+
+---
+
+## Stopping the container
+
+- **RStudio window**: just close the browser tab; the container keeps running
+- **To stop**: press `Ctrl+C` in the terminal where you ran `docker run`
+- **`--rm` flag** (shown above) ensures the container is deleted on stop — no leftover state
+
+---
+
+## Image size
+
+~8 GB uncompressed (~7.5 GB compressed). Typical for a full Bioconductor +
+tidyverse + phylogenetics stack. The container eliminates all installation
+time, so this is a one-time download.
+
+---
+
+## How the image was built (for maintainers)
+
+The image is built from a validated, frozen R library tarball — no
+compilation happens during `docker build`. Key build decisions:
+
+1. **R 4.4.2** from Posit's prebuilt `.deb` (not distro R 4.3.x)
+2. **CRAN snapshot 2025-06-15** via Posit Package Manager Linux binaries — 
+   chosen because its `ggplot2` (3.5.2) satisfies both `ggtree` and 
+   `ggalluvial` compatibility requirements
+3. **Bioconductor 3.20** (the release paired with R 4.4)
+4. **Deriv 4.1.3** pinned — later versions require R 4.5 C++ API
+
+Full build recipe: [`Dockerfile`](Dockerfile)
+Build artefacts: `r442.deb`, `rstudio.deb`, `R-library-v2.tar.gz` (all 
+regenerable; see `.gitignore`)
+
+### Rebuilding from scratch
+
+```bash
+# Download prerequisites (not committed to git)
+wget https://cdn.posit.co/r/ubuntu-2404/pkgs/r-4.4.2_1_amd64.deb -O r442.deb
+wget https://download2.rstudio.org/server/jammy/amd64/rstudio-server-2024.12.1-563-amd64.deb -O rstudio.deb
+# Generate R-library-v2.tar.gz from a validated R 4.4.2 environment:
+#   cd /opt/R/4.4.2/lib/R
+#   tar czf R-library-v2.tar.gz library/
+
+# Build and push
+docker build -t kefir4all:4.4.2 .
+docker tag kefir4all:4.4.2 ghcr.io/liamhwalsh/kefir4all:4.4.2
+docker push ghcr.io/liamhwalsh/kefir4all:4.4.2
+```
