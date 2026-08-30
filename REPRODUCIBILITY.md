@@ -11,12 +11,16 @@ single container. No local R or package installation is needed.
 ### Command line (no RStudio)
 
 ```bash
-git clone https://github.com/LiamHWalsh/kefir4all.git
+git clone --depth 1 --filter=blob:none --sparse https://github.com/LiamHWalsh/kefir4all.git
 cd kefir4all
+git sparse-checkout set data scripts
 docker pull ghcr.io/liamhwalsh/kefir4all:4.4.2
 
 # Run any script
-docker run --rm -v $(pwd):/home/rstudio/kefir4all -w /home/rstudio/kefir4all \
+docker run --rm \
+  -v $(pwd)/data:/home/rstudio/kefir4all/data \
+  -v $(pwd)/scripts:/home/rstudio/kefir4all/scripts \
+  -w /home/rstudio/kefir4all \
   ghcr.io/liamhwalsh/kefir4all:4.4.2 \
   /opt/R/4.4.2/bin/Rscript scripts/r_scripts/04_taxonomic_profiling/04_taxonomic_profiling.R
 ```
@@ -24,8 +28,12 @@ docker run --rm -v $(pwd):/home/rstudio/kefir4all -w /home/rstudio/kefir4all \
 ### With RStudio
 
 ```bash
-docker run --rm -p 8787:8787 -v $(pwd):/home/rstudio/kefir4all \
-  -e PASSWORD=kefir4all ghcr.io/liamhwalsh/kefir4all:4.4.2
+docker run --rm -p 8787:8787 \
+  -v $(pwd)/data:/home/rstudio/kefir4all/data \
+  -v $(pwd)/scripts:/home/rstudio/kefir4all/scripts \
+  -w /home/rstudio/kefir4all \
+  -e PASSWORD=kefir4all \
+  ghcr.io/liamhwalsh/kefir4all:4.4.2
 ```
 
 Open http://localhost:8787 in your browser and log in with:

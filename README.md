@@ -16,17 +16,22 @@ The repository contains:
 All 553 R packages are pre-installed in a container — no setup needed.
 
 ```bash
-git clone https://github.com/LiamHWalsh/kefir4all.git
+# Clone only the data and scripts (not the whole repo)
+git clone --depth 1 --filter=blob:none --sparse https://github.com/LiamHWalsh/kefir4all.git
 cd kefir4all
+git sparse-checkout set data scripts
 docker pull ghcr.io/liamhwalsh/kefir4all:4.4.2
 
 # Run any script
-docker run --rm -v $(pwd):/home/rstudio/kefir4all -w /home/rstudio/kefir4all \
+docker run --rm \
+  -v $(pwd)/data:/home/rstudio/kefir4all/data \
+  -v $(pwd)/scripts:/home/rstudio/kefir4all/scripts \
+  -w /home/rstudio/kefir4all \
   ghcr.io/liamhwalsh/kefir4all:4.4.2 \
   /opt/R/4.4.2/bin/Rscript scripts/r_scripts/04_taxonomic_profiling/04_taxonomic_profiling.R
 ```
 
-This generates the figure at `output/04_taxonomic_profiling/Figure_2.jpeg`.
+This generates the figure at `../output/04_taxonomic_profiling/Figure_2.jpeg`.
 
 See [`docker/README.md`](docker/README.md) for RStudio mode and troubleshooting.
 
