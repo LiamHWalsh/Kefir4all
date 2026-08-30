@@ -261,33 +261,6 @@ for (i in colnames(species_profile[[type]])){
   pa[[type]] <- ggtree(tax_phylo[[type]], layout = "circular")#
   
 metadata[[type]] <- data.frame(species=as.character(pa[[type]]$data$label),
-
-
-#######################################################################################################################
-# Taxonomic ordering for y-axis (Reviewer request: order by class then family)
-#######################################################################################################################
-taxonomic_order <- list()
-for (type in names(taxize_class)) {
-  df <- data.frame(
-    species = character(0),
-    class   = character(0),
-    family  = character(0),
-    order_name = character(0),
-    stringsAsFactors = FALSE
-  )
-  for (sp in names(taxize_class[[type]])) {
-    tc <- taxize_class[[type]][[sp]]
-    if (!is.data.frame(tc)) next
-    cls <- ifelse("class"  %in% tc$rank, tc$name[tc$rank == "class"][1],  "Unknown")
-    fam <- ifelse("family" %in% tc$rank, tc$name[tc$rank == "family"][1], "Unknown")
-    ord <- ifelse("order"  %in% tc$rank, tc$name[tc$rank == "order"][1],  "Unknown")
-    df <- rbind(df, data.frame(species = sp, class = cls, family = fam, order_name = ord,
-                                stringsAsFactors = FALSE))
-  }
-  # Order: class alphabetically, then family alphabetically, then species
-  df <- df[order(df$class, df$family, df$species), ]
-  taxonomic_order[[type]] <- df$species
-}
                                genus=as.character(NA),
                                order=as.character(NA))
 
@@ -334,13 +307,14 @@ species_profile[[type]] %>% rownames_to_column("sample") %>% pivot_longer(!sampl
                mapping=aes(x=sample,y=clade_name, fill=relative_abundance),
                offset = .7,size = 10,pwidth = 1,
                axis.params=list(axis="x",color = "white"))+
-    #scale_fill_gradientn(colours = pal,breaks=col_breaks, name="Relative\nabundance (%)", labels=col_breaks_labels)+
-    scale_fill_gradientn(colours = c("#440154","#3b528b","#21918c","#5ec962","#fde725"),  # viridis
-                         breaks= c(0, 1, 10, 30, 70, 100),
-                         values= scales::rescale(c(0, 1, 10, 30, 70, 100)),
-                         guide="colorbar",
-                         name="Relative\nabundance (%)",
-                         labels=c("0","1","10","30","70","100"))+
+    #scale_fill_gradientn(colours = pal,breaks=col_breaks, name="Relative abundance" , labels=col_breaks_labels)+
+       scale_fill_gradientn(
+              colours = c("#440154","#3b528b","#21918c","#5ec962","#fde725"),
+              breaks  = c(0, 1, 10, 30, 70, 100),
+              values  = scales::rescale(c(0, 1, 10, 30, 70, 100)),
+              guide   = "colorbar",
+              name    = "Relative\nabundance (%)",
+              labels  = c("0","1","10","30","70","100"))+
     theme_void() +
     theme( legend.title = element_text(face="bold",size=25),
            legend.text = element_text(face="italic",size=18),
@@ -360,6 +334,29 @@ print(paste(type, "has", length(levels(as.factor( species_profile[[type]]$clade_
   
 }
 
+
+#######################################################################################################################
+# Taxonomic ordering for y-axis (Reviewer request: order by class then family)
+#######################################################################################################################
+taxonomic_order <- list()
+for (type in names(taxize_class)) {
+  df <- data.frame(
+    species = character(0), class = character(0),
+    family  = character(0), order_name = character(0),
+    stringsAsFactors = FALSE)
+  for (sp in names(taxize_class[[type]])) {
+    tc <- taxize_class[[type]][[sp]]
+    if (!is.data.frame(tc)) next
+    cls <- "Unknown"; fam <- "Unknown"; ord <- "Unknown"
+    if ("class"  %in% tc$rank) cls <- tc$name[tc$rank == "class"][1]
+    if ("family" %in% tc$rank) fam <- tc$name[tc$rank == "family"][1]
+    if ("order"  %in% tc$rank) ord <- tc$name[tc$rank == "order"][1]
+    df <- rbind(df, data.frame(species = sp, class = cls, family = fam,
+                                order_name = ord, stringsAsFactors = FALSE))
+  }
+  df <- df[order(df$class, df$family, df$species), ]
+  taxonomic_order[[type]] <- df$species
+}
 #write.csv(species_prevalence[["milk"]],"Q:/H2020 Master/Citizen Science Project/Results/04_short_read_profiling/04_Metacache/milk_metacache_prevalence.csv" )
 #write.csv(species_prevalence[["water"]],"Q:/H2020 Master/Citizen Science Project/Results/04_short_read_profiling/04_Metacache/water_metacache_prevalence.csv" )
 
@@ -481,20 +478,9 @@ for (i in levels(as.factor((total_compositional_data$kefirdataset)))){
       mutate(`kefir type`=gsub("ML|WL","Liquid",
                               gsub("MG|WG", "Grain",`kefir type` ))) %>% 
       mutate(type = factor(type, levels = rev(levels(factor(type))))) %>%  # Reverse the order of the levels
-      mutate(
-      # Order x-axis: first by Stage (timepoint), then by Sample ID within each timepoint
-      Stage_order = factor(Stage, levels = c("T0","T1","T2","T3","T4","T5","T6"),
-                           labels = c("T0","W1","W5","W9","W13","W17","W21")),
-      sample_combined = paste(`kefir type`, sample, sep = "_")) %>%
-      mutate(sample_combined = factor(sample_combined,
-        levels = unique(sample_combined[order(Stage_order, sample)]))) %>%  # Order by timepoint then ID
-      # Remove the Timepoint case_when block we added earlier (redundant with Stage_order above)
-      mutate(Timepoint = Stage_order) %>%
-
-      mutate(sample_combined = factor(sample_combined, levels = unique(sample_combined[order(`kefir type`, sample)]))) %>%  # Reorder the x-axis
-
-      # Enforce taxonomic ordering on y-axis (class > family > species)
+      mutate(sample_combined = paste(`kefir type`, sample, sep = "_")) %>%  # Combine kefir type and sample
       mutate(clade_name = factor(clade_name, levels = taxonomic_order[[i]])) %>%
+      mutate(sample_combined = factor(sample_combined, levels = unique(sample_combined[order(`kefir type`, sample)]))) %>%  # Reorder the x-axis
        
       ggplot( aes(x = sample_combined  , y =clade_name)) +
        geom_tile(aes(fill = relative_abundance),#color = "white",
@@ -507,32 +493,17 @@ for (i in levels(as.factor((total_compositional_data$kefirdataset)))){
        labs(x="", y="", title="")+ #y="Feature"
        #facet_wrap(~type,scales="free_x")+
        facet_grid(~type,margins=FALSE, space='free',scales="free")+
-       scale_x_discrete(labels = function(x) {
-         # Look up Stage for each sample_combined to get correct timepoint labels
-         stage_lookup <- setNames(total_compositional_data$Stage,
-                                  paste(gsub("ML|WL","Liquid",
-                                        gsub("MG|WG","Grain",
-                                        total_compositional_data$`kefir type`)),
-                                        total_compositional_data$sample, sep="_"))
-         tp <- stage_lookup[x]
-         tp[tp == "T1"] <- "W1";  tp[tp == "T2"] <- "W5"
-         tp[tp == "T3"] <- "W9";  tp[tp == "T4"] <- "W13"
-         tp[tp == "T5"] <- "W17"; tp[tp == "T6"] <- "W21"
-         tp[is.na(tp)] <- "?"
-         return(tp)
-       }) +
       # facet_grid2(.~CHR, scales = "free_x", space = "free_x", switch = "x",
       #             strip = strip_themed(
       #               background_x = elem_list_rect(
       #                 fill = rainbow(length(unique(df_temp$CHR)))))) +
        scale_fill_gradientn(
-       colours = c("#440154", "#3b528b", "#21918c", "#5ec962", "#fde725"),  # viridis-inspired
-       breaks  = c(0, 1, 10, 30, 70, 100),
-       values  = scales::rescale(c(0, 1, 10, 30, 70, 100)),
-       guide   = "colorbar",
-       name    = "Relative
-abundance (%)",
-       labels  = c("0", "1", "10", "30", "70", "100")) +
+              colours = c("#440154","#3b528b","#21918c","#5ec962","#fde725"),
+              breaks  = c(0, 1, 10, 30, 70, 100),
+              values  = scales::rescale(c(0, 1, 10, 30, 70, 100)),
+              guide   = "colorbar",
+              name    = "Relative\nabundance (%)",
+              labels  = c("0","1","10","30","70","100"))+
        #facet_grid(Category~ cluster_info,margins=FALSE)+
        theme_bw()
     
@@ -541,16 +512,9 @@ abundance (%)",
                                                      mutate(`kefir type`=gsub("ML|WL","Liquid",
                                                                               gsub("MG|WG", "Grain",`kefir type` ))) %>% 
                                                        mutate(type = factor(type, levels = rev(levels(factor(type))))) %>%  # Reverse the order of the levels
-                                                       mutate(
-      # Order x-axis: first by Stage (timepoint), then by Sample ID within each timepoint
-      Stage_order = factor(Stage, levels = c("T0","T1","T2","T3","T4","T5","T6"),
-                           labels = c("T0","W1","W5","W9","W13","W17","W21")),
-      sample_combined = paste(`kefir type`, sample, sep = "_")) %>%
-      mutate(sample_combined = factor(sample_combined,
-        levels = unique(sample_combined[order(Stage_order, sample)]))) %>%  # Order by timepoint then ID
-      # Remove the Timepoint case_when block we added earlier (redundant with Stage_order above)
-      mutate(Timepoint = Stage_order) %>%
-mutate(sample_combined = factor(sample_combined, levels = unique(sample_combined[order(`kefir type`, sample)]))),  # Reorder the x-axis
+                                                       mutate(sample_combined = paste(`kefir type`, sample, sep = "_")) %>%  # Combine kefir type and sample
+      mutate(clade_name = factor(clade_name, levels = taxonomic_order[[i]])) %>%
+                                                       mutate(sample_combined = factor(sample_combined, levels = unique(sample_combined[order(`kefir type`, sample)]))),  # Reorder the x-axis
                                                      aes(x=sample_combined,y=.35, col = `kefir type`), size = 4.6, shape = 15) +
                                          # geom_point(data =  total_compositional_data[which(total_compositional_data$kefirdataset==i),], 
       theme(legend.position = "top",
@@ -901,8 +865,9 @@ for (i in names(grain_microbes)){
 
 
 
+
 ########################################################################################################################
-# Figure 2A: T0 grain metagenome composition -- discrete heatmap
+# Figure 2A: T0 grain metagenome composition — discrete heatmap
 # Replaces the original dual-encoded bubble plot per Reviewer 1 & 3 feedback.
 ########################################################################################################################
 
@@ -910,12 +875,6 @@ for (i in names(grain_microbes)){
 grain_combined <- rbind(grain_microbes[[1]], grain_microbes[[2]])
 grain_combined$species <- factor(grain_combined$species,
   levels = rev(sort(unique(grain_combined$species))))
-
-# Apply taxonomic ordering to species in Panel A
-grain_combined$species <- factor(grain_combined$species,
-  levels = rev(c(taxonomic_order[["milk"]], taxonomic_order[["water"]])[
-    c(taxonomic_order[["milk"]], taxonomic_order[["water"]]) %in% unique(grain_combined$species)
-  ]))
 
 # Bin relative abundance into discrete categories for unambiguous colour encoding
 grain_combined$RA_bin <- cut(grain_combined$relative_abundance,
@@ -933,35 +892,10 @@ ra_colours <- c(
   ">30%"      = "#49006a"
 )
 
-
-# ---- Class annotation for y-axis strips (reviewer request: taxonomic context) ----
-# Build a species-to-class lookup from the full milk+water taxonomy
-sp_class <- data.frame(
-  species = character(0),
-  class   = character(0),
-  stringsAsFactors = FALSE
-)
-for (type in names(taxize_class)) {
-  for (sp in names(taxize_class[[type]])) {
-    tc <- taxize_class[[type]][[sp]]
-    if (!is.data.frame(tc)) next
-    cls <- tc$name[tc$rank == "class"][1]
-    if (!is.na(cls)) {
-      sp_class <- rbind(sp_class, data.frame(species = sp, class = cls,
-                         stringsAsFactors = FALSE))
-    }
-  }
-}
-sp_class <- unique(sp_class)
-grain_combined$class <- sp_class$class[match(as.character(grain_combined$species), sp_class$species)]
-grain_combined$class[is.na(grain_combined$class)] <- "Unknown"
-
 grain_heatmap <- ggplot(grain_combined,
   aes(x = type, y = species, fill = RA_bin)) +
   geom_tile(colour = "grey80", linewidth = 0.4) +
-  
-  facet_grid(class ~ ., scales = "free_y", space = "free_y", switch = "y") +
-scale_fill_manual(
+  scale_fill_manual(
     values   = ra_colours,
     name     = "Relative\nabundance",
     drop     = FALSE,
@@ -1007,24 +941,22 @@ print(paste(nrow(species_prevalence$`Water kefir`[-c(which(species_prevalence$`W
 
 
 ########################################################################################################################
+
 ########################################################################################################################
-# Add asterisk annotation: * = species not detected at >0.1% in T0 grain metagenomes.
-# (Reviewer fix: species present in T0 grains should NOT receive an asterisk.)
+# Add asterisk: * = species NOT detected at >0.1% in T0 grain metagenomes
 ########################################################################################################################
 
 # --- Milk kefir ---
 mk_label <- p_heatmap$`Milk kefir`$data$clade_name
 mk_t0_species <- unique(grain_microbes[["Milk.kefir"]]$species[
-  grain_microbes[["Milk.kefir"]]$relative_abundance > 0.1
-])
+  grain_microbes[["Milk.kefir"]]$relative_abundance > 0.1])
 mk_label[!mk_label %in% mk_t0_species] <- paste0("*", mk_label[!mk_label %in% mk_t0_species])
 p_heatmap$`Milk kefir` <- p_heatmap$`Milk kefir` + scale_y_discrete(labels = mk_label)
 
 # --- Water kefir ---
 wk_label <- p_heatmap$`Water kefir`$data$clade_name
 wk_t0_species <- unique(grain_microbes[["Water.kefir"]]$species[
-  grain_microbes[["Water.kefir"]]$relative_abundance > 0.1
-])
+  grain_microbes[["Water.kefir"]]$relative_abundance > 0.1])
 wk_label[!wk_label %in% wk_t0_species] <- paste0("*", wk_label[!wk_label %in% wk_t0_species])
 p_heatmap$`Water kefir` <- p_heatmap$`Water kefir` + scale_y_discrete(labels = wk_label)
 
@@ -1050,7 +982,7 @@ ggplot(
   facet_wrap(~type,scales="free_x")+
   theme_bw() +
   theme(#plot.title = element_textbox(hjust = 0.5, margin = margin(t = 5, b = 5),size = 55), #element_text(color="red", size=14, face="bold",hjust = 0.5),
-    axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5, size = 6),
+            axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5, size = 6),
     axis.text.y = element_text(size=30,face="italic"),
     strip.background=element_rect(fill="lightblue"),
     strip.text = element_text(size= 35 ),
@@ -1189,7 +1121,7 @@ jpeg(filename=file.path(OUT_DIR, 'Figure_2.jpeg'), width = 7864, height=5200,res
 
 ggarrange( grain_heatmap,
   ggarrange(p_heatmap[[1]],p_heatmap[[2]], nrow=1,ncol=2, labels=c("B.","C."),common.legend = TRUE,  font.label = list(size = 30)),
-            nrow=2,ncol=1, heights = c(5, 6),widths=c(10,1),labels=c("",""),  font.label = list(size = 30))
+            nrow=2,ncol=1, heights = c(5, 6),widths=c(10,1),labels=c("A.",""),  font.label = list(size = 30))
 graphics.off()
 
 # 
