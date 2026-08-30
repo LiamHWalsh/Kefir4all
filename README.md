@@ -24,14 +24,13 @@ docker pull ghcr.io/liamhwalsh/kefir4all:4.4.2
 
 # Run any script
 docker run --rm \
-  -v $(pwd)/data:/home/rstudio/kefir4all/data \
-  -v $(pwd)/scripts:/home/rstudio/kefir4all/scripts \
+  -v $(pwd):/home/rstudio/kefir4all \
   -w /home/rstudio/kefir4all \
   ghcr.io/liamhwalsh/kefir4all:4.4.2 \
   /opt/R/4.4.2/bin/Rscript scripts/r_scripts/04_taxonomic_profiling/04_taxonomic_profiling.R
 ```
 
-This generates the figure at `../output/04_taxonomic_profiling/Figure_2.jpeg`.
+This generates the figure at `output/04_taxonomic_profiling/Figure_2.jpeg`.
 
 See [`docker/README.md`](docker/README.md) for RStudio mode and troubleshooting.
 

@@ -16,21 +16,19 @@ docker pull ghcr.io/liamhwalsh/kefir4all:4.4.2
 
 # Run any script
 docker run --rm \
-  -v $(pwd)/data:/home/rstudio/kefir4all/data \
-  -v $(pwd)/scripts:/home/rstudio/kefir4all/scripts \
+  -v $(pwd):/home/rstudio/kefir4all \
   -w /home/rstudio/kefir4all \
   ghcr.io/liamhwalsh/kefir4all:4.4.2 \
   /opt/R/4.4.2/bin/Rscript scripts/r_scripts/04_taxonomic_profiling/04_taxonomic_profiling.R
 
-# Figure appears at: ../output/04_taxonomic_profiling/Figure_2.jpeg
+# Figure appears at: output/04_taxonomic_profiling/Figure_2.jpeg
 ```
 
 ## Run with RStudio (interactive)
 
 ```bash
 docker run --rm -p 8787:8787 \
-  -v $(pwd)/data:/home/rstudio/kefir4all/data \
-  -v $(pwd)/scripts:/home/rstudio/kefir4all/scripts \
+  -v $(pwd):/home/rstudio/kefir4all \
   -w /home/rstudio/kefir4all \
   -e PASSWORD=kefir4all \
   ghcr.io/liamhwalsh/kefir4all:4.4.2
