@@ -301,8 +301,7 @@ for (species in  levels(as.factor(instrain$classification))){
     
     t1 <- instrain[which(instrain$classification==species &
       instrain$category.y==type&
-        instrain$popANI_reference>.98 &
-        instrain$coverage >= 5),]
+        instrain$popANI_reference>.98),]
     
     if(nrow(t1)==0){
       
