@@ -1,3 +1,6 @@
+# Private token files
+.liam_token
+*.token
 # Editor / OS scratch
 .DS_Store
 *~
