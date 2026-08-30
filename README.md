@@ -11,23 +11,26 @@ The repository contains:
 - **Numerical source data** (`data/`) that the figure scripts read from. Folder names match the original figure numbering used during initial submission; see `scripts/README.md` for a mapping between original-submission numbering and revised-manuscript numbering.
 - **Rendered current-revision figures** (`figures/`) plus per-figure source-data TSVs.
 
-## Reproducibility quick start
+## Reproducibility with Docker
 
-### 🐳 Docker — no installation (recommended)
-
-The entire R environment is pre-built into a container. No R, no packages,
-no compilation:
+All 553 R packages are pre-installed in a container — no setup needed.
 
 ```bash
+git clone https://github.com/LiamHWalsh/kefir4all.git
+cd kefir4all
 docker pull ghcr.io/liamhwalsh/kefir4all:4.4.2
-docker run --rm -p 8787:8787 -e PASSWORD=kefir4all ghcr.io/liamhwalsh/kefir4all:4.4.2
-# Open http://localhost:8787 → login: rstudio / kefir4all
+
+# Run any script
+docker run --rm -v $(pwd):/home/rstudio/kefir4all -w /home/rstudio/kefir4all \
+  ghcr.io/liamhwalsh/kefir4all:4.4.2 \
+  /opt/R/4.4.2/bin/Rscript scripts/r_scripts/04_taxonomic_profiling/04_taxonomic_profiling.R
 ```
 
-That's it. RStudio opens and every script runs immediately. Full guide:
-[`docker/README.md`](docker/README.md)
+This generates the figure at `output/04_taxonomic_profiling/Figure_2.jpeg`.
 
-### R figures (bare-metal install)
+See [`docker/README.md`](docker/README.md) for RStudio mode and troubleshooting.
+
+## Run bare-metal (manual install)
 
 Run any figure script directly from the repo root — each is self-contained:
 
