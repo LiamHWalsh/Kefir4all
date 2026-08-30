@@ -28,8 +28,11 @@ docker run --rm -p 8787:8787 -v $(pwd):/home/rstudio/kefir4all \
   -e PASSWORD=kefir4all ghcr.io/liamhwalsh/kefir4all:4.4.2
 ```
 
-Open http://localhost:8787 → login: `rstudio` / `kefir4all`. Open any `.R`
-file and click **Source**.
+Open http://localhost:8787 in your browser and log in with:
+- **Username:** `rstudio`
+- **Password:** `kefir4all`  (set with `-e PASSWORD=` at `docker run`)
+
+Open any `.R` file and click **Source**.
 
 Full details in [`docker/README.md`](docker/README.md).
 
