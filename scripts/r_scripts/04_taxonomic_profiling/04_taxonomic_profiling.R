@@ -424,6 +424,10 @@ total_compositional_data$kefirdataset[which(total_compositional_data$`kefir type
 if (!requireNamespace("ggh4x", quietly=TRUE)) install.packages("ggh4x")
 library(ggh4x)
 
+# Map Stage codes to readable timepoint labels for x-axis strips
+total_compositional_data$timepoint <- recode(total_compositional_data$Stage,
+  "T0"="T0", "T1"="W1", "T2"="W5", "T3"="W9", "T4"="W13", "T5"="W17", "T6"="W21")
+
 p_heatmap <- c()
 i <- "Milk kefir"
 
@@ -455,7 +459,7 @@ for (i in levels(as.factor((total_compositional_data$kefirdataset)))){
                               gsub("MG|WG", "Grain",`kefir type` ))) %>% 
       mutate(type = factor(type, levels = rev(levels(factor(type))))) %>%  # Reverse the order of the levels
       mutate(sample_combined = paste(`kefir type`, sample, sep = "_")) %>%  # Combine kefir type and sample
-      mutate(sample_combined = factor(sample_combined, levels = unique(sample_combined[order(`kefir type`, sample)]))) %>%  # Reorder the x-axis
+      mutate(sample_combined = factor(sample_combined, levels = unique(sample_combined[order(Stage, sample)]))) %>%  # Reorder by timepoint then sample
        
       ggplot( aes(x = sample_combined  , y =clade_name)) +
        geom_tile(aes(fill = relative_abundance),#color = "white",
@@ -467,7 +471,9 @@ for (i in levels(as.factor((total_compositional_data$kefirdataset)))){
        #guides(fill=guide_legend(title="Presence/\nAbsence"))+
        labs(x="", y="", title="")+ #y="Feature"
        #facet_wrap(~type,scales="free_x")+
-       facet_grid(~type,margins=FALSE, space='free',scales="free")+
+       facet_nested(. ~ type + timepoint, scales="free_x", space="free_x", nest_line=element_line(linetype=1))+
+       scale_x_discrete(labels=NULL)+  # hide individual samples, timepoints shown in strips
+       
       # facet_grid2(.~CHR, scales = "free_x", space = "free_x", switch = "x",
       #             strip = strip_themed(
       #               background_x = elem_list_rect(
@@ -499,7 +505,7 @@ for (i in levels(as.factor((total_compositional_data$kefirdataset)))){
             legend.key.height = unit(2, 'cm'), #change legend key height
             legend.key.width = unit(2, 'cm'),
             legend.title = element_text( size=17.5, face="bold"),
-            axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5, size = 5),
+            axis.text.x = element_blank(),  # individual sample labels hidden; timepoint shown via strips
             legend.text = element_text(size = 17.5),
             axis.text.y = element_text(size=13.5, face="italic"),
             axis.title = element_text(face = "bold", size = 10.5)
