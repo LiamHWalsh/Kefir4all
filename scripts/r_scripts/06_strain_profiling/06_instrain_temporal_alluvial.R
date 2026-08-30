@@ -76,8 +76,11 @@ water_species <- total_prev[[sp_col]][total_prev$kefir_type == "water"]
 
 # Filter inStrain to high-confidence detections in the Kefir4All cohort.
 # popANI_reference > 0.98 is the threshold used in the original Figure 10.R.
+# coverage >= 5 excludes marginal detections that might reflect sequencing
+# depth artefacts rather than genuine biological signal (Reviewer concern).
 instrain_cs <- instrain %>%
   filter(popANI_reference > 0.98,
+         coverage >= 5,
          sample_id %in% kefir4all_md$merge_column)
 
 # Restrict to species that are prevalent in the relevant kefir type.
