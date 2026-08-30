@@ -308,13 +308,12 @@ species_profile[[type]] %>% rownames_to_column("sample") %>% pivot_longer(!sampl
                offset = .7,size = 10,pwidth = 1,
                axis.params=list(axis="x",color = "white"))+
     #scale_fill_gradientn(colours = pal,breaks=col_breaks, name="Relative abundance" , labels=col_breaks_labels)+
-       scale_fill_gradientn(
-              colours = c("#440154","#3b528b","#21918c","#5ec962","#fde725"),
-              breaks  = c(0, 1, 10, 30, 70, 100),
-              values  = scales::rescale(c(0, 1, 10, 30, 70, 100)),
-              guide   = "colorbar",
-              name    = "Relative\nabundance (%)",
-              labels  = c("0","1","10","30","70","100"))+
+    scale_fill_gradientn(colours = c("Dark blue","yellow","yellow2","orange", "red","darkred" ),
+                         breaks= c(-5,0,10,30,70,90,100),
+                         values= rescale(as.numeric(c(-5,0,10,30,70,90, 100))),
+                         guide="colorbar",
+                         name="Relative abundance" ,
+                         labels=c(-5,0,10,30,70,90,100))+
     theme_void() +
     theme( legend.title = element_text(face="bold",size=25),
            legend.text = element_text(face="italic",size=18),
@@ -334,29 +333,6 @@ print(paste(type, "has", length(levels(as.factor( species_profile[[type]]$clade_
   
 }
 
-
-#######################################################################################################################
-# Taxonomic ordering for y-axis (Reviewer request: order by class then family)
-#######################################################################################################################
-taxonomic_order <- list()
-for (type in names(taxize_class)) {
-  df <- data.frame(
-    species = character(0), class = character(0),
-    family  = character(0), order_name = character(0),
-    stringsAsFactors = FALSE)
-  for (sp in names(taxize_class[[type]])) {
-    tc <- taxize_class[[type]][[sp]]
-    if (!is.data.frame(tc)) next
-    cls <- "Unknown"; fam <- "Unknown"; ord <- "Unknown"
-    if ("class"  %in% tc$rank) cls <- tc$name[tc$rank == "class"][1]
-    if ("family" %in% tc$rank) fam <- tc$name[tc$rank == "family"][1]
-    if ("order"  %in% tc$rank) ord <- tc$name[tc$rank == "order"][1]
-    df <- rbind(df, data.frame(species = sp, class = cls, family = fam,
-                                order_name = ord, stringsAsFactors = FALSE))
-  }
-  df <- df[order(df$class, df$family, df$species), ]
-  taxonomic_order[[type]] <- df$species
-}
 #write.csv(species_prevalence[["milk"]],"Q:/H2020 Master/Citizen Science Project/Results/04_short_read_profiling/04_Metacache/milk_metacache_prevalence.csv" )
 #write.csv(species_prevalence[["water"]],"Q:/H2020 Master/Citizen Science Project/Results/04_short_read_profiling/04_Metacache/water_metacache_prevalence.csv" )
 
@@ -479,7 +455,6 @@ for (i in levels(as.factor((total_compositional_data$kefirdataset)))){
                               gsub("MG|WG", "Grain",`kefir type` ))) %>% 
       mutate(type = factor(type, levels = rev(levels(factor(type))))) %>%  # Reverse the order of the levels
       mutate(sample_combined = paste(`kefir type`, sample, sep = "_")) %>%  # Combine kefir type and sample
-      mutate(clade_name = factor(clade_name, levels = taxonomic_order[[i]])) %>%
       mutate(sample_combined = factor(sample_combined, levels = unique(sample_combined[order(`kefir type`, sample)]))) %>%  # Reorder the x-axis
        
       ggplot( aes(x = sample_combined  , y =clade_name)) +
@@ -497,13 +472,12 @@ for (i in levels(as.factor((total_compositional_data$kefirdataset)))){
       #             strip = strip_themed(
       #               background_x = elem_list_rect(
       #                 fill = rainbow(length(unique(df_temp$CHR)))))) +
-       scale_fill_gradientn(
-              colours = c("#440154","#3b528b","#21918c","#5ec962","#fde725"),
-              breaks  = c(0, 1, 10, 30, 70, 100),
-              values  = scales::rescale(c(0, 1, 10, 30, 70, 100)),
-              guide   = "colorbar",
-              name    = "Relative\nabundance (%)",
-              labels  = c("0","1","10","30","70","100"))+
+       scale_fill_gradientn(colours = c("Dark blue","yellow","yellow2","orange", "red","darkred" ),
+                            breaks= c(-5,0,10,30,70,90,100),
+                            values= rescale(as.numeric(c(-5,0,10,30,70,90, 100))),
+                            guide="colorbar",
+                            name="Relative abundance" ,
+                            labels=c(-5,0,10,30,70,90,100))+
        #facet_grid(Category~ cluster_info,margins=FALSE)+
        theme_bw()
     
@@ -513,7 +487,6 @@ for (i in levels(as.factor((total_compositional_data$kefirdataset)))){
                                                                               gsub("MG|WG", "Grain",`kefir type` ))) %>% 
                                                        mutate(type = factor(type, levels = rev(levels(factor(type))))) %>%  # Reverse the order of the levels
                                                        mutate(sample_combined = paste(`kefir type`, sample, sep = "_")) %>%  # Combine kefir type and sample
-      mutate(clade_name = factor(clade_name, levels = taxonomic_order[[i]])) %>%
                                                        mutate(sample_combined = factor(sample_combined, levels = unique(sample_combined[order(`kefir type`, sample)]))),  # Reorder the x-axis
                                                      aes(x=sample_combined,y=.35, col = `kefir type`), size = 4.6, shape = 15) +
                                          # geom_point(data =  total_compositional_data[which(total_compositional_data$kefirdataset==i),], 
@@ -526,7 +499,7 @@ for (i in levels(as.factor((total_compositional_data$kefirdataset)))){
             legend.key.height = unit(2, 'cm'), #change legend key height
             legend.key.width = unit(2, 'cm'),
             legend.title = element_text( size=17.5, face="bold"),
-            axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5, size = 6),
+            axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5, size = 5),
             legend.text = element_text(size = 17.5),
             axis.text.y = element_text(size=13.5, face="italic"),
             axis.title = element_text(face = "bold", size = 10.5)
@@ -865,55 +838,35 @@ for (i in names(grain_microbes)){
 
 
 
-
-########################################################################################################################
-# Figure 2A: T0 grain metagenome composition — discrete heatmap
-# Replaces the original dual-encoded bubble plot per Reviewer 1 & 3 feedback.
-########################################################################################################################
-
-# Combine grain data for both kefir types
-grain_combined <- rbind(grain_microbes[[1]], grain_microbes[[2]])
-grain_combined$species <- factor(grain_combined$species,
-  levels = rev(sort(unique(grain_combined$species))))
-
-# Bin relative abundance into discrete categories for unambiguous colour encoding
-grain_combined$RA_bin <- cut(grain_combined$relative_abundance,
-  breaks = c(-Inf, 0, 0.1, 1, 10, 30, Inf),
-  labels = c("0%",     ">0-0.1%", ">0.1-1%", ">1-10%", ">10-30%", ">30%"),
-  right  = FALSE)
-
-# Discrete palette: dark = high abundance, light = low / absent
-ra_colours <- c(
-  "0%"        = "#f0f0f0",
-  ">0-0.1%"   = "#fde0dd",
-  ">0.1-1%"   = "#fa9fb5",
-  ">1-10%"    = "#dd3497",
-  ">10-30%"   = "#7a0177",
-  ">30%"      = "#49006a"
-)
-
-grain_heatmap <- ggplot(grain_combined,
-  aes(x = type, y = species, fill = RA_bin)) +
-  geom_tile(colour = "grey80", linewidth = 0.4) +
-  scale_fill_manual(
-    values   = ra_colours,
-    name     = "Relative\nabundance",
-    drop     = FALSE,
-    guide    = guide_legend(reverse = TRUE, nrow = 1)) +
-  labs(x = "", y = "",
-       title = "A. Initial grain metagenomes (T0 only)") +
-  theme_minimal(base_size = 14) +
+grain_bar_mk <- 
+  ggplot(grain_microbes[[1]], aes(x=relative_abundance, y=species, fill=species)) +
+  geom_col(width=0.6, colour="grey40", linewidth=0.3) +
+  labs(x="Relative abundance (%)", y="", title="Milk kefir")+
+  theme_bw() +
+  guides(fill="none")+
+  scale_x_continuous(expand=expansion(mult=c(0,0.05)))+
   theme(
-    plot.title       = element_text(size = 18, face = "bold"),
-    axis.text.y      = element_text(size = 13, face = "italic"),
-    axis.text.x      = element_text(size = 14, face = "bold"),
-    legend.position  = "top",
-    legend.title     = element_text(size = 13, face = "bold"),
-    legend.text      = element_text(size = 12),
-    legend.key.size  = unit(1.4, "cm"),
-    panel.grid       = element_blank(),
-    strip.placement  = "outside"
-  )
+    plot.title = element_text(size=15.5, face="bold"),
+    axis.text.y = element_text(size=13.5, face="italic"),
+    axis.text.x = element_text(size=12),
+    panel.grid.major.y = element_blank(),
+    panel.grid.minor = element_blank())
+
+
+grain_bar_wk <- 
+  ggplot(grain_microbes[[2]], aes(x=relative_abundance, y=species, fill=species)) +
+  geom_col(width=0.6, colour="grey40", linewidth=0.3) +
+  labs(x="Relative abundance (%)", y="", title="Water kefir")+
+  theme_bw() +
+  guides(fill="none")+
+  scale_x_continuous(expand=expansion(mult=c(0,0.05)))+
+  theme(
+    plot.title = element_text(size=15.5, face="bold"),
+    axis.text.y = element_text(size=13.5, face="italic"),
+    axis.text.x = element_text(size=12),
+    panel.grid.major.y = element_blank(),
+    panel.grid.minor = element_blank())
+
          
 
 
@@ -941,23 +894,17 @@ print(paste(nrow(species_prevalence$`Water kefir`[-c(which(species_prevalence$`W
 
 
 ########################################################################################################################
-
-########################################################################################################################
-# Add asterisk: * = species NOT detected at >0.1% in T0 grain metagenomes
+#add this prevalence info to the p_heatmap data 
 ########################################################################################################################
 
-# --- Milk kefir ---
 mk_label <- p_heatmap$`Milk kefir`$data$clade_name
-mk_t0_species <- unique(grain_microbes[["Milk.kefir"]]$species[
-  grain_microbes[["Milk.kefir"]]$relative_abundance > 0.1])
-mk_label[!mk_label %in% mk_t0_species] <- paste0("*", mk_label[!mk_label %in% mk_t0_species])
+mk_t0 <- grain_microbes[["Milk.kefir"]]$species[grain_microbes[["Milk.kefir"]]$relative_abundance > 0.1]
+mk_label[!mk_label %in% mk_t0] <- paste0("*", mk_label[!mk_label %in% mk_t0])
 p_heatmap$`Milk kefir` <- p_heatmap$`Milk kefir` + scale_y_discrete(labels = mk_label)
 
-# --- Water kefir ---
 wk_label <- p_heatmap$`Water kefir`$data$clade_name
-wk_t0_species <- unique(grain_microbes[["Water.kefir"]]$species[
-  grain_microbes[["Water.kefir"]]$relative_abundance > 0.1])
-wk_label[!wk_label %in% wk_t0_species] <- paste0("*", wk_label[!wk_label %in% wk_t0_species])
+wk_t0 <- grain_microbes[["Water.kefir"]]$species[grain_microbes[["Water.kefir"]]$relative_abundance > 0.1]
+wk_label[!wk_label %in% wk_t0] <- paste0("*", wk_label[!wk_label %in% wk_t0])
 p_heatmap$`Water kefir` <- p_heatmap$`Water kefir` + scale_y_discrete(labels = wk_label)
 
 
@@ -982,7 +929,7 @@ ggplot(
   facet_wrap(~type,scales="free_x")+
   theme_bw() +
   theme(#plot.title = element_textbox(hjust = 0.5, margin = margin(t = 5, b = 5),size = 55), #element_text(color="red", size=14, face="bold",hjust = 0.5),
-            axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5, size = 6),
+    axis.text.x = element_blank(),
     axis.text.y = element_text(size=30,face="italic"),
     strip.background=element_rect(fill="lightblue"),
     strip.text = element_text(size= 35 ),
@@ -1119,9 +1066,9 @@ library(ggpubr)
 jpeg(filename=file.path(OUT_DIR, 'Figure_2.jpeg'), width = 7864, height=5200,res =300,pointsize = 15) #, width=2000, height=1950)
 
 
-ggarrange( grain_heatmap,
-  ggarrange(p_heatmap[[1]],p_heatmap[[2]], nrow=1,ncol=2, labels=c("B.","C."),common.legend = TRUE,  font.label = list(size = 30)),
-            nrow=2,ncol=1, heights = c(5, 6),widths=c(10,1),labels=c("A.",""),  font.label = list(size = 30))
+ggarrange( grain_bar_mk, grain_bar_wk,
+  ggarrange(p_heatmap[[1]],p_heatmap[[2]], nrow=1,ncol=2, labels=c("C.","D."),common.legend = TRUE,  font.label = list(size = 30)),
+            nrow=2,ncol=1, heights = c(1, 1, 2),widths=c(10,1),labels=c("A.","B.",""),  font.label = list(size = 30))
 graphics.off()
 
 # 

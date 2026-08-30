@@ -21,6 +21,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
       libharfbuzz-dev libfribidi-dev libgit2-dev libicu-dev libbz2-dev \
       liblzma-dev libpcre2-dev libblas-dev liblapack-dev \
       libuv1-dev libproj-dev proj-bin libmagick++-dev libcairo2-dev \
+      libglpk-dev \
       locales sudo \
  && rm -rf /var/lib/apt/lists/* \
  && locale-gen en_US.UTF-8 && update-locale
