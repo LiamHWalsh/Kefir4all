@@ -17,6 +17,11 @@ cat > /etc/rstudio/database.conf <<'DBCFG'
 provider=sqlite
 directory=/var/lib/rstudio-server
 DBCFG
+# Default to the project directory so data and scripts are immediately visible
+cat > /etc/rstudio/rsession.conf <<'RSESSCFG'
+session-default-working-dir=/home/rstudio/kefir4all
+session-default-new-project-dir=/home/rstudio/kefir4all
+RSESSCFG
 
 mkdir -p /var/run/rstudio-server /var/log/rstudio /var/lib/rstudio-server
 
