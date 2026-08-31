@@ -25,6 +25,12 @@ RSESSCFG
 
 mkdir -p /var/run/rstudio-server /var/log/rstudio /var/lib/rstudio-server
 
+# Fix permissions on mounted project directory so RStudio user can read it.
+# Host-mounted files may be owned by arbitrary UIDs.
+if [ -d /home/rstudio/kefir4all ]; then
+  chmod -R a+rX /home/rstudio/kefir4all 2>/dev/null || true
+fi
+
 /opt/R/4.4.2/bin/Rscript -e 'cat("R ready:", R.version.string, "| packages:", length(rownames(installed.packages())), "\n")'
 
 exec /usr/lib/rstudio-server/bin/rserver --server-daemonize=0
