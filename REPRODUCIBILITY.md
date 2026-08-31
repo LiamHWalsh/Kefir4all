@@ -38,6 +38,8 @@ Open http://localhost:8787 in your browser and log in with:
 - **Username:** `rstudio`
 - **Password:** `kefir4all`  (set with `-e PASSWORD=` at `docker run`)
 
+The `-w` flag makes RStudio open straight into the project folder (`data/` and `scripts/` visible in the Files pane). If not, click **Home** (`~`) in the Files pane, then **kefir4all**.
+
 Open any `.R` file and click **Source**.
 
 Full details in [`docker/README.md`](docker/README.md).
