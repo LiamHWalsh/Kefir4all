@@ -38,20 +38,21 @@ if (!file.exists(CS_METADATA_PRIVATE)) {
 ########################################################################################################################
 
 
-# .libPaths() removed — use default R library or renv
-pacman::p_load(readxl,tidyr,readr,devtools,taxize,rotl,ape,treeio,ggtree,DECIPHER,ggdendro,ggplot2,tidyr,optmatch,rentrez,plyr,dplyr,RColorBrewer,taxizedb )
-
-
-########################################################################################################################
-#Libraries used
-########################################################################################################################
-
-# .libPaths() removed — use default R library or renv
-pacman::p_load(readxl,readr,reshape2,dplyr, gplots,Heatplus,vegan,RColorBrewer,tidyr,gtools,stringr,tidyverse,ComplexHeatmap,magick,viridis)
-pacman::p_load(readxl,devtools,taxize,rotl,ape,treeio,ggtree,DECIPHER,ggdendro,ggplot2,tidyr,optmatch,rentrez,plyr,dplyr,RColorBrewer,stringr,scales)
-library(vegan)
+library(here)
+library(magrittr)
+library(tidyverse)
+library(readxl)
+library(dplyr)
 library(ggplot2)
 library(grid)
+library(ggpubr)
+library(ggtree)
+library(ggtreeExtra)
+library(ggnewscale)
+library(ggh4x)
+library(taxize)
+library(rentrez)
+library(officer)
 
 
 ########################################################################################################################
