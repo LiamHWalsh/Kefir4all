@@ -110,36 +110,3 @@ Rscript scripts/r_scripts/07_metabolomics/07_supp_metabolomics.R
 Rscript scripts/r_scripts/ena_submission/ena_submission_r.R
 ```
 
-To run them all in one go from the repository root:
-
-```
-for s in $(find scripts/r_scripts -name '*.R' | sort); do Rscript "$s" || echo "FAILED: $s"; done
-```
-
-For example, `04_taxonomic_profiling.R` renders the main-text Figure 2 to
-`output/04_taxonomic_profiling/Figure_2.jpeg`.
-
-## Stricter reproducibility (locked package versions)
-
-For exact, version-locked reproducibility we recommend pinning R
-packages with `renv`:
-
-```
-install.packages("renv")
-renv::init()
-renv::snapshot()    # writes renv.lock
-```
-
-Anyone reproducing the analysis later runs `renv::restore()` to install
-the exact package versions captured in `renv.lock`.
-
-## Long-term archival
-
-When the manuscript is accepted, we recommend:
-
-1. Tag a release on this repository (`git tag v1.0`, `git push --tags`).
-2. Archive that release on Zenodo via the GitHub--Zenodo integration so
-   it is assigned a permanent DOI that can be cited from the manuscript.
-3. Update `CITATION.cff` with the published DOI and the manuscript's
-   journal reference.
-
