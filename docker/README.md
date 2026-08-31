@@ -38,6 +38,8 @@ Open **http://localhost:8787** — login with:
 - **Username:** `rstudio`
 - **Password:** `kefir4all`
 
+> **In a GitHub Codespace?** Open the **Ports** tab in VS Code, set port 8787 visibility to **Public**, and use the forwarded URL (e.g. `https://YOUR_CODESPACE-8787.app.github.dev`).
+
 The `-w` flag makes RStudio open straight into the project folder — you should see `data/` and `scripts/` in the Files pane immediately. If not, click **Home** (`~`) in the Files pane, then the **kefir4all** folder.
 
 Open any `.R` file in `scripts/r_scripts/` and click **Source**.
