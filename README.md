@@ -38,41 +38,46 @@ See [`docker/README.md`](docker/README.md) for RStudio mode and troubleshooting.
 
 Run any figure script directly from the repo root — each is self-contained:
 
-```r
+```bash
 # Main-text figures
-Rscript scripts/r_scripts/Figure_2.R
-Rscript scripts/r_scripts/Figure_3.R
-Rscript scripts/r_scripts/Figure_4.R
-Rscript scripts/r_scripts/Figure_5.R
-Rscript scripts/r_scripts/Figure_6.R
+Rscript scripts/r_scripts/04_taxonomic_profiling/04_taxonomic_profiling.R   # Figure 2
+Rscript scripts/r_scripts/04_taxonomic_profiling/04_community_stability.R   # Figure 3
+Rscript scripts/r_scripts/07_metabolomics/07_metabolomics.R                 # Figure 4
+Rscript scripts/r_scripts/04_taxonomic_profiling/04_community_types.R       # Figure 5
+Rscript scripts/r_scripts/04_taxonomic_profiling/04_environmental_microbes.R # Figure 6
+Rscript scripts/r_scripts/06_strain_profiling/06_strain_profiling.R          # Figures 7–8
+Rscript scripts/r_scripts/06_strain_profiling/06_instrain_temporal_alluvial.R # Figure 8 (inStrain)
 
-# Supplementary analyses (each script produces its own output)
-Rscript scripts/r_scripts/04_supp_taxonomic_profiling.R
-Rscript scripts/r_scripts/04_supp_community_stability.R
-Rscript scripts/r_scripts/04_supp_community_types.R
-Rscript scripts/r_scripts/06_supp_strain_profiling.R
-Rscript scripts/r_scripts/07_supp_metabolomics.R
+# Supplementary analyses
+Rscript scripts/r_scripts/04_taxonomic_profiling/04_supp_taxonomic_profiling.R
+Rscript scripts/r_scripts/04_taxonomic_profiling/04_supp_community_stability.R
+Rscript scripts/r_scripts/04_taxonomic_profiling/04_supp_community_types.R
+Rscript scripts/r_scripts/05_functional_profiling/05_resistome.R
+Rscript scripts/r_scripts/06_strain_profiling/06_supp_strain_profiling.R
+Rscript scripts/r_scripts/06_strain_profiling/06_supp_strainphlan_ani.R
+Rscript scripts/r_scripts/07_metabolomics/07_supp_metabolomics.R
 ```
 
 ## Figure-numbering map (original submission to revised manuscript)
 
 > **Original-submission numbering is retained in `researchgate_legacy/`** so that the publicly archived original-submission manuscript on ResearchGate remains traceable to the code that produced its figures. The mapping table below is the authoritative bridge between the two numbering systems.
 
-| Original submission | Revised manuscript | Script(s) |
+| Revised manuscript | Script | What it generates |
 |---|---|---|
-| Figure 2 | Figure 2 | `scripts/r_scripts/Figure_2.R` |
-| Figure 3 | Figure 3 | `scripts/r_scripts/Figure_3.R` |
-| Figure 4 | Figure 4 | `scripts/r_scripts/Figure_4.R` |
-| Figure 5 | Figure 5 | `scripts/r_scripts/Figure_5.R` |
-| Figure 6 | Figure 6 | `scripts/r_scripts/Figure_6.R` |
-| Figure 7 (original strain overview) | moved to Supplementary Result S6 | `scripts/r_scripts/researchgate_legacy/Figure_7.R` |
-| Figure 8 (original inStrain alluvial) | moved to Supplementary Result S6 | `scripts/r_scripts/researchgate_legacy/Figure_8.R` |
-| Supplementary Fig. 5 (ANI pairwise) | Supplementary Fig. 5 | `scripts/r_scripts/04_supp_taxonomic_profiling.R` |
-| Supplementary Fig. 6 (community stability) | Supplementary Fig. 6 | `scripts/r_scripts/04_supp_community_stability.R` |
-| Supplementary Fig. 7 (metabolomics) | Supplementary Fig. 7 | `scripts/r_scripts/07_supp_metabolomics.R` |
-| Supplementary Fig. 8 (community types) | Supplementary Fig. 8 | `scripts/r_scripts/04_supp_community_types.R` |
-| Supplementary Fig. 9 (dRep strain profiling) | Supplementary Fig. 9 | `scripts/r_scripts/06_supp_strain_profiling.R` |
-| n/a | Supplementary Table 1 | per-species secondary-cluster counts in `figures/Supplementary_Table_1.tsv` |
+| Figure 2 | `scripts/r_scripts/04_taxonomic_profiling/04_taxonomic_profiling.R` | Species composition heatmaps / bar charts |
+| Figure 3 | `scripts/r_scripts/04_taxonomic_profiling/04_community_stability.R` | Community stability (Bray-Curtis, Mantel) |
+| Figure 4 | `scripts/r_scripts/07_metabolomics/07_metabolomics.R` | VOC / volatilome analysis |
+| Figure 5 | `scripts/r_scripts/04_taxonomic_profiling/04_community_types.R` | Community types |
+| Figure 6 | `scripts/r_scripts/04_taxonomic_profiling/04_environmental_microbes.R` | Environmental microbes |
+| Figures 7–8 | `scripts/r_scripts/06_strain_profiling/06_strain_profiling.R` | Strain profiling |
+| Figure 8 (inStrain) | `scripts/r_scripts/06_strain_profiling/06_instrain_temporal_alluvial.R` | inStrain temporal cluster alluvial |
+| Supplementary Fig. 5 | `scripts/r_scripts/04_taxonomic_profiling/04_supp_taxonomic_profiling.R` | ANI pairwise |
+| Supplementary Fig. 6 | `scripts/r_scripts/04_taxonomic_profiling/04_supp_community_stability.R` | Community stability supp. |
+| Supplementary Fig. 7 | `scripts/r_scripts/07_metabolomics/07_supp_metabolomics.R` | Metabolomics supp. |
+| Supplementary Fig. 8 | `scripts/r_scripts/04_taxonomic_profiling/04_supp_community_types.R` | Community types supp. |
+| Supplementary Fig. 9 | `scripts/r_scripts/06_strain_profiling/06_supp_strain_profiling.R` | dRep strain profiling supp. |
+| Supplementary Table 1 | per-species secondary-cluster counts in `figures/Supplementary_Table_1.tsv` | — |
+| Original-submission Figures 7–8 | `scripts/r_scripts/researchgate_legacy/Figure_7.R`, `Figure_8.R` | Archived for traceability |
 
 ## Data
 
