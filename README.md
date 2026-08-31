@@ -6,7 +6,7 @@ The repository contains R scripts, Unix pipeline documentation, numerical source
 
 > **Adaptations and community changes in milk and water kefir microbiomes in response to environmental parameters as revealed by the Kefir4All Citizen Science Project.**
 
-## 🐳 Docker (zero install)
+## Docker (zero install)
 
 All 553 R packages are pre-installed in a container — `docker pull` then `docker run`. See **[docker/README.md](docker/README.md)** for command-line and RStudio instructions.
 
