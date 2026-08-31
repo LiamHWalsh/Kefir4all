@@ -2,7 +2,21 @@
 # start.sh — run RStudio Server in the foreground (container main process).
 set -e
 PW="${PASSWORD:-kefir4all}"
-echo "rstudio:${PW}" | chpasswd || true
+
+# Set password: try chpasswd, fall back to usermod
+echo "rstudio:${PW}" | chpasswd 2>/dev/null || \
+  usermod -p "$(openssl passwd -1 "$PW")" rstudio
+
+# RStudio needs rsession-which-r AND the database.conf pointing at R
+mkdir -p /etc/rstudio
+cat > /etc/rstudio/rserver.conf <<'RSCFG'
+rsession-which-r=/opt/R/4.4.2/bin/R
+RSCFG
+# Ensure RStudio's session process can find R
+cat > /etc/rstudio/database.conf <<'DBCFG'
+provider=sqlite
+directory=/var/lib/rstudio-server
+DBCFG
 
 mkdir -p /var/run/rstudio-server /var/log/rstudio /var/lib/rstudio-server
 
