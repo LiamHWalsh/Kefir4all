@@ -2297,7 +2297,7 @@ p_biserial=
  cooccur[[i]] <- co
  ########################################################################################################################
  #Hierarchial clustering 
- pacman::p_load(fpc,factoextra)
+ library(fpc)
  
  test <- my.files_beta_total[[i]] 
  my.files_beta_total[[i]][is.na(my.files_beta_total[[i]])] <- 0

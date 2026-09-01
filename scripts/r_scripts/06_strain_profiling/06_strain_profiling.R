@@ -292,10 +292,7 @@ milk_taxonomic_profile_prevalence
 
 
 
-library(igraph)
-library(ggraph)
-library(tidygraph)
-library(tidyverse)
+# igraph/tidygraph/ggraph removed — only referred to in commented-out code
 library(ggalluvial)
 library(widyr )
 

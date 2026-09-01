@@ -40,7 +40,7 @@ if (!file.exists(CS_METADATA_PRIVATE)) {
 
 library(here)
 library(magrittr)
-library(tidyverse)
+
 library(readxl)
 library(dplyr)
 library(ggplot2)
@@ -337,8 +337,7 @@ print(paste(type, "has", length(levels(as.factor( species_profile[[type]]$clade_
 #write.csv(species_prevalence[["milk"]],"Q:/H2020 Master/Citizen Science Project/Results/04_short_read_profiling/04_Metacache/milk_metacache_prevalence.csv" )
 #write.csv(species_prevalence[["water"]],"Q:/H2020 Master/Citizen Science Project/Results/04_short_read_profiling/04_Metacache/water_metacache_prevalence.csv" )
 
-if (!requireNamespace("heatmaply", quietly=TRUE)) install.packages("heatmaply")
-library(heatmaply)
+
 
 #ggheatmap(
 #metacache[,which(colnames(metacache) %in% levels(as.factor(total_compositional_data$clade_name)))]) 
@@ -609,7 +608,7 @@ t[["water"]] <- subset( compositional_differences, subset=
 ###########################################################################################################################################################
 
 
-pacman::p_load(officer,magrittr,officedown)
+
 
 prevalence_doc <- read_docx() %>% 
   body_add_fpar(fpar(

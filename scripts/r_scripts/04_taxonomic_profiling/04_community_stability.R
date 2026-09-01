@@ -695,7 +695,12 @@ total_beta_diversity_temporal %>%
 #Libraries used
 ########################################################################################################################
 #install.packages("blastula")
-pacman::p_load(readxl,rlang,ggplot2,jpeg,patchwork,png,grid,ggimage,dplyr,tidyr,blastula)
+library(readxl)
+library(rlang)
+library(ggplot2)
+library(grid)
+library(dplyr)
+library(tidyr)
 
 #devtools::install_github("tntp/surveymonkey")
 

@@ -989,7 +989,7 @@ which(kefir4all_metadata$`kefir type` %in%  c("MG","ML"))] <- "Milk.kefir"
   
   
   
-  library(stringi)
+  
   
   pcoa_cs[which(pcoa_cs$Stage=="T0" & pcoa_cs$`kefir type` != "Media control"),] <- 
     pcoa_cs[which(pcoa_cs$Stage=="T0" & pcoa_cs$`kefir type` != "Media control"),] %>% 
@@ -3393,7 +3393,7 @@ metadata <-  dplyr::select( t1, c(,category, kefir_type_v2,conditions,Stage)) # 
   library(ggplot2)
   library(ggbiplot)
   library(dplyr)
-  library(corrplot)
+  
   
   ggbiplot(pca,
          #  labels = crime$st ,
