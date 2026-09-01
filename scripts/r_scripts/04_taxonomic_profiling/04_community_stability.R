@@ -30,7 +30,14 @@ if (!file.exists(CS_METADATA_PRIVATE)) {
 
 
 # .libPaths() removed — use default R library or renv
-pacman::p_load(readxl,tidyr,readr,devtools,taxize,rotl,ape,treeio,ggtree,DECIPHER,ggdendro,ggplot2,tidyr,optmatch,rentrez,plyr,dplyr,RColorBrewer,taxizedb )
+library(readxl)
+library(tidyr)
+library(readr)
+library(devtools)
+library(taxize)
+library(ape)
+library(ggtree)
+library(ggdendro)
 
 
 ########################################################################################################################
@@ -38,8 +45,12 @@ pacman::p_load(readxl,tidyr,readr,devtools,taxize,rotl,ape,treeio,ggtree,DECIPHE
 ########################################################################################################################
 
 # .libPaths() removed — use default R library or renv
-pacman::p_load(readxl,readr,reshape2,dplyr, gplots,Heatplus,vegan,RColorBrewer,tidyr,gtools,stringr,tidyverse,ComplexHeatmap,magick,viridis)
-pacman::p_load(readxl,devtools,taxize,rotl,ape,treeio,ggtree,DECIPHER,ggdendro,ggplot2,tidyr,optmatch,rentrez,plyr,dplyr,RColorBrewer,stringr,scales)
+library(ggplot2)
+library(plyr)
+library(dplyr)
+library(gplots)
+library(vegan)
+library(scales)
 library(vegan)
 library(ggplot2)
 library(grid)

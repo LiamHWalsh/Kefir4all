@@ -28,8 +28,6 @@ library(here)
 suppressPackageStartupMessages({
   library(readr)
   library(dplyr)
-  library(stringr)
-  library(tidyr)
   library(ggplot2)
   library(ggalluvial)
 })
