@@ -35,7 +35,7 @@ library(seqinr)
 library(stringr)
 library(tibble)
 
-library(vegan)
+
 library(ggplot2)
 library(grid)
 ########################################################################################################################
@@ -438,9 +438,7 @@ secondary_cluster_kefir_type_breakdown <-
 ###############################################################################################################
 # .libPaths removed — use default R library
 
-pacman::p_load(rlang,tibble,ape,colorspace,concaveman,ggnewscale,readxl,hrbrthemes,Biostrings,ggtree,flextable,devtools,R4RNA,taxize,rotl,ape,treeio,DECIPHER,ggdendro,ggplot2,tidyr,RSQLite,optmatch,rentrez,dplyr,seqinr,RColorBrewer,ggtext)
-pacman::p_load(readxl,readr,reshape2,dplyr, gplots,Heatplus,vegan,RColorBrewer,tidyr,gtools,stringr,tidyverse,ComplexHeatmap,magick,viridis)
-pacman::p_load(cutpointr,readxl,devtools,taxize,rotl,ape,treeio,ggtree,DECIPHER,ggdendro,ggplot2,tidyr,optmatch,rentrez,plyr,dplyr,RColorBrewer,stringr,scales)
+# igraph/tidygraph/ggraph removed — only referred to in commented-out code
 #remotes::install_github("YuLab-SMU/ggtree")
 # if (!requireNamespace("devtools", quietly=TRUE))
 #   install.packages("devtools")

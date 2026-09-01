@@ -423,8 +423,7 @@ if(krustal$p.value  <0.05){
 
 
 library(rlang)
-library(vctrs)
-library(statsExpressions)
+
 #install.packages("ggstatsplot", dependencies = TRUE, INSTALL_opts = '--no-lock')
 library(ggstatsplot)
 #graphics.off()

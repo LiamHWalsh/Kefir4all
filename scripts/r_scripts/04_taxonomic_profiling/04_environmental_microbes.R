@@ -28,6 +28,7 @@ if (!file.exists(CS_METADATA_PRIVATE)) {
 #Libraries used
 ########################################################################################################################
 
+library(dplyr)
 library(devtools)
 library(ggtree)
 library(gplots)
@@ -1365,7 +1366,8 @@ t[["water"]] <- subset( compositional_differences, subset=
 ###########################################################################################################################################################
 
 
-pacman::p_load(officer,magrittr,officedown)
+library(officer)
+library(magrittr)
 
 prevalence_doc <- read_docx() %>% 
   body_add_fpar(fpar(
