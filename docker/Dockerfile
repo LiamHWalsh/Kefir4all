@@ -44,6 +44,13 @@ RUN mkdir -p /opt/R/4.4.2/lib/R/library \
     && tar -xzf /tmp/R-library.tar.gz -C /opt/R/4.4.2/lib/R/library --strip-components=2 \
     && rm -f /tmp/R-library.tar.gz \
     && ls /opt/R/4.4.2/lib/R/library | wc -l
+# ---- Slim unused packages to reduce image size (~733 MB) ----
+# Computes strong-dependency closure for the 75 analysis packages;
+# removes the remaining ~126 packages. Reproducible.
+COPY packages_required.txt /tmp/packages_required.txt
+COPY slim_packages.R /tmp/slim_packages.R
+RUN /opt/R/4.4.2/bin/Rscript /tmp/slim_packages.R /tmp/packages_required.txt \
+ && rm /tmp/packages_required.txt /tmp/slim_packages.R
 
 # RStudio Server (prebuilt, jammy build is binary-compatible with noble).
 COPY rstudio.deb /tmp/rstudio.deb
