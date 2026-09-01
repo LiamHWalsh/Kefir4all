@@ -32,9 +32,25 @@ if (!file.exists(CS_METADATA_PRIVATE)) {
 
 # .libPaths("E:/STORE N GO/R/R-4.0.2/win-library/4.0")  # removed — local machine path
 
-pacman::p_load(rlang,tibble,ape,colorspace,concaveman,ggnewscale,readxl,hrbrthemes,Biostrings,ggtree,flextable,devtools,R4RNA,taxize,rotl,ape,treeio,DECIPHER,ggdendro,ggplot2,tidyr,RSQLite,optmatch,rentrez,dplyr,seqinr,RColorBrewer,ggtext)
-pacman::p_load(readxl,readr,reshape2,dplyr, gplots,Heatplus,vegan,RColorBrewer,tidyr,gtools,stringr,tidyverse,ComplexHeatmap,magick,viridis)
-pacman::p_load(cutpointr,readxl,devtools,taxize,rotl,ape,treeio,ggtree,DECIPHER,ggdendro,ggplot2,tidyr,optmatch,rentrez,plyr,dplyr,RColorBrewer,stringr,scales)
+library(Biostrings)
+library(ape)
+library(colorspace)
+library(devtools)
+library(dplyr)
+library(flextable)
+library(ggalluvial)
+library(ggmsa)
+library(ggtree)
+library(gplots)
+library(gtools)
+library(plyr)
+library(rlang)
+library(seqinr)
+library(stringr)
+library(tibble)
+library(tidyr)
+library(upstartr)
+library(widyr)
 #remotes::install_github("YuLab-SMU/ggtree")
 # if (!requireNamespace("devtools", quietly=TRUE))
 #   install.packages("devtools")
@@ -275,9 +291,7 @@ milk_taxonomic_profile_prevalence
 
 
 
-library(igraph)
-library(ggraph)
-library(tidygraph)
+# igraph/tidygraph/ggraph removed — only referred to in commented-out code
 library(tidyverse)
 library(ggalluvial)
 library(widyr )

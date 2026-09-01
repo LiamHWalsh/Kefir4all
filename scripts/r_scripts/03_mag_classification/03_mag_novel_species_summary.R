@@ -32,7 +32,8 @@
 if (!requireNamespace("here",   quietly = TRUE)) install.packages("here")
 if (!requireNamespace("pacman", quietly = TRUE)) install.packages("pacman")
 library(here)
-pacman::p_load(readr, dplyr, tidyr, stringr, ggplot2)
+library(readr)
+library(dplyr)
 
 DATA_DIR <- here::here("data")
 OUT_DIR  <- here::here("output", "03_mag_classification")

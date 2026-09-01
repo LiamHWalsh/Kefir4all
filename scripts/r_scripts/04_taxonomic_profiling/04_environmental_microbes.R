@@ -28,8 +28,15 @@ if (!file.exists(CS_METADATA_PRIVATE)) {
 #Libraries used
 ########################################################################################################################
 
-pacman::p_load(readxl,readr,reshape2,dplyr, gplots,Heatplus,vegan,RColorBrewer,tidyr,gtools,stringr,tidyverse,ComplexHeatmap,magick,viridis)
-pacman::p_load(readxl,devtools,taxize,rotl,ape,treeio,ggtree,DECIPHER,ggdendro,ggplot2,tidyr,optmatch,rentrez,plyr,dplyr,RColorBrewer,stringr,scales)
+library(devtools)
+library(ggtree)
+library(gplots)
+library(plyr)
+library(readr)
+library(scales)
+library(taxize)
+library(tidyr)
+
 library(vegan)
 library(ggplot2)
 library(grid)
@@ -215,8 +222,7 @@ if(krustal$p.value  <0.05){
 #Libraries used
 ########################################################################################################################
 
-pacman::p_load(readxl,readr,reshape2,dplyr, gplots,Heatplus,vegan,RColorBrewer,tidyr,gtools,stringr,tidyverse,ComplexHeatmap,magick,viridis)
-pacman::p_load(readxl,devtools,taxize,rotl,ape,treeio,ggtree,DECIPHER,ggdendro,ggplot2,tidyr,optmatch,rentrez,plyr,dplyr,RColorBrewer,stringr,scales)
+
 library(vegan)
 library(ggplot2)
 library(grid)
