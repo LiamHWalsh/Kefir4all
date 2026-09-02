@@ -1,0 +1,24 @@
+{
+    "name": "Kefir4All Analysis Environment",
+    "image": "ghcr.io/liamhwalsh/kefir4all:4.4.2-slim",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "Ikuyadeu.r",
+                "ms-vscode.vscode-R"
+            ]
+        }
+    },
+    "forwardPorts": [8787],
+    "remoteUser": "rstudio",
+    "overrideCommand": true,
+    "command": "sleep infinity",
+    "init": true,
+    "runArgs": [
+        "-e", "PASSWORD=kefir4all"
+    ],
+    "remoteEnv": {
+        "PATH": "/opt/R/4.4.2/bin:${containerEnv:PATH}"
+    },
+    "postCreateCommand": "chmod -R a+rwX \"${containerWorkspaceFolder}\" 2>/dev/null || true; echo 'Kefir4All dev container ready'; /opt/R/4.4.2/bin/R --version; /opt/R/4.4.2/bin/Rscript -e 'cat(\"Packages:\", length(rownames(installed.packages())), \"\\n\")'"
+}
