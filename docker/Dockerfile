@@ -32,6 +32,11 @@ COPY r442.deb /tmp/r442.deb
 RUN dpkg -i /tmp/r442.deb || (apt-get update && apt-get install -f -y && dpkg -i /tmp/r442.deb); \
     rm -f /tmp/r442.deb && /opt/R/4.4.2/bin/R --version
 
+# Put R on PATH for every shell (plain docker exec / attach included).
+ENV PATH="/opt/R/4.4.2/bin:${PATH}"
+RUN ln -sf /opt/R/4.4.2/bin/R /usr/local/bin/R \
+ && ln -sf /opt/R/4.4.2/bin/Rscript /usr/local/bin/Rscript
+
 # Persist the frozen repository snapshot for reproducibility.
 RUN echo 'options(repos=c(POSIT="https://packagemanager.posit.co/cran/__linux__/noble/2025-06-15",CRAN="https://cloud.r-project.org"))' \
     >> /opt/R/4.4.2/lib/R/etc/Rprofile.site

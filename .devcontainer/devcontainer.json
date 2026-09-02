@@ -20,5 +20,5 @@
     "remoteEnv": {
         "PATH": "/opt/R/4.4.2/bin:${containerEnv:PATH}"
     },
-    "postCreateCommand": "chmod -R a+rwX \"${containerWorkspaceFolder}\" 2>/dev/null || true; echo 'Kefir4All dev container ready'; /opt/R/4.4.2/bin/R --version; /opt/R/4.4.2/bin/Rscript -e 'cat(\"Packages:\", length(rownames(installed.packages())), \"\\n\")'"
+    "postCreateCommand": "ln -sf /opt/R/4.4.2/bin/R /usr/local/bin/R; ln -sf /opt/R/4.4.2/bin/Rscript /usr/local/bin/Rscript; chmod -R a+rwX \"${containerWorkspaceFolder}\" 2>/dev/null || true; echo 'Kefir4All dev container ready'; R --version; Rscript -e 'cat(\"Packages:\", length(rownames(installed.packages())), \"\\n\")'"
 }
