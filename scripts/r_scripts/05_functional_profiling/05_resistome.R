@@ -13,7 +13,7 @@ if (!file.exists(CS_METADATA_PRIVATE)) {
 }
 # ---- End bootstrap ----
 
-﻿#############################################################################################################################################################################################################################################
+#############################################################################################################################################################################################################################################
 
 #Libraries used
 #############################################################################################################################################################################################################################################
@@ -96,8 +96,8 @@ library(grid)
 #Import metadata
 ########################################################################################################################
 
-global_mk_metadata <- read_csv(file.path(DATA_DIR, "global_milk_kefir_metadata_v1.csv")
-global_wk_metadata <- read_csv(file.path(DATA_DIR, "global_water_kefir_metadata_v1.csv")
+global_mk_metadata <- read_csv(file.path(DATA_DIR, "global_milk_kefir_metadata_v1.csv"))
+global_wk_metadata <- read_csv(file.path(DATA_DIR, "global_water_kefir_metadata_v1.csv"))
 global_mk_metadata$Stage <- NA
 global_wk_metadata$Stage <- NA
 
@@ -108,7 +108,7 @@ Citizen_Scientist_metadata_v8$ID[which(nchar(Citizen_Scientist_metadata_v8$ID)==
 
 
 
-kefir4all_metadata <- read_csv(file.path(DATA_DIR, "kefir4all_sample_metadata_v2.csv")
+kefir4all_metadata <- read_csv(file.path(DATA_DIR, "kefir4all_sample_metadata_v2.csv"))
 kefir4all_metadata$merge_column <-  gsub("_host_removed_R..fastq.gz","",kefir4all_metadata$merge_column)
 kefir4all_metadata <- kefir4all_metadata[-c(which(duplicated(kefir4all_metadata$merge_column))),]
 ########################################################################################################################
@@ -3258,7 +3258,7 @@ metadata <-  dplyr::select( t1, c(,category, kefir_type_v2,conditions,Stage)) # 
     
     dune.envfit <- envfit(    dune.mds,     t1, permutations = 1000, na.rm = TRUE, display = "species")
     
-    envfit(    dune.mds ~ conditions,     data=metadata, permutations = 1000, na.rm = TRUE), display = "species")
+    envfit(    dune.mds ~ conditions,     data=metadata, permutations = 1000, na.rm = TRUE, display = "species")
     
     
     
