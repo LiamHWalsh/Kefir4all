@@ -55,7 +55,7 @@ Open any `.R` file in `scripts/r_scripts/` and click **Source**.
 |---|---|
 | R | 4.4.2 |
 | RStudio Server | 2024.12.1 |
-| CRAN + Bioconductor | 553 packages (2025-06-15 snapshot) |
+| CRAN + Bioconductor | 427 packages (slim) / 553 packages (full, 2025-06-15 snapshot) |
 
 Full package manifest: [`package-manifest.txt`](package-manifest.txt)
 
@@ -65,4 +65,4 @@ Full package manifest: [`package-manifest.txt`](package-manifest.txt)
 |---|---|
 | Port in use | `-p 8788:8787` |
 | Permission errors | Add `-u $(id -u):$(id -g)` |
-| Missing packages | Report to authors — all 553 are pre-installed |
+| Missing packages | Report to authors — all required packages are pre-installed (427 slim / 553 full) |

@@ -1,18 +1,45 @@
 {
     "version": "2.0.0",
+    // Open the repo folder (kefir4all_review_history) as the VS Code workspace
+    // so ${workspaceFolder}/${relativeFile} resolve to the repo root.
+    // All commands are pure docker (no shell operators) so they work on both
+    // Windows PowerShell and Linux/Codespace bash terminals.
     "tasks": [
         {
             "label": "Start kefir4all container",
             "type": "shell",
-            "command": "docker start kefir4all 2>/dev/null || docker run -d --name kefir4all -p 8787:8787 -v \"${workspaceFolder}:/home/rstudio/kefir4all\" -w /home/rstudio/kefir4all -e PASSWORD=kefir4all ghcr.io/liamhwalsh/kefir4all:4.4.2-slim",
+            "command": "docker start kefir4all",
             "problemMatcher": [],
             "presentation": { "reveal": "always" }
         },
         {
+            "label": "Create kefir4all container (first time)",
+            "type": "shell",
+            "command": "docker run -d --name kefir4all -p 8787:8787 -v \"${workspaceFolder}:/home/rstudio/kefir4all\" -w /home/rstudio/kefir4all -e PASSWORD=kefir4all ghcr.io/liamhwalsh/kefir4all:4.4.2-slim",
+            "problemMatcher": [],
+            "presentation": { "reveal": "always" }
+        },
+        {
+            // Windows: convert backslashes to forward slashes and strip any
+            // parent-folder prefix before passing the path to the container.
             "label": "Run current R script in container",
             "type": "shell",
-            "command": "RF=\"${relativeFile##*kefir4all_review_history/}\"; docker exec -w /home/rstudio/kefir4all kefir4all /opt/R/4.4.2/bin/Rscript \"$RF\"",
+            "options": {
+                "shell": {
+                    "executable": "powershell.exe",
+                    "args": ["-NoProfile", "-Command"]
+                }
+            },
+            "command": "$p = '${relativeFile}' -replace '\\\\','/'; $p = $p -replace '^.*?kefir4all_review_history/',''; docker exec -w /home/rstudio/kefir4all kefir4all /opt/R/4.4.2/bin/Rscript $p",
             "group": { "kind": "build", "isDefault": true },
+            "problemMatcher": [],
+            "presentation": { "reveal": "always", "panel": "dedicated" }
+        },
+        {
+            // Linux/Codespace: bash variant of the run task.
+            "label": "Run current R script in container (Linux/Codespace)",
+            "type": "shell",
+            "command": "RF=\"${relativeFile##*kefir4all_review_history/}\"; docker exec -w /home/rstudio/kefir4all kefir4all /opt/R/4.4.2/bin/Rscript \"$RF\"",
             "problemMatcher": [],
             "presentation": { "reveal": "always", "panel": "dedicated" }
         },
