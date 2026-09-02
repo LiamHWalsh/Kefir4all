@@ -50,8 +50,8 @@ library(ggtree)
 #Import metadata
 ########################################################################################################################
 
-global_mk_metadata <- read_csv(file.path(DATA_DIR, "global_milk_kefir_metadata_v1.csv")
-global_wk_metadata <- read_csv(file.path(DATA_DIR, "global_water_kefir_metadata_v1.csv")
+global_mk_metadata <- read_csv(file.path(DATA_DIR, "global_milk_kefir_metadata_v1.csv"))
+global_wk_metadata <- read_csv(file.path(DATA_DIR, "global_water_kefir_metadata_v1.csv"))
 global_mk_metadata$Stage <- NA
 global_wk_metadata$Stage <- NA
 
@@ -62,18 +62,18 @@ Citizen_Scientist_metadata_v8$ID[which(nchar(Citizen_Scientist_metadata_v8$ID)==
 
 
 
-kefir4all_metadata <- read_csv(file.path(DATA_DIR, "kefir4all_sample_metadata_v2.csv")
+kefir4all_metadata <- read_csv(file.path(DATA_DIR, "kefir4all_sample_metadata_v2.csv"))
 kefir4all_metadata$merge_column <-  gsub("_host_removed_R..fastq.gz","",kefir4all_metadata$merge_column)
 kefir4all_metadata <- kefir4all_metadata[-c(which(duplicated(kefir4all_metadata$merge_column))),]
 
 
 
-SampleSheet_KefirDanone2 <- read_csv(file.path(DATA_DIR, "SampleSheet__KefirDanone2.csv")
+SampleSheet_KefirDanone2 <- read_csv(file.path(DATA_DIR, "SampleSheet__KefirDanone2.csv"))
 
 colnames(SampleSheet_KefirDanone2) <- SampleSheet_KefirDanone2[c(13),]
 SampleSheet_KefirDanone2 <- SampleSheet_KefirDanone2[-c(1:13),]
 library(readr)
-mk_walsh_et_al <- read_delim(file.path(DATA_DIR, "mk_walsh_et_al.tsv", 
+mk_walsh_et_al <- read_delim(file.path(DATA_DIR, "mk_walsh_et_al.tsv"), 
                              delim = "\t", escape_double = FALSE, 
                              trim_ws = TRUE)
 
