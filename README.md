@@ -44,6 +44,37 @@ Rscript scripts/r_scripts/06_strain_profiling/06_strain_profiling.R          # F
 | Supplementary Table 1 | per-species secondary-cluster counts in `figures/Supplementary_Table_1.tsv` | — |
 | Original-submission Figures 7–8 | `scripts/r_scripts/researchgate_legacy/Figure_7.R`, `Figure_8.R` | Archived for traceability |
 
+Reviewer-revision analysis (not a manuscript figure):
+`scripts/r_scripts/04_taxonomic_profiling/community_changes.R` writes shared laboratory
+T0 reference distances, all five consecutive participant intervals, a participant-blocked
+permutation omnibus (Kruskal-Wallis kept alongside for reference only) with Wilcoxon
+follow-ups, a descriptive stage-distance summary with observed-vs-hypothesised peak, and
+PERMANOVA, to `output/04_taxonomic_profiling/community_changes/` (see `METHODS.txt`
+there), plus the figures below. Run it from the repository root:
+`Rscript scripts/r_scripts/04_taxonomic_profiling/community_changes.R`.
+Volatile panels use Euclidean distances on measured concentrations; taxonomic and
+functional panels use Bray-Curtis distances on row proportions. The same script renders
+all ten panels (reference vs interval distance) into
+`figures/community_changes_figure.{tiff,pdf}` and the peak-stage distribution into
+`figures/community_changes_peak_stage.{tiff,pdf}`, using base R graphics only.
+All figure scripts write TIFF at 1800 x 1200 px @ 300 dpi (6 x 4 in, LZW).
+
+MetaCache's species-only profile (`04_metacache_total_species_profile_v2.csv`) keeps only
+reads resolved to exactly species rank, discarding reads resolved more specifically
+(subspecies/strain) and reads resolved only to genus or above.
+`scripts/r_scripts/04_taxonomic_profiling/build_metacache_full_profile.R` rebuilds a full,
+mixed-rank profile (`data/04_metacache_total_full_profile.csv`) from the raw per-sample
+MetaCache classification reports instead, keeping every `rank::name` feature except
+`unclassified`, and excluding samples below a 10,000-read depth floor or with conflicting
+study metadata. It needs the raw reports, which are not distributed in this repository;
+point `KEFIR4ALL_METACACHE_RAW_DIRS` (colon-separated directories) at them and run:
+`Rscript scripts/r_scripts/04_taxonomic_profiling/build_metacache_full_profile.R`.
+A full build audit (per-sample read depth, classified fraction, inclusion/exclusion reason,
+and raw-file md5) is written to
+`output/04_taxonomic_profiling/metacache_full_profile_build_audit.csv`.
+`community_changes.R` and `community_changes_v2.R` both load this full profile rather than
+the species-only file.
+
 ## Data
 
 Raw reads: **PRJEB77409** (European Nucleotide Archive).  
@@ -63,3 +94,20 @@ Please cite the manuscript. Update `CITATION.cff` with the DOI on acceptance.
 ## Licence
 
 MIT — see `LICENSE`.
+
+## Workspace hygiene (2026-09-19)
+
+One-off probe/debug/test scripts, their outputs, figure-layout experiments,
+docker experiment files, and superseded output runs that had accumulated in
+the repository root (and in `scripts/r_scripts/04_taxonomic_profiling/`)
+during the review were **deleted** (recoverable from the OneDrive recycle
+bin). The 12 `v3_*` pipeline run logs remain in `v3_logs/`, and the latest
+`community_stability_v3` output run is retained alongside the archived
+layer-based approach.
+
+**Unchanged**: all pipeline scripts (including the `v2`/`v3` development
+versions and the final `04_community_stability_v3.R`), `data/` (including the
+private functional data), `figures/`, the tracked Docker configuration, the
+root docs (`README.md`, `REPRODUCIBILITY.md`, `AGENTS.md`, `CITATION.cff`,
+`LICENSE`, `.gitignore`, `install_R_packages.R`), and `Pictures/` (personal
+OneDrive content — deliberately untouched).
