@@ -21,12 +21,40 @@
 # Everything - data loading, descriptive summaries, and the figures - lives
 # in this one file; there is no separate script to run afterwards.
 #
-# WHY NO SIGNIFICANCE TESTS
-# -------------------------
+# WHY (ALMOST) NO SIGNIFICANCE TESTS
+# -----------------------------------
 # This is a deliberately descriptive counterpart to community_changes.R.
-# It reports distances and their patterns without p-values or plateau claims.
-# The tested companion uses the same full-rank MetaCache input; its results
-# must be regenerated before formal claims are made.
+# It reports distances and their patterns without p-values or plateau claims,
+# with one specific exception: a single, pre-planned pooled taxonomic test of
+# whether the TREND in consecutive-visit distance changes after week 9 (see
+# "THE ONE STATISTICAL TEST" below). Everything else - the stage-distance
+# summary, the peak-stage tally, the figures - stays purely descriptive. The
+# tested companion (community_changes.R) runs the broader battery of
+# omnibus/pairwise/PERMANOVA tests; both scripts use the same full-rank
+# MetaCache input.
+#
+# THE ONE STATISTICAL TEST
+# -------------------------
+# S_5_segmented() pools the four taxonomic panels (MetaCache MG/WG/ML/WL) and
+# fits consecutive-visit Bray-Curtis distance against a segmented (piecewise)
+# function of the interval's midpoint week, with a knot at week 9 - the
+# project's own pre-existing hypothesised water-kefir peak week (not chosen
+# by inspecting this dataset's medians). Every participant x type trajectory
+# gets its own fixed-effect intercept; uncertainty is clustered by
+# PARTICIPANT (not participant x type), since one participant can contribute
+# more than one kefir type and those are not independent. Trajectories with
+# fewer than two usable intervals are dropped (a one-point trajectory has no
+# within-trajectory information once it has its own saturated intercept).
+# Inference is a null-imposed, participant-clustered wild-cluster bootstrap
+# (Cameron, Gelbach & Miller 2008) with CR1 standard errors, because ordinary
+# lm() p-values assume independent residuals and CR0 does not correct for a
+# small number of clusters. The test asks whether the LATER slope differs
+# from the EARLY slope - it does NOT test whether the later slope is zero,
+# so it cannot by itself demonstrate a plateau; a shallower but still
+# nonzero later trend is not ruled out. Result:
+# community_changes_v2_segmented_slope_test.csv. This is one single planned
+# contrast, not the broader battery community_changes.R runs, and multiple-
+# testing correction across any wider family of tests is not attempted here.
 #
 # THE TWO DISTANCE MEASURES
 # -------------------------
@@ -108,6 +136,7 @@
 #   community_changes_v2_peak_stage.csv       - per-participant peak-visit tally
 #   community_changes_v2_stage_distance_summary.csv - descriptive stage-distance summary
 #   community_changes_v2_manifest.csv         - which panels ran OK / were skipped, and why
+#   community_changes_v2_segmented_slope_test.csv - the one statistical test (see header)
 #   METHODS.txt                                - full prose methods for every number above
 # Figures land under figures/:
 #   community_changes_v2_figure.{tiff,pdf}        - reference vs interval distance, all panels
@@ -132,8 +161,9 @@
 # one contiguous "FUNCTION DEFINITIONS" section, numbered by the order its
 # *category* first runs (0_ = generic utility, 1_ = data loading, 2_ = data
 # preparation, 3_ = descriptive summary, 4_ = per-panel result assembly, i.e.
-# the steps of the main panel loop). The "MAIN SCRIPT" section after it only
-# calls these functions; it defines no functions of its own.
+# the steps of the main panel loop, 5_ = the one pooled statistical test, run
+# once after the main loop). The "MAIN SCRIPT" section after it only calls
+# these functions; it defines no functions of its own.
 # ===========================================================================
 
 # ===========================================================================
@@ -550,6 +580,86 @@ S_4_figures_and_peak <- function(references, intervals, spec) {
   list(figures = list(fig_reference, fig_interval), peak = peak_row)
 }
 
+# --- 5_x: the one pooled statistical test ------------------------------------
+# See header "THE ONE STATISTICAL TEST" for the full rationale. d must have
+# columns participant, type, assumed_week_from, assumed_week_to, distance,
+# already restricted to the taxonomic (MetaCache) panels and pooled across
+# MG/WG/ML/WL.
+S_5_segmented <- function(d, B = 9999L, seed = 20261022L + 201L, knot = 9) {
+  d$trajectory <- interaction(d$participant, d$type, drop = TRUE)
+  keep_traj <- names(which(table(d$trajectory) >= 2))
+  d <- d[d$trajectory %in% keep_traj, , drop = FALSE]
+  d$trajectory <- droplevels(d$trajectory)
+
+  d$midpoint_week <- (d$assumed_week_from + d$assumed_week_to) / 2
+  d$early_segment <- pmin(d$midpoint_week, knot) - knot
+  d$later_segment <- pmax(d$midpoint_week - knot, 0)
+
+  X <- model.matrix(~ early_segment + later_segment + trajectory, data = d)
+  y <- d$distance
+  cluster <- d$participant
+  n <- nrow(X); k <- ncol(X)
+  clusters <- unique(cluster)
+  G <- length(clusters)
+  XtX_inv <- solve(crossprod(X))
+
+  # participant-clustered CR1 variance of a fitted beta, given its residuals
+  cr1_vcov <- function(u) {
+    meat <- matrix(0, k, k)
+    for (g in clusters) {
+      idx <- cluster == g
+      s <- crossprod(X[idx, , drop = FALSE], u[idx])
+      meat <- meat + tcrossprod(s)
+    }
+    adj <- (G / (G - 1)) * ((n - 1) / (n - k))
+    adj * (XtX_inv %*% meat %*% XtX_inv)
+  }
+
+  beta <- XtX_inv %*% crossprod(X, y)
+  resid_u <- as.numeric(y - X %*% beta)
+  V <- cr1_vcov(resid_u)
+
+  i_early <- which(colnames(X) == "early_segment")
+  i_later <- which(colnames(X) == "later_segment")
+  contrast <- rep(0, k); contrast[i_later] <- 1; contrast[i_early] <- -1
+  slope_change <- as.numeric(contrast %*% beta)
+  se_change <- sqrt(as.numeric(t(contrast) %*% V %*% contrast))
+  t_obs <- slope_change / se_change
+  tcrit <- stats::qt(0.975, df = G - 1)
+
+  # null-restricted fit (one shared slope) supplies the wild-bootstrap DGP
+  combined <- X[, i_early] + X[, i_later]
+  Xr <- cbind(X[, -c(i_early, i_later), drop = FALSE], combined_segment = combined)
+  beta_r <- solve(crossprod(Xr), crossprod(Xr, y))
+  fitted_r <- as.numeric(Xr %*% beta_r)
+  resid_r <- y - fitted_r
+
+  RNGkind("Mersenne-Twister", "Inversion", "Rejection")
+  set.seed(seed)
+  weights <- matrix(sample(c(-1, 1), G * B, replace = TRUE), nrow = G, ncol = B,
+                     dimnames = list(clusters, NULL))
+  w_per_obs <- weights[match(cluster, clusters), , drop = FALSE]
+  Ystar <- fitted_r + resid_r * w_per_obs
+  Beta_star <- XtX_inv %*% crossprod(X, Ystar)
+  slope_change_star <- as.numeric(contrast %*% Beta_star)
+  Resid_star <- Ystar - X %*% Beta_star
+  se_star <- vapply(seq_len(B), function(b)
+    sqrt(as.numeric(t(contrast) %*% cr1_vcov(Resid_star[, b]) %*% contrast)), numeric(1))
+  t_star <- slope_change_star / se_star
+  p_wild <- (sum(abs(t_star) >= abs(t_obs), na.rm = TRUE) + 1) / (B + 1)
+
+  se_early <- sqrt(V[i_early, i_early]); se_later <- sqrt(V[i_later, i_later])
+  data.frame(
+    n_intervals = n, n_participants = G, n_trajectories = nlevels(d$trajectory),
+    early_slope = unname(beta[i_early]),
+    early_ci_low = unname(beta[i_early] - tcrit * se_early),
+    early_ci_high = unname(beta[i_early] + tcrit * se_early),
+    later_slope = unname(beta[i_later]),
+    later_ci_low = unname(beta[i_later] - tcrit * se_later),
+    later_ci_high = unname(beta[i_later] + tcrit * se_later),
+    slope_change = slope_change, t_obs = t_obs, change_p_wild = p_wild, B = B)
+}
+
 # ===========================================================================
 # MAIN SCRIPT
 # ===========================================================================
@@ -669,6 +779,7 @@ peak_rows <- list()      # peak-stage (argmax distance to starter) tallies
 stage_rows <- list()     # descriptive stage-distance summaries
 figure_rows <- list()    # long-format participant distances, for the figure
 reference_rows <- list() # which T0 library was used as the reference, per panel
+metacache_interval_rows <- list() # the 4 taxonomic panels' intervals, for S_5_segmented()
 
 for (i in seq_len(nrow(panels))) {
   spec <- panels[i, , drop = FALSE]
@@ -690,8 +801,10 @@ for (i in seq_len(nrow(panels))) {
                               relative = spec$relative)
     intervals <- S_2_build_intervals(prepared$dist, prepared$md)
     intervals$panel <- spec$key
+    intervals$type <- spec$type
     write.csv(intervals, file.path(out_dir, paste0(spec$key, "_interval_distances.csv")),
               row.names = FALSE)
+    if (spec$source == "MetaCache") metacache_interval_rows[[spec$key]] <- intervals
 
     # distance of every visit to its T0 reference (substrate-matched for
     # liquids - see S_4_reference_step())
@@ -722,6 +835,19 @@ for (i in seq_len(nrow(panels))) {
     stringsAsFactors = FALSE))
 }
 
+# --- The one pooled statistical test (see header) ----------------------------
+# Requires all four taxonomic panels to have loaded; a partial pool (e.g. one
+# type skipped) would silently understate the trajectory count and is not run.
+if (length(metacache_interval_rows) == 4L) {
+  segmented <- S_5_segmented(do.call(rbind, metacache_interval_rows))
+  write.csv(segmented, file.path(out_dir, "community_changes_v2_segmented_slope_test.csv"),
+            row.names = FALSE)
+  print(segmented, row.names = FALSE)
+} else {
+  message("Skipping the pooled taxonomic slope-change test: only ",
+          length(metacache_interval_rows), " of 4 MetaCache panels loaded.")
+}
+
 # --- T0 reference audit trail (which library was used as "the" starter) -----
 if (length(reference_rows)) {
   write.csv(do.call(rbind, reference_rows),
@@ -747,7 +873,8 @@ write.csv(manifest, file.path(out_dir, "community_changes_v2_manifest.csv"),
 writeLines(c(
   "Shared laboratory T0 reference distances and all five consecutive participant intervals.",
   "T0 is not a participant-specific baseline.",
-  "This is a deliberately descriptive counterpart to community_changes.R: no significance tests are computed anywhere in this script. Both scripts now use the full rank-qualified MetaCache profile; formal-test results must be regenerated from that input before interpretation.",
+  "This is a deliberately descriptive counterpart to community_changes.R, with one specific exception (see below): no other significance test is computed anywhere in this script. Both scripts now use the full rank-qualified MetaCache profile; formal-test results must be regenerated from that input before interpretation.",
+  "POOLED TAXONOMIC SLOPE-CHANGE TEST (the one exception): community_changes_v2_segmented_slope_test.csv pools the four taxonomic panels (MetaCache MG/WG/ML/WL) and fits consecutive-visit Bray-Curtis distance against a segmented function of the interval midpoint week, with a knot at week 9 (the project's own pre-existing hypothesised water-kefir peak week, not chosen from this dataset's medians). Every participant x type trajectory gets its own fixed-effect intercept; trajectories with fewer than two usable intervals are dropped. Uncertainty is clustered by participant (not participant x type, since one participant can contribute more than one kefir type), using CR1 standard errors and a null-imposed participant-clustered wild-cluster bootstrap (Cameron, Gelbach and Miller 2008) for change_p_wild. This tests whether the later slope differs from the early slope; it does NOT test whether the later slope is zero, so it cannot by itself demonstrate a plateau - a shallower but still nonzero later trend is not ruled out, and this result says nothing about whether any individual panel, or the functional/volatile data, behaves the same way. No multiple-testing correction across a wider family is attempted here.",
   "T0 REFERENCE (SUBSTRATE-MATCHED FOR LIQUIDS): ML/WL visits are compared to the T0 library of their own participant's fermentation substrate, since the liquid is fermented from the grain in a specific medium; MG/WG visits use a single consistent reference regardless of medium, since the grain culture itself does not depend on it (MG has only one lab replicate; WG's two, FL and AP, are independent grain preparations, not medium-specific variants). T0 lab codes are substrate-specific: milk FU=whole/full-fat, GO=goat, SK=skim, LO=low-fat; water AP=white sugar+dried apricot, BR=brown sugar, FG=white sugar+dried fig, FL=white sugar+dried fig and fresh lemon (confirmed against the actual kefir-type tagging in the metadata, correcting a swapped FL/FU pair documented elsewhere in this repo). Participant substrate comes from data/private/Citizen Scientist metadata_v8.csv (category_confirmed), a private file not distributed with the public repository - this script shares that dependency with 04_community_stability.R and 04_substrate_comparison.R rather than running from public data alone. A visit falls back to a single default T0 per type (the first T0 row in metadata order, matching Figure_3.R/04_community_stability.R, not a pooled average) when substrate matching is off (grains) or a participant's substrate is unknown or that substrate's T0 has no profile in the relevant data source's matrix (liquids); MetaCache/SUPER-FOCUS/volatiles share the same default participant per type rather than each independently picking whichever T0 replicate their own matrix carries first, wherever possible. community_changes_v2_t0_reference.csv records the default reference and substrate-match coverage (n_substrate_matched / n_visits) per panel; <panel>_reference_distances.csv records the actual reference used and match status per visit (reference_participant_used, matched_substrate).",
   "EXCLUDED CONFLICTING SAMPLE: one merge_column key (TG_FG_WLC_S410) has mate reads with disagreeing metadata (participant FG/type WG on one mate, Medium control/type WL on the other) and is dropped entirely rather than guessing which label is correct; any future such conflicts are detected the same way and logged to the console.",
   "MetaCache and SUPER-FOCUS profiles are converted to row proportions before Bray-Curtis distances; volatile concentrations use Euclidean distances.",
