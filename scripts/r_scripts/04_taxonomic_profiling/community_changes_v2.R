@@ -938,11 +938,13 @@ if (length(figure_rows)) {
                                 labels = paste0("wk", sprintf("%02d", WEEKS_ASSUMED))) +
     ggplot2::labs(x = "Time since start (week)", y = "Distance",
                  caption = "Points: individual participants; lines: mean +/- SE. Descriptive only - no significance test is computed in this script.") +
-    ggplot2::theme_bw(base_size = 9) +
-    ggplot2::theme(legend.position = "bottom", axis.text.x = ggplot2::element_text(size = 6))
+    ggplot2::theme_bw(base_size = 12) +
+    ggplot2::theme(legend.position = "bottom", axis.text.x = ggplot2::element_text(size = 9),
+      strip.text = ggplot2::element_text(size = 11),
+      strip.background = ggplot2::element_rect(fill = "white", color = "black"))
 
-  ggplot2::ggsave(file.path(figures_dir, "community_changes_v2_figure.tiff"), p, width = 9, height = 6, dpi = 300, compression = "lzw")
-  ggplot2::ggsave(file.path(figures_dir, "community_changes_v2_figure.pdf"), p, width = 9, height = 6)
+  ggplot2::ggsave(file.path(figures_dir, "community_changes_v2_figure.tiff"), p, width = 15, height = 11, dpi = 300, compression = "lzw")
+  ggplot2::ggsave(file.path(figures_dir, "community_changes_v2_figure.pdf"), p, width = 15, height = 11)
   write.table(d, file.path(figures_dir, "community_changes_v2_figure_data.tsv"),
               sep = "\t", row.names = FALSE, quote = FALSE)
 }
