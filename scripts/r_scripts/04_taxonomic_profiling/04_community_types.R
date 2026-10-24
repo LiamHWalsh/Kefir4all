@@ -1,3 +1,13 @@
+# Anchor to the project root before here() loads. RStudio Server resets the session cwd
+# to $HOME after sourcing .Rprofile, and here() computes its root AT PACKAGE LOAD
+# TIME, so force the project root before any here load. This block is inert on non-portable
+for (.proj in c("/home/rstudio/kefir4all", "/workspaces/kefir4all_review_history")) {
+
+
+
+  if (dir.exists(file.path(.proj, "scripts")) && getwd() != .proj) { setwd(.proj); break }
+}
+
 
 # ==============================================================================
 # PATH CONFIGURATION — portable relative paths via the here package
@@ -7,10 +17,13 @@
 if (!requireNamespace("here",   quietly = TRUE)) install.packages("here")
 if (!requireNamespace("pacman", quietly = TRUE)) install.packages("pacman")
 library(here)
+library(tibble)  # needed for column_to_rownames() used below
 DATA_DIR    <- here::here("data")                         # public data files
 PRIVATE_DIR <- here::here("data", "private")              # private/sensitive files
 OUT_DIR <- here::here("output", "04_taxonomic_profiling")
 dir.create(OUT_DIR, recursive = TRUE, showWarnings = FALSE)
+FIGURES_DIR <- here::here("figures", "04_taxonomic_profiling")
+dir.create(FIGURES_DIR, recursive = TRUE, showWarnings = FALSE)
 
 # Private metadata — not distributed with repo (participant identifiers)
 CS_METADATA_PRIVATE <- file.path(PRIVATE_DIR, "Citizen Scientist metadata_v8.csv")
@@ -57,7 +70,6 @@ metacache <- metacache[-c(which(metacache$sample_id=="TG_EC_S72")),]
 ########################################################################################################################
 #Make a metadata file ONLY NEED TO RUN THIS ONCE
 ########################################################################################################################
-# kefir4all_metadata <- read_csv("Q:/H2020 Master/Citizen Science Project/Results/00/file_names.csv")
 # 
 # # RMEOVE LANE NAMES IN sample code AS IT WAS DESIGNED TO RENAME FILES ON THE CLUSTER PRIOR TO COMPUTATIONAL ANLAYSIS 
 # 
@@ -65,25 +77,14 @@ metacache <- metacache[-c(which(metacache$sample_id=="TG_EC_S72")),]
 # 
 # kefir4all_metadata[-c(which(duplicated(kefir4all_metadata$new_name))),]
 # 
-# kefir4all_metadata <- cbind(kefir4all_metadata,
-# str_split_fixed(kefir4all_metadata$new_name,"_",5))
 # 
-# kefir4all_metadata <-
 # dplyr::select(kefir4all_metadata,new_name,`2`,`3`,`4`)%>%
-#   dplyr::rename(merge_column=new_name,
-#          Sample=2,
-#          `kefir type`=3,
-#          Stage=4)
 # 
 # 
 # 
 # kefir4all_metadata[-c(grep("ID",kefir4all_metadata$Sample)),]$Stage <- "T0"
 # kefir4all_metadata[-c(grep("ID",kefir4all_metadata$Sample)),]$Stage
 # 
-# kefir4all_metadata[which(kefir4all_metadata$Stage=="T0"),]$`kefir type`[grep("ML",kefir4all_metadata[which(kefir4all_metadata$Stage=="T0"),"merge_column"])] <- "ML"
-# kefir4all_metadata[which(kefir4all_metadata$Stage=="T0"),]$`kefir type`[grep("MG",kefir4all_metadata[which(kefir4all_metadata$Stage=="T0"),"merge_column"])] <- "MG"
-# kefir4all_metadata[which(kefir4all_metadata$Stage=="T0"),]$`kefir type`[grep("WL",kefir4all_metadata[which(kefir4all_metadata$Stage=="T0"),"merge_column"])] <- "WL"
-# kefir4all_metadata[which(kefir4all_metadata$Stage=="T0"),]$`kefir type`[grep("WG",kefir4all_metadata[which(kefir4all_metadata$Stage=="T0"),"merge_column"])] <- "WG"
 # kefir4all_metadata$data_source <- "This study"
 # 
 # write.csv(kefir4all_metadata, file.path(DATA_DIR, "kefir4all_sample_metadata_v2.csv"), quote = FALSE,row.names = FALSE)
@@ -208,55 +209,10 @@ for (i in centroid$data_source){
 
 #merge pcoa by community types 
 # 
-# p_total <- 
 # 
-# ggplot(pcoa, aes(PC1, y=PC2,shape=data_source_specific ,colour=`kefir type`))+
-#   geom_point(size=5) +
-#   geom_point(data=centroid,size=10,shape=21, color="black",aes(fill=data_source_specific),  show.legend=FALSE)+ #aes(, colour=data_source)),size=10)+
-#   #geom_convexhull(alpha=.1)+
-#   stat_ellipse(geom = "polygon",
-#                aes(fill=data_source_specific),
-#                alpha = 0.25,
-#                type = "norm",
-#                show.legend=TRUE)+
-#   #geom_convexhull(alpha=.1)+
-#   #stat_ellipse(geom = "polygon",
-#   #alpha = 0.25,
-#   #type = "norm")+
-#   #geom_text(colour="blue", check_overlap = TRUE, size=2.5, 
-#   #hjust = "center", vjust = "bottom", nudge_x = 0, nudge_y = 0.025)+
-#   # directlabels::geom_dl(data=labels, aes(label = species), method = "smart.grid")+
 #   # Filter data first
-#   #geom_segment(data=species.long3, 
-#   #aes(x=0, y=0, xend=axis1*4, yend=axis2*4), 
-#   #colour="red", size=0.7, arrow=arrow()) +
 # 
 # ########
-# labs(x=paste("PCoA1 - ", round(percent_explained[1]), "%", sep=""), y=paste("PCoA2 - ", round(percent_explained[2]), "%", sep=""), title="") +
-#   coord_equal() +
-#   theme_bw()+
-#   theme(legend.position = "top",#c(.85,.2),#axis.text.x = element_blank(),  # remove x-axis text
-#     #axis.text.y = element_blank(), # remove y-axis text
-#     axis.ticks = element_blank(),  # remove axis ticks
-#     axis.text = element_blank(),
-#     axis.title.x = element_text(size=20), # remove x-axis labels
-#     axis.title.y = element_text(size=20), # remove y-axis labels
-#     panel.background = element_blank(), 
-#     panel.grid.major = element_blank(),  #remove major-grid labels
-#     panel.grid.minor = element_blank(),  #remove minor-grid labels
-#     plot.background = element_blank(),
-#     legend.text=element_text(size = 20),
-#     legend.key.size = unit(2, 'cm'), #change legend key size
-#     legend.key.height = unit(2, 'cm'), #change legend key height
-#     legend.key.width = unit(2, 'cm'), #change legend key width
-#     legend.title = element_text(size=20), #change legend title font size
-#     #legend.key = element_rect(fill = "white", color = NA),
-#     panel.border = element_rect(colour = "black", fill=NA))+
-#    #legend.box.background = element_rect(colour = "red"))+
-#   scale_colour_discrete(labels=c('Milk grain', 'Milk liquid', 'Water grain',"Water liquid"), name = "Kefir type")+
-#   scale_shape_discrete(name="Data source")+
-#    guides(colour = guide_legend(override.aes = list(size=10)),
-#           shape = guide_legend(override.aes = list(size=10)))
 
 
 p_total <- 
@@ -523,7 +479,6 @@ ggplot(pcoa_v1,aes(PC1, y=PC2,colour=species))+
                alpha = 0.25,
                type = "norm",
                show.legend=FALSE)+
- # facet_wrap(~group)+
 
   ########
 labs(x=paste("PCoA1 - ", round(percent_explained[1]), "%", sep=""), y=paste("PCoA2 - ", round(percent_explained[2]), "%", sep=""), title="") +
@@ -557,38 +512,11 @@ labs(x=paste("PCoA1 - ", round(percent_explained[1]), "%", sep=""), y=paste("PCo
   
 #   pcoa_v2 %>% 
 #   
-#   mutate(`kefir type`= gsub("MG|WG","Grain",
-#                                    gsub("ML|WL","Liquid", `kefir type`)))%>% 
-# ggplot(aes(PC1, y=PC2, label=relative_abundance,shape=`kefir type` ,colour=relative_abundance))+ #group=relative_abundance
-#   geom_point(size=5)+
-#   facet_wrap(~species)+
-#   scale_color_distiller(palette = "RdYlBu")+
-#   labs(colour="Relative abundance")+
 #   
 #   
 #   ########
 # #labs(x=paste("PCoA1 - ", round(percent_explained[1]), "%", sep=""), y=paste("PCoA2 - ", round(percent_explained[2]), "%", sep=""), title="") +
 # #coord_equal() +
-# theme_bw()+
-#   theme(legend.position = c(.6,.2),#axis.text.x = element_blank(),  # remove x-axis text
-#         legend.box = "horizontal",
-#         legend.direction = "vertical",
-#         axis.text = element_blank(), # remove y-axis text
-#         axis.ticks = element_blank(),  # remove axis ticks
-#         axis.title= element_blank(), # remove x-axis labels
-#         panel.background = element_blank(), 
-#         panel.grid.major = element_blank(),  #remove major-grid labels
-#         panel.grid.minor = element_blank(),  #remove minor-grid labels
-#         plot.background = element_blank(),
-#         panel.border = element_rect(colour = "black", fill=NA, size = 2.5),
-#         legend.text=element_text(face="plain", size = 15),
-#         legend.key.size = unit(1.5, 'cm'), #change legend key size
-#         legend.key.height = unit(1.5, 'cm'), #change legend key height
-#         legend.key.width = unit(1.5, 'cm'), #change legend key width
-#         legend.title = element_text(size=20), #change legend title font size
-#         strip.background=element_rect(fill="white"),
-#         strip.text = element_text(face="bold.italic", size=20))+
-# guides(shape= guide_legend(override.aes = list(size=10)))
 # 
 
 
@@ -632,46 +560,13 @@ pcoa_v2 %>%
 
 
 # pcoa_v2 %>% 
-#   mutate(`kefir type` = gsub("MG|WG", "Grain",
-#                              gsub("ML|WL", "Liquid", `kefir type`))) %>% 
-#   ggplot(aes(PC1, y = PC2, 
-#              label = relative_abundance, 
-#              shape = `kefir type`, 
-#              colour = relative_abundance, 
-#              alpha = relative_abundance)) + 
-#   geom_point(size = 5) +
-#   facet_wrap(~species) +
-#   scale_color_distiller(palette = "RdYlBu") +
-#   scale_alpha_continuous(range = c(0.3, 1), limits = c(20, 40)) +
-#   labs(colour = "Relative Abundance", alpha = "Relative Abundance") +
-#   theme_bw() +
-#   theme(legend.position = c(.6, .2),
-#         legend.box = "horizontal",
-#         legend.direction = "vertical",
-#         axis.text = element_blank(), 
-#         axis.ticks = element_blank(),
-#         axis.title = element_blank(),
-#         panel.background = element_blank(),
-#         panel.grid.major = element_blank(),
-#         panel.grid.minor = element_blank(),
-#         plot.background = element_blank(),
-#         panel.border = element_rect(colour = "black", fill = NA, size = 2.5),
-#         legend.text = element_text(face = "plain", size = 15),
-#         legend.key.size = unit(1.5, 'cm'),
-#         legend.key.height = unit(1.5, 'cm'),
-#         legend.key.width = unit(1.5, 'cm'),
-#         legend.title = element_text(size = 20),
-#         strip.background = element_rect(fill = "white"),
-#         strip.text = element_text(face = "bold.italic", size = 20)) +
-#   guides(shape = "none")  # Hide shape legend
-#  # guides(shape = guide_legend(override.aes = list(size = 8)))
 
 
 
 
 
 library(ggpubr)
-jpeg(filename=file.path(OUT_DIR, 'Figure_5.jpeg'), width = 7864, height=5200,res =300,pointsize = 15) #, width=2000, height=1950)
+tiff(filename=file.path(FIGURES_DIR, 'Figure_5.tiff'), width = 1800, height = 1200, units = "px", res = 300, compression = "lzw", type = "cairo", pointsize = 12) #, width=2000, height=1950)
 
 
 ggarrange(p_total_v2,
@@ -685,8 +580,8 @@ ggarrange(p_total_v2,
  library(Cairo)   # For high-quality PNG/PDF/SVG
  
  # Define figure size and resolution
- fig_width <- 10  # Inches (adjust based on journal requirements)
- fig_height <- 6  # Inches
+ fig_width <- 6  # Inches (adjust based on journal requirements)
+ fig_height <- 4  # Inches
  dpi_res <- 300   # High resolution (300 dpi for journal quality)
  
  
@@ -699,22 +594,21 @@ ggarrange(p_total_v2,
  )
  
  
-  pdf(file.path(OUT_DIR, "Figure5_model.pdf"))#, width = fig_width, height = fig_height)
+  pdf(file.path(FIGURES_DIR, "Figure5_model.pdf"), width = fig_width, height = fig_height)#, width = fig_width, height = fig_height)
   print(combined_plot)
   dev.off()
 
- svg(file.path(OUT_DIR, "Figure5_model.svg"), width = fig_width, height = fig_height)
+ svg(file.path(FIGURES_DIR, "Figure5_model.svg"), width = fig_width, height = fig_height)
  print(combined_plot)
  dev.off()
  
  
- CairoPNG(file.path(OUT_DIR, "Figure5_model.png"), width = fig_width * dpi_res, height = fig_height * dpi_res, res = dpi_res)
+ tiff(file.path(FIGURES_DIR, "Figure5_model.tiff"), width = fig_width, height = fig_height, units = "in", res = dpi_res, compression = "lzw", type = "cairo")
  print(combined_plot)
  dev.off()
  
  
  
-#write.csv(dominanting_species,"Q:/H2020 Master/Citizen Science Project/Results/04_short_read_profiling/04_Metacache/04_metacache_dominating_species.csv",row.names = FALSE,quote = FALSE )
 
 ###########################################################################################################################################################
 
@@ -821,11 +715,10 @@ for (type in names(beta_diversity)){
 
 library(ggpubr)
 
-jpeg(filename=file.path(OUT_DIR, 'Figure_5_v2.jpeg'), width = 7864, height=5200,res =300,pointsize = 15) #, width=2000, height=1950)
+tiff(filename=file.path(FIGURES_DIR, 'Figure_5_v2.tiff'), width = 1800, height = 1200, units = "px", res = 300, compression = "lzw", type = "cairo", pointsize = 12) #, width=2000, height=1950)
 
 
 ggarrange(p_total,
   ggarrange(  pcoa_plot[[1]],  pcoa_plot[[2]], nrow=1,ncol=2, labels=c( "B.","C."),common.legend = FALSE,  font.label = list(size = 30)),
   nrow=2,ncol=1,labels=c("A.","C."),widths=c(10,1),heights = c(1,.5),  font.label = list(size = 30))
 graphics.off()
-

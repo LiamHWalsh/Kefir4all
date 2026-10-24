@@ -176,6 +176,10 @@ TYPE_LABELS <- c(MG = "Milk kefir (grain)", WG = "Water kefir (grain)",
                  ML = "Milk kefir (liquid)", WL = "Water kefir (liquid)")
 TYPE_SHORT <- c(MG = "Milk grain", WG = "Water grain", ML = "Milk liquid", WL = "Water liquid")
 SRC_SHORT  <- c(MetaCache = "MetaCache", SUPER_FOCUS = "SUPER-FOCUS", volatiles = "Volatiles")
+# Matches the floor already applied upstream when MetaCache's full profile is
+# built (build_metacache_full_profile.R); SUPER-FOCUS has no equivalent
+# builder step, so the same floor is applied here instead, at load time.
+MIN_READ_DEPTH <- 10000
 
 # ===========================================================================
 # FUNCTION DEFINITIONS
@@ -247,16 +251,28 @@ S_1_load_superfocus <- function(root, md) {
                         file.path(root, "data", "functional", "superfocus_p3.csv"),
                         " or KEFIR4ALL_FUNC_DIR")
   x <- S_0_read_table(path)
-  S_0_require_columns(x, c("sample_id", "Subsystem Level 3", "reads_%"))
+  S_0_require_columns(x, c("sample_id", "reads", "Subsystem Level 3", "reads_%"))
   x$key <- S_0_normalize_id(x$sample_id)
   x <- x[x$key %in% md$key, , drop = FALSE]
   if (!nrow(x)) stop("No SUPER-FOCUS sample IDs match metadata")
+  # A sample with almost no classified reads produces a degenerate, near-single-
+  # feature profile; its Bray-Curtis distance to any normal profile is then
+  # forced close to 1 regardless of true biology. Drop these before building
+  # the matrix, matching the floor MetaCache applies at build time.
+  depth <- stats::aggregate(reads ~ key, data = x, FUN = sum)
+  shallow_keys <- depth$key[depth$reads < MIN_READ_DEPTH]
+  n_dropped <- length(shallow_keys)
+  x <- x[!(x$key %in% shallow_keys), , drop = FALSE]
+  if (!nrow(x)) stop("No SUPER-FOCUS samples remain above MIN_READ_DEPTH")
   x$value <- as.vector(S_0_numeric_matrix(x["reads_%"]))
   x$feature <- x[["Subsystem Level 3"]]
   if (anyNA(x$feature) || any(!nzchar(trimws(x$feature)))) stop("Missing SUPER-FOCUS feature labels")
   # Duplicate sample/pathway entries are summed; absent pathways are zero.
   m <- as.matrix(xtabs(value ~ key + feature, data = x))
-  list(mat = m, notes = "")
+  if (n_dropped) message("S_1_load_superfocus: dropped ", n_dropped,
+    " sample(s) below MIN_READ_DEPTH (", MIN_READ_DEPTH, " reads): ",
+    paste(shallow_keys, collapse = ", "))
+  list(mat = m, notes = if (n_dropped) paste0(n_dropped, " sample(s) dropped below ", MIN_READ_DEPTH, " reads") else "")
 }
 # --- Volatile workbooks -----------------------------------------------------
 # The volatile workbooks hold one column per compound measurement, with two
