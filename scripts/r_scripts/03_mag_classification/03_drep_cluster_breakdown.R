@@ -1,3 +1,14 @@
+# Anchor to the project root before here() loads. RStudio Server resets the session cwd
+# to $HOME after sourcing .Rprofile, and here() computes its root AT PACKAGE LOAD
+# TIME, so force the project root before any here load. This block is inert on non-portable
+# machines (none of the candidate dirs exist), so local/native R runs are unaffected.
+for (.proj in c("/home/rstudio/kefir4all", "/workspaces/kefir4all_review_history")) {
+
+
+
+  if (dir.exists(file.path(.proj, "scripts")) && getwd() != .proj) { setwd(.proj); break }
+}
+
 # 03_drep_cluster_breakdown.R ---------------------------------------------
 # Pipeline step 3 -- MAG classification
 # Results sections: 3.5 (strain sub-clusters), Supplementary Result S6
@@ -28,6 +39,8 @@ library(ggplot2)
 DATA_DIR    <- here::here("data")
 OUT_DIR <- here::here("output", "03_mag_classification")
 dir.create(OUT_DIR, recursive = TRUE, showWarnings = FALSE)
+FIGURES_DIR <- here::here("figures", "03_mag_classification")
+dir.create(FIGURES_DIR, recursive = TRUE, showWarnings = FALSE)
 
 # Private metadata -- not committed to repo
 CS_METADATA_PRIVATE <- file.path(here::here("data", "private"),
@@ -183,8 +196,8 @@ p <- mag_prevalent_breakdown %>%
   ) +
   coord_flip()
 
-ggsave(file.path(OUT_DIR, "Figure_S6_drep_cluster_breakdown.png"),
-       plot = p, width = 16, height = 12, dpi = 300)
+ggsave(file.path(FIGURES_DIR, "Figure_S6_drep_cluster_breakdown.tiff"),
+       plot = p, width = 6, height = 4, dpi = 300, compression = "lzw")
 
 # -------------------------------------------------------------------------
 # Summary statistics (MAG quality, cluster counts)

@@ -896,7 +896,7 @@ print(manifest, row.names = FALSE)
 # placeholder cells. No significance annotation is drawn - this figure is
 # descriptive only (see header).
 if (!requireNamespace("ggplot2", quietly = TRUE)) stop("Install ggplot2 for the figures")
-figures_dir <- file.path(root, "figures")
+figures_dir <- file.path(root, "figures", "04_taxonomic_profiling")
 dir.create(figures_dir, recursive = TRUE, showWarnings = FALSE)
 
 type_order <- c("MG", "WG", "ML", "WL")

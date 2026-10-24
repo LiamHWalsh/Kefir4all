@@ -1,3 +1,14 @@
+# Anchor to the project root before here() loads. RStudio Server resets the session cwd
+# to $HOME after sourcing .Rprofile, and here() computes its root AT PACKAGE LOAD
+# TIME, so force the project root before any here load. This block is inert on non-portable
+# machines (none of the candidate dirs exist), so local/native R runs are unaffected.
+for (.proj in c("/home/rstudio/kefir4all", "/workspaces/kefir4all_review_history")) {
+
+
+
+  if (dir.exists(file.path(.proj, "scripts")) && getwd() != .proj) { setwd(.proj); break }
+}
+
 # Supplementary_Fig_8.R --------------------------------------------------
 # Within-sample polymorphism (per-genome SNV count and nucleotide diversity)
 # across prevalent kefir species, indexed by inStrain. Four panels:
@@ -10,7 +21,7 @@
 #   data/instrain_genome_species_primary_data_v4.csv
 #
 # Outputs:
-#   figures/04_taxonomic_profiling/Supplementary_Fig_8.png
+#   figures/04_taxonomic_profiling/Supplementary_Fig_8.tiff
 #   figures/04_taxonomic_profiling/Supplementary_Fig_8.pdf
 #   figures/04_taxonomic_profiling/Supplementary_Fig_8_data.tsv
 
@@ -30,6 +41,8 @@ data_path <- file.path(repo_root, "data",
                       "instrain_genome_species_primary_data_v4.csv")
 OUT_DIR   <- file.path(repo_root, "output", "04_taxonomic_profiling")
 dir.create(OUT_DIR, showWarnings = FALSE, recursive = TRUE)
+FIGURES_DIR <- file.path(repo_root, "figures", "04_taxonomic_profiling")
+dir.create(FIGURES_DIR, showWarnings = FALSE, recursive = TRUE)
 
 df <- read_csv(data_path, show_col_types = FALSE) %>%
   filter(!is.na(breadth), !is.na(breadth_expected),
@@ -96,10 +109,10 @@ pp <- (p_a | p_b) / (p_c | p_d) +
   plot_annotation(title = "Supplementary Fig. 8. Within-sample polymorphism (per-genome SNV sites and nucleotide diversity) across prevalent kefir species, indexed by inStrain.",
                   theme = theme(plot.title = element_text(size = 10)))
 
-ggsave(file.path(OUT_DIR, "Supplementary_Fig_8.png"), pp,
-       width = 11, height = 10, dpi = 200, bg = "white")
-ggsave(file.path(OUT_DIR, "Supplementary_Fig_8.pdf"), pp,
-       width = 11, height = 10, bg = "white")
+ggsave(file.path(FIGURES_DIR, "Supplementary_Fig_8.tiff"), pp,
+       width = 6, height = 4, dpi = 300, bg = "white", compression = "lzw")
+ggsave(file.path(FIGURES_DIR, "Supplementary_Fig_8.pdf"), pp,
+       width = 6, height = 4, bg = "white")
 
 # Per-species summary
 summ <- df %>%

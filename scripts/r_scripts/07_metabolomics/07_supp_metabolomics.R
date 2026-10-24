@@ -1,3 +1,13 @@
+# Anchor to the project root before here() loads. RStudio Server resets the session cwd
+# to $HOME after sourcing .Rprofile, and here() computes its root AT PACKAGE LOAD
+# TIME, so force the project root before any here load. This block is inert on non-portable
+for (.proj in c("/home/rstudio/kefir4all", "/workspaces/kefir4all_review_history")) {
+
+
+
+  if (dir.exists(file.path(.proj, "scripts")) && getwd() != .proj) { setwd(.proj); break }
+}
+
 
 
 
@@ -18,6 +28,8 @@ DATA_DIR    <- here::here("data")
 PRIVATE_DIR <- here::here("data", "private")
 OUT_DIR <- here::here("output", "07_metabolomics")
 dir.create(OUT_DIR, recursive = TRUE, showWarnings = FALSE)
+FIGURES_DIR <- here::here("figures", "07_metabolomics")
+dir.create(FIGURES_DIR, recursive = TRUE, showWarnings = FALSE)
 
 CS_METADATA_PRIVATE <- file.path(PRIVATE_DIR, "Citizen Scientist metadata_v8.csv")
 if (!file.exists(CS_METADATA_PRIVATE)) {
@@ -52,7 +64,6 @@ library(tidyr)
 library(upstartr)
 library(widyr)
 #remotes::install_github("YuLab-SMU/ggtree")
-# if (!requireNamespace("devtools", quietly=TRUE))
 #   install.packages("devtools")
 # devtools::install_github("YuLab-SMU/ggmsa")
 library(ggmsa)
@@ -150,8 +161,6 @@ total_prevalence$...5 <-
 
 
 # 
-# prevalence_metric_data <- c()
-# for (unit in names(metric_data)){
 #   
 #   prevalence_metric_data[[unit]]<-  rbind(metric_data[[unit]][which( metric_data[[unit]]$kefir_type=="Milk.kefir" &
 #                                                                        metric_data[[unit]]$species %in% total_prevalence$...5[which(total_prevalence$kefir_type=="milk")]
@@ -160,11 +169,9 @@ total_prevalence$...5 <-
 #   metric_data[[unit]][which( metric_data[[unit]]$kefir_type=="Water.kefir" &
 #                                metric_data[[unit]]$species %in% total_prevalence$...5[which(total_prevalence$kefir_type=="water")]
 #   ),]
-#   )
 #   
 #   
 #   
-# }
 
 
 
@@ -240,44 +247,25 @@ milk_taxonomic_profile_prevalence
 
 # type="Milk.kefir"
 # 
-# t1 <- instrain[which(instrain$classification %in% 
-#                       gsub("_"," ", total_prevalence$...5[which(total_prevalence$kefir_type=="milk")]) &
 #                        instrain$category.y==type&
 #                        instrain$popANI_reference>.98),]
 # 
 # t1$cluster=
-# gsub(".*_","",t1$cluster)
 # 
 # 
-# levels(as.factor(t1$classification))
 # 
 # 
 # #country
-# data_long <- 
 #   dplyr::select(t1,sample_id, classification, cluster) %>% 
-#   mutate(present = 1) %>%
-#   pivot_wider(names_from = cluster, values_from = present, values_fill = 0) %>%
-#   pivot_longer(cols = c(`4`, `5`, `10`, `6`, `9`, `7`, `11`, `12`, `3`, `1`, `2`), 
-#                names_to = "Strain_cluster", values_to = "Presence") %>%
-#   mutate(Strain = as.numeric(Strain_cluster)) # Convert Strain to numeric for correct ordering
 # 
 # 
-# ggplot(data_long, aes(x = Strain_cluster, y = sample_id, fill = Presence)) +
-#   geom_tile(color = "white") +
-#   scale_fill_gradient(low = "white", high = "steelblue") +
-#   facet_wrap(~ classification, scales = "free_y") + 
-#   theme_minimal() +
-#   labs(x = "Strain", y = "Sample ID", fill = "Presence", title = "Heatmap of Strain Presence by Sample") +
-#   theme(
 #     axis.text.x = element_text(angle = 45, hjust = 1),
 #     plot.title = element_text(hjust = 0.5, face = "bold")
-#   )
 # 
 # 
 # 
 # 
 #  # pivot_longer(cols = starts_with("`"), names_to = "Strain", values_to = "Presence")
-#   pivot_longer(!classification, names_to = "cluster", values_to = "Freq")
 #   #select(-classification) %>%
 #   #column_to_rownames("sample_id")
 # 
@@ -384,37 +372,17 @@ for (species in  levels(as.factor(instrain$classification))){
     cooccurrence_matrix <-
     dplyr::select(t1,merge_column, classification, cluster) %>%
       mutate(cluster=paste(classification,cluster)) %>% 
-      # group_by(merge_column) %>%
-      # summarise(clusters = list(cluster)) %>%
-      # unnest(clusters) %>%
       pairwise_count(cluster, merge_column) %>%  spread(item2, n, fill = 0) %>%
       column_to_rownames(var = "item1")
 
-    # cooccurrence_matrix <- as.matrix(cooccurrence_matrix)
-    # cooccurrence_matrix <- cooccurrence_matrix + t(cooccurrence_matrix)
-    # graph <- graph_from_adjacency_matrix(cooccurrence_matrix, mode = "undirected", weighted = TRUE)
     # 
     # # Add cluster sizes as node attributes
-    # V(graph)$size <- cluster_size$n[match(V(graph)$name, cluster_size$cluster)]
     # 
     # # Plot the network with ggraph
-    # ggraph(graph, layout = "fr") +
-    #   geom_edge_link(aes(edge_width = weight), edge_color = "blue", alpha = 0.6) +
-    #   geom_node_point(aes(size = size), color = "red") +  # Size of the nodes based on the cluster size
-    #   geom_node_text(aes(label = name), repel = TRUE) +  # Add labels for clusters
-    #   theme_void() +
-    #   ggtitle("Cluster Co-Occurrence Network") +
-    #   scale_edge_width(range = c(0.5, 2)) +  # Adjust the edge width range
-    #   theme(legend.position = "top")
     # 
     
     # #country
-    # cooccurrence_matrix <- 
     #   dplyr::select(t1,merge_column, classification, cluster) %>% 
-    #   mutate(present = 1) %>%
-    #   pivot_wider(names_from = merge_column, values_from = present, values_fill = 0) %>%
-    #   select(-classification) %>%
-    #   column_to_rownames("cluster")
     # 
     
     
@@ -422,66 +390,32 @@ for (species in  levels(as.factor(instrain$classification))){
     
 #     
 #     
-#     cooccurrence <- crossprod(as.matrix(cooccurrence_matrix))
-#     graph <- graph_from_adjacency_matrix(cooccurrence, mode = "undirected", weighted = TRUE, diag = FALSE)
-#     V(graph)$label <- rownames(cooccurrence_matrix)
 #     
 #     # Plot the network with vertex labels as clusters
-#     plot(graph, 
-#          vertex.label = V(graph)$label, # Use cluster names for labels
-#          vertex.size = 10,              # Size of the nodes
-#          edge.width = E(graph)$weight,  # Width of edges based on co-occurrence frequency
-#          main = "Co-Occurrence Network Based on Clusters")
 # 
 #     # Plot the network
-#     plot(graph, vertex.label = V(graph)$name, vertex.size = 10, edge.width = E(graph)$weight)
-#     
-#     
-#     
-#     melt(    cooccurrence_matrix %>% rownames_to_column("clust")) %>% 
-#       ggplot(aes(variable, clust, fill = value)) +
-#       geom_tile(color = "white") +
-#       scale_fill_gradient(low = "white", high = "red") +
-#       theme_minimal() +
-#       labs(title = "Co-occurrence Heatmap of Clusters",
-#            x = "Cluster",
-#            y = "Cluster",
-#            fill = "Co-occurrence") +
-#       theme(axis.text.x = element_text(angle = 45, hjust = 1))
 #     
 #     
 #     
 #     
-#     cooccurrence <- crossprod(as.matrix(cooccurrence_matrix))
+#     
+#     
+#     
 #     
 #     # Set the diagonal to 0 (no self-co-occurrence)
-#     diag(cooccurrence) <- 0
 #     
 #     # Create a graph object from the co-occurrence matrix
-#     graph <- graph_from_adjacency_matrix(cooccurrence, mode = "undirected", weighted = TRUE)
 #     
 #     # Convert igraph object to tidygraph
-#     tidy_graph <- as_tbl_graph(graph)
 #     
 #     # Step 2: Plot the Co-occurrence Network
 #     set.seed(42)  # For reproducibility of the layout
-#     p1=  ggraph(tidy_graph, layout = 'fr') + 
-#       geom_edge_link(aes(edge_width = weight), edge_colour = "lightblue", alpha = 0.7) +
-#       geom_node_point(size = 6, colour = "steelblue") +
-#       geom_node_text(aes(label = name), repel = TRUE, size = 4, colour = "black") +
-#       scale_edge_width(range = c(0.2, 2)) +  # Adjust edge thickness
-#       theme_void() +
-#       labs(title = "Co-occurrence Network of Lactococcus cremoris Strains") +
-#       theme(
 #         plot.title = element_text(hjust = 0.5, size = 16, face = "bold"),
 #         legend.position = "none"
-#       )
 #     
 #     
-#     jpeg(filename='Q:/H2020 Master/Citizen Science Project/plots/CS_metagenomics/cooccurnce_network_milk.kefir.jpeg', width = 7864, height=5200,res =300,pointsize = 15) #, width=2000, height=1950)
 #     
 #     
-# plot(p1)
 #     graphics.off()
     
     cooccurrence_long$species=species
@@ -517,7 +451,6 @@ occurence_data_v2=
 
 
 # occurence_data[
-# which(occurence_data$Var1 %in%   cluster_size_total$var[which(cluster_size_total$n>5)] &
 #         
 #         occurence_data$Var2 %in%   cluster_size_total$var[which(cluster_size_total$n>5)]
 #         
@@ -607,9 +540,7 @@ ggplot(plot_data, aes(axis1 = Var1_primary, axis2 = Var2_primary, y = Freq)) +
   guides(fill = guide_legend(title.position="top", title.hjust = 0.5))
 
 
-# jpeg(filename='Q:/H2020 Master/Citizen Science Project/plots/test2_v2.jpeg', width = 7864, height=5200,res =300,pointsize = 15) #, width=2000, height=1950)
 # 
-# plot(strain_coccurence_plot)
 # graphics.off()
 # #
 
@@ -641,7 +572,6 @@ a=
 multi_strain_detection_prevelant %>% 
   mutate(kefir=gsub("\\."," ",kefir)) %>% 
   filter(n_multi_detections !=0) %>% 
- # filter(species %in% unique(plot_data$species)) %>% 
 tidyr::gather(key = "type", value = "count", n_total_detections, n_multi_detections) %>% 
   mutate(type=
                 gsub( "n_multi_detections", "Multi-Strain Detections",
@@ -681,16 +611,14 @@ tidyr::gather(key = "type", value = "count", n_total_detections, n_multi_detecti
 
 
 
-# jpeg(filename='Q:/H2020 Master/Citizen Science Project/plots/test2_v2.jpeg', width = 7864, height=5200,res =300,pointsize = 15) #, width=2000, height=1950)
 # 
-# plot(strain_coccurence_plot)
 # graphics.off()
 # #
 
 
 library(ggpubr)
 
-jpeg(filename=file.path(OUT_DIR, 'Figure_11.jpeg'), width = 7864, height=5200,res =300,pointsize = 15) #, width=2000, height=1950)
+tiff(filename=file.path(FIGURES_DIR, 'Figure_11.tiff'), width = 1800, height = 1200, units = "px", res = 300, compression = "lzw", type = "cairo", pointsize = 12) #, width=2000, height=1950)
 
 
 ggarrange(a, b,ncol=1,nrow=2,labels=c("A.","B."),font.label = list(size = 30),heights = c(.4,1), common.legend = FALSE)
@@ -703,9 +631,7 @@ graphics.off()
 #     
 #     total_prevalence
 #     
-#     length(names( table(t1$sample_id)))
 #     
-#     length(names( table(t1$sample_id)))
 #     
 #     
 #     
@@ -735,64 +661,40 @@ graphics.off()
 #     # 
 #     
 #     country
-#     cooccurrence_matrix <-
 #       dplyr::select(t1,sample_id, classification, cluster) %>%
-#       mutate(present = 1) %>%
-#       pivot_wider(names_from = cluster, values_from = present, values_fill = 0) %>%
-#       select(-classification) %>%
-#       column_to_rownames("sample_id")
 # 
 #     
 #     
 #     
 #     
 #     
-#     cooccurrence <- crossprod(as.matrix(cooccurrence_matrix))
 #     
 #     # Set the diagonal to 0 (no self-co-occurrence)
-#     diag(cooccurrence) <- 0
 #     
 #     # Create a graph object from the co-occurrence matrix
-#     graph <- graph_from_adjacency_matrix(cooccurrence, mode = "undirected", weighted = TRUE)
 #     
 #     # Convert igraph object to tidygraph
-#     tidy_graph <- as_tbl_graph(graph)
 #     
 #     # Step 2: Plot the Co-occurrence Network
 #     set.seed(42)  # For reproducibility of the layout
-#     p1=  ggraph(tidy_graph, layout = 'fr') + 
-#       geom_edge_link(aes(edge_width = weight), edge_colour = "lightblue", alpha = 0.7) +
-#       geom_node_point(size = 6, colour = "steelblue") +
-#       geom_node_text(aes(label = name), repel = TRUE, size = 4, colour = "black") +
-#       scale_edge_width(range = c(0.2, 2)) +  # Adjust edge thickness
-#       theme_void() +
-#       labs(title = "Co-occurrence Network of Lactococcus cremoris Strains") +
-#       theme(
 #         plot.title = element_text(hjust = 0.5, size = 16, face = "bold"),
 #         legend.position = "none"
-#       )
 #     
 #     
 #     
-#     jpeg(filename='Q:/H2020 Master/Citizen Science Project/plots/CS_metagenomics/cooccurnce_network_milk.kefir.jpeg', width = 7864, height=5200,res =300,pointsize = 15) #, width=2000, height=1950)
 #     
 #     
-#     plot(p1)
 #     graphics.off()
 #     
 #     
-#     library(igraph)
 #     
 #     # Calculate the co-occurrence matrix
-#     cooccurrence <- crossprod(as.matrix(cooccurrence_matrix))
 #     
 #     
 #     
 #     # Create a graph object
-#     graph <- graph.adjacency(cooccurrence, mode = "undirected", diag = FALSE)
 #     
 #     # Plot the network
-#     plot(graph, vertex.label = V(graph)$name, vertex.size = 10, edge.width = E(graph)$weight)
 #     
 #     
 #     
@@ -815,21 +717,11 @@ graphics.off()
 #     
 #     
 #     
-#     if(nrow(t1)==0){next }else{
-#       
-#       t2 <- data.frame( table(t1$cluster))
 #       
 #       
-#       clus_breakdown <- 
-#         rbind(clus_breakdown, data.frame(species=species,
-#                                          type=type, 
-#                                          clust=t2$Var1, 
-#                                          Freq=t2$Freq
+#       
 #         ))
-#     }
-#   }
 #   
-# }
 
 
 library(upstartr)
@@ -853,7 +745,6 @@ clus_breakdown_prevalent %>%
   geom_col()+
   facet_wrap(~type,scales="free")+
   scale_x_reordered()+
-  # geom_boxplot()+
   #geom_point()+
   labs(x="Species", y="Number of strains detected", title="",fill="Secondary_clusters") +
   #coord_equal() +
@@ -956,7 +847,6 @@ plot <-
   ggplot( aes(x = Stage, stratum = clusters, alluvium = clusters, y = Freq, fill = clusters)) +
   geom_flow(stat = "alluvium", lode.guidance = "frontback", color = "darkgray") +
   geom_stratum() +
-  # scale_fill_brewer(type = "qual")+#, palette = "Set1") +
   theme_bw() +
   labs(title = "",
        x = "Stage",
@@ -999,7 +889,7 @@ plot <-
 
 
 
-jpeg(filename=file.path(OUT_DIR, 'instrain_strain_clusters_cs_v3.jpeg'), width = 7864, height=5200,res =300,pointsize = 15) #, width=2000, height=1950)
+tiff(filename=file.path(FIGURES_DIR, 'instrain_strain_clusters_cs_v3.tiff'), width = 1800, height = 1200, units = "px", res = 300, compression = "lzw", type = "cairo", pointsize = 12) #, width=2000, height=1950)
 
 
 plot(plot)

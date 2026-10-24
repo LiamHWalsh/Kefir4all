@@ -1,3 +1,13 @@
+# Anchor to the project root before here() loads. RStudio Server resets the session cwd
+# to $HOME after sourcing .Rprofile, and here() computes its root AT PACKAGE LOAD
+# TIME, so force the project root before any here load. This block is inert on non-portable
+for (.proj in c("/home/rstudio/kefir4all", "/workspaces/kefir4all_review_history")) {
+
+
+
+  if (dir.exists(file.path(.proj, "scripts")) && getwd() != .proj) { setwd(.proj); break }
+}
+
 # Supplementary_Fig_9.R --------------------------------------------------
 # dRep secondary-cluster assignments across the Kefir4All study, by
 # species and timepoint. Per-prevalent-species alluvial flows; one panel
@@ -8,12 +18,11 @@
 # than inStrain within-species clusters; the two together correspond to
 # the two halves of the legacy Figure 10.
 #
-# Inputs (all in flat data/):
 #   Cdb.csv                         (dRep cluster assignments)
 #   mag_metadata_v3.csv.gz          (MAG -> species, sample, kefir type)
 #
 # Outputs:
-#   figures/06_strain_profiling/Supplementary_Fig_9.png
+#   figures/06_strain_profiling/Supplementary_Fig_9.tiff
 #   figures/06_strain_profiling/Supplementary_Fig_9.pdf
 #   figures/06_strain_profiling/Supplementary_Fig_9_data.tsv
 
@@ -32,6 +41,8 @@ repo_root <- here::here()
 data_dir  <- file.path(repo_root, "data")
 OUT_DIR   <- file.path(repo_root, "output", "06_strain_profiling")
 dir.create(OUT_DIR, showWarnings = FALSE, recursive = TRUE)
+FIGURES_DIR <- file.path(repo_root, "figures", "06_strain_profiling")
+dir.create(FIGURES_DIR, showWarnings = FALSE, recursive = TRUE)
 
 cdb <- read_csv(file.path(data_dir, "Cdb.csv"), show_col_types = FALSE)
 md  <- read_csv(file.path(data_dir, "mag_metadata_v3.csv.gz"),
@@ -109,13 +120,13 @@ p <- ggplot(plot_df,
   guides(fill = guide_legend(nrow = 1, byrow = TRUE))
 
 n_panels <- nrow(unique(plot_df[, c("category.y", "species")]))
-fig_w <- 14
-fig_h <- max(7, 2.0 * ceiling(n_panels / 4))
+fig_w <- 6
+fig_h <- 4
 
-ggsave(file.path(OUT_DIR, "Supplementary_Fig_9.png"), p,
-       width = fig_w, height = fig_h, dpi = 300, bg = "white")
-ggsave(file.path(OUT_DIR, "Supplementary_Fig_9.pdf"), p,
+ggsave(file.path(FIGURES_DIR, "Supplementary_Fig_9.tiff"), p,
+       width = fig_w, height = fig_h, dpi = 300, bg = "white", compression = "lzw")
+ggsave(file.path(FIGURES_DIR, "Supplementary_Fig_9.pdf"), p,
        width = fig_w, height = fig_h, bg = "white")
 
 write_tsv(plot_df, file.path(OUT_DIR, "Supplementary_Fig_9_data.tsv"))
-message("Wrote Supplementary_Fig_9.{png,pdf} + Supplementary_Fig_9_data.tsv to ", OUT_DIR)
+message("Wrote Supplementary_Fig_9.{tiff,pdf} + Supplementary_Fig_9_data.tsv to ", OUT_DIR)

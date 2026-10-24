@@ -1,3 +1,13 @@
+# Anchor to the project root before here() loads. RStudio Server resets the session cwd
+# to $HOME after sourcing .Rprofile, and here() computes its root AT PACKAGE LOAD
+# TIME, so force the project root before any here load. This block is inert on non-portable
+for (.proj in c("/home/rstudio/kefir4all", "/workspaces/kefir4all_review_history")) {
+
+
+
+  if (dir.exists(file.path(.proj, "scripts")) && getwd() != .proj) { setwd(.proj); break }
+}
+
 # 06_instrain_temporal_alluvial.R -----------------------------------------
 # Pipeline step 6 — Strain profiling
 # Results sections: 3.7 (Figure 8, revised manuscript)
@@ -11,7 +21,6 @@
 # inStrain), now used as the single-panel revised Figure 8. The dRep
 # equivalent is in 06_strain_profiling/06_supp_strain_profiling.R.
 #
-# Inputs (all in flat data/):
 #   instrain_genome_species_primary_data_v4.csv
 #   kefir4all_sample_metadata_v2.csv
 #   milk_taxonomic_profile_prevalence.csv
@@ -35,6 +44,8 @@ suppressPackageStartupMessages({
 data_dir <- here::here("data")
 OUT_DIR  <- here::here("output", "06_strain_profiling")
 dir.create(OUT_DIR, showWarnings = FALSE, recursive = TRUE)
+FIGURES_DIR <- here::here("figures", "06_strain_profiling")
+dir.create(FIGURES_DIR, showWarnings = FALSE, recursive = TRUE)
 
 instrain <- read_csv(file.path(data_dir, "instrain_genome_species_primary_data_v4.csv"),
                      show_col_types = FALSE)
@@ -136,13 +147,13 @@ p <- ggplot(plot_df,
   guides(fill = guide_legend(nrow = 1, byrow = TRUE))
 
 n_panels <- nrow(unique(plot_df[, c("category.y", "classification")]))
-fig_w <- 14
-fig_h <- max(7, 2.0 * ceiling(n_panels / 4))
+fig_w <- 6
+fig_h <- 4
 
-ggsave(file.path(OUT_DIR, "Figure_8.png"), p,
-       width = fig_w, height = fig_h, dpi = 300, bg = "white")
-ggsave(file.path(OUT_DIR, "Figure_8.pdf"), p,
+ggsave(file.path(FIGURES_DIR, "Figure_8.tiff"), p,
+       width = fig_w, height = fig_h, dpi = 300, bg = "white", compression = "lzw")
+ggsave(file.path(FIGURES_DIR, "Figure_8.pdf"), p,
        width = fig_w, height = fig_h, bg = "white")
 
 write_tsv(plot_df, file.path(OUT_DIR, "Figure_8_data.tsv"))
-message("Wrote Figure_8.{png,pdf} + Figure_8_data.tsv to ", OUT_DIR)
+message("Wrote Figure_8.{tiff,pdf} + Figure_8_data.tsv to ", OUT_DIR)
