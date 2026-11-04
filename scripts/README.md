@@ -16,25 +16,40 @@ scripts/r_scripts/
 
 ## Script-to-results cross-reference
 
-| Script | Results section | Figure(s) |
-|--------|----------------|-----------|
-| `03_mag_classification/03_mag_taxonomy.R` | 3.1 (MAG taxonomy, novel species) | Supp Table S1, Supp S6 |
-| `03_mag_classification/03_drep_cluster_breakdown.R` | 3.5 (strain sub-clusters) | Supp Fig S6 (dRep) |
-| `04_taxonomic_profiling/04_taxonomic_profiling.R` | 3.1 (prevalent species, heatmaps) | Figure 2 |
-| `04_taxonomic_profiling/04_community_stability.R` | 3.2 (Bray-Curtis temporal), 3.4 (Gower/Mantel) | Figure 3 |
-| `04_taxonomic_profiling/04_community_types.R` | 3.3 (community states) | Figure 5 |
-| `04_taxonomic_profiling/04_global_comparison.R` | 3.3 (pan-metagenome comparison) | Figure 5 |
-| `04_taxonomic_profiling/04_environmental_microbes.R` | 3.4 (environmental acquisition, filtering) | Figure 6 |
-| `04_taxonomic_profiling/04_supp_taxonomic_profiling.R` | Supp Result S1 | Supp Fig 5 |
-| `04_taxonomic_profiling/04_supp_community_stability.R` | Supp Result S4 | Supp Fig 6 |
-| `04_taxonomic_profiling/04_supp_community_types.R` | Supp Result S4 | Supp Fig 8 |
-| `05_functional_profiling/05_resistome.R` | Supp Result S2 (resistome) | Supp Fig S2 |
-| `06_strain_profiling/06_strain_profiling.R` | 3.5–3.7 (strain diversity, co-occurrence) | Figures 7–8 |
-| `06_strain_profiling/06_instrain_temporal_alluvial.R` | 3.7 (inStrain temporal clusters) | Figure 8 |
-| `06_strain_profiling/06_supp_strain_profiling.R` | Supp Result S6 (dRep temporal) | Supp Fig 9 |
-| `06_strain_profiling/06_supp_strainphlan_ani.R` | Supp Result S5 (mutation rates, ANI) | Supp Fig S5 |
-| `07_metabolomics/07_metabolomics.R` | 3.2 (VOC early changes) | Figure 4 |
-| `07_metabolomics/07_supp_metabolomics.R` | Supp Result S3 | Supp Fig 7 |
+**Status as of 2026-11-04.** The table below was rebuilt by checking each
+script's actual code/output against the current manuscript
+(`Kefir4All_Manuscript_TRACKED_SB.docx`) rather than carried forward from
+assumption — the previous version of this table had drifted out of date on
+several rows (wrong script, wrong figure number, or a stale output filename
+left over from an earlier numbering scheme) after the manuscript was
+revised. Status column: ✅ confirmed against the manuscript's actual
+caption text/content, ⚠️ exists but has a known problem, ❌ no script
+currently produces this figure at all.
+
+| Script | Figure | Status |
+|--------|--------|--------|
+| `04_taxonomic_profiling/04_taxonomic_profiling.R` | Figure 2 | ✅ |
+| `04_taxonomic_profiling/community_changes_v3.R` | Figure 3 | ✅ content confirmed, but ⚠️ **this script is not yet committed to this branch** (untracked in the working tree) |
+| `04_taxonomic_profiling/04_community_types.R` | Figure 4 | ✅ |
+| `04_taxonomic_profiling/04_environmental_microbes_v2.R` | Figure 5 | ✅ |
+| *(none)* | Figure 6 | ❌ No script combines dRep + inStrain + StrainPhlAn4 detection counts as the caption describes. A 2024 pre-repo script with this logic exists outside this repo and needs porting (old `Q:/` network paths, not repo-relative) |
+| `06_strain_profiling/06_strain_profiling.R` | Figure 7 | ✅ |
+| `06_strain_profiling/06_instrain_temporal_alluvial.R` | Figure 8 | ✅ single panel. A second, dRep-based panel in `06_supp_strain_profiling.R` was deliberately dropped, not combined |
+| `04_taxonomic_profiling/04_community_stability_v2.R` | — | ⚠️ Content (Bray-Curtis within-stage convergence) is not referenced anywhere in the current manuscript. Panel-title and rendering bugs were fixed, but whether to keep this script is still an open decision |
+| `04_taxonomic_profiling/04_supp_taxonomic_profiling.R` | Extended Data Figure 3 | ✅ (output file still named `Supplementary_Fig_5.tiff` — stale name, not yet renamed) |
+| `04_taxonomic_profiling/04_community_stability_v2.R` (downstream block) | Extended Data Figure 1 | ⚠️ Runs without error but never produces its output file (`Supplementary_Figure_2.tiff`, also a stale name) — cause not fully diagnosed |
+| `06_strain_profiling/06_supp_strainphlan_ani.R` | Extended Data Figure 2 | ❌ Blocked: requires `data/marker_names.csv`, which has never existed in this repo (an external file, not a committed-then-deleted one) |
+| `05_functional_profiling/05_resistome.R` | Supplementary Figure 2 | ✅ (output file still named `resistome_figure.tiff`) |
+| *(none)* | Supplementary Figure 1 | ❌ No script produces the functional (SUPER-FOCUS) Bray-Curtis-vs-T0 boxplots described. The underlying distance data already exists at `output/04_taxonomic_profiling/community_changes_v3/SUPER_FOCUS_*G_reference_distances.csv` |
+| *(none)* | Supplementary Figure 4 | ❌ No Mantel-test/hexbin (Bray-Curtis vs Gower distance) script exists anywhere in this repo's history |
+| *(none)* | Supplementary Figure 5 | ❌ No script plots InStrain SNS count / SNV count / r2 mean together. `data/instrain_genome_species_primary_data_v4.csv` already has all three columns |
+| `03_mag_classification/03_mag_taxonomy.R` | Supp Table S1 | ❓ not re-verified this pass |
+| `03_mag_classification/03_drep_cluster_breakdown.R` | Supp Fig S6 | ❓ not re-verified this pass |
+| `04_taxonomic_profiling/04_supp_community_stability.R` | — | ❓ not re-verified; actual output file (`Figure_9_v2.tiff`) does not match the old claimed "Supp Fig 6" |
+| `04_taxonomic_profiling/04_supp_community_types.R` | Supplementary Figure 3? | ❓ not re-verified this pass |
+| `06_strain_profiling/06_supp_strain_profiling.R` | — | Produces a dRep-based "clusters per visit" panel; not currently used in any figure on its own (see Figure 8 note above) |
+| `07_metabolomics/07_metabolomics.R` | ? | ❓ Needs re-verification — its standalone VOC output (`Figure_9.tiff`) may now be superseded by Figure 3's volatile-profile row, which is produced by `community_changes_v3.R` instead |
+| `07_metabolomics/07_supp_metabolomics.R` | ? | ❓ Output (`Figure_11.tiff`) appears to contain leftover/duplicated strain-profiling code unrelated to metabolomics — flagged for review, not confirmed |
 | `supplementary_notes/Supplementary_Note_6_analysis.R` | Supplementary Note 6 | — |
 | `supplementary_notes/Supplementary_Note_7_analysis.R` | Supplementary Note 7 | — |
 

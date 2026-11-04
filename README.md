@@ -15,34 +15,47 @@ All 553 R packages are pre-installed in a container — `docker pull` then `dock
 Install packages with `Rscript install_R_packages.R`, then run any script below. See **[REPRODUCIBILITY.md](REPRODUCIBILITY.md)** for the full list.
 
 ```bash
-Rscript scripts/r_scripts/04_taxonomic_profiling/04_taxonomic_profiling.R   # Figure 2
-Rscript scripts/r_scripts/04_taxonomic_profiling/04_community_stability.R   # Figure 3
-Rscript scripts/r_scripts/07_metabolomics/07_metabolomics.R                 # Figure 4
-Rscript scripts/r_scripts/04_taxonomic_profiling/04_community_types.R       # Figure 5
-Rscript scripts/r_scripts/04_taxonomic_profiling/04_environmental_microbes.R # Figure 6
-Rscript scripts/r_scripts/06_strain_profiling/06_strain_profiling.R          # Figures 7–8
+Rscript scripts/r_scripts/04_taxonomic_profiling/04_taxonomic_profiling.R    # Figure 2
+Rscript scripts/r_scripts/04_taxonomic_profiling/community_changes_v3.R     # Figure 3
+Rscript scripts/r_scripts/04_taxonomic_profiling/04_community_types.R       # Figure 4
+Rscript scripts/r_scripts/04_taxonomic_profiling/04_environmental_microbes_v2.R # Figure 5
+Rscript scripts/r_scripts/06_strain_profiling/06_strain_profiling.R          # Figure 7
+Rscript scripts/r_scripts/06_strain_profiling/06_instrain_temporal_alluvial.R # Figure 8
 ```
+
+Figure 6 currently has no producing script (see map below) — do not run anything expecting it to exist yet.
 
 ## Figure → script map
 
-> Original-submission figures 7–8 are archived in `researchgate_legacy/` for traceability to the ResearchGate preprint.
+**Status as of 2026-11-04**, verified against the actual current manuscript
+(`Kefir4All_Manuscript_TRACKED_SB.docx`) rather than carried forward from the
+previous (stale) version of this table — several rows below previously
+pointed at the wrong script or a figure number left over from an earlier
+draft's numbering. See `scripts/README.md` for the fuller script-by-script
+status table, including Extended Data figures and remaining gaps.
 
-| Revised manuscript | Script | What it generates |
-|---|---|---|
-| Figure 2 | `scripts/r_scripts/04_taxonomic_profiling/04_taxonomic_profiling.R` | Species composition heatmaps / bar charts |
-| Figure 3 | `scripts/r_scripts/04_taxonomic_profiling/04_community_stability.R` | Community stability (Bray-Curtis, Mantel) |
-| Figure 4 | `scripts/r_scripts/07_metabolomics/07_metabolomics.R` | VOC / volatilome analysis |
-| Figure 5 | `scripts/r_scripts/04_taxonomic_profiling/04_community_types.R` | Community types |
-| Figure 6 | `scripts/r_scripts/04_taxonomic_profiling/04_environmental_microbes.R` | Environmental microbes |
-| Figures 7–8 | `scripts/r_scripts/06_strain_profiling/06_strain_profiling.R` | Strain profiling |
-| Figure 8 (inStrain) | `scripts/r_scripts/06_strain_profiling/06_instrain_temporal_alluvial.R` | inStrain temporal cluster alluvial |
-| Supplementary Fig. 5 | `scripts/r_scripts/04_taxonomic_profiling/04_supp_taxonomic_profiling.R` | ANI pairwise |
-| Supplementary Fig. 6 | `scripts/r_scripts/04_taxonomic_profiling/04_supp_community_stability.R` | Community stability supp. |
-| Supplementary Fig. 7 | `scripts/r_scripts/07_metabolomics/07_supp_metabolomics.R` | Metabolomics supp. |
-| Supplementary Fig. 8 | `scripts/r_scripts/04_taxonomic_profiling/04_supp_community_types.R` | Community types supp. |
-| Supplementary Fig. 9 | `scripts/r_scripts/06_strain_profiling/06_supp_strain_profiling.R` | dRep strain profiling supp. |
-| Supplementary Table 1 | per-species secondary-cluster counts in `figures/Supplementary_Table_1.tsv` | — |
-| Original-submission Figures 7–8 | `scripts/r_scripts/researchgate_legacy/Figure_7.R`, `Figure_8.R` | Archived for traceability |
+| Manuscript figure | Script | What it generates | Status |
+|---|---|---|---|
+| Figure 2 | `scripts/r_scripts/04_taxonomic_profiling/04_taxonomic_profiling.R` | Prevalent-species heatmaps | ✅ |
+| Figure 3 | `scripts/r_scripts/04_taxonomic_profiling/community_changes_v3.R` | Taxonomic/functional/volatile-profile changes over fermentation | ✅ content confirmed, but **not yet committed to this branch** |
+| Figure 4 | `scripts/r_scripts/04_taxonomic_profiling/04_community_types.R` | PCoA + community-type alluvial | ✅ |
+| Figure 5 | `scripts/r_scripts/04_taxonomic_profiling/04_environmental_microbes_v2.R` | Diversity + environmental-taxa persistence | ✅ |
+| Figure 6 | *(none)* | Method-comparison detection counts (dRep/inStrain/StrainPhlAn4) | ❌ no current script produces this |
+| Figure 7 | `scripts/r_scripts/06_strain_profiling/06_strain_profiling.R` | Co-detection of secondary-cluster representatives | ✅ |
+| Figure 8 | `scripts/r_scripts/06_strain_profiling/06_instrain_temporal_alluvial.R` | Temporal distribution of secondary clusters | ✅ |
+| Extended Data Fig. 1 | `scripts/r_scripts/04_taxonomic_profiling/04_community_stability_v2.R` | Consecutive-visit Bray-Curtis/Gower dissimilarity | ⚠️ runs, but never writes its output file |
+| Extended Data Fig. 2 | `scripts/r_scripts/06_strain_profiling/06_supp_strainphlan_ani.R` | StrainPhlAn SNP divergence + dRep ANI | ❌ blocked on a missing input file (`data/marker_names.csv`) |
+| Extended Data Fig. 3 | `scripts/r_scripts/04_taxonomic_profiling/04_supp_taxonomic_profiling.R` | Pairwise MAG relatedness (ANI) | ✅ |
+| Supplementary Fig. 1 | *(none)* | Functional (SUPER-FOCUS) Bray-Curtis vs T0, grain only | ❌ no current script produces this |
+| Supplementary Fig. 2 | `scripts/r_scripts/05_functional_profiling/05_resistome.R` | AMR class prevalence | ✅ |
+| Supplementary Fig. 4 | *(none)* | Bray-Curtis vs Gower Mantel test (hexbin) | ❌ no current script produces this |
+| Supplementary Fig. 5 | *(none)* | InStrain SNS/SNV/r2 point-range | ❌ no current script produces this |
+| Supplementary Table 1 | per-species secondary-cluster counts in `figures/Supplementary_Table_1.tsv` | — | — |
+| Original-submission Figures 7–8 | `scripts/r_scripts/researchgate_legacy/Figure_7.R`, `Figure_8.R` | Archived for traceability | — |
+
+Three figures (6, Supplementary 1, 4, 5) do not currently have a producing
+script in this repo at all; legacy pre-repo candidate scripts exist outside
+this repo and are being ported over as a separate piece of work.
 
 Reviewer-revision analysis (not a manuscript figure):
 `scripts/r_scripts/04_taxonomic_profiling/community_changes.R` writes shared laboratory
