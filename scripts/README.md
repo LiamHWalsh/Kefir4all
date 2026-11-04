@@ -29,7 +29,7 @@ currently produces this figure at all.
 | Script | Figure | Status |
 |--------|--------|--------|
 | `04_taxonomic_profiling/04_taxonomic_profiling.R` | Figure 2 | ✅ |
-| `04_taxonomic_profiling/community_changes_v3.R` | Figure 3 | ✅ content confirmed, but ⚠️ **this script is not yet committed to this branch** (untracked in the working tree) |
+| `04_taxonomic_profiling/community_changes_v3.R` | Figure 3 | ✅ |
 | `04_taxonomic_profiling/04_community_types.R` | Figure 4 | ✅ |
 | `04_taxonomic_profiling/04_environmental_microbes_v2.R` | Figure 5 | ✅ |
 | *(none)* | Figure 6 | ❌ No script combines dRep + inStrain + StrainPhlAn4 detection counts as the caption describes. A 2024 pre-repo script with this logic exists outside this repo and needs porting (old `Q:/` network paths, not repo-relative) |

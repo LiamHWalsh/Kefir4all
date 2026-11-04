@@ -37,7 +37,7 @@ status table, including Extended Data figures and remaining gaps.
 | Manuscript figure | Script | What it generates | Status |
 |---|---|---|---|
 | Figure 2 | `scripts/r_scripts/04_taxonomic_profiling/04_taxonomic_profiling.R` | Prevalent-species heatmaps | ✅ |
-| Figure 3 | `scripts/r_scripts/04_taxonomic_profiling/community_changes_v3.R` | Taxonomic/functional/volatile-profile changes over fermentation | ✅ content confirmed, but **not yet committed to this branch** |
+| Figure 3 | `scripts/r_scripts/04_taxonomic_profiling/community_changes_v3.R` | Taxonomic/functional/volatile-profile changes over fermentation | ✅ |
 | Figure 4 | `scripts/r_scripts/04_taxonomic_profiling/04_community_types.R` | PCoA + community-type alluvial | ✅ |
 | Figure 5 | `scripts/r_scripts/04_taxonomic_profiling/04_environmental_microbes_v2.R` | Diversity + environmental-taxa persistence | ✅ |
 | Figure 6 | *(none)* | Method-comparison detection counts (dRep/inStrain/StrainPhlAn4) | ❌ no current script produces this |
