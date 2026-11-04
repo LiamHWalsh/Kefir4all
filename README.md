@@ -46,7 +46,7 @@ status table, including Extended Data figures and remaining gaps.
 | Extended Data Fig. 1 | `scripts/r_scripts/04_taxonomic_profiling/04_community_stability_v2.R` | Consecutive-visit Bray-Curtis/Gower dissimilarity | ⚠️ runs, but never writes its output file |
 | Extended Data Fig. 2 | `scripts/r_scripts/06_strain_profiling/06_supp_strainphlan_ani.R` | StrainPhlAn SNP divergence + dRep ANI | ❌ blocked on a missing input file (`data/marker_names.csv`) |
 | Extended Data Fig. 3 | `scripts/r_scripts/04_taxonomic_profiling/04_supp_taxonomic_profiling.R` | Pairwise MAG relatedness (ANI) | ✅ |
-| Supplementary Fig. 1 | *(none)* | Functional (SUPER-FOCUS) Bray-Curtis vs T0, grain only | ❌ no current script produces this |
+| Supplementary Fig. 1 | `scripts/r_scripts/04_taxonomic_profiling/04_supp_superfocus_t0_boxplot.R` | Functional (SUPER-FOCUS) Bray-Curtis vs T0, grain only | ✅ |
 | Supplementary Fig. 2 | `scripts/r_scripts/05_functional_profiling/05_resistome.R` | AMR class prevalence | ✅ |
 | Supplementary Fig. 4 | `scripts/r_scripts/04_taxonomic_profiling/04_supp_mantel_gower.R` | Bray-Curtis vs Gower Mantel test (hexbin) | ✅ |
 | Supplementary Fig. 5 | `scripts/r_scripts/06_strain_profiling/06_supp_instrain_pointrange.R` | InStrain SNS/SNV/r2 point-range | ✅ |

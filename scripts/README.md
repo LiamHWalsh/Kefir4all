@@ -40,7 +40,7 @@ currently produces this figure at all.
 | `04_taxonomic_profiling/04_community_stability_v2.R` (downstream block) | Extended Data Figure 1 | ⚠️ Runs without error but never produces its output file (`Supplementary_Figure_2.tiff`, also a stale name) — cause not fully diagnosed |
 | `06_strain_profiling/06_supp_strainphlan_ani.R` | Extended Data Figure 2 | ❌ Blocked: requires `data/marker_names.csv`, which has never existed in this repo (an external file, not a committed-then-deleted one) |
 | `05_functional_profiling/05_resistome.R` | Supplementary Figure 2 | ✅ (output file still named `resistome_figure.tiff`) |
-| *(none)* | Supplementary Figure 1 | ❌ No script produces the functional (SUPER-FOCUS) Bray-Curtis-vs-T0 boxplots described. The underlying distance data already exists at `output/04_taxonomic_profiling/community_changes_v3/SUPER_FOCUS_*G_reference_distances.csv` |
+| `04_taxonomic_profiling/04_supp_superfocus_t0_boxplot.R` | Supplementary Figure 1 | ✅ reuses `community_changes_v3.R`'s own output data; verified |
 | `04_taxonomic_profiling/04_supp_mantel_gower.R` | Supplementary Figure 4 | ✅ ported from a pre-repo legacy script; verified (Mantel r=0.395, p=1e-4, n=437) |
 | `06_strain_profiling/06_supp_instrain_pointrange.R` | Supplementary Figure 5 | ✅ ported from a pre-repo legacy script; verified |
 | `03_mag_classification/03_mag_taxonomy.R` | Supp Table S1 | ❓ not re-verified this pass |
