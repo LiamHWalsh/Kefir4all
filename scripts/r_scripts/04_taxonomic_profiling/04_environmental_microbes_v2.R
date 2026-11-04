@@ -16,6 +16,8 @@
 if (!requireNamespace("here", quietly = TRUE)) install.packages("here")
 if (!requireNamespace("pacman", quietly = TRUE)) install.packages("pacman")
 library(here)
+source(here::here("scripts", "r_scripts", "figure_style.R"))
+kefir_use_style(base_size = 10)
 suppressPackageStartupMessages(library(pacman))
 
 DATA_DIR <- here::here("data")
@@ -107,7 +109,7 @@ panelA <- ggbetweenstats(
   bf.message = FALSE,
   palette = "Dark2"
 ) +
-  theme_bw() +
+  kefir_theme(base_size = 10) +
   xlab("Kefir type") +
   ylab("Alpha diversity values (Shannon)") +
   theme(plot.title = element_text(hjust = 0.5, size = 35, face = "bold"),
@@ -143,7 +145,7 @@ panelB <- ggbetweenstats(
   centrality.plotting = FALSE,
   bf.message = FALSE
 ) +
-  theme_bw() +
+  kefir_theme(base_size = 10) +
   xlab("Fermentation conditions") +
   ylab("Alpha diversity values (Shannon)") +
   theme(plot.title = element_text(hjust = 0.5, size = 35, face = "bold"),
@@ -274,18 +276,18 @@ clade_sharing <- tapply(persist_df$Sample, persist_df$clade_name,
 persist_df$n_participants <- as.integer(clade_sharing[persist_df$clade_name])
 # ---- END PANEL C PREP ----
 
-panelC_theme <- theme_bw() +
+panelC_theme <- kefir_theme(base_size = 10) +
   theme(legend.position = "bottom",
     legend.direction = "horizontal",
     legend.box = "horizontal",
-    axis.text.x = element_text(size = 17.5),
-    axis.text.y = element_text(size = 13.5, face = "italic"),
-    strip.background = element_rect(color = "black", fill = "white"),
-    strip.text = element_text(size = 20),
-    axis.title.y = element_text(size = 20, face = "bold",
+    axis.text.x = element_text(size = 12),
+    axis.text.y = element_text(size = 10, face = "italic"),
+    strip.background = element_blank(),
+    strip.text = element_text(size = 12, face = "bold"),
+    axis.title.y = element_text(size = 14, face = "bold",
                                 hjust = 0.5, vjust = 1.5),
-    legend.text = element_text(size = 20, face = "italic"),
-    legend.title = element_text(size = 20, vjust = 0.5),
+    legend.text = element_text(size = 11),
+    legend.title = element_text(size = 12, face = "bold", vjust = 0.5),
     panel.grid.minor = element_blank(),
     panel.grid.major = element_line(colour = "grey92", linewidth = 0.3))
 
@@ -311,43 +313,46 @@ panelC <- ggplot(persist_df[order(persist_df$traj_id), ],
   labs(x = "", y = "Species") +
   facet_wrap(~kefir_type_lab, dir = "v", scales = "free") +
   panelC_theme +
-  guides(fill = guide_colourbar(label.position = "bottom"),
+  guides(fill = guide_colourbar(title = NULL, label.position = "bottom",
+                                barwidth = 8, barheight = 1),
          colour = guide_colourbar(label.position = "bottom",
-                                  barwidth = 25, barheight = 1.6,
+                                  barwidth = 10, barheight = 1,
                                   ticks.linewidth = 1),
          size = guide_legend(label.position = "bottom"))
 # ---- END PANEL C ----
 
 # ---- OUTPUT ----
-ggsave(file.path(FIGURES_DIR, "Figure_6A_alpha_kefirtype.tiff"),
-       panelA, width = 6, height = 4, dpi = 300, compression = "lzw")
-ggsave(file.path(FIGURES_DIR, "Figure_6B_alpha_condition.tiff"),
-       panelB, width = 6, height = 4, dpi = 300, compression = "lzw")
-ggsave(file.path(FIGURES_DIR, "Figure_6C_persistence.tiff"),
-       panelC, width = 6, height = 4, dpi = 300, compression = "lzw")
+ggsave(file.path(FIGURES_DIR, "Figure_5A_alpha_kefirtype.tiff"),
+       panelA, width = 8, height = 6, dpi = 300, compression = "lzw")
+ggsave(file.path(FIGURES_DIR, "Figure_5B_alpha_condition.tiff"),
+       panelB, width = 8, height = 6, dpi = 300, compression = "lzw")
+ggsave(file.path(FIGURES_DIR, "Figure_5C_persistence.tiff"),
+       panelC, width = 16, height = 10, dpi = 300, compression = "lzw")
 # ---- END PANEL C OUTPUT ----
 
 
 
 
 
-# Combined Figure 6 (A + B + C)
+# Combined Figure 5 (A + B + C) -- current manuscript numbering confirmed against
+# Kefir4All_Manuscript_TRACKED_SB.docx; previously saved under stale "Figure_6"/
+# "Figure_environmental_microbes" names, PDF-only -- a .tiff export is added below.
 library(ggpubr)
-fig6_combined <- ggarrange( ggarrange(panelA, panelB,
+fig5_combined <- ggarrange( ggarrange(panelA, panelB,
                                       nrow=1,ncol=2, labels=c("A.","B."),common.legend = FALSE),
 panelC,
                            labels = c("", "C"),
                            ncol = 1, nrow = 2,
                            heights = c(.4, 1))
-ggexport(fig6_combined, filename = file.path(FIGURES_DIR, "Figure_environmental_microbes.pdf"),
+ggexport(fig5_combined, filename = file.path(FIGURES_DIR, "Figure_5.pdf"),
          width = 18, height = 28)
+ggsave(file.path(FIGURES_DIR, "Figure_5.tiff"), fig5_combined,
+       width = 18, height = 28, dpi = 300, compression = "lzw", limitsize = FALSE, bg = "white")
 
 # Underlying data CSVs
-write.csv(alpha_df, file.path(OUT_DIR, "Figure_environmental_microbes_B_alpha_data.csv"),
+write.csv(alpha_df, file.path(OUT_DIR, "Figure_5B_alpha_data.csv"),
           row.names = FALSE)
-write.csv(persist_df, file.path(OUT_DIR, "Figure_environmental_microbes_persistence_data.csv"),
+write.csv(persist_df, file.path(OUT_DIR, "Figure_5_persistence_data.csv"),
           row.names = FALSE)
 
 message("All done :) outputs written to ", OUT_DIR)
-
-
