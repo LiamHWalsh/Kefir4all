@@ -622,13 +622,43 @@ run_analysis <- function() {
   if (length(trajectories)) {
     plot_data <- do.call(rbind, trajectories)
     save_csv(plot_data, "community_changes_v3_trajectory_data.csv")
-    plot <- ggplot2::ggplot(plot_data, ggplot2::aes(week, distance, group = participant)) +
-      ggplot2::geom_line(alpha = 0.25, linewidth = 0.3) + ggplot2::geom_point(alpha = 0.5, size = 0.8) +
-      ggplot2::facet_wrap(~ panel + measure, scales = "free_y", ncol = 4) +
-      ggplot2::scale_x_continuous(breaks = WEEKS) + ggplot2::theme_bw(base_size = 9) +
-      ggplot2::labs(x = "Assumed week", y = "Distance", caption = "Individual trajectories; missing visits are not imputed. Connecting lines are descriptive, not measured intermediate states.")
-    ggplot2::ggsave(file.path(figures, "community_changes_v3_trajectories.pdf"), plot, width = 12, height = 10)
-    ggplot2::ggsave(file.path(figures, "community_changes_v3_trajectories.tiff"), plot, width = 12, height = 10, dpi = 300, compression = "lzw")
+    # Figure 3: one panel per source x type, with distance-to-T0 ("reference") and
+    # distance-to-previous-visit ("interval") overlaid as two mean +/- SE series,
+    # individual participant values shown as faint points underneath. Panel order/
+    # labels and the blue/red colour convention match the manuscript caption exactly.
+    panel_label_map <- c(
+      MetaCache_MG = "Milk grain · MetaCache", MetaCache_WG = "Water grain · MetaCache",
+      MetaCache_ML = "Milk liquid · MetaCache", MetaCache_WL = "Water liquid · MetaCache",
+      SUPER_FOCUS_MG = "Milk grain · SUPER-FOCUS", SUPER_FOCUS_WG = "Water grain · SUPER-FOCUS",
+      SUPER_FOCUS_ML = "Milk liquid · SUPER-FOCUS", SUPER_FOCUS_WL = "Water liquid · SUPER-FOCUS",
+      volatiles_ML = "Milk liquid · Volatiles", volatiles_WL = "Water liquid · Volatiles")
+    plot_data$panel <- factor(plot_data$panel, levels = names(panel_label_map)[names(panel_label_map) %in% unique(plot_data$panel)])
+
+    measure_labels <- c(reference = "starter (T0)", interval = "previous visit")
+    plot_data$measure_label <- factor(measure_labels[plot_data$measure], levels = measure_labels)
+
+    summary_data <- plot_data |>
+      dplyr::group_by(panel, measure_label, week) |>
+      dplyr::summarise(n = dplyr::n(), mean = mean(distance),
+                        se = if (n > 1) stats::sd(distance) / sqrt(n) else NA_real_,
+                        .groups = "drop")
+
+    plot <- ggplot2::ggplot(summary_data, ggplot2::aes(week, mean, colour = measure_label)) +
+      ggplot2::geom_point(data = plot_data, ggplot2::aes(week, distance, colour = measure_label),
+                           alpha = 0.15, size = 0.6, inherit.aes = FALSE) +
+      ggplot2::geom_errorbar(ggplot2::aes(ymin = mean - se, ymax = mean + se), width = 0, na.rm = TRUE) +
+      ggplot2::geom_line(ggplot2::aes(linetype = measure_label)) +
+      ggplot2::geom_point(size = 1.4) +
+      ggplot2::facet_wrap(~ panel, scales = "free_y", ncol = 4,
+                          labeller = ggplot2::as_labeller(panel_label_map)) +
+      ggplot2::scale_x_continuous(breaks = WEEKS, labels = sprintf("wk%02d", WEEKS)) +
+      ggplot2::scale_colour_manual(values = c("starter (T0)" = "blue", "previous visit" = "red")) +
+      ggplot2::scale_linetype_manual(values = c("starter (T0)" = "solid", "previous visit" = "dashed")) +
+      ggplot2::theme_bw(base_size = 9) +
+      ggplot2::labs(x = "Time since start (week)", y = "Distance", colour = "Distance to", linetype = "Distance to",
+                    caption = "Points: individual participants; lines: mean ± SE. Descriptive only -- no significance test is computed in this script.")
+    ggplot2::ggsave(file.path(figures, "community_changes_v3_trajectories.pdf"), plot, width = 13, height = 9)
+    ggplot2::ggsave(file.path(figures, "community_changes_v3_trajectories.tiff"), plot, width = 13, height = 9, dpi = 300, compression = "lzw")
   }
   if (length(compositions)) {
     composition <- do.call(rbind, compositions)
