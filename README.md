@@ -49,7 +49,7 @@ status table, including Extended Data figures and remaining gaps.
 | Supplementary Fig. 1 | *(none)* | Functional (SUPER-FOCUS) Bray-Curtis vs T0, grain only | ❌ no current script produces this |
 | Supplementary Fig. 2 | `scripts/r_scripts/05_functional_profiling/05_resistome.R` | AMR class prevalence | ✅ |
 | Supplementary Fig. 4 | *(none)* | Bray-Curtis vs Gower Mantel test (hexbin) | ❌ no current script produces this |
-| Supplementary Fig. 5 | *(none)* | InStrain SNS/SNV/r2 point-range | ❌ no current script produces this |
+| Supplementary Fig. 5 | `scripts/r_scripts/06_strain_profiling/06_supp_instrain_pointrange.R` | InStrain SNS/SNV/r2 point-range | ✅ |
 | Supplementary Table 1 | per-species secondary-cluster counts in `figures/Supplementary_Table_1.tsv` | — | — |
 | Original-submission Figures 7–8 | `scripts/r_scripts/researchgate_legacy/Figure_7.R`, `Figure_8.R` | Archived for traceability | — |
 

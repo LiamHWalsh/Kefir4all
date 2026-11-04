@@ -42,7 +42,7 @@ currently produces this figure at all.
 | `05_functional_profiling/05_resistome.R` | Supplementary Figure 2 | ✅ (output file still named `resistome_figure.tiff`) |
 | *(none)* | Supplementary Figure 1 | ❌ No script produces the functional (SUPER-FOCUS) Bray-Curtis-vs-T0 boxplots described. The underlying distance data already exists at `output/04_taxonomic_profiling/community_changes_v3/SUPER_FOCUS_*G_reference_distances.csv` |
 | *(none)* | Supplementary Figure 4 | ❌ No Mantel-test/hexbin (Bray-Curtis vs Gower distance) script exists anywhere in this repo's history |
-| *(none)* | Supplementary Figure 5 | ❌ No script plots InStrain SNS count / SNV count / r2 mean together. `data/instrain_genome_species_primary_data_v4.csv` already has all three columns |
+| `06_strain_profiling/06_supp_instrain_pointrange.R` | Supplementary Figure 5 | ✅ ported from a pre-repo legacy script; verified |
 | `03_mag_classification/03_mag_taxonomy.R` | Supp Table S1 | ❓ not re-verified this pass |
 | `03_mag_classification/03_drep_cluster_breakdown.R` | Supp Fig S6 | ❓ not re-verified this pass |
 | `04_taxonomic_profiling/04_supp_community_stability.R` | — | ❓ not re-verified; actual output file (`Figure_9_v2.tiff`) does not match the old claimed "Supp Fig 6" |
