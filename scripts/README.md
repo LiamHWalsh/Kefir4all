@@ -41,7 +41,7 @@ currently produces this figure at all.
 | `06_strain_profiling/06_supp_strainphlan_ani.R` | Extended Data Figure 2 | ❌ Blocked: requires `data/marker_names.csv`, which has never existed in this repo (an external file, not a committed-then-deleted one) |
 | `05_functional_profiling/05_resistome.R` | Supplementary Figure 2 | ✅ (output file still named `resistome_figure.tiff`) |
 | *(none)* | Supplementary Figure 1 | ❌ No script produces the functional (SUPER-FOCUS) Bray-Curtis-vs-T0 boxplots described. The underlying distance data already exists at `output/04_taxonomic_profiling/community_changes_v3/SUPER_FOCUS_*G_reference_distances.csv` |
-| *(none)* | Supplementary Figure 4 | ❌ No Mantel-test/hexbin (Bray-Curtis vs Gower distance) script exists anywhere in this repo's history |
+| `04_taxonomic_profiling/04_supp_mantel_gower.R` | Supplementary Figure 4 | ✅ ported from a pre-repo legacy script; verified (Mantel r=0.395, p=1e-4, n=437) |
 | `06_strain_profiling/06_supp_instrain_pointrange.R` | Supplementary Figure 5 | ✅ ported from a pre-repo legacy script; verified |
 | `03_mag_classification/03_mag_taxonomy.R` | Supp Table S1 | ❓ not re-verified this pass |
 | `03_mag_classification/03_drep_cluster_breakdown.R` | Supp Fig S6 | ❓ not re-verified this pass |
