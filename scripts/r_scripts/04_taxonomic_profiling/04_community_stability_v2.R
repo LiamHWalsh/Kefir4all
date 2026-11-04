@@ -17,6 +17,8 @@ for (.proj in c("/home/rstudio/kefir4all", "/workspaces/kefir4all_review_history
 if (!requireNamespace("here",   quietly = TRUE)) install.packages("here")
 if (!requireNamespace("pacman", quietly = TRUE)) install.packages("pacman")
 library(here)
+source(here::here("scripts", "r_scripts", "figure_style.R"))
+kefir_use_style()
 DATA_DIR    <- here::here("data")                         # public data files
 PRIVATE_DIR <- here::here("data", "private")              # private/sensitive files
 OUT_DIR <- here::here("output", "04_taxonomic_profiling")
@@ -501,9 +503,8 @@ pc <-
     legend.box = "horizontal",
     axis.text.x = element_text(size=12.5),
     axis.text.y = element_text(size=12.5),
-    strip.background = element_rect(
-      color="black", fill="white"),
-    strip.text = element_text(size=10),
+    strip.background = element_blank(),
+    strip.text = element_text(size = 18, face = "bold"),
     #axis.title.x = element_text( size=35, face="bold",hjust = 0.5,vjust = -2),
     axis.title.y = element_text( size=10, face="bold",hjust = 0.5, vjust = 1.5),
     legend.key.size = unit(1, 'cm'), #change legend key size
@@ -571,9 +572,8 @@ pd <-
     legend.box = "horizontal",
     axis.text.x = element_text(size=12.5),
     axis.text.y = element_text(size=12.5),
-    strip.background = element_rect(
-      color="black", fill="white"),
-    strip.text = element_text(size=10),
+    strip.background = element_blank(),
+    strip.text = element_text(size = 18, face = "bold"),
     #axis.title.x = element_text( size=35, face="bold",hjust = 0.5,vjust = -2),
     axis.title.y = element_text( size=10, face="bold",hjust = 0.5, vjust = 1.5),
     legend.key.size = unit(2, 'cm'), #change legend key size
@@ -1238,15 +1238,15 @@ panel_3C <- ggplot(within_stage_df, aes(x = Stage, y = distance)) +
                       guide = "none") +
   labs(x = "Fermentation stage (ordered)",
        y = "Bray-Curtis dissimilarity\n(within kefir type, within stage)",
-       title = "Figure 3C: community convergence over time",
        subtitle = "Within-kefir-type, within-stage pairwise dissimilarity; dashed line = linear trend. Decreasing trend = convergence (stabilisation).") +
   theme_bw() +
-  theme(plot.title = element_text(hjust = 0.5, size = 16, face = "bold"),
-        plot.subtitle = element_text(hjust = 0.5, size = 11),
+  theme(plot.subtitle = element_text(hjust = 0.5, size = 11),
         axis.text.x = element_text(angle = 30, hjust = 1, size = 11),
         axis.text.y = element_text(size = 11),
         axis.title = element_text(size = 13, face = "bold"),
-        strip.text = element_text(size = 13, face = "bold"))
+        strip.text = element_text(size = 22, face = "bold", colour = "black"),
+        strip.background = element_blank(),
+        panel.border = element_blank())
 
 # ---- robust per-format figure writer. Each device is isolated and every
 # output is verified on disk (cairo raster devices can report success while
@@ -1279,10 +1279,10 @@ panel_3C <- ggplot(within_stage_df, aes(x = Stage, y = distance)) +
     p <- file.path(FIGURES_DIR, paste0(stem, ".tiff"))
     tryCatch({
       if (have_Cairo) {
-        Cairo::CairoTIFF(file = p, width = px_w, height = px_h, dpi = 300, pointsize = 15)
+        Cairo::CairoTIFF(file = p, width = px_w, height = px_h, dpi = 300, pointsize = 15, bg = "white")
       } else {
         tiff(filename = p, width = px_w, height = px_h, units = "px",
-             res = 300, compression = "lzw", type = "cairo", pointsize = 15)
+             res = 300, compression = "lzw", type = "cairo", pointsize = 15, bg = "white")
       }
       force(expr); dev.off()
       if (verify(p)) done <- c(done, "tiff") else message("V2: ", stem, ".tiff written but too small/missing")
@@ -1292,9 +1292,9 @@ panel_3C <- ggplot(within_stage_df, aes(x = Stage, y = distance)) +
     p <- file.path(FIGURES_DIR, paste0(stem, ".png"))
     tryCatch({
       if (have_Cairo) {
-        Cairo::CairoPNG(file = p, width = px_w, height = px_h, dpi = 300, pointsize = 15)
+        Cairo::CairoPNG(file = p, width = px_w, height = px_h, dpi = 300, pointsize = 15, bg = "white")
       } else {
-        png(filename = p, width = px_w, height = px_h, res = 300, type = "cairo", pointsize = 15)
+        png(filename = p, width = px_w, height = px_h, res = 300, type = "cairo", pointsize = 15, bg = "white")
       }
       force(expr); dev.off()
       if (verify(p)) done <- c(done, "png") else message("V2: ", stem, ".png written but too small/missing")
@@ -1360,35 +1360,40 @@ for (i in seq_along(bray_distance)) {
     annotate("text", x = 1.2, y = y_max,
              label = stat_label, hjust = 0, vjust = 1.2, size = 3.4,
              fontface = "italic", colour = "grey15") +
+    facet_wrap(~type) +
     theme_bw() +
     xlab("Time points") +
     ylab("Bray-Curtis distance") +
-    labs(fill = "Kefir type", title = type_name) +
+    labs(fill = "Kefir type") +
     theme(
-      plot.title = element_text(hjust = 0.5, size = 14, face = "bold"),
+      strip.text = element_text(size = 22, face = "bold", colour = "black"),
+      strip.background = element_blank(),
+      panel.border = element_blank(),
       legend.position = "none",
       axis.text.x = element_text(hjust = 1, size = 11),
       axis.text.y = element_text(size = 10),
       axis.title = element_text(size = 12, face = "bold")
     )
 }
-figure_3 <- ggarrange(
-  ggarrange(bray_distance[[1]],
-            bray_distance[[2]],
-            nrow = 1, ncol = 2, labels = c("A.", "B."),
-            common.legend = FALSE, font.label = list(size = 30)),
-  panel_3C,
-  nrow = 2, ncol = 1, labels = c("", "C."),
-  common.legend = FALSE, font.label = list(size = 30), heights = c(.4, 1))
-r_3 <- .write_fig(print(figure_3), "Figure_3", px_w = 1800, px_h = 1200, in_w = 6, in_h = 4, tries = c("pdf", "tiff"))
+# Composite via cowplot (not ggpubr::ggarrange): ggarrange's alignment of a
+# nested grid of facetted plots (A/B each single-facet, C two-facet) produced
+# a broken double-exposure render; cowplot::plot_grid handles facetted ggplot
+# grobs reliably elsewhere in this pipeline (Figure 2, Figure 4), so reuse it.
+AB_grid <- cowplot::plot_grid(bray_distance[[1]], bray_distance[[2]],
+                               nrow = 1, labels = c("A.", "B."), label_size = 20,
+                               align = "hv", axis = "tb")
+figure_3 <- cowplot::plot_grid(AB_grid, panel_3C, ncol = 1,
+                                labels = c("", "C."), label_size = 20,
+                                rel_heights = c(0.45, 1))
+r_3 <- .write_fig(print(figure_3), "Figure_3", px_w = 3600, px_h = 4200, in_w = 12, in_h = 14, tries = c("pdf", "tiff"))
 
 if (!any(c("pdf", "tiff") %in% r_3)) {
-  message("V2: combined Figure_3 failed via ggarrange; trying patchwork fallback.")
+  message("V2: combined Figure_3 failed via cowplot; trying patchwork fallback.")
   if (requireNamespace("patchwork", quietly = TRUE)) {
     library(patchwork)
     tryCatch({
       figure_3 <- (bray_distance[[1]] | bray_distance[[2]]) / panel_3C
-      r_3 <- .write_fig(print(figure_3), "Figure_3", px_w = 1800, px_h = 1200, in_w = 6, in_h = 4, tries = c("pdf", "tiff"))
+      r_3 <- .write_fig(print(figure_3), "Figure_3", px_w = 3600, px_h = 4200, in_w = 12, in_h = 14, tries = c("pdf", "tiff"))
     }, error = function(e) message("V2: patchwork fallback failed (", conditionMessage(e), ")"))
   }
 }
