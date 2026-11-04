@@ -20,6 +20,8 @@ for (.proj in c("/home/rstudio/kefir4all", "/workspaces/kefir4all_review_history
 # The anchor block at lines 1-10 ensures we are in the project root already.
 # Just confirm here() will resolve against the correct root.
 library(here)
+source(here::here("scripts", "r_scripts", "figure_style.R"))
+kefir_use_style()
 here::i_am("scripts/r_scripts/04_taxonomic_profiling/04_taxonomic_profiling.R")
 DATA_DIR    <- here::here("data")                         # public data files
 PRIVATE_DIR <- here::here("data", "private")              # private/sensitive files
@@ -1147,8 +1149,8 @@ ggplot(
   theme(#plot.title = element_textbox(hjust = 0.5, margin = margin(t = 5, b = 5),size = 55), #element_text(color="red", size=14, face="bold",hjust = 0.5),
     axis.text.x = element_blank(),
     axis.text.y = element_text(size=30,face="italic"),
-    strip.background=element_rect(fill="lightblue"),
-    strip.text = element_text(size= 35 ),
+    strip.background = element_blank(),
+    strip.text = element_text(size = 22, face = "bold"),
     #axis.title.x = element_text( size=35, face="bold",hjust = 0.5,vjust = -2),
     axis.title.y = element_text( size=35, face="bold",hjust = 0.5, vjust = 1.5),
     #legend.key.size = unit(3.5, 'cm'), #change legend key size
@@ -1330,8 +1332,9 @@ compose_figure2 <- function() {
   # bottom of the page).  Panel titles ARE the facet strips of each heatmap
   # (white box, black border) rendered in their default position at the very
   # TOP of every panel -- the same design as the original published Figure 2.
-  gA <- ggplotGrob(grain_heatmap_mk + theme(legend.position = "none"))
-  gB <- ggplotGrob(grain_heatmap_wk + theme(legend.position = "none"))
+  # NOTE: the old T0-only grain heatmaps (A/B, grain_heatmap_mk/wk) were dropped --
+  # redundant with C/D, which already cover the T0 samples alongside wk01-wk21.
+  # What were C/D are now the only two panels, relabelled A/B below.
   gC <- ggplotGrob(p_heatmap[[1]] + theme(legend.position = "none"))
   gD <- ggplotGrob(p_heatmap[[2]] + theme(legend.position = "none"))
 
@@ -1341,13 +1344,17 @@ compose_figure2 <- function() {
   try(leg <- ggpubr::get_legend(p_heatmap[[1]]), silent = TRUE)
   if (is.null(leg)) try(leg <- ggpubr::get_legend(p_heatmap[[2]]), silent = TRUE)
 
-  # --- shared legend band, at the very bottom of the page (well below the C/D
+  # --- shared legend band, at the very bottom of the page (well below the
   #     heatmaps) so it can never be mistaken for a panel title ---
+  # NOTE: y-coordinates below are the old A/B-row layout's fractions rescaled
+  # by 1/0.705 so the former C/D row and legend band now fill the full page
+  # (0.705 was the old top-of-C-row boundary; cropping the canvas height by
+  # that same factor below keeps everything else visually identical).
   if (!is.null(leg)) {
     tryCatch(
       {
-        pushViewport(viewport(x = unit(0.5, "npc"), y = unit(0.055, "npc"),
-                              width = unit(0.97, "npc"), height = unit(0.110, "npc"),
+        pushViewport(viewport(x = unit(0.5, "npc"), y = unit(0.078, "npc"),
+                              width = unit(0.97, "npc"), height = unit(0.156, "npc"),
                               just = c("centre", "centre")))
         grid.draw(leg)
         popViewport()
@@ -1366,30 +1373,23 @@ compose_figure2 <- function() {
              just = c("left", "bottom"))
   }
 
-  # Top row -- A: milk-kefir T0 grain; B: water-kefir T0 grain.
-  # The facet-strip title renders at the top of each grob = top of each panel.
-  pushViewport(vp_panel(0.015, 0.705, 0.490, 0.988)); grid.draw(gA); popViewport()
-  pushViewport(vp_panel(0.510, 0.705, 0.985, 0.988)); grid.draw(gB); popViewport()
+  # A: milk kefir heatmap; B: water kefir heatmap (formerly C/D)
+  pushViewport(vp_panel(0.015, 0.106, 0.490, 0.929)); grid.draw(gC); popViewport()
+  pushViewport(vp_panel(0.510, 0.106, 0.985, 0.929)); grid.draw(gD); popViewport()
 
-  # Bottom row -- C: milk kefir heatmap; D: water kefir heatmap
-  pushViewport(vp_panel(0.015, 0.075, 0.490, 0.655)); grid.draw(gC); popViewport()
-  pushViewport(vp_panel(0.510, 0.075, 0.985, 0.655)); grid.draw(gD); popViewport()
-
-  # --- panel labels (A. B. C. D.) ---
+  # --- panel labels (A. B.) ---
   panel_label <- function(txt, x, y) {
     grid.text(txt, x = unit(x, "npc"), y = unit(y, "npc"),
               gp = gpar(fontsize = 30, fontface = "bold"),
               just = c("left", "top"))
   }
-  panel_label("A.", 0.015, 0.992)
-  panel_label("B.", 0.510, 0.992)
-  panel_label("C.", 0.015, 0.663)
-  panel_label("D.", 0.510, 0.663)
-  # Milk / water kefir title on top of C and D panels (consistent with A/B type-strip title style)
-  grid.text("Milk kefir", x = unit(0.2525, "npc"), y = unit(0.680, "npc"),
+  panel_label("A.", 0.015, 0.940)
+  panel_label("B.", 0.510, 0.940)
+  # Milk / water kefir title on top of each panel
+  grid.text("Milk kefir", x = unit(0.2525, "npc"), y = unit(0.965, "npc"),
             gp = gpar(fontsize = 22, fontface = "bold"),
             just = c("center", "top"))
-  grid.text("Water kefir", x = unit(0.7475, "npc"), y = unit(0.680, "npc"),
+  grid.text("Water kefir", x = unit(0.7475, "npc"), y = unit(0.965, "npc"),
             gp = gpar(fontsize = 22, fontface = "bold"),
             just = c("center", "top"))
 
@@ -1409,7 +1409,7 @@ compose_figure2 <- function() {
 pdf(
   file = file.path(FIGURES_DIR, "Figure_2.pdf"),
   width  = 7864 / 300,          # 26.213 in - same physical canvas as the old jpeg
-  height = 5200 / 300,          # 17.333 in
+  height = 3666 / 300,          # 12.220 in - cropped to drop the old A/B row (panels A/B removed)
   pointsize = 15,               # match the jpeg() pointsize
   useDingbats = FALSE
 )
@@ -1423,7 +1423,7 @@ dev.off()
 tiff(
   filename   = file.path(FIGURES_DIR, "Figure_2.tiff"),
   width      = 7864,
-  height     = 5200,
+  height     = 3666,
   units      = "px",
   res        = 300,
   pointsize  = 15,
