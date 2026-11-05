@@ -1,0 +1,163 @@
+#####################################################################################################################################################################################################
+# Assembly command on global_wk_metagenomes
+#####################################################################################################################################################################################################
+#cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/02_assembly
+#emacs 02_assembly_sWK.sh 
+###########################
+#!/bin/sh
+#SBATCH --error 02err_assembly_sWK
+#SBATCH --output 02out_assembly_sWK
+#SBATCH --job-name 02assembly_sWK
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=35
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_megahit
+
+
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files/merged/
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files/meyrged/interleaved
+###########################################################################################################################################################
+# Assembly using megahit
+###########################################################################################################################################################
+for base_name in $(find /data/Food/analysis/R6564_NGS/kefir4all/01qc/01bowtie -type f \( -name "WK*" -and -name "*.sam" \) | cut -d/ -f9 | cut -d- -f1 | sort -u
+)
+do
+
+
+cat $(find /data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files/ -type f  \( -name "$base_name-*" -and -name "*_R1*" -and -name "*.fastq.gz" \) | sort -u) > /data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files/merged/"$base_name"_merged_R1.fastq.gz
+
+
+cat $(find /data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files/ -type f  \( -name "$base_name-*" -and -name "*_R2*" -and -name "*.fastq.gz" \) | sort -u) > /data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files/merged/"$base_name"_merged_R2.fastq.gz
+
+module load megahit/1.1.3 
+
+megahit -1 /data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files/merged/"$base_name"_merged_R1.fastq.gz\
+ -2 /data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files/merged/"$base_name"_merged_R2.fastq.gz\
+ -t $SLURM_CPUS_PER_TASK --min-contig-len 1000 --out-prefix "$base_name"_megahit -o /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_megahit/"$base_name"_megahit 
+
+module unload megahit/1.1.3 
+
+
+
+###########################################################################################################################################################
+# bbmap
+###########################################################################################################################################################
+
+module load bbmap/38.22
+ reformat.sh in=/data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files/merged/"$base_name"_merged_R1.fastq.gz in2=/data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files/merged/"$base_name"_merged_R2.fastq.gz out=/data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files/merged/interleaved/"$base_name"_interleaved.fastq.gz
+ module unload bbmap/38.22
+
+
+###########################################################################################################################################################
+# Metawrap
+###########################################################################################################################################################
+#cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/02_assembly
+#emacs 02_bin_sWK.sh 
+###########################
+#!/bin/sh
+#SBATCH --error 02err_bin_sWK
+#SBATCH --output 02out_bin_sWK
+#SBATCH --job-name 02bin_sWK
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=35
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+#rm -r /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metawrap
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metawrap
+
+
+for base_name in $(find /data/Food/analysis/R6564_NGS/kefir4all/01qc/01bowtie -type f \( -name "WK*" -and -name "*.sam" \) | cut -d/ -f9 | cut -d- -f1 | sort -u
+)
+do
+cd /data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files/merged/interleaved/
+gunzip /data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files/merged/interleaved/"$base_name"_interleaved.fastq.gz 
+
+
+module load metawrap/1.3.2 
+#module load metawrap/1.3.1 
+module load checkm/1.0.18  
+module load bowtie2/2.3.4  
+module load samtools/1.10 
+module load metabat2/2.12.1 
+module load maxbin2/2.2.7 
+module load concoct/1.1.0 
+source activate concoct_env
+
+#mkdir /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metawrap/"$base_name"_metawrap_bins
+
+metawrap binning -o /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metawrap/"$base_name"_metawrap_bins -t $SLURM_CPUS_PER_TASK -a /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_megahit/"$base_name"_megahit/"$base_name"_megahit.contigs.fa --metabat2 --maxbin2 --concoct --interleaved /data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files/merged/interleaved/"$base_name"_interleaved.fastq
+
+#metawrap bin_refinement -o /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metawrap/"$base_name"_metawrap_refinement -t $SLURM_CPUS_PER_TASK -A /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metawrap/"$base_name"_metawrap_bins/metabat2_bins/ -B /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metawrap/"$base_name"_metawrap_bins/maxbin2_bins/ -C /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metawrap/"$base_name"_metawrap_bins/concoct_bins/ -c 50 -x 5
+#metawrap reassemble_bins -o /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metawrap/"$base_name"_metawrap_bin_reassembly -1 /data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files/merged/"$base_name"_merged_R1.fastq.gz -2 /data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files/merged/"$base_name"_merged_R2.fastq.gz -t $SLURM_CPUS_PER_TASK -m 800 -c 50 -x 5 -b /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metawrap/"$base_name"_metawrap_refinement/metawrap_50_5_bins
+module unload metawrap/1.3.2 
+#module unload metawrap/1.3.1  
+module unload checkm/1.0.18
+module unload bowtie2/2.3.4
+module unload samtools/1.10  
+module unload metabat2/2.12.1 
+module unload maxbin2/2.2.7 
+module unload concoct/1.1.0 
+conda deactivate
+
+
+done
+
+
+
+###########################################################################################################################################################
+# Metawrap step 2
+###########################################################################################################################################################
+#cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/02_assembly
+#emacs 02_bin_step2_sWK.sh
+###########################
+
+#!/bin/sh
+#SBATCH --error 02err_step2_bin_sWK
+#SBATCH --output 02out_step2_bin_sWK
+#SBATCH --job-name 02bin_step2_sWK
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=35
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+#rm -r /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metawrap
+#mkdir /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metawrap
+
+
+for base_name in $(find /data/Food/analysis/R6564_NGS/kefir4all/01qc/01bowtie -type f \( -name "WK*" -and -name "*.sam" \) \
+| cut -d/ -f9 | cut -d- -f1 | sort -u
+)
+do
+#cd /data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files/merged/interleaved/
+#gunzip /data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files/merged/interleaved/"$base_name"_interleaved.fastq.gz
+
+
+module load metawrap/1.3.2
+#module load metawrap/1.3.1
+module load checkm/1.0.18
+module load bowtie2/2.3.4
+module load samtools/1.10
+module load metabat2/2.12.1
+module load maxbin2/2.2.7
+module load concoct/1.1.0
+source activate concoct_env
+
+
+
+
+
+
+
+
+
+
+
+

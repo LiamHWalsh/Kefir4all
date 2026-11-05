@@ -1,0 +1,92 @@
+#####################################################################################################################################################################################################
+# viral verify set up 
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/03_MAG_classification
+
+###########################
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metaplasmidspades/total_mags/
+
+
+
+for sample in $(find /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metaplasmidspades/ -type f -name "*scaffolds.fasta" -maxdepth 2)
+do
+new_name=$(echo $sample | awk -F / '{print $(NF-1)'})
+
+cp "$sample" /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metaplasmidspades/total_mags/"$new_name".fasta
+done
+
+#####################################################################################################################################################################################################
+# viral verify command on merged plasmid assemblies
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/03_MAG_classification
+#emacs 03_viralverify_metaplasmidspades.sh
+###########################
+
+#!/bin/sh
+#SBATCH --error 03_err_viralverify_metaplasmidspades
+#SBATCH --output 03_out_viralverify_metaplasmidspades
+#SBATCH --job-name 03_viralverify_metaplasmidspades
+#SBATCH -p Background
+#SBATCH -N 1
+#SBATCH --cpus-per-task=25
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie 
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/plasmid/viralverify/
+
+
+module load viralverify/1.1
+
+
+for sample in $(find /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metaplasmidspades/total_mags/ -type f -name "*.fasta")
+do
+new_name=$(echo $sample | awk -F / '{print $NF'} | sed 's/.fasta//g')
+
+viralverify -f "$sample" -o /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/plasmid/viralverify/"$new_name" --hmm /data/databases/Pfam-A.hmm.h3m -t $SLURM_CPUS_PER_TASK -p
+
+done
+
+module unload viralverify/1.1
+
+
+#####################################################################################################################################################################################################
+# Merge total viral verify outputs together. 
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/03_MAG_classification
+
+###########################
+
+
+
+find /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/plasmid/viralverify/ -type f -name "*metaplasmidspades_result_table.csv" -exec cat {} + > /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/plasmid/viralverify/total_viralverify_results.csv
+
+
+
+#####################################################################################################################################################################################################
+# download viral verify results for merged plasmid assemblies
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/03_MAG_classification
+
+###########################
+
+
+
+find /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/plasmid/viralverify/ -type f -name "*metaplasmidspades_result_table.csv" -exec cat {} + > /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/plasmid/viralverify/total_viralverify_results.csv
+
+
+
+module load python3.7/i3
+pip install --user pandas --upgrade --python-version 2.1.1
+
+pip install pharokka
+module unload python3.7/i3
+
+
+pip install --user pandas --upgrade
+
+
+source /install/software/anaconda3.6.b/bin/activate
+conda install pandas=2.1.1
+
+

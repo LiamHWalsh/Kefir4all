@@ -1,0 +1,488 @@
+#####################################################################################################################################################################################################
+# Folder and metadata set up 
+#####################################################################################################################################################################################################
+
+###########################
+https://re-docs.genomicsengland.co.uk/ont/
+
+
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/01qc/01ONT
+
+cd /data/Food/analysis/R6564_NGS/kefir4all/01qc/01ONT/
+
+convert Q:\H2020 Master\Citizen Science Project\LAB work files\long_read_sequencing_20230614.xlsx to Q:\H2020 Master\Citizen Science Project\LAB work files\long_read_sequencing_20230614.csv
+add in barcode ids to a column called barcodes
+# remove repeat pool1 one entries they create confusion down below
+#upload Q:\H2020 Master\Citizen Science Project\LAB work files\long_read_sequencing_20230614.csv to /data/Food/analysis/R6564_NGS/kefir4all/01qc/01ONT/
+
+dos2unix /data/Food/analysis/R6564_NGS/kefir4all/01qc/01ONT/long_read_sequencing_20230614.csv
+
+
+
+
+
+
+#####################################################################################################################################################################################################
+# merge all relevant long read samples together and renaming appropriately
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/01_preprocessing/
+emacs 01ONT_merge.sh
+###########################
+
+
+#!/bin/sh
+#SBATCH --error 01ONT_merge_err
+#SBATCH --output 01ONT_merge_out
+#SBATCH --job-name 01ONT_merge
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=4
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+rm -r /data/Food/analysis/R6564_NGS/kefir4all/01qc/01ONT/01_raw/
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/01qc/01ONT/01_raw/
+
+
+
+for i in $(find /data/Food/primary/R6564_NGS/kefir4all -type d \( -name "fastq_pass" -and -not -ipath "*pool1_repeat*" \) )  # does not procees the repeat pool 1 as the below 
+do
+
+flowcell=$(find $i -type d -name "barcode*" | sed 's/.*_FA/FA/g'| sed 's/_.*//g' | sort -u)
+
+echo $flowcell
+done
+
+flowcell_v2=$(echo "\"$flowcell"\")
+flowcell_paths=$(find /data/Food/primary/R6564_NGS/kefir4all -type d -name "*$flowcell*")
+
+
+for j in $(find $flowcell_paths -type d -name "barcode*" | awk -F / '{print $NF'}  | sort -u )
+do
+barcode_v2=$( echo "\""$j"\"")
+
+sample_name=$(awk -F ',' '$17 == '"$flowcell_v2"' && $15 =='"$barcode_v2"' { print $2 }' /data/Food/analysis/R6564_NGS/kefir4all/01qc/01ONT/long_read_sequencing_20230614.csv )
+
+
+find /data/Food/primary/R6564_NGS/kefir4all/ -type f -wholename ""*$flowcell*"/*fastq_pass*/"*$j*"/*.fastq.gz"  -exec cat {} \; > /data/Food/analysis/R6564_NGS/kefir4all/01qc/01ONT/01_raw/"$sample_name".fastq.gz 
+
+
+done 
+done 
+
+
+
+
+
+
+
+#####################################################################################################################################################################################################
+# porechop command on merged long reads
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/01_preprocessing/
+emacs 01ONT_trim.sh
+###########################
+
+#!/bin/sh
+#SBATCH --error 01ONT_trim_err
+#SBATCH --output 01ONT_trim_out
+#SBATCH --job-name 01ONT_trim
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=35
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+
+
+for sample_name in $(find /data/Food/analysis/R6564_NGS/kefir4all/01qc/01ONT/01_raw -type f -name "*.fastq.gz" | awk -F / '{print $NF'}  | sort -u | sed 's/.fastq.gz//g')  # does not procees the repeat pool 1 as the below 
+do
+
+
+module load porechop/0.2.4
+
+
+porechop -i /data/Food/analysis/R6564_NGS/kefir4all/01qc/01ONT/01_raw/"$sample_name".fastq.gz -o /data/Food/analysis/R6564_NGS/kefir4all/01qc/01ONT/"$sample_name"_porechopped.fastq.gz -t $SLURM_CPUS_PER_TASK
+
+module unload porechop/0.2.4
+
+done
+
+
+#####################################################################################################################################################################################################
+# aalign long reads to reference databases for host removal
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/01_preprocessing/
+emacs 01ONT_host_removal_align.sh
+###########################
+
+
+
+#!/bin/sh
+#SBATCH --error 01ONT_host_removal_err
+#SBATCH --output 01ONT_host_removal_out
+#SBATCH --job-name 01ONT_host_removal
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=35
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/01qc/01ONT/01host_removal/
+
+
+for filename in $(find /data/Food/analysis/R6564_NGS/kefir4all/01qc/01ONT/ -maxdepth 1 -type f -name "*.fastq.gz" | awk -F / '{print $NF'}  | sort -u | sed 's/_porechopped.fastq.gz//g')  # does not procees the repeat pool 1 as the below 
+do
+
+
+#id=$( echo $filename | awk -F/ '{print $NF}' | sed 's/.fastq.gz//g')
+#name_changed=$( echo "$id" | sed 's/-/_/g')
+
+echo "$filename" > t.txt
+
+if grep "ML\|MG" t.txt
+then
+
+module load minimap2/2.17-r974
+echo minimap2 -ax map-ont /data/Food/analysis/R6564_NGS/kefir4all/01qc/01reference_genomes/milk_kefir_reference.fa /data/Food/analysis/R6564_NGS/kefir4all/01qc/01ONT/"$filename"_porechopped.fastq.gz > /data/Food/analysis/R6564_NGS/kefir4all/01qc/01ONT/01host_removal/"$filename".sam      # for Oxford Nanopore reads
+
+module unload minimap2/2.17-r974
+
+else
+module load minimap2/2.17-r974
+echo minimap2 -ax map-ont /data/Food/analysis/R6564_NGS/kefir4all/01qc/01reference_genomes/water_kefir_reference.fa /data/Food/analysis/R6564_NGS/kefir4all/01qc/01ONT/"$filename"_porechopped.fastq.gz > /data/Food/analysis/R6564_NGS/kefir4all/01qc/01ONT/01host_removal/"$filename".sam      # for Oxford Nanopore reads
+module unload minimap2/2.17-r974
+fi
+
+
+done
+
+
+
+
+
+#####################################################################################################################################################################################################
+# align long reads to reference databases for host removal
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/01_preprocessing/
+emacs 01ONT_host_removal_samtools.sh
+###########################
+
+
+#!/bin/sh
+#SBATCH --error 01ONT_host_removal_samtools_err
+#SBATCH --output 01ONT_host_removal_samtools_out
+#SBATCH --job-name 01ONT_host_samtools
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=5
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+
+
+
+for filename in $(find /data/Food/analysis/R6564_NGS/kefir4all/01qc/01ONT/ -maxdepth 1 -type f -name "*.fastq.gz" | awk -F / '{print $NF'}  | sort -u | sed 's/_porechopped.fastq.gz//g')  # does not procees the repeat pool 1 as the below 
+do
+
+module load samtools/1.9
+samtools view -S -b /data/Food/analysis/R6564_NGS/kefir4all/01qc/01ONT/01host_removal/"$filename".sam > /data/Food/analysis/R6564_NGS/kefir4all/01qc/01ONT/01host_removal/"$filename".bam
+
+samtools sort /data/Food/analysis/R6564_NGS/kefir4all/01qc/01ONT/01host_removal/"$filename".bam -o /data/Food/analysis/R6564_NGS/kefir4all/01qc/01ONT/01host_removal/"$filename".sorted.bam
+
+samtools view -buSh -f 4 /data/Food/analysis/R6564_NGS/kefir4all/01qc/01ONT/01host_removal/"$filename".sorted.bam | samtools fastq - > /data/Food/analysis/R6564_NGS/kefir4all/01qc/01ONT/01host_removal/"$filename"_host_removed.fastq
+
+
+module unload samtools/1.9
+
+
+done
+
+
+#####################################################################################################################################################################################################
+# align long reads to reference databases for host removal
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/01_preprocessing/
+emacs 01ONT_host_removal_gunzip.sh
+###########################
+
+
+#!/bin/sh
+#SBATCH --error 01ONT_host_removal_gunzip
+#SBATCH --output 01ONT_host_removal_gunzip
+#SBATCH --job-name 01ONT_host_gunzip
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=5
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+gunzip /data/Food/analysis/R6564_NGS/kefir4all/01qc/01ONT/01host_removal/*.fastq.gz
+
+
+
+
+#####################################################################################################################################################################################################
+# long read assembly 
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/02_assembly/
+emacs 02ONT_opera_ms.sh
+###########################
+
+#!/bin/sh
+#SBATCH --error 02ONT_opera_ms_err
+#SBATCH --output 02ONT_opera_ms_out
+#SBATCH --job-name 02ONT_opera_ms
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=40
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+
+
+
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_opera_ms/
+
+for filename in $(find /data/Food/analysis/R6564_NGS/kefir4all/01qc/01ONT/ -maxdepth 1 -type f -name "*.fastq.gz" | awk -F / '{print $NF'}  | sort -u | sed 's/_porechopped.fastq.gz//g')  # does not procees the repeat pool 1 as the below 
+do
+
+
+
+module load opera-ms/0.8.2
+ 
+
+perl /install/software/OPERA-MS/OPERA-MS.pl --short-read1 /data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files/"$filename"_host_removed_R1.fastq.gz --short-read2 /data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files/"$filename"_host_removed_R2.fastq.gz --long-read /data/Food/analysis/R6564_NGS/kefir4all/01qc/01ONT/01host_removal/"$filename"_host_removed.fastq --out-dir /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_opera_ms/"$filename" --polishing --num-processors $SLURM_CPUS_PER_TASK	 
+
+
+module unload opera-ms/0.8.2
+
+done
+
+
+#####################################################################################################################################################################################################
+#move all contig info files to one folder
+#####################################################################################################################################################################################################
+
+#mkdir /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_opera_ms/test/polished_contig_files
+
+#mkdir /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_opera_ms/test/contig_files
+
+for filename in $(find /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_opera_ms/test/ -maxdepth 2 -type f -name "contig_info.txt" | awk -F / '{print $(NF-1)'}  | sort -u)  # does not procees the repeat pool 1 as the below 
+do
+
+#cp /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_opera_ms/test/"$filename"/contig_info.txt /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_opera_ms/test/contig_files/"$filename"_contig_info.txt
+
+#cp /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_opera_ms/test/"$filename"/cluster_info.txt /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_opera_ms/test/polished_contig_files/"$filename"_contig_info.txt
+
+
+
+
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_opera_ms/test/polished_contig_files/fasta_files
+for filename in $(find /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_opera_ms/test/ -maxdepth 2 -type f -name "contig_info.txt" | awk -F / '{print $(NF-1)'}  | sort -u)  # does not procees the repeat pool 1 as the below 
+do
+
+for i in $(find /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_opera_ms/test/"$filename"/opera_ms_clusters/ -type f \( -name "*.fasta" -and -not -ipath "*unclustered.*" \) | awk -F / '{print $NF'}  | sort -u )
+do
+cp /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_opera_ms/test/"$filename"/opera_ms_clusters/"$i" /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_opera_ms/test/polished_contig_files/fasta_files/"$filename"_"$i"_contigs.polished.fasta
+
+done
+done
+
+#####################################################################################################################################################################################################
+# binning long read assembly 
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/02_assembly/
+emacs 02ONT_opera_ms_maxbin2.sh
+###########################
+
+#!/bin/sh
+#SBATCH --error 02ONT_opera_ms_maxbin2_err
+#SBATCH --output 02ONT_opera_ms_maxbin2_out
+#SBATCH --job-name 02ONT_opera_maxbin2_ms
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=15
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_opera_ms/test/maxbin2
+
+for filename in $(find /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_opera_ms/test/ -maxdepth 1 -type d | awk -F / '{print $NF'}  | sort -u | tail -n +6)  # does not procees the repeat pool 1 as the below 
+do
+
+module load maxbin2/2.2.7
+
+run_MaxBin.pl -contig /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_opera_ms/test/"$filename"/contigs.fasta -out /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_opera_ms/test/maxbin2/ -thread $SLURM_CPUS_PER_TASK -verbose -reads /data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files/"$filename"_host_removed_R1.fastq.gz -reads2 /data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files/"$filename"_host_removed_R2.fastq.gz -reads3 /data/Food/analysis/R6564_NGS/kefir4all/01qc/01ONT/01host_removal/"$filename"_host_removed.fastq
+
+module unload maxbin2/2.2.7
+done
+
+
+#####################################################################################################################################################################################################
+# binning long read polished assembly 
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/02_assembly/
+emacs 02ONT_opera_ms_maxbin2_polished.sh
+###########################
+
+#!/bin/sh
+#SBATCH --error 02ONT_opera_ms_maxbin2_polished_err
+#SBATCH --output 02ONT_opera_ms_maxbin2_polished_out
+#SBATCH --job-name 02ONT_opera_maxbin2_polished_ms
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=40
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_opera_ms/test/maxbin2/polished
+
+for filename in $(find /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_opera_ms/test/ -maxdepth 1 -type d | awk -F / '{print $NF'}  | sort -u | tail -n +3)  # does not procees the repeat pool 1 as the below 
+do
+
+module load maxbin2/2.2.7
+
+run_MaxBin.pl -contig /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_opera_ms/test/"$filename"/contigs.polished.fasta -out /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_opera_ms/test/maxbin2/polished/"$filename" -thread $SLURM_CPUS_PER_TASK -verbose -reads /data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files/"$filename"_host_removed_R1.fastq.gz -reads2 /data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files/"$filename"_host_removed_R2.fastq.gz -reads3 /data/Food/analysis/R6564_NGS/kefir4all/01qc/01ONT/01host_removal/"$filename"_host_removed.fastq
+
+module unload maxbin2/2.2.7
+done
+
+
+
+Summary file: /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_opera_ms/test/maxbin2/polished.summary
+Genome abundance info file: /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_opera_ms/test/maxbin2/polished.abundance
+Marker counts: /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_opera_ms/test/maxbin2/polished.marker
+Marker genes for each bin: /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_opera_ms/test/maxbin2/polished.marker_of_each_gene.tar.gz
+Bin files: /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_opera_ms/test/maxbin2/polished.001.fasta - /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_opera_ms/test/maxbin2/polished.008.fasta
+Unbinned sequences: /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_opera_ms/test/maxbin2/polished.noclass
+
+Store abundance information of reads file [/data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files/TG_SK_T2_ML_0AN_S2_host_removed_R1.fastq.gz] in [/data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_opera_ms/test/maxbin2/polished.abund1].
+Store abundance information of reads file [/data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files/TG_SK_T2_ML_0AN_S2_host_removed_R2.fastq.gz] in [/data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_opera_ms/test/maxbin2/polished.abund2].
+Store abundance information of reads file [/data/Food/analysis/R6564_NGS/kefir4all/01qc/01ONT/01host_removal/TG_SK_T2_ML_0AN_S2_host_removed.fastq] in [/data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_opera_ms/test/maxbin2/polished.abund3].
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#####################################################################################################################################################################################################
+# ceckm polished assemblies 
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/03_MAG_classification
+#emacs checkm_opera_ms_polished.sh
+###########################
+
+
+
+
+#!/bin/sh
+#SBATCH --error 03_err_checkm_opera_ms_polished
+#SBATCH --output 03_out_checkm_opera_ms_polished
+#SBATCH --job-name 03_checkm_opera_ms_polished
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=40   
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_checkm/opera_ms_polished_bins/
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_checkm/max_bin_opera_ms/
+
+#module load checkm2/0.1.3 
+#checkm2 predict --input /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_opera_ms/test/polished_contig_files/fasta_files -x .fasta --threads $SLURM_CPUS_PER_TASK --output-directory /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_checkm/opera_ms_polished_bins/
+#module unload checkm2/0.1.3 
+
+
+module load checkm2/0.1.3 
+checkm2 predict --input /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_opera_ms/test/maxbin2/ -x .fasta --threads $SLURM_CPUS_PER_TASK --output-directory /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_checkm/max_bin_opera_ms_polished_bins/
+module unload checkm2/0.1.3 
+
+
+
+
+
+
+
+
+
+TG_ID079_WG_T2_S128
+
+
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_opera_ms/
+
+
+module load opera-ms/0.8.2
+module load python3.7/i3
+ 
+perl /install/software/OPERA-MS/OPERA-MS.pl
+
+perl /install/software/OPERA-MS/OPERA-MS-UTILS.py
+
+
+python OPERA-MS-UTILS.py bin-evaluation --config <config file>
+
+
+
+
+
+
+
+#####################################################################################################################################################################################################
+# long read assembly - metaflye
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/02_assembly/
+emacs 02ONT_metaflye.sh
+###########################
+
+#!/bin/sh
+#SBATCH --error 02ONT_opera_ms_err
+#SBATCH --output 02ONT_opera_ms_out
+#SBATCH --job-name 02ONT_opera_ms
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=40
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+
+
+
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_flye/
+
+for filename in $(find /data/Food/analysis/R6564_NGS/kefir4all/01qc/01ONT/ -maxdepth 1 -type f -name "*.fastq.gz" | awk -F / '{print $NF'}  | sort -u | sed 's/_porechopped.fastq.gz//g')  # does not procees the repeat pool 1 as the below 
+do
+
+
+
+module load flye/2.9 
+ 
+
+
+flye --nano-raw Loman_E.coli_MAP006-1_2D_50x.fasta --out-dir out_nano --meta --plasmdis --threads $SLURM_CPUS_PER_TASK
+
+
+
+module unload flye/2.9 
+
+done
+
+
+
+

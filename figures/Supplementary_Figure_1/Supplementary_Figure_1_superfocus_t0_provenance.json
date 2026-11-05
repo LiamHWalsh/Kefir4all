@@ -1,0 +1,16 @@
+{
+  "figure": "Supplementary_Figure_1_superfocus_t0_provenance.pdf",
+  "created_utc": "2026-11-05T14:41:32Z",
+  "width_mm": 665.8187,
+  "height_mm": 440.2667,
+  "seed": null,
+  "source_file": "/home/rstudio/kefir4all/data/functional/superfocus_p3.csv",
+  "source_sha256": "7b6a177f443feda7ef6ceafb26908e1fccd8a9d54b365cd84225bd40027593c7",
+  "lab_toolkit_commit": null,
+  "lab_toolkit_uncommitted_changes": null,
+  "versions": {
+    "R": "4.4.2",
+    "ggplot2": "4.0.3",
+    "ggstatsplot": "0.13.0"
+  }
+}

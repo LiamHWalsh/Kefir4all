@@ -1,0 +1,33 @@
+#####################################################################################################################################################################################################
+# gtdbtk_bins command on merged intial bins from the global dataset 
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/03_MAG_classification
+#emacs 03_gtdbtk_bins_cs_merged.sh
+###########################
+
+
+#!/bin/sh
+#SBATCH --error 03_err_gtdbtk_bins_cs_merged
+#SBATCH --output 03_out_gtdbtk_bins_cs_merged
+#SBATCH --job-name 03_gtdbtk_bins_cs_merged
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=40   
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_gtdbtk/gtdbtk_bins_cs_merged
+
+module load  gtdb-tk/1.3.0
+
+ 
+gtdbtk identify --genome_dir /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metawrap/02_metawrap_merged/finished_cs_bins/ --out_dir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_gtdbtk/gtdbtk_bins_cs_merged/identify -x .fa --cpus $SLURM_CPUS_PER_TASK
+
+gtdbtk align --identify_dir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_gtdbtk/gtdbtk_bins_cs_merged/identify --out_dir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_gtdbtk/gtdbtk_bins_cs_merged/align --cpus $SLURM_CPUS_PER_TASK
+
+gtdbtk classify --genome_dir /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metawrap/02_metawrap_merged/finished_cs_bins/ --align_dir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_gtdbtk/gtdbtk_bins_cs_merged/align --out_dir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_gtdbtk/gtdbtk_bins_cs_merged/align/classify -x .fa --cpus $SLURM_CPUS_PER_TASK
+
+module unload  gtdb-tk/1.3.0
+
+

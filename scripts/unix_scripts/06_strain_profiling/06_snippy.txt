@@ -1,0 +1,272 @@
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_snippy
+
+
+upload Q:\H2020 Master\Citizen Science Project\Results\06_strain_profiling\06_snippy\marker_names_v2 to /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_snippy
+
+dos2unix /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_snippy/marker_names_v2.csv
+
+
+
+module load anaconda3.6.b/4.6 
+module load python3.6/4.6
+
+conda create --name genome_updater python=3.6
+
+conda install -c bioconda genome_updater 
+
+#-c conda-forge 
+
+#conda build genome_updater --python 3 -c bioconda
+
+#####################################################################################################################################################################################################
+# snippy refernece_download
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/06_strain_profiling/
+emacs 06_snippy.sh
+###########################
+
+
+#!/bin/sh
+#SBATCH --error 06_snippy_err
+#SBATCH --output 06_snippy_out
+#SBATCH --job-name 06_snippy
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=20
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+
+
+#mkdir /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_snippy
+#rm -r data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_snippy/06_snippy_reference_genome
+#mkdir /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_snippy/06_snippy_reference_genome
+#mkdir /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_snippy/output/
+
+while read LINE
+ do
+
+id=$(echo "$LINE" | cut -d "," -f 2)
+name=$(echo "$LINE" | cut -d "," -f 1)
+    echo "$id" >> id.txt
+    #echo "$name" >> names.txt
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_snippy/output/"$name"
+#mkdir /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_snippy/06_snippy_reference_genome/"$name"
+
+module load python3.7/i3
+
+/data/Food/analysis/R6564_NGS/kefir4all/04_short_read_profiling/04instrain/genome_updater-0.6.3/genome_updater.sh -T "$id" -d "refseq" -c \
+"representative genome" -f "genomic.fna.gz" -o /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_snippy/06_snippy_reference_g\
+enome/"$name" -t $SLURM_CPUS_PER_TASK -m  -p -x -R 30
+
+module unload python3.7/i3
+
+
+
+
+done < /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_snippy/marker_names_v2.csv
+
+
+
+
+
+
+
+
+#####################################################################################################################################################################################################
+# # snippy refernece_download 2nd attempt
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/06_strain_profiling/
+emacs 06_snippy_retry.sh
+###########################
+
+#!/bin/sh
+#SBATCH --error 06_snippy_err_retry
+#SBATCH --output 06_snippy_out_retry
+#SBATCH --job-name 06_snippy_retry
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=20
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+
+while read LINE
+ do
+
+id=$(echo "$LINE" | cut -d "," -f 2)
+name=$(echo "$LINE" | cut -d "," -f 1)
+   # echo "$id" >> id.txt
+    
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_snippy/output/"$name"
+#mkdir /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_snippy/06_snippy_reference_genome/"$name"
+
+
+
+
+if [ "$(find /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_snippy/06_snippy_reference_genome/"$name" -name "*.fna.gz" -print | wc -l)" = "0" ]
+then
+echo "$name" >> names.txt
+echo "$id" >> id.txt
+module load python3.7/i3
+
+/data/Food/analysis/R6564_NGS/kefir4all/04_short_read_profiling/04instrain/genome_updater-0.6.3/genome_updater.sh -T "$id" -d "refseq" -c \
+"representative genome" -f "genomic.fna.gz" -o /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_snippy/06_snippy_reference_g\
+enome/"$name" -t $SLURM_CPUS_PER_TASK -m  -p -x -R 30
+
+module unload python3.7/i3
+
+else
+    echo "Not empty moving"
+
+fi
+
+done < /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_snippy/marker_names_v2.csv
+
+#####################################################################################################################################################################################################
+# # last attempt to download the reference genomes not downloading 
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/06_strain_profiling/
+
+###########################
+
+download https://ftp.ncbi.nlm.nih.gov/genomes/genbank/assembly_summary_genbank.txt into an excel file and upload to R get the non downloaded ids from id.txt and subset in r 
+
+# upload the subsetted assembly_summary_genbank data to /data/Food/analysis/R6564_NGS/kefir4all/scripts/06_strain_profiling/
+
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/06_strain_profiling/
+dos2unix dos2unix genbank_genomes_remaining.csv
+
+sed -i 1d  /data/Food/analysis/R6564_NGS/kefir4all/scripts/06_strain_profiling/genbank_genomes_remaining.csv
+
+###########################
+while read LINE
+ do
+id=$(echo "$LINE" | cut -d "," -f 7)
+link=$(echo "$LINE" | cut -d "," -f 20)
+link_name=$(echo "$link" | awk -F / '{print $NF'} )
+name=$(grep "$id" /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_snippy/marker_names_v2.csv | cut -d "," -f 1)
+
+ cd /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_snippy/06_snippy_reference_genome/"$name"
+ wget "$link"/"$link_name"_genomic.fna.gz
+
+done < /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_snippy/marker_names_v2.csv
+
+
+
+
+
+
+for name in $( find /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_snippy/06_snippy_reference_genome/ -type f -name "*genomic.fna.gz" )
+do
+
+
+file=$( echo $name | awk -F / '{print $NF'} )
+
+directory=$( echo $name | awk -F"/" '{$NF=""}1' | sed 's/ /\//g' )
+
+cd "$directory"
+
+gunzip "$file" 
+
+done
+
+#####################################################################################################################################################################################################
+# snippy
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/06_strain_profiling/
+
+emacs 06_snippy.sh
+###########################
+
+
+#!/bin/sh
+#SBATCH --error 06_snippy
+#SBATCH --output 06_snippy
+#SBATCH --job-name 06_snippy
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=20
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+
+
+for name in $( find /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_snippy/06_snippy_reference_genome/ -type f -name "*genomic.fna" )
+do
+
+
+
+
+output_name=$( echo $name | sed 's/\/data\/Food\/analysis\/R6564_NGS\/kefir4all\/06_strain_profiling\/06_snippy\/06_snippy_reference_genome//g' | awk -F "/" '{print $2}' )
+
+
+for item in $(find /data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files -maxdepth 1 -type f -name "*.fastq.gz" | cut -d/ -f9- | sed 's/_host_removed_R..fastq.gz//g' | sort -u )
+do
+
+
+
+module load snippy/4.3.6
+
+snippy --cpus $SLURM_CPUS_PER_TASK --outdir /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_snippy/output/"$output_name"/$item --ref "$name" --R1 /data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files/"$item"_host_removed_R1.fastq.gz --R2 /data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files/"$item"_host_removed_R2.fastq.gz 
+
+
+module unload snippy/4.3.6
+
+done
+
+
+done 
+
+
+
+
+
+
+#####################################################################################################################################################################################################
+# snippy
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/06_strain_profiling/
+
+emacs 06_snippy.sh
+###########################
+
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_snippy/06_snippy_gbff/snps_output
+
+
+for i in $(find /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_snippy/06_snippy_gbff/output/ -type f -name "*snps.csv")
+do
+
+
+sample_name=$( echo "$i" | sed 's/\/data\/Food\/analysis\/R6564_NGS\/kefir4all\/06_strain_profiling\/06_snippy\/06_snippy_gbff\/output//g' | awk -F "/" '{print $2}' )
+species_name=$( echo "$i" | sed 's/\/data\/Food\/analysis\/R6564_NGS\/kefir4all\/06_strain_profiling\/06_snippy\/06_snippy_gbff\/output//g' | awk -F "/" '{print $3}' )
+
+cp "$i" /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling\/06_snippy\/06_snippy_gbff/snps_output/"$species_name"_"$sample_name"_snps.csv
+done
+
+
+
+module load python3.7/i3
+/data/Food/analysis/R6564_NGS/kefir4all/04_short_read_profiling/04instrain/genome_updater/genome_updater.sh -T "Rahnella aquatilis" -d "genbank" -c "representative genome" -f "genomic.fna.gz" -o /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_snippy/06_snippy_reference_genome/"$id" -t $SLURM_CPUS_PER_TASK -m  -p -x -R 7
+
+
+ 
+
+module load coverm/0.6.1         
+
+module unload coverm/0.6.1     
+
+
+
+
+module load python3.7/i3
+
+/data/Food/analysis/R6564_NGS/kefir4all/04_short_read_profiling/04instrain/genome_updater/genome_updater.sh -R '30' -T '2058152' -c 'representative genome' -d 'refseq' -f 'genomic.fna.gz' -o '/data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_snippy/06_snippy_reference_genome/Klebsiella_grimontii' 
+ -m -p -x
+Outp: /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_snippy/06_snippy_reference_genome/Klebsiella_grimontii/
+
+
+
+

@@ -1,0 +1,115 @@
+#####################################################################################################################################################################################################
+# Make a metacache database 
+#####################################################################################################################################################################################################
+#good tutorial - https://muellan.github.io/metacache/refseq.html
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/04_taxonomic_profiling
+#emacs 04metacache_make.sh 
+###########################
+#!/bin/sh
+#SBATCH --error 04err_metacache_make
+#SBATCH --output 04out_metacache_make
+#SBATCH --job-name 04metacache_make
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=5
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/04_short_read_profiling
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/04_short_read_profiling/04metacache_database
+module load metacache/2.3
+download-ncbi-taxonomy /data/Food/analysis/R6564_NGS/kefir4all/04_short_read_profiling/04metacache_database/ncbi_taxonomy
+download-ncbi-genomes refseq/bacteria /data/Food/analysis/R6564_NGS/kefir4all/04_short_read_profiling/04metacache_database/metacache_refseq_genomes
+download-ncbi-genomes refseq/viral  /data/Food/analysis/R6564_NGS/kefir4all/04_short_read_profiling/04metacache_database/metacache_refseq_genomes
+download-ncbi-genomes refseq/fungi  /data/Food/analysis/R6564_NGS/kefir4all/04_short_read_profiling/04metacache_database/metacache_refseq_genomes
+
+metacache build /data/Food/analysis/R6564_NGS/kefir4all/04_short_read_profiling/04metacache_database/myrefseq /data/Food/analysis/R6564_NGS/kefir4all/04_short_read_profiling/04metacache_database/metacache_refseq_genomes -taxonomy /data/Food/analysis/R6564_NGS/kefir4all/04_short_read_profiling/04metacache_database/ncbi_taxonomy
+
+module unload metacache/2.3 
+
+#####################################################################################################################################################################################################
+# Move all data into 01fastq_files for metacache 
+#####################################################################################################################################################################################################
+/data/Food/analysis/R6564_NGS/kefir4all/scripts/04_taxonomic_profiling
+#emacs 02move_files_metacache.sh 
+###########################
+# old attempt and a delete command for when I messed up
+#find /data/Food/analysis/R6564_NGS/liam.walsh/trimmed_data/host_decontamination -maxdepth 1 -type f \( -name "*_merge_*" -and -name "*fastq.gz" \) -exec cp {} /data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files \;
+
+#find /data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files  -maxdepth 1 -type f ! -name "WK*" -delete
+# Move all data into 01fastq_files for metacache 
+
+
+# correct command
+for item in $(find /data/Food/analysis/R6564_NGS/liam.walsh/trimmed_data/host_decontamination -maxdepth 1 -type f \( -name "*_merge_*" -and -name "*fastq.gz" \))
+do
+
+id=$(echo "$item" | cut -d/ -f9 | sed 's/_merge_/_/g' )
+cp $item /data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files/"$id"
+done
+
+
+#####################################################################################################################################################################################################
+# metacache command on total data, global_mk_metagenomes, global_wk_metagenomes and kefir4all
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/04_taxonomic_profiling
+#emacs 04metacache.sh 
+###########################
+
+#!/bin/sh
+#SBATCH --error 04err_metacache
+#SBATCH --output 04out_metacache
+#SBATCH --job-name 04metacache
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=60
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/04_short_read_profiling/04metacache_results
+
+for item in $( find /data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files -maxdepth 1 -type f -name "*.fastq.gz" | cut -d/ -f9- | sed 's/_host_removed_R..fastq.gz//g' | sort -u) 
+  do
+#id=$(echo "$item" | cut -d/ -f9-)
+
+module load metacache/2.3 
+metacache query /data/Food/analysis/R6564_NGS/kefir4all/04_short_read_profiling/04metacache_database/myrefseq /data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files/"$item"_host_removed_R1.fastq.gz /data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files/"$item"_host_removed_R2.fastq.gz -pairfiles -out /data/Food/analysis/R6564_NGS/kefir4all/04_short_read_profiling/04metacache_results/"$item".txt -abundances -threads $SLURM_CPUS_PER_TASK -taxids -separate-cols -no-summary -no-map 
+module unload metacache/2.3 
+
+done
+
+
+
+
+#####################################################################################################################################################################################################
+# metacache command on kefir4all
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/04_taxonomic_profiling
+#emacs 04metacache_kefir4all.sh 
+###########################
+#!/bin/sh
+#SBATCH --error 04err_metacache_kefir4all
+#SBATCH --output 04out_metacache_kefir4all
+#SBATCH --job-name 04metacache_kefir4all
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=30
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+#mkdir /data/Food/analysis/R6564_NGS/kefir4all/04_short_read_profiling/04metacache_results/
+
+for item in $( find /data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files -maxdepth 1 -type f \( -name "TG_*" -and -name "*.fastq.gz" \) | awk -F / '{print $NF'} | sed 's/_host_removed_R..fastq.gz//g' | sort -u)
+  do
+#id=$(echo "$item" | cut -d/ -f9-)
+
+module load metacache/2.3 
+metacache query /data/Food/analysis/R6564_NGS/kefir4all/04_short_read_profiling/04metacache_database/myrefseq /data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files/"$item"_host_removed_R1.fastq.gz /data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files/"$item"_host_removed_R2.fastq.gz -pairfiles -out /data/Food/analysis/R6564_NGS/kefir4all/04_short_read_profiling/04metacache_results/"$item".txt -abundances -threads $SLURM_CPUS_PER_TASK -taxids -separate-cols -no-summary -no-map 
+module unload metacache/2.3 
+
+done
+
+data/Food/analysis/R6564_NGS/kefir4all/04_short_read_profiling/04metacache_results/TG_AP_T1_WL_0AE_S350.txt
+
+
+

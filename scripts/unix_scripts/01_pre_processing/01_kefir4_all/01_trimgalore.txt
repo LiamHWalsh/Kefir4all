@@ -1,0 +1,163 @@
+
+#####################################################################################################################################################################################################
+# Trimgalore command on kefir4_all_data-mk -Trento
+#####################################################################################################################################################################################################
+/data/Food/analysis/R6564_NGS/kefir4all/scripts
+emacs 01trim_kefir4all_Mk_trento.sh 
+###########################
+
+#!/bin/sh
+#SBATCH --error 01err_trim_mk
+#SBATCH --output 01out_trim_mk
+#SBATCH --job-name 01kefir4_trim_milk
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=8
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+
+module load cutadapt/2.6
+module load fastqc/0.11.8
+module load trimgalore/0.6.1
+module load pigz/2.3.4
+module load python3.7/i3
+#mkdir trimmed_data
+for filename in $(find /data/Food/primary/R6564_NGS/kefir4all/cmprod1.cibio.unitn.it/TEAGASC_1022/ -type f  \( -name "*MG*" -and -name "*.fastq.gz" -or -name "*ML*" -and -name "*.fastq.gz" \)\
+ | rev | cut -c 17- | rev | sort -u)
+#name=$(echo "$i" | cut -d/ -f 4)
+do
+trim_galore --quality 20 --fastqc --paired --stringency 5 --length 75 --max_n 2 --trim-n --cores $SLURM_CPUS_PER_TASK --output_dir  /data/Food/analysis/R6564_NGS/kefir4all/01qc/01trimmed_data "$filename"\
+_R1_001.fastq.gz "$filename"_R2_001.fastq.gz
+  done
+module unload trimgalore/0.6.1
+module unload cutadapt/2.6
+module unload fastqc/0.11.8
+module unload pigz/2.3.4
+module unload python3.7/i3
+
+
+#####################################################################################################################################################################################################
+# Trimgalore command on kefir4_all_data-wk -Trento
+#####################################################################################################################################################################################################
+#cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/01_preprocessing
+
+#emacs 01trim_kefir4all_Wk_trento.sh 
+###########################
+
+#!/bin/sh
+#SBATCH --error 01err_trim_wk
+#SBATCH --output 01out_trim_wk
+#SBATCH --job-name 01kefir4_trim_water
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=8
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+
+
+module load cutadapt/2.6
+module load fastqc/0.11.8
+module load trimgalore/0.6.1
+module load pigz/2.3.4 
+module load python3.7/i3 
+#mkdir trimmed_data
+for filename in $(find /data/Food/primary/R6564_NGS/kefir4all/cmprod1.cibio.unitn.it/TEAGASC_1022/ -type f  \( -name "*WG*" -and -name "*.fastq.gz" -or -name "*WL*" -and -name "*.fastq.gz" \)\
+ | rev | cut -c 17- | rev | sort -u)
+  do
+#name=$(echo "$i" | cut -d/ -f 4)
+
+trim_galore --quality 20  --paired --stringency 5 --length 75 --max_n 2 --trim-n --cores $SLURM_CPUS_PER_TASK --output_dir  /data/Food/analysis/R6564_NGS/kefir4all/01qc/01trimmed_data "$filename"_R1_001.fastq.gz "$filename"_R2_001.fastq.gz
+  done
+
+
+module unload trimgalore/0.6.1
+module unload cutadapt/2.6
+module unload fastqc/0.11.8
+module unload pigz/2.3.4 
+module unload python3.7/i3 
+
+done
+
+
+
+
+#####################################################################################################################################################################################################
+# Trimgalore command on kefir4_all_data-rest -Trento
+#####################################################################################################################################################################################################
+/data/Food/analysis/R6564_NGS/kefir4all/scripts
+emacs 01trim_kefir4all_rest_trento.sh 
+###########################
+
+#!/bin/sh
+#SBATCH --error 01err_trim_rest
+#SBATCH --output 01out_trim_resr
+#SBATCH --job-name 01kefir4_trim_rest
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=8
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+
+module load cutadapt/2.6
+module load fastqc/0.11.8
+module load trimgalore/0.6.1
+module load pigz/2.3.4
+module load python3.7/i3
+#mkdir trimmed_data
+for filename in $(find /data/Food/primary/R6564_NGS/kefir4all/cmprod1.cibio.unitn.it/TEAGASC_1022 -type f \( -not -name "*MG*" -and -not -name "*ML*" -and -not -name "*WG*" -and -not -name "*WL*" -and -name "*.fastq.gz" \)  | rev | cut -c 17- | rev | sort -u)
+#name=$(echo "$i" | cut -d/ -f 4)
+do
+trim_galore --quality 20 --fastqc --paired --stringency 5 --length 75 --max_n 2 --trim-n --cores $SLURM_CPUS_PER_TASK --output_dir  /data/Food/analysis/R6564_NGS/kefir4all/01qc/01trimmed_data "$filename"\
+_R1_001.fastq.gz "$filename"_R2_001.fastq.gz
+  done
+module unload trimgalore/0.6.1
+module unload cutadapt/2.6
+module unload fastqc/0.11.8
+module unload pigz/2.3.4
+module unload python3.7/i3
+
+
+
+#####################################################################################################################################################################################################
+# Trimgalore command on sequencing run 2
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/01_preprocessing
+emacs 01trim_kefir4all_S2.sh 
+###########################
+
+#!/bin/sh
+#SBATCH --error 01err_trim_kefir4all_S2
+#SBATCH --output 01out_trim_kefir4all_S2
+#SBATCH --job-name 01kefir4_trim_kefir4all_S2
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=8
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+
+module load cutadapt/2.6
+module load fastqc/0.11.8
+module load trimgalore/0.6.1
+module load pigz/2.3.4
+module load python3.7/i3
+#mkdir trimmed_data
+for filename in $( find /data/Food/primary/R6564_NGS/kefir4all/sequencing_pool_teagasc/FASTQ_Generation_2022-12-09_15_26_15Z-637747139/ -type f -name "*.fastq.gz" | sed 's/_R._00..fastq.gz//g')
+#name=$(echo "$filename" | sed 's/-/_/g' | sort -u)
+do
+trim_galore --quality 20 --fastqc --paired --stringency 5 --length 75 --max_n 2 --trim-n --cores $SLURM_CPUS_PER_TASK --output_dir /data/Food/analysis/R6564_NGS/kefir4all/01qc/01trimmed_data "$filename"\
+_R1_001.fastq.gz "$filename"_R2_001.fastq.gz
+  done
+module unload trimgalore/0.6.1
+module unload cutadapt/2.6
+module unload fastqc/0.11.8
+module unload pigz/2.3.4
+module unload python3.7/i3
+
+
+
+
+

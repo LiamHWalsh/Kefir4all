@@ -1,0 +1,48 @@
+#####################################################################################################################################################################################################
+# Determine the taxonomy of each MAG assembled in phase 1 of the kefir4all study with the Classify_bins module
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/03_MAG_classification
+#emacs 03_classify_bins_phylo.sh 
+###########################
+#!/bin/sh
+#SBATCH --error 03err_classify_bins_phylo
+#SBATCH --output 03out_classify_bins_phylo
+#SBATCH --job-name 03classify_bins_phylo
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=5
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+
+#mkdir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_taxonomic/03_phylophlan
+#mkdir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_taxonomic/03_phylophlan/03_phylophlan_results
+#mkdir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_taxonomic/03_phylophlan/03_phylophlan_databases/
+
+for item in $(find /data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files/merged/ -maxdepth 1 -type f  -name *R1.fastq.gz | cut -d/ -f10 | sed 's/_R\
+1.fastq.gz//g' | sed 's/_merged//g' | sort -u)
+do
+
+
+module load phylophlan/3.0.2
+
+module load python3.6/4.6
+
+
+phylophlan_metagenomic -i /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metawrap/"$item"_metawrap_bin_reassembly/reassembled_bins -o /data/Food\
+/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_taxonomic/03_phylophlan/03_phylophlan_results/"$item"_phylophlan -e .fa --nproc $SLURM_CPUS_PER_T\
+ASK -n 1 -d SGB.Jan20 --database_folder /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_taxonomic/03_phylophlan/03_phylophlan_databases\
+/
+
+
+#phylophlan_metagenomic -i /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metawrap/"$item"_metawrap_bin_reassembly/reassembled_bins/ -o /data/Fo\
+od/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_taxonomic/03_phylophlan/03_phylophlan_results/ -e .fa --nproc $SLURM_CPUS_PER_TASK -n 1 -d SGB.\
+Jan20 --database_folder /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_taxonomic/03_phylophlan/03_phylophlan_databases/
+
+
+module unload phylophlan/3.0.2
+module unload python3.6/4.6
+
+done
+
+

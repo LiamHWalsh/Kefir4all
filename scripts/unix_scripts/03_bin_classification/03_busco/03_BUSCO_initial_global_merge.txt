@@ -1,0 +1,84 @@
+#####################################################################################################################################################################################################
+# Determine the quailityof each MAG assembled in phase 1 of the kefir4all study with the Busco module
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/03_MAG_classification
+#emacs 03_busco_bins_initial_global_bins_merged.sh 
+############################
+#!/bin/sh
+#SBATCH --error 03_errBUSCO_initial_global_bins_merged
+#SBATCH --output 03_outBUSCO_initial_global_bins_merged
+#SBATCH --job-name 03_BUSCO_initial_global_bins_merged
+#SBATCH -p Priority,Background
+#SBATCH -N 1
+#SBATCH --cpus-per-task=40
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+rm -r /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_busco2/
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_busco2/
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_busco2/02_metawrap_merged/
+#mkdir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_busco2/02_metawrap_merged/initial_global_bins/
+
+cd /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_busco2/02_metawrap_merged/
+
+module load busco/5.1.2
+
+busco -i /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metawrap/02_metawrap_merged/initial_global_bins/ -o initial_global_bins -m genome --auto-lineage --cpu $SLURM_CPUS_PER_TASK
+
+module unload busco/5.1.2
+
+
+#####################################################################################################################################################################################################
+# Move all seperate busco outputs into one folder 
+#####################################################################################################################################################################################################
+# can run anywhere on the cluster 
+############################
+
+emacs move2.sh
+
+#!/bin/sh
+#SBATCH --error 03_err_move2
+#SBATCH --output 03_out_move2
+#SBATCH --job-name 03_move2
+#SBATCH -p Priority,Background
+#SBATCH -N 1
+#SBATCH --cpus-per-task=4
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+
+#mkdir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_busco2/eukaryota_output/
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_busco2/eukaryota_output/02_metawrap_merged/
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_busco2/eukaryota_output/02_metawrap_merged/initial_global_bins/
+
+
+for item in $(find /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_busco2/02_metawrap_merged/initial_global_bins/ -type d -name "*run_eukaryota_odb10")
+  do
+
+new_name=$(echo "$item" | sed 's/\/data\/Food\/analysis\/R6564_NGS\/kefir4all\/03_MAG_classification\/03_busco2\/02_metawrap_merged\/initial_global_bins\///g' | sed 's/\/auto_lineage\/run_eukaryota_odb10//g' | sed 's/.fa//g' )
+
+echo cp "$item"/short_summary.txt /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_busco2/eukaryota_output/02_metawrap_merged/initial_global_bins/"$new_name".txt
+
+done
+
+
+
+
+
+
+#####################################################################################################################################################################################################
+# Move all seperate busco outputs into one folder 
+#####################################################################################################################################################################################################
+# can run anywhere on the cluster 
+############################
+
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_busco2/02_metawrap_merged/initial_global_bins/eukaryota_output
+
+for item in $(find /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_busco2/02_metawrap_merged/initial_global_bins/*/auto_lineage/run_eukaryota_odb10/ -type f -name "*short_summary.txt" )
+  do
+new_name=$(echo "$item" | sed 's/\/data\/Food\/analysis\/R6564_NGS\/kefir4all\/03_MAG_classification\/03_busco2\/02_metawrap_merged\/initial_global_bins\///g' | sed 's/\/auto_lineage\/run_eukaryota_odb10\/short_summary//g' )
+
+cp "$item" /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_busco2/02_metawrap_merged/initial_global_bins/eukaryota_output/"$new_name"
+
+done

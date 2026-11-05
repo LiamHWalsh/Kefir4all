@@ -1,0 +1,86 @@
+#####################################################################################################################################################################################################
+# Get readlength distribution for trento
+#####################################################################################################################################################################################################
+#good tutorial - https://muellan.github.io/metacache/refseq.html
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/01_preprocessing 
+#emacs 01readlength.sh 
+###########################
+#!/bin/sh
+#SBATCH --error 01err_readlength
+#SBATCH --output 01out_readlength
+#SBATCH --job-name 01readlength
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=3
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/01qc/01readlengths_description
+module load bbmap/38.22 
+
+for i in $(find /data/Food/primary/R6564_NGS/kefir4all/cmprod1.cibio.unitn.it/TEAGASC_1022/ -type f -name *.fastq.gz)
+ do
+base_name=$(echo $i | cut -d/ -f10 |sed 's/.fastq.gz//g')
+
+
+
+#reformat.sh in=A10_S10_merge_host_removed_interleaved.fastq.gz
+
+#readlength.sh in="$i" out=/data/Food/analysis/R6564_NGS/kefir4all/01qc/01readlengths/"$base_name"_summary.txt  # this one will give all the information needed
+
+
+done 
+
+
+module unload bbmap/38.22 
+
+get file size in GB 
+ls -lh */*.fastq.gz > /data/Food/analysis/R6564_NGS/kefir4all/01qc/01readlengths/GB_file_size_kefir4all.txt
+
+
+
+
+#####################################################################################################################################################################################################
+# Get readlength distribution for teagasc sequencing pool
+#####################################################################################################################################################################################################
+#good tutorial - https://muellan.github.io/metacache/refseq.html
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/01_preprocessing 
+#emacs 01readlength_pool2.sh 
+###########################
+#!/bin/sh
+#SBATCH --error 01err_readlength_pool2
+#SBATCH --output 01out_readlength_pool2
+#SBATCH --job-name 01readlength_pool2
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=3
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie, samuel.mortensen@teagasc.ie
+
+#mkdir /data/Food/analysis/R6564_NGS/kefir4all/01qc/01readlengths_description
+module load bbmap/38.22 
+
+for i in $(find /data/Food/primary/R6564_NGS/kefir4all/sequencing_pool_teagasc/FASTQ_Generation_2022-12-09_15_26_15Z-637747139/ -type f -name *.fastq.gz)
+ do
+base_name=$(echo $i | awk -F / '{print $NF}' | sed 's/.fastq.gz//g')
+
+
+
+#reformat.sh in=A10_S10_merge_host_removed_interleaved.fastq.gz
+
+readlength.sh in="$i" out=/data/Food/analysis/R6564_NGS/kefir4all/01qc/01readlengths/"$base_name"_summary.txt  # this one will give all the information needed
+
+
+done 
+
+
+module unload bbmap/38.22 
+
+get file size in GB 
+ls -lh /data/Food/primary/R6564_NGS/kefir4all/sequencing_pool_teagasc/FASTQ_Generation_2022-12-09_15_26_15Z-637747139/*/*.fastq.gz > /data/Food/analysis/R6564_NGS/kefir4all/01qc/01readlengths/GB_file_size_pool2_kefir4all.txt
+
+
+
+
+
+

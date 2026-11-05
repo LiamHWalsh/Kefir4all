@@ -1,0 +1,280 @@
+
+#####################################################################################################################################################################################################
+# crass command on kefir4_all_data
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/05_functional_profiling
+##emacs 05criss_identification.sh 
+#https://ctskennerton.github.io/crass/Tutorial.html - good tutorial
+###########################
+
+
+
+#!/bin/sh
+#SBATCH --error err_05crass
+#SBATCH --output out_05crass
+#SBATCH --job-name 05crass
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=20
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/05_functional_profiling/05_crass
+module load crass/1.0.1  
+for item in $( find /data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files -maxdepth 1 -type f -name "*.fastq.gz" | cut -d/ -f9- | sed 's/_host_removed_R..fastq.gz//g' | sort -u) 
+  do
+crass -o /data/Food/analysis/R6564_NGS/kefir4all/05_functional_profiling/05_crass/"$item"_crass_out -l 4 /data/Food/analysis/R6564_NGS/kefir4all/01qc/01interleaved_fastq_files/"$item"_interleaved.fastq.gz --longDescription 
+done
+module unload crass/1.0.1  
+
+
+
+#####################################################################################################################################################################################################
+# crass summary on kefir4_all_data
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/05_functional_profiling
+##emacs 05criss__details.sh 
+#https://ctskennerton.github.io/crass/Tutorial.html - good tutorial
+###########################
+
+#!/bin/sh
+#SBATCH --error err_05crass_details
+#SBATCH --output out_05crass_details
+#SBATCH --job-name 05crass_details
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=5
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+
+module load crass/1.0.1 
+
+
+#crisprtools */*.crispr merge -s
+ #crisprtools stat crisprtools_merged.crispr --header -g > crispr_summary.txt
+
+module unload crass/1.0.1  
+
+#####################################################################################################################################################################################################
+# crass extract on kefir4_all_data
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/05_functional_profiling
+##emacs 05crass_extract.sh 
+#https://ctskennerton.github.io/crass/Tutorial.html - good tutorial
+###########################
+
+#!/bin/sh
+#SBATCH --error err_05crass_extract
+#SBATCH --output out_05crass_extract
+#SBATCH --job-name 05crass_extract
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=5
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/05_functional_profiling/05_crass/05_crass_spacer/
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/05_functional_profiling/05_crass/05_crass_repeats/
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/05_functional_profiling/05_crass/05_crass_flanking/
+for item in $(find /data/Food/analysis/R6564_NGS/kefir4all/05_functional_profiling/05_crass -maxdepth 2 -type f -name "*crass.crispr")
+do
+id=$(echo "$item" | awk -F/ '{print $(NF-1)}')
+
+
+module load crass/1.0.1 
+
+
+crisprtools extract -s "$item" > /data/Food/analysis/R6564_NGS/kefir4all/05_functional_profiling/05_crass/05_crass_spacer/"$id".fa
+
+crisprtools extract -d "$item" > /data/Food/analysis/R6564_NGS/kefir4all/05_functional_profiling/05_crass/05_crass_repeats/"$id".fa
+crisprtools extract -f "$item" > /data/Food/analysis/R6564_NGS/kefir4all/05_functional_profiling/05_crass/05_crass_flanking/"$id".fa
+module unload crass/1.0.1  
+
+done
+
+
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/05_functional_profiling/05_crass/05_crass_summary_outputs/
+
+for i in $(find /data/Food/analysis/R6564_NGS/kefir4all/05_functional_profiling/05_crass/ -type f -name "*crass.crispr" )# -exec cp {} /data/Food/analysis/R6564_NGS/kefir4all/05_functional_profiling/05_crass/05_crass_summary_outputs \;
+do
+
+id=$(echo "$i" | awk -F/ '{print $(NF-1)}')
+
+
+cp "$i" /data/Food/analysis/R6564_NGS/kefir4all/05_functional_profiling/05_crass/05_crass_summary_outputs/"$id"_crass.crispr
+
+done 
+
+
+
+#####################################################################################################################################################################################################
+# cd -hit on extracted sequences 
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/03_MAG_classification
+##emacs 03crass_cd_hit.sh
+#https://ctskennerton.github.io/crass/Tutorial.html - good tutorial
+
+find /data/Food/analysis/R6564_NGS/kefir4all/05_functional_profiling/05_crass_v2/05_crass_spacer_v2/ -maxdepth 1 -type f \( -name "*.fa" -and -not -name "*WK*" -and -not -name "*WL*" -and -not -name "*WG*" \) -exec cat {}  + > /data/Food/analysis/R6564_NGS/kefir4all/05_functional_profiling/05_crass_v2/05_crass_spacer_v2/mk_spacer_input.fasta
+
+
+find /data/Food/analysis/R6564_NGS/kefir4all/05_functional_profiling/05_crass_v2/05_crass_spacer_v2/ -maxdepth 1 -type f \( -name "*.fa" -and -name "*WK*" -or -name "*WL*" -or -name "*WG*" \) -exec cat {}  + > /data/Food/analysis/R6564_NGS/kefir4all/05_functional_profiling/05_crass_v2/05_crass_spacer_v2/wk_spacer_input.fasta
+
+
+
+###########################
+
+#!/bin/sh
+#SBATCH --error err_03crass_cd_hit
+#SBATCH --output out_03crass_cd_hit
+#SBATCH --job-name 03crass_cd_hit
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=10
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+
+
+
+
+
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/05_functional_profiling/05_crass_v2/05_crass_spacer_v2/05_spacer_cd_hit
+module load cdhit/4.7 
+
+cd-hit-est -i /data/Food/analysis/R6564_NGS/kefir4all/05_functional_profiling/05_crass_v2/05_crass_spacer_v2/wk_spacer_input.fasta -o /data/Food/analysis/R6564_NGS/kefir4all/05_functional_profiling/05_crass_v2/05_crass_spacer_v2/05_spacer_cd_hit_Water.kefir -c 0.95 -aS 0.85 -n 5 -d 0 -M 0 -T $SLURM_CPUS_PER_TASK
+cd-hit-est -i /data/Food/analysis/R6564_NGS/kefir4all/05_functional_profiling/05_crass_v2/05_crass_spacer_v2/mk_spacer_input.fasta -o /data/Food/analysis/R6564_NGS/kefir4all/05_functional_profiling/05_crass_v2/05_crass_spacer_v2/05_spacer_cd_hit_Milk.kefir -c 0.95 -aS 0.85 -n 5 -d 0 -M 0 -T $SLURM_CPUS_PER_TASK
+
+
+
+module unload cdhit/4.7 
+
+#####################################################################################################################################################################################################
+# Determine the taxonomy of each reference spacer sequence
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/03_MAG_classification
+#emacs 03_blastn_crispr.sh
+###########################
+#!/bin/sh
+#SBATCH --error 03err_blastn_crispr
+#SBATCH --output 03out_blastn_crispr
+#SBATCH --job-name 03blastn_crispr
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=10
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/05_functional_profiling/05_crass_v2/05_crass_spacer_v2/blast/
+
+
+module load blast/2.8.1  
+
+blastn -query /data/Food/analysis/R6564_NGS/kefir4all/05_functional_profiling/05_crass_v2/05_crass_spacer_v2/wk_spacer_input.fasta -evalue 0.1 -db /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_taxonomic/viralverify_metaplasmidspades/blast/db/plsdb -task blastn -num_threads $SLURM_CPUS_PER_TASK -outfmt 6 -perc_identity 60 -out /data/Food/analysis/R6564_NGS/kefir4all/05_functional_profiling/05_crass_v2/05_crass_spacer_v2/blast/crispr_plasmid.reference
+
+blastn -query /data/Food/analysis/R6564_NGS/kefir4all/05_functional_profiling/05_crass_v2/05_crass_spacer_v2/mk_spacer_input.fasta -evalue 0.1 -db /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_taxonomic/viralverify_metavirspades/blast/db/viral_db -task blastn -num_threads $SLURM_CPUS_PER_TASK -outfmt 6 -perc_identity 60 -out /data/Food/analysis/R6564_NGS/kefir4all/05_functional_profiling/05_crass_v2/05_crass_spacer_v2/blast/crispr_viral.reference
+
+module unload blast/2.8.1  
+
+
+
+
+
+# these do not work I get duplicated sequences
+#####################################################################################################################################################################################################
+# coverm alignment for water kefir metagenomes to the reference crispr db
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/03_MAG_classification
+#emacs 03_coverm_crispr_water.kefir.sh
+###########################
+
+
+#!/bin/sh
+#SBATCH --error 03err_coverm_crispr_water.kefir
+#SBATCH --output 03out_coverm_crispr_water.kefir
+#SBATCH --job-name 03_coverm_crispr_water.kefir
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=10
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/05_functional_profiling/05_crass_v2/alignment_files_Water.kefir
+
+
+
+
+for sample in $(find /data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files -maxdepth 1 -type f \( -name "*.fastq.gz" -and -name "*WK*" -or -name "*WL*" -or -name "*WG*" \) | sed 's/_host_removed_R..fastq.gz//g' | sort -u)
+do
+
+outputfile=$(echo "$sample" | awk -F / '{print $NF'} )
+
+module load coverm/0.6.1 
+module load samtools/1.10 
+coverm contig -1 "$sample"_host_removed_R1.fastq.gz -2 "$sample"_host_removed_R2.fastq.gz --reference /data/Food/analysis/R6564_NGS/kefir4all/05_functional_profiling/05_crass_v2/05_crass_spacer_v2/05_spacer_cd_hit_Water.kefir -t $SLURM_CPUS_PER_TASK -m reads_per_base -o /data/Food/analysis/R6564_NGS/kefir4all/05_functional_profiling/05_crass_v2/alignment_files_Water.kefir/"$outputfile"_coverm.tsv
+
+module unload coverm/0.6.1 
+module unload samtools/1.10 
+done 
+
+
+
+#####################################################################################################################################################################################################
+# coverm alignment for milk kefir metagenomes to the reference crispr db
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/03_MAG_classification
+#emacs 03_coverm_crispr_milk.kefir.sh
+###########################
+
+
+
+
+#!/bin/sh
+#SBATCH --error 03err_coverm_crispr_milk.kefir
+#SBATCH --output 03out_coverm_crispr_milk.kefir
+#SBATCH --job-name 03_coverm_crispr_milk.kefir
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=30
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/05_functional_profiling/05_crass_v2/alignment_files_Milk.kefir
+
+
+
+
+for sample in $(find /data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files -maxdepth 1 -type f \( -name "*.fastq.gz" -and -not -name "*WK*" -and -not -name "*WL*" -and -not -name "*WG*" \) | sed 's/_host_removed_R..fastq.gz//g' | sort -u)
+do
+
+outputfile=$(echo "$sample" | awk -F / '{print $NF'} )
+
+module load coverm/0.6.1 
+module load samtools/1.10 
+coverm contig -1 "$sample"_host_removed_R1.fastq.gz -2 "$sample"_host_removed_R2.fastq.gz --reference /data/Food/analysis/R6564_NGS/kefir4all/05_functional_profiling/05_crass_v2/05_crass_spacer_v2/05_spacer_cd_hit_Milk.kefir -t $SLURM_CPUS_PER_TASK -m reads_per_base -o /data/Food/analysis/R6564_NGS/kefir4all/05_functional_profiling/05_crass_v2/alignment_files_Milk.kefir/"$outputfile"_coverm.tsv
+
+module unload coverm/0.6.1 
+module unload samtools/1.10 
+done 
+
+
+
+G12SP6_Cov_4
+
+
+>G12SP6_Cov_4
+AGCCTCGCAAATAGTATTAGGCAAAAAAGTAGGT
+
+>G12SP6_Cov_4
+ATGAGTTGGCACAATGCGCAAACACGGGTT
+
+
+
+

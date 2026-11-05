@@ -1,0 +1,129 @@
+module load amrfinder/3.10.23        
+
+
+
+amrfinder -n -o   --threads $SLURM_CPUS_PER_TASK
+
+
+
+
+
+
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/05_functional_profiling
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/scripts/05_functional_profiling/05_antimicrobial_resistance
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/05_functional_profiling/05_antimicrobial_resistance
+
+wget https://www.meglab.org/downloads/megares_v3.00/megares_drugs_database_v3.00.fasta
+wget https://www.meglab.org/downloads/megares_v3.00/megares_annotations_v3.00.csv
+#####################################################################################################################################################################################################
+# Make a metacache database 
+#####################################################################################################################################################################################################
+
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/05_functional_profiling
+
+#emacs 05megares_alignment.sh 
+###########################
+
+
+
+#!/bin/sh
+#SBATCH --error 05err_megares_alignment
+#SBATCH --output 05out_megares_alignment
+#SBATCH --job-name 05egares_alignment
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=20
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/scripts/05_functional_profiling/05_antimicrobial_resistance/alignment_files/
+
+module load bowtie2/2.3.4
+module load anaconda3.6.b/4.6
+#make a bowtie database
+
+
+bowtie2-build /data/Food/analysis/R6564_NGS/kefir4all/scripts/05_functional_profiling/05_antimicrobial_resistance/megares_drugs_database_v3.00.fasta /data/Food/analysis/R6564_NGS/kefir4all/scripts/05_functional_profiling/05_antimicrobial_resistance/megares_db --threads $SLURM_CPUS_PER_TASK
+
+module unload anaconda3.6.b/4.6
+module unload bowtie2/2.3.4
+
+
+for sample in $(find /data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files -maxdepth 1 -type f  -name "*.fastq.gz" | sed 's/_host_removed_R..fastq.gz//g' | sort -u)
+do
+
+outputfile=$(echo "$sample" | awk -F / '{print $NF'} )
+
+module load bowtie2/2.3.4
+module load anaconda3.6.b/4.6 
+
+bowtie2 -p $SLURM_CPUS_PER_TASK -x /data/Food/analysis/R6564_NGS/kefir4all/scripts/05_functional_profiling/05_antimicrobial_resistance/megares_db --no-unal -1 "$sample"_host_removed_R1.fastq.gz -2 "$sample"_host_removed_R2.fastq.gz -S \
+/data/Food/analysis/R6564_NGS/kefir4all/scripts/05_functional_profiling/05_antimicrobial_resistance/alignment_files/"$outputfile"_antimicrobial_resistance_mapped_and_unmapped.sam  --very-sensitive  --very-sensitive-local 
+
+
+
+
+module unload anaconda3.6.b/4.6 
+module unload bowtie2/2.3.4
+
+done
+
+
+
+
+#####################################################################################################################################################################################################
+# Make a metacache database 
+#####################################################################################################################################################################################################
+
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/05_functional_profiling
+
+#emacs 05megares_alignment.sh 
+###########################
+
+#!/bin/sh
+#SBATCH --error 05err_resistome
+#SBATCH --output 05out_resistome
+#SBATCH --job-name 05resistome
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=5
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/scripts/05_functional_profiling/05_antimicrobial_resistance/resistome_output
+
+for sample in $(find /data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files -maxdepth 1 -type f  -name "*.fastq.gz" | sed 's/_host_removed_R..fastq.gz//g' | sort -u)
+do
+
+outputfile=$(echo "$sample" | awk -F / '{print $NF'} )
+
+
+
+module load resistomeanalyzer/1.0
+
+
+resistome \
+   -ref_fp /data/Food/analysis/R6564_NGS/kefir4all/scripts/05_functional_profiling/05_antimicrobial_resistance/megares_drugs_database_v3.00.fasta \
+   -sam_fp /data/Food/analysis/R6564_NGS/kefir4all/scripts/05_functional_profiling/05_antimicrobial_resistance/alignment_files/"$outputfile"_antimicrobial_resistance_mapped_and_unmapped.sam \
+   -annot_fp /data/Food/analysis/R6564_NGS/kefir4all/scripts/05_functional_profiling/05_antimicrobial_resistance/megares_annotations_v3.00.csv \
+   -gene_fp /data/Food/analysis/R6564_NGS/kefir4all/scripts/05_functional_profiling/05_antimicrobial_resistance/resistome_output/"$outputfile"_gene.tsv \
+   -group_fp /data/Food/analysis/R6564_NGS/kefir4all/scripts/05_functional_profiling/05_antimicrobial_resistance/resistome_output/"$outputfile"_group.tsv \
+   -class_fp /data/Food/analysis/R6564_NGS/kefir4all/scripts/05_functional_profiling/05_antimicrobial_resistance/resistome_output/"$outputfile"_class.tsv \
+   -mech_fp /data/Food/analysis/R6564_NGS/kefir4all/scripts/05_functional_profiling/05_antimicrobial_resistance/resistome_output/"$outputfile"_mech.tsv \
+   -t 80
+
+module unload resistomeanalyzer/1.0
+
+done 
+
+
+
+
+
+
+/data/Food/analysis/R6564_NGS/kefir4all/scripts/05_functional_profiling/05_antimicrobial_resistance/megares_drugs_database_v3.00.fasta
+
+
+
+wget https://www.meglab.org/downloads/megares_v3.00/megares_drugs_database_v3.00.fasta

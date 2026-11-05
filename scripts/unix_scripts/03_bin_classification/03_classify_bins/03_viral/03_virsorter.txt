@@ -1,0 +1,100 @@
+#####################################################################################################################################################################################################
+# merge checkv outputs for  virsorter command
+#####################################################################################################################################################################################################
+
+###########################
+for base_name in $(find /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/viral/viralverify/total_viral_mags/checkv/ -type f -name "proviruses.fna" | awk -F / '{print $(NF-1)'} )
+do
+
+cat /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/viral/viralverify/total_viral_mags/checkv/"$base_name"/proviruses.fna /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/viral/viralverify/total_viral_mags/checkv/"$base_name"/viruses.fna > /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/viral/viralverify/total_viral_mags/checkv/"$base_name"/combined.fna
+
+done 
+
+#####################################################################################################################################################################################################
+# virsorter command for viral Assemblies acquired using metavirspades and quaility checked using viralverify and checkv
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/03_MAG_classification/
+#emacs 03_checkv_virsorter_metaviralspades_v2.sh
+###########################
+
+
+
+
+
+#!/bin/sh
+#SBATCH --error 03_err_checkv_virsorter_metaviralspades
+#SBATCH --output 03_out_checkv_virsorter_metaviralspades
+#SBATCH --job-name 03_checkv_virsorter_metaviralspades
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=20
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/viral/viralverify/total_viral_mags/checkv/Virsorter_checked
+
+
+for base_name in $(find /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/viral/viralverify/total_viral_mags/checkv/ -type f -\
+name "combined.fna")
+do
+
+new_name=$(echo $base_name | awk -F / '{print $(NF-1)'} | sed 's/_virus.fasta//g' )
+#--seqname-suffix-off
+#--viral-gene-enrich-off
+
+module load virsorter2/2.2.3
+virsorter run --prep-for-dramv -i "$base_name" -w /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/viral/viralverify/total_viral_mags/checkv/Virsorter_checked/$new_name --label "$new_name" --include-groups dsDNAphage,ssDNA --min\
+-length 5000 --min-score 0.5 -j $SLURM_CPUS_PER_TASK all
+module unload virsorter2/2.2.3
+
+done
+
+
+#####################################################################################################################################################################################################
+# dram_v_mag command for viral Assemblies acquired using metavirspades and quaility checked using viralverify and checkv
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/03_MAG_classification/
+#emacs 03_dram_v_mag.sh
+###########################
+
+
+#!/bin/sh
+#SBATCH --error 03_err_dram_v_mag
+#SBATCH --output 03_out_dram_v_mag
+#SBATCH --job-name 03_dram_v_mag
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=25
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_dram/metaviralspad\
+es/
+
+
+
+
+for i in $(find /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/viral/viralverify/total_viral_mags/checkv/Virsorter_checked/ -type d -name "*_checkv-for-dramv")
+
+do
+
+
+module load dram/1.2
+source activate DRAM
+sample_name=$(echo "$i" | awk -F / '{ print $NF }' | sed 's/_metaviralspades_viralverify_checkv//g')
+
+
+
+DRAM-v.py annotate -i "$i"/final-viral-combined-for-dramv.fa -v "$i"/viral-affi-contigs-for-dramv.tab -o /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_dram/metaviralspad\
+es/"$sample_name"_dram_v_annotation --threads $SLURM_CPUS_PER_TASK --min_contig_size 300
+
+
+DRAM-v.py distill -i /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_dram/metaviralspades/"$sample_name"_dram_v_annotation/annotations.tsv -o /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_dram/metaviralspades/"$sample_name"_distilled --threads $SLURM_CPUS_PER_TASK 
+
+module unload dram/1.2
+conda deactivate
+done
+
+
+
+

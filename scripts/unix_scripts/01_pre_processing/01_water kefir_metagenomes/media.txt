@@ -1,0 +1,143 @@
+
+#####################################################################################################################################################################################################
+#Bowtie command on media global_wk_metagenomes
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/01_preprocessing 
+#emacs 01_bowtie_sWK_media.sh 
+#https://www.metagenomics.wiki/tools/short-read/remove-host-sequences - good tutorial
+###########################
+
+
+
+#!/bin/sh
+#SBATCH --error err_sWK_media_bowtie
+#SBATCH --output out_sWK_media_bowtie
+#SBATCH --job-name bowtie_kefir4all_sWK_media
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=35
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+module load bowtie2/2.3.4
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/01bowtie/
+
+#find /data/Food/analysis/R6564_NGS/kefir4all/01qc/01trimmed_data -type f -name "*.fq.gz"
+
+for filename in $(find /data/Food/analysis/R6564_NGS/kefir4all/01qc/01trimmed_data -type f  \( -name "Media*" -and -name "*.fq.gz" \) | sort -u | sed 's/_R..*//g')
+
+  do
+id=$(echo "$filename" | awk -F / '{print $NF'})
+
+
+module load bowtie2/2.3.4
+
+
+bowtie2 --local -x /data/Food/analysis/R6564_NGS/kefir4all/01qc/01bowtie_database/water_kefir_index -1 "$filename"_R1_001_val_1.fq.gz -2 "$filename"_R2_001_val_2.fq.gz -S /data/Food/analysis/R6564_NGS/kefir4all/01bowtie/"$id"_mapped_and_unmapped.sam
+
+done
+
+module unload bowtie2/2.3.4
+
+
+
+
+#emacs 01samtools_wk_media.sh
+###########################
+#!/bin/sh
+#SBATCH --error err_2020_step2
+#SBATCH --output out_2020_step2
+#SBATCH --job-name bowtie_kefir4all_sWK_sam_media
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=45
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+
+#rm -r data/Food/analysis/R6564_NGS/kefir4all/01qc/01samtools/
+#mkdir /data/Food/analysis/R6564_NGS/kefir4all/01qc/01samtools/
+#cd /data/Food/analysis/R6564_NGS/kefir4all/01qc/01samtools/
+
+for item in $(find /data/Food/analysis/R6564_NGS/kefir4all/01bowtie/ -type f \( -name "*Media*" -and -name "*.sam" \) | rev | cut -c 25- | rev | sort -u)
+  do
+id=$(echo "$item" | awk -F / '{print $NF}')
+name_changed=$( echo "$id" | sed 's/-/_/g')
+module load samtools/1.9
+
+
+
+ samtools view -@ $SLURM_CPUS_PER_TASK -b "$item"_mapped_and_unmapped.sam -o /data/Food/analysis/R6564_NGS/kefir4all/01qc/01samtools/"$name_\
+changed"_mapped_and_unmapped.bam
+samtools view -@ $SLURM_CPUS_PER_TASK -b -f 12 -F 256 /data/Food/analysis/R6564_NGS/kefir4all/01qc/01samtools/"$name_changed"_mapped_and_unmapped.bam > /data/Food/analysis/R6564_NGS/kefir4all/01qc/01sam\
+tools/"$name_changed"_bothReads_Unmapped.bam
+samtools sort -n -m 5G -@ $SLURM_CPUS_PER_TASK /data/Food/analysis/R6564_NGS/kefir4all/01qc/01samtools/"$name_changed"_bothReads_Unmapped.bam -o /data/Food/analysis/R6564_NGS/kefir4all/01qc/01samtools/"\
+$name_changed"_bothReads_Unmapped_sorted.bam
+samtools fastq -@ $SLURM_CPUS_PER_TASK /data/Food/analysis/R6564_NGS/kefir4all/01qc/01samtools/"$name_changed"_bothReads_Unmapped_sorted.bam \
+    -1 /data/Food/analysis/R6564_NGS/kefir4all/01qc/01samtools/WK"$name_changed"_host_removed_R1.fastq.gz \
+    -2 /data/Food/analysis/R6564_NGS/kefir4all/01qc/01samtools/WK"$name_changed"_host_removed_R2.fastq.gz \
+    -0 /dev/null -s /dev/null -n
+module unload samtools/1.9
+
+done
+
+done
+
+
+
+
+#!/bin/sh
+#SBATCH --error err_01merge_fq_kefir4all_s2
+#SBATCH --output out_01merge_fq_kefir4all_s2
+#SBATCH --job-name 01merge_fq_kefir4all_s2
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=5
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+base_name=$(echo WKMedia_3_L_00h_02F4_S109)
+
+
+for base_name in $(find /data/Food/analysis/R6564_NGS/kefir4all/01qc/01samtools/ -type f \( -name "WKMedia*" -and -name "*.fastq.gz" \) | awk -F / '{print $NF}' | sed 's/_L00..*//g' | sort -u)
+do
+
+cat $(find /data/Food/analysis/R6564_NGS/kefir4all/01qc/01samtools/ -type f  \( -name "$base_name*" -and -name "*_R1*" -and -name "*.fastq.gz" \) | sort -u) > /data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files/"$base_name"_host_removed_R1.fastq.gz
+
+cat $(find /data/Food/analysis/R6564_NGS/kefir4all/01qc/01samtools/ -type f  \( -name "$base_name*" -and -name "*_R2*" -and -name "*.fastq.gz" \) | sort -u) > /data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files/"$base_name"_host_removed_R2.fastq.gz
+
+done
+
+
+
+
+
+#####################################################################################################################################################################################################
+# metacache command on media
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/04_taxonomic_profiling
+#emacs 04metacache_swk_media.sh 
+###########################
+
+#!/bin/sh
+#SBATCH --error 04err_metacache_swk_media
+#SBATCH --output 04out_metacache_swk_media
+#SBATCH --job-name 04metacache_swk_media
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=30
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+#mkdir /data/Food/analysis/R6564_NGS/kefir4all/04_short_read_profiling/04metacache_results/
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/04_short_read_profiling/04metacache_results/s_wk_media/
+for item in $( find /data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files -maxdepth 1 -type f \( -name "WKMedia*" -and -name "*.fastq.gz" \) | awk -F / '{print $NF'} | sed 's/_host_removed_R..fastq.gz//g' | sort -u)
+  do
+#id=$(echo "$item" | cut -d/ -f9-)
+
+module load metacache/2.3 
+metacache query /data/Food/analysis/R6564_NGS/kefir4all/04_short_read_profiling/04metacache_database/myrefseq /data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files/"$item"_host_removed_R1.fastq.gz /data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files/"$item"_host_removed_R2.fastq.gz -pairfiles -out /data/Food/analysis/R6564_NGS/kefir4all/04_short_read_profiling/04metacache_results/s_wk_media/"$item".txt -abundances -threads $SLURM_CPUS_PER_TASK -taxids -separate-cols -no-summary -no-map 
+module unload metacache/2.3 
+
+done
+

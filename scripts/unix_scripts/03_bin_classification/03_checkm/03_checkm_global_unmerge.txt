@@ -1,0 +1,117 @@
+
+#####################################################################################################################################################################################################
+# move merged intial bins from the global dataset into one folder
+#####################################################################################################################################################################################################
+
+###########################
+
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metawrap/02_metawrap_unmerged/initial_global_bins
+
+
+for name in $(find /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metawrap/02_metawrap_unmerged/ -type d \( -name "*metawrap_bins" -not -name "*TG_*" \) )
+do
+
+for bin in $(find "$name" -type f \( -name "*.fa" -and -name "*bin*" -not -name "*unbinned*" \) )
+do
+new_name=$( echo $bin | sed -r 's/\/data\/Food\/analysis\/R6564_NGS\/kefir4all\/02_assembly\/02_metawrap\/02_metawrap_unmerged\///g' | sed 's/\//_/g')
+
+cp "$bin" /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metawrap/02_metawrap_unmerged/initial_global_bins/"$new_name"
+done
+done 
+
+
+
+#####################################################################################################################################################################################################
+# checkm command on merged intial bins from the global dataset 
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/03_MAG_classification
+#emacs 03_checkm_initial_global_unmerged.sh
+###########################
+
+#!/bin/sh
+#SBATCH --error 03_err_checkm_initial_bins_global_unmerged
+#SBATCH --output 03_out_checkm_initial_bins_global_unmerged
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=40   
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+
+#rm -r  /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_checkm/initial_global_bins/
+
+#mkdir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_checkm/initial_global_bins/
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_checkm/initial_global_bins/02_metawrap_unmerged/
+module load checkm2/0.1.3 
+checkm2 predict --input /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metawrap/02_metawrap_unmerged/initial_global_bins/ -x .fa --threads $SLURM_CPUS_PER_TASK --output-directory /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_checkm/initial_global_bins/02_metawrap_unmerged/
+module unload checkm2/0.1.3 
+
+
+
+#####################################################################################################################################################################################################
+# move command on merged finished bins from the global dataset 
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/03_MAG_classification
+#emacs 03_dram_bins_global_merged.sh
+###########################
+
+
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metawrap/02_metawrap_unmerged/finished_global_bins/
+
+for name in $(find /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metawrap/02_metawrap_unmerged/ -type d \( -name "*bin_reassembly*" -not -name "*TG_*" \) )
+do
+
+
+for bin in $(find "$name" -type f \( -name "*.fa" -and -name "*bin*" -not -name "*unbinned*" \) )
+do
+new_name=$( echo $bin | sed -r 's/\/data\/Food\/analysis\/R6564_NGS\/kefir4all\/02_assembly\/02_metawrap\/02_metawrap_unmerged\///g' | sed 's/\//_/g')
+
+cp "$bin" /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metawrap/02_metawrap_unmerged/finished_global_bins/"$new_name"
+done
+done 
+
+
+
+#####################################################################################################################################################################################################
+# checkm command on merged finished bins from the global dataset 
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/03_MAG_classification
+#emacs 03_checkm_global_unmerged.sh
+###########################
+
+#!/bin/sh
+#SBATCH --error 03_err_checkm_bins_global_unmerged
+#SBATCH --output 03_out_checkm_bins_global_unmerged
+#SBATCH --job-name 03_checkm_bins_global_unmerged
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=40   
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+
+
+
+#rm -r /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_checkm/global_bins/02_metawrap_unmerged/
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_checkm/global_bins/02_metawrap_unmerged/
+
+module load checkm2/0.1.3 
+checkm2 predict --input /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metawrap/02_metawrap_unmerged/finished_global_bins/ -x .fa --threads $SLURM_CPUS_PER_TASK --output-directory /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_checkm/global_bins/02_metawrap_unmerged/
+module unload checkm2/0.1.3 
+
+
+
+
+
+
+
+
+/data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_checkm/global_bins/02_metawrap_unmerged/protein_files/WK051-1-L-48h-04D5_S3_metawrap_bin_reassembly_reassembled_bins_bin.1.orig.faa'
+
+
+
+
+

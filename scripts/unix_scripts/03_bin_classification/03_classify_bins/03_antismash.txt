@@ -1,0 +1,156 @@
+#####################################################################################################################################################################################################
+# gtdbtk_bins command on merged intial bins from the global dataset 
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/03_MAG_classification
+#emacs 03_antismash_total_bins.sh
+###########################
+
+/data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_antismash/03_prokka/*/*.gbk
+
+
+#!/bin/sh
+#SBATCH --error 03_err_antismash_total_bins
+#SBATCH --output 03_out_antismash_total_bins
+#SBATCH --job-name 03_antismash_total_bins
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=4  
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+
+
+rm -r /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_antismash/03_antismash_output/
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_antismash/03_antismash_output/
+
+for i in $(find /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_antismash/03_prokka/ -type f -name "*.gbk")
+do
+
+
+#for i in $(find /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metawrap/representative_MAGs -type f -name "*.fa")
+#do
+
+sample_name=$(echo "$i" | awk -F / '{print $NF'} | sed 's/.fa//g')
+
+
+module load antismash/6.0.1
+module load python3.7/i3
+
+
+antismash "$i" --cpus $SLURM_CPUS_PER_TASK --output-dir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_antismash/03_antismash_output --output-basename "$sample_name"
+
+module unload antismash/6.0.1
+module unload python3.7/i3
+done 
+
+
+
+cp /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_prokka/03_roary_gff_files/Acetobacter_fabarum/WK_TG_ID107_merged_T5_metawrap_bin_reassembly_reassembled_bins_bin.1.strict/WK_TG_ID107_merged_T5_metawrap_bin_reassembly_reassembled_bins_bin.1.strict.gbf /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_prokka/03_roary_gff_files/Acetobacter_fabarum/WK_TG_ID107_merged_T5_metawrap_bin_reassembly_reassembled_bins_bin.1.strict/test.gbf
+
+
+
+
+
+
+
+
+
+module load antismash/6.0.1
+
+antismash /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_prokka/03_roary_gff_files/Acetobacter_fabarum/WK_TG_ID107_merged_T5_metawrap_bin_reassembly_reassembled_bins_bin.1.strict/test.gbf --cpus $SLURM_CPUS_PER_TASK --output-dir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/antismash --output-basename "$sample_name"
+
+module unload antismash/6.0.1
+
+
+
+
+
+
+
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/03_MAG_classification
+
+
+
+
+
+
+emacs test.sh
+#!/bin/sh
+#SBATCH --error 03_err_antismash_total_bins
+#SBATCH --output 03_out_antismash_total_bins
+#SBATCH --job-name 03_antismash_total_bins
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=4  
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+
+deepbgc download
+
+
+
+
+--genefinding-tool prodigal
+
+
+
+
+/home/liam.walsh/.local/share/deepbgc/data/
+
+#!/bin/sh
+#SBATCH --error 03_err_antismash_total_bins
+#SBATCH --output 03_out_antismash_total_bins
+#SBATCH --job-name 03_antismash_total_bins
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=4
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+
+
+rm -r /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_antismash/03_antismash_output/
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_antismash/03_antismash_output/
+
+for i in $(find /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_prokka/ -type f -name "*.fna")
+do
+
+
+#for i in $(find /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metawrap/representative_MAGs -type f -name "*.fa")
+#do
+
+sample_name=$(echo "$i" | awk -F / '{print $NF'} | sed 's/.fa//g')
+
+
+module load antismash/6.0.1
+module load python3.7/i3
+
+
+antismash "$i" --cpus $SLURM_CPUS_PER_TASK --output-dir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_antismash/03_antismash_output --output-basenam\
+e "$sample_name"
+
+module unload antismash/6.0.1
+module unload python3.7/i3
+done
+
+
+ls /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/deepbgc/db/
+
+
+ls -a ~/.local/lib/python3.7/site-packages/deepbgc
+
+pip install deepbgc
+
+
+deepbgc download
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/deepbgc/db
+DEEPBGC_DOWNLOADS_DIR=/data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/deepbgc
+
+ls ~/.local/lib/python3.7/site-packages/deepbgc/command/download.py
+
+
+

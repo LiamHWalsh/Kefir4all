@@ -1,0 +1,248 @@
+
+###########################
+
+
+#####################################################################################################################################################################################################
+# interleaved command on kefir4_all_data
+#####################################################################################################################################################################################################
+
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/05_functional_profiling
+##emacs 05superfocus_interleaved.sh 
+###########################
+
+
+
+
+#!/bin/sh
+#SBATCH --error err_05superfocus_interleaved
+#SBATCH --output out_05superfocus_interleaved
+#SBATCH --job-name 05superfocus_interleaved
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=2
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+rm -r /data/Food/analysis/R6564_NGS/kefir4all/01qc/01interleaved_fastq_files/
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/01qc/01interleaved_fastq_files/
+#mkdir /data/Food/analysis/R6564_NGS/kefir4all/05_functional_profiling/05superfocus/
+
+
+for item in $( find /data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files -maxdepth 1 -type f -name "*.fastq.gz" | cut -d/ -f9- | sed 's/_host_removed_R..fastq.gz//g' | sort -u) 
+  do
+
+  module load bbmap/38.22
+    reformat.sh in=/data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files/"$item"_host_removed_R1.fastq.gz in2=/data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files/"$item"_host_removed_R2.fastq.gz out=/data/Food/analysis/R6564_NGS/kefir4all/01qc/01interleaved_fastq_files/"$item"_interleaved.fastq.gz
+    module unload bbmap/38.22
+done
+
+cd /data/Food/analysis/R6564_NGS/kefir4all/01qc/01interleaved_fastq_files/
+gunzip *.fastq.gz
+
+#####################################################################################################################################################################################################
+# superfocus command on kefir4_all_data
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/05_functional_profiling
+
+##emacs 05superfocus.sh 
+###########################
+#!/bin/sh
+#SBATCH --error err_05superfocus
+#SBATCH --output out_05superfocus
+#SBATCH --job-name 05superfocus
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=30
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+module load superfocus/0.34
+module load python3.6/4.6
+module load anaconda3.6.b/4.6
+module load rapsearch/2.24  
+module load focus/1.6
+module load diamond/2.0.12
+ 
+
+
+
+#superfocus -q /data/Food/analysis/R6564_NGS/kefir4all/01qc/01interleaved_fastq_files/ -m 0 -a diamond -dir /data/Food/analysis/R6564_NGS/kefir4all/05_functional_profiling/05superfocus/ -t $SLURM_CPUS_PER_TASK
+
+#superfocus -q /data/Food/analysis/R6564_NGS/kefir4all/01qc/01interleaved_fastq_files/test -m 0 -a diamond -dir /data/Food/analysis/R6564_NGS/kefir4all/05_functional_profiling/05superfocus/test -t $SLURM_CPUS_PER_TASK
+
+module unload superfocus/0.34
+module unload python3.6/4.6
+module load anaconda3.6.b/4.6
+module unload rapsearch/2.24  
+module unload focus/1.6 
+module unload diamond/2.0.12
+
+
+#####################################################################################################################################################################################################
+# superfocus_v2 command on kefir4_all_data
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/05_functional_profiling
+
+##emacs 05superfocus.sh 
+###########################
+#!/bin/sh
+#SBATCH --error err_05superfocus_v2
+#SBATCH --output out_05superfocus_v2
+#SBATCH --job-name 05superfocus_v2
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=30
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+rm -r /data/Food/analysis/R6564_NGS/kefir4all/05_functional_profiling/05superfocus/
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/05_functional_profiling/05superfocus/
+rm -r /data/Food/analysis/R6564_NGS/kefir4all/01qc/01interleaved_fastq_files/
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/01qc/01interleaved_fastq_files/
+
+
+
+for item in $( find /data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files -maxdepth 1 -type f -name "*.fastq.gz" | cut -d/ -f9- | sed 's/_host_removed_R..fastq.gz//g' | sort -u) 
+  do
+# folder set up to run each file individually 
+rm -r /data/Food/analysis/R6564_NGS/kefir4all/01qc/01interleaved_fastq_files/test
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/01qc/01interleaved_fastq_files/test
+
+module load bbmap/38.22
+    reformat.sh in=/data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files/"$item"_host_removed_R1.fastq.gz in2=/data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files/"$item"_host_removed_R2.fastq.gz out=/data/Food/analysis/R6564_NGS/kefir4all/01qc/01interleaved_fastq_files/"$item"_interleaved.fastq.gz
+    module unload bbmap/38.22
+
+
+cd /data/Food/analysis/R6564_NGS/kefir4all/01qc/01interleaved_fastq_files/
+gunzip *.fastq.gz
+
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/05_functional_profiling
+
+cp /data/Food/analysis/R6564_NGS/kefir4all/01qc/01interleaved_fastq_files/"$item"_interleaved.fastq /data/Food/analysis/R6564_NGS/kefir4all/01qc/01interleaved_fastq_files/test
+
+# Superfocus command
+module load superfocus/0.34
+module load python3.6/4.6
+module load anaconda3.6.b/4.6
+module load rapsearch/2.24  
+module load focus/1.6
+module load diamond/2.0.12
+
+superfocus -q /data/Food/analysis/R6564_NGS/kefir4all/01qc/01interleaved_fastq_files/test -m 0 -a diamond -dir /data/Food/analysis/R6564_NGS/kefir4all/05_functional_profiling/05superfocus/"$item"_superfocus -t $SLURM_CPUS_PER_TASK
+
+module unload superfocus/0.34
+module unload python3.6/4.6
+module load anaconda3.6.b/4.6
+module unload rapsearch/2.24  
+module unload focus/1.6 
+module unload diamond/2.0.12
+
+done
+
+#####################################################################################################################################################################################################
+# rename superfocus output files with sample name
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/05_functional_profiling
+###########################
+
+mkdir 05_superfocus_total_subsystem_levels
+
+for item in $(find /data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files -maxdepth 1 -type f -name "*.fastq.gz" | cut -d/ -f9- | sed 's/_host_removed_R..fastq.gz//g' | sort -u)
+do
+
+for files in $( find /data/Food/analysis/R6564_NGS/kefir4all/05_functional_profiling/05superfocus/"$item"_superfocus/ -maxdepth 1 -type f -name "*.xls" | awk -F / '{print $NF'})
+do
+cp /data/Food/analysis/R6564_NGS/kefir4all/05_functional_profiling/05superfocus/"$item"_superfocus/"$files" /data/Food/analysis/R6564_NGS/kefir4all/05_functional_profiling/05superfocus/05_superfocus_total_subsystem_levels/"$item"_"$files"
+
+done
+done 
+
+
+
+
+
+
+
+A10_S10_kaiju.out  29.8   579011       NA "" 
+
+
+
+
+
+find /data/Food/analysis/R6564_NGS/kefir4all/05_functional_profiling/05_crass -maxdepth 2 -type f -name "*crass.crispr"
+
+
+find /data/Food/analysis/R6564_NGS/kefir4all/05_functional_profiling/05_crass -type f -name "*.fa" -print0 | tr '\0' ,
+
+
+mkdir 05_gv_files
+
+cp */*.gv 05_gv_files
+#crisprtools stat crass.crispr -t -p -h --coverage
+
+
+
+
+find . -type f -name "*.fa" | awk -F/ '{print $NF}' the awk '{print $NF}' means print the last field in a space delemmited file.
+
+awk -F, '{print $(NF-1)}'
+
+module load crass/1.0.1 
+
+
+#crisprtools */*.crispr merge -s
+ #crisprtools stat crisprtools_merged.crispr --header > crispr_summary.txt
+
+
+#
+module unload crass/1.0.1  
+
+
+
+
+
+
+
+
+
+#####################################################################################################################################################################################################
+# install graphviz
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/05_functional_profiling
+##emacs 05install_graphviz.sh 
+#https://ctskennerton.github.io/crass/Tutorial.html - good tutorial
+###########################
+#!/bin/sh
+#SBATCH --error err_05crass_graphviz
+#SBATCH --output out_05css_graphviz
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=5
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+cd ~
+
+ module load python3.7/i3  
+#pip install graphviz
+sudo apt install graphviz
+module unload python3.7/i3  
+
+
+cd /data/Food/analysis/R6564_NGS/kefir4all/05_functional_profiling/05_crass/A10_S10_crass_out
+
+ module load python3.7/i3  
+/home/liam.walsh/.local/lib/python3.7/site-packages/graphviz/graphs.py crass.17_11_2022_192718.keys.gv > output.png
+module unload python3.7/i3  
+
+
+
+
+ module load python3.7/i3  
+/home/liam.walsh/.local/lib/python3.7/site-packages/graphviz/dot.py crass.17_11_2022_192718.keys.gv > output.png
+ #~/.local/lib/python3.7/site-packages/graphviz/dot.py  (crass.17_11_2022_192718.keys.gv, format='png'
+module unload python3.7/i3  
+
+
+

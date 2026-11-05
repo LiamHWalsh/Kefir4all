@@ -1,0 +1,80 @@
+#########################################################################################################################################################################################################################################################
+## Pharokka #############################################################################################################################################################################################################################################
+#########################################################################################################################################################################################################################################################
+
+#Installing pharokka databases
+#########################################################################################################################################################################################################################################################
+cd /data/Food/analysis/R1838_DOMINO/MASTER/scripts/04_taxonomic_profiling/04_pharokka
+emacs 04_pharokka_database_v2.sh
+#########################################################################################################################################################################################################################################################
+#!/bin/sh
+#SBATCH --error err04_pharokka_database
+#SBATCH --output out04_pharokka_database
+#SBATCH --job-name 04_pharokka_database
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=5
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=viyal.soni@teagasc.ie
+
+#Make pharokka & pharokka database directory
+#mkdir 04_pharokka_v1.4.0_databases
+#mkdir 04_pharokka_output  (remember to delete & remake output directory if tool fails)
+
+#cd /data/Food/analysis/R1838_DOMINO/MASTER/04_short_read_taxonomic_profiling/04_pharokka/04_pharokka_database
+
+module load pharokka/1.4.1
+
+#Run command below twice; first time doesn't install everything for some reason
+#1
+install_databases.py -o /data/Food/analysis/R1838_DOMINO/MASTER/04_short_read_taxonomic_profiling/04_pharokka/04_pharokka_v1.4.0_databases
+#2
+install_databases.py -o /data/Food/analysis/R1838_DOMINO/MASTER/04_short_read_taxonomic_profiling/04_pharokka/04_pharokka_v1.4.0_databases
+
+module unload pharokka/1.4.1
+
+#########################################################################################################################################################################################################################################################
+
+#Running pharokka
+#########################################################################################################################################################################################################################################################
+cd /data/Food/analysis/R1838_DOMINO/MASTER/scripts/04_taxonomic_profiling/04_pharokka
+emacs 04_pharokka.sh
+#########################################################################################################################################################################################################################################################
+#!/bin/sh
+#SBATCH --error err04_pharokka
+#SBATCH --output out04_pharokka
+#SBATCH --job-name 04_pharokka
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=25
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=viyal.soni@teagasc.ie
+
+#Metaviralspades only down below
+
+for scaffold in $(find /data/Food/analysis/R1838_DOMINO/MASTER/02_assembly/02_metaviralspades/total_mags/ -type f -name "*.fasta" | sed 's/.fasta//g' | sort -u)
+
+do
+
+#output file name
+outputfilename=$(echo $scaffold | awk -F / '{print $NF}')
+
+module load pharokka/1.4.1
+
+pharokka.py -i "$scaffold".fasta -o /data/Food/analysis/R1838_DOMINO/MASTER/04_short_read_taxonomic_profiling/04_pharokka/04_pharokka_output/"$outputfilename"_pharokka -d /data/Food/analysis/R1838_DOMINO/MASTER/04_short_read_taxonomic_profiling/04_pharokka/04_pharokka_database/pharokka_v1.4.0_databases/ -t $SLURM_CPUS_PER_TASK  -m
+
+module unload pharokka/1.4.1
+
+done
+
+#########################################################################################################################################################################################################################################################
+## END ##################################################################################################################################################################################################################################################
+#########################################################################################################################################################################################################################################################
+
+
+
+
+
+
+
+

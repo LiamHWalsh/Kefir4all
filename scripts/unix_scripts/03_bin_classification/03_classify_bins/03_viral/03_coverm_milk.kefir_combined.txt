@@ -1,0 +1,40 @@
+#################################################################################################################################################
+coverm alignment for milk kefir metagenomes to the reference viral and plasmid db
+#################################################################################################################################################
+
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/03_MAG_classification
+emacs 03_coverm_milk.kefir_rpkm.sh
+
+#!/bin/sh
+#SBATCH --error 03err_coverm_milk.kefir_rpkm
+#SBATCH --output 03out_coverm_milk.kefir_rpkm
+#SBATCH --job-name 03_coverm_milk.kefir_rpkm
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=30
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+
+
+
+
+for sample in $(find /data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files -maxdepth 1 -type f \( -name "*.fastq.gz" -and -not -name "*\
+WK*" -and -not -name "*WL*" -and -not -name "*WG*" \) | sed 's/_host_removed_R..fastq.gz//g' | sort -u)
+do
+
+outputfile=$(echo "$sample" | awk -F / '{print $NF'} )
+
+module load coverm/0.6.1
+module load samtools/1.10
+coverm contig -1 "$sample"_host_removed_R1.fastq.gz -2 "$sample"_host_removed_R2.fastq.gz --reference /data/Food/analysis/R6564_NGS/kefir4al\
+l/03_MAG_classification/viral/viralverify/total_viral_mags/03_viral_cd_hit_Milk.kefir/03_viral_cd_hit_Milk.kefir -t $SLURM_CPUS_PER_TASK -m \
+rpkm -o /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/viral/alignment_files_Milk.kefir/"$outputfile"_coverm_rpkm.tsv
+
+coverm contig -1 "$sample"_host_removed_R1.fastq.gz -2 "$sample"_host_removed_R2.fastq.gz --reference /data/Food/analysis/R6564_NGS/kefir4al\
+l/03_MAG_classification/plasmid/viralverify/total_plasmid_mags/03_plasmid_cd_hit_Milk.kefir -t $SLURM_CPUS_PER_TASK -m rpkm -o /da\
+ta/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/plasmid/alignment_files_Milk.kefir/"$outputfile"_coverm_rpkm.tsv
+
+module unload coverm/0.6.1
+module unload samtools/1.10
+done

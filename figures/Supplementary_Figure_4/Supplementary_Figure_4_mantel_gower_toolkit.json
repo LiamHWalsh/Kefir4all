@@ -1,0 +1,16 @@
+{
+  "figure": "Supplementary_Figure_4_mantel_gower_toolkit.pdf",
+  "created_utc": "2026-11-05T21:32:51Z",
+  "width_mm": 304.8,
+  "height_mm": 203.2,
+  "seed": null,
+  "source_file": "/home/rstudio/kefir4all/data/04_metacache_total_full_profile.csv",
+  "source_sha256": "5858df4d5788159ef8b6927836f64e1ef685447c647c8b9ed92bfdac6b471421",
+  "lab_toolkit_commit": null,
+  "lab_toolkit_uncommitted_changes": null,
+  "versions": {
+    "R": "4.4.2",
+    "ggplot2": "4.0.3",
+    "ggstatsplot": "0.13.0"
+  }
+}

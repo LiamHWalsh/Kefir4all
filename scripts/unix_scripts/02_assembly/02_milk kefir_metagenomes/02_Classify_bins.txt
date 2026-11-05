@@ -1,0 +1,42 @@
+#####################################################################################################################################################################################################
+# Determine the taxonomy of each MAG assembled in phase 1 of the kefir4all study with the Classify_bins module
+#####################################################################################################################################################################################################
+/data/Food/analysis/R6564_NGS/kefir4all/scripts/02_assembly/
+#emacs 02_classify_bins.sh 
+###########################
+#!/bin/sh
+#SBATCH --error 02err_classify_bins
+#SBATCH --output 02out_classify_bins
+#SBATCH --job-name 02classify_bins
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=25
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metawrap/02_bin_classification
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metawrap/02_bin_classification/02_taxonomic
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metawrap/02_bin_classification/02_functional
+
+for item in $(find /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metawrap/ -maxdepth 1 -type d  -name *reassembly)
+do
+base_name=$(echo "$item" | cut -d/ -f9 | rev | cut -c 12- | rev)
+
+module load metawrap/1.3.1 
+
+metawrap classify_bins -b "$item"/reassemblies/ -o /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metawrap/02_bin_classification/02_taxonomic/"$base_name" -t $SLURM_CPUS_PER_TASK
+metawrap annotate_bins -o /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metawrap/02_bin_classification/02_functional -t $SLURM_CPUS_PER_TASK -b "$item"/reassemblies/
+
+module unload metawrap/1.3.1 
+done
+
+
+
+
+
+
+module load metawrap/1.3.1
+
+#which config-metawrap
+#//install/software/mincondas/2.7/metawrap_1.3.2/bin/config-metawrap
+#module unload metawrap/1.3.1

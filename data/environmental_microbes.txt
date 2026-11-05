@@ -1,0 +1,99 @@
+species,type
+Acinetobacter lwoffii,Occurs in both
+Agrobacterium tumefaciens,Occurs in both
+Carnobacterium maltaromaticum,Occurs in both
+Citrobacter freundii,Occurs in both
+Clostridium beijerinckii,Occurs in both
+Clostridium botulinum,Occurs in both
+Clostridium butyricum,Occurs in both
+Clostridium saccharobutylicum,Occurs in both
+Clostridium saccharoperbutylacetonicum,Occurs in both
+Cutibacterium acnes,Occurs in both
+Enterobacter hormaechei,Occurs in both
+Escherichia coli,Occurs in both
+Klebsiella grimontii,Occurs in both
+Klebsiella michiganensis,Occurs in both
+Klebsiella oxytoca,Occurs in both
+Klebsiella pneumoniae,Occurs in both
+Kluyvera intermedia,Occurs in both
+Komagataeibacter rhaeticus,Occurs in both
+Leclercia adecarboxylata,Occurs in both
+Lelliottia amnigena,Occurs in both
+Leuconostoc citreum,Occurs in both
+Leuconostoc mesenteroides,Occurs in both
+Leuconostoc pseudomesenteroides,Occurs in both
+Limosilactobacillus fermentum,Occurs in both
+Pantoea agglomerans,Occurs in both
+Pseudomonas monteilii,Occurs in both
+Pseudomonas rhodesiae,Occurs in both
+Pseudomonas siliginis,Occurs in both
+Pseudomonas simiae,Occurs in both
+Rahnella aceris,Occurs in both
+Rahnella aquatilis,Occurs in both
+Raoultella terrigena,Occurs in both
+Salmonella enterica,Occurs in both
+Stenotrophomonas maltophilia,Occurs in both
+Stutzerimonas stutzeri,Occurs in both
+Weissella cibaria,Occurs in both
+Acetobacter ascendens,Milk.kefir
+Acetobacter pasteurianus,Milk.kefir
+Agrobacterium fabrum,Milk.kefir
+Alistipes indistinctus,Milk.kefir
+Anaerostipes caccae,Milk.kefir
+Bradyrhizobium elkanii,Milk.kefir
+Brettanomyces bruxellensis,Milk.kefir
+Citrobacter koseri,Milk.kefir
+Clostridium tyrobutyricum,Milk.kefir
+Corynebacterium tuberculostearicum,Milk.kefir
+Ehrlichia ruminantium,Milk.kefir
+Empedobacter brevis,Milk.kefir
+Empedobacter stercoris,Milk.kefir
+Enterobacter asburiae,Milk.kefir
+Enterobacter kobei,Milk.kefir
+Enterobacter mori,Milk.kefir
+Enterobacter roggenkampii,Milk.kefir
+Enterococcus durans,Milk.kefir
+Erwinia gerundensis,Milk.kefir
+Erwinia persicina,Milk.kefir
+Escherichia fergusonii,Milk.kefir
+Geobacillus stearothermophilus,Milk.kefir
+Hafnia alvei,Milk.kefir
+Hafnia paralvei,Milk.kefir
+Klebsiella aerogenes,Milk.kefir
+Klebsiella quasipneumoniae,Milk.kefir
+Klebsiella variicola,Milk.kefir
+Lacticaseibacillus paracasei,Milk.kefir
+Lactobacillus acidophilus,Milk.kefir
+Lactococcus garvieae,Milk.kefir
+Lentilactobacillus buchneri,Milk.kefir
+Lentilactobacillus hilgardii,Milk.kefir
+Lentilactobacillus parabuchneri,Milk.kefir
+Leuconostoc lactis,Milk.kefir
+Mycobacterium tuberculosis,Milk.kefir
+Mycoplasmopsis bovis,Milk.kefir
+Paenibacillus odorifer,Milk.kefir
+Pediococcus damnosus,Milk.kefir
+Pichia kudriavzevii,Milk.kefir
+Prevotella copri,Milk.kefir
+Pseudomonas atacamensis,Milk.kefir
+Pseudomonas azotoformans,Milk.kefir
+Pseudomonas lurida,Milk.kefir
+Pseudomonas moraviensis,Milk.kefir
+Pseudomonas synxantha,Milk.kefir
+Raoultella ornithinolytica,Milk.kefir
+Raoultella planticola,Milk.kefir
+Serratia liquefaciens,Milk.kefir
+Serratia marcescens,Milk.kefir
+Serratia plymuthica,Milk.kefir
+Thermus thermophilus,Milk.kefir
+Weissella confusa,Milk.kefir
+Yersinia enterocolitica,Milk.kefir
+Yersinia intermedia,Milk.kefir
+Enterococcus faecalis,Water.kefir
+Lactobacillus helveticus,Water.kefir
+Lactobacillus kefiranofaciens,Water.kefir
+Lactococcus cremoris,Water.kefir
+Lactococcus lactis,Water.kefir
+Pseudomonas fragi,Water.kefir
+Pseudomonas lundensis,Water.kefir
+Pseudomonas putida,Water.kefir

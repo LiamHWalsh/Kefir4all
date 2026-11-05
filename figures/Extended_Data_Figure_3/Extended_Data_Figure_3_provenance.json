@@ -1,0 +1,16 @@
+{
+  "figure": "Extended_Data_Figure_3_provenance.pdf",
+  "created_utc": "2026-11-05T15:48:29Z",
+  "width_mm": 665.48,
+  "height_mm": 439.42,
+  "seed": null,
+  "source_file": "/home/rstudio/kefir4all/data/ndb.csv.gz",
+  "source_sha256": "961d7d01bfbf3b02fa4b7801f65711de13df80a5bfd3569737ef1350f8d9a0ee",
+  "lab_toolkit_commit": null,
+  "lab_toolkit_uncommitted_changes": null,
+  "versions": {
+    "R": "4.4.2",
+    "ggplot2": "4.0.3",
+    "ggstatsplot": "0.13.0"
+  }
+}

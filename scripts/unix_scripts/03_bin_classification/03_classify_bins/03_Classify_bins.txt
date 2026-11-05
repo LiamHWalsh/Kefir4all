@@ -1,0 +1,52 @@
+#####################################################################################################################################################################################################
+# Determine the taxonomy of each MAG assembled in phase 1 of the kefir4all study with the Classify_bins module
+#####################################################################################################################################################################################################
+/data/Food/analysis/R6564_NGS/kefir4all/scripts/03_MAG_classification
+#emacs 03_classify_bins.sh 
+###########################
+#!/bin/sh
+#SBATCH --error 03err_classify_bins
+#SBATCH --output 03out_classify_bins
+#SBATCH --job-name 03classify_bins
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=10
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_taxonomic
+#mkdir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_functional
+
+#for item in $(find /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metawrap/ -maxdepth 1 -type d  -name *reassembly)
+#base_name=$(echo "$item" | cut -d/ -f9 | rev | cut -c 12- | rev)
+
+/data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metawrap/MK001_A_merged_metawrap_bin_reassembly/reassembled_bins:
+/data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metawrap/MK001_A_metawrap_bin_reassembly/reassembled_bins
+
+
+for item in $(find /data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files/merged/ -maxdepth 1 -type f  -name *R1.fastq.gz | cut -d/ -f10 | sed 's/_R1.fastq.gz//g' | sed 's/_merged//g' | sort -u)
+do
+
+
+module load metawrap/1.3.1 
+module load blast/2.8.1   
+
+metawrap classify_bins -b /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metawrap/"$item"_metawrap_bin_reassembly/reassembled_bins -o /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_taxonomic/"$item" -t $SLURM_CPUS_PER_TASK
+
+
+#metawrap annotate_bins -o /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_functional -t $SLURM_CPUS_PER_TASK -b "$item"/reassembled_bins/ # not working 
+
+module unload metawrap/1.3.1 
+module unload blast/2.8.1  
+done
+
+
+
+
+
+
+
+
+

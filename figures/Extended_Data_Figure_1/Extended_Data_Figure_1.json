@@ -1,0 +1,16 @@
+{
+  "figure": "Extended_Data_Figure_1.pdf",
+  "created_utc": "2026-11-05T17:48:53Z",
+  "width_mm": 609.6,
+  "height_mm": 406.4,
+  "seed": null,
+  "source_file": "/home/rstudio/kefir4all/data/04_metacache_total_species_profile_v2.csv",
+  "source_sha256": "02e05e163e42681b0d89badee6ee72e1188bed810fb6aa7fed9b5cf6f0b253d1",
+  "lab_toolkit_commit": null,
+  "lab_toolkit_uncommitted_changes": null,
+  "versions": {
+    "R": "4.4.2",
+    "ggplot2": "4.0.3",
+    "ggstatsplot": "0.13.0"
+  }
+}

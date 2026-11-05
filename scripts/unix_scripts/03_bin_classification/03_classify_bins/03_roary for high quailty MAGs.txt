@@ -1,0 +1,148 @@
+#####################################################################################################################################################################################################
+# adjust the dataframe to make it appropriate for the bellow prokka script 
+#####################################################################################################################################################################################################
+
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_prokka
+
+cd /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_prokka
+
+remove any classfication columns in Q:\H2020 Master\Citizen Science Project\Results\03_mag_classification\gtdbtk_representatives_for_roary.xlsx as it interfers with the grep command below
+upload Q:\H2020 Master\Citizen Science Project\Results\03_mag_classification\gtdbtk_representatives_for_roary.xlsx to /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_prokka
+
+dos2unix gtdbtk_representatives_for_roary.csv
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_prokka/03_roary_gff_files
+
+
+cut -d, -f3 gtdbtk_representatives_for_roary.csv | sed 'id' | sort -u > species_of_interest.tsv
+modify the text file on the cluster to remove the d paragraph
+
+# modify the created text file
+###########################
+
+
+
+#####################################################################################################################################################################################################
+# Run prokka seperately
+#####################################################################################################################################################################################################
+
+cd /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification
+emacs 03_prokka_for_roary.sh
+
+###########################
+
+#!/bin/sh
+#SBATCH --error 03_prokka_for_roary_err
+#SBATCH --output 03_prokka_for_roary_out
+#SBATCH --job-name 03_prokka_for_roary
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=35
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+rm -r /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_prokka/03_roary_gff_files/
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_prokka/03_roary_gff_files/
+
+while read -r line
+do
+
+i=$(echo "$line" | sed 's/ /_/g')
+
+#output_name=$(echo "$i" | sed 's/ /_/g')
+
+
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_prokka/03_roary_gff_files/"$i"
+
+
+done < /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_prokka/species_of_interest.tsv
+
+
+
+while read -r line
+do
+
+i=$(echo "$line" | sed 's/ /_/g')
+
+base_name=$(echo "$i" | sed 's/_.*//g')
+species_name=$(echo "$i" | sed 's/.*_//')
+
+for j in $(grep "$line" /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_prokka/gtdbtk_representatives_for_roary.csv | cut -d, -f 1)
+do
+
+module load prokka/1.14
+prokka --compliant --kingdom Bacteria --outdir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_prokka/03_roary_gff_files/"$i"/"$j" --prefix "$j" --genus "$base_name" --species "$species_name" --locustag "$line" /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metawrap/representative_MAGs/"$j".fa --cpus $SLURM_CPUS_PER_TASK
+
+module unload prokka/1.14
+done
+done < /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_prokka/species_of_interest.tsv
+
+
+
+
+
+
+
+#####################################################################################################################################################################################################
+#roary for high quailty MAGs
+#####################################################################################################################################################################################################
+
+cd /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification
+emacs 03_roary_total_mags.sh
+
+###########################
+
+
+
+#!/bin/sh
+#SBATCH --error err_roary_total_mags
+#SBATCH --output out_roary_total_mags
+#SBATCH --job-name roary_total_mags
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=25
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_prokka/03_roary
+
+for i in $(find /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_prokka/03_roary_gff_files/ -type d -maxdepth 1 | sed '1d' )
+
+do
+
+species_name=$( echo "$i" | awk -F / '{print $NF'} )
+
+
+module load roary/3.13
+roary -e -n -v -p  $SLURM_CPUS_PER_TASK $(find "$i" -type f -name "*.gff") -qc -k /data/databases/kraken_gtdbtk/ -f /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_prokka/03_roary/"$species_name" 
+module unload roary/3.13
+done
+
+
+
+
+#mkdir  /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_prokka/03_roary/summary_statistics
+
+mkdir  /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_prokka/03_roary/gene_presence_absence
+
+for i in $(find  /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_prokka/03_roary/ -type f -name "summary_statistics.txt")
+do
+
+
+species_name=$( echo "$i" | awk -F / '{print $(NF-1)'} )
+
+
+#cp "$i" /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_prokka/03_roary/summary_statistics/"$species_name"_summary_statistics.txt
+cp  /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_prokka/03_roary/"$species_name"/gene_presence_absence.csv /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_prokka/03_roary/gene_presence_absence/"$species_name"_gene_presence_absence.csv
+done
+
+
+echo base_name=
+
+
+
+
+
+

@@ -1,0 +1,120 @@
+
+
+#for base_name in $(find /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metaviralspades/test -type d -name "*_metaviralspades")
+#do
+#cp "$base_name" /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metaviralspades/
+#done
+
+
+
+
+Error: required program 'prodigal-gv' not executable or not found on $PATH
+
+module load anaconda3.6.b/4.6 
+module load python3.7/i3
+
+#conda install -c bioconda prodigal-gv
+conda install -c conda-forge -c bioconda checkv
+
+module unload python3.7/i3
+module unload anaconda3.6.b/4.6 
+
+
+
+
+
+
+conda activate checkv
+
+
+
+ * Assembled contigs are in /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metaviralspades/MK032_GRK-B_merged_metaviralspades/contigs.fasta
+ * Assembled scaffolds are in /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metaviralspades/MK032_GRK-B_merged_metaviralspades/scaffolds.fasta
+
+
+module unload python 
+module load anaconda3.6.b/4.6 
+
+source
+
+
+
+
+
+
+
+source /install/software/anaconda3.6.b/bin/actyivate
+export CONDA_DEFAULT_ENV=/install/software/anaconda3.6.b/bin/activate
+
+source $CONDA_DEFAULT_ENV
+
+
+
+
+
+
+
+
+
+
+
+
+#####################################################################################################################################################################################################
+# checkv command for viral Assemblies acquired using metavirspades
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/03_MAG_classification/
+#emacs 03_checkv_metaviralspades.sh
+###########################
+
+#!/bin/sh
+#SBATCH --error 03_err_checkv_metaviralspades
+#SBATCH --output 03_out_checkv_metaviralspades
+#SBATCH --job-name 03_checkv_metaviralspades
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=3
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/checkv
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/checkv/metaviralspades_checkv/
+
+for base_name in $(find /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metaviralspades/test -type d -name "*_metaviralspades" -maxdepth 2) # note by including maxdepth 2 we will get the assembles in the test directory 
+do
+
+
+/data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metaviralspades/test/WK027_merged_metaviralspades
+module load prodigal/2.6.3
+module load python3.7/i3
+module load checkv/1.0.1
+
+#source /install/software/anaconda3.6.b/bin/activate
+
+#conda activate .conda/envs/checkv
+
+name=$(echo "$base_name" | awk -F / '{print $NF'} | sed 's/_metaviralspades//g')
+
+checkv end_to_end "$base_name"/scaffolds.fasta /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/checkv/metaviralspades_checkv/"$name"_checkv -t $SLURM_CPUS_PER_TASK -d /data/Food/analysis/R6564_NGS/liam.walsh/virsorter/metawrap/checkv-db-v1.0 
+
+done
+module unload prodigal/2.6.3
+module unload python3.7/i3
+module unload checkv/1.0.1
+
+#conda deactivate
+
+
+
+ 
+
+python /home/liam.walsh/prodigal-gv/parallel-prodigal-gv.py 
+
+
+
+find /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metaviralspades/ -type d -newerat '2023-03-14' -maxdepth 1 -exec rm -r  {} \;
+
+/data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metaviralspades/MK_TG_GO_MLC_metaviralspades 
+
+
+source /home/liam.walsh/prodigal-gv/prodigal-gv
+

@@ -1,0 +1,804 @@
+
+
+
+
+
+
+/data/Food/analysis/R6564_NGS/kefir4all/04_short_read_profiling/04instrain/genome_updater/genome_updater.sh 
+module unload python3.7/i3 
+
+
+
+
+
+#################################################################################################################################################
+## drep high quaility MAGs at .99% see 04instrain for all other steps needed to get to this point
+#################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/03_MAG_classification/
+emacs 04_drep_instrain_species.sh
+###########################
+
+#!/bin/sh
+#SBATCH --error err_drep_instrain
+#SBATCH --output out_drep_instrain
+#SBATCH --job-name 03_drep_instrain
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=23 
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+cd /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metawrap/02_total_MAGS/
+module load python3.7/i3  
+module load drep/3.2.0   
+module load fastani/1.32
+module load mash/2.1 
+module load checkm/1.0.18 
+module load mummer/4.5
+module load prodigal/2.6.3 
+
+#mkdir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_drep
+rm -r /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_drep/dereplicate
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_drep/dereplicate
+#mkdir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_drep/clustered_representative_genomes
+
+dRep dereplicate /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_drep/dereplicate_strain -g /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metawrap/02_total_MAGS/*.fa --genomeInfo /data/Food/analysis/R6564_NGS/kefir4all/04_short_read_profiling/04instrain/04_representative_db/02_high_quaility_MAGs/03_checkm/checkm2_total_MAGs.csv -p $SLURM_CPUS_PER_TASK 
+
+#dRep compare /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_drep/clustered_representative_genomes -g $(cat drep_dereplicate_list.txt) -p $SLURM_CPUS_PER_TASK #--S_algorithm gANI
+
+module unload drep/3.2.0
+module unload fastani/1.32
+module unload mash/2.1 
+module unload checkm/1.0.18 
+module unload mummer/4.5   
+module unload prodigal/2.6.3
+module unload python3.7/i3
+
+
+
+#####################################################################################################################################################################################################
+# merge instrain representatives into a single fasta file
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/06_strain_profiling/
+emacs 06_instrain_strain_representatives_fa.sh
+###########################
+
+#!/bin/sh
+#SBATCH --error 04err_instrain_representatives_fa
+#SBATCH --output 04out_instrain_representatives_fa
+#SBATCH --job-name 04_instrain_representatives_fa
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=5
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_instrain/
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_instrain/06_representative_db/
+cat /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_drep_v3/dereplicate_outputs/dereplicated_genomes/*.fa >> /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_instrain/06_representative_db/instrain_db_strain.fa
+
+
+
+#####################################################################################################################################################################################################
+# following loop to re-generate the reps.fasta file with no duplicated contig IDs:
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/06_strain_profiling/
+emacs 02_rename.sh
+###########################
+ for mag in /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_drep_v3/dereplicate_outputs/dereplicated_genomes/*.fa;do cat $mag|sed "s/>/>$(basename $mag)_/g";done > /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_instrain_v2/06_representative_db/instrain_db_strain.fa
+
+#!/bin/sh
+#SBATCH --error 02_rename_err
+#SBATCH --output 02_rename_out
+#SBATCH --job-name 02_rename
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=5
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+# leave this here incase you mess up the sample naming so you can get the mags back, not included in the standard pipeline
+rm -r /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_drep/dereplicate/dereplicated_genomes_v2/ 
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_drep/dereplicate/dereplicated_genomes_v2/ 
+
+for mag in $(find /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_drep/dereplicate/dereplicated_genomes/ -type f -maxdepth 1 -mindepth 1 -name *.fa  | awk -F / '{print $NF'});do 
+
+
+cp /data/Food/analysis/R6564_NGS/kefir4all/02_assembly/02_metawrap/02_total_MAGS/"$mag" /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_drep/dereplicate/dereplicated_genomes_v2/"$mag"
+
+done
+
+# rename cotigs with no duplicate IDs
+
+
+for mag in $(find /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_drep/dereplicate/dereplicated_genomes_v2/ -type f -maxdepth 1 -mindepth 1 -name *.fa  | awk -F / '{print $NF'});do 
+
+sed "s/>/>"$mag"_/g" /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_drep/dereplicate/dereplicated_genomes_v2/$mag 
+
+done
+
+
+
+
+#####################################################################################################################################################################################################
+# make a bowtie db from above 
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/06_strain_profiling/
+emacs 06_instrain_strain_bowtie.sh
+###########################
+
+#!/bin/sh
+#SBATCH --error 06err_instrain_bowtie
+#SBATCH --output 06out_instrain_bowtie
+#SBATCH --job-name 06_instrain_bowtie
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=45
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_instrain/06_representative_db/06_instrain_bowtie_db/
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_instrain/06_representative_db/06_instrain_bowtie_db/06bowtie_output
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_instrain/06_representative_db/06_instrain_bowtie_db/06bowtie_output_strain
+
+
+
+module load bowtie2/2.3.4
+module load anaconda3.6.b/4.6 
+
+bowtie2-build /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_instrain/06_representative_db/instrain_db_strain.fa /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_instrain/06_representative_db/06_instrain_bowtie_db/instrain_db_strain_bowtie_index -f fa --threads $SLURM_CPUS_PER_TASK --large-index
+
+module unload anaconda3.6.b/4.6 
+module unload bowtie2/2.3.4
+
+module load bowtie2/2.3.4
+module load anaconda3.6.b/4.6
+module load samtools/1.10
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06instrain/06instrain_strain_output
+for i in $(find /data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files -maxdepth 1 -type f \( -name "*.fastq.gz" \) | awk -F / '{print $NF'} | sed 's/_host_removed_R..fastq.gz//g' | sort -u )
+do    
+
+    bowtie2 -p $SLURM_CPUS_PER_TASK -x /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_instrain/06_representative_db/06_instrain_bowtie_db/instrain_db_strain_bowtie_index -1 /data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files/"$i"_host_removed_R1.fastq.gz -2 /data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files/"$i"_host_removed_R2.fastq.gz > /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_instrain/06_representative_db/06_instrain_bowtie_db/06bowtie_output_strain/"$i".sam
+      
+    #samtools view /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_instrain/06_representative_db/06_instrain_bowtie_db/06bowtie_output_strain/"$i".sam -b -o /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_instrain/06_representative_db/06_instrain_bowtie_db/06bowtie_output_strain/"$i".bam -@ $SLURM_CPUS_PER_TASK 
+	
+done
+
+module unload anaconda3.6.b/4.6 
+module unload bowtie2/2.3.4
+module unload samtools/1.10
+
+
+
+
+
+
+#use this one
+
+module load drep/3.5.0
+parse_stb.py --reverse -f /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_drep_v3/dereplicate_outputs/dereplicated_genomes/*.fa -o /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_instrain/06_representative_db/all.genomes_strain_v2.stb
+
+module unload drep/3.2.0
+
+
+
+
+
+
+#####################################################################################################################################################################################################
+# prodigal command on reps MAGs
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/03_MAG_classification/
+emacs 03_instrain_db_prodigal_v2.sh
+
+###########################
+
+
+
+#!/bin/sh
+#SBATCH --error 03err_instrain_db_prodigal_v2
+#SBATCH --output 03out_instrain_db_prodigal_v2
+#SBATCH --job-name 03_instrain_db_prodigal_v2
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=5
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_instrain/03_prodigal
+module load prodigal/2.6.3
+
+ for mag in $(find /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_drep_v3/dereplicate_outputs/dereplicated_genomes/ -type f -name "*.fa" | awk -F / '{print $NF'} | sed 's/.fa//g')
+do
+
+prodigal -i /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_drep_v3/dereplicate_outputs/dereplicated_genomes/"$mag".fa -d /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_instrain/03_prodigal/03_"$mag"_genes.fa -a /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_instrain/03_prodigal/03_"$mag"_proteins.faa -p single
+done
+module unload prodigal/2.6.3
+
+
+
+input_dir=/data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_instrain/03_prodigal/
+
+
+cat "$input_dir"/*genes.fa > "$input_dir"/UHGG_reps.genes.fna
+
+cat "$input_dir"/*proteins.faa > "$input_dir"/UHGG_reps.genes.faa
+
+
+
+#####################################################################################################################################################################################################
+# prodigal command on total reps MAGs
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/03_MAG_classification/
+emacs 03_instrain_db_prodigal_v2.sh
+
+###########################
+
+
+
+#!/bin/sh
+#SBATCH --error 03err_instrain_db_prodigal_v2
+#SBATCH --output 03out_instrain_db_prodigal_v2
+#SBATCH --job-name 03_instrain_db_prodigal_v2
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=5
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_instrain/03_prodigal
+module load prodigal/2.6.3
+
+ for mag in $(find /data/Food/analysis/R6564_NGS/kefir4all/03_MAG_classification/03_drep_v3/dereplicate_outputs/dereplicated_genomes/ -type f -name "*.fa" | awk -F / '{print $NF'} | sed 's/.fa//g')
+do
+
+prodigal -i /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_instrain/06_representative_db/instrain_db_strain.fa -d /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_instrain/03_prodigal/03_"$mag"_genes.fa -a /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_instrain/03_prodigal/03_"$mag"_proteins.faa -p single
+done
+module unload prodigal/2.6.3
+
+
+
+input_dir=/data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_instrain/03_prodigal/
+
+
+cat "$input_dir"/*genes.fa > "$input_dir"/UHGG_reps.genes.fna
+
+cat "$input_dir"/*proteins.faa > "$input_dir"/UHGG_reps.genes.faa
+
+
+
+
+
+#####################################################################################################################################################################################################
+# instrain_profile instrain_profile_kefir4all_mk
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/06_strain_profiling/
+emacs 06_instrain_profile_kefir4all_mk.sh
+###########################
+#!/bin/sh
+#SBATCH --error 06err_instrain_profile_kefir4all_mk
+#SBATCH --output 06out_instrain_profile_kefir4all_mk
+#SBATCH --job-name 06_instrain_profile_kefir4all_mk
+#SBATCH -p Priority,Background
+#SBATCH -N 1
+#SBATCH --cpus-per-task=40
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+
+#mkdir /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_instrain/06_instrain_profile/
+
+module load anaconda/3.10
+
+source activate instrain
+
+for i in $(find /data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files -maxdepth 1 -type f \( -name "*TG_*" -and  -name "*MG*" -or -name "*ML*" -and\
+  -name "*.fastq.gz" \) | awk -F / '{print $NF'} | sed 's/_host_removed_R..fastq.gz//g' | sort -u )
+do
+
+    inStrain profile /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_instrain/06_representative_db/06_instrain_bowtie_db/06bowtie_o\
+utput_strain/"$i".sam /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_instrain/06_representative_db/instrain_db_strain.fa -o /data\
+/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_instrain/06_instrain_profile_v2/"$i"_instrain_profile --processes $SLURM_CPUS_PER_TASK -s \
+/data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_instrain/06_representative_db/all.genomes_strain_v2.stb --min_read_ani 0.92 --min_gen\
+ome_coverage 0.1 -g /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_instrain/03_prodigal/UHGG_reps.genes.fna \
+
+
+
+done
+
+conda deactivate
+
+
+
+
+
+
+module unload anaconda/3.10
+
+
+
+
+
+
+
+
+
+#####################################################################################################################################################################################################
+# instrain_profile for all instrain_profile_kefir4all_wk
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/06_strain_profiling/
+emacs 06_instrain_profile_kefir4all_wk.sh
+###########################
+#!/bin/sh
+#SBATCH --error 06err_instrain_profile_kefir4all_wk
+#SBATCH --output 06out_instrain_profile_kefir4all_wk
+#SBATCH --job-name 06_instrain_profile_kefir4all_wk
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=40
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+#mkdir /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_instrain/06_instrain_profile/
+
+
+module load anaconda/3.10
+source activate instrain
+
+
+for i in $(find /data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files -maxdepth 1 -type f \( -name "*TG_*" -and  -name "*WG*" -or -name "*WL*" -and\
+  -name "*.fastq.gz" \) | awk -F / '{print $NF'} | sed 's/_host_removed_R..fastq.gz//g' | sort -u | tail -n +8 )
+do
+
+#module load bowtie2/2.5.3
+#module load samtools/1.19.2
+
+  inStrain profile /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_instrain/06_representative_db/06_instrain_bowtie_db/06bowtie_o\
+utput_strain/"$i".sam /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_instrain/06_representative_db/instrain_db_strain.fa -o /data\
+/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_instrain/06_instrain_profile_v2/"$i"_instrain_profile --processes $SLURM_CPUS_PER_TASK -s \
+/data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_instrain/06_representative_db/all.genomes_strain_v2.stb --min_read_ani 0.92 --min_gen\
+ome_coverage 0.1 -g /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_instrain/03_prodigal/UHGG_reps.genes.fna \
+
+
+#module unload bowtie2/2.5.3
+#module unload samtools/1.19.2
+done
+conda deactivate
+module unload anaconda/3.10
+
+
+
+#####################################################################################################################################################################################################
+# instrain_profile for global_wk
+#####################################################################################################################################################################################################
+
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/06_strain_profiling/
+emacs 06_instrain_profile_global_wk.sh
+###########################
+#!/bin/sh
+#SBATCH --error 06err_instrain_profile_global_wk
+#SBATCH --output 06out_instrain_profile_global_wk
+#SBATCH --job-name 06_instrain_profile_global_wk
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=40
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+#mkdir /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_instrain/06_instrain_profile/
+
+
+module load anaconda/3.10
+source activate instrain
+
+
+for i in $(find /data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files -maxdepth 1 -type f \( -name "WK*" -and -name "*.fastq.gz" \) | awk -F / '{print $NF'} | sed 's/_host_removed_R..fastq.gz//g' | sort -u )
+do
+
+#module load bowtie2/2.5.3
+#module load samtools/1.19.2
+
+  inStrain profile /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_instrain/06_representative_db/06_instrain_bowtie_db/06bowtie_o\
+utput_strain/"$i".sam /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_instrain/06_representative_db/instrain_db_strain.fa -o /data\
+/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_instrain/06_instrain_profile_v2/"$i"_instrain_profile --processes $SLURM_CPUS_PER_TASK -s \
+/data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_instrain/06_representative_db/all.genomes_strain_v2.stb --min_read_ani 0.92 --min_gen\
+ome_coverage 0.1 -g /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_instrain/03_prodigal/UHGG_reps.genes.fna \
+
+
+#module unload bowtie2/2.5.3
+#module unload samtools/1.19.2
+done
+conda deactivate
+module unload anaconda/3.10
+
+
+#####################################################################################################################################################################################################
+# instrain_profile for global_mk
+#####################################################################################################################################################################################################
+
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/06_strain_profiling/
+emacs 06_instrain_profile_global_mk.sh
+###########################
+#!/bin/sh
+#SBATCH --error 06err_instrain_profile_global_mk
+#SBATCH --output 06out_instrain_profile_global_mk
+#SBATCH --job-name 06_instrain_profile_global_mk
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=40
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+#mkdir /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_instrain/06_instrain_profile/
+
+
+module load anaconda/3.10
+source activate instrain
+
+
+for i in $(find /data/Food/analysis/R6564_NGS/kefir4all/01qc/01fastq_files -maxdepth 1 -type f \( -name "*fastq.gz" -not -name "TG_*" -not -name "WK*" \) | awk -F / '{print $NF'} | sed 's/_host_removed_R..fastq.gz//g' | sort -u )
+do
+
+#module load bowtie2/2.5.3
+#module load samtools/1.19.2
+
+  inStrain profile /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_instrain/06_representative_db/06_instrain_bowtie_db/06bowtie_o\
+utput_strain/"$i".sam /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_instrain/06_representative_db/instrain_db_strain.fa -o /data\
+/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_instrain/06_instrain_profile_v2/"$i"_instrain_profile --processes $SLURM_CPUS_PER_TASK -s \
+/data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_instrain/06_representative_db/all.genomes_strain_v2.stb --min_read_ani 0.92 --min_gen\
+ome_coverage 0.1 -g /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_instrain/03_prodigal/UHGG_reps.genes.fna \
+
+
+#module unload bowtie2/2.5.3
+#module unload samtools/1.19.2
+done
+conda deactivate
+module unload anaconda/3.10
+
+
+
+
+
+#####################################################################################################################################################################################################
+# instrain outputs into one file
+#####################################################################################################################################################################################################
+
+###########################
+
+
+mkdir -p /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_instrain/06_instrain_profile_v2/collective/outputs
+
+directories=$( find /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_instrain/06_instrain_profile_v2/ -type d -name "*_instrain_profile" )
+
+    #"/data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_instrain/06_instrain_profile_v2/TG_AP_T2_WG_0AN_S181_instrain_profile/output/"
+    #"/data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_instrain/06_instrain_profile_v2/TG_AP_T2_WG_0AN_S340_instrain_profile/output/"
+    #"/data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_instrain/06_instrain_profile_v2/TG_AP_T2_WL_0AE_S303_instrain_profile/output/"
+    #"/data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_instrain/06_instrain_profile_v2/TG_AP_T2_WL_0AN_S304_instrain_profile/output/"
+    #"/data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_instrain/06_instrain_profile_v2/TG_AP_WLC_S420_instrain_profile/output/"
+#)
+
+
+
+
+
+
+mkdir -p /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_instrain/06_instrain_profile_v2/collective/outputs
+
+# Loop through the array and copy each directory
+for src in $( find /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_instrain/06_instrain_profile_v2/ -type d -name "*_instrain_profile")
+
+do
+
+
+
+
+    # Extract the base name of the source directory and append "_output" to it
+    base_name=$(echo "$src" | awk -F / '{print $NF}' )
+    dest="/data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_instrain/06_instrain_profile_v2/collective/outputs/${base_name}_output"
+    
+    # Copy the directory to the new destination
+    cp -r "$src"/output "$dest"
+done
+
+
+
+
+
+
+mkdir -p /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_instrain/06_instrain_profile_v2/collective/figures
+
+
+# Loop through the array and copy each directory
+for src in $( find /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_instrain/06_instrain_profile_v2/ -type d -name "*_instrain_profile")
+
+do
+    # Extract the base name of the source directory and append "_output" to it
+    base_name=$(echo "$src" | awk -F / '{print $NF}' )
+    dest="/data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_instrain/06_instrain_profile_v2/collective/figures/${base_name}_figures"
+    
+    # Copy the directory to the new destination
+    cp -r "$src" "$dest"
+done
+
+open hcux401.teagasc.net
+ liam.walsh
+ liam.walsh
+cd /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_instrain/06_instrain_profile_v2/collective
+ lcd Q:\"H2020 Master"\"Citizen Science Project"\Results\06_strain_profiling\06_instrain\instrain_profile
+
+mget -r outputs
+mget -r figures
+
+
+
+input_folder=/data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_instrain/06_instrain_profile_v2/collective/outputs/
+
+
+find $input_folder -type f -name "*instrain_profile_SNVs.tsv*"
+
+
+find "$input_folder" -type f -name "*instrain_profile_SNVs.tsv*" | while read -r file; do
+  # Extract the sample ID from the file path (text after the last / delimiter)
+  sample_id=$(basename "$(dirname "$file")")
+sample_id=${sample_id%_instrain_profile_output}
+
+  
+  # Add a new column to the file with the sample ID
+  awk -v sample_id="$sample_id" 'BEGIN {OFS="\t"} NR==1 {print $0, "sample_id"} NR>1 {print $0, sample_id}' "$file"
+done > $input_folder/merged_instrain_profile_SNVs.tsv
+
+echo "All files have been merged into merged_instrain_profile_SNVs.tsv"
+
+
+
+WK069-1-L-08h-05C8_S78_instrain_profile_output/
+
+
+
+#####################################################################################################################################################################################################
+# instrain compare
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/06_strain_profiling/
+emacs 06_instrain_compare_milk_cs.sh
+###########################
+cd /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_instrain_v2/06_instrain_profile_v2
+
+
+#!/bin/sh
+#SBATCH --error 06err_instrain_compare_milk_cs
+#SBATCH --output 06out_instrain_compare_milk_cs
+#SBATCH --job-name 06_instrain_compare_milk_cs
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=20
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+
+module load anaconda/3.10
+source activate instrain
+
+#inStrain compare -i $(find /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_instrain_v2/06_instrain_profile/ -name "*_instrain_profile" -type d) -p $SLURM_CPUS_PER_TASK
+
+
+
+
+
+
+
+module load anaconda/3.10
+source activate instrain
+
+
+
+inStrain compare -i $(find /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_instrain/06_instrain_profile_v2/ -type f \( -name "*covT.hd5" -and -ipath "*TG_*" -and -not -ipath "*WG*" -and -not -ipath "*WL*" -and -not -ipath "*WK*" \) | sed 's/raw_data\/covT.hd5//g' | sort -u ) -p $SLURM_CPUS_PER_TASK -o /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_instrain/06_instrain_profile_v2/06_instrain_compare_milk
+
+
+
+
+
+#inStrain compare -i /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_instrain_v2/06_instrain_profile/TG_ID037_ML_T5_S57_instrain_profile/ /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_instrain_v2/06_instrain_profile/TG_ID037_ML_T6_S81_instrain_profile/ -o /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_instrain_v2/06_instrain_profile/test -p $SLURM_CPUS_PER_TASK
+
+conda deactivate
+module unload anaconda/3.10
+
+
+module unload samtools/1.10
+module unload bowtie2/2.4.4
+module unload instrain/1.5.3  
+module unload python3.7/i3
+#####################################################################################################################################################################################################
+# instrain compare
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/06_strain_profiling/
+emacs 06_instrain_strain_compare_water_cs.sh
+###########################
+
+
+#!/bin/sh
+#SBATCH --error 06err_instrain_compare_water_cs
+#SBATCH --output 06out_instrain_compare_water_cs
+#SBATCH --job-name 06_instrain_compare_water_cs
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=40
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+
+module load anaconda/3.10
+source activate instrain
+
+
+#inStrain compare -i $(find /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_instrain_v2/06_instrain_profile/ -name "*_instrain_profile" -type d) -p $SLURM_CPUS_PER_TASK
+
+
+
+
+
+inStrain compare -i $(find /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_instrain/06_instrain_profile_v2  -type f \( -name "*covT.hd5" -and -ipath "*TG_*" -and -ipath "*WG*" -or -name "*covT.hd5" -and -ipath "*WL*" -or -name "*covT.hd5" -and -ipath "*WK*" \) | sed 's/raw_data\/covT.hd5//g' | sort -u ) -p $SLURM_CPUS_PER_TASK -o /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_instrain/06_instrain_profile_v2/06_instrain_compare_water
+
+
+conda deactivate
+module unload anaconda/3.10
+
+/data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_instrain/06_instrain_profile_v2 
+
+
+module unload samtools/1.10
+module unload bowtie2/2.4.4
+module unload instrain/1.5.3  
+module unload python3.7/i3
+
+
+#####################################################################################################################################################################################################
+# instrain compare on selected samples
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/06_strain_profiling/
+emacs 06_instrain_strain_compare_water_selected.sh
+###########################
+
+mkdir /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_instrain/06_instrain_profile_v2/06_instrain_compare_water/selected
+go to /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_instrain/06_instrain_profile_v2/06_instrain_compare_water/selected
+
+upload Q:\H2020 Master\Citizen Science Project\Results\06_strain_profiling\06_instrain\instrain_compare/instrain_compare_selected_sample_Milk.kefir.csv
+upload Q:\H2020 Master\Citizen Science Project\Results\06_strain_profiling\06_instrain\instrain_compare/instrain_compare_selected_sample_Water.kefir.csv
+
+dos2unix  /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_instrain/06_instrain_profile_v2/06_instrain_compare_water/selected/instrain_compare_selected_sample_Milk.kefir.csv
+
+dos2unix  /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_instrain/06_instrain_profile_v2/06_instrain_compare_water/selected/instrain_compare_selected_sample_Water.kefir.csv
+
+
+
+#####################################################################################################################################################################################################
+# instrain compare milk on selected samples
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/06_strain_profiling/
+emacs 06_instrain_strain_compare_milk_selected.sh
+###########################
+
+
+
+#!/bin/sh
+#SBATCH --error 06err_instrain_compare_milk_selected
+#SBATCH --output 06out_instrain_compare_milk_selected
+#SBATCH --job-name 06_instrain_compare_milk_selected
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=40
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+
+
+module load anaconda/3.10
+source activate instrain
+
+
+input_folder=/data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_instrain/06_instrain_profile_v2
+
+out_folder=/data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_instrain/06_instrain_profile_v2/06_instrain_compare_milk/selected
+index=/data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_instrain/06_instrain_profile_v2/06_instrain_compare_water/selected/instrain_compare_selected_sample_Milk.kefir.csv
+
+
+# Debug: Print sample IDs read by awk
+awk -F, 'NR>1 {print $1}' "$index"
+
+# Read sample IDs into an array using awk to extract the first column
+mapfile -t sample_ids < <(awk -F, 'NR>1 {print $1}' "$index" | sort -u)
+
+# Debug: Print all sample IDs read into the array
+printf "%s\n" "${sample_ids[@]}"
+
+# Construct a pattern for grep to match the sample IDs
+sample_pattern=$(printf "|%s" "${sample_ids[@]}")
+sample_pattern=${sample_pattern:1}
+
+
+
+inStrain compare -i $(
+    find "$input_folder" -type f -name "*covT.hd5" \
+    | grep -E "$sample_pattern" \
+    | sed 's|/raw_data/covT.hd5||g' \
+    | sort -u ) -p "$SLURM_CPUS_PER_TASK" -o "$output_folder" -s /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_instrain/06_representative_db/all.genomes_strain_v2.stb --store_mismatch_locations
+
+
+
+
+conda deactivate
+module unload anaconda/3.10
+
+
+
+
+
+#####################################################################################################################################################################################################
+# instrain compare water on selected samples
+#####################################################################################################################################################################################################
+cd /data/Food/analysis/R6564_NGS/kefir4all/scripts/06_strain_profiling/
+emacs 06_instrain_strain_compare_water_selected.sh
+###########################
+
+
+
+#!/bin/sh
+#SBATCH --error 06err_instrain_compare_water_selected
+#SBATCH --output 06out_instrain_compare_water_selected
+#SBATCH --job-name 06_instrain_compare_water_selected
+#SBATCH -p Priority,Background,GPU
+#SBATCH -N 1
+#SBATCH --cpus-per-task=40
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=liam.walsh@teagasc.ie
+
+
+
+module load anaconda/3.10
+source activate instrain
+
+
+input_folder=/data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_instrain/06_instrain_profile_v2
+
+out_folder=/data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_instrain/06_instrain_profile_v2/06_instrain_compare_water/selected
+index=/data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_instrain/06_instrain_profile_v2/06_instrain_compare_water/selected/instrain_compare_selected_sample_Water.kefir.csv
+
+
+# Debug: Print sample IDs read by awk
+awk -F, 'NR>1 {print $1}' "$index"
+
+# Read sample IDs into an array using awk to extract the first column
+mapfile -t sample_ids < <(awk -F, 'NR>1 {print $1}' "$index" | sort -u)
+
+# Debug: Print all sample IDs read into the array
+printf "%s\n" "${sample_ids[@]}"
+
+# Construct a pattern for grep to match the sample IDs
+sample_pattern=$(printf "|%s" "${sample_ids[@]}")
+sample_pattern=${sample_pattern:1}
+
+
+
+inStrain compare -i $(
+    find "$input_folder" -type f -name "*covT.hd5" \
+    | grep -E "$sample_pattern" \
+    | sed 's|/raw_data/covT.hd5||g' \
+    | sort -u
+) -p "$SLURM_CPUS_PER_TASK" -o "$output_folder" -s /data/Food/analysis/R6564_NGS/kefir4all/06_strain_profiling/06_instrain/06_representative_db/all.genomes_strain_v2.stb --store_mismatch_locations
+
+
+
+
+conda deactivate
+module unload anaconda/3.10
+
+
+gunzip -k /data/Food/analysis/R6564_NGS/kefir4all/scripts/06_strain_profiling/output/06_strain_profiling_comparisonsTable.tsv.gz
+
+
+
+
