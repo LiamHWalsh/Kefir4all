@@ -685,17 +685,25 @@ p_alluvial <-
   # different compartments (the kefir grains themselves vs. the fermented milk/water around them),
   # so mixing their flows in the same axis would read as one undifferentiated community.
   facet_grid(compartment ~ kefir_group, scales = "free_x") +
-  scale_fill_manual(values = species_palette, name = "Community type\n(dominant species)") +
+  # WHY: wrapping long species names (same approach as p_community_types' x-axis labels
+  # above) keeps the legend within the figure's fixed canvas width -- at this legend's
+  # larger, readable text size, the two longest names otherwise run past the page edge.
+  scale_fill_manual(values = species_palette, name = "Community type\n(dominant species)",
+                     labels = function(x) stringr::str_wrap(x, width = 20)) +
   labs(x = NULL, y = "Number of samples") +
   theme_bw(base_size = 11) +
   # Same facet-strip convention as the rest of the figure (and Figure 2): bold, size 22, centred,
-  # no background box. Previously knocked down to 16 to squeeze into a 2x2 grid -- restored properly
-  # and given the figure more height below instead of shrinking the text.
-  theme(axis.text.x = element_text(angle = 40, hjust = 1),
+  # no background box. Axis/legend text sizes match p_community_types' convention elsewhere in
+  # this script (base_size = 11 alone left them at ~9pt, illegible once this panel is placed on
+  # Figure 4's full combined canvas alongside the much larger PCoA panels).
+  theme(axis.text.x = element_text(angle = 40, hjust = 1, size = 12),
+        axis.text.y = element_text(size = 14),
+        axis.title.y = element_text(size = 20),
         strip.text = element_text(size = 22, face = "bold", colour = "black"),
         strip.background = element_blank(),
         panel.border = element_blank(),
-        legend.text = element_text(face = "italic"))
+        legend.text = element_text(size = 14, face = "italic"),
+        legend.title = element_text(size = 16))
 
 ########################################################################################################################
 # Full Figure 4: ordination (A/B) + Kefir4All community-type drift (C). An earlier community
