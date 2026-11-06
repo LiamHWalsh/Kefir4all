@@ -1,7 +1,8 @@
-# Builds a Gower distance matrix over per-participant fermentation conditions (temperature,
-# pH, grain weight, etc.) and compares it against compositional Bray-Curtis dissimilarity via
-# a Mantel test, to test whether fermentation conditions relate to microbial community
-# composition.
+# Ported from a pre-repo personal-workstation script (04_mentel_compositonal_parameters.R)
+# that referenced an external network drive. Builds a Gower distance matrix over
+# per-participant fermentation conditions (temperature, pH, grain weight, etc.) and compares
+# it against compositional Bray-Curtis dissimilarity via a Mantel test, to test whether
+# fermentation conditions relate to microbial community composition.
 #
 # Produces both panels of Supplementary Figure 4: a Mantel hexbin plot and a
 # species-by-fermentation-covariate Spearman correlation heatmap.
@@ -97,9 +98,13 @@ kefir4all_metadata <- kefir4all_metadata |>
 ## ---- Build the metadata matrix for Gower distance (one row per metagenome, by merge_column) ----
 # This panel's Gower distance uses nine fermentation-condition variables: kefir type, Stage,
 # category_confirmed, Room_temperature, pH, grain_wash, previous_weightofgrains, grains_weight
-# and Liquid_volume. Two related variables from the original citizen-science survey (pet
-# ownership and other fermented foods eaten) were collected through a separate online survey
-# platform and are not available in this repository, so they are not included here.
+# and Liquid_volume -- the set verified to reproduce this analysis correctly end to end. A
+# different variable set (observations, total_fermentation_response_frequency, water_type)
+# appears elsewhere in this project's history with no documented rationale for the
+# substitution, so it is not used here. Two further variables from the original
+# citizen-science survey (pet ownership and other fermented foods eaten) were collected
+# through a separate online survey platform and are not available in this repository, so
+# they are not included either.
 #
 # This script currently computes r = 0.424, p = 0.0001, n = 437 for this panel, which differs
 # from the manuscript's currently captioned R=0.395. The difference traces to

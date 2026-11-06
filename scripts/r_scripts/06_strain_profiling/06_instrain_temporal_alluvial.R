@@ -15,7 +15,8 @@ for (.proj in c("/home/rstudio/kefir4all", "/workspaces/kefir4all_review_history
 # inStrain temporal alluvial: per prevalent species, the count of
 # inStrain-defined within-species cluster detections at each Stage (T0..T6,
 # mapped to wk0..wk21), with alluvial flows connecting clusters across
-# successive timepoints.
+# successive timepoints. The dRep-based equivalent of this analysis is in
+# 06_strain_profiling/06_supp_strain_profiling.R.
 #
 #   instrain_genome_species_primary_data_v4.csv
 #   kefir4all_sample_metadata_v2.csv

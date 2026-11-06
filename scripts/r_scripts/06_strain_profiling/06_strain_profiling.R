@@ -117,8 +117,10 @@ total_prevalence$...5[which(total_prevalence$...5 == "Zymomonas_mobilis_subclust
 total_prevalence$...5[which(total_prevalence$...5 == "Lactobacillus_perolens")] <- "Schleiferilactobacillus perolens"
 # WHY left un-gsubbed here: every downstream comparison against total_prevalence$...5 in
 # this file applies its own gsub("_", " ", ...) inline at the point of use (see the
-# occurence_data_v2 / multi_strain_detection_prevelant filters below), so the underscore
-# form is kept here as the canonical value this column holds throughout the script.
+# occurence_data_v2 / multi_strain_detection_prevelant filters below). Applying the
+# substitution globally here instead changes which species pass the
+# instrain_prevelant_cs_clust filter further down this script -- confirmed empirically --
+# so the underscore form is kept here as the canonical value this column holds throughout.
 
 # relationship: a left merge (all.x=TRUE) must preserve instrain's row count exactly.
 instrain_rows_before_merge <- nrow(instrain)

@@ -4,6 +4,11 @@
 # assembly-free marker-sequence variation. (A) Species-level summaries obtained using dRep
 # (salmon), inStrain (green) and StrainPhlAn4 (blue)..." (Kefir4All_Manuscript_TRACKED_SB.docx).
 #
+# No other script in this repo combines all three methods. Ported/adapted from a 2024
+# pre-repo personal-workstation script ("number of strains detected.R") that referenced an
+# external Q:/ network drive; that original file is not available anywhere in this repo or
+# in any backup, so this script is the full record of the method.
+#
 # Combines detection counts from three independent strain-profiling methods for each
 # prevalent species, restricted to this study's own samples:
 #   - dRep: distinct genomes (MAGs) assembled and binned per species x kefir type, from
