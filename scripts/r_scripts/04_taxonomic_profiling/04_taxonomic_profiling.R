@@ -1196,10 +1196,11 @@ compose_figure2 <- function() {
 
   # --- shared legend band, at the very bottom of the page (well below the
   #     heatmaps) so it can never be mistaken for a panel title ---
-  # NOTE: y-coordinates below are the old A/B-row layout's fractions rescaled
-  # by 1/0.705 so the former C/D row and legend band now fill the full page
-  # (0.705 was the old top-of-C-row boundary; cropping the canvas height by
-  # that same factor below keeps everything else visually identical).
+  # These npc (page-fraction) coordinates are resolution-independent: the panel
+  # box spans the same relative share of the canvas regardless of the device's
+  # absolute height, so the heatmap panels get taller, more readable rows
+  # simply by exporting to a taller canvas (see the pdf()/tiff() calls below),
+  # with no change needed here.
   if (!is.null(leg)) {
     tryCatch(
       {
@@ -1251,15 +1252,18 @@ compose_figure2 <- function() {
 # ============================================================================
 # NOTE: compose_figure2() positions panels with npc (page-fraction) viewports
 # and uses ABSOLUTE point font sizes that were tuned for a 26.2 x 17.3 in
-# canvas (7864 x 5200 px @ 300 dpi, pointsize = 15).  Keep the SAME canvas
-# geometry for the PDF/TIFF so the layout is identical to the validated figure.
-# Vector PDF text scales cleanly, so it can be re-placed at any print size
-# (e.g. 178 mm wide) downstream without re-rendering.
+# canvas (7864 x 5200 px @ 300 dpi, pointsize = 15) -- matching the canvas
+# other full-page figures in this project use (e.g. Figure 7). The heatmap
+# panels' row heights come from npc fractions of this canvas, so the full
+# height gives each species row enough room to read clearly; a shorter canvas
+# compresses every row by the same proportion. Vector PDF text scales cleanly,
+# so it can be re-placed at any print size (e.g. 178 mm wide) downstream
+# without re-rendering.
 
 pdf(
   file = file.path(FIGURES_DIR, "Figure_2.pdf"),
-  width  = 7864 / 300,          # 26.213 in - same physical canvas as the old jpeg
-  height = 3666 / 300,          # 12.220 in - cropped to drop the old A/B row (panels A/B removed)
+  width  = 7864 / 300,          # 26.213 in
+  height = 5200 / 300,          # 17.333 in
   pointsize = 15,               # match the jpeg() pointsize
   useDingbats = FALSE
 )
@@ -1268,12 +1272,12 @@ compose_figure2()
 
 dev.off()
 
-# High-resolution raster version on the SAME canvas (pixel-for-pixel the
-# validated layout), LZW-compressed TIFF for publication.
+# High-resolution raster version on the SAME canvas as the PDF above,
+# LZW-compressed TIFF for publication.
 tiff(
   filename   = file.path(FIGURES_DIR, "Figure_2.tiff"),
   width      = 7864,
-  height     = 3666,
+  height     = 5200,
   units      = "px",
   res        = 300,
   pointsize  = 15,
