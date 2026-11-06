@@ -422,7 +422,7 @@ for (i in levels(as.factor((total_compositional_data$kefirdataset)))){
 
                            "T4"="wk13", "T5"="wk17", "T6"="wk21")[as.character(Stage)],
 
-                         levels = c("wk01","wk05","wk09","wk13","wk17","wk21","T0")))
+                         levels = c("T0","wk01","wk05","wk09","wk13","wk17","wk21")))
 
 
 
@@ -440,11 +440,14 @@ for (i in levels(as.factor((total_compositional_data$kefirdataset)))){
 
 
 
-  # Species order exactly as delivered by the prevalence pipeline, plus an
-
-  # empty top level " " that carries the week-label header cells
-
-  species_levels <- as.character(unique(fig2_hm_df$clade_name))
+  # WHY: alphabetical by species name, matching the "explicit taxonomic axis ordering"
+  # promised to reviewers in the rebuttal (REBUTTAL_total.docx, responses to Reviewer 1
+  # Comment 8 and Reviewer 2 Comment 10) -- the prevalence pipeline's delivery order was
+  # arbitrary (inherited from the source CSV's column order), not a deliberate ordering.
+  # HOW: species_levels[1] renders at the BOTTOM of this y-axis (header " " is appended
+  # last, placing it at the top) -- descending order puts the alphabetically-first species
+  # at the top (just under the header) and reads A-to-Z top-to-bottom.
+  species_levels <- sort(unique(as.character(fig2_hm_df$clade_name)), decreasing = TRUE)
 
   fig2_species_levels[[i]] <- species_levels
 
