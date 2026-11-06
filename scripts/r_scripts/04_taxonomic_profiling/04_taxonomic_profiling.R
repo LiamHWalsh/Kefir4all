@@ -655,15 +655,7 @@ for (i in levels(as.factor((total_compositional_data$kefirdataset)))){
    #species <- "Acetobacter aceti"
    
    #Look for microbes that are not present during the project but are present at T0
-   
-   
-   total_compositional_data |> 
-     ggplot(aes(x=type,y=relative_abundance,fill=type))+
-     geom_boxplot()+
-     facet_wrap(~clade_name, scales = "free")
-   
- 
-   
+
    total_compositional_data$type <- gsub("\n", "", total_compositional_data$type)
    total_compositional_data$type <- gsub(" ", ".", total_compositional_data$type)
    
@@ -726,13 +718,6 @@ t[["water"]] <- subset( compositional_differences, subset=
 # Of these prevlent microbes, what is the range of RA they occur at and whats their number of samples tht they dominate in 
 
 ###########################################################################################################################################################
-
-
-total_compositional_data |> 
-     ggplot(aes(x=type,y=relative_abundance,fill=type))+
-     geom_boxplot()+
-   facet_wrap(~clade_name, scales="free")
-
 
 sample_name <- "TG_AP_T1_WL_0AE_S350"
 
@@ -920,86 +905,6 @@ for (i in names(grain_microbes)){
 
 
 ########################################################################################################################
-# Plot grain species data as heatmaps (matching C/D color scheme)
-# Panels A & B: side-by-side grain heatmaps, top 12 species by mean abundance
-########################################################################################################################
-
-# Colour scale: Panels A/B reuse `shared_ra_scale` defined above (identical to C/D).
-
-# Function to prepare heatmap data: top N species by mean abundance, ordered
-prepare_heatmap_data <- function(data, n_top = 12) {
-  # Calculate mean abundance per species to rank them
-  species_mean <- data |>
-    dplyr::filter(!species %in% c("Unclassified", "<0.1%")) |>
-    dplyr::group_by(species) |>
-    dplyr::summarise(mean_ab = mean(relative_abundance, na.rm = TRUE), .groups = "drop") |>
-    dplyr::arrange(desc(mean_ab))
-  
-  # Select top N species
-  top_species <- species_mean$species[1:min(n_top, nrow(species_mean))]
-  
-  # Keep the unclassified + rare-biosphere rows: they are central to Panels A/B
-  keep <- c(top_species, "Unclassified", "<0.1%")
-  
-  # Filter and order species (most abundant at top; unclassified/rare at bottom)
-  data |>
-    dplyr::filter(species %in% keep) |>
-    dplyr::mutate(species = factor(species, levels = rev(keep)))
-}
-
-# Prepare data for both heatmaps — add a `type` column so facet_wrap can
-# render the panel title in a light blue strip (matching the original figure)
-hm_data_mk <- prepare_heatmap_data(grain_microbes[[1]], n_top = 12) |>
-  dplyr::mutate(type = "Milk kefir (T0 grain)")
-hm_data_wk <- prepare_heatmap_data(grain_microbes[[2]], n_top = 12) |>
-  dplyr::mutate(type = "Water kefir (T0 grain)")
-cat(sprintf("[FIG2] Panel A heatmap rows: %d | Panel B heatmap rows: %d\n",
-            nrow(hm_data_mk), nrow(hm_data_wk)))
-
-# Theme for grain heatmaps (A/B). Legend retained so ggarrange can extract it.
-# Panel titles rendered via facet_wrap strips in a WHITE box (as in the original
-# figure). A thin grey border keeps the box visible against the white panel.
-heatmap_theme <- theme_classic(base_size = 11) +
-  theme(
-    strip.background = element_blank(),
-    strip.text = element_text(size = 22, face = "bold", colour = "black"),
-    axis.text.y = element_text(size = 13.5, face = "italic", colour = "grey10"),
-    axis.text.x = element_blank(),
-    axis.ticks = element_blank(),
-    axis.line = element_blank(),
-    panel.grid = element_blank(),
-    plot.margin = margin(6, 6, 6, 6),
-    legend.position = "top",
-    legend.key.size = unit(3, 'cm'),
-    legend.key.height = unit(3, 'cm'),
-    legend.key.width = unit(3, 'cm'),
-    legend.title = element_text(size = 17.5, face = "bold", margin = margin(r = 14)),
-    legend.text = element_text(size = 17.5)
-  )
-
-# Milk kefir grain heatmap (Panel A) — facet_wrap renders the panel title in a
-# white strip box, exactly like the original figure.
-grain_heatmap_mk <-
-  ggplot(hm_data_mk, aes(x = sample_id, y = species, fill = relative_abundance)) +
-  geom_tile(color = "white", linewidth = 0.4) +
-  facet_wrap(~type, scales = "free_x") +
-  labs(x = NULL, y = NULL) +
-  shared_ra_scale +
-  heatmap_theme
-
-# Water kefir grain heatmap (Panel B)
-grain_heatmap_wk <-
-  ggplot(hm_data_wk, aes(x = sample_id, y = species, fill = relative_abundance)) +
-  geom_tile(color = "white", linewidth = 0.4) +
-  facet_wrap(~type, scales = "free_x") +
-  labs(x = NULL, y = NULL) +
-  shared_ra_scale +
-  heatmap_theme
-
-         
-
-
-########################################################################################################################
 # Identify microbes present in kefir grans >.1 RA
 ########################################################################################################################
 
@@ -1067,100 +972,6 @@ p_heatmap$`Water kefir` <- p_heatmap$`Water kefir` +
 
 
 
-
-########################################################################################################################
-#plot TO compositional profile 
-########################################################################################################################
-
-total_compositional_data[which(
-total_compositional_data$Stage=="T0"&
-  total_compositional_data$`kefir type`=="ML"),] |> 
-  filter(relative_abundance>0.1)
-
-ggplot(   
-  grain_microbes[[1]], aes(x=sample_id, y=species, size=relative_abundance, color=species)) +
-  geom_point(alpha=0.5)  +
-  labs(x="",y="Species", colour="Species")+
-  facet_wrap(~type,scales="free_x")+
-  theme_bw() +
-  theme(#plot.title = element_textbox(hjust = 0.5, margin = margin(t = 5, b = 5),size = 55), #element_text(color="red", size=14, face="bold",hjust = 0.5),
-    axis.text.x = element_blank(),
-    axis.text.y = element_text(size=30,face="italic"),
-    strip.background = element_blank(),
-    strip.text = element_text(size = 22, face = "bold"),
-    #axis.title.x = element_text( size=35, face="bold",hjust = 0.5,vjust = -2),
-    axis.title.y = element_text( size=35, face="bold",hjust = 0.5, vjust = 1.5),
-    #legend.key.size = unit(3.5, 'cm'), #change legend key size
-    #legend.key.height = unit(3.5, 'cm'), #change legend key height
-    #legend.key.width = unit(3.5, 'cm'), #change legend key width
-    legend.text = element_text(size=30,face = "italic"),
-    legend.title = element_text(size=35))+
-  scale_size_continuous( breaks= c(35,20,10,1,0),
-                         range= c(0,95),
-                         name="Proportion (%)")+
-
-  # aspect.ratio = 2/1)+
-  guides(color = guide_legend(override.aes = list(size =20)))
-         
-
-
-
-
-
-# ============================================================================
-# ORIGINAL Figure 2 panels A & B: grain species bar charts (restored verbatim
-# from the original script). These were removed during a later heatmap refactor;
-# the Figure 2 assembly (line ~1016) depends on them.
-# ============================================================================
-grain_bar_mk <-
-  ggplot(grain_microbes[[1]], aes(x=relative_abundance, y=species, fill=species)) +
-  geom_col(width=0.6, colour="grey40", linewidth=0.3) +
-  labs(x="Relative abundance (%)", y="", title="Milk kefir")+
-  theme_bw() +
-  guides(fill="none")+
-  scale_x_continuous(expand=expansion(mult=c(0,0.05)))+
-  theme(
-    plot.title = element_text(size=15.5, face="bold"),
-    axis.text.y = element_text(size=13.5, face="italic"),
-    axis.text.x = element_text(size=12),
-    panel.grid.major.y = element_blank(),
-    panel.grid.minor = element_blank())
-
-grain_bar_wk <-
-  ggplot(grain_microbes[[2]], aes(x=relative_abundance, y=species, fill=species)) +
-  geom_col(width=0.6, colour="grey40", linewidth=0.3) +
-  labs(x="Relative abundance (%)", y="", title="Water kefir")+
-  theme_bw() +
-  guides(fill="none")+
-  scale_x_continuous(expand=expansion(mult=c(0,0.05)))+
-  theme(
-    plot.title = element_text(size=15.5, face="bold"),
-    axis.text.y = element_text(size=13.5, face="italic"),
-    axis.text.x = element_text(size=12),
-    panel.grid.major.y = element_blank(),
-    panel.grid.minor = element_blank())
-
-# Figure 2 assembly: two properly nested rows.
-
-# Top row    = A/B T0 grain heatmaps side by side (1x2 grid, legends removed —
-
-#              the identical colourbar ships with C/D's shared legend).
-
-# Bottom row = C/D single kefir heatmaps side by side (1x2 grid, shared legend);
-
-#              each is ONE continuous heatmap whose columns are divided into the
-
-#              week blocks of the study (wk01, wk05, wk09, wk13, wk17, wk21, T0)
-
-#              by white header cells and bold vertical dividers, with the
-
-#              grain/liquid colour bar underneath.
-
-# Nesting each row before the final 2x1 combine guarantees every panel a real
-
-# slot; the previous flat 3-plot call (nrow=2, mismatched heights/widths)
-
-# silently dropped panel B and blanked panel A.
 
 
 # ============================================================================
