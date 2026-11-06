@@ -30,7 +30,6 @@ kefir_theme <- function(base_size = 14, base_family = "sans") {
       plot.tag = ggplot2::element_text(
         size = base_size + 6, face = "bold", colour = "black"
       ),
-      strip.background = ggplot2::element_blank(),
       strip.text = ggplot2::element_text(
         size = base_size + 4, face = "bold", colour = "black", hjust = 0.5
       ),

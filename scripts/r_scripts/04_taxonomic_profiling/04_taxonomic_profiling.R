@@ -574,10 +574,7 @@ for (i in levels(as.factor((total_compositional_data$kefirdataset)))){
     theme(
       
       legend.position = "top",
-      
-      # Remove facet strip background
-      strip.background = element_blank(),
-      
+
       # Keep the week labels, since these now identify each panel
       strip.text = element_text(
         size = 22,

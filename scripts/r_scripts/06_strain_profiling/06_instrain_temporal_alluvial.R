@@ -158,7 +158,6 @@ p <- ggplot(plot_df,
     plot.background = element_blank(),
     legend.text = element_text(size = 9),
     legend.title = element_text(size = 10),
-    strip.background = element_blank(),
     strip.text = element_text(size = 10, face = "bold.italic")
   ) +
   guides(fill = guide_legend(nrow = 1, byrow = TRUE))

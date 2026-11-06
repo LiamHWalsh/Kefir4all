@@ -342,7 +342,6 @@ ggplot(plot_data, aes(axis1 = Var1_primary, axis2 = Var2_primary, y = Freq)) +
     panel.grid.major = element_blank(),  # Remove major grid labels
     panel.grid.minor = element_blank(),  # Remove minor grid labels
     plot.background = element_blank(),
-    strip.background = element_blank(),
     strip.text = element_text(size = 18, face = "bold")
   )+
   guides(fill = guide_legend(title.position="top", title.hjust = 0.5))
@@ -412,7 +411,6 @@ tidyr::gather(key = "type", value = "count", n_total_detections, n_multi_detecti
         legend.key.height = unit(1.5, 'cm'), #change legend key height
         legend.key.width = unit(1.5, 'cm'), #change legend key width
         legend.title = element_text(size=20),
-        strip.background = element_blank(),
         strip.text = element_text(size = 18, face = "bold"))
 
 

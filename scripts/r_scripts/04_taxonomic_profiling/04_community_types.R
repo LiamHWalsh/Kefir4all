@@ -301,14 +301,13 @@ split_pcoa_panel <- function(sample_ids, label) {
     scale_colour_manual(values = dataset_palette) +
     scale_fill_manual(values = dataset_palette) +
     # facet_wrap on a single-value column, rather than labs(title=...), gives a title styled
-    # exactly like Figure 2's heatmap panels (C/D): bold, size 22, centred, no background box --
-    # the same facet-strip title convention used throughout these figures.
+    # exactly like Figure 2's heatmap panels (C/D): bold, size 22, centred, boxed facet-strip
+    # title -- the same convention used throughout these figures.
     facet_wrap(~ panel_label) +
     labs(x = paste0("PCoA1 - ", round(pct[1]), "%"), y = paste0("PCoA2 - ", round(pct[2]), "%")) +
     coord_equal() + theme_bw() +
     theme(legend.position = "bottom",
           strip.text = element_text(size = 22, face = "bold", colour = "black"),
-          strip.background = element_blank(),
           plot.margin = margin(t = 20, r = 5, b = 5, l = 5),
           axis.ticks = element_blank(), axis.text = element_blank(),
           axis.title.x = element_text(size = 20), axis.title.y = element_text(size = 20),
@@ -564,12 +563,10 @@ p_community_types <-
         axis.text.y = element_text(size = 14),
         axis.title.y = element_text(size = 20),
         axis.ticks.x = element_blank(),
-        # Facet strip styled to match the EXACT house convention used for the equivalent faceted
-        # panels (C/D heatmaps) in Figure 2: bold, size 22, no background box
-        # (heatmap_theme in 04_taxonomic_profiling.R: strip.text size=22 face="bold", strip.background
-        # = element_blank()) -- same semantic "Milk kefir"/"Water kefir" label as there.
+        # Facet strip styled to match the house convention used for the equivalent faceted
+        # panels (C/D heatmaps) in Figure 2: bold, size 22, boxed facet-strip title -- same
+        # semantic "Milk kefir"/"Water kefir" label as there.
         strip.text = element_text(size = 22, face = "bold", colour = "black"),
-        strip.background = element_blank(),
         panel.background = element_blank(),
         panel.grid.major = element_blank(),
         panel.grid.minor = element_blank(),
@@ -691,17 +688,20 @@ p_alluvial <-
   labs(x = NULL, y = "Number of samples") +
   theme_bw(base_size = 11) +
   # Same facet-strip convention as the rest of the figure (and Figure 2): bold, size 22, centred,
-  # no background box. Axis/legend text sizes match p_community_types' convention elsewhere in
-  # this script (base_size = 11 alone left them at ~9pt, illegible once this panel is placed on
-  # Figure 4's full combined canvas alongside the much larger PCoA panels).
+  # boxed facet-strip title. Axis/legend text sizes match p_community_types' convention elsewhere
+  # in this script (base_size = 11 alone left them at ~9pt, illegible once this panel is placed on
+  # Figure 4's full combined canvas alongside the much larger PCoA panels). Legend on top, not the
+  # ggplot2 default right-hand side, which crowded the long wrapped species names into a narrow
+  # column beside the plot.
   theme(axis.text.x = element_text(angle = 40, hjust = 1, size = 12),
         axis.text.y = element_text(size = 14),
         axis.title.y = element_text(size = 20),
         strip.text = element_text(size = 22, face = "bold", colour = "black"),
-        strip.background = element_blank(),
         panel.border = element_blank(),
+        legend.position = "top",
         legend.text = element_text(size = 14, face = "italic"),
-        legend.title = element_text(size = 16))
+        legend.title = element_text(size = 16)) +
+  guides(fill = guide_legend(nrow = 2, byrow = TRUE, title.position = "top"))
 
 ########################################################################################################################
 # Full Figure 4: ordination (A/B) + Kefir4All community-type drift (C), saved as the single

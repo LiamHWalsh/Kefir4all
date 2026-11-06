@@ -261,9 +261,11 @@ message("Persistence rows: ", nrow(persist_df))
 # ---- END PANEL C data ----
 
 # ---- PANEL C plots: reuse persist_df (built above) ----
-# Labels: MG -> Milk Grain, WG -> Water Grain; T1..T6 -> wk1..wk21
+# Labels: MG -> Milk Grain, WG -> Water Grain, ML -> Milk Liquid, WL -> Water Liquid; T1..T6 -> wk1..wk21
 persist_df[["kefir type"]][persist_df[["kefir type"]] == "MG"] <- "Milk Grain"
 persist_df[["kefir type"]][persist_df[["kefir type"]] == "WG"] <- "Water Grain"
+persist_df[["kefir type"]][persist_df[["kefir type"]] == "ML"] <- "Milk Liquid"
+persist_df[["kefir type"]][persist_df[["kefir type"]] == "WL"] <- "Water Liquid"
 persist_df$stage_label <- persist_df$Stage
 persist_df$stage_label[persist_df$Stage == "T1"] <- "wk1"
 persist_df$stage_label[persist_df$Stage == "T2"] <- "wk5"
@@ -290,7 +292,6 @@ panelC_theme <- kefir_theme(base_size = 10) +
     legend.box = "horizontal",
     axis.text.x = element_text(size = 12),
     axis.text.y = element_text(size = 10, face = "italic"),
-    strip.background = element_blank(),
     strip.text = element_text(size = 12, face = "bold"),
     axis.title.y = element_text(size = 14, face = "bold",
                                 hjust = 0.5, vjust = 1.5),

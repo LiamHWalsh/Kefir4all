@@ -2,3 +2,6 @@
 .Rproj.user/
 *.Rproj
 .DS_Store
+
+# Participant-identifying citizen-scientist metadata -- never committed to this public repo.
+data/private/
