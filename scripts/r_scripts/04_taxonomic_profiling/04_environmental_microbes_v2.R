@@ -307,9 +307,8 @@ panelC <- ggplot(persist_df[order(persist_df$traj_id), ],
                  aes(x = stage_label, y = clade_name)) +
   geom_line(aes(group = traj_id, colour = n_participants),
             alpha = 0.85, linewidth = 0.9) +
-  geom_point(aes(size = relative_abundance, fill = relative_abundance),
-             shape = 21, colour = "grey20", alpha = 0.9) +
-  scale_size(range = c(2, 20), name = "Relative abundance (%)") +
+  geom_point(aes(fill = relative_abundance),
+             size = 6, shape = 21, colour = "grey20", alpha = 0.9) +
   scale_fill_gradientn(
     colours = c("Dark blue", "yellow", "yellow2", "orange", "red", "darkred"),
     name = "Relative abundance (%)") +
@@ -325,8 +324,7 @@ panelC <- ggplot(persist_df[order(persist_df$traj_id), ],
                                 barwidth = 8, barheight = 1),
          colour = guide_colourbar(label.position = "bottom",
                                   barwidth = 10, barheight = 1,
-                                  ticks.linewidth = 1),
-         size = guide_legend(label.position = "bottom"))
+                                  ticks.linewidth = 1))
 # ---- END PANEL C ----
 
 # ---- OUTPUT ----
