@@ -576,9 +576,9 @@ p_community_types <-
         panel.grid.major = element_blank(),
         panel.grid.minor = element_blank(),
         # Extra top margin so the "C." cowplot panel label (drawn above the plot, same corner as
-        # the first facet's strip text) doesn't collide with "Milk kefir". No longer need the
-        # wide left/right margin or panel.spacing that rotated-label overflow required -- wrapped
-        # horizontal labels stay inside their own panel.
+        # the first facet's strip text) doesn't collide with "Milk kefir". Wrapped horizontal axis
+        # labels (see scale_x_discrete below) stay inside their own panel, so no extra left/right
+        # margin or panel.spacing is needed to accommodate them.
         plot.margin = margin(t = 30, r = 5, b = 5, l = 5),
         plot.background = element_blank(),
         legend.position = "bottom",
@@ -706,13 +706,13 @@ p_alluvial <-
         legend.title = element_text(size = 16))
 
 ########################################################################################################################
-# Full Figure 4: ordination (A/B) + Kefir4All community-type drift (C). An earlier community
-# type counts bar chart (panel C candidate, built above as p_community_types -- kept only for its
-# legend, via legend_combined) is dropped from this combined figure -- the alluvial plot already
-# shows the same community types per dataset, plus their dynamics over time, so the static count
-# chart was redundant here. This script now only saves the one combined Figure_4_full output.
-# The alluvial keeps its own legend (species, not "Data source") since it's a different
-# categorical variable -- two legends is the right call, not one merged legend.
+# Full Figure 4: ordination (A/B) + Kefir4All community-type drift (C), saved as the single
+# Figure_4_full output below. Panel C is the alluvial plot, not the community type counts bar
+# chart (p_community_types, built above): the alluvial already shows the same community types per
+# dataset plus their dynamics over time, so a separate static count chart would be redundant here.
+# p_community_types is still built because its legend (legend_combined) is reused for panels A/B's
+# shared "Data source" key. The alluvial keeps its own separate legend (species, not "Data source")
+# since it's a different categorical variable -- two legends is the right call, not one merged one.
 ########################################################################################################################
 
 AB_grid <- cowplot::plot_grid(p_milk + theme(legend.position = "none"),

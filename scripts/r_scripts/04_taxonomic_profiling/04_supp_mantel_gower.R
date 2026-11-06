@@ -1,8 +1,7 @@
-# Ported from a pre-repo personal-workstation script (04_mentel_compositonal_parameters.R,
-# 2024-06-27) that referenced an external Q:/H2020 Master/... network drive. Reuses the
-# metadata-loading pattern already proven in 04_community_stability_v2.R (merge_column <->
-# survey-response crosswalk), adapted to build a Gower distance matrix over fermentation
-# metadata and compare it against compositional Bray-Curtis dissimilarity via a Mantel test.
+# Builds a Gower distance matrix over per-participant fermentation conditions (temperature,
+# pH, grain weight, etc.) and compares it against compositional Bray-Curtis dissimilarity via
+# a Mantel test, to test whether fermentation conditions relate to microbial community
+# composition.
 #
 # Produces both panels of Supplementary Figure 4: a Mantel hexbin plot and a
 # species-by-fermentation-covariate Spearman correlation heatmap.
@@ -44,7 +43,7 @@ normalize_sample_id <- function(value) {
   gsub("-", "_", value, fixed = TRUE)
 }
 
-## ---- Per-metagenome metadata, keyed by merge_column (same crosswalk as 04_community_stability_v2.R) ----
+## ---- Per-metagenome metadata, keyed by merge_column (the sample ID shared across data files) ----
 kefir4all_metadata <- read_csv(file.path(DATA_DIR, "kefir4all_sample_metadata_v2.csv"), show_col_types = FALSE)
 kefir4all_metadata <- kefir4all_metadata |>
   mutate(merge_column = gsub("_host_removed_R..fastq.gz", "", merge_column)) |>
@@ -96,23 +95,19 @@ kefir4all_metadata <- kefir4all_metadata |>
             relationship = "many-to-one")
 
 ## ---- Build the metadata matrix for Gower distance (one row per metagenome, by merge_column) ----
-# WHY: matches the legacy script's (04_mentel_compositonal_parameters.R) Gower variable set as
-# closely as locally recoverable data allows. Two of its original 12 variables -- pets_type and
-# other_fermented_food_type -- came from a live SurveyMonkey API pull (survey ID 313643610) with
-# no corresponding file anywhere in this repo or its pre-repo snapshots, so they are omitted here.
-# Uses the repo's own last-known-good 9-variable set (grain_wash, grains_weight), matching commit
-# 0f4c308 (which verified r = 0.395 end to end) -- not the "figure_improved" pass's substituted
-# set (observations, total_fermentation_response_frequency, water_type), an unexplained swap with
-# no documented rationale.
+# This panel's Gower distance uses nine fermentation-condition variables: kefir type, Stage,
+# category_confirmed, Room_temperature, pH, grain_wash, previous_weightofgrains, grains_weight
+# and Liquid_volume. Two related variables from the original citizen-science survey (pet
+# ownership and other fermented foods eaten) were collected through a separate online survey
+# platform and are not available in this repository, so they are not included here.
 #
-# r = 0.424 here (not the manuscript's captioned 0.395), p = 1e-4, n = 437 -- n and p match
-# commit 0f4c308 exactly, but r differs because data/kefir4all_sample_metadata_v2.csv has since
-# been corrected to drop TG_FG_WLC_S410, a sample whose mate reads carry disagreeing metadata
-# (participant FG/type WG on one mate, "Medium control"/type WL on the other) -- the same known
-# conflicting-sample exclusion community_changes.R and community_changes_v2.R already apply
-# elsewhere in this pipeline. 0.395 was computed before that correction existed, so 0.424 is the
-# value consistent with the metadata this repo now treats as correct; the caption should read
-# R=0.424, p=0.0001, n=437.
+# This script currently computes r = 0.424, p = 0.0001, n = 437 for this panel, which differs
+# from the manuscript's currently captioned R=0.395. The difference traces to
+# data/kefir4all_sample_metadata_v2.csv, which excludes TG_FG_WLC_S410, a sample whose paired
+# sequencing reads carry disagreeing participant labels (participant FG, water-grain, on one
+# read; "Medium control", water-liquid, on the other) -- the same exclusion rule this project
+# applies to any sample with internally conflicting labels. The manuscript caption should be
+# updated to R=0.424, p=0.0001, n=437.
 meta_vars <- c("kefir type", "Stage", "category_confirmed", "Room_temperature", "pH",
                "grain_wash", "previous_weightofgrains", "grains_weight", "Liquid_volume")
 gower_input <- kefir4all_metadata |>
@@ -127,12 +122,11 @@ rownames(gower_distance_matrix) <- rownames(gower_input)
 colnames(gower_distance_matrix) <- rownames(gower_input)
 
 ## ---- Compositional (Bray-Curtis) distance over the same samples ----
-# WHY: the legacy script computed Bray-Curtis on a species-level profile
-# (04_metacache_total_species_profile_v2.csv), but that file's current sample IDs (e.g.
-# "04_Metacache_individual/WK069-2-L-48h...") do not use this repo's merge_column-keyed
-# TG_ID naming at all -- confirmed empirically, none of its 1,252 rows match that scheme.
-# The species level is instead recovered from the "species::"-prefixed columns of the full
-# multi-rank profile (04_metacache_total_full_profile.csv), which does carry matching IDs.
+# WHY: the species level is read from the "species::"-prefixed columns of the full multi-rank
+# taxonomic profile. A separate, species-only profile file also exists in this repo's data
+# folder, but its sample IDs use a different naming convention (not keyed to the same
+# merge_column/TG_ID scheme used everywhere else in this script) and cannot be joined to this
+# panel's metadata.
 metacache <- read_csv(file.path(DATA_DIR, "04_metacache_total_full_profile.csv"), show_col_types = FALSE)
 species_columns <- grep("^species::", names(metacache), value = TRUE)
 stopifnot("no 'species::' columns found in the full profile -- check column naming" =

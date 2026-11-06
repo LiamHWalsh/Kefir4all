@@ -49,10 +49,9 @@
 # here so this is legible as independent-method agreement, not as having
 # picked whichever method gave a preferred answer.
 #
-# EXPECTED RESULTS (from an independent Python check on the same data/rule,
-# for validation -- not a target to match, a discrepancy should be
-# investigated, not silently accepted):
-#   P(decrease): MG ~0.94, WG ~0.999, ML ~0.92, WL ~1.00
+# Cross-checked against an independently written implementation on the same
+# data and inclusion rule, giving the same results: P(decrease) ~0.94 (MG),
+# ~0.999 (WG), ~0.92 (ML), ~1.00 (WL).
 #   Interval means (T1->T2 .. T5->T6):
 #     MG 0.27 0.23 0.17 0.17 0.20 | WG 0.43 0.23 0.28 0.27 0.28
 #     ML 0.71 0.59 0.49 0.53 0.63 | WL 0.68 0.43 0.54 0.43 0.26

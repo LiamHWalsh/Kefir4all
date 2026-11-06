@@ -14,9 +14,10 @@ for (.proj in c("/home/rstudio/kefir4all", "/workspaces/kefir4all_review_history
 # per species, with stacks at each Stage (T0..T6 mapped to wk0..wk21)
 # coloured by dRep secondary cluster.
 #
-# Mirrors the Figure 8 layout but uses dRep secondary clusters rather
-# than inStrain within-species clusters; the two together correspond to
-# the two halves of the legacy Figure 10.
+# Mirrors Figure 8's layout but uses dRep secondary clusters (genome-level
+# clustering) rather than inStrain within-species clusters (subspecies-level
+# clustering) -- the two give complementary views of strain structure at
+# different resolutions.
 #
 #   Cdb.csv                         (dRep cluster assignments)
 #   mag_metadata_v3.csv.gz          (MAG -> species, sample, kefir type)

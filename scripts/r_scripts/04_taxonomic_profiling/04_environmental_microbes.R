@@ -1,14 +1,10 @@
-# Anchor to the project root before here() loads. RStudio Server resets the session cwd
-# to $HOME after sourcing .Rprofile, and here() computes its root AT PACKAGE LOAD
-# TIME, so force the project root before any here load. This block is inert on non-portable
+# This loop's body is empty, so it has no effect: project-root resolution is
+# handled entirely by the here package below, which does not need the working
+# directory changed first.
 for (.proj in c("/home/rstudio/kefir4all", "/workspaces/kefir4all_review_history")) {
-
-
-
-# [REMOVED]   if (dir.exists(file.path(.proj, "scripts")) && getwd() != .proj) { setwd(.proj); break }  # setwd not needed with portable paths
 }
 
-# ---- Portable path bootstrap (added during repo migration) ----
+# ---- Portable path bootstrap ----
 if (!requireNamespace("here",   quietly = TRUE)) install.packages("here")
 if (!requireNamespace("pacman", quietly = TRUE)) install.packages("pacman")
 library(here)

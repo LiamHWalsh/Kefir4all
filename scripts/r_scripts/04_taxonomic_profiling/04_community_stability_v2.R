@@ -54,9 +54,8 @@ library(taxize)
 library(ape)
 library(ggtree)
 library(ggdendro)
-# ---- V2 portability fix: v1 uses tibble::column_to_rownames() at lines
-# 149/154/290/295 but never loads tibble explicitly (previously masked by an
-# interactive RStudio session). Load it so v2 runs headless (container/review).
+# column_to_rownames() below needs tibble; load it explicitly so this runs
+# headless (a container has no interactive session to have already loaded it).
 if (!requireNamespace("tibble", quietly = TRUE)) install.packages("tibble")
 library(tibble)
 
@@ -595,10 +594,10 @@ library(ggpubr)
 
 
 
-# ---- V2: legacy v1 Figure_3.tiff block wrapped in tryCatch. ggbetweenstats
-# panels embed a directlabels layer that can fail headless when a stage group is
-# degenerate (e.g. single pair, min==max), which would otherwise halt the whole
-# script before v2's own Figure_3 output below. ----
+# Wrapped in tryCatch: ggbetweenstats panels embed a directlabels layer that
+# can fail headless when a stage group is degenerate (e.g. single pair,
+# min==max), which would otherwise halt the whole script before the
+# Extended Data Figure 1 output below runs.
 tryCatch(
   {
     tiff(filename=file.path(FIGURES_DIR, 'Figure_3.tiff'), width = 1800, height = 1200, units = "px", res = 300, compression = "lzw", type = "cairo", pointsize = 12) #, width=2000, height=1950)
@@ -618,12 +617,10 @@ tryCatch(
   }
 )
 
-# ---- V2: the remainder of v1 (downstream stability/prevalence/compositional
-# sections, lines ~619-1137) is NOT required to build Figure 3C or the
-# combined Figure 3 A/B/C composite (bray_distance, my.files_beta and the
-# within-stage pair data are all created above line ~263). Guard it so a
-# failure in any downstream v1 analysis (e.g. clusGap / ggdendro rendering)
-# cannot block the review deliverables. ----
+# The stability/prevalence/compositional analysis below is not required to
+# build Extended Data Figure 1 (the mean_compositional_change and
+# mean_gower_change panels it needs are already built above). Guarded in a
+# tryCatch so a failure anywhere in this section cannot block that figure.
 tryCatch(
   {
 
@@ -951,27 +948,21 @@ for (type in names(gower_dist)){
 
 library(ggpubr)
 
-# RENAMED from "Supplementary_Figure_2.tiff": that name collided with the
-# manuscript's actual Supplementary Figure 2, which 05_resistome.R produces.
-# scripts/README.md's script-to-results table confirms this script's downstream
-# block is Extended Data Figure 1, so it is named for that here instead.
+# This downstream block produces Extended Data Figure 1 (the
+# mean_compositional_change / mean_gower_change composite below).
 #
-# WHY wrapped in tryCatch with an explicit stop() on failure: the previous bare
-# tiff(..., type = "cairo") + ggarrange() + graphics.off() sequence completed with no
-# error and no console message, yet never produced a file on disk in this container --
-# base R's type = "cairo" bitmap backend is not reliably available here, unlike the
-# Cairo package's own CairoTIFF() device used successfully elsewhere in this script.
-# Switching to Cairo::CairoTIFF(), forcing an explicit print(), and verifying the file
-# afterward turns that silent failure into a loud one if it recurs.
+# Rendered with Cairo::CairoTIFF() rather than base R's tiff(type = "cairo"):
+# the base bitmap backend is not reliably available in this container, while
+# the Cairo package's own device is. Wrapped in tryCatch with an explicit
+# file-existence/size check so a silently empty or missing output file fails
+# loudly instead of looking like a successful run.
 #
-# WHY 3600x2400 (not the original 1800x1200): isolated testing confirmed the
-# panels' theme(plot.title = ggtext::element_textbox_simple(size = 35, ...))
-# title boxes -- combined with ggbetweenstats()'s own built-in subtitle -- need
-# more room than a 1800x1200 canvas gives a 3x2 grid of them; grid's layout then
-# collapses a viewport to zero dimensions (reproduces identically with base
-# png(), so it isn't Cairo-specific). This matches scripts/README.md's existing
-# note that this output "runs without error but never produces its output
-# file" -- confirmed never to have actually rendered at the old size.
+# Canvas is 3600x2400: the panels' large title boxes
+# (theme(plot.title = ggtext::element_textbox_simple(size = 35, ...))),
+# combined with ggbetweenstats()'s own built-in subtitle, need this much room
+# in a 3x2 grid -- a smaller canvas collapses a grid viewport to zero
+# dimensions (reproduces identically with base png(), so it is not specific
+# to the Cairo device).
 supp_fig_2_path <- file.path(FIGURES_DIR, "Extended_Data_Figure_1.tiff")
 supp_fig_2_plot <- ggarrange(
   mean_compositional_change[[1]],
@@ -991,13 +982,10 @@ tryCatch({
     stop("file was not written or is suspiciously small")
   }
   message("Wrote Extended_Data_Figure_1.tiff to ", FIGURES_DIR)
-  # 24x16 in (not 12x8, matching the raster TIFF above): isolated testing showed
-  # save_figure()'s vector PDF leg (ggsave(..., device = cairo_pdf)) hits the same
-  # "Viewport has zero dimension(s)" error as the raster render did, but at a
-  # higher size threshold -- it still failed at 12x8in even though the raster
-  # TIFF rendered fine at that size, and only cleared once the PDF canvas was
-  # doubled again. The raster PNG leg of save_figure() was fine at 12x8in; this
-  # just keeps both legs comfortably past the vector-specific threshold.
+  # 24x16 in: save_figure()'s vector PDF leg (ggsave(..., device = cairo_pdf))
+  # needs a larger canvas than its raster PNG leg to clear the same
+  # zero-dimension-viewport issue described above for the main TIFF -- this
+  # size comfortably covers both legs' thresholds.
   save_figure(supp_fig_2_plot, file.path(FIGURES_DIR, "Extended_Data_Figure_1"),
               width_mm = 24 * 25.4, height_mm = 16 * 25.4,
               source = PRIMARY_SOURCE, seed = NULL)
@@ -1005,23 +993,8 @@ tryCatch({
   try(grDevices::dev.off(), silent = TRUE)
   stop("Failed to write Extended_Data_Figure_1.tiff: ", conditionMessage(e))
 })
-
-# REMOVED: an outlier-inspection print block and an "#old junk script" section
-# (a Milk-kefir distance heatmap, a qgraph similarity network, hierarchical
-# clustering/dendrogram/gap-statistic exploration, and an unused prevalence-info
-# stub) used to sit here. None of it wrote a file or fed Extended Data Figure 1
-# above, and none of it has a counterpart in the verified manuscript-matched
-# review copies (figures_for_review/), so it was never a manuscript deliverable.
   },
   error = function(e) {
-    message("V2: downstream v1 block errored: ", conditionMessage(e))
+    message("Non-essential downstream analysis failed (Extended Data Figure 1 is unaffected): ", conditionMessage(e))
   }
 )
-
-# REMOVED: the appended "V2 ADDITIONS" block used to sit here -- a 3-panel
-# composite ("Figure_3"/"Figure_3C"/"Figure_3A"/"Figure_3B") built to address a
-# reviewer comment on whether Bray-Curtis dissimilarity decreases over time.
-# Confirmed with the manuscript author that this content never made it into
-# the current manuscript or a response-to-reviewers document, so it is not a
-# deliverable of this script. This script now only produces Extended Data
-# Figure 1 (the mean_compositional_change / mean_gower_change composite above).

@@ -5,10 +5,9 @@ for (.proj in c("/home/rstudio/kefir4all", "/workspaces/kefir4all_review_history
 
 
 
-# [REMOVED]   if (dir.exists(file.path(.proj, "scripts")) && getwd() != .proj) { setwd(.proj); break }  # setwd not needed with portable paths
 }
 
-# ---- Portable path bootstrap (added during repo migration) ----
+# ---- Portable path bootstrap: resolves data/output paths relative to the project root ----
 if (!requireNamespace("here",   quietly = TRUE)) install.packages("here")
 if (!requireNamespace("pacman", quietly = TRUE)) install.packages("pacman")
 library(here)
@@ -121,7 +120,6 @@ global_metadata_total $category[which(global_metadata_total $`kefir type` %in% c
 #######################################################################################################
 # Importing checkm data
 #######################################################################################################
-# [REMOVED] setwd("Q:/H2020 Master/Citizen Science Project/Results/03_mag_classification")  # setwd not needed with portable paths
 
 temp = list.files(pattern="*quality_report.tsv", recursive = TRUE, full.names = TRUE)
 myfiles_checkm = lapply(temp,read_table2, comment="--")
@@ -171,7 +169,6 @@ t$genome <- paste(t$genome,".fa",sep="")
 # Importing classification data 
 #######################################################################################################
 
-# [REMOVED] setwd("Q:/H2020 Master/Citizen Science Project/Results/03_mag_classification")  # setwd not needed with portable paths
 temp_classification = list.files(pattern="*bin_taxonomy.tab", recursive = TRUE, full.names = TRUE)
 myfiles_classification = lapply(temp_classification,read_delim, 
                                 delim = "\t", escape_double = FALSE, 
@@ -272,7 +269,6 @@ names(myfiles_classification ) <- names_classification
 
 
 
-# [REMOVED] setwd("Q:/H2020 Master/Citizen Science Project/Results/03_mag_classification/busco/")  # setwd not needed with portable paths
 temp_busco = list.files(pattern="*txt", recursive = TRUE, full.names = TRUE)
 
 temp_busco <- as.data.frame(temp_busco)
@@ -407,7 +403,6 @@ names(myfiles_busco) <- temp_busco_rep$merge_id
              
              # &
              # t$Contamination<=10),]
-# [REMOVED] setwd("Q:/H2020 Master/Citizen Science Project/Results/03_mag_classification")  # setwd not needed with portable paths
 
 temp_gtdbtk = list.files(pattern="gtdbtk.bac120.summary",recursive=TRUE)
 
@@ -1779,7 +1774,6 @@ for (genus in levels(as.factor(combined_med_high_Mags$genus ))){
 #+scale_fill_viridis_c(option="A")
 
 
-# [REMOVED] setwd("E:/STORE N GO/R/Plots/Phylogenetic trees")  # setwd not needed with portable paths
 tiff(filename=file.path(FIGURES_DIR, 'ggtree_metawrap_putative_gtdbtk.tiff'), width = 1800, height = 1200, units = "px", res = 300, compression = "lzw", type = "cairo", pointsize = 12) #, width=2000, height=1950)
 
 ggarrange(p[["Acetobacter"]], p[["Lactobacillus"]], nrow=1,ncol=2,labels=c("A.","B."),common.legend=TRUE)

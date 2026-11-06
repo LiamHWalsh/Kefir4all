@@ -15,9 +15,8 @@ for (.proj in c("/home/rstudio/kefir4all", "/workspaces/kefir4all_review_history
 # (>=99% ANI) versus "less related" pairwise comparisons within each
 # species, faceted by kefir type, with labels for both segments.
 #
-# Renamed from "Supplementary_Fig_5" -- that was a stale name left over from
-# an earlier manuscript numbering; this is Extended Data Figure 3 in the
-# current manuscript (see scripts/README.md's script-to-results table).
+# Produces Extended Data Figure 3 (see scripts/README.md's script-to-results
+# table for the full figure-to-script mapping).
 #
 # Inputs (all in flat data/):
 #   ndb.csv.gz                      (dRep pairwise ANI)

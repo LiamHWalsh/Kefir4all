@@ -4,26 +4,22 @@
 # assembly-free marker-sequence variation. (A) Species-level summaries obtained using dRep
 # (salmon), inStrain (green) and StrainPhlAn4 (blue)..." (Kefir4All_Manuscript_TRACKED_SB.docx).
 #
-# No script in this repo combines all three methods. Ported/adapted from a 2024 pre-repo
-# personal-workstation script ("number of strains detected.R") that referenced an external
-# Q:/ network drive, using:
-#   - dRep: Cdb.csv + mag_metadata_v3.csv.gz, joined exactly as 06_supp_strain_profiling.R
-#     already does for Figure 8's dRep panel -- distinct genomes (MAGs) per species x type.
-#   - inStrain: instrain_genome_species_primary_data_v4.csv -- total detection rows per
-#     species x type (same "Total Detections" definition used in 06_strain_profiling.R).
-#   - StrainPhlAn4: the legacy script's own detection counts come from per-clade .mutation
-#     files, which do not exist anywhere in this repo (confirmed: not in git history, not in
-#     any local backup). Those files are the SNP-level data Extended Data Figure 2 also needs
-#     and cannot be reconstructed. Detection counts, however, do not need SNP values -- only
-#     "was this clade successfully profiled in this sample", which is exactly what each
-#     clade's StrainPhlAn4 tree (data/06_trees/*.tre) already encodes as its tip labels. Count
-#     of Kefir4All tip labels per clade x type is used as the StrainPhlAn4 detection count.
+# Combines detection counts from three independent strain-profiling methods for each
+# prevalent species, restricted to this study's own samples:
+#   - dRep: distinct genomes (MAGs) assembled and binned per species x kefir type, from
+#     Cdb.csv + mag_metadata_v3.csv.gz.
+#   - inStrain: total reference-genome detection rows per species x kefir type, from
+#     instrain_genome_species_primary_data_v4.csv.
+#   - StrainPhlAn4: per-clade .mutation files (the SNP-level data needed to compute
+#     marker-sequence polymorphism directly) are not available for this dataset. Detection
+#     counts do not need SNP values, though -- only "was this clade successfully profiled in
+#     this sample", which is exactly what each clade's StrainPhlAn4 tree (data/06_trees/*.tre)
+#     already encodes as its tip labels. The count of this study's tip labels per clade x type
+#     is used as the StrainPhlAn4 detection count.
 #
-# Species names are harmonised across all three methods via the existing prevalence crosswalk
-# (data/milk_taxonomic_profile_prevalence.csv / water_taxonomic_profile_prevalence.csv, the
-# same "t__SGBxxxx" -> species-name table already used for Supplementary Figures 4 and 5),
-# and each method's output is restricted to species prevalent in that kefir type, the
-# convention used throughout this pipeline.
+# Species names are harmonised across all three methods via the prevalence crosswalk
+# (data/milk_taxonomic_profile_prevalence.csv / water_taxonomic_profile_prevalence.csv), and
+# each method's output is restricted to species prevalent in that kefir type.
 
 # WHY: here::here() resolves relative to its own root-detection markers (.Rproj, .git),
 # which are not present in the Docker image's working copy -- this sets the working
@@ -49,11 +45,10 @@ library(readr); library(dplyr); library(ape); library(ggplot2)
 
 ## ---- Prevalent-species crosswalk: t__SGBxxxx <-> species name, and the per-type prevalence lists ----
 # The prevalence tables split a few species into dRep/StrainPhlAn-only
-# "subcluster"/"subspecies" entries that inStrain and dRep already report
-# under a single merged name (confirmed in data/instrain_genome_species_
-# primary_data_v4.csv) -- without this relabelling (same mapping the legacy
-# script used), these show up as extra, StrainPhlAn4-only fragments instead
-# of being pooled with the other two methods under one species name.
+# "subcluster"/"subspecies" entries that inStrain and dRep report under a
+# single merged name (confirmed in data/instrain_genome_species_
+# primary_data_v4.csv) -- this relabelling pools them under one species name
+# instead of leaving them as extra, StrainPhlAn4-only fragments.
 merge_subclusters <- function(x) {
   x <- gsub("Lactococcus_lactis subcluster 1", "Lactococcus_lactis", x, fixed = TRUE)
   x <- gsub("Lactococcus_lactis subcluster 2", "Lactococcus_cremoris", x, fixed = TRUE)

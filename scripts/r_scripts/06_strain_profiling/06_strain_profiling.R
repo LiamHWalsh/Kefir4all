@@ -117,10 +117,8 @@ total_prevalence$...5[which(total_prevalence$...5 == "Zymomonas_mobilis_subclust
 total_prevalence$...5[which(total_prevalence$...5 == "Lactobacillus_perolens")] <- "Schleiferilactobacillus perolens"
 # WHY left un-gsubbed here: every downstream comparison against total_prevalence$...5 in
 # this file applies its own gsub("_", " ", ...) inline at the point of use (see the
-# occurence_data_v2 / multi_strain_detection_prevelant filters below) -- confirmed this
-# matches the species-prevalence figure's validated output; applying it globally here
-# instead changed which species pass the instrain_prevelant_cs_clust filter near the end
-# of this script and inflated Figure_7_instrain.tiff (4.26MB vs the confirmed 2.35MB).
+# occurence_data_v2 / multi_strain_detection_prevelant filters below), so the underscore
+# form is kept here as the canonical value this column holds throughout the script.
 
 # relationship: a left merge (all.x=TRUE) must preserve instrain's row count exactly.
 instrain_rows_before_merge <- nrow(instrain)
@@ -427,11 +425,9 @@ tidyr::gather(key = "type", value = "count", n_total_detections, n_multi_detecti
 
 library(ggpubr)
 
-# Renamed from the historical "Figure_9_model" stem: this script was originally
-# committed to the repo as "Figure 7.R" (confirmed via git history, commit ee124e1 on
-# main) and always saved this exact panel as its main output -- "Figure 9_model" was
-# already a stale number inherited from an older manuscript draft, not something
-# introduced by this modernization pass.
+# This script's sole output is Figure 7, a two-panel strain-detection
+# summary saved below (the variable name fig9_combined reflects the
+# panel's internal figure number, not its final manuscript numbering).
 tiff(filename=file.path(FIGURES_DIR, 'Figure_7.tiff'), width = 7864, height = 5200, units = "px", res = 300, compression = "lzw", type = "cairo", pointsize = 15)
 
 
@@ -444,10 +440,7 @@ save_figure(fig9_combined, file.path(FIGURES_DIR, "Figure_7"),
             source = file.path(DATA_DIR, "instrain_genome_species_primary_data_v4.csv"),
             seed = NULL)
 
-# REMOVED: a trailing block used to recompute and save "Figure_7_instrain.tiff" here.
-# It was a near-exact duplicate of Figure 8's own alluvial plot (identical
-# xtabs(~Stage+clusters+classification+category.y) formula, identical geom_flow/
-# geom_stratum construction, same facets) -- not a distinct manuscript figure, just
-# Figure 8's content redundantly recomputed under a "Figure 7" name in the wrong
-# script. Figure 8 is already produced by its own dedicated script
-# (06_instrain_temporal_alluvial.R); this script now only produces Figure 7.
+# This script produces only Figure 7. Figure 8's alluvial plot (a different
+# figure, built from the same xtabs(~Stage+clusters+classification+category.y)
+# style of analysis) is produced by its own dedicated script
+# (06_instrain_temporal_alluvial.R), not duplicated here.

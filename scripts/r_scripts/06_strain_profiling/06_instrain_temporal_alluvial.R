@@ -17,10 +17,6 @@ for (.proj in c("/home/rstudio/kefir4all", "/workspaces/kefir4all_review_history
 # mapped to wk0..wk21), with alluvial flows connecting clusters across
 # successive timepoints.
 #
-# This corresponds to panel B of the legacy Figure 10 (combined dRep +
-# inStrain), now used as the single-panel revised Figure 8. The dRep
-# equivalent is in 06_strain_profiling/06_supp_strain_profiling.R.
-#
 #   instrain_genome_species_primary_data_v4.csv
 #   kefir4all_sample_metadata_v2.csv
 #   milk_taxonomic_profile_prevalence.csv
@@ -87,7 +83,8 @@ milk_species  <- total_prev[[sp_col]][total_prev$kefir_type == "milk"]
 water_species <- total_prev[[sp_col]][total_prev$kefir_type == "water"]
 
 # Filter inStrain to high-confidence detections in the Kefir4All cohort.
-# popANI_reference > 0.98 is the threshold used in the original Figure 10.R.
+# popANI_reference > 0.98 is the threshold for a high-confidence within-species
+# cluster assignment.
 instrain_cs <- instrain |>
   filter(popANI_reference > 0.98,
          sample_id %in% kefir4all_md$merge_column)
@@ -127,11 +124,11 @@ stopifnot("no rows left for the alluvial plot -- check prevalence/species-recode
 
 # WHY: species names never repeat across the two kefir types (confirmed -- no
 # classification value appears under both category.y groups), so faceting by
-# classification alone cannot create any ambiguity. Explicitly ordering its
-# factor levels (Milk kefir species first, Water kefir second, alphabetical
-# within each) keeps the exact same panel layout facet_wrap(~ category.y +
-# classification) produced, without repeating "Milk kefir"/"Water kefir" as a
-# second strip line on every one of the panels.
+# classification alone cannot create any ambiguity between them.
+# HOW: explicitly ordering the factor levels (Milk kefir species first, Water
+# kefir second, alphabetical within each) keeps species grouped by kefir type
+# in the panel layout, without needing "Milk kefir"/"Water kefir" repeated as
+# a second strip-text line on every panel.
 species_order <- plot_df |>
   dplyr::distinct(category.y, classification) |>
   dplyr::arrange(category.y != "Milk kefir", classification) |>

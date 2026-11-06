@@ -674,10 +674,9 @@ run_analysis <- function() {
                 width_mm = 13 * 25.4, height_mm = 9 * 25.4, source = NULL, seed = SEED)
   }
   if (length(compositions)) {
-    # Only the per-panel composition data table is kept as provenance (CSV). The per-panel
-    # rank-qualified-feature bar charts this data used to drive (one PDF/TIFF per MetaCache
-    # panel -- MG/WG/ML/WL) were never a manuscript figure, just a diagnostic breakdown; this
-    # script's only manuscript output is the Figure 3 trajectories plot saved above.
+    # The per-panel composition data is a diagnostic breakdown (rank-qualified features per
+    # MetaCache panel MG/WG/ML/WL), not a manuscript figure -- it is saved here as a CSV table
+    # only. This script's one manuscript output is the Figure 3 trajectories plot saved above.
     composition <- do.call(rbind, compositions)
     save_csv(composition, "community_changes_v3_composition.csv")
   }

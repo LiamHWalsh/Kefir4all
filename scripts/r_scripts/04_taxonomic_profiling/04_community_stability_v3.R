@@ -391,8 +391,9 @@ run_stability <- function() {
   set.seed(SEED)
   md <- load_metadata(root)
   # Single source of truth for each panel: which kefir types it contributes and
-  # whether profiles become proportions before distances are computed. The two
-  # were previously inferred separately from the panel name, which could drift.
+  # whether profiles become proportions before distances are computed are
+  # declared together here, rather than each being inferred separately from
+  # the panel name elsewhere (which could silently drift out of sync).
   panels <- list(
     list(key = "MetaCache", relative = TRUE, types = names(TYPE_LABELS),
          load = function() load_taxonomy(root, md)),
@@ -425,7 +426,8 @@ run_stability <- function() {
         z <- analyse_panel(pp$bc, pp$md)
         write.csv(z$intervals, file.path(out, paste0(key, "_intervals.csv")), row.names = FALSE)
         write.csv(participant_summary(z$intervals), file.path(out, paste0(key, "_all_participants.csv")), row.names = FALSE)
-        # No figure number: Figure_3C is already written by 04_community_stability_v2.R.
+        # This per-panel plot is a descriptive diagnostic, not a numbered
+        # manuscript figure, so it carries no figure number in its filename.
         # Stem kept short on purpose: output lives under a deep OneDrive path and
         # "community_stability_" pushed the SUPER_FOCUS TIFFs past Windows' 260
         # character MAX_PATH, silently losing them.

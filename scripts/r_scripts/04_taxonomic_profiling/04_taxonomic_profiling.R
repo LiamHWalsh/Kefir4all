@@ -12,7 +12,7 @@ for (.proj in c("/home/rstudio/kefir4all", "/workspaces/kefir4all_review_history
 # ==============================================================================
 # PATH CONFIGURATION â€” portable relative paths via the here package
 # For files listed in data/private/README.md, provide your own copies.
-# NOTE: install.packages calls removed â€” Docker image has all packages pre-installed.
+# NOTE: no install.packages() calls are needed here -- the Docker image has all packages pre-installed.
 # ==============================================================================
 
 
@@ -360,11 +360,10 @@ names(
   species_prevalence)[2] <-"Milk kefir"
 
 
-# ---- Shared relative-abundance colour scale for ALL Figure 2 heatmaps (A-D) ----
-# RESTORED EXACTLY to the ORIGINAL Figure 2 specification from the original
-# figure script. The original had NO `limits`, NO `na.value`, guide="colorbar"
-# (not guide_colourbar), and name="Relative abundance" (single line). Every
-# parameter below is verbatim from the original — nothing added, nothing changed.
+# ---- Shared relative-abundance colour scale for both Figure 2 heatmap panels ----
+# A simple five-stop gradient (dark blue to dark red) with fixed breaks at
+# 0/10/30/70/100 and a single-line "Relative abundance" legend title, shared
+# by both panels so they read on the same scale.
 shared_ra_scale <- scale_fill_gradientn(
   colours = c("Dark blue","yellow","yellow2","orange","red","darkred"),
   breaks  = c(0, 10, 30, 70, 100),
@@ -383,7 +382,7 @@ for (i in levels(as.factor((total_compositional_data$kefirdataset)))){
 
   # ------------------------------------------------------------------------------
 
-  # Panel C (milk) / D (water): ONE single continuous heatmap (no grain/liquid
+  # Panel A (milk) / B (water): ONE single continuous heatmap (no grain/liquid
 
   # facet split), with the columns DIVIDED INTO THE WEEK BLOCKS OF THE STUDY
 
@@ -395,14 +394,13 @@ for (i in levels(as.factor((total_compositional_data$kefirdataset)))){
 
   # of every column is shown by the colour bar underneath the heatmap
 
-  # (Grain = salmon, Liquid = teal), as in the original figure.
+  # (Grain = salmon, Liquid = teal).
 
-  # NOTE: the heatmap axes are now NUMERIC (x_pos, y_pos) rather than discrete
-  # factors. This was the key fix for the "wk21 not readable" problem: the old
-  # discrete-axis design used geom_tile(width=n), which rendered the narrow wk21
-  # header cell so small the week label was illegible. Numeric positions with
-  # geom_rect render every block at its true width, so all week blocks (including
-  # the narrow wk21) are clearly readable.
+  # NOTE: the heatmap axes are NUMERIC (x_pos, y_pos) rather than discrete
+  # factors, and columns are drawn with geom_rect-style numeric positioning
+  # rather than geom_tile(width=n). This renders every week block at its true
+  # width, so even a narrow block (e.g. wk21, with few samples) stays wide
+  # enough for its label to stay readable.
 
   # ------------------------------------------------------------------------------
 
@@ -946,8 +944,8 @@ mk_t0 <- grain_microbes[["Milk.kefir"]]$species[grain_microbes[["Milk.kefir"]]$r
 
 mk_lab[!mk_lab %in% mk_t0] <- paste0("*", mk_lab[!mk_lab %in% mk_t0])
 
-# y is NUMERIC (y_pos), so these must be scale_y_continuous — a discrete scale
-# here silently blanked the whole y axis (bug: "no y axis in C/D").
+# y is NUMERIC (y_pos), so these must be scale_y_continuous -- a discrete
+# scale here would silently blank the whole y axis of panels A/B.
 p_heatmap$`Milk kefir` <- p_heatmap$`Milk kefir` +
 
   scale_y_continuous(breaks = seq_along(mk_levels), labels = mk_lab,
@@ -980,25 +978,23 @@ p_heatmap$`Water kefir` <- p_heatmap$`Water kefir` +
 # ============================================================================
 # Figure 2 assembly (deterministic grid composition).
 #
-# The old ggarrange-based assembly rendered every heatmap grob at the aspect
-# ratio it inherited from the internal 6x6 null device, which left a large
-# empty vertical corridor between the two columns of panels.  Drawing each
-# grob directly into an explicit grid viewport makes every panel STRETCH to
-# fill its box: the four panels tile the page with no wasted white space,
-# panel titles stay in their white facet-strip boxes, the shared legend sits
-# in a clean band above the C/D row, and the week blocks (wk01..wk21, T0) span
-# the full width of each heatmap so even the narrow wk21 block is readable.
+# Each heatmap panel is drawn directly into an explicit grid viewport sized
+# as a fraction of the page, so every panel STRETCHES to fill its box: the
+# two panels tile the page with no wasted white space, panel titles stay in
+# their white facet-strip boxes, the shared legend sits in a clean band below
+# both panels, and the week blocks (wk01..wk21, T0) span the full width of
+# each heatmap so even the narrow wk21 block is readable.
 # ============================================================================
 compose_figure2 <- function() {
   grid.newpage()
 
   # Panel grobs -- legends suppressed (drawn once as the shared legend at the
-  # bottom of the page).  Panel titles ARE the facet strips of each heatmap
+  # bottom of the page). Panel titles ARE the facet strips of each heatmap
   # (white box, black border) rendered in their default position at the very
-  # TOP of every panel -- the same design as the original published Figure 2.
-  # NOTE: the old T0-only grain heatmaps (A/B, grain_heatmap_mk/wk) were dropped --
-  # redundant with C/D, which already cover the T0 samples alongside wk01-wk21.
-  # What were C/D are now the only two panels, relabelled A/B below.
+  # TOP of every panel. Figure 2 has two panels (milk kefir, water kefir),
+  # each one continuous heatmap spanning T0 through wk21 -- no separate
+  # T0-only grain panel is needed, since every heatmap already includes its
+  # T0 grain samples alongside the later liquid/grain timepoints.
   gC <- ggplotGrob(p_heatmap[[1]] + theme(legend.position = "none"))
   gD <- ggplotGrob(p_heatmap[[2]] + theme(legend.position = "none"))
 
@@ -1038,7 +1034,7 @@ compose_figure2 <- function() {
              just = c("left", "bottom"))
   }
 
-  # A: milk kefir heatmap; B: water kefir heatmap (formerly C/D)
+  # A: milk kefir heatmap; B: water kefir heatmap
   pushViewport(vp_panel(0.015, 0.106, 0.490, 0.929)); grid.draw(gC); popViewport()
   pushViewport(vp_panel(0.510, 0.106, 0.985, 0.929)); grid.draw(gD); popViewport()
 
