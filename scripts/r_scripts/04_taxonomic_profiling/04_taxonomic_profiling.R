@@ -575,6 +575,9 @@ for (i in levels(as.factor((total_compositional_data$kefirdataset)))){
       
       legend.position = "top",
 
+      # White facet-strip box, not theme_bw()'s grey85 default.
+      strip.background = element_rect(fill = "white", colour = "black"),
+
       # Keep the week labels, since these now identify each panel
       strip.text = element_text(
         size = 22,

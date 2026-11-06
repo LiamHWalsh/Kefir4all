@@ -176,6 +176,7 @@ p <- test_db |>
   theme_bw() +
   theme(legend.position = "top",
         strip.text = element_text(size = 22, face = "bold", colour = "black"),
+        strip.background = element_rect(fill = "white", colour = "black"),
         panel.border = element_blank(),
         axis.text.y = element_text(size = 11, face = "italic"),
         axis.text.x = element_text(size = 11),

@@ -256,11 +256,15 @@ dataset_palette <- c(
   "Breselge et al - Water kefir" = "#CC79A7"   # reddish purple
 )
 
-# Captures each panel's data aspect ratio (PC1 range / PC2 range) so the combined figure can give
-# each coord_equal() panel a column width that actually matches what it needs -- otherwise cowplot
-# hands it a column sized from a guess (rel_widths), coord_equal shrinks the panel to preserve the
-# 1:1 data scaling, and the mismatch shows up as blank gutters on the sides (the "white space
-# between A and B").
+# Captures each panel's RENDERED aspect ratio (not just its raw point range) so the combined
+# figure can give each coord_equal() panel a column width that actually matches what it needs --
+# otherwise cowplot hands it a column sized from a guess (rel_widths), coord_equal shrinks the
+# panel to preserve the 1:1 data scaling, and the mismatch shows up as blank gutters on the sides
+# (the "white space between A and B"). Measured from the built plot's trained scale ranges, not
+# diff(range(df$PC1))/diff(range(df$PC2)): stat_ellipse()'s polygons routinely extend past the
+# raw point cloud (confirmed -- Water kefir's Breselge et al ellipse in particular overshoots the
+# points well beyond their own range), so an aspect ratio from points alone undersizes the column
+# coord_equal() actually needs, leaving visible blank space inside that panel's box.
 panel_aspects <- list()
 
 split_pcoa_panel <- function(sample_ids, label) {
@@ -281,8 +285,6 @@ split_pcoa_panel <- function(sample_ids, label) {
   # (beyond ids missing from pcoa entirely) would mean pcoa gained a duplicate Row.names.
   stopifnot("split_pcoa_panel: row count unexpectedly changed by merging pcoa -- check pcoa$Row.names for duplicates" =
               nrow(df) <= df_nrow_before_merge)
-  panel_aspects[[label]] <<- diff(range(df$PC1)) / diff(range(df$PC2))
-  cat(label, "PC1/PC2 data aspect ratio:", round(panel_aspects[[label]], 2), "\n")
   # Fixed level order (Kefir4All before the published comparison dataset) so the legend
   # ordering is the same in both panels, matching the fixed colour palette.
   df$data_source_specific <- factor(df$data_source_specific, levels = names(dataset_palette))
@@ -292,7 +294,7 @@ split_pcoa_panel <- function(sample_ids, label) {
 
   centroid <- aggregate(cbind(PC1, PC2) ~ data_source_specific, data = df, FUN = mean)
 
-  ggplot(df, aes(PC1, PC2, colour = data_source_specific)) +
+  p <- ggplot(df, aes(PC1, PC2, colour = data_source_specific)) +
     geom_point(size = 5, alpha = .25) +
     geom_point(data = centroid, size = 10, shape = 21, alpha = 0.5, color = "black",
                aes(fill = data_source_specific), show.legend = FALSE) +
@@ -308,6 +310,7 @@ split_pcoa_panel <- function(sample_ids, label) {
     coord_equal() + theme_bw() +
     theme(legend.position = "bottom",
           strip.text = element_text(size = 22, face = "bold", colour = "black"),
+          strip.background = element_rect(fill = "white", colour = "black"),
           plot.margin = margin(t = 20, r = 5, b = 5, l = 5),
           axis.ticks = element_blank(), axis.text = element_blank(),
           axis.title.x = element_text(size = 20), axis.title.y = element_text(size = 20),
@@ -327,6 +330,16 @@ split_pcoa_panel <- function(sample_ids, label) {
     # the legend swatches inherit that and render as pale/washed-out versions of the palette colours
     # -- a mismatch against panel C's legend, which shows the same hex values at full saturation.
     guides(colour = guide_legend(override.aes = list(size = 10, alpha = 1), title = "Data source", ncol = 1))
+
+  # Trained scale ranges from the built plot include stat_ellipse()'s polygon extent, not just
+  # the raw points -- see the panel_aspects comment above for why that distinction matters here.
+  built <- ggplot2::ggplot_build(p)
+  x_range <- built$layout$panel_scales_x[[1]]$range$range
+  y_range <- built$layout$panel_scales_y[[1]]$range$range
+  panel_aspects[[label]] <<- diff(x_range) / diff(y_range)
+  cat(label, "rendered PC1/PC2 aspect ratio (points + ellipse extent):", round(panel_aspects[[label]], 2), "\n")
+
+  p
 }
 
 milk_ids  <- pcoa$Row.names[pcoa$data_source_specific %in% c("Kefir4All - Milk kefir", "Walsh et al - Milk kefir")]
@@ -567,6 +580,7 @@ p_community_types <-
         # panels (C/D heatmaps) in Figure 2: bold, size 22, boxed facet-strip title -- same
         # semantic "Milk kefir"/"Water kefir" label as there.
         strip.text = element_text(size = 22, face = "bold", colour = "black"),
+        strip.background = element_rect(fill = "white", colour = "black"),
         panel.background = element_blank(),
         panel.grid.major = element_blank(),
         panel.grid.minor = element_blank(),
@@ -680,27 +694,31 @@ p_alluvial <-
   # different compartments (the kefir grains themselves vs. the fermented milk/water around them),
   # so mixing their flows in the same axis would read as one undifferentiated community.
   facet_grid(compartment ~ kefir_group, scales = "free_x") +
-  # WHY: wrapping long species names (same approach as p_community_types' x-axis labels
-  # above) keeps the legend within the figure's fixed canvas width -- at this legend's
-  # larger, readable text size, the two longest names otherwise run past the page edge.
-  scale_fill_manual(values = species_palette, name = "Community type\n(dominant species)",
-                     labels = function(x) stringr::str_wrap(x, width = 20)) +
+  scale_fill_manual(values = species_palette, name = "Community type (dominant species)") +
   labs(x = NULL, y = "Number of samples") +
   theme_bw(base_size = 11) +
   # Same facet-strip convention as the rest of the figure (and Figure 2): bold, size 22, centred,
   # boxed facet-strip title. Axis/legend text sizes match p_community_types' convention elsewhere
   # in this script (base_size = 11 alone left them at ~9pt, illegible once this panel is placed on
   # Figure 4's full combined canvas alongside the much larger PCoA panels). Legend on top, not the
-  # ggplot2 default right-hand side, which crowded the long wrapped species names into a narrow
-  # column beside the plot.
+  # ggplot2 default right-hand side, which crowded the long species names into a narrow column
+  # beside the plot. Labels are kept on one line each (not wrapped): with a top legend at the
+  # figure's full width, two rows of single-line entries fit comfortably, and wrapping to two
+  # lines per entry left too little vertical room between rows, so the next row's swatch
+  # overlapped the previous row's second text line. legend.spacing.x adds the horizontal gap
+  # a single-line layout then needs instead, so a long label (e.g. "Lacticaseibacillus
+  # paracasei") doesn't run into the next entry's colour key.
   theme(axis.text.x = element_text(angle = 40, hjust = 1, size = 12),
         axis.text.y = element_text(size = 14),
         axis.title.y = element_text(size = 20),
         strip.text = element_text(size = 22, face = "bold", colour = "black"),
+        strip.background = element_rect(fill = "white", colour = "black"),
         panel.border = element_blank(),
         legend.position = "top",
         legend.text = element_text(size = 14, face = "italic"),
-        legend.title = element_text(size = 16)) +
+        legend.title = element_text(size = 16),
+        legend.spacing.x = unit(1.5, "cm"),
+        legend.key.spacing.x = unit(1.5, "cm")) +
   guides(fill = guide_legend(nrow = 2, byrow = TRUE, title.position = "top"))
 
 ########################################################################################################################
