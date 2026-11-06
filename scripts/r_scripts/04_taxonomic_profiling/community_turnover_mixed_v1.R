@@ -33,12 +33,14 @@
 #   interval levels in order T1, T2, T3, T4, T5.
 #   BH correction is applied across the four sample types' contrast p-values.
 #
-# Sensitivity: a Bayesian version of the same model (brms) would report the
+# Sensitivity: a Bayesian version of the same model (brms) reports the
 # posterior probability of a decrease per type, as a robustness check -- not
-# the primary analysis, and only run if brms is installed. The project's slim
-# Docker image does not include a Stan backend, so this step is skipped with
-# an explicit message rather than silently omitted; it is not required to
-# answer the manuscript's question, which the primary model already answers.
+# the primary analysis. Only runs if brms is installed; the project's slim
+# Docker image does not include a Stan backend, so this step is skipped there
+# with an explicit message rather than silently omitted. Run separately
+# against kefir4all:4.4.2-brms (slim image + cmdstanr/CmdStan/brms added on
+# top -- see docker/Dockerfile.brms), it agrees with the primary model:
+# P(drop) = MG 0.934, WG 0.998, ML 0.909, WL 1.000.
 #
 # EXPECTED RESULTS (from an independent Python check on the same data/rule,
 # for validation -- not a target to match, a discrepancy >~0.01 should be

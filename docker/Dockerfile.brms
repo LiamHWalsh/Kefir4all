@@ -1,0 +1,12 @@
+# Adds a Stan backend (cmdstanr + compiled CmdStan) and brms on top of the
+# project's slim image, for scripts with an optional Bayesian sensitivity
+# check (e.g. community_turnover_mixed_v1.R). Not part of the main image --
+# build and tag separately:
+#   docker build -t kefir4all:4.4.2-brms -f docker/Dockerfile.brms .
+# CmdStan compilation from source takes roughly 15-30 minutes.
+FROM ghcr.io/liamhwalsh/kefir4all:4.4.2-slim
+
+RUN /opt/R/4.4.2/bin/Rscript -e '\
+  install.packages("cmdstanr", repos = c("https://stan-dev.r-universe.dev", getOption("repos"))); \
+  cmdstanr::install_cmdstan(cores = parallel::detectCores(), overwrite = TRUE); \
+  install.packages("brms")'

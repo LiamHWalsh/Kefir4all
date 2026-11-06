@@ -11,4 +11,4 @@ Bayesian sensitivity (brms), when available: same model structure, vague
 prior centred at 0.5 on the interval means; reports the posterior
 probability that turnover decreased (later < first). Not the primary
 analysis -- a robustness check only.
-Run directory: /home/rstudio/kefir4all/output/04_taxonomic_profiling/community_turnover_mixed_v1/run_20261106_165853_1296e9d00
+Run directory: /home/rstudio/kefir4all/output/04_taxonomic_profiling/community_turnover_mixed_v1/run_20261106_175942_138773881
