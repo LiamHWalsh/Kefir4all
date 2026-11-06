@@ -125,12 +125,25 @@ plot_df <- as.data.frame(xtabs(~ Stage + clusters + classification + category.y,
 stopifnot("no rows left for the alluvial plot -- check prevalence/species-recode filtering" =
             nrow(plot_df) > 0)
 
+# WHY: species names never repeat across the two kefir types (confirmed -- no
+# classification value appears under both category.y groups), so faceting by
+# classification alone cannot create any ambiguity. Explicitly ordering its
+# factor levels (Milk kefir species first, Water kefir second, alphabetical
+# within each) keeps the exact same panel layout facet_wrap(~ category.y +
+# classification) produced, without repeating "Milk kefir"/"Water kefir" as a
+# second strip line on every one of the panels.
+species_order <- plot_df |>
+  dplyr::distinct(category.y, classification) |>
+  dplyr::arrange(category.y != "Milk kefir", classification) |>
+  dplyr::pull(classification)
+plot_df$classification <- factor(plot_df$classification, levels = species_order)
+
 p <- ggplot(plot_df,
             aes(x = Stage, stratum = clusters, alluvium = clusters,
                 y = Freq, fill = clusters)) +
   geom_flow(stat = "alluvium", lode.guidance = "frontback", colour = "darkgray") +
   geom_stratum() +
-  facet_wrap(~ category.y + classification, scales = "free_y") +
+  facet_wrap(~ classification, scales = "free_y") +
   labs(title = "",
        x = "Timeframe",
        y = "Number of strains detected",
@@ -149,7 +162,7 @@ p <- ggplot(plot_df,
     legend.text = element_text(size = 9),
     legend.title = element_text(size = 10),
     strip.background = element_blank(),
-    strip.text = element_text(size = 10, face = "bold")
+    strip.text = element_text(size = 10, face = "bold.italic")
   ) +
   guides(fill = guide_legend(nrow = 1, byrow = TRUE))
 
