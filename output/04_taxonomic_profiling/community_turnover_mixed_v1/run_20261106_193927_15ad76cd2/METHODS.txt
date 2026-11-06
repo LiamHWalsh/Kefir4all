@@ -1,0 +1,16 @@
+Tests whether within-participant taxonomic (MetaCache) turnover differs by
+consecutive-visit interval, per sample type (MG/WG/ML/WL), without assuming
+where any change happens (no breakpoint).
+Model: brms::brm(distance ~ 0 + interval + (1 | participant)), interval a
+5-level factor (T1->T2 .. T5->T6), vague prior normal(0.5, 1) on each
+interval mean, 4 chains, 4000 iter.
+Reported quantity: posterior distribution of (mean of the four later
+intervals) - (first interval) -- posterior mean, 95% credible interval,
+and P(decrease), the posterior probability turnover was lower after the
+first interval than during it.
+Participants need >=2 intervals within a sample type to be included.
+A frequentist mixed-effects model (lme4::lmer, likelihood-ratio test, REML
+planned contrast via emmeans) was also fit on this exact dataset and
+agrees with this result in direction and approximate magnitude for all
+four types; see the script header for those values.
+Run directory: /home/rstudio/kefir4all/output/04_taxonomic_profiling/community_turnover_mixed_v1/run_20261106_193927_15ad76cd2
