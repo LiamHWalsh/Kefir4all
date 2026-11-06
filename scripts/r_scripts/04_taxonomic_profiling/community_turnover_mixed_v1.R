@@ -96,20 +96,31 @@ CONTRAST_WEIGHTS <- c(-1, 0.25, 0.25, 0.25, 0.25)
 #' only participants with >=2 intervals within this type (an interval-level
 #' mixed model needs within-participant replication across at least two
 #' interval categories to estimate the random intercept meaningfully).
-turnover_table <- function(bc, md) {
+#' Reports the row count before and after this filter, and how many
+#' participants it drops, so an unexpectedly large exclusion is visible
+#' rather than silently reducing the dataset the model is fit on.
+turnover_table <- function(bc, md, type) {
   iv <- build_intervals(bc, md)  # from 04_community_stability_v3.R; columns include from/to/distance
   if (!nrow(iv)) return(iv)
   iv$interval <- factor(iv$from, levels = INTERVAL_LEVELS)
-  n_per_participant <- table(iv$participant)
-  keep <- iv$participant %in% names(n_per_participant)[n_per_participant >= 2]
-  iv[keep, , drop = FALSE]
+  n_per_participant <- dplyr::count(iv, participant, name = "n")
+  eligible <- n_per_participant$participant[n_per_participant$n >= 2]
+  kept <- iv[iv$participant %in% eligible, , drop = FALSE]
+  n_dropped_participants <- length(unique(iv$participant)) - length(eligible)
+  message(type, ": ", nrow(iv), " intervals from ", length(unique(iv$participant)),
+          " participants before the >=2-intervals filter; ", nrow(kept), " intervals from ",
+          length(eligible), " participants after (", n_dropped_participants,
+          " participant(s) with a single interval excluded)")
+  kept
 }
 
 #' Fit the primary mixed model for one sample type's turnover table.
 #' Returns the LRT, the planned contrast, and descriptive interval means.
 fit_turnover_model <- function(d) {
   d$participant <- factor(d$participant)
-  means <- stats::aggregate(distance ~ interval, data = d, FUN = mean)
+  means <- d |>
+    dplyr::group_by(interval) |>
+    dplyr::summarise(distance = mean(distance), .groups = "drop")
   means <- means[match(INTERVAL_LEVELS, means$interval), ]
   m1_ml <- lmerTest::lmer(distance ~ interval + (1 | participant), data = d, REML = FALSE)
   m0_ml <- lmerTest::lmer(distance ~ 1 + (1 | participant), data = d, REML = FALSE)
@@ -165,7 +176,7 @@ run_turnover_mixed <- function() {
   bayes_rows <- list()
   for (type in names(TYPE_LABELS)) {
     pp <- prepare_panel(taxonomy$mat, md, type, relative = TRUE)
-    d <- turnover_table(pp$bc, pp$md)
+    d <- turnover_table(pp$bc, pp$md, type)
     if (!nrow(d)) { message(type, ": no eligible intervals, skipping"); next }
     all_intervals[[type]] <- data.frame(type = type, d[, c("participant", "from", "to", "interval", "distance")])
     fit <- fit_turnover_model(d)
