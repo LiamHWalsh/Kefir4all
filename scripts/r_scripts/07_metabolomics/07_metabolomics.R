@@ -27,7 +27,6 @@ dir.create(OUT_DIR, recursive = TRUE, showWarnings = FALSE)
 FIGURES_DIR <- here::here("figures", "07_metabolomics")
 dir.create(FIGURES_DIR, recursive = TRUE, showWarnings = FALSE)
 
-# Private metadata — not distributed with repo (participant identifiers)
 CS_METADATA_PRIVATE <- file.path(PRIVATE_DIR, "Citizen Scientist metadata_v8.csv")
 if (!file.exists(CS_METADATA_PRIVATE)) {
   stop(

@@ -1,7 +1,7 @@
-# Anchor to the project root before here() loads. RStudio Server resets the session cwd
-# to $HOME after sourcing .Rprofile, and here() computes its root AT PACKAGE LOAD
-# TIME, so force the project root before any here load. This block is inert on non-portable
-# machines (none of the candidate dirs exist), so local/native R runs are unaffected.
+# RStudio Server resets the session cwd to $HOME after sourcing .Rprofile, and here()
+# computes its root at package load time -- this forces the project root first. Inert
+# on non-portable machines (none of the candidate dirs exist), so local/native R runs
+# are unaffected.
 for (.proj in c("/home/rstudio/kefir4all", "/workspaces/kefir4all_review_history")) {
 
 

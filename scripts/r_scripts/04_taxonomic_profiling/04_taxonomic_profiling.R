@@ -1006,11 +1006,8 @@ compose_figure2 <- function() {
 
   # --- shared legend band, at the very bottom of the page (well below the
   #     heatmaps) so it can never be mistaken for a panel title ---
-  # These npc (page-fraction) coordinates are resolution-independent: the panel
-  # box spans the same relative share of the canvas regardless of the device's
-  # absolute height, so the heatmap panels get taller, more readable rows
-  # simply by exporting to a taller canvas (see the pdf()/tiff() calls below),
-  # with no change needed here.
+  # npc (page-fraction) coordinates: see the EXPORT FIGURE 2 note below for why
+  # these don't need to change with canvas size.
   if (!is.null(leg)) {
     tryCatch(
       {

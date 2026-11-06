@@ -3,59 +3,33 @@
 # within-participant taxonomic turnover across consecutive visit intervals
 # (Figure 3 statistics)
 #
-# Each participant's kefir community was sampled repeatedly across the study
-# (roughly every four weeks). For every pair of consecutive visits, this
-# script measures how much the microbial community changed (Bray-Curtis
-# dissimilarity: 0 = identical, 1 = completely different) and asks whether
-# that change is bigger in the first interval after starting than in later
-# intervals -- separately for each of the four sample types (milk/water
-# kefir, grain/liquid).
+# For each sample type (milk/water kefir, grain/liquid), tests whether
+# Bray-Curtis turnover between consecutive visits is higher in the first
+# interval after starting than in later intervals. Turnover is modelled as a
+# function of which of the five consecutive intervals (T1->T2 .. T5->T6) is
+# being measured, with no assumption about when any change happens; a
+# planned contrast compares the first interval to the mean of the later four.
 #
-# The model makes no assumption about WHEN any change happens: turnover is
-# modelled as a function of WHICH of the five consecutive intervals
-# (T1->T2 .. T5->T6) is being measured, treating each as its own category
-# rather than fitting a curve shape or assuming a particular week is a
-# turning point. A planned contrast then compares the first interval against
-# the average of the later four -- directly testing whether turnover was
-# highest right after starting and lower thereafter.
+# Reuses find_root(), load_metadata(), load_taxonomy(), prepare_panel() and
+# build_intervals() from 04_community_stability_v3.R. Only MetaCache
+# taxonomic profiles are used (the manuscript sentence this supports concerns
+# community composition, not SUPER-FOCUS or volatiles).
 #
-# Reuses find_root(), normalize_id(), load_metadata(), load_taxonomy(),
-# prepare_panel() and build_intervals() from 04_community_stability_v3.R
-# verbatim, sourced with community_stability_v3.run = FALSE so sourcing it
-# does not also run its own (different) analysis. Only MetaCache taxonomic
-# profiles are used -- SUPER-FOCUS and volatiles are out of scope for this
-# specific test (the manuscript sentence concerns community composition).
+# Model, per sample type: brms::brm(distance ~ 0 + interval + (1 |
+# participant)), vague prior normal(0.5, 1) on each interval mean, 4 chains,
+# 4000 iter. Reports the posterior mean, 95% credible interval, and
+# P(decrease) for (mean of the four later intervals) - (first interval).
 #
-# Model, per sample type (MG/WG/ML/WL), fit with brms:
-#   distance ~ 0 + interval + (1 | participant)
-#   interval a 5-level factor (T1->T2 .. T5->T6), vague prior normal(0.5, 1)
-#   on each interval mean, default priors elsewhere, 4 chains, 4000 iter,
-#   seed TURNOVER_SEED. The reported quantity is the posterior distribution of
-#   (mean of the four later intervals) - (first interval), from which the
-#   script reports the posterior mean, 95% credible interval, and P(decrease)
-#   -- the posterior probability that turnover was lower after the first
-#   interval than during it.
-#
-# Requires a Stan backend (cmdstanr + compiled CmdStan) and brms -- the
-# project's slim Docker image does not include one; build and use
+# Requires a Stan backend (cmdstanr + compiled CmdStan) and brms; the
+# project's slim Docker image does not include one -- build and use
 # kefir4all:4.4.2-brms instead (docker/Dockerfile.brms in this repo).
 #
-# As a cross-check (not reported by this script), a frequentist mixed-effects
-# model (lme4::lmer, likelihood-ratio test, REML planned contrast via
-# emmeans) fit on this exact dataset agrees with the Bayesian result below in
-# both direction and approximate magnitude for all four types (BH-adjusted
-# contrast p-values: MG 0.153, WG 0.0050, ML 0.161, WL 0.0008; contrast
-# estimates -0.088, -0.176, -0.145, -0.247). That comparison is recorded
-# here so this is legible as independent-method agreement, not as having
-# picked whichever method gave a preferred answer.
-#
-# Cross-checked against an independently written implementation on the same
-# data and inclusion rule, giving the same results: P(decrease) ~0.94 (MG),
-# ~0.999 (WG), ~0.92 (ML), ~1.00 (WL).
-#   Interval means (T1->T2 .. T5->T6):
-#     MG 0.27 0.23 0.17 0.17 0.20 | WG 0.43 0.23 0.28 0.27 0.28
-#     ML 0.71 0.59 0.49 0.53 0.63 | WL 0.68 0.43 0.54 0.43 0.26
-#   Total intervals across all four types: 251, from 40 distinct participants.
+# Cross-checked two independent ways on this dataset: a frequentist
+# mixed-effects model (lme4::lmer, REML planned contrast via emmeans) agrees
+# in direction and magnitude for all four types (BH-adjusted contrast p: MG
+# 0.153, WG 0.0050, ML 0.161, WL 0.0008), and a separately written
+# implementation gives the same P(decrease): ~0.94 (MG), ~0.999 (WG), ~0.92
+# (ML), ~1.00 (WL).
 # ==============================================================================
 
 options(community_stability_v3.run = FALSE)

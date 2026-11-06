@@ -301,10 +301,8 @@ split_pcoa_panel <- function(sample_ids, label) {
     scale_colour_manual(values = dataset_palette) +
     scale_fill_manual(values = dataset_palette) +
     # facet_wrap on a single-value column, rather than labs(title=...), gives a title styled
-    # EXACTLY like Figure 2's actual live panels (grain_heatmap_mk/wk and the C/D heatmaps, all
-    # of which use facet strips, not plot.title) -- bold, size 22, centred, no background box.
-    # The grain_bar_mk/wk code elsewhere in the repo with plot.title size 15.5 is dead code, not
-    # what Figure 2 actually renders; copying its style was the mistake made further up this chat.
+    # exactly like Figure 2's heatmap panels (C/D): bold, size 22, centred, no background box --
+    # the same facet-strip title convention used throughout these figures.
     facet_wrap(~ panel_label) +
     labs(x = paste0("PCoA1 - ", round(pct[1]), "%"), y = paste0("PCoA2 - ", round(pct[2]), "%")) +
     coord_equal() + theme_bw() +

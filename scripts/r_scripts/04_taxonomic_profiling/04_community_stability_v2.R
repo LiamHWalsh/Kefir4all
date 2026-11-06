@@ -617,10 +617,11 @@ tryCatch(
   }
 )
 
-# The stability/prevalence/compositional analysis below is not required to
-# build Extended Data Figure 1 (the mean_compositional_change and
-# mean_gower_change panels it needs are already built above). Guarded in a
-# tryCatch so a failure anywhere in this section cannot block that figure.
+# This block covers the stability/prevalence/compositional analysis AND,
+# further down, the code that renders and saves Extended Data Figure 1 itself
+# from panels already built above. Wrapped in one tryCatch so a failure
+# anywhere here is reported clearly instead of halting the script silently;
+# if this fires, Extended Data Figure 1 was not written by this run.
 tryCatch(
   {
 
@@ -995,6 +996,6 @@ tryCatch({
 })
   },
   error = function(e) {
-    message("Non-essential downstream analysis failed (Extended Data Figure 1 is unaffected): ", conditionMessage(e))
+    message("Downstream block failed -- Extended Data Figure 1 was not written by this run: ", conditionMessage(e))
   }
 )
