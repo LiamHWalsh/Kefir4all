@@ -1,0 +1,2465 @@
+"site","shannon","richness","pielou","data_source","kefir type","conditions","merge"
+"Undetermined_S0",1.19051951906391,1122,0.169520415942767,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"UK4-6-4-17_S4_L001",3.15909829747481,1025,0.455697373696122,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"UK4-4-5-17_S2_L001",1.02193137003625,372,0.172655802789648,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"UK4-29-6-17_S6_L001",1.15011299337836,561,0.181700427324511,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"UK4-28-9-17_S7_L001",0.642220592838495,572,0.101150816466679,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"UK4-27-4-17_S1_L001",1.0184324731319,315,0.177039480780865,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"UK4-22-6-17_S5_L001",0.927469167788134,400,0.154798407049878,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"UK4-18-8-17-A_S3_L001",0.877717996333216,298,0.154064172970349,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"UK4-18-5-17_S5_L001",1.07567027995504,934,0.157273775218034,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"UK4-16-9-17_S6_L001",0.54987972914838,256,0.0991635947909669,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"UK-18-8-17-B_S4_L001",0.980886144778365,695,0.14989293375692,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"PFG_lib_li_neg_ctl_S46",1.3035383200975,41,0.351020068193898,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"PFG_kg_L_p4_SM_S40",0.782118281548348,314,0.136034931594573,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"PFG_kg_L_p4_OM_S36",0.677565744035114,279,0.120323257282283,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"PFG_kg_L_p4_OM_r_S45",0.75017568346721,967,0.109129185600821,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"PFG_kg_L_p4_CoM_S34",0.656290947235952,472,0.106593014004503,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"PFG_kg_L_p0_3005_S38",0.64515224240749,529,0.10287887618002,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"PFG_kg_L_p0_1303_S32",0.682273744203463,189,0.130161517189456,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"PFG_kg_B_p4_SM_S39",1.11221078094188,503,0.178795058110065,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"PFG_kg_B_p4_OM_S35",0.776409876075106,335,0.133538432242833,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"PFG_kg_B_p4_CoM_S33",0.684239143225472,341,0.117327320276212,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"PFG_kg_B_p0_3005_S37",0.686985804717741,327,0.11865121424683,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"PFG_kg_B_p0_1303_S31",1.03006110125476,430,0.169870974285004,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"PFG_k_L_p4_SM_S30",1.25178125448686,991,0.181451377391779,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"PFG_k_L_p4_OM_S24",1.56109257783684,948,0.227751946200515,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"PFG_k_L_p4_CoM_S16",1.42985557742673,905,0.210027796865174,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"PFG_k_L_p4_CM_S8",1.32891256523118,871,0.196304704115098,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"PFG_k_L_4_SM_S26",1.5445834696862,677,0.236983947948641,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"PFG_k_L_4_OM_S20",1.32548327455807,794,0.198512311887517,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"PFG_k_L_4_CoM_S12",0.957056622650163,833,0.142312540512704,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"PFG_k_L_4_CM_S4",1.31200938563161,633,0.203397473326525,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"PFG_k_L_24_SM_S28",1.54731584266103,675,0.237510987219575,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"PFG_k_L_24_OM_S22",1.54542900845504,953,0.2252938437742,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"PFG_k_L_24_CoM_S14",1.48797828228733,944,0.217219106071531,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"PFG_k_L_24_CM_S6",1.58573351938063,781,0.238077565931945,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"PFG_k_L_0_SM_S44",1.05527008954865,1096,0.150765308773305,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"PFG_k_L_0_OM_S18",1.1785565531545,795,0.176474420285895,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"PFG_k_L_0_CoM_S10",0.777800496459809,747,0.117562399204837,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"PFG_k_L_0_CM_S2",1.10818735686211,408,0.184351705673764,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"PFG_k_B_p4_SM_S29",1.17230573094143,845,0.173949721725231,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"PFG_k_B_p4_OM_S23",1.66557100512046,908,0.244532557127614,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"PFG_k_B_p4_CoM_S15",0.793611051368841,233,0.145588965869377,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"PFG_k_B_p4_CM_S7",0.84438212657967,512,0.135353989625752,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"PFG_k_B_4_SM_S25",1.27288997128763,346,0.217720568069246,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"PFG_k_B_4_OM_S19",1.43473721428061,768,0.215951628800399,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"PFG_k_B_4_CoM_S11",1.30381772300389,348,0.222790945376541,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"PFG_k_B_4_CM_S3",1.79720477388509,268,0.321446782142368,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"PFG_k_B_24_SM_S27",1.09897089613506,630,0.170496224925864,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"PFG_k_B_24_OM_S21",1.93291177027556,945,0.282128097654874,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"PFG_k_B_24_CoM_S13",1.31077737641289,686,0.200704629780257,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"PFG_k_B_24_CM_S5",0.849354054384555,704,0.129538320231132,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"PFG_k_B_0_SM_S43",1.81515915355548,873,0.268041409813805,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"PFG_k_B_0_OM_S17",1.33012182281517,465,0.21656035855548,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"PFG_k_B_0_CoM_S9",1.21000012988708,419,0.200401788301675,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"PFG_k_B_0_CM_S1",1.53659375465029,225,0.283708506220616,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"PFG_extr_neg_ctl_S41",0,1,NA,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"Neg5_S5",2.96052752983508,273,0.52777295936782,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"Neg4_S4",3.31009524610988,251,0.599063150582185,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"Neg3_S3",0.869115304355547,316,0.150999692499071,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"Neg2_S2",1.5476575009529,95,0.33985492752505,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"Neg1_S1",3.30670413080606,200,0.624104579254459,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"Kefir9_S14",0.296456680435164,328,0.0511748634607221,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"Kefir8_S13",0.339187075201076,336,0.0583085084458352,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"Kefir7_S12",0.39512687316332,418,0.0654673330670874,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"Kefir6_S11",0.386074150271284,344,0.0661013246350926,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"Kefir5_S10",0.366006444713256,439,0.0601539124034976,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"Kefir4_S9",0.383748747828395,509,0.0615727153775426,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"Kefir36_S41",0.685400441531293,711,0.104375610152345,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"Kefir35_S40",0.809608967693135,841,0.120216489517107,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"Kefir34_S39",1.04825280987895,881,0.15458544488246,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"Kefir33_S38",0.761766226727111,1229,0.107080535077068,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"Kefir32_S37",0.722940757060986,1221,0.101716262758484,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"Kefir31_S36",0.625790574070085,1144,0.0888618495175006,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"Kefir30_S35",0.63982746804195,1105,0.0913047850883624,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"Kefir3_S8",0.672549221094738,312,0.117107582757805,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"Kefir29_S34",0.651993943672877,1136,0.0926750605853914,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"Kefir28_S33",0.651554115991671,1107,0.092954216574705,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"Kefir27_S32",0.348958958520422,486,0.0564091804424788,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"Kefir26_S31",0.387835210983417,542,0.061607438175722,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"Kefir25_S30",0.535239993059434,647,0.0826964393907955,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"Kefir24_S29",0.524419658567626,772,0.0788721427493274,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"Kefir23_S28",0.696225186791295,895,0.102433903783517,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"Kefir22_S27",0.916316392539504,1009,0.132478552295864,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"Kefir21_S26",0.824478743220309,782,0.123761140903054,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"Kefir20_S25",1.23534739415942,1163,0.175009168392975,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"Kefir2_S7",0.588539117687574,425,0.0972456124257948,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"Kefir19_S24",1.08420691592781,852,0.160680698441858,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"Kefir18_S23",0.328636653877167,451,0.053773772421716,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"Kefir17_S22",0.328990324280594,388,0.0551904092576078,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"Kefir16_S21",0.356792771247828,670,0.0548298054912825,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"Kefir15_S20",0.549635071584767,481,0.0889972286556855,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"Kefir14_S19",0.519272732540286,757,0.078329201868827,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"Kefir13_S18",0.621203018914987,792,0.0930702382446913,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"Kefir12_S17",0.873470276227104,535,0.139037438462586,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"Kefir11_S16",0.858601476206805,546,0.136229316655673,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"Kefir10_S15",0.903158678785746,765,0.136020416855485,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"Kefir1_S6",0.588542877686089,480,0.0953293275441014,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"Fr1-8-6-17_S12_L001",1.1126362079663,688,0.170289587797305,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"Fr1-6-4-17_S1_L001",2.82892252851103,934,0.41361682492229,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"Fr1-4-5-17_S9_L001",1.57592770183386,497,0.253830208664085,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"Fr1-29-6-17_S3_L001",1.24254591824644,429,0.204991297449687,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"FR1-27-4-17_S8_L001",1.72679864710697,974,0.250936700469121,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"Fr1-22-6-17_S14_L001",1.08232599284195,510,0.173605179456193,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"Fr1-18-5-17_S2_L001",0.828249508883433,300,0.145210570803431,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"Fr1-15-6-17_S13_L001",1.2757972295268,624,0.198223651796068,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"Fr1-11-5-17_S10_L001",1.05329486801517,927,0.154171842344471,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"Fr1-1-6-17_S11_L001",1.63039825754819,638,0.252448568969014,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"9_S7_L001",0.549744312497639,372,0.0928795693980474,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"8_S6_L001",1.49289984840527,459,0.243577682877316,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"6_S5_L001",3.49099551123372,132,0.714957429480281,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"5_S4_L001",1.24598295335683,796,0.186535586745588,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"4_S3_L001",1.88418994042482,941,0.275187029016122,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"3_S2_L001",1.97175924211365,849,0.292369800982144,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"27_S18_L001",0.914123683419267,538,0.145379173954534,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"26_S17_L001",1.18017729864756,607,0.184157290561606,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"25_S16_L001",0.850786076248929,428,0.140414058071852,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"23_S14_L001",1.89384107563948,903,0.278271860302126,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"21_S13_L001",1.73166220526881,885,0.255197087689638,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"17_S12_L001",4.50150268228633,136,0.916307533703719,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"16_S11_L001",1.04524761564619,820,0.155790759017194,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"13_S10_L001",1.28588939950512,651,0.198485372488656,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"11_S9_L001",1.43289989961324,1041,0.206233862722491,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"10_S8_L001",1.18162516395158,439,0.194202527394834,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"1_S1_L001",4.02935985382385,94,0.886880567280872,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"Y3_S88",1.64836948427237,129,0.33918376824442,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"Y2_S87",1.01459227509392,55,0.25318390765031,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"Y1_S86",2.71269270099173,702,0.41390300049821,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WKMediaT_1_L_00h_05F8_S105",2.88562340098303,26,0.885677685516145,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WKMedia_3_L_48h_02F6_S111",3.4474788841192,35,0.969660023293183,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WKMedia_3_L_08h_02F5_S110",3.93766277498556,55,0.982614270631736,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WKMedia_3_L_00h_02F4_S109",2.27762397094907,27,0.691060893954475,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WKMedia_2_L_48h_02H3_S4",2.49637956366686,17,0.881112454487059,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WKMedia_2_L_08h_02H2_S3",2.24595260752053,11,0.936634986939807,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WKMedia_2_L_00h_02H1_S2",4.00871285941435,82,0.909681927638801,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WKMedia_1_L_48h_05F7_S104",2.46283747449574,16,0.888280852742627,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WKMedia_1_L_0h_05F5_S102",2.6242868794112,26,0.805466274183768,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WKMedia_1_L_08h_05F6_S103",2.99789359309446,34,0.85013814446008,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK069-2-L-48h-05D2_S81",2.54927555259852,1404,0.351765862521347,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK069-2-L-08h-05D1_S80",1.9375387758244,1281,0.270780078988889,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK069-2-G-48h-05I4_S128",3.00410102118477,1192,0.424105115491013,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK069-1-L-48h-05C9_S79",1.84342914907509,1410,0.254218928116396,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK069-1-L-08h-05C8_S78",2.02314519951935,1286,0.282590125730676,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK068-2-L-48h-05C7_S77",0.852708362872781,846,0.126504845899975,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK068-2-L-08h-05C6_S76",0.904289103266261,705,0.137886829652879,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK068-2-G-48h-05I3_S127",1.47428622096323,1087,0.210878117485353,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK068-1-L-48h-05C5_S75",0.845005879189333,884,0.124550258242892,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK068-1-L-08h-05C4_S74",0.666362765298118,612,0.103847680713464,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK067-2-L-48h-05C3_S73",0.736724091625654,1184,0.104106278311628,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK067-2-L-08h-05C2_S72",0.453795028041316,945,0.0662359917071046,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK067-2-G-48h-05I2_S126",0.707449670129244,1224,0.0995023437181515,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK067-1-L-48h-05C1_S71",0.570984104088408,1186,0.0806663676329801,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK067-1-L-08h-05B9_S70",0.468660935225689,831,0.0697139288533092,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK066-2-L-48h-05B8_S69",3.46239552459474,1391,0.478378230554011,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK066-2-L-08h-05B7_S68",3.06435229209479,1308,0.427012765283486,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK066-2-G-48h-05I1_S125",1.6427592008073,1395,0.22688008261339,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK066-1-L-48h-05B6_S67",3.30323932992262,1390,0.456433935110714,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK066-1-L-08h-05B5_S66",3.71197863923115,1311,0.517093420613805,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK065-2-L-48h-05B4_S65",4.55359920257506,1362,0.630979979305129,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK065-2-L-08h-05B3_S64",4.62537762791892,1335,0.642709333301238,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK065-2-G-48h-05H9_S124",3.50361699034769,1091,0.500885222334102,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK065-1-L-48h-05B2_S63",4.69967959324912,1387,0.649584737783314,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK065-1-L-08h-05B1_S62",4.90318451019466,1361,0.679490229441346,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK064-2-L-48h-05A5_S57",3.63944279810279,1433,0.500781570597187,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK064-2-L-08h-05A4_S56",2.999517290707,1450,0.412060160919734,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK064-2-G-48h-05H7_S122",2.48398845811234,1114,0.354060758086181,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK064-1-L-48h-05A3_S55",3.58797817293551,1413,0.494656762023972,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK064-1-L-08h-05A2_S54",3.3963989059953,1458,0.466229567858758,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK063-2-L-48h-05A1_S53",2.42883045967511,1380,0.335945314163173,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK063-2-L-08h-04I9_S52",1.40405965072474,1182,0.19845469318178,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK063-2-G-48h-05H6_S121",1.75651698556232,874,0.259337980378287,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK063-1-L-48h-04I8_S51",2.03109638341756,1308,0.283030148158171,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK063-1-L-08h-04I7_S50",1.37102855250696,992,0.198707764237583,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK062-2-L-48h-04I6_S49",3.53673335919137,1436,0.486508915257741,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK062-2-L-08h-04I5_S48",3.65119943004213,1401,0.503965340050003,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK062-2-G-48h-05H5_S120",2.10899974776799,1154,0.299106921603032,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK062-1-L-48h-04I4_S47",2.87835093463806,1413,0.396823972909472,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK062-1-L-08h-04I3_S46",2.39987799981124,1411,0.33092390317892,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK061-2-L-48h-04I2_S45",4.47942564647088,1361,0.620765128042287,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK061-2-L-08h-04I1_S44",5.1722627048065,1458,0.71000547122342,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK061-2-G-48h-05H4_S119",3.66154270587393,1153,0.519358733886825,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK061-1-L-48h-04H9_S43",4.70206739644285,1405,0.648758548674684,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK061-1-L-08h-04H8_S42",5.76949701916804,1425,0.794485671023274,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK060-2-L-48h-04H7_S41",1.84352079885773,1045,0.26518717173999,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK060-2-L-08h-04H6_S40",1.75787351799393,1065,0.252179255011707,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK060-2-G-48h-05H3_S118",1.54181042546847,813,0.230095850775382,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK060-1-L-48h-04H5_S39",1.8400252396917,934,0.269030130640846,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK060-1-L-08h-04H4_S38",1.78538727695885,981,0.259181025885804,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK059-2-L-48h-04H3_S37",1.5077451431046,1320,0.209834924665196,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK059-2-L-08h-04H2_S36",1.49375393172507,1283,0.208713572589358,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK059-2-G-48h-05H2_S117",1.42559955807715,1000,0.206376673825541,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK059-1-L-48h-04H1_S35",1.99671490131317,1356,0.276848776770528,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK059-1-L-08h-04G9_S34",1.7416107372886,1325,0.242254847940339,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK058-2-L-48h-04G8_S33",2.65584249426068,1342,0.368768863336493,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK058-2-L-08h-04G7_S32",2.46598660478315,1408,0.340139576923088,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK058-2-G-48h-05H1_S116",1.10696948822717,895,0.162865705233876,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK058-1-L-48h-04G6_S31",3.27525754464437,1418,0.451323731964927,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK058-1-L-08h-04G5_S30",2.05902656636989,1372,0.285024847091918,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK057-2-L-48h-04G4_S29",3.38804834165823,1421,0.466730147565,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK057-2-L-08h-04G3_S28",4.36867371095364,1334,0.607102810024557,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK057-2-G-48h-05G9_S115",3.2247380738953,1147,0.457740455021104,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK057-1-L-48h-04G2_S27",3.49649094815283,1381,0.483571040590966,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK057-1-L-08h-04G1_S26",4.57339784315017,1340,0.635156662439632,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK056-2-L-48h-04F9_S25",3.43295936754588,1314,0.478072701110513,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK056-2-L-08h-04F8_S24",2.11607258969255,1288,0.295505952407551,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK056-2-G-48h-05G8_S114",1.2306238818033,1074,0.17632873844873,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK056-1-L-48h-04F7_S23",3.63184086905662,1272,0.508067320632301,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK056-1-L-08h-04F6_S22",2.74408441322243,1293,0.382999512633152,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK055-2-L-48h-04F5_S21",3.29554082120984,1262,0.461531054306684,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK055-2-L-08h-04F4_S20",2.64404999799153,1325,0.367782488070379,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK055-2-G-48h-05G7_S113",1.68807933310201,1096,0.241174088424902,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK055-1-L-48h-04F3_S19",3.81158957465582,1283,0.532571302725906,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK055-1-L-08h-04F2_S18",2.75865861705103,1328,0.383603660753359,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK054-2-L-48h-04F1_S17",1.43449063629741,1352,0.198976686526008,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK054-2-L-08h-04E9_S16",1.13514877530767,1293,0.158435879601243,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK054-2-G-48h-05G6_S112",1.38095464290495,1040,0.198785002923331,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK054-1-L-48h-04E8_S15",1.27358269614328,1327,0.177115849756338,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK054-1-L-08h-04E7_S14",0.931148704917241,1312,0.129698949936754,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK053-2-L-48h-04E6_S13",1.58608771461967,1380,0.219380786112807,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK053-2-L-08h-04E5_S12",1.39928626953633,1307,0.195009166674642,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK053-2-G-48h-05G5_S111",1.73831029557637,1224,0.244492231493503,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK053-1-L-48h-04E4_S11",1.57095356981466,1347,0.218017361600211,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK053-1-L-08h-04E3_S10",1.5937202457908,1316,0.221893917335734,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK052-2-L-48h-04E2_S9",3.41388986325582,1433,0.469745843638008,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK052-2-L-08h-04E1_S8",2.25801599755349,1384,0.312194015047929,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK052-2-G-48h-05G4_S110",1.16557314600906,1199,0.164414327526976,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK052-1-L-48h-04D9_S7",3.40935031444125,1433,0.469121208903717,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK052-1-L-08h-04D8_S6",2.63122844667585,1390,0.363577032766694,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK051-2-L-48h-04D7_S5",1.4198318833582,1349,0.197004088830206,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK051-2-L-08h-04D6_S4",1.23003110562663,1182,0.173856891012556,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK051-2-G-48h-04D3_S1",1.95705394412228,1188,0.276419013988673,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK051-1-L-48h-04D5_S3",1.2885483291797,1312,0.179480854513156,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK051-1-L-08h-04D4_S2",1.19951902247589,1180,0.169584798882332,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK050-2-L-48h-04D1_S128",2.64723755876038,1166,0.374891971008397,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK050-2-L-08h-04C9_S127",2.01390233655482,1313,0.280485060982832,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK050-2-G-48h-04D2_S129",1.79209563007363,1183,0.253270779994759,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK050-1-L-48h-04C8_S126",2.36247546021307,1293,0.329737287056279,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK050-1-L-08h-04C7_S125",2.11188146131684,1408,0.291296986516758,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK049-2-L-48h-05A9_S61",0.628560340781922,1341,0.0872858526717086,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK049-2-L-08h-05A8_S60",3.13618921223251,1377,0.433914728694674,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK049-2-G-48h-05H8_S123",1.46869378488218,1246,0.206054559417537,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK049-1-L-48h-05A7_S59",0.595766522722837,1329,0.0828352950271987,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK049-1-L-08h-05A6_S58",1.36594589312588,1353,0.189449487879293,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK048-2-L-48h-03I9_S100",2.12706369682535,1350,0.295103364211577,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK048-2-L-08h-03I8_S99",1.43501353925334,1312,0.199881875154114,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK048-2-G-48h-04C6_S124",2.19719915402295,1225,0.308999163516848,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK048-1-L-48h-03I7_S98",2.08225359802926,1379,0.288037183149876,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK048-1-L-08h-03I6_S97",1.75991565676798,1338,0.244469018792815,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK047-2-L-48h-03I5_S96",1.21564063918243,1221,0.171038112690803,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK047-2-L-08h-03I4_S95",1.51134284165475,1205,0.213038174585231,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK047-2-G-48h-04C5_S123",1.86807726394551,1064,0.268024873689914,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK047-1-L-48h-03I3_S94",1.1517339822221,1197,0.162500459264209,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK047-1-L-08h-03I2_S93",1.29304614277209,1191,0.182567917481968,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK046-2-L-48h-03I1_S92",0.633516383724763,1227,0.0890730057986684,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK046-2-L-08h-03H9_S91",0.66319147561978,1261,0.0928883790562216,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK046-2-G-48h-04C4_S122",0.535700205860454,1176,0.0757722409376546,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK046-1-L-48h-03H8_S90",0.814758697783163,1227,0.114555847451745,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK046-1-L-08h-03H7_S89",1.01411932583646,1282,0.141712450266387,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK045-2-L-48h-03H6_S88",1.65528250427094,1298,0.230908008000678,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK045-2-L-08h-03H5_S87",1.95546299247553,1334,0.271745421191407,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK045-2-G-48h-04C3_S121",2.42077199405821,1266,0.338872001371107,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK045-1-L-48h-03H4_S86",1.49701263157543,1299,0.208807301651403,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK045-1-L-08h-03H3_S85",1.2695407199316,1289,0.177269998250476,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK044-2-L-48h-03H2_S84",4.45614234181452,1365,0.617287446761022,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK044-2-L-08h-03H1_S83",3.87680228856919,1318,0.539653682859393,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK044-2-G-48h-04C2_S120",3.24780929939045,1229,0.45654053094637,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK044-1-L-48h-03G9_S82",4.16501248676417,1358,0.577369872286682,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK044-1-L-08h-03G8_S81",3.36775358522667,1272,0.471123488689742,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK043-2-L-48h-03G7_S80",1.89846818199191,1325,0.264073429786055,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK043-2-L-08h-03G6_S79",2.22051213052359,1225,0.31227774216758,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK043-2-G-48h-04C1_S119",1.36791014689027,1224,0.192395687436757,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK043-1-L-48h-03G5_S78",2.14308051174946,1317,0.298349879653041,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK043-1-L-08h-03G4_S77",2.07128184323046,1212,0.291728720837248,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK042-2-L-48h-03G3_S76",0.582007390233492,784,0.0873306828041732,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK042-2-L-08h-03G2_S75",0.397374667282126,667,0.0611083341882944,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK042-2-G-48h-04B9_S118",0.785801442971432,679,0.120510213306264,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK042-1-L-48h-03G1_S74",0.509794662962016,723,0.0774362713540766,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK042-1-L-08h-03F9_S73",0.339219427804553,693,0.0518602464514862,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK041-2-L-48h-03F8_S72",2.66512744488343,1399,0.367932998008678,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK041-2-L-08h-03F7_S71",1.93020171064541,1393,0.266631356802711,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK041-2-G-48h-04B8_S117",2.55673600542048,1387,0.35338934382844,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK041-1-L-48h-03F6_S70",2.15388474284226,1392,0.297559671598356,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK041-1-L-08h-03F5_S69",1.8609891188438,1400,0.256892693504644,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK040-2-L-48h-03F4_S68",4.42094339385788,1319,0.615333554437647,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK040-2-L-08h-03F3_S67",5.05321849120291,1346,0.701359317164797,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK040-2-G-48h-04B7_S116",5.23531080670512,1342,0.726933023917649,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK040-1-L-48h-03F2_S66",3.72302007604645,1316,0.518356663395218,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK040-1-L-08h-03F1_S65",3.649123470596,1281,0.509982021488971,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK039-2-L-48h-03E9_S64",4.2273511747071,1335,0.587402429312272,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK039-2-L-08h-03E8_S63",4.85150875418343,1136,0.689598227234591,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK039-2-G-48h-04B6_S115",3.36760333257969,1014,0.486531296834429,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK039-1-L-48h-03E7_S62",3.87947287827416,1291,0.541585859811428,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK039-1-L-08h-03E6_S61",4.90999102786333,1193,0.693087817259417,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK038-2-L-48h-03E5_S60",1.55316653151869,1324,0.216065296812044,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK038-2-L-08h-03E4_S59",1.05813600908365,1185,0.14950707171866,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK038-2-G-48h-04B5_S114",1.14808500074339,1032,0.165447901124633,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK038-1-L-48h-03E3_S58",1.56152502881432,1289,0.218040693598945,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK038-1-L-08h-03E2_S57",0.664086203326843,1002,0.0961085260585111,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK037-2-L-48h-03E1_S56",1.70808973605607,1332,0.237418128952626,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK037-2-L-08h-03D9_S55",1.70999260346495,1269,0.239294195389133,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK037-2-G-48h-04B4_S113",1.79092067416384,1211,0.252270711392335,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK037-1-L-48h-03D8_S54",1.76248525949251,1329,0.245055707030842,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK037-1-L-08h-03D7_S53",1.23959534347695,1148,0.175934523320629,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK036-2-L-48h-03D6_S52",1.81834927335602,1111,0.259282073204837,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK036-2-L-08h-03D5_S51",1.75185244318943,1060,0.251485265645798,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK036-2-G-48h-04B3_S112",1.6764075114101,1031,0.241617004213631,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK036-1-L-48h-03D4_S50",1.42526402888877,1024,0.205622134643526,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK036-1-L-08h-03D3_S49",1.6216790824982,1151,0.230078061624358,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK035-2-L-48h-03D2_S48",1.77030302857802,1289,0.247193028039105,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK035-2-L-08h-03D1_S47",1.40458826982071,1327,0.195334661597108,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK035-2-G-48h-04B2_S111",1.65951079731469,1166,0.235013768090518,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK035-1-L-48h-03C9_S46",1.30270906370226,1289,0.181901399315353,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK035-1-L-08h-03C8_S45",1.70042737647314,1247,0.238539432361412,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK034-2-L-48h-03C7_S44",1.66548748696079,1414,0.229590109618602,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK034-2-L-08h-03C6_S43",1.62139000773557,1333,0.225343682601344,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK034-2-G-48h-04B1_S110",2.22391376604596,1152,0.315482106424992,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK034-1-L-48h-03C5_S42",1.90456842116746,1373,0.263617083407569,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK034-1-L-08h-03C4_S41",1.59526871750008,1298,0.222536226192991,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK033-2-L-48h-03C3_S40",2.41339104410504,1338,0.335242963631132,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK033-2-L-08h-03C2_S39",1.83479350935017,1224,0.258062533813665,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK033-2-G-48h-04A9_S109",2.4487436892974,1185,0.345990019462101,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK033-1-L-48h-03C1_S38",2.52018045665451,1358,0.349357000254389,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK033-1-L-08h-03B9_S37",1.91228148391499,1234,0.268653713195449,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK032-2-L-48h-03B8_S36",1.55625385536868,1299,0.21707042503853,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK032-2-L-08h-03B7_S35",1.00275542666234,1071,0.143736438683454,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK032-2-G-48h-04A8_S108",1.48134265090397,1103,0.21144551268,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK032-1-L-48h-03B6_S34",1.40432007539195,1183,0.198467779781485,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK032-1-L-08h-03B5_S33",1.0896486790738,996,0.157834381592793,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK031-2-L-48h-03B4_S32",1.84805879590202,1114,0.263417125038553,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK031-2-L-08h-03B3_S31",1.30538099338217,1063,0.187316547567025,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK031-2-G-48h-04A7_S107",1.58985621855931,1082,0.227559020270793,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK031-1-L-48h-03B2_S30",1.66936241381081,1120,0.237764200271864,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK031-1-L-08h-03B1_S29",1.63584155665379,1025,0.235968821149369,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK030-2-L-48h-03A9_S28",2.7404649488699,1033,0.394867017745258,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK030-2-L-08h-03A8_S27",2.18971016632077,940,0.319858105344905,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK030-2-G-48h-04A6_S106",1.83356764666887,593,0.28715925187128,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK030-1-L-48h-03A7_S26",2.55064126920727,1039,0.367209348048494,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK030-1-L-08h-03A6_S25",2.22577679421094,941,0.325075986295648,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK029-2-L-48h-03A5_S24",0.793439620407572,1250,0.111267827421217,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK029-2-L-08h-03A4_S23",1.10174792180571,1077,0.157799803743571,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK029-2-G-48h-04A5_S105",0.842926746319853,1193,0.118986420830721,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK029-1-L-48h-03A3_S22",0.902011951267364,1321,0.125520990540048,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK029-1-L-08h-03A2_S21",1.42727533706047,1211,0.201047299206083,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK028-2-L-48h-03A1_S20",0.95119916690461,1259,0.13325713569586,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK028-2-L-08h-02I9_S19",3.01020925479462,1258,0.421758697135834,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK028-2-G-48h-04A4_S104",3.26857501145523,1253,0.45821385122985,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK028-1-L-48h-02I8_S18",0.870777345635572,1205,0.122744364198175,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK028-1-L-08h-02I7_S17",2.44519560770628,1277,0.341876914434487,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK027-2-L-48h-02I6_S16",3.24345013993264,1112,0.46243074236937,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK027-2-L-08h-02I5_S15",2.26311195638147,1134,0.321761551146228,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK027-2-G-48h-04A3_S103",1.88859205603097,1072,0.270677354625571,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK027-1-L-48h-02I4_S14",3.4679009812838,1299,0.483712048263794,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK027-1-L-08h-02I3_S13",2.63302564336139,1280,0.368017777617777,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK026-2-L-48h-02I2_S12",0.807399072429397,1145,0.114635913717728,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK026-2-L-08h-02I1_S11",0.693310933705959,1275,0.0969570520902967,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK026-2-G-48h-04A2_S102",1.09363477074049,1120,0.155764377167823,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK026-1-L-48h-02H9_S10",1.46461488482261,1315,0.203940142536429,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK026-1-L-08h-02H8_S9",1.76295435764681,1266,0.246787336010184,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK025-2-L-48h-02H7_S8",1.45116424964706,1363,0.20106347398222,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK025-2-L-08h-02H6_S7",1.16404768771557,1262,0.163021545088127,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK025-2-G-48h-04A1_S101",1.5538050230422,1183,0.219593978994024,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK025-1-L-48h-02H5_S6",1.65938128091531,1368,0.229796029603968,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK025-1-L-08h-02H4_S5",1.80059668807067,1255,0.252364994157618,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK024-2-L-48h-02G9_S123",0.936608961541172,1350,0.12994272616943,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK024-2-L-08h-02G8_S122",0.690922068059797,1224,0.0971777470558187,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK024-2-G-48h-01E9_S24",1.13395237494037,1215,0.159655399900659,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK024-1-L-48h-02G7_S121",0.739017438056226,1320,0.102850053372738,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK024-1-L-08h-02G6_S120",0.645046973552595,1073,0.0924372622196895,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK023-2-L-48h-02G5_S119",2.25771062639951,1370,0.312591206576148,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK023-2-L-08h-02G4_S118",3.47730424803068,1337,0.483080795423486,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK023-2-G-48h-01E8_S23",4.38342514684334,1368,0.607029684133336,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK023-1-L-48h-02G3_S117",1.45364643302382,1292,0.202911397456502,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK023-1-L-08h-02G2_S116",2.07180305094469,1265,0.290053634868422,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK022-2-L-48h-02G1_S115",2.42816121022895,1487,0.332419181233447,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK022-2-L-08h-02F9_S114",2.65890644592093,1387,0.367511233945593,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK022-2-G-48h-01E7_S22",1.693462796134,1271,0.236928821697225,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK022-1-L-48h-02F8_S113",2.2925036611441,1469,0.314371593874507,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK022-1-L-08h-02F7_S112",2.4136667921055,1375,0.334015635132019,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK021-2-L-48h-02F3_S108",1.10161568604982,1368,0.152554999694866,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK021-2-L-08h-02F2_S107",0.886191249108528,1262,0.124108546580911,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK021-2-G-48h-01E6_S21",1.42924091742934,1181,0.202038071262387,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK021-1-L-48h-02F1_S106",0.965238855435993,1304,0.134561976047415,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK021-1-L-08h-02E9_S105",0.625694658499562,1176,0.0885015273441624,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK020-2-L-48h-02E8_S104",2.17776835259959,1397,0.30071024390049,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK020-2-L-08h-02E7_S103",2.02926080465874,1332,0.282059714562424,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK020-2-G-48h-01E5_S20",1.62318308628018,1311,0.226115874023709,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK020-1-L-48h-02E6_S102",1.95709843033463,1360,0.271245091792371,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK020-1-L-08h-02E5_S101",1.52186541957804,1245,0.213538478473363,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK019-2-L-48h-02E4_S100",2.01117790731478,1343,0.279227059615908,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK019-2-L-08h-02E3_S99",1.44051541057061,1287,0.201187358502396,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK019-2-G-48h-01E4_S19",2.48231896865121,1228,0.348976434143308,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK019-1-L-48h-02E2_S98",1.74520404356126,1328,0.242678327696565,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK019-1-L-08h-02E1_S97",1.18664140896257,1321,0.165129081559885,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK018T-2-L-48h-05G3_S109",2.21818507728776,1156,0.314514789654017,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK018T-2-L-16h-05F4_S101",2.02534497332266,1179,0.286372193543597,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK018T-2-L-08h-05E9_S97",1.95934581254526,1010,0.283236368104411,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK018T-2-L-04h-05E5_S93",1.79448487702721,956,0.261481593808593,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK018T-2-L-02h-05E1_S89",1.9555162085963,955,0.284989576442791,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK018T-2-L-00h-05D6_S85",2.01909598435883,779,0.303258130761297,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK018T-2-G-00h-05I8_S132",1.995606115794,1215,0.280972375473922,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK018T-1-L-48h-05G2_S108",2.0992209214992,1115,0.299178808010043,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK018T-1-L-16h-05F3_S100",2.08071098327992,1152,0.295167507791396,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK018T-1-L-08h-05E8_S96",1.98068016553737,1045,0.284917301473247,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK018T-1-L-04h-05E4_S92",1.76028286284506,890,0.259199743743659,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK018T-1-L-02h-05D9_S88",1.94811258940807,872,0.287723109882712,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK018T-1-L-00h-05D5_S84",2.32307538752836,1088,0.332243042075281,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK018T-1-G-00h-05I7_S131",1.79789529125793,1002,0.26019674190595,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK018-2-L-48h-02D9_S96",1.63118078929806,1328,0.22682289075485,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK018-2-L-08h-02D8_S95",1.30744249647889,1281,0.182721185705999,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK018-2-G-48h-01E3_S18",2.14090609743761,1211,0.301569975720412,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK018-1-L-48h-02D7_S94",1.70231371515019,1374,0.235598654783442,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK018-1-L-08h-02D6_S93",1.4391529195794,1384,0.198977743611314,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK017-2-L-48h-02D5_S92",1.82243592059137,1309,0.253926592647041,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK017-2-L-08h-02D4_S91",1.30460291125714,1226,0.183449439428069,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK017-2-G-48h-01E2_S17",2.33065317090512,1149,0.33074639314381,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK017-1-L-48h-02D3_S90",2.05687809907814,1257,0.28822012733138,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK017-1-L-08h-02D2_S89",1.4456273070604,1161,0.20484904795165,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK016-2-L-48h-02D1_S88",1.70939309318921,1370,0.236673931222573,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK016-2-L-08h-02C9_S87",1.46545621333354,1396,0.202372888761152,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK016-2-G-48h-01E1_S16",2.07908000420626,1342,0.288684276870192,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK016-1-L-48h-02C8_S86",2.34076912376422,1404,0.322994769610116,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK016-1-L-08h-02C7_S85",1.46916716933195,1389,0.203026295443567,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK015-2-L-48h-02C6_S84",1.46418183534966,1421,0.20170249511265,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK015-2-L-08h-02C5_S83",1.14213533984925,1392,0.157786259351068,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK015-2-G-48h-01D9_S15",1.29398273216399,1338,0.179746505266008,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK015-1-L-48h-02C4_S82",1.70713862112045,1421,0.235171691841767,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK015-1-L-08h-02C3_S81",1.29057122314364,1356,0.178940450751172,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK014-2-L-48h-02C2_S80",1.16205342620905,1095,0.166042984236762,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK014-2-L-08h-02C1_S79",0.698908732980907,1084,0.100009646650705,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK014-2-G-48h-01D8_S14",1.17194821482477,1076,0.167876701202025,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK014-1-L-48h-02B9_S78",1.06239029264292,1178,0.150233934928762,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK014-1-L-08h-02B8_S77",1.10149359120846,1166,0.155989439668808,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK013-2-L-48h-02B7_S76",0.918702746604923,1250,0.12883407386201,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK013-2-L-08h-02B6_S75",0.527376133290761,1106,0.0752480193121685,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK013-2-G-48h-01D7_S13",1.47025240778135,1294,0.205185087795906,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK013-1-L-48h-02B5_S74",0.783089456090004,1142,0.111225823245263,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK013-1-L-08h-02B4_S73",0.927211202888582,1195,0.130852963105887,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK012-2-L-48h-02B3_S72",1.47703346534975,1224,0.207743812398122,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK012-2-L-08h-02B2_S71",0.862003621219154,1065,0.123660450419955,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK012-2-G-48h-01D6_S12",1.29746914741551,1104,0.185175622088705,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK012-1-L-48h-02B1_S70",0.970585322295771,1188,0.137087809248508,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK012-1-L-08h-02A9_S69",1.07066945077929,1176,0.151441090933924,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK011-2-L-48h-02A8_S68",1.46434957413698,1355,0.203055959800249,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK011-2-L-08h-02A7_S67",2.00828855242598,1335,0.279057387404486,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK011-2-G-48h-01D5_S11",1.46963122745739,1164,0.208174338163564,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK011-1-L-48h-02A6_S66",1.57449568966874,1331,0.218871900916574,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK011-1-L-08h-02A5_S65",1.36852991722073,1315,0.190560801529178,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK010-2-L-48h-02A4_S64",1.55864482009955,1190,0.220094459006352,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK010-2-L-08h-02A3_S63",0.942102678807668,1037,0.135669764874377,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK010-2-G-48h-01D4_S10",1.36291349202612,1208,0.192048330396085,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK010-1-L-48h-02A2_S62",1.52910264380389,1176,0.216284281165453,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK010-1-L-08h-02A1_S61",0.779323891044874,1088,0.111457829441419,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK009-2-L-48h-01I9_S60",1.23197528047609,1333,0.17122212746582,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK009-2-L-08h-01I8_S59",1.10881628631876,1293,0.154760580692589,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK009-2-G-48h-01D3_S9",1.60330055716586,1225,0.225477299189407,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK009-1-L-48h-01I7_S58",1.29649772210019,1386,0.179218408657365,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK009-1-L-08h-01I6_S57",1.33488561995682,1302,0.186133504843516,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK008-2-L-48h-01I5_S56",1.3816628758251,889,0.203482045676556,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK008-2-L-08h-01I4_S55",0.326134242479433,756,0.0492052212666512,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK008-2-G-48h-01D2_S8",0.18059647462106,727,0.0274090893618021,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK008-1-L-48h-01I3_S54",0.727976703304289,840,0.108114251161331,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK008-1-L-08h-01I2_S53",0.259236985024147,691,0.0396499603880846,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK007-2-L-48h-01I1_S52",2.40292118330992,1363,0.332932458155074,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK007-2-L-08h-01H9_S51",1.92399849162591,1317,0.267850281537314,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK007-2-G-48h-01D1_S7",1.80160742830353,1241,0.252904292859344,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK007-1-L-48h-01H8_S50",1.94208189394092,1334,0.269885885996273,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK007-1-L-08h-01H7_S49",1.49085528630481,1293,0.208082829125058,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK006-2-L-48h-01H6_S48",1.75852492434339,1403,0.242676731971712,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK006-2-L-08h-01H5_S47",1.21684788884532,1241,0.170817487767353,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK006-2-G-48h-01C9_S6",1.40366823798885,886,0.206825811096145,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK006-1-L-48h-01H4_S46",1.36462554902191,1388,0.188598310996883,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK006-1-L-08h-01H3_S45",1.02341039490552,1244,0.143614631094985,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK005-2-L-48h-01H2_S44",0.819502053191674,1111,0.116854442906336,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK005-2-L-08h-01H1_S43",0.431274131595006,936,0.0630368855247398,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK005-2-G-48h-01C8_S5",0.672830536214693,521,0.107553935455214,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK005-1-L-48h-01G9_S42",0.620205039518864,920,0.0908808733966861,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK005-1-L-08h-01G8_S41",0.43938800394217,501,0.0706797240805546,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK004-2-L-48h-01G7_S40",2.23504880970798,1329,0.310760877778427,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK004-2-L-08h-01G6_S39",2.10619492032856,1268,0.294770763536136,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK004-2-G-48h-01C7_S4",2.17399348599468,1212,0.30619509404311,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK004-1-L-48h-01G5_S38",1.79960254225008,1284,0.251420654788094,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK004-1-L-08h-01G4_S37",1.50603320504144,1256,0.211056501188869,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK003-2-L-48h-01G3_S36",2.28773636387528,1436,0.314698345548765,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK003-2-L-08h-01G2_S35",1.91197390764719,1332,0.26575727151664,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK003-2-G-48h-01C6_S3",3.12486997971935,1253,0.438068180470563,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK003-1-L-48h-01G1_S34",1.54298966031347,1450,0.211968962371406,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK003-1-L-08h-01F9_S33",1.56126552149739,1405,0.215412555462035,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK002-2-L-48h-01F8_S32",2.55079639276379,1253,0.357590153120312,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK002-2-L-08h-01F7_S31",3.16141861187954,1239,0.443891046189348,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK002-2-G-48h-01C5_S2",2.52214388496428,1013,0.364436295439814,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK002-2-G-48h-01C5_S133",2.48450851961462,1082,0.355612235860088,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK002-2-G-48h-01C5_S1",2.50721350181212,1176,0.354633400292058,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK002-1-L-48h-01F6_S30",2.30454655508303,1305,0.321237795421308,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK002-1-L-08h-01F5_S29",2.62232986993687,1101,0.37440598990617,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK001T-2-L-48h-05G1_S107",1.80212197769393,1240,0.253005154254617,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK001T-2-L-16h-05F2_S99",1.33803703526674,1087,0.1913893836289,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK001T-2-L-08h-05E7_S95",1.09413542478514,1154,0.155174735829467,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK001T-2-L-04h-05E3_S91",0.794087178214156,1040,0.114306883903605,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK001T-2-L-02h-05D8_S87",0.880684607803641,1070,0.126255533644702,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK001T-2-L-00h-05D4_S83",0.795886093426321,1181,0.112506778458055,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK001T-2-G-00h-05I6_S130",1.40950522760839,1010,0.203753282823198,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK001T-1-L-48h-05F9_S106",1.75996411248748,1194,0.248404818851073,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK001T-1-L-16h-05F1_S98",1.38695267175209,1181,0.196060187835241,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK001T-1-L-08h-05E6_S94",1.08573853370376,1298,0.151457966468106,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK001T-1-L-04h-05E2_S90",0.813418176253685,1195,0.114793887601217,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK001T-1-L-02h-05D7_S86",0.926389012671623,1069,0.132825552201071,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK001T-1-L-00h-05D3_S82",0.824261819132018,1306,0.114884110320723,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK001T-1-G-00h-05I5_S129",1.42394228169348,1016,0.205664162272715,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK001-2-L-48h-01F4_S28",1.38989037793093,1350,0.192829827816104,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK001-2-L-08h-01F3_S27",1.43227396658062,1396,0.197790570251819,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK001-2-G-48h-01C4_S1",1.79348710678536,1238,0.251849954563572,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK001-1-L-48h-01F2_S26",1.40276954578519,1341,0.194797425102337,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"WK001-1-L-08h-01F1_S25",1.14883957798783,1350,0.159387057806316,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"W9_S82",0.315465683917924,632,0.0489178313717471,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"W8_S81",1.14302878025176,490,0.184525988869436,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"W7_S80",0.503883956827015,420,0.0834209782389213,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"W6_S79",0.293491095033675,202,0.055289429954213,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"W5_S78",0.301524409235542,216,0.0560946589863144,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"W4_S77",0.791650682655487,423,0.130908212561896,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"W3_S76",1.26908239480467,402,0.21163887846504,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"W2_S75",0.415432166114305,247,0.0754044080270026,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"W12_S85",1.96786349661139,725,0.29878715583747,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"W11_S84",2.21776172590936,77,0.510557336374184,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"W10_S83",0.336006000299791,622,0.0522321046762177,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"W1_S74",0.409858313334271,247,0.0743927071920882,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"V9_S70",0.690155754579944,695,0.105465319653978,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"V8_S69",1.00979999769435,609,0.157490427135113,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"V7_S68",1.39617787530514,702,0.21302899941698,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"V6_S67",0.490348835284473,283,0.0868573992767827,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"V5_S66",0.342291053795361,250,0.0619928419103772,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"V4_S65",1.31482530480768,347,0.22478240724729,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"V3_S64",1.77940443478406,402,0.296742875368134,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"V2_S63",0.513840869367554,597,0.0803891634156103,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"V12_S73",0.986109285840152,426,0.162873757492966,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"V11_S72",1.4859300719541,488,0.240041092340644,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"V10_S71",0.441947110226087,514,0.0707996320272376,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"V1_S62",0.441047872793965,542,0.0700602441093201,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"U9_S51",1.03229870430542,378,0.173937170618363,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"U9_S122",1.03151188348729,421,0.170705702609881,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"U12_S54",0.993296560405947,858,0.147054741591923,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"U12_S125",0.989993697626356,913,0.145229874674263,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"U11_S53",0.779388794322221,648,0.120389551025532,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"U11_S124",0.778334293263603,717,0.118376473843475,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"U10_S52",1.03470831421562,694,0.158152502672013,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"U10_S123",1.03186272604942,733,0.156410480028405,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"U-2-9_S58",0.655278987237893,371,0.110760075518633,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"U-2-8_S57",0.729711114340698,400,0.121791777052728,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"U-2-7_S56",1.53379778021016,322,0.265613315270105,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"U-2-12_S61",1.09456416242473,510,0.175568182877236,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"U-2-11_S60",0.555417102888439,363,0.0942278833845109,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"U-2-10_S59",0.68401578838027,435,0.112588778462993,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"TG_SK_T2_ML_0AN_S2",0.542747359199775,1224,0.0763370690064058,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_SK_T2_ML_0AE_S73",1.51939287802446,1355,0.210688611933901,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_SK_T1_ML_0AN_S61",1.24993748613975,1254,0.175206204878782,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_SK_T1_ML_0AE_S13",0.692036428907331,973,0.100581075219199,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_LO_T1_ML_0AN_S49",0.69961765881068,987,0.101472246649843,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_LO_T1_ML_0AE_S1",0.760889229058027,1114,0.108455019740559,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_ID125_ML_T5_S120",1.94118971107353,1504,0.265339068053354,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_ID125_ML_T4_S12",0.480731919570489,1036,0.0692385774432702,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_ID125_ML_T1_S162",2.00790717445832,1064,0.288087156351666,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_ID125_MG_T6_S103",1.42866202701366,868,0.211147139670632,"This study","MG","Household conditions","MG
+                   Household conditions"
+"TG_ID125_MG_T5_S102",1.29694883677222,895,0.190816900736306,"This study","MG","Household conditions","MG
+                   Household conditions"
+"TG_ID125_MG_T4_S11",1.56179106411289,1026,0.225255412559844,"This study","MG","Household conditions","MG
+                   Household conditions"
+"TG_ID125_MG_T1_S178",1.60456857348517,1388,0.221759678363697,"This study","MG","Household conditions","MG
+                   Household conditions"
+"TG_ID124_ML_T6_S119",2.0807818515836,1044,0.299357977575603,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_ID124_ML_T5_S161",1.39695344651,1178,0.197544927353767,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_ID124_ML_T3_S160",2.12234877162898,1293,0.296222135607305,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_ID124_ML_T2_S159",2.46343472439435,1241,0.345809640430249,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_ID124_ML_T1_S8",0.522244537964737,922,0.076502025675097,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_ID124_MG_T6_S101",1.06362403140108,1130,0.151298453743672,"This study","MG","Household conditions","MG
+                   Household conditions"
+"TG_ID124_MG_T5_S138",1.23293435817964,1175,0.174413675521859,"This study","MG","Household conditions","MG
+                   Household conditions"
+"TG_ID124_MG_T2_S7",2.15872423982123,1275,0.301889856907552,"This study","MG","Household conditions","MG
+                   Household conditions"
+"TG_ID115_ML_T6_S127",1.56479206346902,1371,0.216631318014084,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_ID115_ML_T5_S126",1.42677823165802,1246,0.200173898015378,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_ID115_ML_T4_S125",1.93917655256007,1024,0.279764039578657,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_ID115_ML_T3_S124",1.15020631538826,539,0.182870958538754,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_ID115_ML_T2_S123",1.07342456015852,516,0.171854981104499,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_ID115_ML_T1_S122",1.12913944588373,526,0.18022109513077,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_ID115_MG_T6_S98",1.94666742610203,748,0.294173927835643,"This study","MG","Household conditions","MG
+                   Household conditions"
+"TG_ID115_MG_T4_S96",2.70805020110221,15,1,"This study","MG","Household conditions","MG
+                   Household conditions"
+"TG_ID115_MG_T3_S95",1.53242009803824,940,0.223845601436169,"This study","MG","Household conditions","MG
+                   Household conditions"
+"TG_ID115_MG_T2_S94",1.45739225883959,1240,0.204607544783975,"This study","MG","Household conditions","MG
+                   Household conditions"
+"TG_ID115_MG_T1_S93",1.77401462021553,1097,0.253418551682427,"This study","MG","Household conditions","MG
+                   Household conditions"
+"TG_ID113_WL_T6_S118",3.07599916318904,1535,0.419285631140502,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID113_WL_T5_S25",2.1127643963489,1456,0.290077492142698,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID113_WL_T3_S73",3.60456456162666,1633,0.487223538717697,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID113_WG_T6_S100",1.30900592017787,1286,0.182840138045032,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID113_WG_T5_S19",1.2095675663242,1036,0.174210894272699,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID113_WG_T4_S99",1.23542081404015,1102,0.176365685511113,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID113_WG_T3_S71",1.07973038345559,975,0.156881975027817,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID113_WG_T1_S60",1.27657891458336,1043,0.183684213170301,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID110_WL_T6_S117",2.08022134326392,1388,0.287497352017512,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID110_WL_T5_S28",3.79950541502271,1336,0.527897122807797,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID110_WL_T4_S27",4.23801086980067,1361,0.587309527575059,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID110_WL_T3_S26",4.0281816137395,1403,0.555889732513083,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID110_WL_T2_S177",2.30176083946455,1536,0.313722315802412,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID110_WL_T1_S173",2.40892009773575,1411,0.332170735867223,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID110_WG_T6_S92",1.0880680524268,937,0.159011897460036,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID110_WG_T5_S22",1.52596538239011,1183,0.215659497270837,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID110_WG_T4_S21",1.36862786306302,1303,0.1908180209281,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID110_WG_T3_S20",1.693576859463,1402,0.233736886956895,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID110_WG_T2_S167",1.07975188173016,1421,0.148744263444261,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID110_WG_T1_S166",2.16229144280521,1495,0.295803898736018,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID107_WL_T6_S112",1.93943077930439,1395,0.267853143184524,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID107_WL_T5_S111",3.50778728915895,1423,0.483131515916196,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID107_WL_T4_S110",2.6547537033754,1334,0.368923966374794,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID107_WL_T3_S88",1.66954819328679,1382,0.230878430393875,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID107_WL_T2_S87",0.918039986351219,1351,0.12735343108382,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID107_WL_T1_S86",1.43622959275417,1295,0.200415334560312,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID107_WG_T6_S108",1.29801227770225,1356,0.179972168825235,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID107_WG_T5_S107",1.39388813452938,1171,0.19727772562687,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID107_WG_T4_S106",1.1542589482066,1160,0.163581388178873,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID107_WG_T3_S137",0.824219417002437,1343,0.114432623514249,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID107_WG_T2_S136",0.501960777548581,1000,0.0726662652737382,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID107_WG_T1_S135",0.696349911731938,1148,0.0988322442719781,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID103_WL_T5_S24",2.51239086201495,1291,0.350737176900192,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID103_WL_T4_S158",1.1590807653448,1168,0.16410489331688,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID103_WL_T3_S70",2.40369368925836,1339,0.333861260718253,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID103_WL_T2_S85",2.93826196328502,1404,0.405440774252543,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID103_WL_T1_S68",2.21260163404116,1063,0.317498800220703,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID103_WG_T5_S18",0.687103880035591,977,0.0998046644235576,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID103_WG_T4_S79",0.917318159467199,691,0.140302621876108,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID103_WG_T3_S69",0.817602654109943,957,0.119118017734606,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID103_WG_T2_S134",0.920609653071,1183,0.130106631025274,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID103_WG_T1_S67",0.900240425930091,1320,0.125287673994185,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID097_WL_T5_S9",2.7348073803075,1564,0.371829594287384,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID097_WL_T4_S32",2.07418312038276,1389,0.286634308057929,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID097_WL_T3_S177",1.3176110302001,1459,0.180853729445519,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID097_WL_T2_S153",1.43739730138477,1326,0.19991833948262,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID097_WL_T1_S141",1.35267981746745,1487,0.185184046058927,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID097_WG_T5_S68",0,1,NA,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID097_WG_T4_S31",1.56761453891048,1248,0.219883449687956,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID097_WG_T3_S165",1.19981306753676,1275,0.167789562276134,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID097_WG_T2_S184",1.08139107836086,1141,0.153614098495824,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID097_WG_T1_S129",1.40430058277804,1322,0.195397234328074,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID096_WL_T5_S92",3.29181887857401,1527,0.449023571151191,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID096_WL_T2_S46",0.414437120032557,1479,0.056779041443522,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID096_WL_T1_S117",1.86377223918291,1344,0.258734876681311,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID096_WG_T1_S56",3.30410147678921,1516,0.451143898936826,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID093_WL_T3_S66",3.27860973740482,1297,0.457407508081911,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID093_WL_T2_S5",2.44721206938171,1329,0.340260028097723,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID093_WL_T1_S171",1.82586226043685,1384,0.252444300938468,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID093_WG_T3_S65",0.900960467122085,748,0.136150158925014,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID093_WG_T2_S164",1.02746754081843,1187,0.145139253838447,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID093_WG_T1_S163",0.891392845334678,880,0.131475385336262,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID092_WL_T6_S21",3.02309866621398,43,0.803759059136507,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID092_WL_T5_S94",0.822172115236846,1477,0.112660759208383,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID092_WL_T4_S23",3.99143440296146,1412,0.550332986646053,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID092_WL_T3_S70",0.523121184381415,1513,0.0714465886122033,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID092_WL_T2_S172",0.66867048971756,1472,0.0916693039421957,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID092_WL_T1_S318",1.53522113609726,1520,0.209544576746132,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID092_WG_T6_S80",0.818992528954379,1235,0.115046006223608,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID092_WG_T5_S82",0.803764629602339,1517,0.109736600346039,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID092_WG_T4_S17",1.66440535202962,1106,0.237483644341847,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID092_WG_T3_S58",0.374698366426235,1366,0.0518998538076341,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID092_WG_T2_S160",0.830811681670048,1261,0.116365715254683,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID092_WG_T1_S343",2.03865541464261,1470,0.27953523550297,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID090_WL_T5_S7",1.35884909685053,1425,0.187119628096513,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID090_WL_T3_S148",0.459302619018023,1047,0.0660516936187591,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID090_WL_T2_S370",0.97916982298061,1273,0.136963463251704,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID090_WL_T1_S306",0.202120260885675,888,0.029771851841085,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID090_WG_T5_S90",0.551517208223365,1186,0.0779161618614384,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID090_WG_T4_S51",0.51567587116075,921,0.0755518116612794,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID090_WG_T3_S136",0.362878692832962,981,0.0526783589724856,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID090_WG_T2_S297",0.447221356142967,891,0.0658419726676749,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID090_WG_T1_S331",1.48234913095915,1389,0.204847929422134,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID089_WL_T5_S78",0.844618824627844,1362,0.117036556090185,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID089_WL_T4_S50",0.849069498200979,1294,0.118494211341637,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID089_WL_T3_S124",0.618822545999344,1479,0.0847804148979762,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID089_WL_T2_S358",0.697150013411202,1424,0.0960099714002776,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID089_WL_T1_S294",2.04244316307452,1463,0.280238017647794,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID089_WG_T5_S66",0.656586115566894,1222,0.0923696629800466,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID089_WG_T4_S49",0.596779782623264,1076,0.0854862185747989,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID089_WG_T3_S112",0.471516430885022,1261,0.0660418575530592,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID089_WG_T2_S380",0.579825777946527,1351,0.080435278800683,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID089_WG_T1_S319",2.70713369329179,1543,0.368744758925049,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID088_WL_T5_S54",4.75240113280878,1507,0.649423549103053,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID088_WL_T4_S48",5.4653183400959,1390,0.75518498887005,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID088_WL_T3_S100",1.43335284514039,1514,0.19574609801654,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID088_WL_T2_S346",1.01868549536822,1516,0.139091898175417,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID088_WL_T1_S377",0.692824130901815,1535,0.0944379980563357,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID088_WG_T5_S42",1.07444238193429,1299,0.149866079830938,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID088_WG_T4_S47",2.31154069996287,1308,0.322109631096533,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID088_WG_T3_S183",1.34138069378063,1438,0.184483443626619,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID088_WG_T2_S368",0.975074425962546,1447,0.133989450763674,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID088_WG_T1_S307",1.00755665593208,1443,0.138505668727441,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID087_WL_T5_S30",3.03972726327201,1601,0.411977389833719,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID087_WL_T4_S46",3.56603153030794,1282,0.498315191331469,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID087_WL_T3_S171",2.75767475595178,1506,0.376875045037802,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID087_WL_T2_S322",1.93989674709757,1477,0.265820545678476,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID087_WL_T1_S365",0.277073688061388,1435,0.0381175859928232,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID087_WG_T5_S18",1.06489850024913,1256,0.149235588452826,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID087_WG_T4_S45",1.48757377304466,1210,0.209565377881296,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID087_WG_T3_S159",1.08709223234726,1414,0.149857400157108,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID087_WG_T2_S334",1.16707665449708,1444,0.160419108063802,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID087_WG_T1_S295",1.10074267841869,1319,0.153208002114121,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID086_WL_T5_S6",1.52150205642534,1733,0.204020081680005,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID086_WL_T4_S44",1.56689145871126,1436,0.215539761266742,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID086_WL_T3_S147",1.48729792624044,1715,0.199713213724138,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID086_WL_T2_S310",1.68688791200285,1738,0.22610952401958,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID086_WL_T1_S353",2.28277723685441,1572,0.31015556916478,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID086_WG_T5_S89",2.86439511859178,1785,0.382573616637938,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID086_WG_T4_S43",3.25108099167862,1494,0.444792246964695,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID086_WG_T3_S135",2.91444716920109,1768,0.389756809054501,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID086_WG_T2_S356",2.75804106172339,1576,0.374599204555576,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID086_WG_T1_S378",2.2152619304467,1634,0.299408828419086,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID085_WL_T5_S77",1.92501395463397,1504,0.263128021850993,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID085_WL_T4_S42",2.63926777146486,1132,0.375336303533032,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID085_WL_T3_S111",2.83490876008534,1499,0.387676994201946,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID085_WL_T2_S298",3.60032411060193,1462,0.494036933385835,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID085_WL_T1_S341",0.849549561396313,1561,0.115536528843237,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID085_WG_T5_S65",2.24554962797613,1405,0.309825316141761,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID085_WG_T4_S41",3.18400289935969,1022,0.459484117679509,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID085_WG_T3_S99",2.34599801851616,1285,0.327721370579341,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID085_WG_T2_S123",1.50391311861542,1463,0.206347789106101,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID085_WG_T1_S366",1.12030334918029,1444,0.153989940029979,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID084_WL_T5_S53",2.0602626445278,1496,0.281820464923918,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID084_WL_T4_S149",0.89096651817294,1351,0.123597713342651,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID084_WL_T3_S158",3.25768219989981,957,0.474617644782248,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID084_WL_T2_S369",0.457418518667196,1245,0.0641820579173252,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID084_WL_T1_S329",4.26017134406732,1602,0.577336583776957,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID084_WG_T6_S133",2.281381094362,1326,0.317302613322357,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID084_WG_T5_S41",2.2753307778846,1372,0.314967187719903,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID084_WG_T4_S132",3.75310664801017,1331,0.521722346896639,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID084_WG_T3_S146",0.767246924602026,1245,0.107655209708562,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID084_WG_T2_S381",0.565431413200437,1104,0.0806987309844336,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID084_WG_T1_S354",1.32138196533226,1334,0.183628889989559,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID083_WL_T5_S29",1.84462397788588,1428,0.253939471835614,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID083_WL_T4_S40",2.69942929011961,1297,0.376604513416193,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID083_WL_T3_S182",1.90233092307902,1483,0.260528239930038,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID083_WL_T1_S317",0.854572987881883,1436,0.117554063345629,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID083_WG_T5_S17",1.3042260029403,1245,0.183000699451128,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID083_WG_T4_S39",2.93652558252106,1177,0.415307617434233,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID083_WG_T3_S170",1.53812688153956,1327,0.213905740461078,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID083_WG_T2_S357",1.59606518351611,1370,0.220983121422044,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID083_WG_T1_S342",1.06932145987182,1127,0.152166443914732,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID083_WG_T1_S3",1.10249751991586,1216,0.155208719274061,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID082_WL_T5_S405",2.15037420616756,1179,0.304050611856764,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID082_WL_T4_S84",1.562181389245,1334,0.217092136865419,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID082_WL_T3_S400",0.781012455538447,1464,0.107150528619662,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID082_WL_T2_S345",1.78981037463546,1433,0.246275075664967,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID082_WL_T1_S305",3.78096550255421,1592,0.512829997758105,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID082_WG_T5_S131",0.709968103574098,1135,0.100928198820935,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID082_WG_T4_S130",0.700034522791181,1459,0.0960859094873946,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID082_WG_T3_S129",0.349428251422208,1128,0.0497180188701405,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID082_WG_T2_S344",0.641795334862315,1395,0.0886378104124411,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID082_WG_T1_S330",1.21881854414494,1453,0.167388269274466,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID079_WL_T1_S59",1.45949368388088,1378,0.201911351839864,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID079_WG_T2_S128",1.8984857823687,1487,0.259905761899079,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID079_WG_T1_S53",1.39830645721838,1216,0.1968524649326,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID070_WL_T5_S44",3.41833546139114,1648,0.461480875399701,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID070_WL_T4_S64",3.49990719940373,1514,0.477965477953319,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID070_WL_T3_S333",2.70492820890973,1709,0.363386676784619,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID070_WL_T2_S20",2.14839273686801,1820,0.28620082186589,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID070_WL_T1_S105",4.34250343073394,1720,0.582880141083666,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID070_WG_T5_S32",2.5135377335255,1509,0.343416888340679,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID070_WG_T4_S63",2.75997170812943,1426,0.380023798512731,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID070_WG_T2_S332",2.06369469160446,1693,0.2775925806072,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID070_WG_T1_S188",1.19644329777073,1498,0.163629913119926,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID069_WG_T1_S105",1.46359940752955,1459,0.200891921211204,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID062_WL_T3_S98",5.04295929614814,1532,0.687582879809112,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID062_WL_T2_S321",4.37367565408876,1644,0.590647138045826,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID062_WL_T1_S140",3.6437842317126,1614,0.493305166470646,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID062_WG_T3_S181",3.59340557410647,1548,0.489250241923991,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID062_WG_T2_S320",2.98069923341067,1518,0.406913122247629,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID062_WG_T1_S128",1.74056732387767,1611,0.235701984744232,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID061_WL_T6_S169",0.583015734091494,1366,0.0807541053768001,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID061_WL_T5_S145",0.913709683330102,1422,0.125858455494653,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID061_WL_T4_S38",1.06003331142047,1282,0.148128444156692,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID061_WL_T3_S116",0.720132165460644,1482,0.0986327334563816,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID061_WL_T2_S309",1.17500807380031,1485,0.160890142986787,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID061_WG_T6_S157",0.499910116536503,1094,0.0714402657358725,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID061_WG_T5_S133",0.420424427900006,1137,0.0597520686599245,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID061_WG_T4_S37",0.483754961002737,996,0.0700713602270525,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID061_WG_T3_S104",0.343603094776816,983,0.0498654166541197,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID061_WG_T2_S355",0.511772321018509,1340,0.0710752946704504,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID061_WG_T1_S364",2.01663947718896,1339,0.28010132958174,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID060_WL_T3_S109",1.95395929578032,1696,0.262769228953603,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID060_WL_T2_S187",4.83897225841755,1652,0.653055435453118,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID060_WG_T6_S121",2.78732016711193,1550,0.379433200807494,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID060_WG_T3_S97",3.56806239797636,1684,0.480293090026887,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID060_WG_T2_S175",4.4203939737097,1679,0.595262800959807,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID058_WL_T6_S96",2.34280349002798,1364,0.32456997694534,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID058_WL_T5_S72",3.21307839478045,1510,0.43895323555708,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID058_WL_T4_S36",2.34083167858925,1351,0.324727626563304,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID058_WL_T3_S48",2.1897312355247,1525,0.298745704617786,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID058_WL_T1_S376",1.66128557687519,1544,0.226267470788471,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID058_WG_T6_S84",1.78704678926065,1370,0.2474254696466,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID058_WG_T5_S60",1.91706499664337,1431,0.26383581337522,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID058_WG_T4_S35",1.3379266229301,1158,0.189657122492557,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID058_WG_T3_S36",1.07846498872364,1233,0.151529274831836,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID058_WG_T1_S352",1.15115213082166,1355,0.159626024365018,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID058_WG_T1_S2",1.2102431745445,1050,0.173971863539817,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID056_WL_T6_S24",2.37722301673958,23,0.758165333127598,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID056_WL_T5_S95",3.82556096720517,1470,0.524551171432833,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID056_WL_T4_S34",2.3612669863121,1704,0.317343299622074,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID056_WL_T3_S71",1.64286819909693,1536,0.223917449259725,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID056_WL_T2_S47",2.21183602046498,1774,0.295660785669982,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID056_WL_T1_S23",1.3520383848768,1670,0.182201200487329,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_ID056_WG_T6_S12",2.88719508700275,1610,0.391007476843441,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID056_WG_T5_S83",2.35858009133589,1482,0.32304237005641,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID056_WG_T4_S33",1.56055729190628,1322,0.21713911009406,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID056_WG_T3_S59",1.44717149046803,1536,0.197244641393096,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID056_WG_T2_S35",2.3009537464219,1546,0.313335175519161,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID056_WG_T1_S11",1.21255732497694,1522,0.16547402294858,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_ID054_ML_T6_S34",0.88594548584311,1329,0.12318173797753,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_ID054_ML_T5_S10",0.847874766170914,1282,0.118481531287273,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_ID054_ML_T4_S58",1.66549088259955,1130,0.236912844973578,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_ID054_ML_T3_S360",1.22747910191442,1456,0.168529941225924,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_ID054_ML_T2_S163",2.12274328094609,1473,0.290983805986165,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_ID054_MG_T6_S22",0.657642455919714,1102,0.0938834454149985,"This study","MG","Household conditions","MG
+                   Household conditions"
+"TG_ID054_MG_T5_S93",0.828384555299554,1321,0.115275246390229,"This study","MG","Household conditions","MG
+                   Household conditions"
+"TG_ID054_MG_T4_S57",0.806358226902183,1135,0.114630901072848,"This study","MG","Household conditions","MG
+                   Household conditions"
+"TG_ID054_MG_T3_S383",0.647106458921834,1243,0.0908183507393296,"This study","MG","Household conditions","MG
+                   Household conditions"
+"TG_ID054_MG_T2_S151",1.22344153876654,1307,0.170502862883849,"This study","MG","Household conditions","MG
+                   Household conditions"
+"TG_ID053_ML_T6_S115",0.767866182373746,1253,0.107645355979757,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_ID053_ML_T5_S114",1.26637316230883,1242,0.17774960013221,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_ID053_ML_T4_S116",1.26256592370979,724,0.191739699631145,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_ID053_ML_T3_S113",0.886944226301338,1214,0.124892240908463,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_ID053_ML_T2_S348",0.859306909031647,1402,0.118596165704163,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_ID053_ML_T1_S336",3.35693525601545,1328,0.466796668917341,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_ID053_MG_T6_S91",1.13817456444841,1006,0.164625079999577,"This study","MG","Household conditions","MG
+                   Household conditions"
+"TG_ID053_MG_T5_S90",0.813518252747308,1190,0.114875985485119,"This study","MG","Household conditions","MG
+                   Household conditions"
+"TG_ID053_MG_T3_S89",1.09553429349017,796,0.164011980810445,"This study","MG","Household conditions","MG
+                   Household conditions"
+"TG_ID053_MG_T2_S371",0.679489266929937,1259,0.0951922547848949,"This study","MG","Household conditions","MG
+                   Household conditions"
+"TG_ID053_MG_T1_S359",1.37529767968001,1149,0.195170501013053,"This study","MG","Household conditions","MG
+                   Household conditions"
+"TG_ID052_ML_T5_S155",2.69900160712211,1278,0.377321700564755,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_ID052_ML_T4_S156",2.40747991960401,1510,0.328896768272313,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_ID052_ML_T3_S76",1.25110200530687,1420,0.172365798379783,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_ID052_MG_T5_S154",1.15280738701745,1254,0.161591287144555,"This study","MG","Household conditions","MG
+                   Household conditions"
+"TG_ID052_MG_T4_S78",1.27595718257805,1084,0.18258181783879,"This study","MG","Household conditions","MG
+                   Household conditions"
+"TG_ID052_MG_T3_S64",1.27981652624128,1348,0.177594993222984,"This study","MG","Household conditions","MG
+                   Household conditions"
+"TG_ID052_MG_T2_S314",1.34286742719603,1379,0.185758233982329,"This study","MG","Household conditions","MG
+                   Household conditions"
+"TG_ID052_MG_T1_S290",1.2794143707093,1223,0.179969501783744,"This study","MG","Household conditions","MG
+                   Household conditions"
+"TG_ID050_ML_T6_S179",2.36932545409314,1402,0.326999482032993,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_ID050_ML_T5_S168",1.58091077912801,1228,0.222252101106323,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_ID050_ML_T4_S82",1.1569887338359,837,0.171919610634301,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_ID050_ML_T3_S156",1.36924621002369,1322,0.190519697729922,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_ID050_ML_T2_S144",2.12372868880737,1469,0.291227440188338,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_ID050_ML_T1_S132",2.69257951773544,1392,0.371980478394843,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_ID050_MG_T6_S395",1.1368380641643,1353,0.15767344090383,"This study","MG","Household conditions","MG
+                   Household conditions"
+"TG_ID050_MG_T5_S390",1.26132939658438,1270,0.176489380787982,"This study","MG","Household conditions","MG
+                   Household conditions"
+"TG_ID050_MG_T4_S83",1.42036207705843,1321,0.197652874318789,"This study","MG","Household conditions","MG
+                   Household conditions"
+"TG_ID050_MG_T3_S385",1.28054791363464,1293,0.178729642740662,"This study","MG","Household conditions","MG
+                   Household conditions"
+"TG_ID050_MG_T2_S192",1.20526343089803,1329,0.167579660951139,"This study","MG","Household conditions","MG
+                   Household conditions"
+"TG_ID050_MG_T1_S180",1.1117301133462,241,0.20269303072241,"This study","MG","Household conditions","MG
+                   Household conditions"
+"TG_ID049_ML_T6_S33",2.34784625283906,1345,0.325901943125271,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_ID049_ML_T5_S139",1.21064688334518,1404,0.167053045597447,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_ID049_ML_T3_S115",1.66867184856814,1525,0.227657412512043,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_ID049_ML_T1_S104",1.46230933656979,1118,0.20832704595778,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_ID049_MG_T6_S134",0.663556768295429,1334,0.0922126954990721,"This study","MG","Household conditions","MG
+                   Household conditions"
+"TG_ID049_MG_T5_S127",0.665310509354294,1266,0.0931335559034472,"This study","MG","Household conditions","MG
+                   Household conditions"
+"TG_ID049_MG_T3_S103",0.685586793102307,1227,0.0963941548574432,"This study","MG","Household conditions","MG
+                   Household conditions"
+"TG_ID049_MG_T2_S302",0.984192881614031,1116,0.140248239412517,"This study","MG","Household conditions","MG
+                   Household conditions"
+"TG_ID048_ML_T6_S55",2.98196102234929,1469,0.408917052284992,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_ID048_ML_T5_S31",1.21210814900198,1418,0.167026002045917,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_ID048_ML_T4_S14",0.497637450126473,776,0.0747859999627376,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_ID048_ML_T3_S5",1.44836543436143,1327,0.201422707329067,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_ID048_ML_T2_S148",1.25919342352178,976,0.182930234270066,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_ID048_MG_T6_S43",1.23849658251198,1367,0.171528041417024,"This study","MG","Household conditions","MG
+                   Household conditions"
+"TG_ID048_MG_T5_S19",1.19113616071515,1237,0.167283964092669,"This study","MG","Household conditions","MG
+                   Household conditions"
+"TG_ID048_MG_T4_S13",1.24855353710523,703,0.190463091134671,"This study","MG","Household conditions","MG
+                   Household conditions"
+"TG_ID048_MG_T3_S88",1.17166502096894,996,0.169714356168199,"This study","MG","Household conditions","MG
+                   Household conditions"
+"TG_ID043_ML_T6_S174",2.48381254204637,1007,0.359205959072378,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_ID043_ML_T3_S175",1.26157703499813,1335,0.175299705299222,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_ID043_ML_T2_S186",1.74424020058059,1610,0.236219215981668,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_ID043_ML_T1_S162",2.62714701612521,1112,0.374562115206582,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_ID043_MG_T6_S168",1.19830039171954,1051,0.172231526343862,"This study","MG","Household conditions","MG
+                   Household conditions"
+"TG_ID043_MG_T3_S169",1.05494796663721,1205,0.148704968125381,"This study","MG","Household conditions","MG
+                   Household conditions"
+"TG_ID043_MG_T2_S174",1.08980848618173,1390,0.150587204311542,"This study","MG","Household conditions","MG
+                   Household conditions"
+"TG_ID043_MG_T1_S150",1.10659444428708,1194,0.156186930474521,"This study","MG","Household conditions","MG
+                   Household conditions"
+"TG_ID042_ML_T6_S172",1.65338037780394,606,0.258063266582009,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_ID042_ML_T4_S176",2.65012548631458,1157,0.375713231370756,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_ID042_ML_T3_S138",1.57672217497784,1180,0.222912774142607,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_ID042_ML_T2_S312",0.539670949478182,1272,0.0754959215478214,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_ID042_ML_T1_S114",0.635861106444248,1139,0.0903480537743362,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_ID042_MG_T5_S165",1.80358490379293,1364,0.24986709859991,"This study","MG","Household conditions","MG
+                   Household conditions"
+"TG_ID042_MG_T4_S170",1.96388050980493,1326,0.273143500467297,"This study","MG","Household conditions","MG
+                   Household conditions"
+"TG_ID042_MG_T3_S347",1.74594060004523,1211,0.245934777333346,"This study","MG","Household conditions","MG
+                   Household conditions"
+"TG_ID042_MG_T2_S126",1.60812501484805,1372,0.222607903146119,"This study","MG","Household conditions","MG
+                   Household conditions"
+"TG_ID042_MG_T1_S102",1.0577151357107,998,0.153164338977898,"This study","MG","Household conditions","MG
+                   Household conditions"
+"TG_ID037_ML_T6_S81",1.27937038492336,1469,0.175440377209028,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_ID037_ML_T5_S57",1.20680342739214,1395,0.166670599787418,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_ID037_ML_T4_S30",0.776093380287017,923,0.113669526219305,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_ID037_ML_T3_S185",0.866953626569681,1238,0.12174173465437,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_ID037_ML_T2_S173",1.62534483380172,1245,0.228058051874777,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_ID037_MG_T6_S69",1.16872183131063,1552,0.159068212664908,"This study","MG","Household conditions","MG
+                   Household conditions"
+"TG_ID037_MG_T5_S45",1.06604545362197,1238,0.149699152027151,"This study","MG","Household conditions","MG
+                   Household conditions"
+"TG_ID037_MG_T4_S29",1.20817184167428,1031,0.174131205553394,"This study","MG","Household conditions","MG
+                   Household conditions"
+"TG_ID037_MG_T2_S161",0.984980012704651,875,0.145401160225642,"This study","MG","Household conditions","MG
+                   Household conditions"
+"TG_ID037_MG_T1_S56",1.18135891112132,1252,0.16563046850908,"This study","MG","Household conditions","MG
+                   Household conditions"
+"TG_ID036_ML_T6_S8",1.21563549747992,1416,0.167544649571646,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_ID036_ML_T5_S149",1.36076366796557,1454,0.18686485908491,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_ID036_ML_T4_S10",1.94552577479857,1164,0.275585148833258,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_ID036_ML_T1_S153",2.30459198484399,1186,0.325583607253383,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_ID036_MG_T6_S91",1.07645064891545,1333,0.149607036066535,"This study","MG","Household conditions","MG
+                   Household conditions"
+"TG_ID036_MG_T5_S137",0.963682704251586,1215,0.135682195235691,"This study","MG","Household conditions","MG
+                   Household conditions"
+"TG_ID036_MG_T4_S9",1.00272753947564,938,0.146517267133824,"This study","MG","Household conditions","MG
+                   Household conditions"
+"TG_ID032_ML_T3_S152",1.3810081479161,1193,0.194941277371981,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_ID032_ML_T2_S324",0.520202183193406,1496,0.0711577339478501,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_ID032_MG_T3_S166",1.23442436246872,1300,0.172162312634863,"This study","MG","Household conditions","MG
+                   Household conditions"
+"TG_ID032_MG_T2_S335",0.792434795947416,1394,0.109453338957523,"This study","MG","Household conditions","MG
+                   Household conditions"
+"TG_ID029_ML_T5_S147",0.537706764450885,901,0.0790337839233047,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_ID029_ML_T2_S79",0.288985533499885,902,0.0424690528240571,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_ID029_ML_T2_S16",0.306560320137473,528,0.0489002411614319,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_ID029_ML_T1_S145",3.02401727288483,1379,0.418310919430131,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_ID029_MG_T5_S154",1.17901909269648,1071,0.169002331992419,"This study","MG","Household conditions","MG
+                   Household conditions"
+"TG_ID029_MG_T3_S77",1.44993031298069,1074,0.207751845796961,"This study","MG","Household conditions","MG
+                   Household conditions"
+"TG_ID029_MG_T3_S142",1.41051161591713,1405,0.19461258031381,"This study","MG","Household conditions","MG
+                   Household conditions"
+"TG_ID029_MG_T2_S67",1.43756685975786,1392,0.198600191635952,"This study","MG","Household conditions","MG
+                   Household conditions"
+"TG_ID029_MG_T2_S15",1.42820885182436,791,0.214018444661497,"This study","MG","Household conditions","MG
+                   Household conditions"
+"TG_ID026_ML_T4_S151",2.50347275560933,331,0.43147564279859,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_ID026_ML_T2_S157",3.06418873627221,1324,0.426267779633011,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_ID026_MG_T4_S76",1.44522266045489,1248,0.202715996987939,"This study","MG","Household conditions","MG
+                   Household conditions"
+"TG_ID026_MG_T3_S130",0.870577875727069,1296,0.121469690920922,"This study","MG","Household conditions","MG
+                   Household conditions"
+"TG_ID026_MG_T2_S3",1.10944724544642,1013,0.16030919033873,"This study","MG","Household conditions","MG
+                   Household conditions"
+"TG_ID020_ML_T4_S144",3.1916726870803,1022,0.460590946333559,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_ID020_ML_T3_S143",2.43637967487734,968,0.354370535270533,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_ID020_ML_T2_S300",0.780663789735975,1233,0.109686841189128,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_ID020_ML_T1_S142",3.53040050649313,1572,0.479667205714668,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_ID020_MG_T4_S75",0.858980365877983,991,0.124513104811548,"This study","MG","Household conditions","MG
+                   Household conditions"
+"TG_ID020_MG_T3_S118",0.704679451833989,1074,0.100969305561137,"This study","MG","Household conditions","MG
+                   Household conditions"
+"TG_ID020_MG_T2_S323",0.838249601205167,1091,0.119838109881256,"This study","MG","Household conditions","MG
+                   Household conditions"
+"TG_ID020_MG_T1_S106",1.09745079923636,919,0.160839041417404,"This study","MG","Household conditions","MG
+                   Household conditions"
+"TG_ID014_ML_T3_S81",1.15705696502516,1064,0.16601028923606,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_ID014_ML_T2_S4",1.9124678374838,1110,0.272737648657412,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_ID014_MG_T3_S62",0.901174017619986,817,0.134390474177286,"This study","MG","Household conditions","MG
+                   Household conditions"
+"TG_ID014_MG_T2_S6",0.935041322738336,984,0.135677899048217,"This study","MG","Household conditions","MG
+                   Household conditions"
+"TG_ID014_MG_T1_S1",1.0466251466712,959,0.152438355816614,"This study","MG","Household conditions","MG
+                   Household conditions"
+"TG_ID013_ML_T1_S150",1.23404243166738,1250,0.173055663954231,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_ID013_MG_T1_S373",0.786863938815913,1229,0.110608489382979,"This study","MG","Household conditions","MG
+                   Household conditions"
+"TG_ID012_ML_T5_S141",0.51258048817314,599,0.0801500423882873,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_ID012_ML_T4_S140",1.59715811358825,1156,0.226459844709453,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_ID012_ML_T2_S308",2.42640617893636,1399,0.334976438562729,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_ID012_ML_T1_S367",1.62448427969621,1361,0.225123324166076,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_ID012_MG_T5_S125",0.643100821851939,1198,0.0907256962643899,"This study","MG","Household conditions","MG
+                   Household conditions"
+"TG_ID012_MG_T4_S74",0.704379591890235,618,0.109605672919684,"This study","MG","Household conditions","MG
+                   Household conditions"
+"TG_ID012_MG_T3_S189",0,1,NA,"This study","MG","Household conditions","MG
+                   Household conditions"
+"TG_ID012_MG_T2_S311",0.708165848786795,1122,0.100837128094458,"This study","MG","Household conditions","MG
+                   Household conditions"
+"TG_ID012_MG_T1_S361",0.921870625626167,1160,0.130647353347841,"This study","MG","Household conditions","MG
+                   Household conditions"
+"TG_ID011_ML_T6_S52",1.49447444688699,1407,0.206156726640398,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_ID011_ML_T5_S122",1.02114387374325,1322,0.142084031885659,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_ID011_ML_T3_S113",1.5614022845456,1263,0.218645664417647,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_ID011_MG_T6_S40",0.665496106957404,676,0.102129586890868,"This study","MG","Household conditions","MG
+                   Household conditions"
+"TG_ID011_MG_T5_S110",0.764949107770779,1137,0.108717021599274,"This study","MG","Household conditions","MG
+                   Household conditions"
+"TG_ID011_MG_T3_S101",0.603267813427248,909,0.0885550871377409,"This study","MG","Household conditions","MG
+                   Household conditions"
+"TG_ID011_MG_T1_S349",0.853614206466894,1003,0.123519749540648,"This study","MG","Household conditions","MG
+                   Household conditions"
+"TG_ID010_ML_T5_S120",1.44535336144817,1264,0.202372719087833,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_ID010_ML_T4_S80",1.62331084627894,713,0.247098780313861,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_ID010_ML_T3_S108",1.13833820398876,1337,0.158142424654175,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_ID010_ML_T1_S379",1.69336549591528,1284,0.23657838427271,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_ID010_MG_T5_S176",0.715286591950649,1035,0.103035212582194,"This study","MG","Household conditions","MG
+                   Household conditions"
+"TG_ID010_MG_T4_S61",0.865220720598648,1144,0.122860772691424,"This study","MG","Household conditions","MG
+                   Household conditions"
+"TG_ID010_MG_T3_S164",1.12360026567917,1355,0.155805508745248,"This study","MG","Household conditions","MG
+                   Household conditions"
+"TG_ID010_MG_T2_S299",1.10454085428525,1130,0.157118792370588,"This study","MG","Household conditions","MG
+                   Household conditions"
+"TG_ID010_MG_T1_S337",1.16042359172244,1214,0.163401371219957,"This study","MG","Household conditions","MG
+                   Household conditions"
+"TG_ID009_ML_T6_S28",1.63098749120968,1313,0.227154821577284,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_ID009_ML_T4_S55",1.28585561640057,1051,0.184815824980829,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_ID009_ML_T2_S296",1.94374095929589,1441,0.267250957366474,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_ID009_ML_T1_S139",1.06281068854542,1420,0.146424681665156,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_ID009_MG_T6_S16",0.646267803208927,1088,0.0924283310331537,"This study","MG","Household conditions","MG
+                   Household conditions"
+"TG_ID009_MG_T4_S54",0.700726316549044,751,0.105827425988068,"This study","MG","Household conditions","MG
+                   Household conditions"
+"TG_ID009_MG_T3_S152",0.961487133698682,1382,0.132962103858314,"This study","MG","Household conditions","MG
+                   Household conditions"
+"TG_ID009_MG_T2_S382",0.875609922021244,1197,0.123541561385754,"This study","MG","Household conditions","MG
+                   Household conditions"
+"TG_ID009_MG_T1_S325",0.984857494361508,1022,0.142124988933821,"This study","MG","Household conditions","MG
+                   Household conditions"
+"TG_GO_T2_ML_0AN_S85",2.13787691277102,1463,0.293332220372822,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_GO_T2_ML_0AE_S289",0.952140328268651,156,0.188548015409106,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_GO_T1_ML_0AN_S25",2.4653560297571,1401,0.340286531504671,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_GO_T1_ML_0AE_S372",2.20995469350584,1454,0.303478761307179,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_FU_T3_MG_0AN_S178",1.12672378605737,1069,0.161549529424525,"This study","MG","Household conditions","MG
+                   Household conditions"
+"TG_FU_T2_ML_0AE_S301",1.48708643174943,1449,0.204308592117253,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_FU_T1_ML_0AN_S37",2.04106727370992,1494,0.27924585736352,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_FU_T1_ML_0AE_S384",2.15434271302706,1466,0.295508390096951,"This study","ML","Household conditions","Milk Liquid
+                   Household conditions"
+"TG_FL_T3_WG_0AN_S179",1.29369003257272,1169,0.183140942972718,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_FL_T2_WL_0AN_S292",4.75521444358199,1644,0.642172402352285,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_FL_T2_WL_0AE_S291",1.78754344889141,1377,0.247319717710372,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_FL_T2_WG_0AN_S328",0.93672198286531,1247,0.131405276793764,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_FL_T2_WG_0AN_S180",0.98847175446154,1207,0.139301948840297,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_FL_T1_WL_0AN_S339",3.40548606475634,1565,0.462976104608929,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_FL_T1_WL_0AE_S338",2.00323830570484,1535,0.273058929073793,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_FG_WLC_S410",2.78905625230914,191,0.531018860788141,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_FG_T2_WL_0AN_S375",2.30459750344319,1556,0.313556068583526,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_FG_T2_WL_0AE_S374",2.18777720806128,1492,0.299372645596691,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_FG_T1_WL_0AN_S327",3.14474261710294,1500,0.43000791042127,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_FG_T1_WL_0AE_S326",1.98102371977552,1472,0.271582293935997,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_BR_T2_WL_0AN_S316",4.27884678473855,1486,0.585834971091656,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_BR_T2_WL_0AE_S315",2.18613446710332,1499,0.298956372445078,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_BR_T1_WL_0AN_S363",3.3543258714854,1600,0.454653765894216,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_BR_T1_WL_0AE_S362",2.15792074600037,1526,0.294379462476865,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_AP_T2_WL_0AN_S304",4.24475247106861,1541,0.578289431359343,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_AP_T2_WL_0AE_S303",2.06582628855298,1475,0.283129013181584,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"TG_AP_T2_WG_0AN_S340",1.19808995478953,1359,0.166066840632808,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_AP_T2_WG_0AN_S181",1.28388277642656,1251,0.180024825017807,"This study","WG","Household conditions","WG
+                   Household conditions"
+"TG_AP_T1_WL_0AE_S350",2.09127133049806,1535,0.285058601506526,"This study","WL","Household conditions","Water Liquid
+                   Household conditions"
+"T9_S112",2.79611072348665,879,0.412479635464088,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"T8_S111",1.0634597724599,52,0.269145577494699,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"T7_S110",1.97025146327884,794,0.295076656554304,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"T6_S109",0.658442539594994,62,0.15953988364927,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"T5_S108",1.53152165794254,1028,0.220827664486548,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"T4_S107",1.55742118653536,924,0.228069534957116,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"T3_S106",1.77015134640128,1195,0.249813147318407,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"T2_S105",1.39819583936199,1197,0.197274257376054,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"T10_S113",1.63568665126526,127,0.337659677892632,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"T1_S104",0.773047936822768,688,0.118315414837815,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"S9_S100",1.1710636861568,301,0.205193807694608,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"S8_S99",1.02536065373487,314,0.178342419147208,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"S7_S98",1.54284249150511,321,0.26732361269734,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"S6_S97",1.53320441358976,344,0.262506160030242,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"S5_S96",0.782670044787738,249,0.141853507311178,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"S4_S95",0.722485039647474,262,0.12974862441781,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"S3_S94",0.625382227976165,236,0.114458543068793,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"S2_S93",0.742889423238709,506,0.119310214119998,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"S12_S103",1.07531098689149,706,0.163928972654564,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"S11_S102",0.989908801201611,344,0.169486309770763,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"S10_S101",0.96692801348559,414,0.160462913992056,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"S1_S92",0.796165464476889,547,0.126286292335505,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"R9_S88",0.506800600392642,809,0.0756893399384345,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"R8_S87",0.398898646380331,711,0.060745933445668,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"R7_S86",0.384067210191389,290,0.0677381439590259,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"R6_S85",0.411734729341646,665,0.0633458799136442,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"R5_S84",0.776652887929682,882,0.114513549825211,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"R4_S83",1.15755103177781,1023,0.167022856357192,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"R3_S82",0.630164883396894,625,0.0978858641467937,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"R2_S81",0.601937136104158,533,0.0958724348359025,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"R12_S91",0.850206976602262,703,0.129696520057419,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"R11_S90",0.739733310742501,438,0.121622276613637,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"R10_S89",0.695668199528788,612,0.108414714671003,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"R1_S80",1.35471937584044,963,0.197191971391946,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"Q9_S76",0.30575220523747,242,0.0557033474401532,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"Q8_S75",0.328673425709937,160,0.0647610185730741,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"Q7_S74",0.311054702496299,170,0.0605659872187181,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"Q6_S73",0.331112401571397,164,0.0649257007526494,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"Q5_S72",1.22070212514815,1027,0.17603579492106,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"Q4_S71",1.14922712029957,900,0.168944490916011,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"Q3_S70",1.08382682300113,798,0.162198325153644,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"Q2_S69",1.21335497962041,659,0.186936783421852,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"Q12_S79",0.853800035399162,976,0.124036416945802,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"Q11_S78",1.21227560046927,1018,0.175042803682067,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"Q10_S77",1.56241518856895,986,0.226645354540451,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"Q1_S68",1.36204417873822,861,0.201542635700913,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"P9_S64",0.450468837599667,217,0.0837318647544861,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"P8_S63",0.84314088781304,289,0.148795869817192,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"P7_S62",0.415442060137734,194,0.0788635623043432,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"P6_S61",0.627764824908373,597,0.0982122912065075,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"P5_S60",1.20863784334898,1092,0.172767044573053,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"P4_S59",1.02945634653573,1117,0.146679596866663,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"P3_S58",0.820125698065012,660,0.12632399894426,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"P2_S57",0.912824277519787,693,0.139553598994782,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"P12_S67",1.17645598988408,546,0.186661448901096,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"P11_S66",1.31361608756508,908,0.192859926108661,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"P10_S65",0.944697634868813,753,0.1426159922013,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"P1_S56",1.2979901904877,486,0.209819983353438,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"O9_S52",1.42003015726978,903,0.208652372488622,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"O8_S51",1.4591364316458,1028,0.210390554189384,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"O7_S50",1.41988551664888,533,0.226149664980641,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"O6_S49",1.38416315861,444,0.22706742040124,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"O5_S48",1.22893679995604,774,0.184758854495066,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"O4_S47",1.46546693337256,891,0.215752741784657,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"O3_S46",1.21996800366544,587,0.191366784937213,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"O2_S45",0.963035895390943,533,0.153385778327402,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"O12_S55",1.77397474736498,470,0.288323064789067,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"O11_S54",1.24817779395357,379,0.210218136082295,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"O10_S53",1.37419657382559,420,0.227506394930648,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"O1_S44",0.969793434099072,374,0.16369877791609,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"N9_S40",0.634994511625614,504,0.102046882877729,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"N8_S39",0.60503268013294,683,0.0927040767136572,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"N7_S38",1.11994765416781,913,0.164293831209734,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"N6_S37",0.71090071922103,538,0.113059273267549,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"N5_S36",0.887783338973558,640,0.137396535081992,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"N4_S35",1.20018623944079,944,0.175206442966309,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"N3_S34",0.706649643651332,600,0.110467002411871,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"N2_S33",1.66998989838331,1072,0.239346790908248,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"N12_S43",1.06069956922652,623,0.164844494655452,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"N11_S42",1.06532234680817,346,0.182217310023511,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"N10_S41",0.632032305004014,482,0.102304632954929,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"N1_S32",0.283824623084209,121,0.0591820306549465,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"M9_S28",0.349938825074718,383,0.0588326776340842,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"M8_S27",0.365559268667215,377,0.0616224139623727,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"M7_S26",0.322651957476227,169,0.0628963602220098,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"M6_S25",0.352076795056796,183,0.0675837855648703,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"M5_S24",1.09554280679737,894,0.16121104165511,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"M4_S23",1.0202179683361,545,0.161919163987486,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"M3_S22",0.888636280019169,455,0.145194950374076,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"M2_S21",1.02458579033637,282,0.181602741316688,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"M12_S31",0.269586655672501,136,0.0548759605432999,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"M11_S30",0.284298396500973,176,0.0549848711984797,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"M10_S29",0.286055765910165,154,0.0567914349190206,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"M1_S20",0.498553891591737,193,0.094733657824437,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"L9_S16",1.51191191761957,1131,0.215039477440063,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"L8_S15",1.41400677737742,1028,0.203883381339763,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"L7_S14",1.30037016709665,998,0.18830243639854,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"L6_S13",1.15529302421987,762,0.174096191782895,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"L5_S12",0.691340647419746,749,0.104452018600734,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"L4_S11",1.5384362286452,1078,0.220315976899528,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"L3_S10",0.623342393265224,749,0.0941784220253353,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"L2_S9",1.81927857248728,1125,0.258952195691056,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"L12_S19",0.827743534688567,587,0.129841617575206,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"L11_S18",0.625452434176963,377,0.105432667466333,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"L10_S17",0.357409564609812,316,0.062096173064547,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"L1_S8",0.84256642009361,305,0.14729379324029,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"k9_S4",1.00243094898392,1117,0.142828948481814,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"k8_S3",1.01112187777578,870,0.149386554164763,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"k7_S2",0.776656096125905,662,0.1195726470977,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"k6_S1",1.07623521541704,632,0.166886908681339,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"k5_S125",0.766250861190832,867,0.113266289199636,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"k4_S124",0.858605929259907,910,0.126016424837672,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"k3_S123",0.470828474021128,258,0.0847887449603641,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"k2_S122",0.584596837188066,307,0.102080038260903,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"k12_S7",0.623038577577032,257,0.112277894201697,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"k11_S6",0.713539951797784,368,0.12077351642916,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"k10_S5",1.10203527632904,533,0.175524650132966,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"k1_S121",0.687345484752451,313,0.119617330254526,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"J9_S117",0.43039266936041,511,0.0690133359056341,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"J8_S116",0.835065765131591,676,0.128152397479096,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"J7_S115",0.413029743743823,183,0.07928416193573,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"J6_S114",0.584578166095537,324,0.101125082698884,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"J5_S113",1.10677842514993,702,0.168872394167155,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"J4_S112",0.927643904603834,833,0.137938924020749,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"J3_S111",1.19902566780839,664,0.184514251648029,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"J2_S110",0.509507463369974,610,0.0794434745388951,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"J12_S120",0.737816708625427,268,0.131965377704745,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"J11_S119",0.757210886051594,285,0.133960607778749,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"J10_S118",1.17077173117246,393,0.195984105159005,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"J1_S109",1.29442134644749,609,0.201880541899672,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"I9_S105",1.14947950782407,949,0.16767483042837,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"I8_S104",1.12806448080484,977,0.163856005221554,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"I7_S103",0.979621165342826,479,0.158727914596795,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"I6_S102",0.690039542018215,814,0.102960850905449,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"I5_S101",1.07724982322765,912,0.158055564084438,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"I4_S100",1.11093738819951,940,0.162278247419096,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"I3_S99",1.46361224100317,363,0.248305431806429,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"I2_S98",0.816837559428047,698,0.12474194076424,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"I12_S108",0.978421301548896,567,0.15431638093028,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"I11_S107",0.583889496693673,253,0.10552112730961,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"I10_S106",0.608875595082493,213,0.11356881443187,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"I1_S97",1.35410827399654,1074,0.194022078725563,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"H9_S93",0.494787067576976,233,0.0907693225413444,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"H8_S92",0.489147765876971,364,0.0829464139576529,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"H7_S91",0.469152299016292,238,0.0857326559655586,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"H6_S90",0.522034892992142,561,0.082473603620764,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"H5_S89",0.615282566778699,263,0.11042095448647,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"H4_S88",0.918713496470118,470,0.149317960336696,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"H3_S87",2.53917180053666,1700,0.341360698904636,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"H3_S55",0.668452267140854,301,0.117126222577069,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"H2_S86",2.22103182153588,858,0.328817468621772,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"H12_S96",1.34776886314838,1050,0.193741113913832,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"H11_S95",1.02043033137008,697,0.155867386411178,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"H10_S94",1.2372699227453,723,0.187937568665919,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"H1_S85",0.747835509828472,581,0.117496432837279,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"G9_S81",1.03511792623585,379,0.174334587694777,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"G8_S80",1.08447441829954,418,0.179683167022168,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"G7_S79",1.13461619678096,360,0.192761832057091,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"G6_S78",0.971369808396771,388,0.162954024204608,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"G5_S77",0.299559435213861,445,0.0491236120376427,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"G4_S76",0.378224528545024,435,0.0622556355818381,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"G3_S75",0.272267829806765,268,0.0486976325925709,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"G2_S74",0.396078503663093,475,0.0642638768676576,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"G12_S84",0.996403474928189,860,0.147463881170957,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"G11_S83",0.780510706321853,650,0.120505486605725,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"G10_S82",1.03677666268979,683,0.158856581518548,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"G1_S73",0.872278289636336,472,0.141673098394273,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"F9_S69",1.07223574396413,389,0.179797346892268,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"F8_S68",1.29308686948482,664,0.198989031214811,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"F7_S67",1.08906877546469,568,0.171719950401753,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"F6_S66",0.519874543219192,447,0.0851896028787105,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"F5_S65",0.890246473659909,732,0.134972119186732,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"F4_S64",0.930742324075639,688,0.14245062813662,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"F3_S63",0.717821460525101,454,0.117327567263054,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"F2_S62",1.76128481815414,862,0.260573798092581,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"F12_S72",0.871514967277328,617,0.135647118102273,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"F11_S71",0.780376416840885,576,0.122775833654688,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"F10_S70",1.42374128280651,527,0.227173404102709,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"F1_S61",0.736524693592827,693,0.112600720939064,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"E9_S57",0.733361279269634,550,0.116223578013716,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"E8_S56",1.03680500518185,905,0.152293612344417,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"E7_S55",0.736475291286745,597,0.115219781205181,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"E6_S54",1.80174860729975,976,0.261750330546741,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"E5_S53",0.902078608294139,329,0.155636580428313,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"E4_S52",0.822876260401375,499,0.132452669253262,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"E3_S51",0.90303160407914,337,0.155157858553825,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"E2_S50",1.6236444871667,677,0.249114203398787,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"E12_S60",1.09287450221537,864,0.16163022119019,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"E11_S59",0.637883776377109,587,0.100059810652519,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"E10_S58",1.44137766692564,816,0.214989347407863,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"E1_S49",0.476137403516022,354,0.0811234140243554,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"D9_S45",1.54321759547668,1010,0.223082288046863,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"D8_S44",1.40179760995871,840,0.208185644118176,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"D7_S43",1.68351740580462,820,0.250922796228351,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"D6_S42",1.13666420951836,605,0.177458808372903,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"D5_S41",1.16198842033902,584,0.18241860014331,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"D4_S40",0.988089053947075,733,0.149775235927335,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"D3_S39",0.836763452419363,288,0.147760779075625,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"D2_S38",1.55472848851382,483,0.251573511148215,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"D12_S48",0.53529110512328,655,0.0825476045563327,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"D11_S47",0.437559245774037,195,0.0829810890204624,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"D10_S46",0.494556255522436,338,0.0849308530963266,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"D1_S37",0.999822713491144,1010,0.144530971666334,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"C9_S33",1.15224753864485,645,0.178111447574277,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"C8_S32",1.02662600416201,690,0.157055903408432,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"C7_S31",1.07307141825865,550,0.170061064334457,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"C6_S30",0.754466768309352,299,0.132352291290305,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"C5_S29",1.1067105891802,703,0.16882537555854,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"C4_S28",1.1643976295142,620,0.181096178999912,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"C3_S27",0.872685631972314,429,0.143972916683973,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"C2_S26",1.44554085381537,632,0.224153457357692,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"C12_S36",0.879926250611725,545,0.139653414556169,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"C11_S35",0.611273938684452,362,0.103752690540528,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"C10_S34",0.780689789418014,429,0.128795733411907,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"C1_S25",1.22486614524817,968,0.178156334171602,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"B9_S21",0.923925054782678,693,0.14125069826879,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"B8_S20",1.5157131401532,793,0.22704512834329,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"B7_S19",0.925116141108846,355,0.157543866501951,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"B6_S18",1.00909726507435,430,0.166413754832313,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"B5_S17",1.14419483405203,474,0.185709516708365,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"B4_S16",1.13958628314103,675,0.174925025433224,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"B3_S15",1.07865260671246,633,0.167220766257527,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"B2_S14",1.63771300130604,693,0.250375399823708,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"B12_S24",1.05356011847402,610,0.164273307977844,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"B11_S23",0.604892933913805,640,0.0936154009281453,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"B10_S22",0.700890030537421,270,0.125194212881878,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"B1_S13",1.11484274852853,707,0.169918844355254,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"A9_S9",0.83849442057584,751,0.126633899911032,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"A8_S8",0.79478543070679,623,0.123518483918982,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"A7_S7",0.927509346603659,504,0.149055520839945,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"A6_S6",1.32357642280943,651,0.204302609073252,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"A5_S5",1.680916125358,128,0.346435622600611,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"A4_S4",2.34097622548508,809,0.349618657083789,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"A3_S3",1.75016221675202,161,0.344424905211685,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"A2_S2",1.80182790365338,814,0.268850874259661,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"A12_S12",0.945193149978682,803,0.141319231769771,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"A11_S11",0.866008346046054,298,0.152008800293931,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"A10_S10",0.763159106460299,322,0.132159025760043,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
+"A1_S1",3.6046474020938,68,0.854281507217523,"Walsh et al 2023","ML","Laboratory controlled","Milk Liquid
+                   Laboratory controlled"
