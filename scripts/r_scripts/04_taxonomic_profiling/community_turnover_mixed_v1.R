@@ -3,20 +3,21 @@
 # within-participant taxonomic turnover across consecutive visit intervals
 # (Figure 3 statistics)
 #
-# WHY this script exists: the manuscript Results/Methods describe a segmented
-# linear model with an a priori breakpoint at week 9 (two slopes, a test for
-# whether they differ). That model lives only in community_changes_v2.R, an
-# older script no longer linked to Figure 3 -- the current Figure 3 script
-# (community_changes_v3.R) computes no such test ("Descriptive only -- no
-# significance test is computed in this script"). Week 9 was also not found
-# in the data; it was an a priori guess, not an inflection point the turnover
-# curve actually shows.
+# Each participant's kefir community was sampled repeatedly across the study
+# (roughly every four weeks). For every pair of consecutive visits, this
+# script measures how much the microbial community changed (Bray-Curtis
+# dissimilarity: 0 = identical, 1 = completely different) and asks whether
+# that change is bigger in the first interval after starting than in later
+# intervals -- separately for each of the four sample types (milk/water
+# kefir, grain/liquid).
 #
-# This script instead tests the claim the manuscript text actually makes
-# ("turnover was highest in the first interval and lower thereafter") without
-# assuming where any change happens: distance ~ interval, interval as a plain
-# 5-level factor (T1->T2 .. T5->T6), no breakpoint. A planned contrast then
-# asks whether the first interval differs from the mean of the other four.
+# The model makes no assumption about WHEN any change happens: turnover is
+# modelled as a function of WHICH of the five consecutive intervals
+# (T1->T2 .. T5->T6) is being measured, treating each as its own category
+# rather than fitting a curve shape or assuming a particular week is a
+# turning point. A planned contrast then compares the first interval against
+# the average of the later four -- directly testing whether turnover was
+# highest right after starting and lower thereafter.
 #
 # Reuses find_root(), normalize_id(), load_metadata(), load_taxonomy(),
 # prepare_panel() and build_intervals() from 04_community_stability_v3.R
