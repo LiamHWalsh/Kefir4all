@@ -36,6 +36,14 @@ resubmission.
 | Supplementary Figure S6E | `06_supp_strain_profiling.R` |
 | Supplementary Table S1 | `03_mag_taxonomy.R` |
 
+## Figure 3 statistics
+
+`community_turnover_mixed_v1.R` tests whether within-participant taxonomic
+turnover between consecutive visits differs by interval, per sample type,
+without assuming where any change occurs. It fits turnover as a function of
+a 5-level interval factor (no breakpoint), with a planned contrast comparing
+the first interval to the mean of the later four.
+
 ## Running a script
 
 Scripts run inside the project Docker image

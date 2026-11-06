@@ -1,0 +1,14 @@
+Tests whether within-participant taxonomic (MetaCache) turnover differs by
+consecutive-visit interval, per sample type (MG/WG/ML/WL), without assuming
+where any change happens (no breakpoint).
+Primary model: distance ~ interval + (1 | participant), interval a 5-level
+factor (T1->T2 .. T5->T6). Overall effect: likelihood-ratio test (ML fit),
+df = 4. Planned contrast (REML refit, emmeans): mean of the four later
+intervals minus the first interval.
+BH correction applied across the four sample types' contrast p-values.
+Participants need >=2 intervals within a sample type to be included.
+Bayesian sensitivity (brms), when available: same model structure, vague
+prior centred at 0.5 on the interval means; reports the posterior
+probability that turnover decreased (later < first). Not the primary
+analysis -- a robustness check only.
+Run directory: /home/rstudio/kefir4all/output/04_taxonomic_profiling/community_turnover_mixed_v1/run_20261106_165853_1296e9d00
