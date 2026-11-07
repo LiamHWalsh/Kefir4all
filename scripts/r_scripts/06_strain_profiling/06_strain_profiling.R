@@ -147,8 +147,15 @@ for (species in levels(as.factor(instrain$classification))) {
 
   for (type in c("Milk.kefir", "Water.kefir")) {
 
+    # BUG FIX: this script previously applied only the popANI_reference > 0.98 cut,
+    # missing the breadth >= 0.35 and observed:expected breadth ratio >= 0.75 criteria
+    # that the Figure 7 caption states and that 04_supp_community_types.R and
+    # Supplementary_Note_6_analysis.R already apply for the same per-genome detection
+    # decision -- the three filters together are the Methods-stated detection criterion.
     t1 <- instrain[which(instrain$classification == species &
       instrain$category.y == type &
+        instrain$breadth >= 0.35 &
+        (instrain$breadth / instrain$breadth_expected) >= 0.75 &
         instrain$popANI_reference > .98), ]
 
     if (nrow(t1) == 0) {
