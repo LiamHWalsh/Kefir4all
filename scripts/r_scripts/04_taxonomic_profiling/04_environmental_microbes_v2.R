@@ -5,10 +5,11 @@
 #    same-participant (Sample x species) connecting lines.
 # Inputs:  data/04_metacache_total_species_profile_v2.csv,
 #          data/kefir4all_sample_metadata_v2.csv,
-#          data/global_milk_kefir_metadata_v1.csv
-# Outputs: figures_reviewed/04_taxonomic_profiling/Figure_5A_alpha_kefirtype.tiff,
-#          Figure_5B_alpha_condition.tiff, Figure_5C_persistence.tiff, Figure_5.{tiff,pdf}
-#          (combined panel), and output_reviewed/04_taxonomic_profiling/ CSVs of underlying data.
+#          data/global_milk_kefir_metadata_v1.csv,
+#          data/global_water_kefir_metadata_v1.csv
+# Outputs: figures/Figure_5/Figure_5.{tiff,pdf} (the single combined A+B+C panel --
+#          no separate per-panel files), and output_reviewed/04_taxonomic_profiling/
+#          CSVs of underlying data.
 
 if (!requireNamespace("here", quietly = TRUE)) install.packages("here")
 if (!requireNamespace("pacman", quietly = TRUE)) install.packages("pacman")
@@ -33,6 +34,15 @@ mc_raw <- read_csv(file.path(DATA_DIR, "04_metacache_total_species_profile_v2.cs
 # Strip path prefix: metacache IDs are like '04_Metacache_individual/TG_ID..._S12'
 mc_raw$sample_id <- sub("^.*/", "", mc_raw$sample_id)
 mc_raw <- mc_raw[mc_raw$sample_id != "TG_EC_S72", ]
+# BUG FIX: "WK0"-prefixed sample IDs use dashes here but underscores in
+# global_water_kefir_metadata_v1.csv's merge_column for the identical sample
+# (e.g. "WK069-2-L-48h-05D2_S81" vs "WK069_2_L_48h_05D2_S81") -- without this,
+# the left_join below silently drops all 375 WK0-prefixed samples, which is why
+# adding global_wk_metadata alone didn't surface any water liquid lab-controlled
+# samples. Same normalization already applied for this reason in 05_resistome.R
+# and superfocus_diversity_bayesian_v1.R.
+mc_raw$sample_id[grepl("WK0", mc_raw$sample_id)] <-
+  gsub("-", "_", mc_raw$sample_id[grepl("WK0", mc_raw$sample_id)], fixed = TRUE)
 
 kefir4all_metadata <- read_csv(file.path(DATA_DIR, "kefir4all_sample_metadata_v2.csv"),
                                show_col_types = FALSE) |>
@@ -49,9 +59,17 @@ num_block[is.na(num_block)] <- 0
 ####################################################################
 global_mk_metadata <- read_csv(file.path(DATA_DIR, "global_milk_kefir_metadata_v1.csv"),
                                show_col_types = FALSE)
+# BUG FIX: this file was never loaded, so no water liquid sample could ever be tagged
+# "Laboratory controlled" below -- every WL sample fell through to the "Household
+# conditions" default, even though the conditions logic two lines below was already
+# written expecting Mortensen et al (water kefir's lab-controlled comparison dataset)
+# to be present. Panel B's "Water liquid" group was therefore household-only.
+global_wk_metadata <- read_csv(file.path(DATA_DIR, "global_water_kefir_metadata_v1.csv"),
+                               show_col_types = FALSE)
 total_metadata <- bind_rows(
   dplyr::select(kefir4all_metadata, data_source, merge_column, `kefir type`),
-  dplyr::select(global_mk_metadata, data_source, merge_column, `kefir type`))
+  dplyr::select(global_mk_metadata, data_source, merge_column, `kefir type`),
+  dplyr::select(global_wk_metadata, data_source, merge_column, `kefir type`))
 stopifnot("total_metadata has duplicate merge_column values -- Kefir4All and global datasets overlap" =
             !anyDuplicated(total_metadata$merge_column))
 
@@ -84,10 +102,14 @@ alpha_df <- alpha_df[!(alpha_df$site %in%
     c("Extraction control", "Medium control"))]), ]
 alpha_df$data_source[which(is.na(alpha_df$data_source))] <- "Walsh et al 2023"
 
-# Conditions: Laboratory controlled (Walsh/Mortensen) vs Household conditions
+# Conditions: Laboratory controlled (Walsh/Mortensen) vs Household conditions.
+# Matched by prefix, not an exact "Mortensen et al 2023" string: the water global
+# metadata's own data_source column has the same study under 11 different year
+# suffixes (2023-2033, an upstream spreadsheet autofill error, not 11 real studies)
+# -- an exact match would silently leave 10 of those 11 batches as "Household
+# conditions" instead of "Laboratory controlled".
 alpha_df$conditions <- "Household conditions"
-alpha_df$conditions[alpha_df$data_source %in%
-  c("Walsh et al 2023", "Mortensen et al 2023")] <- "Laboratory controlled"
+alpha_df$conditions[grepl("^Walsh et al|^Mortensen et al", alpha_df$data_source)] <- "Laboratory controlled"
 
 # Factor levels for kefir type
 alpha_df$`kefir type` <- factor(alpha_df$`kefir type`,
@@ -329,22 +351,9 @@ panelC <- ggplot(persist_df[order(persist_df$traj_id), ],
 # ---- END PANEL C ----
 
 # ---- OUTPUT ----
-ggsave(file.path(FIGURES_DIR, "Figure_5A_alpha_kefirtype.tiff"),
-       panelA, width = 8, height = 6, dpi = 300, compression = "lzw")
-save_figure(panelA, file.path(FIGURES_DIR, "Figure_5A_alpha_kefirtype"),
-            width_mm = 8 * 25.4, height_mm = 6 * 25.4,
-            source = PRIMARY_SOURCE, seed = NULL)
-ggsave(file.path(FIGURES_DIR, "Figure_5B_alpha_condition.tiff"),
-       panelB, width = 8, height = 6, dpi = 300, compression = "lzw")
-save_figure(panelB, file.path(FIGURES_DIR, "Figure_5B_alpha_condition"),
-            width_mm = 8 * 25.4, height_mm = 6 * 25.4,
-            source = PRIMARY_SOURCE, seed = NULL)
-ggsave(file.path(FIGURES_DIR, "Figure_5C_persistence.tiff"),
-       panelC, width = 16, height = 10, dpi = 300, compression = "lzw")
-save_figure(panelC, file.path(FIGURES_DIR, "Figure_5C_persistence"),
-            width_mm = 16 * 25.4, height_mm = 10 * 25.4,
-            source = PRIMARY_SOURCE, seed = NULL)
-# ---- END PANEL C OUTPUT ----
+# panelA/B/C are combined into the single Figure_5 output below (not saved
+# individually here) -- this script's one manuscript figure is the combined
+# A+B+C panel, not three separate sub-figure files.
 
 
 
