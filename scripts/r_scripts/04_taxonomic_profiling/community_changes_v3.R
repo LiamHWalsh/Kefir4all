@@ -709,7 +709,21 @@ run_analysis <- function() {
       ggplot2::theme_bw(base_size = 9) +
       ggplot2::theme(
         strip.background = ggplot2::element_rect(fill = "white", colour = "black"),
-        strip.text = ggplot2::element_text(size = 11, face = "bold")
+        strip.text = ggplot2::element_text(size = 11, face = "bold"),
+        # Default theme_bw() legend text at base_size = 9 is ~7pt -- too small to
+        # read; sized up to this project's other figures' legend convention (e.g.
+        # 04_taxonomic_profiling.R's Figure 2), made easy here by the dedicated
+        # empty grid space below giving it plenty of room.
+        legend.title = ggplot2::element_text(size = 16, face = "bold"),
+        legend.text = ggplot2::element_text(size = 14),
+        legend.key.size = ggplot2::unit(1.5, "cm"),
+        # The 14-panel, ncol = 4 grid leaves its last row with only 2 of 4 cells
+        # filled (volatiles has no grain data); the legend sits in that empty
+        # space instead of a separate column to the right. Sized down from an
+        # earlier attempt that spilled up into the Resistome row above it.
+        legend.position = "inside",
+        legend.position.inside = c(0.75, 0.1),
+        legend.background = ggplot2::element_rect(fill = "white", colour = "black")
       ) +
       ggplot2::labs(x = "Time since start (week)", y = "Distance", colour = "Distance to", linetype = "Distance to")
     # Widened from 13in so the larger, bolder strip titles below have room and don't clip.
