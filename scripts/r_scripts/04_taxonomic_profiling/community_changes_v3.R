@@ -126,6 +126,30 @@ load_superfocus <- function(path, md) {
   list(mat = as.matrix(stats::xtabs(value ~ key + feature, table)), md = md)
 }
 
+load_resistome <- function(path_genes, path_reads, md) {
+  genes <- read_table(path_genes)
+  require_columns(genes, c("Sample", "Gene", "Hits"))
+  reads <- read_table(path_reads)
+  require_columns(reads, c("sample_id", "X2"))
+  # Same WK0 dash/underscore and sample-suffix normalization 05_resistome.R applies,
+  # before this script's own normalize_id() (which only strips the host-removed-reads
+  # suffix and swaps remaining dashes) is run on the result.
+  genes$Sample[grepl("WK0", genes$Sample)] <- gsub("-", "_", genes$Sample[grepl("WK0", genes$Sample)], fixed = TRUE)
+  genes$Sample <- gsub("_antimicrobial_resistance_mapped_and_unmapped", "", genes$Sample, fixed = TRUE)
+  reads$sample_id[grepl("WK0", reads$sample_id)] <- gsub("-", "_", reads$sample_id[grepl("WK0", reads$sample_id)], fixed = TRUE)
+  n_before <- nrow(genes)
+  genes <- merge(genes, reads[, c("sample_id", "X2")], by.x = "Sample", by.y = "sample_id", all.x = TRUE)
+  if (nrow(genes) != n_before) stop("gene_total_resistome row count changed after merging reads_per_sample -- check for duplicate sample_id")
+  if (anyNA(genes$X2)) stop("Resistome sample(s) missing a matching total-read count")
+  genes$key <- normalize_id(genes$Sample)
+  genes <- genes[genes$key %in% md$key, , drop = FALSE]
+  if (!nrow(genes)) stop("No matched resistome profiles")
+  if (anyDuplicated(paste(genes$key, genes$Gene))) stop("Duplicate resistome key x Gene combination")
+  # CPM-style normalisation, same as 05_resistome.R: hits per million reads (X2).
+  genes$value <- genes$Hits / genes$X2 * 1e6
+  list(mat = as.matrix(stats::xtabs(value ~ key + Gene, genes)), md = md)
+}
+
 find_superfocus_file <- function(root, functional_dir = Sys.getenv("KEFIR4ALL_FUNC_DIR", "")) {
   candidates <- c(file.path(root, "data", "functional", "superfocus_p3.csv"),
     if (nzchar(functional_dir)) c(file.path(functional_dir, "superfocus_p3.csv"),
@@ -437,6 +461,8 @@ run_analysis <- function() {
     MetaCache = file.path(root, "data", "04_metacache_total_full_profile.csv"),
     MetaCache_audit = file.path(root, "output", "04_taxonomic_profiling", "metacache_full_profile_build_audit.csv"),
     SUPER_FOCUS = find_superfocus_file(root),
+    Resistome_genes = file.path(root, "data", "gene_total_resistome.csv"),
+    Resistome_reads = file.path(root, "data", "reads_per_sample_interleaved_total_data.csv"),
     volatiles_ML = file.path(root, "data", "Final results table all milk kefirs 0913-001.xlsx"),
     volatiles_WL = file.path(root, "data", "Final results table all water kefirs 0913-002.xlsx"))
   assignment_path <- Sys.getenv("KEFIR4ALL_COMMUNITY_TYPES")
@@ -444,8 +470,19 @@ run_analysis <- function() {
   if (nzchar(assignment_path)) inputs <- c(inputs, community_types = assignment_path)
   metadata <- load_metadata(inputs["metadata"])
   substrates <- load_substrates(inputs["private"])
-  taxonomic_audit <- read_table(inputs["MetaCache_audit"])
-  require_columns(taxonomic_audit, c("sample_id", "read_depth", "classified_fraction"))
+  # MetaCache_audit is build_metacache_full_profile.R's own output, built from raw
+  # per-sample MetaCache reports that are not part of this checkout; it feeds only the
+  # classified_fraction coverage diagnostic below (not any statistical test), so its
+  # absence degrades that one diagnostic to all-NA rather than blocking this script.
+  if (file.exists(inputs["MetaCache_audit"])) {
+    taxonomic_audit <- read_table(inputs["MetaCache_audit"])
+    require_columns(taxonomic_audit, c("sample_id", "read_depth", "classified_fraction"))
+  } else {
+    message("MetaCache_audit not found (", inputs["MetaCache_audit"],
+            ") -- classified_fraction_summary will be all-NA for this run")
+    taxonomic_audit <- data.frame(sample_id = character(), read_depth = numeric(),
+                                   classified_fraction = numeric())
+  }
   # Save input and runtime provenance before panel processing can fail.
   save_csv(metadata$excluded, "metadata_exclusions.csv")
   save_csv(substrates$unmapped, "unmapped_substrates.csv")
@@ -456,6 +493,7 @@ run_analysis <- function() {
     function(package) as.character(utils::packageVersion(package)), character(1))), "package_versions.csv")
   sources <- list(MetaCache = tryCatch(load_taxonomy(inputs["MetaCache"], metadata$md), error = identity),
     SUPER_FOCUS = tryCatch(load_superfocus(inputs["SUPER_FOCUS"], metadata$md), error = identity),
+    Resistome = tryCatch(load_resistome(inputs["Resistome_genes"], inputs["Resistome_reads"], metadata$md), error = identity),
     volatiles_ML = tryCatch(load_volatiles(inputs["volatiles_ML"], metadata$md, "ML"), error = identity),
     volatiles_WL = tryCatch(load_volatiles(inputs["volatiles_WL"], metadata$md, "WL"), error = identity))
   if (!inherits(sources$MetaCache, "error")) {
@@ -475,7 +513,7 @@ run_analysis <- function() {
     classified_fraction_summary <- data.frame(type = character(), Stage = character(),
       n = integer(), mean = numeric(), median = numeric())
   }
-  specs <- rbind(expand.grid(type = TYPES, source = c("MetaCache", "SUPER_FOCUS"), stringsAsFactors = FALSE),
+  specs <- rbind(expand.grid(type = TYPES, source = c("MetaCache", "SUPER_FOCUS", "Resistome"), stringsAsFactors = FALSE),
                  data.frame(type = c("ML", "WL"), source = "volatiles"))
   # Results are accumulated by family, then written together for consistent adjustment and provenance.
   stages <- list()
@@ -629,11 +667,15 @@ run_analysis <- function() {
     # distance-to-previous-visit ("interval") overlaid as two mean +/- SE series,
     # individual participant values shown as faint points underneath. Panel order/
     # labels and the blue/red colour convention match the manuscript caption exactly.
+    # Panel titles name the profile type, not the underlying tool (MetaCache/SUPER-FOCUS/
+    # resistome pipeline); the caption retains the tool-derivation note.
     panel_label_map <- c(
-      MetaCache_MG = "Milk grain · MetaCache", MetaCache_WG = "Water grain · MetaCache",
-      MetaCache_ML = "Milk liquid · MetaCache", MetaCache_WL = "Water liquid · MetaCache",
-      SUPER_FOCUS_MG = "Milk grain · SUPER-FOCUS", SUPER_FOCUS_WG = "Water grain · SUPER-FOCUS",
-      SUPER_FOCUS_ML = "Milk liquid · SUPER-FOCUS", SUPER_FOCUS_WL = "Water liquid · SUPER-FOCUS",
+      MetaCache_MG = "Milk grain · Taxonomic profiles", MetaCache_WG = "Water grain · Taxonomic profiles",
+      MetaCache_ML = "Milk liquid · Taxonomic profiles", MetaCache_WL = "Water liquid · Taxonomic profiles",
+      SUPER_FOCUS_MG = "Milk grain · Functional profiles", SUPER_FOCUS_WG = "Water grain · Functional profiles",
+      SUPER_FOCUS_ML = "Milk liquid · Functional profiles", SUPER_FOCUS_WL = "Water liquid · Functional profiles",
+      Resistome_MG = "Milk grain · Resistome", Resistome_WG = "Water grain · Resistome",
+      Resistome_ML = "Milk liquid · Resistome", Resistome_WL = "Water liquid · Resistome",
       volatiles_ML = "Milk liquid · Volatiles", volatiles_WL = "Water liquid · Volatiles")
     plot_data$panel <- factor(plot_data$panel, levels = names(panel_label_map)[names(panel_label_map) %in% unique(plot_data$panel)])
 
@@ -647,10 +689,17 @@ run_analysis <- function() {
                         .groups = "drop")
 
     plot <- ggplot2::ggplot(summary_data, ggplot2::aes(week, mean, colour = measure_label)) +
+      # Faint per-participant trajectories, requested so a reader can see individual
+      # change alongside the mean; the mean line below is made thicker to stay the
+      # visually dominant series.
+      ggplot2::geom_line(data = plot_data,
+                          ggplot2::aes(week, distance, colour = measure_label,
+                                       group = interaction(panel, participant, measure_label)),
+                          alpha = 0.12, linewidth = 0.3, inherit.aes = FALSE) +
       ggplot2::geom_point(data = plot_data, ggplot2::aes(week, distance, colour = measure_label),
                            alpha = 0.15, size = 0.6, inherit.aes = FALSE) +
       ggplot2::geom_errorbar(ggplot2::aes(ymin = mean - se, ymax = mean + se), width = 0, na.rm = TRUE) +
-      ggplot2::geom_line(ggplot2::aes(linetype = measure_label)) +
+      ggplot2::geom_line(ggplot2::aes(linetype = measure_label), linewidth = 1) +
       ggplot2::geom_point(size = 1.4) +
       ggplot2::facet_wrap(~ panel, scales = "free_y", ncol = 4,
                           labeller = ggplot2::as_labeller(panel_label_map)) +
@@ -684,7 +733,7 @@ run_analysis <- function() {
     "V3 separates magnitude of observed change from common stage-associated change. No zero-distance null or stability claim is tested.",
     "participant_change files describe each participant's observed consecutive-interval distances and net first-to-last distance. Net distances span the recorded endpoints even with intervening missing visits; sums include ONLY observed consecutive pairs and are not full path lengths for incomplete trajectories. change_magnitude averages participant mean interval distances, giving each participant with at least one interval equal weight; participants without intervals remain in the counts but not that mean.",
     "T0 is one laboratory sample, not a participant baseline or pooled reference. Grains use the metadata-first default key; liquids use the first usable substrate-matched starter in metadata/workbook order. Every choice and fallback is recorded. T0 uncertainty is not quantified by these analyses.",
-    "MetaCache uses the full rank-qualified rank::name profile; unclassified reads and reports below 10,000 total reads were excluded during profile construction. SUPER-FOCUS and MetaCache use row proportions and Bray-Curtis for descriptive distances; volatiles use raw concentrations and Euclidean distances. Blanks are assumed nondetections, encoded as zero. Distances from different sources are not interchangeable.",
+    "MetaCache uses the full rank-qualified rank::name profile; unclassified reads and reports below 10,000 total reads were excluded during profile construction. SUPER-FOCUS, MetaCache and Resistome use row proportions and Bray-Curtis for descriptive distances; volatiles use raw concentrations and Euclidean distances. Resistome profiles are CPM-normalised (hits per million reads per gene, as in 05_resistome.R) before being treated as compositional like the other two. Blanks are assumed nondetections, encoded as zero. Distances from different sources are not interchangeable.",
     "community_changes_v3_classified_fraction_by_stage.csv summarizes the fraction of total raw-report reads classified by MetaCache at each type and stage; it is a coverage diagnostic, not a covariate adjustment.",
     "community_changes_v3_rank_sensitivity.csv recomputes descriptive reference and adjacent-interval distances separately within each available taxonomic rank, renormalizing within that rank. It reports rank-level sample counts and is not a set of significance tests. The manifest lists ranks with no usable T0 or visit profiles.",
     paste0("community_changes_v3_depth_sensitivity.csv reruns the participant-adjusted MetaCache Stage model after 30,000-read and 1,000,000-read filters. The primary profile remains the 10,000-read build; the stricter cutoffs are sensitivity scenarios, not recommended QC thresholds. P-values are BH-adjusted across the four MetaCache types separately at each cutoff, retaining unavailable tests in the family."),
@@ -693,7 +742,7 @@ run_analysis <- function() {
     "Stage inference requires exchangeable residuals within participants. Blocking alone does not establish this: serial correlation, heterogeneous variances, and informative missingness can invalidate inference. This is an exploratory conditional analysis, not proof of a universal temporal trajectory or a causal effect. No time-series permutation scheme is imposed on irregular, incomplete trajectories.",
     "betadisper uses stage spatial medians, small-sample bias adjustment, the same model subset and permutation matrix. Its p-value is an unadjusted exploratory diagnostic and does not prove that a PERMANOVA result is solely location or solely dispersion. Participant adjustment in PERMANOVA is not reproduced by betadisper.",
     "community_changes_v3_interval_summary.csv reports each adjacent interval separately, using participant-level mean, median, n, and participant-bootstrap 95% interval. It does not pool intervals into early and late windows or test for a plateau. The bootstrap resamples independent participants; estimates are available-case, pointwise, and do not correct informative attrition or T0-reference uncertainty.",
-    "Stage p-values are BH-adjusted across the ten planned panels, retaining failed or unavailable panel tests in the family size. The stage analysis is exploratory and is not a test of equivalence or stability.",
+    paste0("Stage p-values are BH-adjusted across the ", nrow(specs), " planned panels, retaining failed or unavailable panel tests in the family size. The stage analysis is exploratory and is not a test of equivalence or stability."),
     "Community types are imported only if KEFIR4ALL_COMMUNITY_TYPES names a CSV with unique normalized sample_id and community_type. Only adjacent observed taxonomic visits are linked; unmatched labels remain NA. No labels are derived here. Label switching is descriptive and depends on assignment robustness; it does not itself prove distinct ecological states. Transition files are always written with NA labels when unavailable to prevent stale results from a previous labelled run.",
     "Outputs use a separate v3 directory and figure prefix. Manifest records panel/model failures and warnings; partial panel files can exist for failed panels and must not be interpreted as completed analyses. Input hashes, package versions, per-panel deterministic seeds and sessionInfo record provenance. Private input hashes are recorded, not distributed private data.",
     paste("Seed:", SEED, "plus panel index; permutations:", NPERM, "bootstrap replicates:", NBOOT)),
