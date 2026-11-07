@@ -4,23 +4,19 @@
 # assembly-free marker-sequence variation. (A) Species-level summaries obtained using dRep
 # (salmon), inStrain (green) and StrainPhlAn4 (blue)..." (Kefir4All_Manuscript_TRACKED_SB.docx).
 #
-# No other script in this repo combines all three methods. Ported/adapted from a 2024
-# pre-repo personal-workstation script ("number of strains detected.R") that referenced an
-# external Q:/ network drive; that original file is not available anywhere in this repo or
-# in any backup, so this script is the full record of the method.
+# Direct port of the original personal-workstation script "number of strains detected.R"
+# (found at Kefir4all/temp_003/Temp_4Liam/R scripts/evolutionary/06_strain_profiling/ --
+# never committed to this repo, so not visible to earlier provenance checks). Reproduces that
+# script's Panel A exactly, including its data-source pooling: counts are NOT restricted to
+# this study's own samples -- each method's bars also include matched published comparison
+# datasets (Walsh et al 2023 for milk, Mortensen et al 2023 / Samuel et al for water), with
+# data points labelled by both kefir type and data source (e.g. "Milk kefir - Kefir4All" vs
+# "Milk kefir - Walsh et al"). This is a deliberate reversion to the original script's scope.
 #
-# Combines detection counts from three independent strain-profiling methods for each
-# prevalent species, restricted to this study's own samples:
-#   - dRep: distinct genomes (MAGs) assembled and binned per species x kefir type, from
-#     Cdb.csv + mag_metadata_v3.csv.gz.
-#   - inStrain: total reference-genome detection rows per species x kefir type, from
-#     instrain_genome_species_primary_data_v4.csv.
-#   - StrainPhlAn4: per-clade .mutation files (the SNP-level data needed to compute
-#     marker-sequence polymorphism directly) are not available for this dataset. Detection
-#     counts do not need SNP values, though -- only "was this clade successfully profiled in
-#     this sample", which is exactly what each clade's StrainPhlAn4 tree (data/06_trees/*.tre)
-#     already encodes as its tip labels. The count of this study's tip labels per clade x type
-#     is used as the StrainPhlAn4 detection count.
+# Panel B (StrainPhlAn4 marker-polymorphism boxplots) is NOT reproduced here: the original
+# script computes it from per-clade .polymorphic files (percentage_of_polymorphic_sites),
+# which do not exist anywhere in this repo or on the local machine the original script was
+# found on -- confirmed by search, not assumed. Panel A alone is produced.
 #
 # Species names are harmonised across all three methods via the prevalence crosswalk
 # (data/milk_taxonomic_profile_prevalence.csv / water_taxonomic_profile_prevalence.csv), and
@@ -46,7 +42,7 @@ dir.create(OUT_DIR, recursive = TRUE, showWarnings = FALSE)
 FIGURES_DIR <- here::here("figures", "Figure_6")
 dir.create(FIGURES_DIR, recursive = TRUE, showWarnings = FALSE)
 
-library(readr); library(dplyr); library(ape); library(ggplot2)
+library(readr); library(dplyr); library(tidyr); library(stringr); library(ape); library(ggplot2)
 
 ## ---- Prevalent-species crosswalk: t__SGBxxxx <-> species name, and the per-type prevalence lists ----
 # The prevalence tables split a few species into dRep/StrainPhlAn-only
@@ -59,30 +55,57 @@ merge_subclusters <- function(x) {
   x <- gsub("Lactococcus_lactis subcluster 2", "Lactococcus_cremoris", x, fixed = TRUE)
   x <- gsub("Pseudomonas_fragi_subspecies 1", "Pseudomonas_fragi", x, fixed = TRUE)
   x <- gsub("Zymomonas_mobilis_subcluster 1", "Zymomonas_mobilis", x, fixed = TRUE)
+  # Same post-2020 genus reclassifications the original script applied directly to these
+  # three species labels (Lactobacillus -> Liquorilactobacillus / Schleiferilactobacillus).
+  x <- gsub("Lactobacillus_ghanensis", "Liquorilactobacillus_ghanensis", x, fixed = TRUE)
+  x <- gsub("Lactobacillus_satsumensis", "Liquorilactobacillus_satsumensis", x, fixed = TRUE)
+  x <- gsub("Lactobacillus_perolens", "Schleiferilactobacillus_perolens", x, fixed = TRUE)
   x
 }
 milk_prevalence  <- read_csv(file.path(DATA_DIR, "milk_taxonomic_profile_prevalence.csv"),  show_col_types = FALSE)
 water_prevalence <- read_csv(file.path(DATA_DIR, "water_taxonomic_profile_prevalence.csv"), show_col_types = FALSE)
-stopifnot("expected prevalence columns 'specie'/'...5' not found -- readr's name repair may have changed" =
-            all(c("specie", "...5") %in% names(milk_prevalence)) &&
-            all(c("specie", "...5") %in% names(water_prevalence)))
-milk_prevalence$`...5`  <- merge_subclusters(milk_prevalence$`...5`)
-water_prevalence$`...5` <- merge_subclusters(water_prevalence$`...5`)
+species_col <- setdiff(names(milk_prevalence), c("...1", "specie", "sum_specie", "kefir_type"))[1]
+stopifnot("expected prevalence columns 'specie' and a species-name column not found" =
+            "specie" %in% names(milk_prevalence) && !is.na(species_col))
+milk_prevalence[[species_col]]  <- merge_subclusters(milk_prevalence[[species_col]])
+water_prevalence[[species_col]] <- merge_subclusters(water_prevalence[[species_col]])
 clade_to_species <- bind_rows(milk_prevalence, water_prevalence) |>
-  transmute(clade = specie, species = gsub("_", " ", `...5`)) |>
+  transmute(clade = specie, species = gsub("_", " ", .data[[species_col]])) |>
   distinct(clade, .keep_all = TRUE)
-prevalent_milk  <- unique(gsub("_", " ", milk_prevalence$`...5`))
-prevalent_water <- unique(gsub("_", " ", water_prevalence$`...5`))
+prevalent_milk  <- unique(gsub("_", " ", milk_prevalence[[species_col]]))
+prevalent_water <- unique(gsub("_", " ", water_prevalence[[species_col]]))
 
-## ---- 1. StrainPhlAn4: tree tip labels present in this study, per clade x type ----
+## ---- Combined study + published-comparison metadata (legacy pools across all of these) ----
 kefir4all_metadata <- read_csv(file.path(DATA_DIR, "kefir4all_sample_metadata_v2.csv"), show_col_types = FALSE)
 kefir4all_metadata$merge_column <- gsub("_host_removed_R..fastq.gz", "", kefir4all_metadata$merge_column)
 kefir4all_metadata <- kefir4all_metadata[!duplicated(kefir4all_metadata$merge_column), ]
-kefir4all_metadata$category.y <- case_when(
-  kefir4all_metadata$`kefir type` %in% c("ML", "MG") ~ "Milk.kefir",
-  kefir4all_metadata$`kefir type` %in% c("WL", "WG") ~ "Water.kefir",
-  TRUE ~ NA_character_)
+global_mk_metadata <- read_csv(file.path(DATA_DIR, "global_milk_kefir_metadata_v1.csv"), show_col_types = FALSE)
+global_wk_metadata <- read_csv(file.path(DATA_DIR, "global_water_kefir_metadata_v1.csv"), show_col_types = FALSE)
+total_metadata <- bind_rows(
+  dplyr::select(kefir4all_metadata, data_source, merge_column, `kefir type`),
+  dplyr::select(global_mk_metadata, data_source, merge_column, `kefir type`),
+  dplyr::select(global_wk_metadata, data_source, merge_column, `kefir type`)) |>
+  mutate(category = case_when(
+    `kefir type` %in% c("ML", "MG") ~ "Milk.kefir",
+    `kefir type` %in% c("WL", "WG") ~ "Water.kefir",
+    TRUE ~ NA_character_))
 
+# Legacy's data-source -> pretty-label mapping, applied identically to all three methods so
+# the same kefir-type/data-source combination reads the same way in every bar chart.
+pretty_source <- function(data_source, category) {
+  dplyr::case_when(
+    data_source == "This study" & category == "Milk.kefir"  ~ "Milk kefir - Kefir4All",
+    data_source == "This study" & category == "Water.kefir" ~ "Water kefir - Kefir4All",
+    data_source %in% c("Walsh et al", "Walsh et al 2023")    ~ "Milk kefir - Walsh et al",
+    data_source %in% c("Mortensen et al 2023", "Samuel et al") ~ "Water kefir - Breselge et al",
+    TRUE ~ NA_character_)
+}
+
+## ---- 1. StrainPhlAn4: tree tip labels, categorised by data source (legacy used per-clade
+## .mutation files for this count; those files do not exist in this repo or on the machine the
+## original script was found on, so tree tip labels -- which encode the same "was this clade
+## profiled in this sample" information -- are used instead, same substitution 06_figure6's
+## prior version already made for the same reason). ----
 tree_files <- list.files(TREES_DIR, pattern = "\\.tre$", full.names = TRUE)
 if (length(tree_files) == 0) {
   stop("No StrainPhlAn4 tree files found in ", TREES_DIR,
@@ -92,90 +115,83 @@ strainphlan_counts <- lapply(tree_files, function(f) {
   clade <- sub("^RAxML_bestTree\\.(t__.+)\\.StrainPhlAn4\\.tre$", "\\1", basename(f))
   species <- clade_to_species$species[clade_to_species$clade == clade]
   if (!length(species)) return(NULL)
-  tips <- ape::read.tree(f)$tip.label
-  tips <- gsub("-", "_", tips)
-  hit <- kefir4all_metadata[kefir4all_metadata$merge_column %in% tips & !is.na(kefir4all_metadata$category.y), ]
+  tips <- gsub("-", "_", ape::read.tree(f)$tip.label)
+  hit <- total_metadata[total_metadata$merge_column %in% tips & !is.na(total_metadata$category), ]
   if (!nrow(hit)) return(NULL)
-  as.data.frame(table(category.y = hit$category.y)) |>
-    transmute(species = species[1], category.y = as.character(category.y), Freq, tool = "StrainPhlAn4")
+  hit$data_source.sample_id <- pretty_source(hit$data_source, hit$category)
+  hit |> filter(!is.na(data_source.sample_id)) |>
+    count(data_source.sample_id, name = "Freq") |>
+    transmute(species = species[1], data_source.sample_id, Freq, tool = "StrainPhlAn4")
 }) |> bind_rows()
 stopifnot("no StrainPhlAn4 detections found across any tree -- check TREES_DIR tip-label parsing" =
             nrow(strainphlan_counts) > 0)
 
-## ---- 2. inStrain: total detection rows per species x type ----
-# Restricted to this study's own samples, same as dRep (data_source == "This
-# study") and StrainPhlAn4 (tips filtered to kefir4all_metadata) below --
-# without this, inStrain pooled in the published comparison datasets
-# (Walsh et al / Mortensen et al 2023) while the other two methods didn't,
-# inflating its bars relative to dRep/StrainPhlAn4 for the same species.
+## ---- 2. inStrain: detection rows per species x data source, same pooling as StrainPhlAn4 ----
 instrain <- read_csv(file.path(DATA_DIR, "instrain_genome_species_primary_data_v4.csv"), show_col_types = FALSE)
 instrain_counts <- instrain |>
-  filter(!is.na(classification), !is.na(category.y), data_source.y == "This study") |>
-  count(classification, category.y, name = "Freq") |>
-  transmute(species = classification, category.y, Freq, tool = "inStrain")
-stopifnot("no inStrain 'This study' detections found -- check data_source.y values" =
+  filter(!is.na(classification), !is.na(category.y)) |>
+  mutate(data_source.sample_id = pretty_source(data_source.y, category.y)) |>
+  filter(!is.na(data_source.sample_id)) |>
+  count(classification, data_source.sample_id, name = "Freq") |>
+  transmute(species = classification, data_source.sample_id, Freq, tool = "inStrain")
+stopifnot("no inStrain detections found -- check data_source.y/category.y values" =
             nrow(instrain_counts) > 0)
 
-## ---- 3. dRep: distinct genomes (MAGs) per species x type (same join as 06_supp_strain_profiling.R) ----
-cdb <- read_csv(file.path(DATA_DIR, "Cdb.csv"), show_col_types = FALSE)
-md  <- read_csv(file.path(DATA_DIR, "mag_metadata_v3.csv.gz"), show_col_types = FALSE, guess_max = 50000)
-strip_fa <- function(x) sub("\\.fa$", "", as.character(x))
-cdb <- cdb |> mutate(g = strip_fa(genome))
-md  <- md  |> mutate(g = strip_fa(user_genome))
-species_short <- function(s) {
-  m <- regmatches(s, regexpr("s__[^;]+$", s))
-  ifelse(length(m), gsub("_", " ", trimws(sub("^s__", "", m))), s)
-}
-# WHY: mag_metadata_v3.csv.gz carries exact-duplicate metadata rows for ~42% of genomes
-# (identical classification/data_source/kefir type, differing only in unrelated columns such
-# as fastani stats) -- confirmed empirically: distinct() on these four columns alone collapses
-# to exactly one row per genome with zero conflicting values. Deduplicating here, rather than
-# just joining, avoids silently double-counting those genomes in the dRep bars below.
-md_genome_lookup <- md |>
-  select(g, classification, data_source, `kefir type`) |>
-  distinct()
-stopifnot("duplicate (g) after distinct -- some genomes have genuinely conflicting metadata" =
-            !anyDuplicated(md_genome_lookup$g))
+## ---- 3. dRep: distinct genomes (MAGs) per species x data source, same pooling, same prokaryotic
+## + eukaryotic MAG source files and QC filter (Completeness >= 80, Contamination <= 5) the
+## original script used. ----
+mag_pro <- read_csv(file.path(DATA_DIR, "HQ_prokaryotic_representatives_MAGs_per_sample.csv"), show_col_types = FALSE) |>
+  transmute(user_genome, classification = sub(".*;s__", "", classification),
+            data_source, category, Completeness, Contamination)
+mag_euk <- read_csv(file.path(DATA_DIR, "HQ_eukaryotic_MAGs.csv"), show_col_types = FALSE)
+names(mag_euk)[names(mag_euk) == "3"] <- "user_genome"
+names(mag_euk)[names(mag_euk) == "X2"] <- "classification_full"
+names(mag_euk)[names(mag_euk) == "complete"] <- "Completeness"
+names(mag_euk)[names(mag_euk) == "duplicated"] <- "Contamination"
+mag_euk <- mag_euk |>
+  mutate(classification = sub(".*;", "", classification_full),
+         data_source = ifelse(grepl("_cs_bin", type), "This study", "Samuel et al"),
+         category = "Water.kefir") |>
+  transmute(user_genome, classification, data_source, category, Completeness, Contamination)
+mag_metadata <- bind_rows(mag_euk, mag_pro)
 
-# relationship = "many-to-one": md_genome_lookup now has exactly one row per genome.
+cdb <- read_csv(file.path(DATA_DIR, "Cdb.csv"), show_col_types = FALSE) |>
+  mutate(genome = sub("\\.fa$", "", genome))
 drep_joined <- cdb |>
-  inner_join(md_genome_lookup, by = "g", relationship = "many-to-one") |>
-  filter(data_source == "This study") |>
-  mutate(species = vapply(classification, species_short, character(1)),
-         category.y = case_when(
-           `kefir type` %in% c("ML", "MG") ~ "Milk.kefir",
-           `kefir type` %in% c("WL", "WG") ~ "Water.kefir",
-           TRUE ~ NA_character_)) |>
-  filter(!is.na(category.y))
+  inner_join(mag_metadata, by = c("genome" = "user_genome"), relationship = "many-to-one") |>
+  filter(Completeness >= 80, Contamination <= 5) |>
+  mutate(data_source.sample_id = pretty_source(data_source, category)) |>
+  filter(!is.na(data_source.sample_id))
 drep_counts <- drep_joined |>
-  count(species, category.y, name = "Freq") |>
-  transmute(species, category.y, Freq, tool = "dRep")
-stopifnot("no dRep 'This study' genomes found -- check data_source values in mag_metadata_v3.csv.gz" =
+  count(classification, data_source.sample_id, name = "Freq") |>
+  transmute(species = classification, data_source.sample_id, Freq, tool = "dRep")
+stopifnot("no dRep genomes found -- check data_source/category values in the MAG source files" =
             nrow(drep_counts) > 0)
 
 ## ---- Combine, restrict to species prevalent in that kefir type ----
 test_db <- bind_rows(strainphlan_counts, instrain_counts, drep_counts) |>
+  mutate(species = ifelse(species == "Pseudomonas fragi subspecies 1", "Pseudomonas fragi", species),
+         new_type = sub(" -.*", "", data_source.sample_id)) |>
   filter(Freq > 0) |>
-  filter((category.y == "Milk.kefir"  & species %in% prevalent_milk) |
-         (category.y == "Water.kefir" & species %in% prevalent_water)) |>
-  mutate(category.y = gsub("\\.", " ", category.y))
+  filter((new_type == "Milk kefir"  & species %in% prevalent_milk) |
+         (new_type == "Water kefir" & species %in% prevalent_water))
 stopifnot("no rows left after restricting to prevalent species -- check prevalence crosswalk" =
             nrow(test_db) > 0)
 write_csv(test_db, file.path(OUT_DIR, "Figure_6_method_comparison_data.csv"))
-message("Species x type x tool combinations: ", nrow(test_db))
+message("Species x data-source x tool combinations: ", nrow(test_db))
 print(count(test_db, tool))
 
 p <- test_db |>
   mutate(species = reorder(species, Freq, FUN = max)) |>
   ggplot(aes(x = species, y = Freq, fill = tool)) +
   geom_col(position = position_dodge2(width = 0.8, preserve = "single"), width = 0.7) +
-  facet_wrap(~ category.y, scales = "free") +
+  facet_wrap(~ new_type, scales = "free") +
   scale_fill_manual(values = c("dRep" = "salmon", "inStrain" = "#2CA02C", "StrainPhlAn4" = "#1F77B4")) +
   labs(x = "Species", y = "Number of strains detected across strain-profiling methods", fill = "Method") +
   coord_flip() +
   theme_bw() +
   theme(legend.position = "top",
-        strip.text = element_text(size = 22, face = "bold", colour = "black"),
+        strip.text = element_text(size = 14, face = "bold", colour = "black"),
         strip.background = element_rect(fill = "white", colour = "black"),
         panel.border = element_blank(),
         axis.text.y = element_text(size = 11, face = "italic"),
