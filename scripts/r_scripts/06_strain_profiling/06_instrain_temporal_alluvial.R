@@ -39,6 +39,7 @@ suppressPackageStartupMessages({
   library(dplyr)
   library(ggplot2)
   library(ggalluvial)
+  library(cowplot)
 })
 
 data_dir <- here::here("data")
@@ -123,49 +124,84 @@ plot_df <- as.data.frame(xtabs(~ Stage + clusters + classification + category.y,
 stopifnot("no rows left for the alluvial plot -- check prevalence/species-recode filtering" =
             nrow(plot_df) > 0)
 
-# WHY: species names never repeat across the two kefir types (confirmed -- no
-# classification value appears under both category.y groups), so faceting by
-# classification alone cannot create any ambiguity between them.
-# HOW: explicitly ordering the factor levels (Milk kefir species first, Water
-# kefir second, alphabetical within each) keeps species grouped by kefir type
-# in the panel layout, without needing "Milk kefir"/"Water kefir" repeated as
-# a second strip-text line on every panel.
+# Milk and water kefir species are now drawn as two separate facet grids (see
+# alluvial_panel() below), each under its own "Milk kefir"/"Water kefir"
+# section header -- species no longer need a shared ordering across both.
 species_order <- plot_df |>
   dplyr::distinct(category.y, classification) |>
   dplyr::arrange(category.y != "Milk kefir", classification) |>
   dplyr::pull(classification)
 plot_df$classification <- factor(plot_df$classification, levels = species_order)
 
-p <- ggplot(plot_df,
-            aes(x = Stage, stratum = clusters, alluvium = clusters,
-                y = Freq, fill = clusters)) +
-  geom_flow(stat = "alluvium", lode.guidance = "frontback", colour = "darkgray") +
-  geom_stratum() +
-  facet_wrap(~ classification, scales = "free_y") +
-  labs(title = "",
-       x = "Timeframe",
-       y = "Number of strains detected",
-       fill = "Cluster") +
-  kefir_theme(base_size = 8) +
-  theme(
-    legend.position = "top",
-    axis.ticks = element_blank(),
-    axis.text.y = element_text(size = 9),
-    axis.text.x = element_text(size = 8, hjust = 0.5),
-    axis.title = element_text(size = 10),
-    panel.background = element_blank(),
-    panel.grid.major = element_blank(),
-    panel.grid.minor = element_blank(),
-    plot.background = element_blank(),
-    legend.text = element_text(size = 9),
-    legend.title = element_text(size = 10),
-    strip.text = element_text(size = 10, face = "bold.italic")
-  ) +
-  guides(fill = guide_legend(nrow = 1, byrow = TRUE))
+# One cluster-colour legend, shared by both kefir-type blocks (the cluster
+# palette/numbering is the same scale across all species) -- built once,
+# bigger and wrapped onto 2 rows so 13 entries are actually readable, and
+# reused via cowplot::get_legend() instead of repeating a cramped one-row
+# legend on every sub-plot.
+shared_theme <- kefir_theme(base_size = 8) + theme(
+  axis.ticks = element_blank(),
+  axis.text.y = element_text(size = 9),
+  axis.text.x = element_text(size = 8, hjust = 0.5),
+  axis.title = element_text(size = 10),
+  panel.background = element_blank(),
+  panel.grid.major = element_blank(),
+  panel.grid.minor = element_blank(),
+  plot.background = element_blank(),
+  legend.text = element_text(size = 13),
+  legend.title = element_text(size = 15, face = "bold"),
+  legend.key.size = unit(1, "cm"),
+  # Long species names (e.g. "Liquorilactobacillus ghanensis") were clipping
+  # against the panel edge in the rightmost column of each row at the previous
+  # single-line strip text; wrapped onto up to 2 lines instead.
+  strip.text = element_text(size = 10, face = "bold.italic"),
+  strip.background = element_rect(fill = "white", colour = "black")
+)
+
+alluvial_panel <- function(df, ncol) {
+  ggplot(df, aes(x = Stage, stratum = clusters, alluvium = clusters,
+                 y = Freq, fill = clusters)) +
+    geom_flow(stat = "alluvium", lode.guidance = "frontback", colour = "darkgray") +
+    geom_stratum() +
+    facet_wrap(~ classification, scales = "free_y", ncol = ncol,
+               labeller = ggplot2::label_wrap_gen(width = 16)) +
+    labs(x = "Timeframe", y = "Number of strains detected", fill = "Cluster") +
+    shared_theme +
+    theme(legend.position = "none") +
+    guides(fill = guide_legend(nrow = 2, byrow = TRUE))
+}
+
+milk_df  <- plot_df |> dplyr::filter(category.y == "Milk kefir")
+water_df <- plot_df |> dplyr::filter(category.y == "Water kefir")
+
+p_milk  <- alluvial_panel(milk_df,  ncol = 5)
+p_water <- alluvial_panel(water_df, ncol = 6)
+
+# Built from the FULL plot_df, not p_milk/p_water individually: a discrete fill
+# scale only shows the levels actually observed in whichever data it's given, and
+# cluster 8 (for example) only occurs in a water-kefir species -- a legend pulled
+# from the milk-only panel would silently omit it.
+legend_combined <- cowplot::get_legend(
+  alluvial_panel(plot_df, ncol = 1) + theme(legend.position = "bottom") +
+    guides(fill = guide_legend(nrow = 2, byrow = TRUE)))
+
+# Section headers use the same bold, boxed convention as the rest of this
+# project's figures (e.g. Figure 2/3/4's "Milk kefir"/"Water kefir" strips).
+section_header <- function(label) {
+  cowplot::ggdraw() +
+    cowplot::draw_label(label, fontface = "bold", size = 16, x = 0.01, hjust = 0) +
+    theme(plot.background = element_rect(fill = "white", colour = "black"))
+}
+
+p <- cowplot::plot_grid(
+  section_header("Milk kefir"), p_milk,
+  section_header("Water kefir"), p_water,
+  legend_combined,
+  ncol = 1,
+  rel_heights = c(0.04, 0.38, 0.04, 0.5, 0.08))
 
 n_panels <- nrow(unique(plot_df[, c("category.y", "classification")]))
 fig_w <- 16
-fig_h <- 10.5
+fig_h <- 16
 
 ggsave(file.path(FIGURES_DIR, "Figure_8.tiff"), p,
        width = fig_w, height = fig_h, dpi = 300, bg = "white", compression = "lzw")
