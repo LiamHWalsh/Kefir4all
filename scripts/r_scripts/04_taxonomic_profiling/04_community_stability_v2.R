@@ -617,79 +617,21 @@ tryCatch(
   }
 )
 
-# This block covers the stability/prevalence/compositional analysis AND,
-# further down, the code that renders and saves Extended Data Figure 1 itself
-# from panels already built above. Wrapped in one tryCatch so a failure
-# anywhere here is reported clearly instead of halting the script silently;
-# if this fires, Extended Data Figure 1 was not written by this run.
+# This block covers the Gower-distance survey analysis AND, further down, the
+# code that renders and saves Extended Data Figure 1 itself from the panels
+# built above. Wrapped in one tryCatch so a failure anywhere here is reported
+# clearly instead of halting the script silently; if this fires, Extended
+# Data Figure 1 was not written by this run.
+#
+# Extended Data Figure 1 shows only the Gower-distance boxplots now -- the
+# compositional-change (Bray-Curtis) boxplots that used to sit alongside them
+# (mean_compositional_change, built from total_beta_diversity_temporal) were
+# dropped from this figure at the user's request. That computation had no
+# other consumer in this script, so it was removed rather than left unused;
+# total_beta_diversity_temporal itself is still used above for the legacy
+# Figure_3.tiff block and is left untouched.
 tryCatch(
   {
-
-########################################################################################################################
-#differences in stability over time
-########################################################################################################################
-title_data <- 
-data.frame(type=as.character(c("MG","WG","ML","WL")),
-                             title=as.character(c("Milk kefir grain", "Water kefir grain", "Milk kefir liquid","Water kefir liquid")))
-
-t <- c()
-title <- c()
-mean_compositional_change <- c()
-
-
-
-total_beta_diversity_temporal$same_time <- paste(total_beta_diversity_temporal$Stage.to," - ", total_beta_diversity_temporal$Stage.from,sep="")
-
-
-
-
-for (type in c("MG","WG","ML","WL")){
-  
- title <- title_data$title[title_data$type==type]
- 
- mean_compositional_change[[type]] <- 
-ggbetweenstats(data = total_beta_diversity_temporal[which(total_beta_diversity_temporal$`kefir type.to`==type),],
-               x=same_time, 
-               y=beta_diversity_values,
-               title=paste(title, " - metagenomes",sep=""),
-               type = "nonparametric", # A
-               ggsignif.args    = list(textsize = 2, tip_length = 0.01))+
-                 theme_bw()+
-                 xlab("Timepoints")+
-                 ylab("Bray Curtis distance")+
-                 #labs(fill = "Timepoint")+
-                 #guides(colour = guide_legend(override.aes = list(size=25)))+
-                 #ylim(0,250)+
-                 theme(#plot.title = element_text(hjust = 0.5,size=35,face="bold"),
-                   legend.title = element_text( size=25, face="bold"),
-                   axis.text.x = element_text(hjust = 1, size = 15),#angle = 45
-                   axis.text.y = element_text(hjust = 1, size = 10),
-                   axis.title.x = element_text( size=15, face="bold",hjust = 0.5,vjust = -1),
-                   axis.title.y = element_text( size=15, face="bold",hjust = 0.5, vjust = 2),
-                   legend.position = "none",
-                   plot.title = ggtext::element_textbox_simple(face="bold",halign  = 0.5,linetype = 1, # turn on border
-                                                               box.color = "#748696",size=35, lineheight = 2))
-               
-
-
-}
-
-
-#write.csv(total_beta_diversity_temporal, file.path(DATA_DIR, "bray_curtis_values_same_participant.csv"), quote = FALSE,row.names=FALSE )
-
-
-
-pacman::p_load(rstatix)
-
-
-t <- 
-
-total_beta_diversity_temporal |>
-  group_by(`kefir type.to`) |>
-  dunn_test( beta_diversity_values ~  same_time)
-
-
-
 
                                                            ########################################################################################################################
                                                                                    #Gower metadata distance
@@ -949,8 +891,8 @@ for (type in names(gower_dist)){
 
 library(ggpubr)
 
-# This downstream block produces Extended Data Figure 1 (the
-# mean_compositional_change / mean_gower_change composite below).
+# This downstream block produces Extended Data Figure 1 (the two
+# mean_gower_change panels below).
 #
 # Rendered with Cairo::CairoTIFF() rather than base R's tiff(type = "cairo"):
 # the base bitmap backend is not reliably available in this container, while
@@ -958,24 +900,20 @@ library(ggpubr)
 # file-existence/size check so a silently empty or missing output file fails
 # loudly instead of looking like a successful run.
 #
-# Canvas is 3600x2400: the panels' large title boxes
+# Canvas is 3600x900: the panels' large title boxes
 # (theme(plot.title = ggtext::element_textbox_simple(size = 35, ...))),
 # combined with ggbetweenstats()'s own built-in subtitle, need this much room
-# in a 3x2 grid -- a smaller canvas collapses a grid viewport to zero
-# dimensions (reproduces identically with base png(), so it is not specific
-# to the Cairo device).
+# per panel -- the 900px row height matches the per-cell height (2400 / 3)
+# that was already confirmed not to collapse the grid viewport to zero
+# dimensions when this figure had three rows instead of one.
 supp_fig_2_path <- file.path(FIGURES_DIR, "Extended_Data_Figure_1.tiff")
 supp_fig_2_plot <- ggarrange(
-  mean_compositional_change[[1]],
-  mean_compositional_change[[2]],
-  mean_compositional_change[[3]],
-  mean_compositional_change[[4]],
   mean_gower_change[[1]],
   mean_gower_change[[2]],
-  nrow = 3, ncol = 2, labels = c("A.", "B.", "C.", "D.", "E.", "F."),
+  nrow = 1, ncol = 2, labels = c("A.", "B."),
   common.legend = FALSE, font.label = list(size = 30))
 tryCatch({
-  Cairo::CairoTIFF(file = supp_fig_2_path, width = 3600, height = 2400,
+  Cairo::CairoTIFF(file = supp_fig_2_path, width = 3600, height = 900,
                     dpi = 300, pointsize = 12, bg = "white")
   print(supp_fig_2_plot)
   grDevices::dev.off()
@@ -983,12 +921,12 @@ tryCatch({
     stop("file was not written or is suspiciously small")
   }
   message("Wrote Extended_Data_Figure_1.tiff to ", FIGURES_DIR)
-  # 24x16 in: save_figure()'s vector PDF leg (ggsave(..., device = cairo_pdf))
+  # 24x6 in: save_figure()'s vector PDF leg (ggsave(..., device = cairo_pdf))
   # needs a larger canvas than its raster PNG leg to clear the same
   # zero-dimension-viewport issue described above for the main TIFF -- this
-  # size comfortably covers both legs' thresholds.
+  # size comfortably covers both legs' thresholds at the new 1x2 layout.
   save_figure(supp_fig_2_plot, file.path(FIGURES_DIR, "Extended_Data_Figure_1"),
-              width_mm = 24 * 25.4, height_mm = 16 * 25.4,
+              width_mm = 24 * 25.4, height_mm = 6 * 25.4,
               source = PRIMARY_SOURCE, seed = NULL)
 }, error = function(e) {
   try(grDevices::dev.off(), silent = TRUE)

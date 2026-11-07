@@ -1,8 +1,8 @@
 {
   "figure": "Extended_Data_Figure_1.pdf",
-  "created_utc": "2026-11-05T17:48:53Z",
+  "created_utc": "2026-11-07T15:06:40Z",
   "width_mm": 609.6,
-  "height_mm": 406.4,
+  "height_mm": 152.4,
   "seed": null,
   "source_file": "/home/rstudio/kefir4all/data/04_metacache_total_species_profile_v2.csv",
   "source_sha256": "02e05e163e42681b0d89badee6ee72e1188bed810fb6aa7fed9b5cf6f0b253d1",
