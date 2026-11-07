@@ -1,0 +1,308 @@
+Stage	clusters	species	category.y	Freq
+wk01	1	Acetobacter fabarum	Milk kefir	8
+wk05	1	Acetobacter fabarum	Milk kefir	20
+wk09	1	Acetobacter fabarum	Milk kefir	20
+wk13	1	Acetobacter fabarum	Milk kefir	6
+wk17	1	Acetobacter fabarum	Milk kefir	12
+wk21	1	Acetobacter fabarum	Milk kefir	18
+wk01	15	Acetobacter orientalis	Milk kefir	4
+wk05	15	Acetobacter orientalis	Milk kefir	4
+wk09	15	Acetobacter orientalis	Milk kefir	8
+wk17	15	Acetobacter orientalis	Milk kefir	4
+wk21	15	Acetobacter orientalis	Milk kefir	6
+wk17	1	Citrobacter freundii	Milk kefir	2
+wk21	1	Citrobacter freundii	Milk kefir	2
+wk05	2	Citrobacter freundii	Milk kefir	2
+wk09	2	Citrobacter freundii	Milk kefir	2
+wk17	2	Citrobacter freundii	Milk kefir	2
+wk17	1	Clostridium beijerinckii	Milk kefir	2
+wk21	1	Clostridium beijerinckii	Milk kefir	2
+wk05	2	Clostridium beijerinckii	Milk kefir	4
+wk09	2	Clostridium beijerinckii	Milk kefir	2
+wk05	0	d__Bacteria;p__Firmicutes_A;c__Clostridia;o__Clostridiales;f__Clostridiaceae;g__Clostridium;s__	Milk kefir	2
+wk01	1	d__Bacteria;p__Firmicutes_A;c__Clostridia;o__Clostridiales;f__Clostridiaceae;g__Clostridium;s__	Milk kefir	2
+wk05	1	d__Bacteria;p__Firmicutes_A;c__Clostridia;o__Clostridiales;f__Clostridiaceae;g__Clostridium;s__	Milk kefir	4
+wk09	1	d__Bacteria;p__Firmicutes_A;c__Clostridia;o__Clostridiales;f__Clostridiaceae;g__Clostridium;s__	Milk kefir	4
+wk13	1	d__Bacteria;p__Firmicutes_A;c__Clostridia;o__Clostridiales;f__Clostridiaceae;g__Clostridium;s__	Milk kefir	2
+wk01	1	d__Bacteria;p__Firmicutes;c__Bacilli;o__Lactobacillales;f__Lactobacillaceae;g__Lactobacillus;s__	Milk kefir	2
+wk05	1	d__Bacteria;p__Firmicutes;c__Bacilli;o__Lactobacillales;f__Lactobacillaceae;g__Lactobacillus;s__	Milk kefir	4
+wk09	1	d__Bacteria;p__Firmicutes;c__Bacilli;o__Lactobacillales;f__Lactobacillaceae;g__Lactobacillus;s__	Milk kefir	2
+wk13	1	d__Bacteria;p__Firmicutes;c__Bacilli;o__Lactobacillales;f__Lactobacillaceae;g__Lactobacillus;s__	Milk kefir	2
+wk05	1	Enterococcus faecalis	Milk kefir	4
+wk09	1	Enterococcus faecalis	Milk kefir	4
+wk13	1	Enterococcus faecalis	Milk kefir	2
+wk17	1	Enterococcus faecalis	Milk kefir	2
+wk05	1	Hafnia paralvei	Milk kefir	2
+wk09	1	Hafnia paralvei	Milk kefir	2
+wk13	1	Hafnia paralvei	Milk kefir	2
+wk21	1	Hafnia paralvei	Milk kefir	4
+wk01	1	Klebsiella_A grimontii	Milk kefir	4
+wk05	1	Klebsiella_A grimontii	Milk kefir	6
+wk09	1	Klebsiella_A grimontii	Milk kefir	2
+wk21	1	Klebsiella_A grimontii	Milk kefir	2
+wk01	1	Lactobacillus helveticus	Milk kefir	16
+wk05	1	Lactobacillus helveticus	Milk kefir	12
+wk09	1	Lactobacillus helveticus	Milk kefir	18
+wk13	1	Lactobacillus helveticus	Milk kefir	16
+wk17	1	Lactobacillus helveticus	Milk kefir	12
+wk21	1	Lactobacillus helveticus	Milk kefir	12
+wk01	1	Lactobacillus kefiranofaciens	Milk kefir	28
+wk05	1	Lactobacillus kefiranofaciens	Milk kefir	28
+wk09	1	Lactobacillus kefiranofaciens	Milk kefir	34
+wk13	1	Lactobacillus kefiranofaciens	Milk kefir	24
+wk17	1	Lactobacillus kefiranofaciens	Milk kefir	22
+wk21	1	Lactobacillus kefiranofaciens	Milk kefir	18
+wk01	10	Lactococcus lactis	Milk kefir	10
+wk05	10	Lactococcus lactis	Milk kefir	6
+wk09	10	Lactococcus lactis	Milk kefir	8
+wk13	10	Lactococcus lactis	Milk kefir	10
+wk17	10	Lactococcus lactis	Milk kefir	10
+wk21	10	Lactococcus lactis	Milk kefir	6
+wk01	11	Lactococcus lactis	Milk kefir	2
+wk05	11	Lactococcus lactis	Milk kefir	2
+wk09	11	Lactococcus lactis	Milk kefir	2
+wk01	12	Lactococcus lactis	Milk kefir	2
+wk05	12	Lactococcus lactis	Milk kefir	2
+wk13	12	Lactococcus lactis	Milk kefir	2
+wk17	12	Lactococcus lactis	Milk kefir	2
+wk21	12	Lactococcus lactis	Milk kefir	4
+wk05	1	Lactococcus lactis_E	Milk kefir	2
+wk09	1	Lactococcus lactis_E	Milk kefir	2
+wk01	3	Lactococcus lactis_E	Milk kefir	2
+wk01	5	Lactococcus lactis_E	Milk kefir	4
+wk05	5	Lactococcus lactis_E	Milk kefir	14
+wk09	5	Lactococcus lactis_E	Milk kefir	8
+wk13	5	Lactococcus lactis_E	Milk kefir	4
+wk21	5	Lactococcus lactis_E	Milk kefir	6
+wk09	6	Lactococcus lactis_E	Milk kefir	2
+wk13	6	Lactococcus lactis_E	Milk kefir	2
+wk17	6	Lactococcus lactis_E	Milk kefir	2
+wk01	1	Lactococcus piscium_C	Milk kefir	2
+wk05	1	Lactococcus piscium_C	Milk kefir	2
+wk17	2	Lactococcus piscium_C	Milk kefir	2
+wk01	3	Lactococcus piscium_C	Milk kefir	2
+wk05	3	Lactococcus piscium_C	Milk kefir	4
+wk09	3	Lactococcus piscium_C	Milk kefir	4
+wk01	1	Lactococcus raffinolactis	Milk kefir	6
+wk05	1	Lactococcus raffinolactis	Milk kefir	10
+wk09	1	Lactococcus raffinolactis	Milk kefir	6
+wk13	1	Lactococcus raffinolactis	Milk kefir	4
+wk17	1	Lactococcus raffinolactis	Milk kefir	6
+wk01	1	Lentilactobacillus kefiri	Milk kefir	38
+wk05	1	Lentilactobacillus kefiri	Milk kefir	42
+wk09	1	Lentilactobacillus kefiri	Milk kefir	38
+wk13	1	Lentilactobacillus kefiri	Milk kefir	22
+wk17	1	Lentilactobacillus kefiri	Milk kefir	30
+wk21	1	Lentilactobacillus kefiri	Milk kefir	26
+wk01	2	Leuconostoc mesenteroides	Milk kefir	6
+wk05	2	Leuconostoc mesenteroides	Milk kefir	16
+wk09	2	Leuconostoc mesenteroides	Milk kefir	16
+wk13	2	Leuconostoc mesenteroides	Milk kefir	12
+wk17	2	Leuconostoc mesenteroides	Milk kefir	10
+wk21	2	Leuconostoc mesenteroides	Milk kefir	8
+wk01	2	Pseudomonas_E fragi_B	Milk kefir	6
+wk05	2	Pseudomonas_E fragi_B	Milk kefir	2
+wk09	2	Pseudomonas_E fragi_B	Milk kefir	2
+wk21	2	Pseudomonas_E fragi_B	Milk kefir	2
+wk01	1	Pseudomonas_E putida	Milk kefir	2
+wk09	1	Pseudomonas_E putida	Milk kefir	2
+wk13	1	Pseudomonas_E putida	Milk kefir	2
+wk21	2	Pseudomonas_E putida	Milk kefir	2
+wk05	3	Pseudomonas_E putida	Milk kefir	2
+wk01	1	Streptococcus parauberis	Milk kefir	6
+wk05	1	Streptococcus parauberis	Milk kefir	6
+wk09	1	Thermus parvatiensis	Milk kefir	4
+wk13	1	Thermus parvatiensis	Milk kefir	6
+wk01	2	Thermus parvatiensis	Milk kefir	2
+wk05	3	Thermus parvatiensis	Milk kefir	2
+wk09	3	Acetobacter malorum	Water kefir	4
+wk01	5	Acetobacter malorum	Water kefir	48
+wk05	5	Acetobacter malorum	Water kefir	28
+wk09	5	Acetobacter malorum	Water kefir	12
+wk13	5	Acetobacter malorum	Water kefir	2
+wk17	5	Acetobacter malorum	Water kefir	4
+wk21	5	Acetobacter malorum	Water kefir	2
+wk17	1	Acetobacter persici	Water kefir	2
+wk09	5	Acetobacter persici	Water kefir	2
+wk17	6	Acetobacter persici	Water kefir	2
+wk21	6	Acetobacter persici	Water kefir	2
+wk05	8	Acetobacter persici	Water kefir	4
+wk09	8	Acetobacter persici	Water kefir	6
+wk13	8	Acetobacter persici	Water kefir	2
+wk17	8	Acetobacter persici	Water kefir	4
+wk01	1	Acetobacter syzygii	Water kefir	26
+wk05	1	Acetobacter syzygii	Water kefir	32
+wk09	1	Acetobacter syzygii	Water kefir	26
+wk13	1	Acetobacter syzygii	Water kefir	12
+wk17	1	Acetobacter syzygii	Water kefir	28
+wk21	1	Acetobacter syzygii	Water kefir	2
+wk01	1	Acinetobacter johnsonii	Water kefir	2
+wk01	2	Acinetobacter johnsonii	Water kefir	2
+wk01	3	Acinetobacter johnsonii	Water kefir	2
+wk09	5	Acinetobacter johnsonii	Water kefir	2
+wk01	6	Acinetobacter johnsonii	Water kefir	2
+wk09	1	Acinetobacter ursingii	Water kefir	2
+wk05	2	Acinetobacter ursingii	Water kefir	2
+wk09	2	Acinetobacter ursingii	Water kefir	2
+wk13	2	Acinetobacter ursingii	Water kefir	2
+wk17	2	Acinetobacter ursingii	Water kefir	2
+wk01	3	Bifidobacterium aquikefiri	Water kefir	36
+wk05	3	Bifidobacterium aquikefiri	Water kefir	12
+wk09	3	Bifidobacterium aquikefiri	Water kefir	10
+wk13	3	Bifidobacterium aquikefiri	Water kefir	4
+wk17	3	Bifidobacterium aquikefiri	Water kefir	8
+wk21	3	Bifidobacterium aquikefiri	Water kefir	8
+wk01	1	Bifidobacterium psychraerophilum	Water kefir	18
+wk05	1	Bifidobacterium psychraerophilum	Water kefir	2
+wk05	1	d__Bacteria;p__Actinobacteriota;c__Actinomycetia;o__Actinomycetales;f__Microbacteriaceae;g__Pseudoclavibacter_A;s__	Water kefir	2
+wk09	1	d__Bacteria;p__Actinobacteriota;c__Actinomycetia;o__Actinomycetales;f__Microbacteriaceae;g__Pseudoclavibacter_A;s__	Water kefir	2
+wk17	1	d__Bacteria;p__Actinobacteriota;c__Actinomycetia;o__Actinomycetales;f__Microbacteriaceae;g__Pseudoclavibacter_A;s__	Water kefir	2
+wk21	1	d__Bacteria;p__Actinobacteriota;c__Actinomycetia;o__Actinomycetales;f__Microbacteriaceae;g__Pseudoclavibacter_A;s__	Water kefir	2
+wk01	2	d__Bacteria;p__Actinobacteriota;c__Actinomycetia;o__Actinomycetales;f__Microbacteriaceae;g__Pseudoclavibacter_A;s__	Water kefir	10
+wk05	2	d__Bacteria;p__Actinobacteriota;c__Actinomycetia;o__Actinomycetales;f__Microbacteriaceae;g__Pseudoclavibacter_A;s__	Water kefir	2
+wk01	1	d__Bacteria;p__Firmicutes;c__Bacilli;o__Bacillales;f__Sporolactobacillaceae;g__Sporolactobacillus;s__	Water kefir	12
+wk05	1	d__Bacteria;p__Firmicutes;c__Bacilli;o__Bacillales;f__Sporolactobacillaceae;g__Sporolactobacillus;s__	Water kefir	6
+wk09	1	d__Bacteria;p__Firmicutes;c__Bacilli;o__Bacillales;f__Sporolactobacillaceae;g__Sporolactobacillus;s__	Water kefir	4
+wk13	1	d__Bacteria;p__Firmicutes;c__Bacilli;o__Bacillales;f__Sporolactobacillaceae;g__Sporolactobacillus;s__	Water kefir	2
+wk17	1	d__Bacteria;p__Firmicutes;c__Bacilli;o__Bacillales;f__Sporolactobacillaceae;g__Sporolactobacillus;s__	Water kefir	6
+wk21	1	d__Bacteria;p__Firmicutes;c__Bacilli;o__Bacillales;f__Sporolactobacillaceae;g__Sporolactobacillus;s__	Water kefir	2
+wk01	1	d__Bacteria;p__Firmicutes;c__Bacilli;o__Lactobacillales;f__Lactobacillaceae;g__Liquorilactobacillus;s__	Water kefir	2
+wk05	1	d__Bacteria;p__Firmicutes;c__Bacilli;o__Lactobacillales;f__Lactobacillaceae;g__Liquorilactobacillus;s__	Water kefir	12
+wk09	1	d__Bacteria;p__Firmicutes;c__Bacilli;o__Lactobacillales;f__Lactobacillaceae;g__Liquorilactobacillus;s__	Water kefir	10
+wk13	1	d__Bacteria;p__Firmicutes;c__Bacilli;o__Lactobacillales;f__Lactobacillaceae;g__Liquorilactobacillus;s__	Water kefir	6
+wk17	1	d__Bacteria;p__Firmicutes;c__Bacilli;o__Lactobacillales;f__Lactobacillaceae;g__Liquorilactobacillus;s__	Water kefir	6
+wk01	2	d__Bacteria;p__Firmicutes;c__Bacilli;o__Lactobacillales;f__Lactobacillaceae;g__Liquorilactobacillus;s__	Water kefir	2
+wk09	4	d__Bacteria;p__Firmicutes;c__Bacilli;o__Lactobacillales;f__Lactobacillaceae;g__Liquorilactobacillus;s__	Water kefir	2
+wk01	1	d__Bacteria;p__Proteobacteria;c__Alphaproteobacteria;o__Acetobacterales;f__Acetobacteraceae;g__Acetobacter;s__	Water kefir	12
+wk05	1	d__Bacteria;p__Proteobacteria;c__Alphaproteobacteria;o__Acetobacterales;f__Acetobacteraceae;g__Acetobacter;s__	Water kefir	8
+wk09	1	d__Bacteria;p__Proteobacteria;c__Alphaproteobacteria;o__Acetobacterales;f__Acetobacteraceae;g__Acetobacter;s__	Water kefir	2
+wk17	1	d__Bacteria;p__Proteobacteria;c__Alphaproteobacteria;o__Acetobacterales;f__Acetobacteraceae;g__Acetobacter;s__	Water kefir	8
+wk09	14	d__Bacteria;p__Proteobacteria;c__Alphaproteobacteria;o__Acetobacterales;f__Acetobacteraceae;g__Acetobacter;s__	Water kefir	2
+wk01	1	d__Bacteria;p__Proteobacteria;c__Alphaproteobacteria;o__Acetobacterales;f__Acetobacteraceae;g__Gluconobacter;s__	Water kefir	28
+wk05	1	d__Bacteria;p__Proteobacteria;c__Alphaproteobacteria;o__Acetobacterales;f__Acetobacteraceae;g__Gluconobacter;s__	Water kefir	22
+wk09	1	d__Bacteria;p__Proteobacteria;c__Alphaproteobacteria;o__Acetobacterales;f__Acetobacteraceae;g__Gluconobacter;s__	Water kefir	14
+wk13	1	d__Bacteria;p__Proteobacteria;c__Alphaproteobacteria;o__Acetobacterales;f__Acetobacteraceae;g__Gluconobacter;s__	Water kefir	2
+wk17	1	d__Bacteria;p__Proteobacteria;c__Alphaproteobacteria;o__Acetobacterales;f__Acetobacteraceae;g__Gluconobacter;s__	Water kefir	4
+wk17	2	d__Bacteria;p__Proteobacteria;c__Alphaproteobacteria;o__Acetobacterales;f__Acetobacteraceae;g__Komagataeibacter;s__	Water kefir	2
+wk01	3	d__Bacteria;p__Proteobacteria;c__Alphaproteobacteria;o__Acetobacterales;f__Acetobacteraceae;g__Komagataeibacter;s__	Water kefir	8
+wk17	3	d__Bacteria;p__Proteobacteria;c__Alphaproteobacteria;o__Acetobacterales;f__Acetobacteraceae;g__Komagataeibacter;s__	Water kefir	2
+wk05	1	d__Bacteria;p__Proteobacteria;c__Alphaproteobacteria;o__Sphingomonadales;f__Sphingomonadaceae;g__Sphingomonas;s__	Water kefir	4
+wk09	1	d__Bacteria;p__Proteobacteria;c__Alphaproteobacteria;o__Sphingomonadales;f__Sphingomonadaceae;g__Sphingomonas;s__	Water kefir	4
+wk13	1	d__Bacteria;p__Proteobacteria;c__Alphaproteobacteria;o__Sphingomonadales;f__Sphingomonadaceae;g__Sphingomonas;s__	Water kefir	2
+wk17	1	d__Bacteria;p__Proteobacteria;c__Alphaproteobacteria;o__Sphingomonadales;f__Sphingomonadaceae;g__Sphingomonas;s__	Water kefir	4
+wk05	1	d__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Burkholderiales;f__Burkholderiaceae;g__Acidovorax_D;s__	Water kefir	2
+wk09	1	d__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Burkholderiales;f__Burkholderiaceae;g__Acidovorax_D;s__	Water kefir	2
+wk17	1	d__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Burkholderiales;f__Burkholderiaceae;g__Acidovorax_D;s__	Water kefir	2
+wk17	2	d__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Burkholderiales;f__Burkholderiaceae;g__Acidovorax_D;s__	Water kefir	2
+wk01	3	d__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Burkholderiales;f__Burkholderiaceae;g__Acidovorax_D;s__	Water kefir	2
+wk09	1	d__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Burkholderiales;f__Burkholderiaceae;g__Aquabacterium;s__	Water kefir	2
+wk17	1	d__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Burkholderiales;f__Burkholderiaceae;g__Aquabacterium;s__	Water kefir	2
+wk01	2	d__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Burkholderiales;f__Burkholderiaceae;g__Aquabacterium;s__	Water kefir	2
+wk05	2	d__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Burkholderiales;f__Burkholderiaceae;g__Aquabacterium;s__	Water kefir	2
+wk09	2	d__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Burkholderiales;f__Burkholderiaceae;g__Aquabacterium;s__	Water kefir	2
+wk01	1	Gluconobacter albidus	Water kefir	2
+wk05	1	Gluconobacter albidus	Water kefir	4
+wk05	2	Gluconobacter albidus	Water kefir	2
+wk09	2	Gluconobacter albidus	Water kefir	6
+wk13	2	Gluconobacter albidus	Water kefir	2
+wk17	2	Gluconobacter albidus	Water kefir	6
+wk05	5	Gluconobacter albidus	Water kefir	2
+wk05	10	Gluconobacter cerinus	Water kefir	2
+wk09	10	Gluconobacter cerinus	Water kefir	2
+wk13	10	Gluconobacter cerinus	Water kefir	2
+wk01	11	Gluconobacter cerinus	Water kefir	2
+wk01	12	Gluconobacter cerinus	Water kefir	2
+wk05	4	Gluconobacter cerinus	Water kefir	2
+wk09	4	Gluconobacter cerinus	Water kefir	4
+wk13	4	Gluconobacter cerinus	Water kefir	2
+wk21	4	Gluconobacter cerinus	Water kefir	2
+wk05	5	Gluconobacter cerinus	Water kefir	2
+wk01	7	Gluconobacter cerinus	Water kefir	4
+wk05	7	Gluconobacter cerinus	Water kefir	6
+wk09	7	Gluconobacter cerinus	Water kefir	4
+wk13	7	Gluconobacter cerinus	Water kefir	2
+wk17	7	Gluconobacter cerinus	Water kefir	2
+wk01	8	Gluconobacter cerinus	Water kefir	2
+wk01	9	Gluconobacter cerinus	Water kefir	2
+wk09	3	Gluconobacter oxydans_B	Water kefir	2
+wk09	4	Gluconobacter oxydans_B	Water kefir	4
+wk21	4	Gluconobacter oxydans_B	Water kefir	2
+wk05	6	Gluconobacter oxydans_B	Water kefir	2
+wk09	6	Gluconobacter oxydans_B	Water kefir	4
+wk13	6	Gluconobacter oxydans_B	Water kefir	4
+wk17	6	Gluconobacter oxydans_B	Water kefir	6
+wk21	6	Gluconobacter oxydans_B	Water kefir	2
+wk01	2	Komagataeibacter hansenii	Water kefir	2
+wk05	2	Komagataeibacter hansenii	Water kefir	8
+wk09	2	Komagataeibacter hansenii	Water kefir	6
+wk13	2	Komagataeibacter hansenii	Water kefir	2
+wk17	2	Komagataeibacter hansenii	Water kefir	14
+wk21	2	Komagataeibacter hansenii	Water kefir	2
+wk01	1	Lacticaseibacillus paracasei	Water kefir	52
+wk05	1	Lacticaseibacillus paracasei	Water kefir	46
+wk09	1	Lacticaseibacillus paracasei	Water kefir	32
+wk13	1	Lacticaseibacillus paracasei	Water kefir	14
+wk17	1	Lacticaseibacillus paracasei	Water kefir	20
+wk21	1	Lacticaseibacillus paracasei	Water kefir	10
+wk05	4	Lacticaseibacillus paracasei	Water kefir	6
+wk09	4	Lacticaseibacillus paracasei	Water kefir	4
+wk13	4	Lacticaseibacillus paracasei	Water kefir	4
+wk17	4	Lacticaseibacillus paracasei	Water kefir	8
+wk21	4	Lacticaseibacillus paracasei	Water kefir	6
+wk13	11	Lactococcus lactis	Water kefir	2
+wk17	11	Lactococcus lactis	Water kefir	2
+wk21	11	Lactococcus lactis	Water kefir	2
+wk01	12	Lactococcus lactis	Water kefir	2
+wk05	12	Lactococcus lactis	Water kefir	2
+wk01	1	Lentilactobacillus hilgardii	Water kefir	60
+wk05	1	Lentilactobacillus hilgardii	Water kefir	50
+wk09	1	Lentilactobacillus hilgardii	Water kefir	38
+wk13	1	Lentilactobacillus hilgardii	Water kefir	28
+wk17	1	Lentilactobacillus hilgardii	Water kefir	32
+wk21	1	Lentilactobacillus hilgardii	Water kefir	12
+wk09	10	Leuconostoc pseudomesenteroides_A	Water kefir	2
+wk13	5	Leuconostoc pseudomesenteroides_A	Water kefir	2
+wk09	6	Leuconostoc pseudomesenteroides_A	Water kefir	2
+wk05	9	Leuconostoc pseudomesenteroides_A	Water kefir	2
+wk09	9	Leuconostoc pseudomesenteroides_A	Water kefir	2
+wk09	1	Liquorilactobacillus ghanensis	Water kefir	2
+wk13	1	Liquorilactobacillus ghanensis	Water kefir	2
+wk17	1	Liquorilactobacillus ghanensis	Water kefir	2
+wk21	1	Liquorilactobacillus ghanensis	Water kefir	2
+wk01	4	Liquorilactobacillus ghanensis	Water kefir	6
+wk05	4	Liquorilactobacillus ghanensis	Water kefir	12
+wk09	4	Liquorilactobacillus ghanensis	Water kefir	4
+wk13	4	Liquorilactobacillus ghanensis	Water kefir	2
+wk21	4	Liquorilactobacillus ghanensis	Water kefir	4
+wk05	5	Liquorilactobacillus ghanensis	Water kefir	4
+wk09	5	Liquorilactobacillus ghanensis	Water kefir	8
+wk13	5	Liquorilactobacillus ghanensis	Water kefir	10
+wk17	5	Liquorilactobacillus ghanensis	Water kefir	14
+wk21	5	Liquorilactobacillus ghanensis	Water kefir	4
+wk05	2	Liquorilactobacillus nagelii	Water kefir	2
+wk09	2	Liquorilactobacillus nagelii	Water kefir	2
+wk13	2	Liquorilactobacillus nagelii	Water kefir	2
+wk17	2	Liquorilactobacillus nagelii	Water kefir	2
+wk21	2	Liquorilactobacillus nagelii	Water kefir	2
+wk01	1	Liquorilactobacillus satsumensis	Water kefir	60
+wk05	1	Liquorilactobacillus satsumensis	Water kefir	50
+wk09	1	Liquorilactobacillus satsumensis	Water kefir	38
+wk13	1	Liquorilactobacillus satsumensis	Water kefir	18
+wk17	1	Liquorilactobacillus satsumensis	Water kefir	26
+wk21	1	Liquorilactobacillus satsumensis	Water kefir	8
+wk05	1	Oenococcus oeni	Water kefir	8
+wk09	1	Oenococcus oeni	Water kefir	2
+wk13	1	Oenococcus oeni	Water kefir	2
+wk17	1	Oenococcus oeni	Water kefir	4
+wk21	1	Oenococcus oeni	Water kefir	2
+wk05	1	Schleiferilactobacillus perolens	Water kefir	2
+wk09	1	Schleiferilactobacillus perolens	Water kefir	4
+wk13	1	Schleiferilactobacillus perolens	Water kefir	6
+wk17	1	Schleiferilactobacillus perolens	Water kefir	12
+wk21	1	Schleiferilactobacillus perolens	Water kefir	2
+wk01	4	Zymomonas mobilis	Water kefir	52
+wk05	4	Zymomonas mobilis	Water kefir	28
+wk09	4	Zymomonas mobilis	Water kefir	8
+wk13	4	Zymomonas mobilis	Water kefir	4
+wk17	4	Zymomonas mobilis	Water kefir	4
+wk21	4	Zymomonas mobilis	Water kefir	2

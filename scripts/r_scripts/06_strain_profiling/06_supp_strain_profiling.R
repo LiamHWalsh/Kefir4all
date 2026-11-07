@@ -8,7 +8,7 @@ for (.proj in c("/home/rstudio/kefir4all", "/workspaces/kefir4all_review_history
   if (dir.exists(file.path(.proj, "scripts")) && getwd() != .proj) { setwd(.proj); break }
 }
 
-# Supplementary_Fig_9.R --------------------------------------------------
+# 06_supp_strain_profiling.R -- Supplementary Figure S6E -----------------
 # dRep secondary-cluster assignments across the Kefir4All study, by
 # species and timepoint. Per-prevalent-species alluvial flows; one panel
 # per species, with stacks at each Stage (T0..T6 mapped to wk0..wk21)
@@ -23,9 +23,9 @@ for (.proj in c("/home/rstudio/kefir4all", "/workspaces/kefir4all_review_history
 #   mag_metadata_v3.csv.gz          (MAG -> species, sample, kefir type)
 #
 # Outputs:
-#   figures/06_strain_profiling/Supplementary_Fig_9.tiff
-#   figures/06_strain_profiling/Supplementary_Fig_9.pdf
-#   figures/06_strain_profiling/Supplementary_Fig_9_data.tsv
+#   figures/06_strain_profiling/Figure_S6E_strain_profiling.tiff
+#   figures/06_strain_profiling/Figure_S6E_strain_profiling.pdf
+#   figures/06_strain_profiling/Figure_S6E_strain_profiling_data.tsv
 
 suppressPackageStartupMessages({
   library(readr)
@@ -126,10 +126,10 @@ n_panels <- nrow(unique(plot_df[, c("category.y", "species")]))
 fig_w <- 16
 fig_h <- 10.5
 
-ggsave(file.path(FIGURES_DIR, "Supplementary_Fig_9.tiff"), p,
+ggsave(file.path(FIGURES_DIR, "Figure_S6E_strain_profiling.tiff"), p,
        width = fig_w, height = fig_h, dpi = 300, bg = "white", compression = "lzw")
-ggsave(file.path(FIGURES_DIR, "Supplementary_Fig_9.pdf"), p,
+ggsave(file.path(FIGURES_DIR, "Figure_S6E_strain_profiling.pdf"), p,
        width = fig_w, height = fig_h, bg = "white")
 
-write_tsv(plot_df, file.path(OUT_DIR, "Supplementary_Fig_9_data.tsv"))
-message("Wrote Supplementary_Fig_9.{tiff,pdf} + Supplementary_Fig_9_data.tsv to ", OUT_DIR)
+write_tsv(plot_df, file.path(OUT_DIR, "Figure_S6E_strain_profiling_data.tsv"))
+message("Wrote Figure_S6E_strain_profiling.{tiff,pdf} + Figure_S6E_strain_profiling_data.tsv to ", OUT_DIR)
