@@ -1,0 +1,15 @@
+Tests whether within-participant SUPER-FOCUS (functional) and volatile
+(metabolomic) turnover differs by consecutive-visit interval, the same
+question and model community_turnover_mixed_v1.R answers for MetaCache
+taxonomic profiles.
+SUPER-FOCUS: all four sample types (MG/WG/ML/WL), relative profiles.
+Volatiles: ML/WL only (no grain volatile data exists), raw concentrations.
+Model: brms::brm(distance ~ 0 + interval + (1 | participant)), interval a
+5-level factor (T1->T2 .. T5->T6), vague prior normal(0.5, 1) on each
+interval mean, 4 chains, 4000 iter.
+Reported quantity: posterior distribution of (mean of the four later
+intervals) - (first interval) -- posterior mean, 95% credible interval,
+and P(decrease), the posterior probability turnover was lower after the
+first interval than during it.
+Participants need >=2 intervals within a panel/type to be included.
+Run directory: /home/rstudio/kefir4all/output/04_taxonomic_profiling/functional_volatile_turnover_bayesian_v1/run_20261107_101055_1752807b0
