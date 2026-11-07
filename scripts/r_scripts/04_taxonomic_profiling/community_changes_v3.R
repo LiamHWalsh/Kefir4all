@@ -707,6 +707,7 @@ run_analysis <- function() {
       ggplot2::scale_colour_manual(values = c("starter (T0)" = "blue", "previous visit" = "red")) +
       ggplot2::scale_linetype_manual(values = c("starter (T0)" = "solid", "previous visit" = "dashed")) +
       ggplot2::theme_bw(base_size = 9) +
+      ggplot2::theme(strip.background = ggplot2::element_rect(fill = "white", colour = "black")) +
       ggplot2::labs(x = "Time since start (week)", y = "Distance", colour = "Distance to", linetype = "Distance to")
     ggplot2::ggsave(file.path(figures, "community_changes_v3_trajectories.pdf"), plot, width = 13, height = 9)
     ggplot2::ggsave(file.path(figures, "community_changes_v3_trajectories.tiff"), plot, width = 13, height = 9, dpi = 300, compression = "lzw")
