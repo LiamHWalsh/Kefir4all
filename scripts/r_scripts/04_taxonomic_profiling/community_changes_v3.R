@@ -707,10 +707,14 @@ run_analysis <- function() {
       ggplot2::scale_colour_manual(values = c("starter (T0)" = "blue", "previous visit" = "red")) +
       ggplot2::scale_linetype_manual(values = c("starter (T0)" = "solid", "previous visit" = "dashed")) +
       ggplot2::theme_bw(base_size = 9) +
-      ggplot2::theme(strip.background = ggplot2::element_rect(fill = "white", colour = "black")) +
+      ggplot2::theme(
+        strip.background = ggplot2::element_rect(fill = "white", colour = "black"),
+        strip.text = ggplot2::element_text(size = 11, face = "bold")
+      ) +
       ggplot2::labs(x = "Time since start (week)", y = "Distance", colour = "Distance to", linetype = "Distance to")
-    ggplot2::ggsave(file.path(figures, "community_changes_v3_trajectories.pdf"), plot, width = 13, height = 9)
-    ggplot2::ggsave(file.path(figures, "community_changes_v3_trajectories.tiff"), plot, width = 13, height = 9, dpi = 300, compression = "lzw")
+    # Widened from 13in so the larger, bolder strip titles below have room and don't clip.
+    ggplot2::ggsave(file.path(figures, "community_changes_v3_trajectories.pdf"), plot, width = 17, height = 10)
+    ggplot2::ggsave(file.path(figures, "community_changes_v3_trajectories.tiff"), plot, width = 17, height = 10, dpi = 300, compression = "lzw")
     # save_figure() provenance wrapper: additional output alongside the files above.
     # "_toolkit" suffix: the existing ggsave() calls above already write
     # "community_changes_v3_trajectories.pdf"; save_figure() would collide with that exact
@@ -721,7 +725,7 @@ run_analysis <- function() {
     # per-panel loop above; the plot itself (pure aggregation of already-computed `trajectories`)
     # involves no further randomness, so SEED is the most accurate single value to record.
     save_figure(plot, file.path(figures, "community_changes_v3_trajectories_toolkit"),
-                width_mm = 13 * 25.4, height_mm = 9 * 25.4, source = NULL, seed = SEED)
+                width_mm = 17 * 25.4, height_mm = 10 * 25.4, source = NULL, seed = SEED)
   }
   if (length(compositions)) {
     # The per-panel composition data is a diagnostic breakdown (rank-qualified features per
