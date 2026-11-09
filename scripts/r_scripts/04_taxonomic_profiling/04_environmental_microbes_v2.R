@@ -152,7 +152,7 @@ panelA <- ggbetweenstats(
 alpha_df$merge <- paste0(gsub("ML", "Milk Liquid",
                                gsub("WL", "Water Liquid",
                                     alpha_df$`kefir type`)),
-                         "\n                   ",
+                         "\n",
                          alpha_df$conditions)
 
 panelB <- ggbetweenstats(
@@ -172,7 +172,7 @@ panelB <- ggbetweenstats(
   ylab("Alpha diversity values (Shannon)") +
   theme(plot.title = element_text(hjust = 0.5, size = 35, face = "bold"),
         legend.title = element_text(size = 25, face = "bold"),
-        axis.text.x = element_text(hjust = 1, size = 15),
+        axis.text.x = element_text(hjust = 0.5, size = 11),
         axis.text.y = element_text(hjust = 1, size = 10),
         axis.title.x = element_text(size = 15, face = "bold",
                                     hjust = 0.5, vjust = -1),
@@ -312,13 +312,13 @@ panelC_theme <- kefir_theme(base_size = 10) +
   theme(legend.position = "bottom",
     legend.direction = "horizontal",
     legend.box = "horizontal",
-    axis.text.x = element_text(size = 12),
-    axis.text.y = element_text(size = 10, face = "italic"),
-    strip.text = element_text(size = 12, face = "bold"),
-    axis.title.y = element_text(size = 14, face = "bold",
+    axis.text.x = element_text(size = 14),
+    axis.text.y = element_text(size = 12, face = "italic"),
+    strip.text = element_text(size = 14, face = "bold"),
+    axis.title.y = element_text(size = 16, face = "bold",
                                 hjust = 0.5, vjust = 1.5),
-    legend.text = element_text(size = 11),
-    legend.title = element_text(size = 12, face = "bold", vjust = 0.5),
+    legend.text = element_text(size = 13),
+    legend.title = element_text(size = 14, face = "bold", vjust = 0.5),
     panel.grid.minor = element_blank(),
     panel.grid.major = element_line(colour = "grey92", linewidth = 0.3))
 
@@ -331,7 +331,7 @@ panelC <- ggplot(persist_df[order(persist_df$traj_id), ],
   geom_line(aes(group = traj_id, colour = n_participants),
             alpha = 0.85, linewidth = 0.9) +
   geom_point(aes(fill = relative_abundance),
-             size = 6, shape = 21, colour = "grey20", alpha = 0.9) +
+             size = 7, shape = 21, colour = "grey20", alpha = 0.9) +
   scale_fill_gradientn(
     colours = c("Dark blue", "yellow", "yellow2", "orange", "red", "darkred"),
     name = "Relative abundance (%)") +
@@ -343,7 +343,7 @@ panelC <- ggplot(persist_df[order(persist_df$traj_id), ],
   labs(x = "", y = "Species") +
   facet_wrap(~kefir_type_lab, dir = "v", scales = "free") +
   panelC_theme +
-  guides(fill = guide_colourbar(title = NULL, label.position = "bottom",
+  guides(fill = guide_colourbar(label.position = "bottom",
                                 barwidth = 8, barheight = 1),
          colour = guide_colourbar(label.position = "bottom",
                                   barwidth = 10, barheight = 1,
@@ -361,19 +361,23 @@ panelC <- ggplot(persist_df[order(persist_df$traj_id), ],
 
 # Combined Figure 5 (A + B + C), matching the numbering in Kefir4All_Manuscript_TRACKED_SB.docx.
 library(ggpubr)
+# Panel C's two facet columns (Milk, Water) get more absolute height here
+# (26in vs the previous 20in) per author request to make them bigger; panel
+# A/B keep their original ~8in allocation (heights are absolute weights, not
+# fractions, so panel A/B's size is unaffected by panel C growing).
 fig5_combined <- ggarrange( ggarrange(panelA, panelB,
                                       nrow=1,ncol=2, labels=c("A.","B."),common.legend = FALSE),
 panelC,
                            labels = c("", "C"),
                            ncol = 1, nrow = 2,
-                           heights = c(.4, 1))
+                           heights = c(8, 26))
 ggexport(fig5_combined, filename = file.path(FIGURES_DIR, "Figure_5.pdf"),
-         width = 18, height = 28)
+         width = 18, height = 34)
 ggsave(file.path(FIGURES_DIR, "Figure_5.tiff"), fig5_combined,
-       width = 18, height = 28, dpi = 300, compression = "lzw", limitsize = FALSE, bg = "white")
+       width = 18, height = 34, dpi = 300, compression = "lzw", limitsize = FALSE, bg = "white")
 save_figure(fig5_combined, file.path(FIGURES_DIR, "Figure_5_combined"),
-            width_mm = 18 * 25.4, height_mm = 28 * 25.4,
-            source = PRIMARY_SOURCE, seed = NULL)
+            width_mm = 18 * 25.4, height_mm = 34 * 25.4,
+            source = PRIMARY_SOURCE, seed = NULL, overwrite = TRUE)
 
 # Underlying data CSVs
 write.csv(alpha_df, file.path(OUT_DIR, "Figure_5B_alpha_data.csv"),
