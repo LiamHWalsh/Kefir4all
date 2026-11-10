@@ -1,155 +1,72 @@
-species,data_source.sample_id,Freq,tool,new_type
-Saccharomyces cerevisiae,Water kefir - Breselge et al,295,StrainPhlAn4,Water kefir
-Saccharomyces cerevisiae,Water kefir - Kefir4All,165,StrainPhlAn4,Water kefir
-Acinetobacter johnsonii,Water kefir - Kefir4All,19,StrainPhlAn4,Water kefir
-Gluconobacter cerinus,Water kefir - Breselge et al,43,StrainPhlAn4,Water kefir
-Gluconobacter cerinus,Water kefir - Kefir4All,43,StrainPhlAn4,Water kefir
-Gluconobacter albidus,Water kefir - Breselge et al,23,StrainPhlAn4,Water kefir
-Gluconobacter albidus,Water kefir - Kefir4All,63,StrainPhlAn4,Water kefir
-Gluconobacter oxydans,Water kefir - Breselge et al,145,StrainPhlAn4,Water kefir
-Gluconobacter oxydans,Water kefir - Kefir4All,79,StrainPhlAn4,Water kefir
-Komagataeibacter hansenii,Water kefir - Breselge et al,9,StrainPhlAn4,Water kefir
-Komagataeibacter hansenii,Water kefir - Kefir4All,50,StrainPhlAn4,Water kefir
-Komagataeibacter medellinensis,Water kefir - Breselge et al,2,StrainPhlAn4,Water kefir
-Komagataeibacter medellinensis,Water kefir - Kefir4All,31,StrainPhlAn4,Water kefir
-Acetobacter orientalis,Milk kefir - Kefir4All,30,StrainPhlAn4,Milk kefir
-Acetobacter orientalis,Milk kefir - Walsh et al,16,StrainPhlAn4,Milk kefir
-Acetobacter syzygii,Water kefir - Breselge et al,73,StrainPhlAn4,Water kefir
-Acetobacter syzygii,Water kefir - Kefir4All,138,StrainPhlAn4,Water kefir
-Acetobacter fabarum,Milk kefir - Kefir4All,84,StrainPhlAn4,Milk kefir
-Acetobacter fabarum,Milk kefir - Walsh et al,83,StrainPhlAn4,Milk kefir
-Acetobacter persici,Water kefir - Breselge et al,24,StrainPhlAn4,Water kefir
-Acetobacter persici,Water kefir - Kefir4All,64,StrainPhlAn4,Water kefir
-Acetobacter malorum,Water kefir - Breselge et al,30,StrainPhlAn4,Water kefir
-Acetobacter malorum,Water kefir - Kefir4All,109,StrainPhlAn4,Water kefir
-Acetobacter indonesiensis,Water kefir - Breselge et al,11,StrainPhlAn4,Water kefir
-Acetobacter indonesiensis,Water kefir - Kefir4All,22,StrainPhlAn4,Water kefir
-Pseudomonas fragi,Milk kefir - Kefir4All,21,StrainPhlAn4,Milk kefir
-Bifidobacterium aquikefiri,Water kefir - Breselge et al,116,StrainPhlAn4,Water kefir
-Bifidobacterium aquikefiri,Water kefir - Kefir4All,76,StrainPhlAn4,Water kefir
-Zymomonas mobilis,Water kefir - Breselge et al,92,StrainPhlAn4,Water kefir
-Zymomonas mobilis,Water kefir - Kefir4All,77,StrainPhlAn4,Water kefir
-Lactobacillus kefiranofaciens,Milk kefir - Kefir4All,169,StrainPhlAn4,Milk kefir
-Lactobacillus kefiranofaciens,Milk kefir - Walsh et al,141,StrainPhlAn4,Milk kefir
-Lactobacillus helveticus,Milk kefir - Kefir4All,146,StrainPhlAn4,Milk kefir
-Lactobacillus helveticus,Milk kefir - Walsh et al,99,StrainPhlAn4,Milk kefir
-Liquorilactobacillus ghanensis,Water kefir - Breselge et al,81,StrainPhlAn4,Water kefir
-Liquorilactobacillus ghanensis,Water kefir - Kefir4All,94,StrainPhlAn4,Water kefir
-Liquorilactobacillus satsumensis,Water kefir - Breselge et al,257,StrainPhlAn4,Water kefir
-Liquorilactobacillus satsumensis,Water kefir - Kefir4All,190,StrainPhlAn4,Water kefir
-Leuconostoc mesenteroides,Milk kefir - Kefir4All,54,StrainPhlAn4,Milk kefir
-Leuconostoc mesenteroides,Milk kefir - Walsh et al,98,StrainPhlAn4,Milk kefir
-Schleiferilactobacillus perolens,Water kefir - Breselge et al,9,StrainPhlAn4,Water kefir
-Schleiferilactobacillus perolens,Water kefir - Kefir4All,37,StrainPhlAn4,Water kefir
-Lacticaseibacillus paracasei,Water kefir - Breselge et al,264,StrainPhlAn4,Water kefir
-Lacticaseibacillus paracasei,Water kefir - Kefir4All,195,StrainPhlAn4,Water kefir
-Lentilactobacillus hilgardii,Water kefir - Breselge et al,178,StrainPhlAn4,Water kefir
-Lentilactobacillus hilgardii,Water kefir - Kefir4All,192,StrainPhlAn4,Water kefir
-Lentilactobacillus kefiri,Milk kefir - Kefir4All,165,StrainPhlAn4,Milk kefir
-Lentilactobacillus kefiri,Milk kefir - Walsh et al,135,StrainPhlAn4,Milk kefir
-Lactococcus lactis,Milk kefir - Kefir4All,46,StrainPhlAn4,Milk kefir
-Lactococcus lactis,Milk kefir - Walsh et al,153,StrainPhlAn4,Milk kefir
-Lactococcus cremoris,Milk kefir - Kefir4All,64,StrainPhlAn4,Milk kefir
-Lactococcus cremoris,Milk kefir - Walsh et al,214,StrainPhlAn4,Milk kefir
-Lactococcus raffinolactis,Milk kefir - Kefir4All,26,StrainPhlAn4,Milk kefir
-Lactococcus raffinolactis,Milk kefir - Walsh et al,12,StrainPhlAn4,Milk kefir
-Acetobacter fabarum,Milk kefir - Kefir4All,93,inStrain,Milk kefir
-Acetobacter fabarum,Milk kefir - Walsh et al,96,inStrain,Milk kefir
-Acetobacter indonesiensis,Water kefir - Breselge et al,21,inStrain,Water kefir
-Acetobacter indonesiensis,Water kefir - Kefir4All,40,inStrain,Water kefir
-Acetobacter malorum,Water kefir - Breselge et al,43,inStrain,Water kefir
-Acetobacter malorum,Water kefir - Kefir4All,132,inStrain,Water kefir
-Acetobacter orientalis,Milk kefir - Kefir4All,37,inStrain,Milk kefir
-Acetobacter orientalis,Milk kefir - Walsh et al,18,inStrain,Milk kefir
-Acetobacter persici,Water kefir - Breselge et al,25,inStrain,Water kefir
-Acetobacter persici,Water kefir - Kefir4All,90,inStrain,Water kefir
-Acetobacter syzygii,Water kefir - Breselge et al,78,inStrain,Water kefir
-Acetobacter syzygii,Water kefir - Kefir4All,147,inStrain,Water kefir
-Acinetobacter johnsonii,Water kefir - Kefir4All,28,inStrain,Water kefir
-Bifidobacterium aquikefiri,Water kefir - Breselge et al,146,inStrain,Water kefir
-Bifidobacterium aquikefiri,Water kefir - Kefir4All,94,inStrain,Water kefir
-Gluconobacter albidus,Water kefir - Breselge et al,32,inStrain,Water kefir
-Gluconobacter albidus,Water kefir - Kefir4All,85,inStrain,Water kefir
-Gluconobacter cerinus,Water kefir - Breselge et al,46,inStrain,Water kefir
-Gluconobacter cerinus,Water kefir - Kefir4All,124,inStrain,Water kefir
-Gluconobacter oxydans,Water kefir - Breselge et al,210,inStrain,Water kefir
-Gluconobacter oxydans,Water kefir - Kefir4All,84,inStrain,Water kefir
-Komagataeibacter hansenii,Water kefir - Breselge et al,11,inStrain,Water kefir
-Komagataeibacter hansenii,Water kefir - Kefir4All,72,inStrain,Water kefir
-Lacticaseibacillus paracasei,Water kefir - Breselge et al,340,inStrain,Water kefir
-Lacticaseibacillus paracasei,Water kefir - Kefir4All,486,inStrain,Water kefir
-Lactobacillus helveticus,Milk kefir - Kefir4All,141,inStrain,Milk kefir
-Lactobacillus helveticus,Milk kefir - Walsh et al,98,inStrain,Milk kefir
-Lactobacillus kefiranofaciens,Milk kefir - Kefir4All,174,inStrain,Milk kefir
-Lactobacillus kefiranofaciens,Milk kefir - Walsh et al,149,inStrain,Milk kefir
-Lactococcus cremoris,Milk kefir - Kefir4All,49,inStrain,Milk kefir
-Lactococcus cremoris,Milk kefir - Walsh et al,260,inStrain,Milk kefir
-Lactococcus lactis,Milk kefir - Kefir4All,72,inStrain,Milk kefir
-Lactococcus lactis,Milk kefir - Walsh et al,267,inStrain,Milk kefir
-Lactococcus raffinolactis,Milk kefir - Kefir4All,33,inStrain,Milk kefir
-Lactococcus raffinolactis,Milk kefir - Walsh et al,16,inStrain,Milk kefir
-Lentilactobacillus hilgardii,Water kefir - Breselge et al,225,inStrain,Water kefir
-Lentilactobacillus hilgardii,Water kefir - Kefir4All,229,inStrain,Water kefir
-Lentilactobacillus kefiri,Milk kefir - Kefir4All,180,inStrain,Milk kefir
-Lentilactobacillus kefiri,Milk kefir - Walsh et al,164,inStrain,Milk kefir
-Leuconostoc mesenteroides,Milk kefir - Kefir4All,53,inStrain,Milk kefir
-Leuconostoc mesenteroides,Milk kefir - Walsh et al,109,inStrain,Milk kefir
-Liquorilactobacillus ghanensis,Water kefir - Breselge et al,106,inStrain,Water kefir
-Liquorilactobacillus ghanensis,Water kefir - Kefir4All,186,inStrain,Water kefir
-Liquorilactobacillus satsumensis,Water kefir - Breselge et al,262,inStrain,Water kefir
-Liquorilactobacillus satsumensis,Water kefir - Kefir4All,197,inStrain,Water kefir
-Pseudomonas fragi,Milk kefir - Kefir4All,33,inStrain,Milk kefir
-Schleiferilactobacillus perolens,Water kefir - Breselge et al,20,inStrain,Water kefir
-Schleiferilactobacillus perolens,Water kefir - Kefir4All,47,inStrain,Water kefir
-Zymomonas mobilis,Water kefir - Breselge et al,112,inStrain,Water kefir
-Zymomonas mobilis,Water kefir - Kefir4All,83,inStrain,Water kefir
-Acetobacter fabarum,Milk kefir - Kefir4All,45,dRep,Milk kefir
-Acetobacter fabarum,Milk kefir - Walsh et al,20,dRep,Milk kefir
-Acetobacter indonesiensis,Water kefir - Breselge et al,1,dRep,Water kefir
-Acetobacter indonesiensis,Water kefir - Kefir4All,5,dRep,Water kefir
-Acetobacter malorum,Water kefir - Breselge et al,7,dRep,Water kefir
-Acetobacter malorum,Water kefir - Kefir4All,51,dRep,Water kefir
-Acetobacter orientalis,Milk kefir - Kefir4All,13,dRep,Milk kefir
-Acetobacter orientalis,Milk kefir - Walsh et al,5,dRep,Milk kefir
-Acetobacter persici,Water kefir - Breselge et al,5,dRep,Water kefir
-Acetobacter persici,Water kefir - Kefir4All,14,dRep,Water kefir
-Acetobacter syzygii,Water kefir - Breselge et al,11,dRep,Water kefir
-Acetobacter syzygii,Water kefir - Kefir4All,63,dRep,Water kefir
-Acinetobacter johnsonii,Water kefir - Kefir4All,6,dRep,Water kefir
-Bifidobacterium aquikefiri,Water kefir - Breselge et al,25,dRep,Water kefir
-Bifidobacterium aquikefiri,Water kefir - Kefir4All,38,dRep,Water kefir
-Gluconobacter albidus,Water kefir - Breselge et al,2,dRep,Water kefir
-Gluconobacter albidus,Water kefir - Kefir4All,11,dRep,Water kefir
-Gluconobacter cerinus,Water kefir - Breselge et al,9,dRep,Water kefir
-Gluconobacter cerinus,Water kefir - Kefir4All,24,dRep,Water kefir
-Gluconobacter oxydans,Water kefir - Breselge et al,24,dRep,Water kefir
-Gluconobacter oxydans,Water kefir - Kefir4All,14,dRep,Water kefir
-Komagataeibacter hansenii,Water kefir - Breselge et al,2,dRep,Water kefir
-Komagataeibacter hansenii,Water kefir - Kefir4All,19,dRep,Water kefir
-Lacticaseibacillus paracasei,Water kefir - Breselge et al,49,dRep,Water kefir
-Lacticaseibacillus paracasei,Water kefir - Kefir4All,104,dRep,Water kefir
-Lactobacillus helveticus,Milk kefir - Kefir4All,44,dRep,Milk kefir
-Lactobacillus helveticus,Milk kefir - Walsh et al,24,dRep,Milk kefir
-Lactobacillus kefiranofaciens,Milk kefir - Kefir4All,78,dRep,Milk kefir
-Lactobacillus kefiranofaciens,Milk kefir - Walsh et al,31,dRep,Milk kefir
-Lactococcus cremoris,Milk kefir - Kefir4All,25,dRep,Milk kefir
-Lactococcus cremoris,Milk kefir - Walsh et al,27,dRep,Milk kefir
-Lactococcus lactis,Milk kefir - Kefir4All,36,dRep,Milk kefir
-Lactococcus lactis,Milk kefir - Walsh et al,41,dRep,Milk kefir
-Lactococcus raffinolactis,Milk kefir - Kefir4All,17,dRep,Milk kefir
-Lactococcus raffinolactis,Milk kefir - Walsh et al,6,dRep,Milk kefir
-Lentilactobacillus hilgardii,Water kefir - Breselge et al,33,dRep,Water kefir
-Lentilactobacillus hilgardii,Water kefir - Kefir4All,109,dRep,Water kefir
-Lentilactobacillus kefiri,Milk kefir - Kefir4All,97,dRep,Milk kefir
-Lentilactobacillus kefiri,Milk kefir - Walsh et al,29,dRep,Milk kefir
-Leuconostoc mesenteroides,Milk kefir - Kefir4All,34,dRep,Milk kefir
-Leuconostoc mesenteroides,Milk kefir - Walsh et al,27,dRep,Milk kefir
-Liquorilactobacillus ghanensis,Water kefir - Breselge et al,12,dRep,Water kefir
-Liquorilactobacillus ghanensis,Water kefir - Kefir4All,37,dRep,Water kefir
-Liquorilactobacillus satsumensis,Water kefir - Breselge et al,48,dRep,Water kefir
-Liquorilactobacillus satsumensis,Water kefir - Kefir4All,105,dRep,Water kefir
-Pseudomonas fragi,Milk kefir - Kefir4All,7,dRep,Milk kefir
-Schleiferilactobacillus perolens,Water kefir - Breselge et al,2,dRep,Water kefir
-Schleiferilactobacillus perolens,Water kefir - Kefir4All,16,dRep,Water kefir
-Zymomonas mobilis,Water kefir - Breselge et al,22,dRep,Water kefir
-Zymomonas mobilis,Water kefir - Kefir4All,49,dRep,Water kefir
+species,category.y,Freq,tool
+Saccharomyces cerevisiae,Water kefir,165,StrainPhlAn4
+Acinetobacter johnsonii,Water kefir,19,StrainPhlAn4
+Gluconobacter cerinus,Water kefir,43,StrainPhlAn4
+Gluconobacter albidus,Water kefir,63,StrainPhlAn4
+Gluconobacter oxydans,Water kefir,79,StrainPhlAn4
+Komagataeibacter hansenii,Water kefir,50,StrainPhlAn4
+Komagataeibacter medellinensis,Water kefir,31,StrainPhlAn4
+Acetobacter orientalis,Milk kefir,30,StrainPhlAn4
+Acetobacter syzygii,Water kefir,138,StrainPhlAn4
+Acetobacter fabarum,Milk kefir,84,StrainPhlAn4
+Acetobacter persici,Water kefir,64,StrainPhlAn4
+Acetobacter malorum,Water kefir,109,StrainPhlAn4
+Acetobacter indonesiensis,Water kefir,22,StrainPhlAn4
+Pseudomonas fragi,Milk kefir,21,StrainPhlAn4
+Bifidobacterium aquikefiri,Water kefir,76,StrainPhlAn4
+Zymomonas mobilis,Water kefir,77,StrainPhlAn4
+Lactobacillus kefiranofaciens,Milk kefir,169,StrainPhlAn4
+Lactobacillus helveticus,Milk kefir,146,StrainPhlAn4
+Lactobacillus ghanensis,Water kefir,94,StrainPhlAn4
+Lactobacillus satsumensis,Water kefir,190,StrainPhlAn4
+Leuconostoc mesenteroides,Milk kefir,54,StrainPhlAn4
+Lactobacillus perolens,Water kefir,37,StrainPhlAn4
+Lacticaseibacillus paracasei,Water kefir,195,StrainPhlAn4
+Lentilactobacillus hilgardii,Water kefir,192,StrainPhlAn4
+Lentilactobacillus kefiri,Milk kefir,165,StrainPhlAn4
+Lactococcus lactis,Milk kefir,46,StrainPhlAn4
+Lactococcus cremoris,Milk kefir,64,StrainPhlAn4
+Lactococcus raffinolactis,Milk kefir,26,StrainPhlAn4
+Acetobacter fabarum,Milk kefir,93,inStrain
+Acetobacter indonesiensis,Water kefir,40,inStrain
+Acetobacter malorum,Water kefir,132,inStrain
+Acetobacter orientalis,Milk kefir,37,inStrain
+Acetobacter persici,Water kefir,90,inStrain
+Acetobacter syzygii,Water kefir,147,inStrain
+Acinetobacter johnsonii,Water kefir,28,inStrain
+Bifidobacterium aquikefiri,Water kefir,94,inStrain
+Gluconobacter albidus,Water kefir,85,inStrain
+Gluconobacter cerinus,Water kefir,124,inStrain
+Gluconobacter oxydans,Water kefir,84,inStrain
+Komagataeibacter hansenii,Water kefir,72,inStrain
+Lacticaseibacillus paracasei,Water kefir,486,inStrain
+Lactobacillus helveticus,Milk kefir,141,inStrain
+Lactobacillus kefiranofaciens,Milk kefir,174,inStrain
+Lactococcus cremoris,Milk kefir,49,inStrain
+Lactococcus lactis,Milk kefir,72,inStrain
+Lactococcus raffinolactis,Milk kefir,33,inStrain
+Lentilactobacillus hilgardii,Water kefir,229,inStrain
+Lentilactobacillus kefiri,Milk kefir,180,inStrain
+Leuconostoc mesenteroides,Milk kefir,53,inStrain
+Pseudomonas fragi,Milk kefir,33,inStrain
+Zymomonas mobilis,Water kefir,83,inStrain
+Acetobacter fabarum,Milk kefir,42,dRep
+Acetobacter indonesiensis,Water kefir,4,dRep
+Acetobacter malorum,Water kefir,50,dRep
+Acetobacter orientalis,Milk kefir,13,dRep
+Acetobacter persici,Water kefir,12,dRep
+Acetobacter syzygii,Water kefir,63,dRep
+Acinetobacter johnsonii,Water kefir,5,dRep
+Bifidobacterium aquikefiri,Water kefir,39,dRep
+Gluconobacter albidus,Water kefir,12,dRep
+Gluconobacter cerinus,Water kefir,22,dRep
+Komagataeibacter hansenii,Water kefir,17,dRep
+Lacticaseibacillus paracasei,Water kefir,101,dRep
+Lactobacillus helveticus,Milk kefir,43,dRep
+Lactobacillus kefiranofaciens,Milk kefir,77,dRep
+Lactococcus lactis,Milk kefir,34,dRep
+Lactococcus raffinolactis,Milk kefir,16,dRep
+Lentilactobacillus hilgardii,Water kefir,110,dRep
+Lentilactobacillus kefiri,Milk kefir,98,dRep
+Leuconostoc mesenteroides,Milk kefir,34,dRep
+Zymomonas mobilis,Water kefir,49,dRep
