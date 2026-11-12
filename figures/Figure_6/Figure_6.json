@@ -1,0 +1,16 @@
+{
+  "figure": "Figure_6.pdf",
+  "created_utc": "2026-11-12T07:51:53Z",
+  "width_mm": 406.4,
+  "height_mm": 380,
+  "seed": null,
+  "source_file": "/home/rstudio/kefir4all/data/instrain_genome_species_primary_data_v4.csv",
+  "source_sha256": "d67a75be47310a2bfebec2457e002c4748ad467fab2e95bb49312c7576a57567",
+  "lab_toolkit_commit": null,
+  "lab_toolkit_uncommitted_changes": null,
+  "versions": {
+    "R": "4.4.2",
+    "ggplot2": "4.0.3",
+    "ggstatsplot": "0.13.0"
+  }
+}
