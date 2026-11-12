@@ -71,6 +71,7 @@ git_state <- function() {
 #'   preparation.
 #' @param overwrite Logical. If FALSE (the default), refuse to replace existing
 #'   outputs.
+#' @param tiff Logical. If TRUE, also writes a 300 dpi LZW-compressed TIFF.
 #' @param extra Named list or NULL. Extra provenance fields, such as the
 #'   transformations applied.
 #'
@@ -79,9 +80,13 @@ git_state <- function() {
 #' @details The PNG is a preview at 300 dpi. The PDF is the file to submit.
 save_figure <- function(plot, path, width_mm = 85, height_mm = 60,
                         source = NULL, seed = NULL, overwrite = FALSE,
-                        extra = NULL) {
+                        extra = NULL, tiff = FALSE) {
   base <- sub("\\.[^./]*$", "", path)
-  outputs <- paste0(base, c(".pdf", ".png", ".json"))
+  outputs <- c(
+    paste0(base, c(".pdf", ".png")),
+    if (tiff) paste0(base, ".tiff"),
+    paste0(base, ".json")
+  )
   if (!overwrite && any(file.exists(outputs))) {
     stop("Refusing to overwrite: ",
          paste(outputs[file.exists(outputs)], collapse = ", "),
@@ -100,8 +105,9 @@ save_figure <- function(plot, path, width_mm = 85, height_mm = 60,
 
   # Write every file under a temporary name first, then move them into place with
   # the JSON last. A failure part-way leaves no file that looks complete.
-  temporary <- paste0(dirname(base), "/.", basename(base),
-                      c(".pdf", ".png", ".json"), ".tmp")
+  output_suffixes <- sub(paste0("^", basename(base)), "", basename(outputs))
+  temporary <- file.path(dirname(base),
+                         paste0(".", basename(base), output_suffixes, ".tmp"))
   finished <- FALSE
   on.exit(if (!finished) unlink(temporary[file.exists(temporary)]), add = TRUE)
 
@@ -114,6 +120,14 @@ save_figure <- function(plot, path, width_mm = 85, height_mm = 60,
   }
   ggplot2::ggsave(temporary[2], plot, width = width_mm, height = height_mm,
                   units = "mm", dpi = 300, device = cairo_png)
+  if (tiff) {
+    if (!requireNamespace("ragg", quietly = TRUE)) {
+      stop("TIFF output requires the ragg package.", call. = FALSE)
+    }
+    ggplot2::ggsave(temporary[3], plot, width = width_mm, height = height_mm,
+                    units = "mm", dpi = 300, compression = "lzw",
+                    device = ragg::agg_tiff)
+  }
 
   state <- git_state()
   record <- list(
@@ -137,7 +151,8 @@ save_figure <- function(plot, path, width_mm = 85, height_mm = 60,
     )
   )
   if (!is.null(extra)) record <- utils::modifyList(record, extra)
-  jsonlite::write_json(record, temporary[3], auto_unbox = TRUE, pretty = TRUE,
+  json_index <- length(outputs)
+  jsonlite::write_json(record, temporary[json_index], auto_unbox = TRUE, pretty = TRUE,
                        null = "null")
   for (i in seq_along(outputs)) file.rename(temporary[i], outputs[i])
   finished <- TRUE
